@@ -491,7 +491,7 @@ End Function
 
 Function CarnivalDir(RD)
     
-    ' Determines the full Carnival DIrectory from the 'Relative' directory stored in the Carnivals Table.
+    ' Determines the full Carnival Directory from the 'Relative' directory stored in the Carnivals Table.
 
     If IsNull(RD) Then
         ' Carnival file is originally located in the sports.mdb directory
@@ -1977,7 +1977,8 @@ End Function
 Public Function SportsViewModule() As Boolean
 On Error GoTo SportsViewModule_Err
 
-  If Right(CurrentDb.Name, 14) = "sportsview.mdb" Or Right(CurrentDb.Name, 14) = "sportsview.mde" Then
+  If Right(CurrentDb.Name, 14) = "sportsview.mdb" Or Right(CurrentDb.Name, 14) = "sportsview.mde" _
+  Or Right(CurrentDb.Name, 16) = "sportsview.accdb" Then
     SportsViewModule = True
   Else
     SportsViewModule = False

@@ -15,7 +15,11 @@ On Error GoTo BackupCurrentCarnival_Err
   OrigFile = Right(OrigFile, Len(OrigFile) - 10)
   
   If SameAsCarnival Then ' Backup to the same folder as the carnival
-    NewFile = Left(OrigFile, Len(OrigFile) - 4) & "_backup.mdb"
+    If Upper(Right(OrigFile, 6)) = ".ACCDB" Then
+      NewFile = Left(OrigFile, Len(OrigFile) - 6) & "_backup.accdb"
+    Else
+      NewFile = Left(OrigFile, Len(OrigFile) - 4) & "_backup.mdb"
+    End If
   ElseIf IsNull(BackupPath) Then
     MsgBox ("You must specify a folder to backup the carnival into.  This can be done in the Utilities form.")
     Exit Sub

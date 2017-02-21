@@ -827,7 +827,7 @@ Function Make_File(ByVal FileName As String) As Variant
     Result = False                                                                              ' and move in empty tables
     Set WS = DBEngine.Workspaces(0)
     DoCmd.SetWarnings False
-    Set NewDB = WS.CreateDatabase(FileName, DB_LANG_GENERAL, dbVersion30)
+    Set NewDB = WS.CreateDatabase(FileName, DB_LANG_GENERAL, dbVersion120)
     NewDB.Close
     Set db = WS.Databases(0)
     For i = db.TableDefs.Count - 1 To 0 Step -1
@@ -873,10 +873,10 @@ Function NextCarnival() As String
     On Error GoTo Err_NextCarnival
     Dim i As Integer
     i = 1
-    Do Until IsNull(DLookup("[Carnival]", "Carnivals", "[Filename] = ""CN" & String$(6 - Len(Trim$(CStr(i))), "0") & Trim$(CStr(i)) & ".MDB"""))
+    Do Until IsNull(DLookup("[Carnival]", "Carnivals", "[Filename] = ""CN" & String$(6 - Len(Trim$(CStr(i))), "0") & Trim$(CStr(i)) & ".ACCDB"""))
         i = i + 1
     Loop
-    NextCarnival = "CN" & String$(6 - Len(Trim$(CStr(i))), "0") & Trim$(CStr(i)) & ".MDB"
+    NextCarnival = "CN" & String$(6 - Len(Trim$(CStr(i))), "0") & Trim$(CStr(i)) & ".ACCDB"
 Exit_NextCarnival:
     Exit Function
 Err_NextCarnival:

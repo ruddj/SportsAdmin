@@ -67,8 +67,8 @@ Global Const ahtOFN_LONGNAMES = &H200000
 Sub TestIt()
     Dim strFilter As String
     Dim lngFlags As Long
-    strFilter = ahtAddFilterItem(strFilter, "Access Files (*.mda, *.mdb)", _
-                    "*.MDA;*.MDB")
+    strFilter = ahtAddFilterItem(strFilter, "Access Files (*.mda, *.mdb, *.accdb)", _
+                    "*.MDA;*.MDB;*.ACCDB")
     strFilter = ahtAddFilterItem(strFilter, "dBASE Files (*.dbf)", "*.DBF")
     strFilter = ahtAddFilterItem(strFilter, "Text Files (*.txt)", "*.TXT")
     strFilter = ahtAddFilterItem(strFilter, "All Files (*.*)", "*.*")
@@ -102,7 +102,7 @@ Dim varFileName As Variant
     ' string Duplicate this line with changes as necessary for
     ' more file templates.
     strFilter = ahtAddFilterItem(strFilter, _
-                "Access (*.mdb)", "*.MDB;*.MDA")
+                "Access (*.mdb, *.accdb)", "*.MDB;*.MDA;*.ACCDB")
     ' Now actually call to get the file name.
     varFileName = ahtCommonFileOpenSave( _
                     OpenFile:=True, _
