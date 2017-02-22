@@ -15,7 +15,7 @@ On Error GoTo BackupCurrentCarnival_Err
   OrigFile = Right(OrigFile, Len(OrigFile) - 10)
   
   If SameAsCarnival Then ' Backup to the same folder as the carnival
-    If Upper(Right(OrigFile, 6)) = ".ACCDB" Then
+    If StrConv(Right(OrigFile, 6), vbLowerCase) = ".accdb" Then
       NewFile = Left(OrigFile, Len(OrigFile) - 6) & "_backup.accdb"
     Else
       NewFile = Left(OrigFile, Len(OrigFile) - 4) & "_backup.mdb"
