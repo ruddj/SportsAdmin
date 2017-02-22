@@ -1017,11 +1017,11 @@ Function FormatGname(N)
 
     Dim L As Variant, FirstLetter As Variant
 
-    L = Len(N)
-    FirstLetter = Left$(N, 1)
-    FirstLetter = UCase$(FirstLetter)
-    N = FirstLetter & LCase$(Mid$(N, 2, L - 1))
-    FormatGname = N
+    'L = Len(N)
+    'FirstLetter = Left$(N, 1)
+    'FirstLetter = UCase$(FirstLetter)
+    'N = FirstLetter & LCase$(Mid$(N, 2, L - 1))
+    FormatGname = StrConv(N, vbProperCase)
 
 End Function
 
