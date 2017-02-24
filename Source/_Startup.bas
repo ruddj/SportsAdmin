@@ -5,13 +5,13 @@ Public Function Startup()
 On Error GoTo Startup_Err
 
   Application.MenuBar = "Sports Menu"
-  ''DoCmd.RunCommand acCmdWindowHide
+  'DoCmd.RunCommand acCmdWindowHide
   Call InitialiseWaitMessage
   DoCmd.RunMacro "ShowPleaseWait"
   
-  ''DoCmd.ShowToolbar "Database", acToolbarNo
-  ''DoCmd.ShowToolbar "Form View", acToolbarNo
-  ''DoCmd.ShowToolbar "Print Preview", acToolbarWhereApprop
+  'DoCmd.ShowToolbar "Database", acToolbarNo
+  'DoCmd.ShowToolbar "Form View", acToolbarNo
+  'DoCmd.ShowToolbar "Print Preview", acToolbarWhereApprop
   
   Call CheckInventoryAttached
     
