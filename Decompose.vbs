@@ -40,6 +40,8 @@ Function exportModulesTxt(sADPFilename, sExportpath)
     Dim sModuleType
     Dim sTempname
     Dim sOutstring
+	Dim dbs, i
+	Const acQuery = 1
 
     dim myType, myName, myPath, sStubADPFilename
     myType = fso.GetExtensionName(sADPFilename)
@@ -93,6 +95,12 @@ Function exportModulesTxt(sADPFilename, sExportpath)
         WScript.Echo "  " & myObj.fullname
         oApplication.SaveAsText acReport, myObj.fullname, sExportpath & "\" & strClean (myObj.fullname) & ".report"
         dctDelete.Add "RE" & myObj.fullname, acReport
+    Next
+	Set dbs = oApplication.CurrentDb() 
+	For i = 0 To dbs.QueryDefs.Count - 1
+	    WScript.Echo "  " & dbs.QueryDefs(i).Name
+        oApplication.SaveAsText acQuery, dbs.QueryDefs(i).Name,  sExportpath & "\" & strClean (dbs.QueryDefs(i).Name )& ".txt"
+        'dctDelete.Add "qry_" & dbs.QueryDefs(i).Name, acQuery
     Next
 
     WScript.Echo "deleting..."
