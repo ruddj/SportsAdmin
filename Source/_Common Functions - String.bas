@@ -157,7 +157,7 @@ ConvertToTitleCase_Exit:
   Exit Function
   
 ConvertToTitleCase_Err:
-  MsgBox "An error has occurred in [ConvertToTitleCase]: " & Err.Description, vbCritical
+  MsgBox "An error has occurred in [ConvertToTitleCase]: " & Err.description, vbCritical
   
 End Function
 
@@ -200,7 +200,7 @@ ConvertToUpperLowerCase_Exit:
   Exit Function
   
 ConvertToUpperLowerCase_Err:
-  MsgBox "An error has occurred in [ConvertToUpperLowerCase]: " & Err.Description, vbCritical
+  MsgBox "An error has occurred in [ConvertToUpperLowerCase]: " & Err.description, vbCritical
   
 End Function
 
@@ -227,7 +227,7 @@ strReplace_Exit:
   Exit Function
   
 strReplace_Err:
-  MsgBox "An error has occurred in [strReplace]: " & Err.Description, vbCritical
+  MsgBox "An error has occurred in [strReplace]: " & Err.description, vbCritical
 
 End Function
 

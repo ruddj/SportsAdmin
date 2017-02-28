@@ -28,7 +28,7 @@ Startup_Exit:
   Exit Function
   
 Startup_Err:
-  MsgBox "An error has occurred in [Startup]: " & Err.Description, vbCritical
+  MsgBox "An error has occurred in [Startup]: " & Err.description, vbCritical
   Resume Startup_Exit
   
 End Function

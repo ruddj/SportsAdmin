@@ -132,7 +132,7 @@ Better_Exit:
   Exit Function
   
 Better_Err:
-  MsgBox ("An error has occured in [Better]: " & Err.Description)
+  MsgBox ("An error has occured in [Better]: " & Err.description)
   GoTo Better_Exit
   
 End Function
@@ -1913,14 +1913,14 @@ On Error GoTo PopUpFormsVisible_Err
   For Each F In Forms
     If F.PopUp Then
       If Visibility = False Then 'Hide All Popup forms
-        If F.Visible Then
-          F.Visible = False
+        If F.visible Then
+          F.visible = False
           F.Tag = "Hidden By PopUpFormsVisible"
         End If
         
       Else ' SHow all popup forms
         If F.Tag = "Hidden By PopUpFormsVisible" Then
-          F.Visible = True
+          F.visible = True
           F.Tag = ""
         End If
       End If
@@ -1933,7 +1933,7 @@ PopUpFormsVisible_Exit:
   Exit Function
   
 PopUpFormsVisible_Err:
-  MsgBox "An error has occurred in [PopUpFormsVisible]: " & Err.Description, vbCritical
+  MsgBox "An error has occurred in [PopUpFormsVisible]: " & Err.description, vbCritical
   Resume PopUpFormsVisible_Exit
   
 End Function
@@ -1964,7 +1964,7 @@ DisplayPrintDialog_Exit:
   
 DisplayPrintDialog_Err:
   If Err.Number <> 2212 Then ' Print cancelled
-    MsgBox "An error has occurred in [DisplayPrintDialog]: " & Err.Number & " - " & Err.Description, vbCritical
+    MsgBox "An error has occurred in [DisplayPrintDialog]: " & Err.Number & " - " & Err.description, vbCritical
   End If
   On Error Resume Next
   Call PopUpFormsVisible(True)
@@ -1987,7 +1987,7 @@ SportsViewModule_Exit:
   Exit Function
   
 SportsViewModule_Err:
-  MsgBox Err.Description
+  MsgBox Err.description
   
 End Function
 

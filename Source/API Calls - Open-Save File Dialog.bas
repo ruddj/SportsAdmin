@@ -145,7 +145,7 @@ Function ahtCommonFileOpenSave( _
 ' Out:
 ' Return Value: Either Null or the selected filename
 Dim OFN As tagOPENFILENAME
-Dim strFileName As String
+Dim strFilename As String
 Dim strFileTitle As String
 Dim fResult As Boolean
     ' Give the dialog a caption title.
@@ -159,7 +159,7 @@ Dim fResult As Boolean
     If IsMissing(hWnd) Then hWnd = Application.hWndAccessApp
     If IsMissing(OpenFile) Then OpenFile = True
     ' Allocate string space for the returned strings.
-    strFileName = Left(FileName & String(256, 0), 256)
+    strFilename = Left(FileName & String(256, 0), 256)
     strFileTitle = String(256, 0)
     ' Set up the data structure before you call the function
     With OFN
@@ -167,8 +167,8 @@ Dim fResult As Boolean
         .hwndOwner = hWnd
         .strFilter = Filter
         .nFilterIndex = FilterIndex
-        .strFile = strFileName
-        .nMaxFile = Len(strFileName)
+        .strFile = strFilename
+        .nMaxFile = Len(strFilename)
         .strFileTitle = strFileTitle
         .nMaxFileTitle = Len(strFileTitle)
         .strTitle = DialogTitle

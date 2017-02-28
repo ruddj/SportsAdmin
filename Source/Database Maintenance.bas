@@ -43,7 +43,7 @@ BackupCurrentCarnival_Err:
     Q = Q & "Backups cannot be performed when there is more than one user working on the carnival."
     MsgBox Q, vbExclamation
   Else
-    MsgBox "An error has occured in [BackupCurrentCarnival]: " & Err.Description, vbCritical
+    MsgBox "An error has occured in [BackupCurrentCarnival]: " & Err.description, vbCritical
   End If
   GoTo BackupCurrentCarnival_Exit
 

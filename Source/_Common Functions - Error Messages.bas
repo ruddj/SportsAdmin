@@ -110,13 +110,13 @@ DisplayErrMsg_Exit:
   Exit Sub
   
 DisplayErrMsg_err:
-  MsgBox "An error has occurred in [DisplayErrMsg]: " & Err.Description
+  MsgBox "An error has occurred in [DisplayErrMsg]: " & Err.description
   Resume DisplayErrMsg_Exit
   
 '-------------------
 UseStandardErrorMsg:
   Q = "An error has occurred in [" & CurrentProcedure & "]:" & CRLF(2)
-  Q = Q & "Error: " & Err.Description & CRLF(2)
+  Q = Q & "Error: " & Err.description & CRLF(2)
   Q = Q & "Error#: " & Err.Number
   Return
   

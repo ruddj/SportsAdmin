@@ -29,6 +29,6 @@ OpenForSeek_Exit:
   
 OpenForSeek_Err:
   Stop
-  MsgBox "An error has occurred in [OpenForSeek]: " & Err.Description, vbCritical
+  MsgBox "An error has occurred in [OpenForSeek]: " & Err.description, vbCritical
   
 End Function

@@ -185,10 +185,10 @@ Function HTMLStart(Title As String, Author As String)
     
 End Function
 
-Function Image(Source As String, Alternate As String)
+Function image(Source As String, Alternate As String)
     s = "<IMG SRC=""" & Source & """"
     If Alternate <> "" Then s = s & " ALT=""" & Alternate & """"
-    Image = s
+    image = s
     
 End Function
 

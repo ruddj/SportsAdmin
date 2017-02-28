@@ -170,7 +170,7 @@ AutomaticallyCreateHeatsAndFinals_Exit:
   
 AutomaticallyCreateHeatsAndFinals_Err:
   AutomaticallyCreateHeatsAndFinals = False
-  MsgBox "An error occurred in [AutomaticallyCreateHeatsAndFinals]: " & Err.Description, vbCritical
+  MsgBox "An error occurred in [AutomaticallyCreateHeatsAndFinals]: " & Err.description, vbCritical
   Resume AutomaticallyCreateHeatsAndFinals_Exit
   
 End Function

@@ -110,7 +110,7 @@ Function AddField_nResult(db As Database)
     
     Dim TD As TableDef
     Dim F As Field, Response As Variant
-    Dim Indx As Index
+    Dim Indx As index
     
 
     ''*** Create nRecord field ****
@@ -186,7 +186,7 @@ On Error GoTo AddField_ProNum_Err
     
     Dim TD As TableDef
     Dim F As Field, Response As Variant
-    Dim Indx As Index
+    Dim Indx As index
     
     ''*** Create nRecord field ****
 
@@ -230,7 +230,7 @@ On Error GoTo ChangeAgeFieldType_Err
   'Stop
   
   Dim TD As TableDef, ErrorOccurred As Boolean, Q As String
-  Dim F As Field, oF As Field, Response As Variant, i As Index
+  Dim F As Field, oF As Field, Response As Variant, i As index
   
   Set TD = db.TableDefs("Competitors")
   Set oF = TD.Fields("Age")
@@ -303,7 +303,7 @@ ChangeAgeFieldType_Exit:
 ChangeAgeFieldType_Err:
   'Stop
   'Resume Next
-  MsgBox "An error has occured updating the Age field in the Competitors table.  Error:" & Err.Description, vbCritical
+  MsgBox "An error has occured updating the Age field in the Competitors table.  Error:" & Err.description, vbCritical
   ErrorOccurred = True
   GoTo ChangeAgeFieldType_Exit
 
@@ -749,7 +749,7 @@ Exit_Creating_Relationships:
   Exit Sub
 
 Err_CheckRelationships:
-  MsgBox ("An unexpected error has occured in [CheckRelationships]: " & Err.Description)
+  MsgBox ("An unexpected error has occured in [CheckRelationships]: " & Err.description)
   RelationError = True
   GoTo Exit_Creating_Relationships
   
@@ -964,7 +964,7 @@ On Error GoTo err_sdc
         Crs!Hphone = CTrs!Hphone
         Crs!Wphone = CTrs!Wphone
         Crs!Age = CTrs!Age
-        Crs!ID = CTrs!ID
+        Crs!id = CTrs!id
         
         Crs.Update
         

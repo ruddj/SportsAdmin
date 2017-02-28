@@ -219,7 +219,7 @@ On Error GoTo DesignActiveForm_Err
       DoCmd.Close acReport, Ob
       DoCmd.OpenReport Ob, acViewDesign
     Else
-      MsgBox "Confused: " & Err.Description, vbExclamation
+      MsgBox "Confused: " & Err.description, vbExclamation
     End If
   End If
   
