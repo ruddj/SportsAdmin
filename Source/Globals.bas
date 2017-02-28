@@ -1977,8 +1977,7 @@ End Function
 Public Function SportsViewModule() As Boolean
 On Error GoTo SportsViewModule_Err
 
-  If Right(CurrentDb.Name, 14) = "sportsview.mdb" Or Right(CurrentDb.Name, 14) = "sportsview.mde" _
-  Or Right(CurrentDb.Name, 16) = "sportsview.accdb" Then
+  If StrConv(Left(CurrentDb.Name, 10), vbLowerCase) = "sportsview" Then
     SportsViewModule = True
   Else
     SportsViewModule = False

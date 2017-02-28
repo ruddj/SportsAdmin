@@ -1,6 +1,7 @@
 Option Compare Database
 Option Explicit
 
+Const REPORT_MENU As String = "cmdReportRightClick"
 
 Public Function CreateReportList(Optional CalledFromForm As Boolean)
 On Error GoTo CreateReportList_err
@@ -64,3 +65,61 @@ CreateReportList_err:
   GoTo CreateReportList_Exit
   
 End Function
+
+Public Function CreateReportShortcutMenu()
+    Dim cmbRightClick As Office.CommandBar
+    Dim cmbControl As Office.CommandBarControl
+ 
+    Call DeleteReportMenu
+
+   ' Create the shortcut menu.
+    Set cmbRightClick = CommandBars.Add(Name:=REPORT_MENU, Position:=msoBarPopup, MenuBar:=False, Temporary:=True)
+ 
+    With cmbRightClick
+         
+        ' Add the Print command.
+        Set cmbControl = .Controls.Add(msoControlButton, 2521, , , True)
+        ' Change the caption displayed for the control.
+        cmbControl.Caption = "Quick Print"
+         
+        ' Add the Print command.
+        Set cmbControl = .Controls.Add(msoControlButton, 15948, , , True)
+        ' Change the caption displayed for the control.
+        cmbControl.Caption = "Select Pages"
+         
+        ' Add the Page Setup... command.
+        Set cmbControl = .Controls.Add(msoControlButton, 247, , , True)
+        ' Change the caption displayed for the control.
+        cmbControl.Caption = "Page Setup"
+         
+        ' Add the Mail Recipient (as Attachment)... command.
+        Set cmbControl = .Controls.Add(msoControlButton, 2188, , , True)
+        ' Start a new group.
+        cmbControl.BeginGroup = True
+        ' Change the caption displayed for the control.
+        cmbControl.Caption = "Email Report as an Attachment"
+         
+        ' Add the PDF or XPS command.
+        Set cmbControl = .Controls.Add(msoControlButton, 12499, , , True)
+        ' Change the caption displayed for the control.
+        cmbControl.Caption = "Save as PDF/XPS"
+         
+        ' Add the Close command.
+        Set cmbControl = .Controls.Add(msoControlButton, 923, , , True)
+        ' Start a new group.
+        cmbControl.BeginGroup = True
+        ' Change the caption displayed for the control.
+        cmbControl.Caption = "Close Report"
+    End With
+     
+    Set cmbControl = Nothing
+    Set cmbRightClick = Nothing
+End Function
+
+
+Sub DeleteReportMenu()
+
+    On Error Resume Next
+    Application.CommandBars(REPORT_MENU).Delete
+    
+End Sub
