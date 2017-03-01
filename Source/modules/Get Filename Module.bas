@@ -40,25 +40,25 @@ Function ConvertNull(ByVal Value As Variant, ByVal subs As Variant) As Variant
     ConvertNull = IIf(IsNull(Value), subs, Value)
 End Function
 
-Function FileExists(ByVal fileName As String) As Variant
-'---------------------------------------------------------------
-' Returns variant indicating files existence
-' -1 (True) : The file exists
-' 0 (False) : The file does not exist
-' 71        : The disk drive is not ready (floppy drive)
-' 68        : The device is unavailable (an unconnected drive)
-
-    On Error GoTo AssignErrorCode
-    If (InStr(fileName, "*") = 0) And (InStr(fileName, "?") = 0) Then
-        FileExists = (Dir(fileName) <> "")
-    Else
-        GoTo AssignErrorCode
-    End If
-    Exit Function
-AssignErrorCode:
-    FileExists = False  ' was = Err
-    Resume Next
-End Function
+'Function FileExists(ByVal fileName As String) As Variant
+''---------------------------------------------------------------
+'' Returns variant indicating files existence
+'' -1 (True) : The file exists
+'' 0 (False) : The file does not exist
+'' 71        : The disk drive is not ready (floppy drive)
+'' 68        : The device is unavailable (an unconnected drive)
+'
+'    On Error GoTo AssignErrorCode
+'    If (InStr(fileName, "*") = 0) And (InStr(fileName, "?") = 0) Then
+'        FileExists = (Dir(fileName) <> "")
+'    Else
+'        GoTo AssignErrorCode
+'    End If
+'    Exit Function
+'AssignErrorCode:
+'    FileExists = False  ' was = Err
+'    Resume Next
+'End Function
 
 Function xGetFileName(ByVal Title As String, ByVal FilterOptions As String, ByVal FilterIndex As Integer, ByVal FilterDefault As String) As String
 '-------------------------------------------------------------------------------

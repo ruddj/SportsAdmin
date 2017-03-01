@@ -500,7 +500,7 @@ Private Sub Delete_Click()
         If MsgBox("Are you sure you want to delete the carnival " & Me.List & "?", 276, "Warning") = 6 Then
             fileName = GetCarnivalFullDir(DLookup("[Relative Directory]", "Carnivals", "[Carnival] = """ & Me.List & """"))
             fileName = fileName & DLookup("[Filename]", "Carnivals", "[Carnival] = """ & Me.List & """")
-            If FileExists(fileName) = -1 Then
+            If FileExists(fileName) Then
                 Response = MsgBox("Do you wish to delete the file " & fileName & "?", vbYesNo + vbCritical + vbDefaultButton2, "Delete file?")
                 If Response = vbYes Then
                     Kill fileName
