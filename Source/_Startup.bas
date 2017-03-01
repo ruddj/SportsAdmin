@@ -5,13 +5,15 @@ Public Function Startup()
 On Error GoTo Startup_Err
 
   Application.MenuBar = "Sports Menu"
-  'DoCmd.RunCommand acCmdWindowHide
+
   Call InitialiseWaitMessage
   DoCmd.RunMacro "ShowPleaseWait"
   
-  'DoCmd.ShowToolbar "Database", acToolbarNo
-  'DoCmd.ShowToolbar "Form View", acToolbarNo
-  'DoCmd.ShowToolbar "Print Preview", acToolbarWhereApprop
+ 'DoCmd.RunCommand acCmdWindowHide
+ ' DoCmd.ShowToolbar "Database", acToolbarNo
+ ' DoCmd.ShowToolbar "Form View", acToolbarNo
+ ' DoCmd.ShowToolbar "Print Preview", acToolbarWhereApprop
+  Call UserMode(True)
   
   Call CheckInventoryAttached
     
@@ -23,12 +25,15 @@ On Error GoTo Startup_Err
   DoCmd.RunMacro "ClosePleaseWait"
   
   DoCmd.OpenForm "Main Menu"
+  
+  ' Create Report Right Click menu
+  CreateReportShortcutMenu
 
 Startup_Exit:
   Exit Function
   
 Startup_Err:
-  MsgBox "An error has occurred in [Startup]: " & Err.description, vbCritical
+  MsgBox "An error has occurred in [Startup]: " & Err.Description, vbCritical
   Resume Startup_Exit
   
 End Function

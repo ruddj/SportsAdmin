@@ -219,7 +219,7 @@ On Error GoTo DesignActiveForm_Err
       DoCmd.Close acReport, Ob
       DoCmd.OpenReport Ob, acViewDesign
     Else
-      MsgBox "Confused: " & Err.description, vbExclamation
+      MsgBox "Confused: " & Err.Description, vbExclamation
     End If
   End If
   
@@ -412,6 +412,25 @@ Public Sub CodeTiming(Optional CodeDescription As String = "-> ", Optional Start
   Else
     Debug.Print CodeDescription & " " & Format(Timer - LastTime, "0.00") & " secs"
     LastTime = Timer
+  End If
+  
+End Sub
+
+'*******************
+' Show and Hide Development User Interface
+'*******************
+Public Sub UserMode(HideDev As Boolean)
+  
+  If HideDev Then
+    DoCmd.RunCommand acCmdWindowHide
+    DoCmd.ShowToolbar "Database", acToolbarNo
+    DoCmd.ShowToolbar "Form View", acToolbarNo
+    DoCmd.ShowToolbar "Print Preview", acToolbarWhereApprop
+  Else
+    DoCmd.RunCommand acCmdWindowUnhide
+    DoCmd.ShowToolbar "Database", acToolbarYes
+    DoCmd.ShowToolbar "Form View", acToolbarYes
+    DoCmd.ShowToolbar "Print Preview", acToolbarYes
   End If
   
 End Sub
