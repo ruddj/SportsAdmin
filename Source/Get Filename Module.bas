@@ -162,7 +162,7 @@ Function MatchFiles(ByVal HdlWnd As Integer, Criteria() As String, FileArray() A
                 L = L + 1
             Loop
             If FirstMatch Then
-                MsgBox "There are no matching files in this directory.", 48, "Message"
+                MsgBox "There are no matching files in this directory.", vbExclamation, "Message"
             Else
                 i = LBound(FileArray)
                 ArrayMax = UBound(FileArray)

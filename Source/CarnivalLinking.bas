@@ -119,7 +119,7 @@ Function AddField_nResult(db As Database)
     'Set CurrentDatabase = DBEngine.Workspaces(0).Databases(0)
     
     Set TD = db.TableDefs("Records")
-    Set F = TD.CreateField("nResult", DB_SINGLE)
+    Set F = TD.CreateField("nResult", dbSingle)
     TD.Fields.Append F
 
     '*** Change type of Record field ****
@@ -127,7 +127,7 @@ Function AddField_nResult(db As Database)
     Response = MsgBox("To update to the latest version of the Sports Administrator it is necessary to remove all Event Records.  Do you wish to continue?", vbExclamation + vbYesNo + vbDefaultButton2, "Remove records")
     If Response = vbYes Then
         TD.Fields.Delete "Result"    ' Delete field from collection.
-        Set F = TD.CreateField("Result", DB_TEXT)
+        Set F = TD.CreateField("Result", dbText)
     End If
     F.Size = 50
     TD.Fields.Append F
@@ -148,7 +148,7 @@ AddNewIndex:
 
     Indx.Primary = False
     Indx.Unique = False
-    Set F = TD.CreateField("E_Code", DB_LONG)
+    Set F = TD.CreateField("E_Code", dbLong)
     Indx.Fields.Append F
     'Set F = TD.CreateField("Date", DB_DATE)
     'Indx.fields.Append F
@@ -194,7 +194,7 @@ On Error GoTo AddField_ProNum_Err
     'Set CurrentDatabase = DBEngine.Workspaces(0).Databases(0)
     
     Set TD = db.TableDefs("Final_Lev")
-    Set F = TD.CreateField("ProNum", DB_INTEGER)
+    Set F = TD.CreateField("ProNum", dbInteger)
     TD.Fields.Append F
     
 AddField_ProNum_Exit:
@@ -346,8 +346,8 @@ AddTable_Err:
         Else
             GoTo AddTable_Err2
         End If
-        DoCmd.TransferDatabase A_EXPORT, "Microsoft Access", FileName, A_TABLE, "zz~" & NewTable, NewTable, False
-        'DoCmd.TransferDatabase A_ATTACH, "Microsoft Access", FileName, A_TABLE, NewTable, NewTable, False
+        DoCmd.TransferDatabase acExport, "Microsoft Access", FileName, acTable, "zz~" & NewTable, NewTable, False
+        'DoCmd.TransferDatabase acLink, "Microsoft Access", FileName, acTable, NewTable, NewTable, False
 
         GoTo AddTable_Exit
 
@@ -395,8 +395,8 @@ AddTable_Competitors_Err:
         Else
             GoTo AddTable_Competitors_Err2
         End If
-        DoCmd.TransferDatabase A_EXPORT, "Microsoft Access", FileName, A_TABLE, "zz~CompetitorsOrdered", "CompetitorsOrdered", False
-        DoCmd.TransferDatabase A_ATTACH, "Microsoft Access", FileName, A_TABLE, "CompetitorsOrdered", "CompetitorsOrdered", False
+        DoCmd.TransferDatabase acExport, "Microsoft Access", FileName, acTable, "zz~CompetitorsOrdered", "CompetitorsOrdered", False
+        DoCmd.TransferDatabase acLink, "Microsoft Access", FileName, acTable, "CompetitorsOrdered", "CompetitorsOrdered", False
 
         GoTo AddTable_Competitors_Exit
 
@@ -468,7 +468,7 @@ Function Attach_Selected_File2(ByVal IFID As Long, Posi As Variant, HasError As 
     If DEMO Then
         Set db = DBEngine.Workspaces(0).OpenDatabase(FileName)
         'Stop
-        Set RS = db.OpenRecordset("Competitors", DB_OPEN_DYNASET)   ' Create Recordset.
+        Set RS = db.OpenRecordset("Competitors", dbOpenDynaset)   ' Create Recordset.
         If Not (RS.EOF) Then
             RS.MoveLast
             'Stop
@@ -571,7 +571,7 @@ Function CheckInventoryAttached() As Variant
 '    Stop
     Set MyWS = DBEngine.Workspaces(0)
     Set MyDB = MyWS.Databases(0)
-    Set ITable = MyDB.OpenRecordset("Inventory Attached Tables", DB_OPEN_DYNASET)
+    Set ITable = MyDB.OpenRecordset("Inventory Attached Tables", dbOpenDynaset)
     DoCmd.SetWarnings False
     
     DoCmd.RunSQL "UPDATE DISTINCTROW Carnivals SET Carnivals.Available = FileExists(GetCarnivalFullDir([Relative Directory]) & [Filename]);"
@@ -674,7 +674,7 @@ Sub CheckRelationships(FileName As Variant)
   On Error GoTo Err_ValidatingRelationships
   
   RelationError = False
-  Set r1 = db.OpenRecordset("zzz~Relationships Main", DB_OPEN_SNAPSHOT)       ' the database tables
+  Set r1 = db.OpenRecordset("zzz~Relationships Main", dbOpenSnapshot)       ' the database tables
   
   ' If the total number of relations are not correct then recreate all relationships
   If NewDB.Relations.Count <> DCount("[R ID]", "zzz~Relationships Main") Then
@@ -691,7 +691,7 @@ Sub CheckRelationships(FileName As Variant)
       RelationError = True
     End If
     
-    Set r2 = db.OpenRecordset("SELECT * FROM [zzz~Relationships Second] WHERE [R ID] = " & r1![R ID], DB_OPEN_SNAPSHOT, DB_FORWARDONLY)
+    Set r2 = db.OpenRecordset("SELECT * FROM [zzz~Relationships Second] WHERE [R ID] = " & r1![R ID], dbOpenSnapshot, dbForwardOnly)
     Do Until r2.BOF Or r2.EOF Or RelationError
       Set nF = NR.Fields(r2![Field First])
       If nF.ForeignName <> r2![Field Second] Then RelationError = True
@@ -724,7 +724,7 @@ CreateNewRelationships: ' On relation problem exit to this point
         NR.Table = r1![First Table]
         NR.ForeignTable = r1![Second Table]
         NR.Attributes = r1![Type]
-        Set r2 = db.OpenRecordset("SELECT * FROM [zzz~Relationships Second] WHERE [R ID] = " & r1![R ID], DB_OPEN_SNAPSHOT, DB_FORWARDONLY)
+        Set r2 = db.OpenRecordset("SELECT * FROM [zzz~Relationships Second] WHERE [R ID] = " & r1![R ID], dbOpenSnapshot, dbForwardOnly)
         Do Until r2.EOF
             Set nF = NR.CreateField(r2![Field First])
             nF.ForeignName = r2![Field Second]
@@ -814,7 +814,7 @@ End Function
 
 Function Make_File(ByVal FileName As String) As Variant
 '--------------------------------------------------------------------------------
-' Makes the files specified in the parameter and copies an empty image of all the tables
+' Makes the file specified in the parameter and copies an empty image of all the tables
 ' that begin with "zz~". Removes the "zz~" when making the tables name.
 '
 ' Returns TRUE upon successful completion
@@ -827,25 +827,25 @@ Function Make_File(ByVal FileName As String) As Variant
     Result = False                                                                              ' and move in empty tables
     Set WS = DBEngine.Workspaces(0)
     DoCmd.SetWarnings False
-    Set NewDB = WS.CreateDatabase(FileName, DB_LANG_GENERAL, dbVersion120)
+    Set NewDB = WS.CreateDatabase(FileName, dbLangGeneral, dbVersion120)
     NewDB.Close
     Set db = WS.Databases(0)
     For i = db.TableDefs.Count - 1 To 0 Step -1
         If Left$(db.TableDefs(i).Name, 3) = "zz~" Then
-            DoCmd.TransferDatabase A_EXPORT, "Microsoft Access", FileName, A_TABLE, db.TableDefs(i).Name, Right$(db.TableDefs(i).Name, Len(db.TableDefs(i).Name) - 3), False
+            DoCmd.TransferDatabase acExport, "Microsoft Access", FileName, acTable, db.TableDefs(i).Name, Right$(db.TableDefs(i).Name, Len(db.TableDefs(i).Name) - 3), False
         End If
     Next i
 
     'Stop
     
     Set NewDB = WS.OpenDatabase(FileName)                                                       ' Add relationships to
-    Set r1 = db.OpenRecordset("zzz~Relationships Main", DB_OPEN_SNAPSHOT, DB_FORWARDONLY)       ' the database tables
+    Set r1 = db.OpenRecordset("zzz~Relationships Main", dbOpenSnapshot, dbForwardOnly)       ' the database tables
     Do Until r1.EOF
         Set NR = NewDB.CreateRelation(r1![Relationship Name])
         NR.Table = r1![First Table]
         NR.ForeignTable = r1![Second Table]
         NR.Attributes = r1![Type]
-        Set r2 = db.OpenRecordset("SELECT * FROM [zzz~Relationships Second] WHERE [R ID] = " & r1![R ID], DB_OPEN_SNAPSHOT, DB_FORWARDONLY)
+        Set r2 = db.OpenRecordset("SELECT * FROM [zzz~Relationships Second] WHERE [R ID] = " & r1![R ID], dbOpenSnapshot, dbForwardOnly)
         Do Until r2.EOF
             Set nF = NR.CreateField(r2![Field First])
             nF.ForeignName = r2![Field Second]
@@ -932,8 +932,8 @@ On Error GoTo err_sdc
     If Not GlobalCancel Then
       If GlobalChange Then
         Set db = DBEngine.Workspaces(0).Databases(0)
-        Set Crs = db.OpenRecordset("Competitors", DB_OPEN_DYNASET)   ' Create dynaset.
-        Set CTrs = db.OpenRecordset("Competitors-Temp", DB_OPEN_DYNASET)   ' Create dynaset.
+        Set Crs = db.OpenRecordset("Competitors", dbOpenDynaset)   ' Create dynaset.
+        Set CTrs = db.OpenRecordset("Competitors-Temp", dbOpenDynaset)   ' Create dynaset.
         
         Crs.FindFirst "[Pin]=" & PIN
         CTrs.MoveFirst

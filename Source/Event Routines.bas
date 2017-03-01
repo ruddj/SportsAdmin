@@ -18,7 +18,7 @@ On Error GoTo AutomaticallyCreateHeatsAndFinals_Err
   Q = "SELECT DISTINCTROW Events.ET_Code, Events.E_Code FROM Events "
   Q = Q & "WHERE (Events.ET_Code = " & ET_Code & ")"
     
-  Set Eset = CurrentDb.OpenRecordset(Q, DB_OPEN_DYNASET)   ' Create dynaset.
+  Set Eset = CurrentDb.OpenRecordset(Q, dbOpenDynaset)   ' Create dynaset.
 
   If DCount("[E_Code]", "Events", "[ET_Code]=" & ET_Code) = 0 Then
      Response = MsgBox("There are no Divisions set up for this event.  Set up the Divisions before attempting to create Heats and Final Levels.", vbOKOnly + vbInformation)
@@ -56,7 +56,7 @@ On Error GoTo AutomaticallyCreateHeatsAndFinals_Err
       Q = Q & "WHERE (Final_Lev.ET_Code = " & ET_Code & ") "
       Q = Q & "ORDER BY F_Lev Desc"
       
-      Set FLSet = CurrentDb.OpenRecordset(Q, DB_OPEN_DYNASET)   ' Create dynaset.
+      Set FLSet = CurrentDb.OpenRecordset(Q, dbOpenDynaset)   ' Create dynaset.
       If FLSet.BOF Then
         Response = MsgBox("The final and heat information has not been provided so none can be created.", vbOKOnly + vbInformation)
         AutomaticallyCreateHeatsAndFinals = False
@@ -98,7 +98,7 @@ On Error GoTo AutomaticallyCreateHeatsAndFinals_Err
 
           FLSet.MoveFirst
           
-          Set Hset = CurrentDb.OpenRecordset("Heats", DB_OPEN_DYNASET)   ' Create dynaset.
+          Set Hset = CurrentDb.OpenRecordset("Heats", dbOpenDynaset)   ' Create dynaset.
                   
           First_FL = True
           While Not FLSet.EOF
@@ -192,7 +192,7 @@ Public Sub UpdateLaneTemplate(ET_Code As Long, Lane_Cnt As Variant)
   DoCmd.SetWarnings True
 
   Set db = CurrentDb
-  Set RS = db.OpenRecordset("Lane Template", DB_OPEN_DYNASET)   ' Create Recordset.
+  Set RS = db.OpenRecordset("Lane Template", dbOpenDynaset)   ' Create Recordset.
 
   For i = 1 To Lane_Cnt
 
