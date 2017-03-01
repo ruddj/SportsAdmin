@@ -2,8 +2,19 @@ Option Compare Database
 Option Explicit
 
 
-Global Const VersionNumber = "4.1"
-Global Const VersionDate = "(19/May/2010)"
+Global Const VersionNumber = "5.0"
+Global Const VersionDate = "(01/Mar/2017)"
+
+' Version 5.0
+'   (01/Mar/2017)
+'   Released under MIT license
+'   Migrated software from Access 97 .MDB/.MDE to Access 2013/2016 .ACCDB
+'       Adjusted code functions to use more modern equivalents (on-going)
+'   Added support for .ACCDB carnival files
+'   Added Ribbon Interface
+'   Adjusted Age Champions - All Div to use student age rather than event age
+
+
 
 ' Version 4.1
 '   (19/5/2010)

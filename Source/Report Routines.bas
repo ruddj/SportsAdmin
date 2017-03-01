@@ -66,7 +66,7 @@ PreviewReport_Exit:
   Exit Sub
   
 PreviewReport_Err:
-  MsgBox "An error has occurred in [PreviewReport]: " & Err.description, vbCritical
+  MsgBox "An error has occurred in [PreviewReport]: " & Err.Description, vbCritical
   Resume PreviewReport_Exit
   
 End Sub

@@ -303,7 +303,7 @@ ChangeAgeFieldType_Exit:
 ChangeAgeFieldType_Err:
   'Stop
   'Resume Next
-  MsgBox "An error has occured updating the Age field in the Competitors table.  Error:" & Err.description, vbCritical
+  MsgBox "An error has occured updating the Age field in the Competitors table.  Error:" & Err.Description, vbCritical
   ErrorOccurred = True
   GoTo ChangeAgeFieldType_Exit
 
@@ -749,7 +749,7 @@ Exit_Creating_Relationships:
   Exit Sub
 
 Err_CheckRelationships:
-  MsgBox ("An unexpected error has occured in [CheckRelationships]: " & Err.description)
+  MsgBox ("An unexpected error has occured in [CheckRelationships]: " & Err.Description)
   RelationError = True
   GoTo Exit_Creating_Relationships
   

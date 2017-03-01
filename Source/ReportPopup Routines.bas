@@ -59,7 +59,7 @@ CreateReportList_err:
   If Err.Number = 2450 Then ' cant find ReportsPopUp because it has been closed .  that ok just continue
     ' do nothing
   Else
-    MsgBox ("An error has occured in [CreateReportList_err]: " & Err.description)
+    MsgBox ("An error has occured in [CreateReportList_err]: " & Err.Description)
   End If
   
   GoTo CreateReportList_Exit

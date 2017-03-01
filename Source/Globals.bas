@@ -132,7 +132,7 @@ Better_Exit:
   Exit Function
   
 Better_Err:
-  MsgBox ("An error has occured in [Better]: " & Err.description)
+  MsgBox ("An error has occured in [Better]: " & Err.Description)
   GoTo Better_Exit
   
 End Function
@@ -1933,7 +1933,7 @@ PopUpFormsVisible_Exit:
   Exit Function
   
 PopUpFormsVisible_Err:
-  MsgBox "An error has occurred in [PopUpFormsVisible]: " & Err.description, vbCritical
+  MsgBox "An error has occurred in [PopUpFormsVisible]: " & Err.Description, vbCritical
   Resume PopUpFormsVisible_Exit
   
 End Function
@@ -1964,7 +1964,7 @@ DisplayPrintDialog_Exit:
   
 DisplayPrintDialog_Err:
   If Err.Number <> 2212 Then ' Print cancelled
-    MsgBox "An error has occurred in [DisplayPrintDialog]: " & Err.Number & " - " & Err.description, vbCritical
+    MsgBox "An error has occurred in [DisplayPrintDialog]: " & Err.Number & " - " & Err.Description, vbCritical
   End If
   On Error Resume Next
   Call PopUpFormsVisible(True)
@@ -1987,7 +1987,7 @@ SportsViewModule_Exit:
   Exit Function
   
 SportsViewModule_Err:
-  MsgBox Err.description
+  MsgBox Err.Description
   
 End Function
 

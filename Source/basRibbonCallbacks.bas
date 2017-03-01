@@ -438,7 +438,7 @@ Sub GetSupertip(control As IRibbonControl, ByRef supertip)
 
 End Sub
 
-Sub GetDescription(control As IRibbonControl, ByRef description)
+Sub GetDescription(control As IRibbonControl, ByRef Description)
     ' Callbackname in XML File "getDescription"
     ' To set the property "description" to a Ribbon Control
 
@@ -446,7 +446,7 @@ Sub GetDescription(control As IRibbonControl, ByRef description)
         
 
         Case Else
-            description = "*getDescription*"
+            Description = "*getDescription*"
 
     End Select
 
@@ -561,8 +561,7 @@ Sub OnActionButtonHelp(control As IRibbonControl, ByRef CancelDefault)
     ' Callback for command event button click
     ' Callback fuer Command Button Click
 
-    MsgBox "Button ""Help"" clicked" & vbCrLf & _
-                           "Es wurde auf Button ""Hilfe"" geklickt", _
+    MsgBox "Button ""Help"" clicked" & vbCrLf, _
                            vbInformation
     CancelDefault = True
 
@@ -581,8 +580,7 @@ Sub OnActionCheckBox(control As IRibbonControl, _
         
         
         Case Else
-            MsgBox "The Value of the Checkbox """ & control.id & """ is: " & pressed & vbCrLf & _
-                   "Der Wert der Checkbox """ & control.id & """ ist: " & pressed, _
+            MsgBox "The Value of the Checkbox """ & control.id & """ is: " & pressed & vbCrLf, _
                    vbInformation
 
     End Select
@@ -947,7 +945,7 @@ Public Function getAppPath() As String
     getAppPath = strDummy
 End Function
 
-Public Function getIconFromTable(strFilename As String) As Picture
+Public Function getIconFromTable(strFileName As String) As Picture
 '*****************************************************************************
 'Funktion 'getIconFromTable' holt ein Bild aus der Binaer-Tabelle und gibt
 ' ein Picture Objekt zurueck
@@ -961,7 +959,7 @@ Dim rs As DAO.Recordset
     On Error GoTo Errr
  
     Set rs = DBEngine(0)(0).OpenRecordset("tblBinary", dbOpenDynaset)
-    rs.FindFirst "[FileName]='" & strFilename & "'"
+    rs.FindFirst "[FileName]='" & strFileName & "'"
     If rs.NoMatch Then
         Set getIconFromTable = Nothing
     Else

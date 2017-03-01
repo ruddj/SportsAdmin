@@ -1,0 +1,26 @@
+﻿<!-- Created with IDBE RibbonCreator 2016 (Version: 1.1002) -->
+<!--                 http://www.RibbonCreator2016.de               -->
+
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="OnRibbonLoad" loadImage="LoadImages">
+  <ribbon startFromScratch="false">
+
+    <contextualTabs>
+    <tabSet idMso="TabSetFormReportExtensibility">
+      <tab id="tab0" label="Print Preview" getVisible ="GetVisible">
+        <group idMso="GroupPrintPreviewPrintAccess" getVisible ="GetVisible"> 
+        </group>
+        <group idMso="GroupPageSize" getVisible ="GetVisible"> 
+        </group>
+        <group idMso="GroupPageLayoutAccess" getVisible ="GetVisible"> 
+        </group>
+        <group idMso="GroupZoom" getVisible ="GetVisible"> 
+        </group>
+        <group idMso="GroupPrintPreviewData" getVisible ="GetVisible"> 
+        </group>
+        <group idMso="GroupPrintPreviewClosePreview" getVisible ="GetVisible"> 
+        </group>
+      </tab>
+    </tabSet>
+    </contextualTabs>
+  </ribbon>
+</customUI>
