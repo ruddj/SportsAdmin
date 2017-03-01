@@ -1,0 +1,17 @@
+﻿R ID	Relationship Name	First Table	Second Table	Type	Description
+0	ReportTypes-EventType	ReportTypes	EventType	3	
+2	Promotion-Heats	Promotion	Heats	0	
+3	Final Level Sub	Final Level Sub	Heats	0	
+4	EventType-Final_Lev	EventType	Final_Lev	4096	
+5	House	House	House Points-Extra	3	
+6	EventType-Lane Promotion Allocation	EventType	Lane Promotion Allocation	4096	
+7	FinalStatus	FinalStatus	Heats	0	
+8	Competitors	Competitors	CompEvents	4096	
+9	EventType-Events	EventType	Events	4096	
+10	Events-Heats	Events	Heats	4096	
+11	Heats-CompEvents	Heats	CompEvents	4352	
+12	Events-Records	Events	Records	4096	
+13	Lane Sub-CompEvents	Lane Sub	CompEvents	0	
+14	House-Competitors	House	Competitors	4352	
+15	PointsScale-Heats	PointsScale	Heats	3	
+16	House-Records	House	Records	4352	

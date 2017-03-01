@@ -1,0 +1,20 @@
+﻿R ID	Field First	Field Second
+0	R_Code	R_Code
+1	PIN	PIN
+2	ProType	Pro_Type
+3	F_Lev	F_Lev
+4	ET_Code	ET_Code
+5	H_ID	H_ID
+6	ET_Code	ET_Code
+7	StatusID	Status
+8	PIN	PIN
+9	ET_Code	ET_Code
+10	E_Code	E_Code
+11	E_Code	E_Code
+11	F_Lev	F_Lev
+11	Heat	Heat
+12	E_Code	E_Code
+13	Lane	Lane
+14	H_Code	H_Code
+15	PtScale	PtScale
+16	H_Code	H_Code

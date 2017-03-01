@@ -1,0 +1,31 @@
+﻿ReportName	ReportCaption	Open
+Competitor List	Competitor List	False
+CompetitorList-ByTeamAge	CompetitorList-ByTeamAge	False
+EventResultsEntrySheet	EventResultsEntrySheet	False
+Field (3 attempts)	Field (3 attempts)	False
+Field (High Jump)	Field (High Jump)	False
+Misc-Non Participators	Non-Participants	False
+Name Tags	Name Tags	False
+Program of Events	Program of Events	False
+Program of Events-3 Col	Program of Events	False
+Program of Events-Summary	Program of Events - Summary	False
+RecordDetails-ByDay	Records set on the Specified Day	False
+RecordDetails-Current	RecordDetails-Current	False
+RecordDetailsMini-Current	RecordDetailsMini-Current	False
+Statistics-Age	Statistics-Age	False
+Statistics-AgeChampions	Statistics-Age Champion	False
+Statistics-AgeChampions-AcrossAllDivisions	Statistics-Age Champion-All Divisions	False
+Statistics-AgeGender	Statistics-AgeGender	False
+Statistics-byPlace	Number of Place Gained	False
+Statistics-CompetitorEvents	Statistics-CompetitorEvents	False
+Statistics-CompetitorResultsbyEventTeam	Statistics-CompetitorResultsbyEventTeam	False
+Statistics-Event	Statistics-Event	False
+Statistics-EventPlaces	Statistics-EventPlaces	False
+Statistics-EventTimesOverallAsc	Event Results - Best	False
+Statistics-Overall	Overall Statistics	False
+Statistics-PointByEventNumber	Cumulative Points	False
+Statistics-Sex	Statistics-Sex	False
+Track (Limited Lanes)	Limited Lanes Detailed List	False
+Track (unlimited Lanes)	Unlimited Lanes Detailed List	False
+Track Small (Limited Lanes)	Limited Lanes List	False
+Track Small (Unlimited Lanes)	Unlimited Lanes List	False

@@ -1,0 +1,7 @@
+﻿FieldName	DisplayName	Table	Type
+Age	Age	Competitors	Number
+DOB	DOB	Competitors	Date
+Gname	Given name	Competitors	Text
+H_Code	House Code	Competitors	Text
+Sex	Gender	Competitors	Text
+Surname	Surname	Competitors	Text

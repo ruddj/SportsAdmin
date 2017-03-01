@@ -1,0 +1,22 @@
+CREATE TABLE [zz~Competitors] (
+  [PIN] AUTOINCREMENT CONSTRAINT [PIN] PRIMARY KEY  UNIQUE  NOT NULL ,
+  [Include] BIT ,
+  [Gname] VARCHAR (30),
+  [Surname] VARCHAR (30),
+  [Sex] VARCHAR (1),
+  [H_Code] VARCHAR (7),
+  [H_ID] LONG ,
+  [DOB] DATETIME ,
+  [TotPts] DOUBLE ,
+  [Comments] VARCHAR (100),
+  [Address1] VARCHAR (50),
+  [Address2] VARCHAR (50),
+  [Suburb] VARCHAR (50),
+  [State] VARCHAR (50),
+  [Postcode] SHORT ,
+  [Hphone] VARCHAR (50),
+  [Wphone] VARCHAR (50),
+  [Age] BYTE ,
+  [ID] VARCHAR (50),
+   CONSTRAINT 
+)

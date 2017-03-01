@@ -1,0 +1,4 @@
+CREATE TABLE [zz~HouseTypes] (
+  [HT_Code] AUTOINCREMENT CONSTRAINT [PrimaryKey] PRIMARY KEY  UNIQUE  NOT NULL ,
+  [Desc] VARCHAR (50)
+)

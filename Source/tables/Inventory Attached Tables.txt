@@ -1,0 +1,30 @@
+﻿Table Name	IF ID
+_AlwaysOpen	2
+CompetitorEventAge	2
+Competitors	2
+CompEvents	2
+EventCat	2
+Events	2
+EventType	2
+EVERYONE1	2
+Final Level Sub	2
+Final_Lev	2
+FinalStatus	2
+Heats	2
+House	2
+House Points-Extra	2
+HouseTypes	2
+ImportData	2
+Lane Promotion Allocation	2
+Lane Sub	2
+Lane Template	2
+Lanes	2
+Miscellaneous	2
+MiscHTML	2
+PointsScale	2
+Promotion	2
+Records	2
+Reports-Selected	2
+Sex Sub	2
+TEMP1	2
+Units	2
