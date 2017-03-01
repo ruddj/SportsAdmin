@@ -9,6 +9,7 @@ Global LastTime As Variant
 
 
 Global Const Debugging = False
+Global DevelopmentModeSet As Boolean
 
 Global Const HaveGraphs = True
 
@@ -297,18 +298,18 @@ Public Function Calculate_Competitor_Lane(E_Code, F_Lev, H_Code, Heat)
     '   Else Assign this lane
     '
 
-    Dim Criteria As String, db As Database, rs As Recordset, LRS As Recordset
+    Dim Criteria As String, db As Database, RS As Recordset, LRS As Recordset
     
     Set db = DBEngine.Workspaces(0).Databases(0)
-    Set rs = db.OpenRecordset("SELECT * FROM Heats ORDER BY [F_Lev] Desc", DB_OPEN_DYNASET)   ' Create Recordset.
+    Set RS = db.OpenRecordset("SELECT * FROM Heats ORDER BY [F_Lev] Desc", DB_OPEN_DYNASET)   ' Create Recordset.
     Set LRS = db.OpenRecordset("Lanes", DB_OPEN_DYNASET)   ' Create Recordset.
     
     Criteria = "[E_Code]=" & E_Code
-    rs.FindFirst Criteria
+    RS.FindFirst Criteria
 
     AllocatedLane = 0
     
-    If rs!F_Lev = F_Lev Then 'Lowest Final Level
+    If RS!F_Lev = F_Lev Then 'Lowest Final Level
             
         Criteria = "[H_Code] = " & H_Code
         LRS.FindFirst Criteria
@@ -337,7 +338,7 @@ Public Function Calculate_Competitor_Lane(E_Code, F_Lev, H_Code, Heat)
 
     End If
 
-    rs.Close
+    RS.Close
     LRS.Close
     
 
@@ -549,7 +550,7 @@ On Error GoTo Err_CheckIfRecordBroken
     'Stop
 
     Dim U As Variant, Order As Variant, Res1 As Variant, Better   As Variant, Criteria As Variant
-    Dim rs As Recordset, db As Database, Criteria2 As Variant, Q As Variant, ValuesText As Variant
+    Dim RS As Recordset, db As Database, Criteria2 As Variant, Q As Variant, ValuesText As Variant
     Dim Fullname As Variant, Response As Variant, AlertToRecord As Variant, Result As Variant
 
     'AlertToRecord = DLookup("[AlertToRecord]", "MiscellaneousLocal") 'not used presently
@@ -583,24 +584,24 @@ On Error GoTo Err_CheckIfRecordBroken
             ' There is a previous record
             If Order = "ASC" Then
                 If Res1 <= DMin("[nResult]", "Records", "[E_Code]=" & E_Code) Then
-                    Set rs = CurrentDb.OpenRecordset("CompEvents-with Competitor Names", DB_OPEN_DYNASET)   ' Create dynaset.
+                    Set RS = CurrentDb.OpenRecordset("CompEvents-with Competitor Names", DB_OPEN_DYNASET)   ' Create dynaset.
                     Criteria = Criteria & " AND [nResult] = " & Res1
-                    rs.FindFirst Criteria
-                    While Not (rs.EOF Or rs.NoMatch)
+                    RS.FindFirst Criteria
+                    While Not (RS.EOF Or RS.NoMatch)
                         GoSub AddCompetitorToRecords
-                        rs.FindNext Criteria
+                        RS.FindNext Criteria
                     Wend
     
                 End If
     
             Else
                 If Res1 >= DMax("[nResult]", "Records", "[E_Code]=" & E_Code) Then
-                    Set rs = CurrentDb.OpenRecordset("CompEvents-with Competitor Names", DB_OPEN_DYNASET)   ' Create dynaset.
+                    Set RS = CurrentDb.OpenRecordset("CompEvents-with Competitor Names", DB_OPEN_DYNASET)   ' Create dynaset.
                     Criteria = Criteria & " AND [nResult] = " & Res1
-                    rs.FindFirst Criteria
-                    While Not (rs.EOF Or rs.NoMatch)
+                    RS.FindFirst Criteria
+                    While Not (RS.EOF Or RS.NoMatch)
                         GoSub AddCompetitorToRecords
-                        rs.FindNext Criteria
+                        RS.FindNext Criteria
                     Wend
                     
                 End If
@@ -610,12 +611,12 @@ On Error GoTo Err_CheckIfRecordBroken
             ' There has been no previous record set
     
             Set db = DBEngine.Workspaces(0).Databases(0)
-            Set rs = db.OpenRecordset("CompEvents-with Competitor Names", DB_OPEN_DYNASET)   ' Create dynaset.
+            Set RS = db.OpenRecordset("CompEvents-with Competitor Names", DB_OPEN_DYNASET)   ' Create dynaset.
             Criteria = Criteria & " AND [nResult] = " & Res1
-            rs.FindFirst Criteria
-            While Not (rs.EOF Or rs.NoMatch)
+            RS.FindFirst Criteria
+            While Not (RS.EOF Or RS.NoMatch)
                 GoSub AddCompetitorToRecords
-                rs.FindNext Criteria
+                RS.FindNext Criteria
             Wend
         
         End If
@@ -625,25 +626,25 @@ On Error GoTo Err_CheckIfRecordBroken
 '**********************************************************
 AddCompetitorToRecords:
 
-  Q = rs!Gname & " " & rs!Surname & " has set a new record for this event (" & rs!Result & " " & U & ").  " & LFCR & LFCR
+  Q = RS!Gname & " " & RS!Surname & " has set a new record for this event (" & RS!Result & " " & U & ").  " & LFCR & LFCR
   Q = Q & "Do you wish to accept it?"
   
   Response = MsgBox(Q, vbYesNo + vbDefaultButton2 + vbQuestion, "New Record")
   
   If Response = vbYes Then
     'Criteria2 = "[E_Code]=" & E_Code & " AND [Surname]= """ & RS![Surname] & """ AND [Gname]=""" & RS!Gname & """ AND [H_Code]=""" & RS![H_Code] & """ AND [Date]= #" & Format$(Now, "mm/dd/yyyy") & "# AND [nResult] = " & RS!nResult
-    Criteria2 = "[E_Code]=" & E_Code & " AND [Surname]= """ & rs![Surname] & """ AND [Gname]=""" & rs!Gname & """ AND [H_Code]=""" & rs![H_Code] & """ AND [nResult] = " & rs!nResult
+    Criteria2 = "[E_Code]=" & E_Code & " AND [Surname]= """ & RS![Surname] & """ AND [Gname]=""" & RS!Gname & """ AND [H_Code]=""" & RS![H_Code] & """ AND [nResult] = " & RS!nResult
     
     If IsNull(DLookup("[E_Code]", "Records", Criteria2)) Then
         ' Competitor has not already been added
         
-        If IsNull(rs!Result) Then
+        If IsNull(RS!Result) Then
             Result = 0
         Else
-            Result = rs!Result
+            Result = RS!Result
         End If
 
-        ValuesText = "(" & E_Code & ",""" & rs!Surname & """,""" & rs!Gname & """,""" & rs!H_Code & """, #" & Format$(Now, "mm/dd/yyyy") & "# ," & rs!nResult & ",""" & Result & """)"
+        ValuesText = "(" & E_Code & ",""" & RS!Surname & """,""" & RS!Gname & """,""" & RS!H_Code & """, #" & Format$(Now, "mm/dd/yyyy") & "# ," & RS!nResult & ",""" & Result & """)"
         Q = "INSERT INTO Records ( E_Code, Surname, Gname, H_Code, [Date], nResult, Result ) "
         Q = Q & "VALUES " & ValuesText
         DoCmd.SetWarnings False
@@ -652,9 +653,9 @@ AddCompetitorToRecords:
 
         If GlobalVariable Then
             Forms!EnterCompetitors!Record = Result
-            Forms!EnterCompetitors!nRecord = rs!nResult
+            Forms!EnterCompetitors!nRecord = RS!nResult
         Else
-            Q = "UPDATE DISTINCTROW Events SET Events.Record = """ & Result & """, Events.nRecord = " & rs!nResult
+            Q = "UPDATE DISTINCTROW Events SET Events.Record = """ & Result & """, Events.nRecord = " & RS!nResult
             Q = Q & " WHERE Events.E_Code=" & E_Code
             DoCmd.SetWarnings False
             DoCmd.RunSQL Q
@@ -820,11 +821,11 @@ On Error GoTo DetermineEventAge_Err
 
     ' Determines what Event age bracket a competitros age falls into. ie 8 year old in the 09_U age
 
-    Dim Criteria As String, db As Database, rs As Recordset, Q As Variant, Continue  As Variant
+    Dim Criteria As String, db As Database, RS As Recordset, Q As Variant, Continue  As Variant
     Dim i As Variant, Eage  As Variant, AgeFil As Variant, AQ As Variant
     
     Q = "SELECT DISTINCT Events.Age FROM Events"
-    Set rs = CurrentDb.OpenRecordset(Q, DB_OPEN_DYNASET)   ' Create dynaset.
+    Set RS = CurrentDb.OpenRecordset(Q, DB_OPEN_DYNASET)   ' Create dynaset.
     
     'Stop
 
@@ -834,8 +835,8 @@ On Error GoTo DetermineEventAge_Err
     
     'Do Until EventAgeArray(i) = "THATSIT" Or Not Continue
 
-    Do Until (rs.EOF Or Not Continue)    ' Loop until no matching records.
-        Eage = rs!Age
+    Do Until (RS.EOF Or Not Continue)    ' Loop until no matching records.
+        Eage = RS!Age
         ' Check that there is no age group that this age excludes.  For exaple
         ' 12_O excludes the age bracket 13 or 13_O.  9_U excludes 8_U.  We want to use only the
         ' outermost ones.
@@ -848,7 +849,7 @@ On Error GoTo DetermineEventAge_Err
                Continue = False
             End If
         End If
-        rs.MoveNext
+        RS.MoveNext
         'i = i + 1
     Loop
 
@@ -1002,14 +1003,14 @@ End Function
 
 Function FindLastEntry(uTable, uField As Field)
 
-    Dim db As Database, rs As Recordset
+    Dim db As Database, RS As Recordset
     Set db = DBEngine.Workspaces(0).Databases(0)
-    Set rs = db.OpenRecordset(uTable, DB_OPEN_DYNASET)   ' Create Recordset.
+    Set RS = db.OpenRecordset(uTable, DB_OPEN_DYNASET)   ' Create Recordset.
     
-    rs.MoveLast
-    FindLastEntry = rs!uField
+    RS.MoveLast
+    FindLastEntry = RS!uField
     
-    rs.Close
+    RS.Close
 
 End Function
 
@@ -1168,7 +1169,7 @@ End Function
 Function oF(N, T)
     
     If T = "M" Then ' Modal Form
-        DoCmd.OpenForm N, , , , , A_DIALOG
+        DoCmd.OpenForm N, , , , , acDialog
     Else
         DoCmd.OpenForm N
     End If
@@ -1276,7 +1277,7 @@ Function PromoteEventFinal(E_Code)
 
     PromoteEventFinal = False
 
-    Dim Criteria As String, rs As Recordset, Promote_FL As Variant, Pro_Ty As Variant
+    Dim Criteria As String, RS As Recordset, Promote_FL As Variant, Pro_Ty As Variant
     Dim Time_Pro As Variant, Ev As Variant, New_FL As Variant, Num_Heats As Variant
     Dim ET_Code As Variant, LaneCount As Variant, Num_Lanes As Variant, Num_Competitors As Variant
     Dim Q As Variant, uOrder As Variant, Place As Variant, i As Variant, L As Variant, H As Variant
@@ -1285,32 +1286,32 @@ Function PromoteEventFinal(E_Code)
     Dim EventsRS As Recordset, EventTypeRS As Recordset
     
     'Set db = DBEngine.Workspaces(0).Databases(0)
-    Set rs = CurrentDb.OpenRecordset("SELECT * FROM Heats ORDER BY [F_Lev] Asc", DB_OPEN_DYNASET)   ' Create Recordset.
+    Set RS = CurrentDb.OpenRecordset("SELECT * FROM Heats ORDER BY [F_Lev] Asc", DB_OPEN_DYNASET)   ' Create Recordset.
     Set EventsRS = CurrentDb.OpenRecordset("Events", dbOpenDynaset)
     Set EventTypeRS = CurrentDb.OpenRecordset("EventType", dbOpenDynaset)
     
     If Not IsNull(DCount("[E_Code]", "Heats", "E_Code = " & E_Code & " AND [Status] = 2")) Then
         Criteria = "E_Code = " & E_Code & " AND [Status] = 2" ' Final Completed
         
-        rs.FindFirst Criteria    ' Locate first occurrence.
+        RS.FindFirst Criteria    ' Locate first occurrence.
     
-        If rs.NoMatch Then
+        If RS.NoMatch Then
             MsgBox "There are no finals to promote for this event.", vbExclamation
             PromoteEventFinal = False
         Else
-            Promote_FL = rs!F_Lev
-            Pro_Ty = rs!Pro_Type
-            Time_Pro = rs!UseTimes
+            Promote_FL = RS!F_Lev
+            Pro_Ty = RS!Pro_Type
+            Time_Pro = RS!UseTimes
             
             Criteria = "E_Code = " & E_Code & " AND [Status] = 1" ' Final Completed
-            rs.FindPrevious Criteria
+            RS.FindPrevious Criteria
     
-            If rs.NoMatch Then  'Beggining of file
+            If RS.NoMatch Then  'Beggining of file
                 
                 'MsgBox ("There are no finals to promote competitors into.  The latest completed final for " & EV & " was the Grand Final.")
                 PromoteEventFinal = False
             Else
-                New_FL = rs!F_Lev  ' This assumes that the previous F_Lev is the new final level.
+                New_FL = RS!F_Lev  ' This assumes that the previous F_Lev is the new final level.
                 Criteria = "[E_Code] = " & E_Code & " AND [F_Lev] = " & New_FL
                 Num_Heats = DCount("[Heat]", "Heats", Criteria)
                 
@@ -1451,7 +1452,7 @@ PromtionComplete:
     
         End If ' *** No finals to promote for this event
     End If
-    rs.Close
+    RS.Close
 
     GoTo Exit_PEF
 
@@ -1527,55 +1528,55 @@ Sub SetCurrentFinal(E_Code)
     On Error GoTo SetCurrentFinal_Error
 
     DoCmd.SetWarnings True
-    Dim Criteria As String, db As Database, rs As Recordset
+    Dim Criteria As String, db As Database, RS As Recordset
     Dim LastFinalCompleted As Variant, Cur_Flevel As Variant
     
     Set db = DBEngine.Workspaces(0).Databases(0)
-    Set rs = db.OpenRecordset("SELECT * FROM Heats ORDER BY [F_Lev] Desc", DB_OPEN_DYNASET)   ' Create Recordset.
+    Set RS = db.OpenRecordset("SELECT * FROM Heats ORDER BY [F_Lev] Desc", DB_OPEN_DYNASET)   ' Create Recordset.
     
     Criteria = "E_Code = " & E_Code & " AND [Completed] = No"
     
-    rs.FindFirst Criteria    ' Locate first occurrence.
+    RS.FindFirst Criteria    ' Locate first occurrence.
     
     LastFinalCompleted = False
     
     If DCount("[HE_Code]", "Heats", Criteria) > 0 Then ' Only determine current finals if their are heats already entered
                                                         ' Used to trap no PointsScales potential error
-        If rs.NoMatch Then
-            rs.MoveLast
+        If RS.NoMatch Then
+            RS.MoveLast
             LastFinalCompleted = True
         End If
 
-        Cur_Flevel = rs!F_Lev
+        Cur_Flevel = RS!F_Lev
 
         Criteria = "E_Code = " & E_Code
-        rs.FindFirst Criteria    ' Locate first occurrence.
+        RS.FindFirst Criteria    ' Locate first occurrence.
 
-        Do Until rs.NoMatch  ' Loop until no matching records.
-            rs.Edit          ' Enable editing.
+        Do Until RS.NoMatch  ' Loop until no matching records.
+            RS.Edit          ' Enable editing.
         
-            If rs!F_Lev < Cur_Flevel Then
-                rs!Status = 0   ' Future
-            ElseIf rs!F_Lev = Cur_Flevel Then
+            If RS!F_Lev < Cur_Flevel Then
+                RS!Status = 0   ' Future
+            ElseIf RS!F_Lev = Cur_Flevel Then
                 If LastFinalCompleted = True Then
-                    rs!Status = 2 ' Completed
+                    RS!Status = 2 ' Completed
                 Else
-                    rs!Status = 1  ' Current
+                    RS!Status = 1  ' Current
                 End If
             Else
-                If rs!Status <> 3 Then ' Completed
-                    rs!Status = 2
+                If RS!Status <> 3 Then ' Completed
+                    RS!Status = 2
                 End If
                      
             End If
 
-            rs.Update        ' Save changes.
-            rs.FindNext Criteria ' Locate next record.
+            RS.Update        ' Save changes.
+            RS.FindNext Criteria ' Locate next record.
         Loop
 
     
     End If
-    rs.Close
+    RS.Close
     
 
 SetCurrentFinal_Exit:
@@ -1618,30 +1619,30 @@ End Function
 
 Sub Update_Lane_Assignments(E_Code, F_Lev, Heat)
 
-    Dim Criteria As String, db As Database, rs As Recordset, LRS As Recordset
+    Dim Criteria As String, db As Database, RS As Recordset, LRS As Recordset
     Dim H_ID As Variant
 
     Set db = DBEngine.Workspaces(0).Databases(0)
-    Set rs = db.OpenRecordset("CompEvents", DB_OPEN_DYNASET)   ' Create Recordset.
+    Set RS = db.OpenRecordset("CompEvents", DB_OPEN_DYNASET)   ' Create Recordset.
     
     Criteria = "[E_Code]=" & E_Code & " AND [F_Lev]=" & F_Lev & " AND [Heat]=" & Heat
-    rs.FindFirst Criteria
-    While Not rs.NoMatch
+    RS.FindFirst Criteria
+    While Not RS.NoMatch
 
-        If rs!Lane = 0 Then
-            H_ID = DLookup("[H_ID]", "Competitors", "[PIN]=" & rs!PIN)
+        If RS!Lane = 0 Then
+            H_ID = DLookup("[H_ID]", "Competitors", "[PIN]=" & RS!PIN)
             
-            rs.Edit
-            rs!Lane = Calculate_Competitor_Lane(E_Code, F_Lev, H_ID, Heat)
-            rs.Update
+            RS.Edit
+            RS!Lane = Calculate_Competitor_Lane(E_Code, F_Lev, H_ID, Heat)
+            RS.Update
             
         End If
         
-        rs.FindNext Criteria
+        RS.FindNext Criteria
         
     Wend
 
-    rs.Close
+    RS.Close
 
 End Sub
 
@@ -1750,12 +1751,12 @@ On Error GoTo UpdateEventCompetitorAge_Err
   
   'Stop
   
-  Dim Criteria As String, db As Database, rs As Recordset, Q As Variant, i As Variant
+  Dim Criteria As String, db As Database, RS As Recordset, Q As Variant, i As Variant
   Dim Cage As Variant, Eage As Variant, CEArs As Recordset
   
   Q = "SELECT DISTINCT Competitors.Age FROM Competitors"
   
-  Set rs = CurrentDb.OpenRecordset(Q, DB_OPEN_DYNASET)   ' Create dynaset.
+  Set RS = CurrentDb.OpenRecordset(Q, DB_OPEN_DYNASET)   ' Create dynaset.
   Set CEArs = CurrentDb.OpenRecordset("CompetitorEventAge", dbOpenDynaset)
   
   Do Until CEArs.BOF Or CEArs.EOF
@@ -1770,17 +1771,17 @@ On Error GoTo UpdateEventCompetitorAge_Err
   DoCmd.RunSQL "delete * from CompetitorEventAge"
   DoCmd.SetWarnings True
   
-  Do Until rs.EOF  ' Loop until no matching records.
+  Do Until RS.EOF  ' Loop until no matching records.
     'Stop
-    Cage = rs![Age]
+    Cage = RS![Age]
     If Not IsNull(Cage) Then
       Eage = DetermineEventAge(Cage)
              
-      CEArs.FindFirst "[Cage]=" & rs!Age & " AND [Eage]=""" & Eage & """"
+      CEArs.FindFirst "[Cage]=" & RS!Age & " AND [Eage]=""" & Eage & """"
       If CEArs.NoMatch Then
         With CEArs
           .AddNew
-          !Cage = rs!Age
+          !Cage = RS!Age
           !Eage = Eage
           !Flag = False
           .Update
@@ -1791,7 +1792,7 @@ On Error GoTo UpdateEventCompetitorAge_Err
         CEArs.Update
       End If
     End If
-    rs.MoveNext
+    RS.MoveNext
   Loop
   
   Q = "DELETE CompetitorEventAge.*, CompetitorEventAge.Flag "
@@ -1800,7 +1801,7 @@ On Error GoTo UpdateEventCompetitorAge_Err
 
   CurrentDb.Execute Q
   
-  rs.Close
+  RS.Close
   CEArs.Close
   
   DoCmd.RunMacro "ClosePleaseWait"
@@ -1817,22 +1818,22 @@ End Sub
 
 Function Work_AutoEventNumber()
 
-    Dim Criteria As String, db As Database, rs As Recordset, x As Variant
+    Dim Criteria As String, db As Database, RS As Recordset, x As Variant
     
     Set db = DBEngine.Workspaces(0).Databases(0)
-    Set rs = db.OpenRecordset("Work-Heats in Some Order", DB_OPEN_DYNASET)   ' Create Recordset.
+    Set RS = db.OpenRecordset("Work-Heats in Some Order", DB_OPEN_DYNASET)   ' Create Recordset.
     
     x = 1
-    rs.MoveFirst
-    While Not rs.EOF
-        rs.Edit
-        rs!E_Number = x
-        rs.Update
+    RS.MoveFirst
+    While Not RS.EOF
+        RS.Edit
+        RS!E_Number = x
+        RS.Update
         x = x + 1
-        rs.MoveNext
+        RS.MoveNext
     Wend
 
-    rs.Close
+    RS.Close
 
 
 End Function

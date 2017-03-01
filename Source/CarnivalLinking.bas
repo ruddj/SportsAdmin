@@ -251,15 +251,15 @@ On Error GoTo ChangeAgeFieldType_Err
       
       TD.Fields.Append F
       
-      Dim rs As Recordset
-      Set rs = db.OpenRecordset("Competitors", dbOpenDynaset)
-      Do Until rs.BOF Or rs.EOF
-        rs.Edit
-        rs!Age = Val(rs!AgeOld)
-        rs.Update
-        rs.MoveNext
+      Dim RS As Recordset
+      Set RS = db.OpenRecordset("Competitors", dbOpenDynaset)
+      Do Until RS.BOF Or RS.EOF
+        RS.Edit
+        RS!Age = Val(RS!AgeOld)
+        RS.Update
+        RS.MoveNext
       Loop
-      rs.Close
+      RS.Close
       On Error Resume Next
       TD.Indexes.Delete ("Age")
       TD.Indexes.Delete ("Name&House")
@@ -458,7 +458,7 @@ Function Attach_Selected_File2(ByVal IFID As Long, Posi As Variant, HasError As 
     On Error GoTo Err_Attach_Selected_File2
     Dim MyDB As Database, ITable As Recordset, SpecifiedPath As Variant, TT As TableDef, FTable As Recordset
     Dim DataExists As Variant, MyWS As Workspace, CPath  As Variant, AskUser  As Variant
-    Dim Result As Variant, ReturnVal As Variant, db As Database, rs As Recordset, Response As Variant
+    Dim Result As Variant, ReturnVal As Variant, db As Database, RS As Recordset, Response As Variant
     ReturnVal = True
     HasError = False
     
@@ -468,11 +468,11 @@ Function Attach_Selected_File2(ByVal IFID As Long, Posi As Variant, HasError As 
     If DEMO Then
         Set db = DBEngine.Workspaces(0).OpenDatabase(FileName)
         'Stop
-        Set rs = db.OpenRecordset("Competitors", DB_OPEN_DYNASET)   ' Create Recordset.
-        If Not (rs.EOF) Then
-            rs.MoveLast
+        Set RS = db.OpenRecordset("Competitors", DB_OPEN_DYNASET)   ' Create Recordset.
+        If Not (RS.EOF) Then
+            RS.MoveLast
             'Stop
-            If rs.RecordCount > DEMOcompetitors Then
+            If RS.RecordCount > DEMOcompetitors Then
                 Response = MsgBox(DEMOmessage2, 16, "Demonstration Version")
                 HasError = True
                 GoTo Exit_Attach_Selected_File2
@@ -587,7 +587,7 @@ Function CheckInventoryAttached() As Variant
     WhereCDF = "([Filename] = """ & RFile & """) AND ([Relative Directory] = """ & RPath & """)"
     
     If IsNull(DLookup("[CArnival]", "Carnivals", WhereCDF & " and [Available]")) Then
-        DoCmd.OpenForm "Carnivals Maintain", A_NORMAL, , , , A_DIALOG       ' then ask the user for their selection
+        DoCmd.OpenForm "Carnivals Maintain", A_NORMAL, , , , acDialog       ' then ask the user for their selection
         Call UpdateEventCompetitorAge
     Else
       Dim TableCount As Long
@@ -927,7 +927,7 @@ On Error GoTo err_sdc
     GlobalCancel = False
     GlobalChange = False
 
-    DoCmd.OpenForm "Competitors", , , , , A_DIALOG, Action
+    DoCmd.OpenForm "Competitors", , , , , acDialog, Action
 
     If Not GlobalCancel Then
       If GlobalChange Then
@@ -995,14 +995,14 @@ Sub TransferToCompetitorOrdered()
   DoCmd.RunSQL "UPDATE CompetitorsOrdered SET CompetitorsOrdered.Flag = No;"
   DoCmd.SetWarnings True
   
-  Dim db As Database, rs As Recordset, ors As Recordset, i As Integer, NoMoreRecords As Boolean
+  Dim db As Database, RS As Recordset, ors As Recordset, i As Integer, NoMoreRecords As Boolean
   Set db = CurrentDb
   
-  Set rs = db.OpenRecordset("CompetitorsOrderedQ", dbOpenSnapshot)
+  Set RS = db.OpenRecordset("CompetitorsOrderedQ", dbOpenSnapshot)
   Set ors = db.OpenRecordset("CompetitorsOrdered", dbOpenDynaset)
   i = 0
     
-  If rs.BOF Then GoTo TransferToCompetitorOrdered_Exit
+  If RS.BOF Then GoTo TransferToCompetitorOrdered_Exit
   
   Do
     If ors.EOF Then
@@ -1013,32 +1013,32 @@ Sub TransferToCompetitorOrdered()
     
 '    If Left(ors!Surname, 6) = "aaaccc" Then Stop
     
-    ors!PIN = rs!PIN
-    ors!Include = rs!Include
-    ors!Gname = rs!Gname
-    ors!Surname = rs!Surname
-    ors!Sex = rs!Sex
-    ors!H_Code = rs!H_Code
-    ors!H_ID = rs!H_ID
-    ors!TotPts = rs!TotPts
-    ors!Age = rs!Age
+    ors!PIN = RS!PIN
+    ors!Include = RS!Include
+    ors!Gname = RS!Gname
+    ors!Surname = RS!Surname
+    ors!Sex = RS!Sex
+    ors!H_Code = RS!H_Code
+    ors!H_ID = RS!H_ID
+    ors!TotPts = RS!TotPts
+    ors!Age = RS!Age
     ors!Flag = True
     ors!Order = i
     ors.Update
     
     If Not ors.EOF Then ors.MoveNext
     
-    rs.MoveNext
+    RS.MoveNext
     i = i + 1
     
-  Loop Until rs.EOF
+  Loop Until RS.EOF
   
   'DoCmd.SetWarnings False
   'DoCmd.RunSQL "DELETE DISTINCTROW CompetitorsOrdered.PIN FROM CompetitorsOrdered"
   'DoCmd.OpenQuery "Transfer Competitors to CompetitorsOrdered"
   'DoCmd.SetWarnings True
 
-  rs.Close
+  RS.Close
   ors.Close
   
   

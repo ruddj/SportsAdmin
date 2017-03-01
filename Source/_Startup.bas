@@ -5,7 +5,8 @@ Public Function Startup()
 On Error GoTo Startup_Err
 
   Application.MenuBar = "Sports Menu"
-
+  Call UserMode(True)
+  
   Call InitialiseWaitMessage
   DoCmd.RunMacro "ShowPleaseWait"
   

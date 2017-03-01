@@ -7,7 +7,7 @@ Public Function CreateReportList(Optional CalledFromForm As Boolean)
 On Error GoTo CreateReportList_err
 
   Dim NumberReports As Integer, x As Integer, ObjectType As String, ReportName As String
-  Dim db As Database, rs As Recordset
+  Dim db As Database, RS As Recordset
   
   ObjectType = Application.CurrentObjectType
   ReportName = Application.CurrentObjectName
@@ -15,7 +15,7 @@ On Error GoTo CreateReportList_err
   'MsgBox (ObjectType)
   
   Set db = CurrentDb
-  Set rs = db.OpenRecordset("ReportList", dbOpenDynaset)
+  Set RS = db.OpenRecordset("ReportList", dbOpenDynaset)
   
   DoCmd.SetWarnings False
   DoCmd.RunSQL "UPDATE ReportList SET ReportList.Open = false"
@@ -28,25 +28,25 @@ On Error GoTo CreateReportList_err
     For x = 0 To NumberReports - 1
 '      DoCmd.SelectObject acReport, Reports(x).Name, False
 '      DoCmd.RunCommand acCmdPreviewTwoPages
-      rs.FindFirst "[ReportName]=""" & Reports(x).Name & """"
-      If rs.NoMatch Then
-        rs.AddNew
-        rs![ReportName] = Reports(x).Name
+      RS.FindFirst "[ReportName]=""" & Reports(x).Name & """"
+      If RS.NoMatch Then
+        RS.AddNew
+        RS![ReportName] = Reports(x).Name
         If VarEmpty(Reports(x).Caption) Then
-          rs![ReportCaption] = Reports(x).Name
+          RS![ReportCaption] = Reports(x).Name
         Else
-          rs![ReportCaption] = Reports(x).Caption
+          RS![ReportCaption] = Reports(x).Caption
         End If
       Else
-        rs.Edit
+        RS.Edit
       End If
-      If rs!ReportName = ReportName Then ' Pass ReportName to the procedure when a report is closed
-        rs!Open = False
+      If RS!ReportName = ReportName Then ' Pass ReportName to the procedure when a report is closed
+        RS!Open = False
       Else
-        rs!Open = True
+        RS!Open = True
       End If
       
-      rs.Update
+      RS.Update
     Next x
     Forms![ReportsPopUp]!ReportList.Requery
   End If

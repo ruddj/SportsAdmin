@@ -3,6 +3,10 @@ Option Explicit
 
 Global HourGlassCount As Integer
 
+Public Const APP_RIBBON As String = "SportsMenu"
+Public Const APP_RIBBON_ADM As String = "SportsAdmin"
+
+
 '*****************************************************************************************************************************
 'Purpose:       This routine 'undoes' the effect of using the wheel mouse.  It simply goes back to the previous record which
 '                should be the only record.
@@ -422,15 +426,67 @@ End Sub
 Public Sub UserMode(HideDev As Boolean)
   
   If HideDev Then
-    DoCmd.RunCommand acCmdWindowHide
+    DevelopmentModeSet = False
+    'select the navigation pange
+    Call DoCmd.NavigateTo("acNavigationCategoryObjectType")
+    'hide the selected object
+    Call DoCmd.RunCommand(acCmdWindowHide)
+    
     DoCmd.ShowToolbar "Database", acToolbarNo
     DoCmd.ShowToolbar "Form View", acToolbarNo
     DoCmd.ShowToolbar "Print Preview", acToolbarWhereApprop
+    'LoadRibbons (APP_RIBBON)
   Else
-    DoCmd.RunCommand acCmdWindowUnhide
+    DevelopmentModeSet = True
+    'DoCmd.RunCommand acCmdWindowUnhide
+    Call DoCmd.SelectObject(acTable, , True)
     DoCmd.ShowToolbar "Database", acToolbarYes
     DoCmd.ShowToolbar "Form View", acToolbarYes
     DoCmd.ShowToolbar "Print Preview", acToolbarYes
+    'LoadRibbons (APP_RIBBON_ADM)
   End If
   
 End Sub
+
+Private Function LoadRibbons(strRibbon)
+
+        On Error GoTo Error1
+
+        Dim RS As dao.Recordset
+        Dim strRibbonData As String
+
+      '  Set RS = CurrentDb.OpenRecordset("SELECT * FROM USysRibbons")
+        strRibbonData = DLookup("[RibbonXML]", "USysRibbons", "[RibbonName] = """ & strRibbon & """")
+        Application.LoadCustomUI strRibbon, strRibbonData
+
+   '  Do Until RS.EOF
+'
+ '        If RS("RibbonName").Value = strRibbon Then
+              ' Ribbon found: Load it and exit
+  '          Application.LoadCustomUI strRibbon, RS("RibbonXML").Value
+   '         Exit Do
+    '    End If
+
+     '    RS.MoveNext
+
+    ' Loop
+
+Error1_Exit:
+
+     On Error Resume Next
+    ' RS.Close
+     Set RS = Nothing
+     Exit Function
+
+Error1:
+
+     Select Case Err
+         Case 32609
+         ' Ribbon already loaded, do nothing and exit
+     Case Else
+         MsgBox "Error: " & Err.Number & vbCrLf & Err.Description, vbCritical, "Error", Err.HelpFile, Err.HelpContext
+     End Select
+
+     Resume Error1_Exit
+
+ End Function

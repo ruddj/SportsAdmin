@@ -64,10 +64,10 @@ End Type
 
 ' Callbacks:
 
-Sub OnRibbonLoad(ribbon As IRibbonUI)
+Sub OnRibbonLoad(Ribbon As IRibbonUI)
     ' Callbackname in XML File "onLoad"
 
-    Set gobjRibbon = ribbon
+    Set gobjRibbon = Ribbon
 End Sub
 
 Sub LoadImages(control, ByRef image)
@@ -479,7 +479,7 @@ Sub OnActionButton(control As IRibbonControl)
         Case "btn_crnmtn"
             ' In Tab:   tab_setup
             ' In Group: grp_crn
-             DoCmd.OpenForm "Carnivals Maintain" 'Opens the customers form'
+             DoCmd.OpenForm "Carnivals Maintain", , , , , acDialog
         Case "btn_crnset"
             ' In Tab:   tab_setup
             ' In Group: grp_crn
@@ -488,12 +488,12 @@ Sub OnActionButton(control As IRibbonControl)
             ' In Tab:   tab_setup
             ' In Group: grp_crn
             ' In Menu: mnu_crndsk
-            DoCmd.OpenForm "ExportData" 'Opens the customers form'
+            DoCmd.OpenForm "ExportData", , , , , acDialog
         Case "btn_crndskimp"
             ' In Tab:   tab_setup
             ' In Group: grp_crn
             ' In Menu: mnu_crndsk
-            DoCmd.OpenForm "Import Data" 'Opens the customers form'
+            DoCmd.OpenForm "Import Data", , , , , acDialog
         Case "btn_crnstat"
             ' In Tab:   tab_setup
             ' In Group: grp_crn
@@ -501,35 +501,35 @@ Sub OnActionButton(control As IRibbonControl)
         Case "btn_setutil"
             ' In Tab:   tab_setup
             ' In Group: grp_setup
-            DoCmd.OpenForm "Utilities" 'Opens the customers form'
+            DoCmd.OpenForm "Utilities", , , , , acDialog
         Case "btn_setteams"
             ' In Tab:   tab_setup
             ' In Group: grp_setup
-            DoCmd.OpenForm "House Summary" 'Opens the customers form'
+            DoCmd.OpenForm "House Summary", , , , , acDialog
         Case "btn_setpoints"
             ' In Tab:   tab_setup
             ' In Group: grp_setup
-            DoCmd.OpenForm "PointScale" 'Opens the customers form'
+            DoCmd.OpenForm "PointScale", , , , , acDialog
         Case "btn_compimp"
             ' In Tab:   tab_setup
             ' In Group: grp_comp
-            DoCmd.OpenForm "Import Competitors" 'Opens the customers form'
+            DoCmd.OpenForm "Import Competitors", , , , , acDialog
         Case "btn_compman"
             ' In Tab:   tab_setup
             ' In Group: grp_comp
-            DoCmd.OpenForm "CompetitorsSummary" 'Opens the customers form'
+            DoCmd.OpenForm "CompetitorsSummary", , , , , acDialog
         Case "btn_evntdetail"
             ' In Tab:   tab_setup
             ' In Group: grp_evnt
-            DoCmd.OpenForm "EventTypeSummary" 'Opens the customers form'
+            DoCmd.OpenForm "EventTypeSummary", , , , , acDialog
         Case "btn_evntcomp"
             ' In Tab:   tab_setup
             ' In Group: grp_evnt
-            DoCmd.OpenForm "CompEventsSummary" 'Opens the customers form'
+            DoCmd.OpenForm "CompEventsSummary", , , , , acDialog
         Case "btn_evntord"
             ' In Tab:   tab_setup
             ' In Group: grp_evnt
-            DoCmd.OpenForm "EventOrder" 'Opens the customers form'
+            DoCmd.OpenForm "EventOrder", , , , , acDialog
         Case "btn_evntlist"
             ' In Tab:   tab_setup
             ' In Group: grp_evnt
@@ -537,7 +537,7 @@ Sub OnActionButton(control As IRibbonControl)
         Case "btn_entres"
             ' In Tab:   tab_results
             ' In Group: grp_entry
-            DoCmd.OpenForm "CompEventsSummary" 'Opens the customers form'
+            DoCmd.OpenForm "CompEventsSummary", , , , , acDialog
         Case "btn_repstat"
             ' In Tab:   tab_results
             ' In Group: grp_reports
@@ -546,6 +546,12 @@ Sub OnActionButton(control As IRibbonControl)
             ' In Tab:   tab_results
             ' In Group: grp_reports
             DoCmd.OpenForm "Reports_Event" 'Opens the customers form'
+            
+        Case "btn_20"
+            ' In Tab:   tab_results
+            ' In Group: grp_reports
+            Response = MsgBox("Are you sure you want to quit?", vbQuestion + vbYesNo + vbDefaultButton2, "Quit?")
+            If Response = vbYes Then DoCmd.Quit
       
         Case Else
             MsgBox "Button """ & control.id & """ clicked", vbInformation
@@ -625,8 +631,7 @@ Sub OnActionTglButton(control As IRibbonControl, _
         Case "tgb_dev"
             ' In Tab:   tab_setup
             ' In Group: grp_crn
-            MsgBox "The Value of the Toggle Button """ & control.id & """ is: " & pressed, _
-                   vbInformation
+            Call UserMode(Not pressed)
 
         Case Else
             MsgBox "The Value of the Toggle Button """ & control.id & """ is: " & pressed, _
@@ -696,8 +701,7 @@ Sub OnChangeEditBox(control As IRibbonControl, _
         
 
         Case Else
-            MsgBox "The Value of the EditBox """ & control.id & """ is: " & strText & vbCrLf & _
-                   "Der Wert der EditBox """ & control.id & """ ist: " & strText, _
+            MsgBox "The Value of the EditBox """ & control.id & """ is: " & strText, _
                    vbInformation
 
     End Select
@@ -954,26 +958,26 @@ Public Function getIconFromTable(strFileName As String) As Picture
 
 Dim lSize As Long
 Dim arrBin() As Byte
-Dim rs As DAO.Recordset
+Dim RS As dao.Recordset
  
     On Error GoTo Errr
  
-    Set rs = DBEngine(0)(0).OpenRecordset("tblBinary", dbOpenDynaset)
-    rs.FindFirst "[FileName]='" & strFileName & "'"
-    If rs.NoMatch Then
+    Set RS = DBEngine(0)(0).OpenRecordset("tblBinary", dbOpenDynaset)
+    RS.FindFirst "[FileName]='" & strFileName & "'"
+    If RS.NoMatch Then
         Set getIconFromTable = Nothing
     Else
-        lSize = rs.Fields("binary").FieldSize
+        lSize = RS.Fields("binary").FieldSize
         ReDim arrBin(lSize)
-        arrBin = rs.Fields("binary").GetChunk(0, lSize)
+        arrBin = RS.Fields("binary").GetChunk(0, lSize)
         Set getIconFromTable = ArrayToPicture(arrBin)
     End If
-    rs.Close
+    RS.Close
  
 fExit:
     Reset
     Erase arrBin
-    Set rs = Nothing
+    Set RS = Nothing
     Exit Function
 Errr:
     Resume fExit
