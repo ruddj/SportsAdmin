@@ -7,15 +7,15 @@ Public Function CreateReportList(Optional CalledFromForm As Boolean)
 On Error GoTo CreateReportList_err
 
   Dim NumberReports As Integer, x As Integer, ObjectType As String, ReportName As String
-  Dim db As Database, RS As Recordset
+  Dim Db As Database, rs As Recordset
   
   ObjectType = Application.CurrentObjectType
   ReportName = Application.CurrentObjectName
   
   'MsgBox (ObjectType)
   
-  Set db = CurrentDb
-  Set RS = db.OpenRecordset("ReportList", dbOpenDynaset)
+  Set Db = CurrentDb
+  Set rs = Db.OpenRecordset("ReportList", dbOpenDynaset)
   
   DoCmd.SetWarnings False
   DoCmd.RunSQL "UPDATE ReportList SET ReportList.Open = false"
@@ -28,25 +28,25 @@ On Error GoTo CreateReportList_err
     For x = 0 To NumberReports - 1
 '      DoCmd.SelectObject acReport, Reports(x).Name, False
 '      DoCmd.RunCommand acCmdPreviewTwoPages
-      RS.FindFirst "[ReportName]=""" & Reports(x).Name & """"
-      If RS.NoMatch Then
-        RS.AddNew
-        RS![ReportName] = Reports(x).Name
+      rs.FindFirst "[ReportName]=""" & Reports(x).name & """"
+      If rs.NoMatch Then
+        rs.AddNew
+        rs![ReportName] = Reports(x).name
         If VarEmpty(Reports(x).Caption) Then
-          RS![ReportCaption] = Reports(x).Name
+          rs![ReportCaption] = Reports(x).name
         Else
-          RS![ReportCaption] = Reports(x).Caption
+          rs![ReportCaption] = Reports(x).Caption
         End If
       Else
-        RS.Edit
+        rs.Edit
       End If
-      If RS!ReportName = ReportName Then ' Pass ReportName to the procedure when a report is closed
-        RS!Open = False
+      If rs!ReportName = ReportName Then ' Pass ReportName to the procedure when a report is closed
+        rs!Open = False
       Else
-        RS!Open = True
+        rs!Open = True
       End If
       
-      RS.Update
+      rs.Update
     Next x
     Forms![ReportsPopUp]!ReportList.Requery
   End If
@@ -73,7 +73,7 @@ Public Function CreateReportShortcutMenu()
     Call DeleteReportMenu
 
    ' Create the shortcut menu.
-    Set cmbRightClick = CommandBars.Add(Name:=REPORT_MENU, Position:=msoBarPopup, MenuBar:=False, Temporary:=True)
+    Set cmbRightClick = CommandBars.Add(name:=REPORT_MENU, Position:=msoBarPopup, MenuBar:=False, Temporary:=True)
  
     With cmbRightClick
          

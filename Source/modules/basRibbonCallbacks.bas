@@ -111,7 +111,7 @@ Sub GetImages(control As IRibbonControl, ByRef image)
     Dim strPicturePath  As String
     Dim strPicture      As String
     
-    strPicture = getTheValue(control.Tag, "CustomPicture")
+    strPicture = getTheValue(control.tag, "CustomPicture")
     
     If bolUsePicturesFromTable = True Then
         Set image = getIconFromTable(strPicture)
@@ -119,7 +119,7 @@ Sub GetImages(control As IRibbonControl, ByRef image)
         If bolUseDynamicPicturePath = True Then
             strPicturePath = getAppPath & strAppPicturePath & "\"
         Else
-            strPicturePath = getTheValue(control.Tag, "CustomPicturePath")
+            strPicturePath = getTheValue(control.tag, "CustomPicturePath")
         End If
         Set image = LoadPictureGDIP(strPicturePath & strPicture)
     End If
@@ -606,7 +606,7 @@ Sub GetPressedCheckBox(control As IRibbonControl, _
         
 
         Case Else
-            If getTheValue(control.Tag, "DefaultValue") = "1" Then
+            If getTheValue(control.tag, "DefaultValue") = "1" Then
                 bolReturn = True
             Else
                 bolReturn = False
@@ -652,14 +652,14 @@ Sub GetPressedTglButton(control As IRibbonControl, _
         Case "tgb_dev"
             ' In Tab:   tab_setup
             ' In Group: grp_crn
-            If getTheValue(control.Tag, "DefaultValue") = "1" Then
+            If getTheValue(control.tag, "DefaultValue") = "1" Then
                 pressed = True
             Else
                 pressed = False
             End If
 
         Case Else
-            If getTheValue(control.Tag, "DefaultValue") = "1" Then
+            If getTheValue(control.tag, "DefaultValue") = "1" Then
                 pressed = True
             Else
                 pressed = False
@@ -684,7 +684,7 @@ Sub GetTextEditBox(control As IRibbonControl, _
         
 
         Case Else
-            strText = getTheValue(control.Tag, "DefaultValue")
+            strText = getTheValue(control.tag, "DefaultValue")
     
     End Select
     
@@ -739,14 +739,14 @@ Sub GetSelectedItemIndexDropDown(control As IRibbonControl, _
     ' Callback getSelectedItemIndex
     
     Dim varIndex As Variant
-    varIndex = getTheValue(control.Tag, "DefaultValue")
+    varIndex = getTheValue(control.tag, "DefaultValue")
     
     If IsNumeric(varIndex) Then
         Select Case control.id
             
 
             Case Else
-                index = getTheValue(control.Tag, "DefaultValue")
+                index = getTheValue(control.tag, "DefaultValue")
 
         End Select
 
@@ -763,7 +763,7 @@ Sub GetSelectedItemIndexGallery(control As IRibbonControl, _
     ' Callback GetSelectedItemIndexGallery
     
     Dim varIndex As Variant
-    varIndex = getTheValue(control.Tag, "DefaultValue")
+    varIndex = getTheValue(control.tag, "DefaultValue")
     
     If IsNumeric(varIndex) Then
         Select Case control.id
@@ -812,7 +812,7 @@ Sub GetTextComboBox(control As IRibbonControl, _
         
 
         Case Else
-            strText = getTheValue(control.Tag, "DefaultValue")
+            strText = getTheValue(control.tag, "DefaultValue")
     End Select
 
 End Sub
@@ -958,26 +958,26 @@ Public Function getIconFromTable(strFileName As String) As Picture
 
 Dim lSize As Long
 Dim arrBin() As Byte
-Dim RS As dao.Recordset
+Dim rs As DAO.Recordset
  
     On Error GoTo Errr
  
-    Set RS = DBEngine(0)(0).OpenRecordset("tblBinary", dbOpenDynaset)
-    RS.FindFirst "[FileName]='" & strFileName & "'"
-    If RS.NoMatch Then
+    Set rs = DBEngine(0)(0).OpenRecordset("tblBinary", dbOpenDynaset)
+    rs.FindFirst "[FileName]='" & strFileName & "'"
+    If rs.NoMatch Then
         Set getIconFromTable = Nothing
     Else
-        lSize = RS.Fields("binary").FieldSize
+        lSize = rs.Fields("binary").FieldSize
         ReDim arrBin(lSize)
-        arrBin = RS.Fields("binary").GetChunk(0, lSize)
+        arrBin = rs.Fields("binary").GetChunk(0, lSize)
         Set getIconFromTable = ArrayToPicture(arrBin)
     End If
-    RS.Close
+    rs.Close
  
 fExit:
     Reset
     Erase arrBin
-    Set RS = Nothing
+    Set rs = Nothing
     Exit Function
 Errr:
     Resume fExit

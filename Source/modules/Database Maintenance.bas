@@ -5,13 +5,13 @@ Option Explicit
 Public Sub BackupCurrentCarnival(SameAsCarnival As Boolean, BackupPath As Variant)
 On Error GoTo BackupCurrentCarnival_Err
 
-  Dim db As Database, T As TableDef, OrigFile As Variant, NewFile As Variant, Q As String
+  Dim Db As Database, T As TableDef, OrigFile As Variant, NewFile As Variant, Q As String
   
   Call CloseAlwaysOpenRS
   
-  Set db = CurrentDb
-  Set T = db.TableDefs("Competitors")
-  OrigFile = T.Connect
+  Set Db = CurrentDb
+  Set T = Db.TableDefs("Competitors")
+  OrigFile = T.connect
   OrigFile = Right(OrigFile, Len(OrigFile) - 10)
   
   If SameAsCarnival Then ' Backup to the same folder as the carnival

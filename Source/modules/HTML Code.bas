@@ -61,7 +61,7 @@ End Sub
 
 Sub CreateHTML()
 
-    Dim H As String, r As Integer, C As Integer, FileLocation As String
+    Dim H As String, r As Integer, c As Integer, FileLocation As String
     
     'FileLocation = "c:\my documents\html_writer\test2.htm"
  
@@ -76,7 +76,7 @@ Sub CreateHTML()
     'H = H & TableStart("60%", "", "FFFFCC", "Caption") & LFCR
     For r = 1 To 2
      '   H = H & RowStart()
-        For C = 1 To 5
+        For c = 1 To 5
       '      H = H & CellStart("centre", "", "20%")
             'H = H & Text("", "", "Row " & r & " / Cell " & c)
        '     H = H & CellEnd()
@@ -94,13 +94,13 @@ Sub CreateHTML()
     
 End Sub
 
-Sub CreateHTMLfile(ByVal FileName As String, ByVal TemplateFilename As String, HTML As String, Prev As String, Nex As String, Title As String, Head As String)
+Sub CreateHTMLfile(ByVal fileName As String, ByVal TemplateFilename As String, HTML As String, Prev As String, Nex As String, Title As String, Head As String)
     
     Dim HTMLFileLocation, FileLocation, L As String, TemplateFile As String
     Dim HTMLinserted As Integer, Continue As Integer, i As Integer, tFile As Variant, oFile As Variant
     
     HTMLFileLocation = DLookup("[HTMLlocation]", "MiscHTML")
-    FileLocation = HTMLFileLocation & "\" & FileName
+    FileLocation = HTMLFileLocation & "\" & fileName
     
     tFile = FreeFile
     Open TemplateFilename For Input As #99
@@ -147,25 +147,25 @@ Sub CreateHTMLfile(ByVal FileName As String, ByVal TemplateFilename As String, H
     
 End Sub
 
- Function Heading(Level As Integer, T As Variant, Indent As Integer)
+ Function Heading(level As Integer, T As Variant, Indent As Integer)
     Dim i As Integer
     
     s = ""
-    s = "<H" & Trim(Str(Level)) & ">"
+    s = "<H" & Trim(Str(level)) & ">"
     For i = 1 To Indent
         s = s & "&nbsp;"
     Next
-    s = s & T & "</H" & Trim(Str(Level)) & ">" & LFCR()
+    s = s & T & "</H" & Trim(Str(level)) & ">" & LFCR()
     Heading = s
     
 End Function
 
- Function HeadingEnd(Level As Integer)
-    HeadingEnd = "</H" & Trim(Str(Level)) & ">" & LFCR()
+ Function HeadingEnd(level As Integer)
+    HeadingEnd = "</H" & Trim(Str(level)) & ">" & LFCR()
 End Function
 
-Function HeadingStart(Level As Integer)
-    HeadingStart = "<H" & Trim(Str(Level)) & ">"
+Function HeadingStart(level As Integer)
+    HeadingStart = "<H" & Trim(Str(level)) & ">"
 End Function
 
 Function HTMLend()

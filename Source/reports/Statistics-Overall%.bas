@@ -1,0 +1,877 @@
+﻿Version =20
+VersionRequired =20
+Begin Report
+    LayoutForPrint = NotDefault
+    DateGrouping =1
+    GridY =10
+    Width =10703
+    ItemSuffix =116
+    Left =1335
+    Top =240
+    ShortcutMenuBar ="cmdReportRightClick"
+    Toolbar ="Sports Admin-Print"
+    RecSrcDt = Begin
+        0x497baabd11cde140
+    End
+    RecordSource ="House points - GrandTotal"
+    OnClose ="ReportPopup-Update"
+    PrtMip = Begin
+        0x3702000037020000370200001c01000000000000cf290000c501000001000000 ,
+        0x010000006801000000000000a10700000100000000000000
+    End
+    FilterOnLoad =0
+    AllowLayoutView =0
+    RibbonName ="SportPrint"
+    Begin
+        Begin Label
+            TextFontFamily =2
+            FontName ="Arial"
+        End
+        Begin Rectangle
+            BorderLineStyle =0
+            Width =850
+            Height =850
+        End
+        Begin Line
+            BorderLineStyle =0
+            Width =1701
+        End
+        Begin TextBox
+            OldBorderStyle =0
+            TextFontFamily =2
+            BorderLineStyle =0
+            Width =1701
+            LabelX =-1701
+            FontName ="Arial"
+        End
+        Begin Chart
+            Width =4536
+            Height =2835
+        End
+        Begin BreakLevel
+            SortOrder = NotDefault
+            ControlSource ="%tot"
+        End
+        Begin BreakLevel
+            ControlSource ="H_NAme"
+        End
+        Begin PageHeader
+            Height =1787
+            Name ="PageHeader0"
+            Begin
+                Begin TextBox
+                    TextFontFamily =18
+                    Width =10656
+                    Height =450
+                    FontSize =16
+                    FontWeight =700
+                    Name ="CarnivalTitle"
+                    ControlSource ="=DLookUp(\"[CarnivalTitle]\",\"Miscellaneous\")"
+                    FontName ="times New Roman"
+
+                End
+                Begin Line
+                    OldBorderStyle =4
+                    BorderWidth =3
+                    BorderLineStyle =3
+                    Left =56
+                    Top =566
+                    Width =10596
+                    Name ="Line74"
+                End
+                Begin Label
+                    TextFontFamily =18
+                    Left =120
+                    Top =735
+                    Width =7095
+                    Height =390
+                    FontSize =15
+                    FontWeight =700
+                    Name ="Text102"
+                    Caption ="Overall Statistical Summary - Ordered by % Total"
+                    FontName ="times New Roman"
+                End
+                Begin Label
+                    TextAlign =1
+                    TextFontFamily =18
+                    Left =850
+                    Top =1370
+                    Width =1365
+                    Height =360
+                    FontSize =13
+                    FontWeight =700
+                    Name ="Text107"
+                    Caption ="Name"
+                    FontName ="times New Roman"
+                End
+                Begin Label
+                    TextAlign =1
+                    TextFontFamily =18
+                    Left =4422
+                    Top =1360
+                    Width =1020
+                    Height =360
+                    FontSize =13
+                    FontWeight =700
+                    Name ="Text108"
+                    Caption ="Team"
+                    FontName ="times New Roman"
+                End
+                Begin Label
+                    TextAlign =2
+                    TextFontFamily =18
+                    Left =5839
+                    Top =1360
+                    Width =960
+                    Height =360
+                    FontSize =13
+                    FontWeight =700
+                    Name ="Text109"
+                    Caption ="Total"
+                    FontName ="times New Roman"
+                End
+                Begin Label
+                    TextAlign =2
+                    TextFontFamily =18
+                    Left =6916
+                    Top =1360
+                    Width =1020
+                    Height =360
+                    FontSize =13
+                    FontWeight =700
+                    Name ="Text110"
+                    Caption ="Extras"
+                    FontName ="times New Roman"
+                End
+                Begin Label
+                    TextAlign =2
+                    TextFontFamily =18
+                    Left =9467
+                    Top =1360
+                    Width =1170
+                    Height =360
+                    FontSize =11
+                    FontWeight =700
+                    Name ="Text111"
+                    Caption ="Grand Total"
+                    FontName ="Times New Roman"
+                End
+                Begin Line
+                    LineSlant = NotDefault
+                    BorderWidth =2
+                    Left =56
+                    Top =1757
+                    Width =10647
+                    Name ="Line112"
+                End
+                Begin Label
+                    TextAlign =2
+                    TextFontFamily =18
+                    Left =8053
+                    Top =1360
+                    Width =1185
+                    Height =330
+                    FontSize =11
+                    FontWeight =700
+                    Name ="Text114"
+                    Caption ="% Total"
+                    FontName ="Times New Roman"
+                End
+            End
+        End
+        Begin Section
+            KeepTogether = NotDefault
+            Height =468
+            Name ="Detail1"
+            Begin
+                Begin Line
+                    LineSlant = NotDefault
+                    Left =56
+                    Top =453
+                    Width =10647
+                    Name ="Line86"
+                End
+                Begin TextBox
+                    TextFontFamily =34
+                    Left =850
+                    Top =56
+                    Width =3291
+                    Height =330
+                    FontSize =11
+                    FontWeight =700
+                    Name ="Field98"
+                    ControlSource ="H_NAme"
+
+                End
+                Begin TextBox
+                    TextFontFamily =34
+                    Left =4425
+                    Top =56
+                    Width =1011
+                    Height =330
+                    FontSize =11
+                    FontWeight =700
+                    TabIndex =1
+                    Name ="Field100"
+                    ControlSource ="H_Code"
+
+                End
+                Begin TextBox
+                    TextFontFamily =34
+                    Left =5447
+                    Top =56
+                    Width =1086
+                    Height =330
+                    FontSize =11
+                    TabIndex =2
+                    Name ="Field101"
+                    ControlSource ="SumOfPoints"
+
+                End
+                Begin TextBox
+                    TextFontFamily =34
+                    Left =6624
+                    Top =56
+                    Width =966
+                    Height =330
+                    FontSize =11
+                    TabIndex =3
+                    Name ="Field105"
+                    ControlSource ="Extras"
+
+                End
+                Begin TextBox
+                    TextFontFamily =34
+                    Left =9469
+                    Top =56
+                    Width =951
+                    Height =330
+                    FontSize =11
+                    FontWeight =700
+                    TabIndex =4
+                    Name ="Field106"
+                    ControlSource ="GrandTotal"
+
+                End
+                Begin TextBox
+                    RunningSum =1
+                    TextAlign =2
+                    TextFontFamily =34
+                    Left =170
+                    Top =56
+                    Width =636
+                    Height =330
+                    FontSize =10
+                    FontWeight =700
+                    TabIndex =5
+                    Name ="Field117"
+                    ControlSource ="=1"
+
+                End
+                Begin TextBox
+                    DecimalPlaces =1
+                    TextFontFamily =34
+                    Left =7712
+                    Top =56
+                    Width =1641
+                    Height =330
+                    FontSize =12
+                    FontWeight =700
+                    TabIndex =6
+                    Name ="Field115"
+                    ControlSource ="PercentileTotal"
+                    Format ="Percent"
+
+                End
+            End
+        End
+        Begin PageFooter
+            Height =6059
+            Name ="PageFooter2"
+            Begin
+                Begin TextBox
+                    TextAlign =3
+                    TextFontFamily =34
+                    Left =9524
+                    Top =5669
+                    Width =1131
+                    Height =390
+                    FontSize =6
+                    TabIndex =2
+                    Name ="Field83"
+                    ControlSource ="=DLookUp(\"[License]\",\"MiscellaneousLocal\")"
+
+                End
+                Begin TextBox
+                    TextFontFamily =18
+                    Top =5669
+                    Width =9471
+                    Height =390
+                    FontSize =11
+                    FontWeight =700
+                    Name ="Field88"
+                    ControlSource ="=DLookUp(\"[CarnivalFooter]\",\"Miscellaneous\")"
+                    FontName ="Times New Roman"
+
+                End
+                Begin Line
+                    OldBorderStyle =4
+                    BorderWidth =2
+                    BorderLineStyle =3
+                    Top =5669
+                    Width =10596
+                    Name ="Line87"
+                End
+                Begin Chart
+                    ColumnHeads = NotDefault
+                    SizeMode =3
+                    RowSourceTypeInt =2
+                    Left =1133
+                    Top =113
+                    Width =8677
+                    Height =5371
+                    TabIndex =1
+                    Name ="Field113"
+                    OleData = Begin
+                        0x00420000d0cf11e0a1b11ae1000000000000000000000000000000003e000300 ,
+                        0xfeff090006000000000000000000000001000000000000000000000000100000 ,
+                        0x0500000001000000feffffff0000000001000000ffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffff52006f006f007400200045006e007400720079000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000016000500ffffffffffffffff050000000308020000000000c0000000 ,
+                        0x0000004600000000000000000000000020bdd7d14e82bf0107000000401a0000 ,
+                        0x00000000010043006f006d0070004f0062006a00000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000012000200ffffffffffffffffffffffff000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000100000068000000 ,
+                        0x0000000001004f006c0065000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x000000000a000200ffffffffffffffffffffffff000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000002c00000014000000 ,
+                        0x0000000042006f006f006b000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x000000000a0002010200000001000000ffffffff000000000000000000000000 ,
+                        0x000000000000000000000000000000000000000000000000030000009a080000 ,
+                        0x0000000004000000fdfffffffffffffffffffffffefffffffeffffff12000000 ,
+                        0x10000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0x0600000011000000160000001300000014000000150000001c0000000f000000 ,
+                        0xffffffffffffffffffffffffffffffffffffffff1d0000001e0000001f000000 ,
+                        0xfeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffff52006f006f007400200045006e007400720079000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000016000500ffffffffffffffff050000000108020000000000c0000000 ,
+                        0x0000004600000000000000000000000000000000000000000e000000401a0000 ,
+                        0x00000000010043006f006d0070004f0062006a00000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000012000200ffffffffffffffffffffffff000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000100000063000000 ,
+                        0x0000000001004f006c0065000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x000000000a000200ffffffffffffffffffffffff000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000002c00000014000000 ,
+                        0x0000000042006f006f006b000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x000000000a0002010200000001000000ffffffff000000000000000000000000 ,
+                        0x000000000000000000000000000000000000000000000000030000009a080000 ,
+                        0x00000000ffffffffffffffff04000000fdfffffffeffffffffffffffffffffff ,
+                        0xfffffffffffffffffffffffffffffffffffffffffffffffffeffffff10000000 ,
+                        0x1700000011000000160000001300000014000000150000001c0000000f000000 ,
+                        0x12000000ffffffffffffffffffffffffffffffff1d0000001e0000001f000000 ,
+                        0xfeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffff03004100630063006500730073004f0062006a005300690074006500 ,
+                        0x4400610074006100000000000000000000000000000000000000000000000000 ,
+                        0x0000000026000200ffffffffffffffffffffffff000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000038000000 ,
+                        0x0000000002004f006c0065005000720065007300300030003000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x00000000180002010300000004000000ffffffff000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000002a0000007c0f0000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000ffffffffffffffffffffffff000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000ffffffffffffffffffffffff000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x00000000feffffff02000000feffffff04000000050000000600000007000000 ,
+                        0x08000000090000000a0000000b0000000c0000000d0000000e0000000f000000 ,
+                        0x1000000011000000120000001300000014000000150000001600000017000000 ,
+                        0x18000000190000001a0000001b0000001c0000001d0000001e0000001f000000 ,
+                        0x200000002100000022000000230000002400000025000000feffffffffffffff ,
+                        0xffffffffffffffffffffffff2b0000002d000000feffffff2e0000002f000000 ,
+                        0x3000000031000000320000003300000034000000350000003600000037000000 ,
+                        0x38000000390000003a0000003b0000003c0000003d0000003e0000003f000000 ,
+                        0x4000000041000000420000004300000044000000450000004600000047000000 ,
+                        0x48000000490000004a0000004b0000004c0000004d0000004e0000004f000000 ,
+                        0x5000000051000000520000005300000054000000550000005600000057000000 ,
+                        0x58000000590000005a0000005b0000005c0000005d0000005e0000005f000000 ,
+                        0x6000000061000000620000006300000064000000650000006600000067000000 ,
+                        0x68000000feffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffff008100331000004f1014000200020000000000000000005a00000019 ,
+                        0x0000005110080000010200000000000d10110000000e4f766572616c6c205363 ,
+                        0x6f72657327100600010000000000341000003410000000000a00000010000000 ,
+                        0x020000000a000000000000000000000000000000000000000000000000000000 ,
+                        0x00000000ffffffff030000000400000001000000ffffffff0000000000000000 ,
+                        0xbd3b00001b250000540f0000010009000003aa07000007001c00000000000500 ,
+                        0x0000090200000000050000000102ffffff000400000004010d00040000000201 ,
+                        0x0200050000000c0267014202030000001e00040000002701ffff050000000b02 ,
+                        0x0000000001000002040000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x00000000030000001e00050000000102ffffff00050000000902000000001000 ,
+                        0x0000fb02f5ff000000000000bc020000000000000022417269616c00a8810400 ,
+                        0x00002d01000010000000fb021000070000000000bc0200000000010202225379 ,
+                        0x7374656d006e040000002d010100040000002701ffff030000001e0004000000 ,
+                        0x2d010000050000000102ffffff00050000000902000000000700000016046701 ,
+                        0x420200000000040000002d010100040000002701ffff030000001e0004000000 ,
+                        0x2d01000038000000000000000100000000000000000000000000000000000000 ,
+                        0x00000000380000000000000000000000000000000000000000000000d0cf11e0 ,
+                        0xa1b11ae10100feff030a0000ffffffff0308020000000000c000000000000046 ,
+                        0x190000004d6963726f736f667420477261706820393720436861727400070000 ,
+                        0x0047426966663500100000004d5347726170682e43686172742e3800f439b271 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x000000000908080080050500e209c9071e041600050013222422232c2323303b ,
+                        0x5c2d222422232c2323301e041b00060018222422232c2323303b5b5265645d5c ,
+                        0x2d222422232c2323301e041c00070019222422232c2323302e30303b5c2d2224 ,
+                        0x22232c2323302e30301e04210008001e222422232c2323302e30303b5b526564 ,
+                        0x5d5c2d222422232c2323302e30301e0433002a00305f2d2224222a20232c2323 ,
+                        0x305f2d3b5c2d2224222a20232c2323305f2d3b5f2d2224222a20222d225f2d3b ,
+                        0x5f2d405f2d1e042a002900275f2d2a20232c2323305f2d3b5c2d2a20232c2323 ,
+                        0x305f2d3b5f2d2a20222d225f2d3b5f2d405f2d1e043b002c00385f2d2224222a ,
+                        0x20232c2323302e30305f2d3b5c2d2224222a20232c2323302e30305f2d3b5f2d ,
+                        0x2224222a20222d223f3f5f2d3b5f2d405f2d1e0432002b002f5f2d2a20232c23 ,
+                        0x23302e300025101a000202010000000000ddffffffc7ffffff00000000000000 ,
+                        0x00b100331000004f101400020002000000000000000000000000000000000051 ,
+                        0x10080000010200000000003410000032100400000003003310000007100a0000 ,
+                        0x0000000000000009000a100c00ffffff00000000000000000034100000341000 ,
+                        0x0024100200020025101a000202010000000000ddffffffc7ffffff0000000000 ,
+                        0x000000b100331000004f10140002000200000000000000000000000000000000 ,
+                        0x0026100200020051100800000102000000000034100000341000003410000025 ,
+                        0x101a00020201000000000093060000500000007a0200001f0100008100331000 ,
+                        0x004f1014000200020000000000000000005a0000001900000051100800000102 ,
+                        0x00000000000d10110000000e4f766572616c6c2053636f726573271006000100 ,
+                        0x00000000341000003410000000000a00000006000000020000000a0000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x000000001000003410000024100200020025101a000202010000000000ddffff ,
+                        0xffc7ffffff0000000000000000b100331000004f101400020002000000000000 ,
+                        0x0000000000000000000000261002000200511008000001020000000000341000 ,
+                        0x00341000003410000025101a00020201000000000093060000500000007a0200 ,
+                        0x001f0100305f2d3b5c2d2a20232c2323302e30305f2d3b5f2d2a20222d223f3f ,
+                        0x5f2d3b5f2d405f2d1e041a00a40017222422232c2323305f293b5c2822242223 ,
+                        0x2c2323305c291e041f00a5001c222422232c2323305f293b5b5265645d5c2822 ,
+                        0x2422232c2323305c291e042000a6001d222422232c2323302e30305f293b5c28 ,
+                        0x222422232c2323302e30305c291e042500a70022222422232c2323302e30305f ,
+                        0x293b5b5265645d5c28222422232c2323302e30305c291e043500a800325f2822 ,
+                        0x24222a20232c2323305f293b5f282224222a205c28232c2323305c293b5f2822 ,
+                        0x24222a20222d225f293b5f28405f291e042c00a900295f282a20232c2323305f ,
+                        0x293b5f282a205c28232c2323305c293b5f282a20222d225f293b5f28405f291e ,
+                        0x043d00aa003a5f282224222a20232c2323302e30305f293b5f282224222a205c ,
+                        0x28232c2323302e30305c293b5f282224222a20222d223f3f5f293b5f28405f29 ,
+                        0x1e043400ab00315f282a20232c2323302e30305f293b5f282a205c28232c2323 ,
+                        0x302e30305c293b5f282a20222d223f3f5f293b5f28405f2931001400a0000100 ,
+                        0xff7fbc0200000000006405417269616c31001400c8000100ff7fbc0200000000 ,
+                        0x006405417269616c31001400a0000100ff7fbc0200000002006405417269616c ,
+                        0x31001400c8000100ff7fbc0200000000006405417269616c3d0012003a025703 ,
+                        0x56229e16000000003e200000000085000700590300000002000a000000090808 ,
+                        0x0080050080e209c907ac02020038005210040001021000331000008c00040001 ,
+                        0x003d002610020003005310040000000400541004000000030055100600000000 ,
+                        0x00000104000e000000000000000006485f436f646504000e0000000100000000 ,
+                        0x06506f696e747304000e00000002000000000645787472617304000b00010000 ,
+                        0x0000000003434f4303000f00010001000000000000000000804a4003000f0001 ,
+                        0x000200000000000000000000000004000b0002000000000000034a504303000f ,
+                        0x0002000100000000000000000000464003000f00020002000000000000000000 ,
+                        0x00000004000c0003000000000000045452494e03000f00030001000000000000 ,
+                        0x00000000444003000f0003000200000000000000000000000057100100015910 ,
+                        0x0800b4002c01e62849203d000a00000000003b1fb80b00003e000e0001010100 ,
+                        0x010100010001000000005810020000001d001100030100010000000100010001 ,
+                        0x000100010034100000011002000000021010000000000000000000e87fb101e8 ,
+                        0x3f0d0133100000a0000400010001000310080003000100030003003310000051 ,
+                        0x10080000010200000001000d100900000006506f696e74735110080001010200 ,
+                        0x0000010051100800020102000000000006100800ffff00000000000045100200 ,
+                        0x0000341000000310080003000100030003003310000051100800000102000000 ,
+                        0x02000d1009000000064578747261735110080001010200000002005110080002 ,
+                        0x0102000000000006100800ffff01000100000045100200000034100000031008 ,
+                        0x000300010008000800331000005110080000010200000003000d100d0000000a ,
+                        0x4772616e64546f74616c51100800010102000000030051100800020102000000 ,
+                        0x000006100800ffff020002000000451002000000341000004410030009000046 ,
+                        0x1002000100411012000000a2000000a4020000c10d0000540b0000331000004f ,
+                        0x10140002000200060000002d020000600e0000010d00001d1012000000000000 ,
+                        0x00000000000000000000000000331000001e101a000200030100000000000000 ,
+                        0x000000000000000000000000002300341000001d101200010000000000000000 ,
+                        0x000000000000000000331000001f102a00000000000000000000000000000000 ,
+                        0x000000000000000000000000000000000000000000000000001f011e101a0002 ,
+                        0x0003010000000000000000000000000000000000000000230034100000141014 ,
+                        0x00000000000000000000000000000000000000000033100000171006009cff96 ,
+                        0x00020022100a0000000000000000000f00151014002b0e0000ac000000750100 ,
+                        0x00b401000007011200331000004f101400050002002b0e0000ac000000000000 ,
+                        0x00000000008100331000004f1014000200020000000000000000005a00000019 ,
+                        0x0000005110080000010200000000000d10110000000e4f766572616c6c205363 ,
+                        0x6f72657327100600010000000000341000003410000000000a00000010000000 ,
+                        0x020000000a000000000000000000000000000000000000000000000000000000 ,
+                        0x00000000ffffffff030000000400000001000000ffffffff0000000000000000 ,
+                        0xbd3b00001b250000540f0000010009000003aa07000007001c00000000000500 ,
+                        0x0000090200000000050000000102ffffff000400000004010d00040000000201 ,
+                        0x0200050000000c0267014202030000001e00040000002701ffff050000000b02 ,
+                        0x0000000001000002000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x00000000030000001e00050000000102ffffff00050000000902000000001000 ,
+                        0x0000fb02f5ff000000000000bc020000000000000022417269616c00a8810400 ,
+                        0x00002d01000010000000fb021000070000000000bc0200000000010202225379 ,
+                        0x7374656d006e040000002d010100040000002701ffff030000001e0004000000 ,
+                        0x2d010000050000000102ffffff00050000000902000000000700000016046701 ,
+                        0x420200000000040000002d010100040000002701ffff030000001e0004000000 ,
+                        0x2d010000feffffff02000000feffffff04000000050000000600000007000000 ,
+                        0x08000000090000000a0000000b0000000c0000000d0000000e0000000f000000 ,
+                        0x1000000011000000120000001300000014000000150000001600000017000000 ,
+                        0x18000000190000001a0000001b0000001c0000001d0000001e0000001f000000 ,
+                        0x200000002100000022000000230000002400000025000000feffffffffffffff ,
+                        0xffffffffffffffffffffffff2b0000002d000000feffffff2e0000002f000000 ,
+                        0x3000000031000000320000003300000034000000350000003600000037000000 ,
+                        0x38000000390000003a0000003b0000003c0000003d0000003e0000003f000000 ,
+                        0x4000000041000000420000004300000044000000450000004600000047000000 ,
+                        0x48000000490000004a0000004b0000004c0000004d0000004e0000004f000000 ,
+                        0x5000000051000000520000005300000054000000550000005600000057000000 ,
+                        0x58000000590000005a0000005b0000005c0000005d0000005e0000005f000000 ,
+                        0x6000000061000000620000006300000064000000650000006600000067000000 ,
+                        0x68000000feffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
+                        0xffffffff38000000000000000100000000000000000000000000000000000000 ,
+                        0x00000000380000000000000000000000000000000000000000000000d0cf11e0 ,
+                        0xa1b11ae10100feff030a0000ffffffff0108020000000000c000000000000046 ,
+                        0x140000004d6963726f736f667420477261706820352e30000700000047426966 ,
+                        0x663500100000004d5347726170682e43686172742e3500f439b2710000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x000000000908080080050500e209c9071e041600050013222422232c2323303b ,
+                        0x5c2d222422232c2323301e041b00060018222422232c2323303b5b5265645d5c ,
+                        0x2d222422232c2323301e041c00070019222422232c2323302e30303b5c2d2224 ,
+                        0x22232c2323302e30301e04210008001e222422232c2323302e30303b5b526564 ,
+                        0x5d5c2d222422232c2323302e30301e0433002a00305f2d2224222a20232c2323 ,
+                        0x305f2d3b5c2d2224222a20232c2323305f2d3b5f2d2224222a20222d225f2d3b ,
+                        0x5f2d405f2d1e042a002900275f2d2a20232c2323305f2d3b5c2d2a20232c2323 ,
+                        0x305f2d3b5f2d2a20222d225f2d3b5f2d405f2d1e043b002c00385f2d2224222a ,
+                        0x20232c2323302e30305f2d3b5c2d2224222a20232c2323302e30305f2d3b5f2d ,
+                        0x2224222a20222d223f3f5f2d3b5f2d405f2d1e0432002b002f5f2d2a20232c23 ,
+                        0x23302e300025101a000202010000000000ddffffffc7ffffff00000000000000 ,
+                        0x00b100331000004f101400020002000000000000000000000000000000000051 ,
+                        0x10080000010200000000003410000032100400000003003310000007100a0000 ,
+                        0x0000000000000009000a100c00ffffff00000000000000000034100000341000 ,
+                        0x0024100200020025101a000202010000000000ddffffffc7ffffff0000000000 ,
+                        0x000000b100331000004f10140002000200000000000000000000000000000000 ,
+                        0x0026100200020051100800000102000000000034100000341000003410000025 ,
+                        0x101a00020201000000000093060000500000007a0200001f0100008100331000 ,
+                        0x004f1014000200020000000000000000005a0000001900000051100800000102 ,
+                        0x00000000000d10110000000e4f766572616c6c2053636f726573271006000100 ,
+                        0x00000000341000003410000000000a00000006000000020000000a0000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x000000001000003410000024100200020025101a000202010000000000ddffff ,
+                        0xffc7ffffff0000000000000000b100331000004f101400020002000000000000 ,
+                        0x0000000000000000000000261002000200511008000001020000000000341000 ,
+                        0x00341000003410000025101a00020201000000000093060000500000007a0200 ,
+                        0x001f0100305f2d3b5c2d2a20232c2323302e30305f2d3b5f2d2a20222d223f3f ,
+                        0x5f2d3b5f2d405f2d1e041a00a40017222422232c2323305f293b5c2822242223 ,
+                        0x2c2323305c291e041f00a5001c222422232c2323305f293b5b5265645d5c2822 ,
+                        0x2422232c2323305c291e042000a6001d222422232c2323302e30305f293b5c28 ,
+                        0x222422232c2323302e30305c291e042500a70022222422232c2323302e30305f ,
+                        0x293b5b5265645d5c28222422232c2323302e30305c291e043500a800325f2822 ,
+                        0x24222a20232c2323305f293b5f282224222a205c28232c2323305c293b5f2822 ,
+                        0x24222a20222d225f293b5f28405f291e042c00a900295f282a20232c2323305f ,
+                        0x293b5f282a205c28232c2323305c293b5f282a20222d225f293b5f28405f291e ,
+                        0x043d00aa003a5f282224222a20232c2323302e30305f293b5f282224222a205c ,
+                        0x28232c2323302e30305c293b5f282224222a20222d223f3f5f293b5f28405f29 ,
+                        0x1e043400ab00315f282a20232c2323302e30305f293b5f282a205c28232c2323 ,
+                        0x302e30305c293b5f282a20222d223f3f5f293b5f28405f2931001400a0000100 ,
+                        0xff7fbc0200000000004205417269616c31001400c8000100ff7fbc0200000000 ,
+                        0x004205417269616c31001400a0000100ff7fbc0200000002004205417269616c ,
+                        0x31001400c8000100ff7fbc0200000000004205417269616c3d0012003a025703 ,
+                        0x56229e16000000003e200000000085000700590300000002000a000000090808 ,
+                        0x0080050080e209c907ac02020038005210040001021000331000008c00040001 ,
+                        0x003d002610020003005310040000000400541004000000030055100600000000 ,
+                        0x00000104000e000000000000000006485f436f646504000e0000000100000000 ,
+                        0x06506f696e747304000e00000002000000000645787472617304000b00010000 ,
+                        0x0000000003434f4303000f00010001000000000000000000804a4003000f0001 ,
+                        0x000200000000000000000000000004000b0002000000000000034a504303000f ,
+                        0x0002000100000000000000000000464003000f00020002000000000000000000 ,
+                        0x00000004000c0003000000000000045452494e03000f00030001000000000000 ,
+                        0x00000000444003000f0003000200000000000000000000000057100100015910 ,
+                        0x0800b4002c01e62849203d000a00000000003b1fb80b00003e000e0001010100 ,
+                        0x010100010001000000005810020000001d001100030100010000000100010001 ,
+                        0x000100010034100000011002000000021010000000000000000000e87fb101e8 ,
+                        0x3f0d0133100000a0000400010001000310080003000100030003003310000051 ,
+                        0x10080000010200000001000d100900000006506f696e74735110080001010200 ,
+                        0x0000010051100800020102000000000006100800ffff00000000000045100200 ,
+                        0x00003410050000000102ffffff00050000000902000000000700000016046701 ,
+                        0x4202000000000700000015043a003d0214000802040000002d01010004000000 ,
+                        0x2701ffff030000001e00040000002d010000050000000102ffffff0005000000 ,
+                        0x0902000000000700000016046701420200000000040000002d01010004000000 ,
+                        0x2701ffff030000001e00040000002d010000050000000102ffffff0005000000 ,
+                        0x09020000000007000000160463013e0204000400040000002d01010004000000 ,
+                        0x2701ffff030000001e00040000002d010000050000000102ffffff0005000000 ,
+                        0x0902000000000700000016043f0112023f002100040000002d01010004000000 ,
+                        0x2701ffff030000001e00040000002d010000050000000102ffffff0005000000 ,
+                        0x0902000000000700000016043e0113023d00210009000000fa02000001000000 ,
+                        0x000000002200040000002d01020007000000fc0200008080ff00ffff04000000 ,
+                        0x2d010300050000000902ffffff000500000001028080ff000400000004010d00 ,
+                        0x04000000020102000e00000024030500340094004d0094004d003d0134003d01 ,
+                        0x340094000e000000240305007200b6008b00b6008b003d0172003d017200b600 ,
+                        0x0e00000024030500b0004000c8004000c8003d01b0003d01b00040000e000000 ,
+                        0x24030500ed00d8000601d80006013d01ed003d01ed00d8000e00000024030500 ,
+                        0x2b01fa004401fa0044013d012b013d012b01fa000e0000002403050069017300 ,
+                        0x8201730082013d0169013d01690173000e00000024030500a701c700bf01c700 ,
+                        0xbf013d01a7013d01a701c7000e00000024030500e401e900fd01e900fd013d01 ,
+                        0xe4013d01e401e90009000000fa02000000000000000000002200040000002d01 ,
+                        0x040007000000fc020000ffffff000000040000002d010500040000002d010100 ,
+                        0x040000002701ffff030000001e00040000002d010000040000002d0103000400 ,
+                        0x00002d0102000500000001028080ff00050000000902ffffff00070000001604 ,
+                        0x3f0112023f002100040000002d010400040000002d010500040000002d010100 ,
+                        0x040000002701ffff030000001e00040000002d010000040000002d0103000400 ,
+                        0x00002d0102000500000001028080ff00050000000902ffffff00070000001604 ,
+                        0x670142020000000009000000fa02000001000000000000002200040000002d01 ,
+                        0x060004000000f001020005000000140240002200050000000102ffffff000400 ,
+                        0x000004010d0004000000020101000500000013023d0122000500000014023d01 ,
+                        0x1f000500000013023d01220005000000140221011f0005000000130221012200 ,
+                        0x05000000140205011f0005000000130205012200050000001402e9001f000500 ,
+                        0x00001302e9002200050000001402cd001f00050000001302cd00220005000000 ,
+                        0x1402b0001f00050000001302b000220005000000140294001f00050000001302 ,
+                        0x9400220005000000140278001f00050000001302780022000500000014025c00 ,
+                        0x1f000500000013025c00220005000000140240001f0005000000130240002200 ,
+                        0x0500000014023d0122000500000013023d011002050000001402400122000500 ,
+                        0x000013023d012200050000001402400160000500000013023d01600005000000 ,
+                        0x140240019e000500000013023d019e000500000014024001db00050000001302 ,
+                        0x3d01db00050000001402400119010500000013023d0119010500000014024001 ,
+                        0x57010500000013023d015701050000001402400195010500000013023d019501 ,
+                        0x0500000014024001d2010500000013023d01d201050000001402400110020500 ,
+                        0x000013023d011002040000002d010400040000002d010500040000002d010100 ,
+                        0x040000002701ffff030000001e00040000002d010000040000002d0103000400 ,
+                        0x00002d010600050000000102ffffff00050000000902ffffff00070000001604 ,
+                        0x26004f010b00f300050000000902000000000400000004010d00040000000201 ,
+                        0x01001c000000320a1100f9000e0000004f766572616c6c2053636f7265730800 ,
+                        0x0600070005000600030003000300070006000700050007000700040000002d01 ,
+                        0x0400040000002d010500040000002d010100040000002701ffff030000001e00 ,
+                        0x040000002d010000040000002d010300040000002d010600050000000102ffff ,
+                        0xff00050000000902000000000700000016046701420200000000040000002d01 ,
+                        0x0400040000002d010500040000002d010100040000002701ffff030000001e00 ,
+                        0x040000002d010000040000002d010300040000002d010600050000000102ffff ,
+                        0xff00050000000902000000000700000016046701420200000000040000002d01 ,
+                        0x0400040000002d010500040000002d010100040000002701ffff030000001e00 ,
+                        0x040000002d010000040000002d010300040000002d010600050000000102ffff ,
+                        0xff000500000009020000000007000000160468014302ffffffff040000000401 ,
+                        0x0d00040000000201010009000000320a3601140001000000300006000a000000 ,
+                        0x320a1a010e00020000003230060006000a000000320afe000e00020000003430 ,
+                        0x060006000a000000320ae2000e00020000003630060006000a000000320ac600 ,
+                        0x0e00020000003830060006000c000000320aa900080003000000313030000600 ,
+                        0x060006000c000000320a8d00080003000000313230000600060006000c000000 ,
+                        0x320a7100080003000000313430000600060006000c000000320a550008000300 ,
+                        0x0000313630000600060006000c000000320a3900080003000000313830000600 ,
+                        0x06000600040000002d010400040000002d010500040000002d01010004000000 ,
+                        0x2701ffff00000310080003000100030003003310000051100800000102000000 ,
+                        0x02000d1009000000064578747261735110080001010200000002005110080002 ,
+                        0x0102000000000006100800ffff01000100000045100200000034100000031008 ,
+                        0x000300010008000800331000005110080000010200000003000d100d0000000a ,
+                        0x4772616e64546f74616c51100800010102000000030051100800020102000000 ,
+                        0x000006100800ffff020002000000451002000000341000004410030009000046 ,
+                        0x1002000100411012000000a2000000a4020000c10d0000540b0000331000004f ,
+                        0x10140002000200060000002d020000600e0000010d00001d1012000000000000 ,
+                        0x00000000000000000000000000331000001e101a000200030100000000000000 ,
+                        0x000000000000000000000000002300341000001d101200010000000000000000 ,
+                        0x000000000000000000331000001f102a00000000000000000000000000000000 ,
+                        0x000000000000000000000000000000000000000000000000001f011e101a0002 ,
+                        0x0003010000000000000000000000000000000000000000230034100000141014 ,
+                        0x00000000000000000000000000000000000000000033100000171006009cff96 ,
+                        0x00020022100a0000000000000000000f00151014002b0e0000ac000000750100 ,
+                        0x00b401000007011200331000004f101400050002002b0e0000ac000000000000 ,
+                        0x00000000008100331000004f1014000200020000000000000000005a00000019 ,
+                        0x0000005110080000010200000000000d10110000000e4f766572616c6c205363 ,
+                        0x6f72657327100600010000000000341000003410000000000a00000010000000 ,
+                        0x020000000a000000000000000000000000000000000000000000000000000000 ,
+                        0x00000000ffffffff030000000400000001000000ffffffff0000000000000000 ,
+                        0xbd3b00001b250000540f0000010009000003aa07000007001c00000000000500 ,
+                        0x0000090200000000050000000102ffffff000400000004010d00040000000201 ,
+                        0x0200050000000c0267014202030000001e00040000002701ffff050000000b02 ,
+                        0x0000000001000002000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x00000000030000001e00050000000102ffffff00050000000902000000001000 ,
+                        0x0000fb02f5ff000000000000bc020000000000000022417269616c00a8810400 ,
+                        0x00002d01000010000000fb021000070000000000bc0200000000010202225379 ,
+                        0x7374656d006e040000002d010100040000002701ffff030000001e0004000000 ,
+                        0x2d010000050000000102ffffff00050000000902000000000700000016046701 ,
+                        0x420200000000040000002d010100040000002701ffff030000001e0004000000 ,
+                        0x2d01000000000000000000000000000000000000000000331000001e101a0002 ,
+                        0x00030100000000000000000000000000000000000000002300341000001d1012 ,
+                        0x00010000000000000000000000000000000000331000001f102a000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000001f011e101a000200030100000000000000000000000000000000000000 ,
+                        0x0023003410000014101400000000000000000000000000000000000000000033 ,
+                        0x100000171006009cff9600020022100a0000000000000000000f00151014002b ,
+                        0x0e0000ac00000075010000b401000007011200331000004f101400050002002b ,
+                        0x0e0000ac000000000000000000000025101a000202010000000000ddffffffc7 ,
+                        0xffffff0000000000000000b100331000004f1014000200020000000000000000 ,
+                        0x0000000000000000005110080000010200000000003410000032100400000003 ,
+                        0x003310000007100a00000000000000000009000a100c00ffffff000000000000 ,
+                        0x000000341000003410000024100200020025101a000202010000000000ddffff ,
+                        0xffc7ffffff0000000000000000b100331000004f101400020002000000000000 ,
+                        0x0000000000000000000000261002000200511008000001020000000000341000 ,
+                        0x00341000003410000025101a00020201000000000093060000500000007a0200 ,
+                        0x001f0100070000001b04a6003a027f000502040000002d010400040000002d01 ,
+                        0x0500040000002d010100040000002701ffff030000001e00040000002d010000 ,
+                        0x040000002d010200040000002d010600050000000102ffffff00050000000902 ,
+                        0x00000000070000001604a5003a027f000502040000002d010400040000002d01 ,
+                        0x0500040000002d010100040000002701ffff030000001e00040000002d010000 ,
+                        0x040000002d010200040000002d010600050000000102ffffff00050000000902 ,
+                        0x00000000070000001604a5003a027f00050209000000fa020000010000000000 ,
+                        0x00002200040000002d01030004000000f001060007000000fc02000080206000 ,
+                        0xffff040000002d01060004000000f0010200050000000902ffffff0005000000 ,
+                        0x0102802060000400000004010d000400000002010200070000001b048d001002 ,
+                        0x8600090205000000090200000000050000000102ffffff000400000002010100 ,
+                        0x040000002e01180010000000320a8d0013020600000045787472617306000600 ,
+                        0x0400050006000700040000002e010000040000002d010400040000002d010500 ,
+                        0x040000002d010100040000002701ffff030000001e00040000002d0100000400 ,
+                        0x00002d010600040000002d010300050000000102ffffff000500000009020000 ,
+                        0x0000070000001604a5003a027f000502040000002d010400040000002d010500 ,
+                        0x040000002d010100040000002701ffff030000001e00040000002d0100000400 ,
+                        0x00002d010600040000002d010300050000000102ffffff000500000009020000 ,
+                        0x0000070000001604a5003a027f00050207000000fc0200008080ff00ffff0400 ,
+                        0x00002d01020004000000f0010600050000000902ffffff000500000001028080 ,
+                        0xff000400000004010d000400000002010200070000001b04a000100299000902 ,
+                        0x05000000090200000000050000000102ffffff00040000000201010004000000 ,
+                        0x2e01180010000000320aa000130206000000506f696e74730700070003000700 ,
+                        0x04000700040000002e010000040000002d010400040000002d01050004000000 ,
+                        0x2d010100040000002701ffff030000001e00040000002d010000040000002d01 ,
+                        0x0200040000002d010300050000000102ffffff00050000000902000000000700 ,
+                        0x00001604a5003a027f000502040000002d010400040000002d01050004000000 ,
+                        0x2d010100040000002701ffff030000001e00040000002d010000040000002d01 ,
+                        0x0200040000002d010300050000000102ffffff00050000000902000000000700 ,
+                        0x00001604660142020000000007000000fc020000000000000000040000002d01 ,
+                        0x060004000000f0010200040000002d01040004000000f0010300040000002701 ,
+                        0xffff050000000c0266014202030000001e00050000000102ffffff0005000000 ,
+                        0x090200000000040000002701ffff050000000b0200000000030000001e000500 ,
+                        0x00000102ffffff0005000000090200000000040000002701ffff030000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x00000000030000001e00040000002d010000040000002d010300040000002d01 ,
+                        0x0600050000000102ffffff000500000009020000000007000000160467014202 ,
+                        0x00000000040000002d010400040000002d010500040000002d01010004000000 ,
+                        0x2701ffff030000001e00040000002d010000040000002d010300040000002d01 ,
+                        0x0600050000000102ffffff000500000009020000000007000000160468014302 ,
+                        0xffffffff0400000004010d0004000000020101000d000000320a460131000400 ,
+                        0x00004341524d0800080007000a000a000000320a460178000200000043480800 ,
+                        0x07000d000000320a4601b000040000004348495308000700030007000c000000 ,
+                        0x320a4601ee0003000000434f43000800080008000c000000320a46012e010300 ,
+                        0x00004a5043000600070008000c000000320a46016b0103000000535043000700 ,
+                        0x070008000c000000320a4601a7010300000053544d00070007000a000d000000 ,
+                        0x320a4601e501040000005452494e0700070003000700040000002d0104000400 ,
+                        0x00002d010500040000002d010100040000002701ffff030000001e0004000000 ,
+                        0x2d010000040000002d010300040000002d010600050000000102ffffff000500 ,
+                        0x0000090200000000070000001604670142020000000007000000fc0201000000 ,
+                        0x00000000040000002d01020004000000f00103000400000004010d0004000000 ,
+                        0x02010200070000001b043b003d0214000802040000002d010400040000002d01 ,
+                        0x0500040000002d010100040000002701ffff030000001e00040000002d010000 ,
+                        0x040000002d010200040000002d010600050000000102ffffff00050000000902 ,
+                        0x000000000700000016043a003d0214000802040000002d010400040000002d01 ,
+                        0x0500040000002d010100040000002701ffff030000001e00040000002d010000 ,
+                        0x040000002d010200040000002d010600050000000102ffffff00050000000902 ,
+                        0x000000000700000016043a003d021400080209000000fa020000010000000000 ,
+                        0x00002200040000002d01030004000000f001060007000000fc02000080206000 ,
+                        0xffff040000002d01060004000000f0010200050000000902ffffff0005000000 ,
+                        0x0102802060000400000004010d000400000002010200070000001b0422001302 ,
+                        0x1b000c0205000000090200000000050000000102ffffff000400000002010100 ,
+                        0x040000002e01180010000000320a220016020600000045787472617306000600 ,
+                        0x0400050006000700040000002e010000040000002d010400040000002d010500 ,
+                        0x040000002d010100040000002701ffff030000001e00040000002d0100000400 ,
+                        0x00002d010600040000002d010300050000000102ffffff000500000009020000 ,
+                        0x00000700000016043a003d0214000802040000002d010400040000002d010500 ,
+                        0x040000002d010100040000002701ffff030000001e00040000002d0100000400 ,
+                        0x00002d010600040000002d010300050000000102ffffff000500000009020000 ,
+                        0x00000700000016043a003d021400080207000000fc0200008080ff00ffff0400 ,
+                        0x00002d01020004000000f0010600050000000902ffffff000500000001028080 ,
+                        0xff000400000004010d000400000002010200070000001b04350013022e000c02 ,
+                        0x05000000090200000000050000000102ffffff00040000000201010004000000 ,
+                        0x2e01180010000000320a3500160206000000506f696e74730700070003000700 ,
+                        0x04000700040000002e010000040000002d010400040000002d01050004000000 ,
+                        0x2d010100040000002701ffff030000001e00040000002d010000040000002d01 ,
+                        0x0200040000002d010300050000000102ffffff00050000000902000000000700 ,
+                        0x000016043a003d0214000802040000002d010400040000002d01050004000000 ,
+                        0x2d010100040000002701ffff030000001e00040000002d010000040000002d01 ,
+                        0x0200040000002d010300050000000102ffffff00050000000902000000000700 ,
+                        0x00001604670142020000000007000000fc020000000000000000040000002d01 ,
+                        0x060004000000f0010200040000002d01040004000000f0010300040000002701 ,
+                        0xffff050000000c0267014202030000001e00050000000102ffffff0005000000 ,
+                        0x090200000000040000002701ffff050000000b0200000000030000001e000500 ,
+                        0x00000102ffffff0005000000090200000000040000002701ffff030000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+                        0x0000000000000000
+                    End
+                    RowSourceType ="Table/Query"
+                    RowSource ="SELECT DISTINCTROW [House points - GrandTotal].H_Code, Sum([House points - Grand"
+                        "Total].SumOfPoints) AS Points, Sum([House points - GrandTotal].Extras) AS Extras"
+                        " FROM [House points - GrandTotal] GROUP BY [House points - GrandTotal].H_Code;"
+                    Class ="MSGraph.Chart.5"
+                    OLEClass ="Microsoft Graph 5.0"
+
+                End
+            End
+        End
+    End
+End

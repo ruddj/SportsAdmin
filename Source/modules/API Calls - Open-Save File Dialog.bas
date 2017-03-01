@@ -121,7 +121,7 @@ Function ahtCommonFileOpenSave( _
             Optional ByVal Filter As Variant, _
             Optional ByVal FilterIndex As Variant, _
             Optional ByVal DefaultExt As Variant, _
-            Optional ByVal FileName As Variant, _
+            Optional ByVal fileName As Variant, _
             Optional ByVal DialogTitle As Variant, _
             Optional ByVal hWnd As Variant, _
             Optional ByVal OpenFile As Variant) As Variant
@@ -154,12 +154,12 @@ Dim fResult As Boolean
     If IsMissing(FilterIndex) Then FilterIndex = 1
     If IsMissing(Flags) Then Flags = 0&
     If IsMissing(DefaultExt) Then DefaultExt = ""
-    If IsMissing(FileName) Then FileName = ""
+    If IsMissing(fileName) Then fileName = ""
     If IsMissing(DialogTitle) Then DialogTitle = ""
     If IsMissing(hWnd) Then hWnd = Application.hWndAccessApp
     If IsMissing(OpenFile) Then OpenFile = True
     ' Allocate string space for the returned strings.
-    strFileName = Left(FileName & String(256, 0), 256)
+    strFileName = Left(fileName & String(256, 0), 256)
     strFileTitle = String(256, 0)
     ' Set up the data structure before you call the function
     With OFN

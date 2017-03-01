@@ -40,7 +40,7 @@ On Error GoTo PrintOpen_Click_Err
 
     For x = 0 To NumberReports - 1
         
-        DoCmd.OpenReport Reports(x).Name, A_NORMAL
+        DoCmd.OpenReport Reports(x).name, A_NORMAL
 
     Next x
 

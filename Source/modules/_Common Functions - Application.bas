@@ -88,27 +88,27 @@ End Function
 
 Public Sub SetPropertiesForAllForms(Optional MenuBar, Optional ToolBar, Optional ShortcutMenuBar, Optional HelpFile, Optional HelpTopic, Optional Override = False)
 
-  Dim dbs As Database, ctr As Container, doc As Document, F As Form
+  Dim dbs As Database, ctr As Container, doc As Document, f As Form
 
   Set dbs = CurrentDb
   Set ctr = dbs.Containers!Forms
   For Each doc In ctr.Documents
     
-    DoCmd.OpenForm doc.Name, acDesign
-    Set F = Forms(doc.Name)
+    DoCmd.OpenForm doc.name, acDesign
+    Set f = Forms(doc.name)
     
-    If Not IsMissing(MenuBar) And (Override Or F.MenuBar = "") Then F.MenuBar = MenuBar
-    If Not IsMissing(ToolBar) And (Override Or F.ToolBar = "") Then F.ToolBar = ToolBar
-    If Not IsMissing(ShortcutMenuBar) And (Override Or F.ShortcutMenuBar = "") Then F.ShortcutMenuBar = ShortcutMenuBar
-    If Not IsMissing(HelpFile) And (Override Or F.HelpFile = "") Then F.HelpFile = HelpFile
-    If Not IsMissing(HelpTopic) And (Override Or F.HelpContextId = 0) Then F.HelpContextId = HelpTopic
+    If Not IsMissing(MenuBar) And (Override Or f.MenuBar = "") Then f.MenuBar = MenuBar
+    If Not IsMissing(ToolBar) And (Override Or f.ToolBar = "") Then f.ToolBar = ToolBar
+    If Not IsMissing(ShortcutMenuBar) And (Override Or f.ShortcutMenuBar = "") Then f.ShortcutMenuBar = ShortcutMenuBar
+    If Not IsMissing(HelpFile) And (Override Or f.HelpFile = "") Then f.HelpFile = HelpFile
+    If Not IsMissing(HelpTopic) And (Override Or f.HelpContextId = 0) Then f.HelpContextId = HelpTopic
     
     'If F.MenuBar = "" Then F.MenuBar = MenuBar
     'If F.ToolBar = "" Then F.ToolBar = ToolBar
     'If F.ShortcutMenuBar = "" Then F.ShortcutMenuBar = ShortcutMenuBar
   
-    DoCmd.Save acForm, doc.Name
-    DoCmd.Close acForm, doc.Name
+    DoCmd.Save acForm, doc.name
+    DoCmd.Close acForm, doc.name
     
   Next doc
   
@@ -126,8 +126,8 @@ Public Sub SetPropertiesForAllReports(Optional MenuBar, Optional ToolBar, Option
   Set ctr = dbs.Containers!Reports
   For Each doc In ctr.Documents
     
-    DoCmd.OpenReport doc.Name, acDesign
-    Set r = Reports(doc.Name)
+    DoCmd.OpenReport doc.name, acDesign
+    Set r = Reports(doc.name)
     
     If Not IsMissing(MenuBar) And (Override Or r.MenuBar = "") Then r.MenuBar = MenuBar
     If Not IsMissing(ToolBar) And (Override Or r.ToolBar = "") Then r.ToolBar = ToolBar
@@ -135,8 +135,8 @@ Public Sub SetPropertiesForAllReports(Optional MenuBar, Optional ToolBar, Option
     If Not IsMissing(HelpFile) And (Override Or r.HelpFile = "") Then r.HelpFile = HelpFile
     If Not IsMissing(HelpTopic) And (Override Or r.HelpContextId = 0) Then r.HelpContextId = HelpTopic
     
-    DoCmd.Save acReport, doc.Name
-    DoCmd.Close acReport, doc.Name
+    DoCmd.Save acReport, doc.name
+    DoCmd.Close acReport, doc.name
     
   Next doc
   
@@ -211,14 +211,14 @@ On Error GoTo DesignActiveForm_Err
   On Error Resume Next
   
   Dim Ob As String
-  Ob = Screen.ActiveForm.Name
+  Ob = Screen.ActiveForm.name
   
   If Err.Number = 0 Then
     DoCmd.Close acForm, Ob
     DoCmd.OpenForm Ob, acDesign
   Else
     On Error Resume Next
-    Ob = Screen.ActiveReport.Name
+    Ob = Screen.ActiveReport.name
     If Err.Number = 0 Then
       DoCmd.Close acReport, Ob
       DoCmd.OpenReport Ob, acViewDesign
@@ -340,13 +340,13 @@ Public Sub FixSccStatus()
         Case acModule
           Set ctr = dbs.Containers!Modules
         Case acTable, acQuery
-          Set ctr = dbs.Containers!tables
+          Set ctr = dbs.Containers!Tables
         
       End Select
       
       'Stop
       For Each doc In ctr.Documents
-        Call FixSccObjectStatus(intCurrentType, doc.Name, True)
+        Call FixSccObjectStatus(intCurrentType, doc.name, True)
       
       Next
     Next
@@ -378,7 +378,7 @@ On Error GoTo FixSccObjectStatus_Err
     Case acModule
       Set ctr = dbs.Containers!Modules
     Case acTable, acQuery
-      Set ctr = dbs.Containers!tables
+      Set ctr = dbs.Containers!Tables
     
   End Select
   
@@ -406,11 +406,11 @@ FixSccObjectStatus_Err:
 End Sub
 
 
-Public Sub CodeTiming(Optional CodeDescription As String = "-> ", Optional Start As Boolean = False)
+Public Sub CodeTiming(Optional CodeDescription As String = "-> ", Optional start As Boolean = False)
 
   Static LastTime
   
-  If Start Then
+  If start Then
     LastTime = Timer
     Debug.Print "Starting " & CodeDescription & " ..."
   Else
@@ -452,7 +452,7 @@ Private Function LoadRibbons(strRibbon)
 
         On Error GoTo Error1
 
-        Dim RS As dao.Recordset
+        Dim rs As DAO.Recordset
         Dim strRibbonData As String
 
       '  Set RS = CurrentDb.OpenRecordset("SELECT * FROM USysRibbons")
@@ -475,7 +475,7 @@ Error1_Exit:
 
      On Error Resume Next
     ' RS.Close
-     Set RS = Nothing
+     Set rs = Nothing
      Exit Function
 
 Error1:

@@ -71,16 +71,16 @@ End Function
 '*************************************************************************************
 '  Check if an item is in a group
 '*************************************************************************************
-Public Function InGroup(Item, iGroup As String) As Boolean
+Public Function InGroup(item, iGroup As String) As Boolean
 On Error GoTo InGroup_Err
 
   'Format of iGroup is 'Item1,Item2,Item3 ...'
   
   Dim iL As Integer, iG As Integer
-  Dim gLen As Integer, x As Integer, C As String, gItem As String
+  Dim gLen As Integer, x As Integer, c As String, gItem As String
   Dim CreatingGroupItem As Boolean, Finish As Boolean
   
-  iL = Len(Item)
+  iL = Len(item)
   gLen = Len(iGroup)
   x = 1
   CreatingGroupItem = True
@@ -96,17 +96,17 @@ On Error GoTo InGroup_Err
     End If
       
     If Not CreatingGroupItem Then
-      If Trim(Item) = Trim(gItem) Then InGroup = True
+      If Trim(item) = Trim(gItem) Then InGroup = True
       CreatingGroupItem = True
       gItem = ""
       x = x + 1
     Else
-      C = Mid(iGroup, x, 1)
-      If C = "," Then
+      c = Mid(iGroup, x, 1)
+      If c = "," Then
         CreatingGroupItem = False
       Else
         CreatingGroupItem = True
-        gItem = gItem & C
+        gItem = gItem & c
         x = x + 1
       End If
     End If
@@ -123,7 +123,7 @@ End Function
 Public Function ConvertToTitleCase(s As String, Optional IsName) As String
 On Error GoTo ConvertToTitleCase_Err
 
-  Dim i As Integer, PrevChar As String, Uppercase As Boolean, NewS As String, C As String
+  Dim i As Integer, PrevChar As String, Uppercase As Boolean, NewS As String, c As String
   Dim NewWordLetters As Integer
   NewS = ""
   PrevChar = ""
@@ -133,14 +133,14 @@ On Error GoTo ConvertToTitleCase_Err
   
   For i = 1 To Len(s)
     NewWordLetters = NewWordLetters + 1
-    C = Mid(s, i, 1)
+    c = Mid(s, i, 1)
     If Uppercase Then
-      NewS = NewS & UCase(C)
+      NewS = NewS & UCase(c)
       Uppercase = False
     Else
-      NewS = NewS & LCase(C)
+      NewS = NewS & LCase(c)
     End If
-    If Not ((Asc(C) >= 65 And Asc(C) <= 90) Or (Asc(C) >= 97 And Asc(C) <= 122)) Then
+    If Not ((Asc(c) >= 65 And Asc(c) <= 90) Or (Asc(c) >= 97 And Asc(c) <= 122)) Then
       Uppercase = True
       NewWordLetters = 0
     End If
@@ -164,7 +164,7 @@ End Function
 Public Function ConvertToUpperLowerCase(s As String) As String
 On Error GoTo ConvertToUpperLowerCase_Err
 
-  Dim i As Integer, PrevChar As String, Uppercase As Boolean, NewS As String, C As String
+  Dim i As Integer, PrevChar As String, Uppercase As Boolean, NewS As String, c As String
   Dim FirstName As Boolean
   
   NewS = ""
@@ -172,11 +172,11 @@ On Error GoTo ConvertToUpperLowerCase_Err
   FirstName = True
   
   For i = 1 To Len(s)
-    C = Mid(s, i, 1)
+    c = Mid(s, i, 1)
     If Uppercase Then
-      NewS = NewS & UCase(C)
+      NewS = NewS & UCase(c)
     Else
-      NewS = NewS & LCase(C)
+      NewS = NewS & LCase(c)
     End If
     
     If FirstName Then
@@ -185,7 +185,7 @@ On Error GoTo ConvertToUpperLowerCase_Err
       Uppercase = False
     End If
     
-    If Not ((Asc(C) >= 65 And Asc(C) <= 90) Or (Asc(C) >= 97 And Asc(C) <= 122)) Then
+    If Not ((Asc(c) >= 65 And Asc(c) <= 90) Or (Asc(c) >= 97 And Asc(c) <= 122)) Then
       Uppercase = True
       FirstName = False
     End If
@@ -231,7 +231,7 @@ strReplace_Err:
 
 End Function
 
-Private Sub test()
+Private Sub Test()
   Dim Q As String
   
   Q = "Andrew" & vbCr & vbLf & "Rogers"
@@ -350,27 +350,27 @@ Public Function ReplaceCharacter(sn As String, Char As String, NewChar As String
 End Function
 
 
-Public Function StringParse(s As String, ItemNum As Byte, Optional Delimiter As String = "|") As String
+Public Function StringParse(s As String, ItemNum As Byte, Optional delimiter As String = "|") As String
 On Error GoTo StringParse_Err
   
   'Retrieves the String Item at Item Number
   
-  Dim L As Integer, CurrentItem As Long, C As String, PS As String, Complete As Boolean, i As Long
+  Dim L As Integer, CurrentItem As Long, c As String, PS As String, Complete As Boolean, i As Long
   
-  s = s & Delimiter
+  s = s & delimiter
   
   L = Len(s)
   
   CurrentItem = 0
   
-  If IsMissing(Delimiter) Then Delimiter = "|"
+  If IsMissing(delimiter) Then delimiter = "|"
   PS = ""
   Complete = False
   i = 0
   Do Until i > L Or Complete
     i = i + 1
-    C = Mid(s, i, 1)
-    If C = Delimiter Then
+    c = Mid(s, i, 1)
+    If c = delimiter Then
       CurrentItem = CurrentItem + 1
       If CurrentItem = ItemNum Then
         Complete = True
@@ -379,7 +379,7 @@ On Error GoTo StringParse_Err
       End If
       
     Else
-      PS = PS & C
+      PS = PS & c
     End If
   Loop
   
@@ -398,7 +398,7 @@ StringParse_Err:
   
 End Function
 
-Public Function ExtractValue(VarName As String, StringToParse As Variant, Optional Delimiter As String = ";") As Variant
+Public Function ExtractValue(VarName As String, StringToParse As Variant, Optional delimiter As String = ";") As Variant
 On Error GoTo ExtractValue_Err
 
   'Search for variable VarName.  If not found return null
@@ -407,7 +407,7 @@ On Error GoTo ExtractValue_Err
   Dim s As String
   Dim L As Integer
   Dim V As String
-  Dim N As String
+  Dim n As String
   Dim i As Long
   Dim Found As Boolean
   Dim GettingValue As Boolean
@@ -418,7 +418,7 @@ On Error GoTo ExtractValue_Err
     Exit Function
   End If
   
-  s = Delimiter & StringToParse & Delimiter
+  s = delimiter & StringToParse & delimiter
     
   i = 1
   L = Len(s)
@@ -427,11 +427,11 @@ On Error GoTo ExtractValue_Err
   Do Until i > L Or Found
     Char = Mid(s, i, 1)
     
-    If Char = Delimiter Then
-      If Trim(N) = Trim(VarName) Then
+    If Char = delimiter Then
+      If Trim(n) = Trim(VarName) Then
         Found = True
       Else
-        N = ""
+        n = ""
         V = ""
         GettingValue = False
       End If
@@ -445,7 +445,7 @@ On Error GoTo ExtractValue_Err
         If GettingValue Then
           V = V & Char
         Else
-          N = N & Char
+          n = n & Char
         End If
       End If
     End If
@@ -489,7 +489,7 @@ Public Function DateUKtoUS(D As String) As String
 On Error GoTo DateUKtoUS_Err
 
   Dim vD As Variant, vM As Variant, vY As Variant
-  Dim iPart As Byte, C As String
+  Dim iPart As Byte, c As String
   Dim i As Integer
   
   vD = Null
@@ -498,17 +498,17 @@ On Error GoTo DateUKtoUS_Err
   iPart = 0
   
   For i = 1 To Len(D)
-    C = Mid(D, i, 1)
-    If C = "\" Or C = "/" Or C = "-" Then
+    c = Mid(D, i, 1)
+    If c = "\" Or c = "/" Or c = "-" Then
       iPart = iPart + 1
     Else
       Select Case iPart
       Case 0
-        vD = vD & C
+        vD = vD & c
       Case 1
-        vM = vM & C
+        vM = vM & c
       Case 2
-        vY = vY & C
+        vY = vY & c
         
       End Select
     End If

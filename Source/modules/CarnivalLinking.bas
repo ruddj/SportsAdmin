@@ -3,7 +3,7 @@ Option Explicit
 
 Global GlobalFilename As Variant
 
-Private Function EnsureDatabaseVersionIsCurrent(FileName) As Boolean
+Private Function EnsureDatabaseVersionIsCurrent(fileName) As Boolean
 On Error GoTo EnsureDatabaseVersionIsCurrent_Err
 
   If SportsViewModule Then
@@ -11,44 +11,44 @@ On Error GoTo EnsureDatabaseVersionIsCurrent_Err
     Exit Function
   End If
 
-  Dim HasError As Boolean, db As Database
+  Dim HasError As Boolean, Db As Database
   
-  Set db = DBEngine.Workspaces(0).OpenDatabase(FileName)
+  Set Db = DBEngine.Workspaces(0).OpenDatabase(fileName)
   
   SysCmd acSysCmdSetStatus, "Checking table: _AlwaysOpen"
-  HasError = AddTable(FileName, "_AlwaysOpen")
+  HasError = AddTable(fileName, "_AlwaysOpen")
 
   SysCmd acSysCmdSetStatus, "Checking table: CompetitorEventAge"
-  HasError = AddTable(FileName, "CompetitorEventAge")
+  HasError = AddTable(fileName, "CompetitorEventAge")
   
   SysCmd acSysCmdSetStatus, "Checking table: MiscHTML"
-  HasError = AddTable(FileName, "MiscHTML")
+  HasError = AddTable(fileName, "MiscHTML")
 
   SysCmd acSysCmdSetStatus, "Applying field changes: 1 ... "
-  HasError = AddField_nResult(db)
+  HasError = AddField_nResult(Db)
   
   SysCmd acSysCmdSetStatus, "Applying field changes: 2 ... "
-  HasError = AddField_ProNum(db)
+  HasError = AddField_ProNum(Db)
   
   SysCmd acSysCmdSetStatus, "Applying field changes: 3 ... "
-  HasError = ChangeAgeFieldType(db)
+  HasError = ChangeAgeFieldType(Db)
   
   SysCmd acSysCmdSetStatus, "Applying field changes: 4 ... "
-  HasError = AddField(db, "Competitors", "ID", dbText, False, 50)
+  HasError = AddField(Db, "Competitors", "ID", dbText, False, 50)
   
   SysCmd acSysCmdSetStatus, "Applying field changes: 5 ... "
-  HasError = AddField(db, "EventType", "PlacesAcrossAllHeats", dbBoolean, False, , False)
+  HasError = AddField(Db, "EventType", "PlacesAcrossAllHeats", dbBoolean, False, , False)
   
   SysCmd acSysCmdSetStatus, "Applying field changes: 6 ... "
-  HasError = AddField(db, "Heats", "DontOverridePlaces", dbBoolean, False, , False)
+  HasError = AddField(Db, "Heats", "DontOverridePlaces", dbBoolean, False, , False)
   
   SysCmd acSysCmdSetStatus, "Applying field changes: 7 ... "
-  HasError = AddField(db, "Heats", "EffectsRecords", dbBoolean, False, , False)
+  HasError = AddField(Db, "Heats", "EffectsRecords", dbBoolean, False, , False)
   
   SysCmd acSysCmdSetStatus, "Applying field changes: 8 ... "
-  HasError = AddField(db, "Final_Lev", "EffectsRecords", dbBoolean, False, , False)
+  HasError = AddField(Db, "Final_Lev", "EffectsRecords", dbBoolean, False, , False)
   
-  Set db = Nothing
+  Set Db = Nothing
   
   EnsureDatabaseVersionIsCurrent = HasError
   
@@ -61,37 +61,37 @@ EnsureDatabaseVersionIsCurrent_Err:
   
 End Function
 
-Function AddField(db As Database, TableName As String, _
-                  FieldName As String, FieldType As Long, Required As Boolean, _
+Function AddField(Db As Database, tableName As String, _
+                  fieldName As String, FieldType As Long, Required As Boolean, _
                   Optional FieldSize, Optional DefaultV)
 
-  Dim TD As TableDef
-  Dim F As Field, Response As Variant
+  Dim td As TableDef
+  Dim f As Field, Response As Variant
 
-  Set TD = db.TableDefs(TableName)
+  Set td = Db.TableDefs(tableName)
   On Error Resume Next
-  Set F = TD.Fields(FieldName)
+  Set f = td.Fields(fieldName)
   
   If Err.Number <> 0 Then 'need to add field
     If IsMissing(FieldSize) Then
-      Set F = TD.CreateField(FieldName, FieldType)
+      Set f = td.CreateField(fieldName, FieldType)
     Else
-      Set F = TD.CreateField(FieldName, FieldType, FieldSize)
+      Set f = td.CreateField(fieldName, FieldType, FieldSize)
     End If
     
-    F.Required = Required
+    f.Required = Required
     
-    If Not IsMissing(DefaultV) Then F.DefaultValue = DefaultV
-    TD.Fields.Append F
+    If Not IsMissing(DefaultV) Then f.DefaultValue = DefaultV
+    td.Fields.Append f
     
-    If FieldName = "EffectsRecords" Then
-      If TableName = "Heats" Then
+    If fieldName = "EffectsRecords" Then
+      If tableName = "Heats" Then
         Q = "A new field has been added to each heat that enables you to specify whether the heat should effect event records.  "
         Q = Q & "Use this feature to ensure that new records are set only for the events of your choosing, say the grand final races.  "
         MsgBox Q, vbInformation
       End If
       DoCmd.SetWarnings False
-      DoCmd.RunSQL "UPDATE [" & TableName & "] SET [EffectsRecords]=TRUE"
+      DoCmd.RunSQL "UPDATE [" & tableName & "] SET [EffectsRecords]=TRUE"
       DoCmd.SetWarnings True
     End If
     
@@ -99,7 +99,7 @@ Function AddField(db As Database, TableName As String, _
   
 End Function
 
-Function AddField_nResult(db As Database)
+Function AddField_nResult(Db As Database)
 
     On Error GoTo AddField_Err
     'Stop
@@ -108,8 +108,8 @@ Function AddField_nResult(db As Database)
 
     'Dim CurrentDatabase As Database
     
-    Dim TD As TableDef
-    Dim F As Field, Response As Variant
+    Dim td As TableDef
+    Dim f As Field, Response As Variant
     Dim Indx As index
     
 
@@ -118,41 +118,41 @@ Function AddField_nResult(db As Database)
     'Set db = DBEngine.Workspaces(0).OpenDatabase(FileName)
     'Set CurrentDatabase = DBEngine.Workspaces(0).Databases(0)
     
-    Set TD = db.TableDefs("Records")
-    Set F = TD.CreateField("nResult", dbSingle)
-    TD.Fields.Append F
+    Set td = Db.TableDefs("Records")
+    Set f = td.CreateField("nResult", dbSingle)
+    td.Fields.Append f
 
     '*** Change type of Record field ****
 
     Response = MsgBox("To update to the latest version of the Sports Administrator it is necessary to remove all Event Records.  Do you wish to continue?", vbExclamation + vbYesNo + vbDefaultButton2, "Remove records")
     If Response = vbYes Then
-        TD.Fields.Delete "Result"    ' Delete field from collection.
-        Set F = TD.CreateField("Result", dbText)
+        td.Fields.Delete "Result"    ' Delete field from collection.
+        Set f = td.CreateField("Result", dbText)
     End If
-    F.Size = 50
-    TD.Fields.Append F
+    f.Size = 50
+    td.Fields.Append f
 
     ' **** Remove old index and add new one ****
     ' I initially limited one record per event per day.  Bad.  Now there is no limitations
 
-    TD.Indexes.Delete "PrimaryKey" ' This was the name of the Original Index
+    td.Indexes.Delete "PrimaryKey" ' This was the name of the Original Index
     GoTo AddNewIndex
 
 RemoveNewIndex:
     On Error Resume Next
-    TD.Indexes.Delete "PriIndex"
+    td.Indexes.Delete "PriIndex"
     On Error GoTo AddField_Err
     
 AddNewIndex:
-    Set Indx = TD.CreateIndex("PriIndex")
+    Set Indx = td.CreateIndex("PriIndex")
 
     Indx.Primary = False
     Indx.Unique = False
-    Set F = TD.CreateField("E_Code", dbLong)
-    Indx.Fields.Append F
+    Set f = td.CreateField("E_Code", dbLong)
+    Indx.Fields.Append f
     'Set F = TD.CreateField("Date", DB_DATE)
     'Indx.fields.Append F
-    TD.Indexes.Append Indx
+    td.Indexes.Append Indx
 
     CurrentDb.Containers("Relationships").Documents.Refresh  ' Refresh possibly changed collection
 
@@ -175,7 +175,7 @@ AddField_Err:
 
 End Function
 
-Function AddField_ProNum(db)
+Function AddField_ProNum(Db)
 On Error GoTo AddField_ProNum_Err
 
     'Stop
@@ -184,8 +184,8 @@ On Error GoTo AddField_ProNum_Err
 
     'Dim db As Database, CurrentDatabase As Database
     
-    Dim TD As TableDef
-    Dim F As Field, Response As Variant
+    Dim td As TableDef
+    Dim f As Field, Response As Variant
     Dim Indx As index
     
     ''*** Create nRecord field ****
@@ -193,9 +193,9 @@ On Error GoTo AddField_ProNum_Err
     'Set db = DBEngine.Workspaces(0).OpenDatabase(FileName)
     'Set CurrentDatabase = DBEngine.Workspaces(0).Databases(0)
     
-    Set TD = db.TableDefs("Final_Lev")
-    Set F = TD.CreateField("ProNum", dbInteger)
-    TD.Fields.Append F
+    Set td = Db.TableDefs("Final_Lev")
+    Set f = td.CreateField("ProNum", dbInteger)
+    td.Fields.Append f
     
 AddField_ProNum_Exit:
 
@@ -215,25 +215,25 @@ AddField_ProNum_Err:
 
 End Function
 
-Private Sub test()
+Private Sub Test()
 
-  Dim HasError As Boolean, db As Database
+  Dim HasError As Boolean, Db As Database
   
-  Set db = DBEngine.Workspaces(0).OpenDatabase("e:\test.mdb")
+  Set Db = DBEngine.Workspaces(0).OpenDatabase("e:\test.mdb")
   
-  Call ChangeAgeFieldType(db)
+  Call ChangeAgeFieldType(Db)
   
 End Sub
 
-Function ChangeAgeFieldType(db As Database) As Boolean
+Function ChangeAgeFieldType(Db As Database) As Boolean
 On Error GoTo ChangeAgeFieldType_Err
   'Stop
   
-  Dim TD As TableDef, ErrorOccurred As Boolean, Q As String
-  Dim F As Field, oF As Field, Response As Variant, i As index
+  Dim td As TableDef, ErrorOccurred As Boolean, Q As String
+  Dim f As Field, oF As Field, Response As Variant, i As index
   
-  Set TD = db.TableDefs("Competitors")
-  Set oF = TD.Fields("Age")
+  Set td = Db.TableDefs("Competitors")
+  Set oF = td.Fields("Age")
   
   If oF.Type <> dbByte Then
     Q = "The age field for competitiors needs to be updated to the latest version.  "
@@ -242,50 +242,50 @@ On Error GoTo ChangeAgeFieldType_Err
     
     Response = MsgBox(Q, vbQuestion + vbYesNo + vbDefaultButton2)
     If Response = vbYes Then
-      oF.Name = "AgeOld"
+      oF.name = "AgeOld"
       oF.Required = False
       
-      Set F = TD.CreateField("Age", dbByte)
-      F.DefaultValue = ""
-      F.Required = True
+      Set f = td.CreateField("Age", dbByte)
+      f.DefaultValue = ""
+      f.Required = True
       
-      TD.Fields.Append F
+      td.Fields.Append f
       
-      Dim RS As Recordset
-      Set RS = db.OpenRecordset("Competitors", dbOpenDynaset)
-      Do Until RS.BOF Or RS.EOF
-        RS.Edit
-        RS!Age = Val(RS!AgeOld)
-        RS.Update
-        RS.MoveNext
+      Dim rs As Recordset
+      Set rs = Db.OpenRecordset("Competitors", dbOpenDynaset)
+      Do Until rs.BOF Or rs.EOF
+        rs.Edit
+        rs!Age = Val(rs!AgeOld)
+        rs.Update
+        rs.MoveNext
       Loop
-      RS.Close
+      rs.Close
       On Error Resume Next
-      TD.Indexes.Delete ("Age")
-      TD.Indexes.Delete ("Name&House")
+      td.Indexes.Delete ("Age")
+      td.Indexes.Delete ("Name&House")
       
-      TD.Fields.Delete ("AgeOld")
+      td.Fields.Delete ("AgeOld")
       
-      Set i = TD.CreateIndex("Age")
+      Set i = td.CreateIndex("Age")
       i.Fields.Append i.CreateField("Age")
-      TD.Indexes.Append i
+      td.Indexes.Append i
       
-      Set i = TD.CreateIndex("Name&House")
+      Set i = td.CreateIndex("Name&House")
       i.Fields.Append i.CreateField("Surname")
       i.Fields.Append i.CreateField("Gname")
       i.Fields.Append i.CreateField("Age")
       i.Fields.Append i.CreateField("H_Code")
       i.Fields.Append i.CreateField("Sex")
-      TD.Indexes.Append i
+      td.Indexes.Append i
       
       'Create some extra indexes while we are here
-      Set i = TD.CreateIndex("Surname")
+      Set i = td.CreateIndex("Surname")
       i.Fields.Append i.CreateField("Surname")
-      TD.Indexes.Append i
+      td.Indexes.Append i
       
-      Set i = TD.CreateIndex("Gname")
+      Set i = td.CreateIndex("Gname")
       i.Fields.Append i.CreateField("Gname")
-      TD.Indexes.Append i
+      td.Indexes.Append i
       
       
     Else
@@ -310,20 +310,20 @@ ChangeAgeFieldType_Err:
 End Function
 
 
-Function AddTable(FileName, NewTable)
+Function AddTable(fileName, NewTable)
     
     On Error Resume Next
     AddTable = False
     
     Dim Q As String
     
-    Dim db As Database, CurrentDatabase As Database
-    Dim TD As TableDef, CurrentTD As TableDef
-    Dim F As Field
-    Set db = DBEngine.Workspaces(0).OpenDatabase(FileName)
+    Dim Db As Database, CurrentDatabase As Database
+    Dim td As TableDef, CurrentTD As TableDef
+    Dim f As Field
+    Set Db = DBEngine.Workspaces(0).OpenDatabase(fileName)
     Set CurrentDatabase = DBEngine.Workspaces(0).Databases(0)
     
-    Set TD = db.TableDefs(NewTable)
+    Set td = Db.TableDefs(NewTable)
     'MsgBox ("Error1: Adding Table: " & Err)
     If Err = 3265 Then 'Table doesn't exist
         GoTo AddTable_Err
@@ -346,7 +346,7 @@ AddTable_Err:
         Else
             GoTo AddTable_Err2
         End If
-        DoCmd.TransferDatabase acExport, "Microsoft Access", FileName, acTable, "zz~" & NewTable, NewTable, False
+        DoCmd.TransferDatabase acExport, "Microsoft Access", fileName, acTable, "zz~" & NewTable, NewTable, False
         'DoCmd.TransferDatabase acLink, "Microsoft Access", FileName, acTable, NewTable, NewTable, False
 
         GoTo AddTable_Exit
@@ -358,7 +358,7 @@ AddTable_Err2:
     
 End Function
 
-Function AddTable_Competitors(FileName)
+Function AddTable_Competitors(fileName)
 
     AddTable_Competitors = False
     On Error Resume Next
@@ -367,13 +367,13 @@ Function AddTable_Competitors(FileName)
     
     Dim Q As String
     
-    Dim db As Database, CurrentDatabase As Database
-    Dim TD As TableDef, CurrentTD As TableDef
-    Dim F As Field
-    Set db = DBEngine.Workspaces(0).OpenDatabase(FileName)
+    Dim Db As Database, CurrentDatabase As Database
+    Dim td As TableDef, CurrentTD As TableDef
+    Dim f As Field
+    Set Db = DBEngine.Workspaces(0).OpenDatabase(fileName)
     Set CurrentDatabase = DBEngine.Workspaces(0).Databases(0)
     
-    Set TD = db.TableDefs("CompetitorsOrdered")
+    Set td = Db.TableDefs("CompetitorsOrdered")
     If Err = 3265 Then 'Table doesn't exist
         GoTo AddTable_Competitors_Err
     ElseIf Err = 0 Then ' The table has already been added and ordered correctly.
@@ -395,8 +395,8 @@ AddTable_Competitors_Err:
         Else
             GoTo AddTable_Competitors_Err2
         End If
-        DoCmd.TransferDatabase acExport, "Microsoft Access", FileName, acTable, "zz~CompetitorsOrdered", "CompetitorsOrdered", False
-        DoCmd.TransferDatabase acLink, "Microsoft Access", FileName, acTable, "CompetitorsOrdered", "CompetitorsOrdered", False
+        DoCmd.TransferDatabase acExport, "Microsoft Access", fileName, acTable, "zz~CompetitorsOrdered", "CompetitorsOrdered", False
+        DoCmd.TransferDatabase acLink, "Microsoft Access", fileName, acTable, "CompetitorsOrdered", "CompetitorsOrdered", False
 
         GoTo AddTable_Competitors_Exit
 
@@ -443,7 +443,7 @@ Err_Attach_Selected_File:
     Resume Exit_Attach_Selected_File
 End Function
 
-Function Attach_Selected_File2(ByVal IFID As Long, Posi As Variant, HasError As Variant, ByVal FileName As Variant) As Variant
+Function Attach_Selected_File2(ByVal IFID As Long, Posi As Variant, HasError As Variant, ByVal fileName As Variant) As Variant
 '--------------------------------------------------------------------------------------------------------
 ' This function is used to attach all the tables for a selected INVENTORY file
 ' It determines the appropiate tables to attach from the table (Inventory Attached Tables)
@@ -458,7 +458,7 @@ Function Attach_Selected_File2(ByVal IFID As Long, Posi As Variant, HasError As 
     On Error GoTo Err_Attach_Selected_File2
     Dim MyDB As Database, ITable As Recordset, SpecifiedPath As Variant, TT As TableDef, FTable As Recordset
     Dim DataExists As Variant, MyWS As Workspace, CPath  As Variant, AskUser  As Variant
-    Dim Result As Variant, ReturnVal As Variant, db As Database, RS As Recordset, Response As Variant
+    Dim Result As Variant, ReturnVal As Variant, Db As Database, rs As Recordset, Response As Variant
     ReturnVal = True
     HasError = False
     
@@ -466,13 +466,13 @@ Function Attach_Selected_File2(ByVal IFID As Long, Posi As Variant, HasError As 
     
     'Stop
     If DEMO Then
-        Set db = DBEngine.Workspaces(0).OpenDatabase(FileName)
+        Set Db = DBEngine.Workspaces(0).OpenDatabase(fileName)
         'Stop
-        Set RS = db.OpenRecordset("Competitors", dbOpenDynaset)   ' Create Recordset.
-        If Not (RS.EOF) Then
-            RS.MoveLast
+        Set rs = Db.OpenRecordset("Competitors", dbOpenDynaset)   ' Create Recordset.
+        If Not (rs.EOF) Then
+            rs.MoveLast
             'Stop
-            If RS.RecordCount > DEMOcompetitors Then
+            If rs.RecordCount > DEMOcompetitors Then
                 Response = MsgBox(DEMOmessage2, 16, "Demonstration Version")
                 HasError = True
                 GoTo Exit_Attach_Selected_File2
@@ -481,7 +481,7 @@ Function Attach_Selected_File2(ByVal IFID As Long, Posi As Variant, HasError As 
     End If
 
 'Stop
-    Posi = InStr(ReverseString(CStr(FileName)), "\")
+    Posi = InStr(ReverseString(CStr(fileName)), "\")
     If Posi <> 0 Then
         
         ' Competitors Ordered in now local so don't need this
@@ -491,7 +491,7 @@ Function Attach_Selected_File2(ByVal IFID As Long, Posi As Variant, HasError As 
         
         TableCount = 0
         
-        HasError = EnsureDatabaseVersionIsCurrent(FileName)
+        HasError = EnsureDatabaseVersionIsCurrent(fileName)
         
         Set MyWS = DBEngine.Workspaces(0)
         Set MyDB = CurrentDb
@@ -507,13 +507,13 @@ Function Attach_Selected_File2(ByVal IFID As Long, Posi As Variant, HasError As 
             Set TT = MyDB.TableDefs(ITable![Table Name])
             If Err = 0 Then
                 On Error GoTo WKAttach_Selected_File2Error
-                TT.Connect = ";DATABASE=" & CStr(FileName)
+                TT.connect = ";DATABASE=" & CStr(fileName)
                 SysCmd acSysCmdSetStatus, "Refreshing table: " & ITable![Table Name]
                 TT.RefreshLink
             Else
                 Set TT = MyDB.CreateTableDef(ITable![Table Name])
                 On Error GoTo WKAttach_Selected_File2Error
-                TT.Connect = ";DATABASE=" & CStr(FileName)
+                TT.connect = ";DATABASE=" & CStr(fileName)
                 TT.SourceTableName = ITable![Table Name]
                 GlobalVariable = SysCmd(acSysCmdSetStatus, "Attaching table: " & ITable![Table Name])
                 MyDB.TableDefs.Append TT
@@ -565,8 +565,8 @@ Function CheckInventoryAttached() As Variant
     On Error GoTo Err_CheckInventoryData
     Dim MyDB As Database, ITable As Recordset, SpecifiedPath As Variant, TT As TableDef, FTable As Recordset, TB  As TableDef
     Dim DataExists As Variant, MyWS As Workspace, CPath  As Variant, AskUser  As Variant, LTable As Recordset
-    Dim DefaultLoc As Variant, DefaultLoc2 As Variant, Dummy As Variant, FileName As String, RPath As String, RFile As String
-    Dim WhereCDF As Variant, RFPath As Variant, Response As Variant, FilePath As Variant
+    Dim DefaultLoc As Variant, DefaultLoc2 As Variant, Dummy As Variant, fileName As String, RPath As String, RFile As String
+    Dim WhereCDF As Variant, RFPath As Variant, Response As Variant, filePath As Variant
 
 '    Stop
     Set MyWS = DBEngine.Workspaces(0)
@@ -577,12 +577,12 @@ Function CheckInventoryAttached() As Variant
     DoCmd.RunSQL "UPDATE DISTINCTROW Carnivals SET Carnivals.Available = FileExists(GetCarnivalFullDir([Relative Directory]) & [Filename]);"
     DoCmd.SetWarnings True
     Set TB = MyDB.TableDefs("Competitors")
-    FileName = UCase$(Right$(TB.Connect, Len(TB.Connect) - InStr(TB.Connect, "=")))
-    FilePath = Left$(FileName, Len(FileName) - InStr(ReverseString(FileName), "\") + 1)
+    fileName = UCase$(Right$(TB.connect, Len(TB.connect) - InStr(TB.connect, "=")))
+    filePath = Left$(fileName, Len(fileName) - InStr(ReverseString(fileName), "\") + 1)
     
-    RPath = GetCarnivalRelDir(FilePath)
-    RFPath = GetCarnivalFullDir(FileName)
-    RFile = GetCarnivalFile(FileName)
+    RPath = GetCarnivalRelDir(filePath)
+    RFPath = GetCarnivalFullDir(fileName)
+    RFile = GetCarnivalFile(fileName)
     
     WhereCDF = "([Filename] = """ & RFile & """) AND ([Relative Directory] = """ & RPath & """)"
     
@@ -592,7 +592,7 @@ Function CheckInventoryAttached() As Variant
     Else
       Dim TableCount As Long
       TableCount = 0
-      FileName = RFPath & RFile
+      fileName = RFPath & RFile
       MyWS.BeginTrans
       On Error GoTo WKError                                               ' If all file locations ok then
       ITable.MoveFirst                                                    ' check tables available
@@ -602,7 +602,7 @@ Function CheckInventoryAttached() As Variant
         Set TT = MyDB.TableDefs(ITable![Table Name])
         If Err = 0 Then
             On Error GoTo WKError
-            TT.Connect = ";DATABASE=" & FileName
+            TT.connect = ";DATABASE=" & fileName
             TT.RefreshLink
         Else
             On Error Resume Next
@@ -611,7 +611,7 @@ Function CheckInventoryAttached() As Variant
             If Err.Number = 0 Or Err.Number = 3012 Then GoTo WKError ' 3012: Table already exists
             On Error GoTo WKError
             
-            TT.Connect = ";DATABASE=" & FileName
+            TT.connect = ";DATABASE=" & fileName
             TT.SourceTableName = ITable![Table Name]
             MyDB.TableDefs.Append TT
             TT.RefreshLink
@@ -652,11 +652,11 @@ End Function
 Sub TestRelations()
   Call CheckRelationships("D:\Data\Sports\dist97\carnival\Demo-Sec Athletics.mdb")
 End Sub
-Sub CheckRelationships(FileName As Variant)
+Sub CheckRelationships(fileName As Variant)
 
   If SportsViewModule Then Exit Sub
   
-  Dim db As Database, WS As Workspace, NewDB As Database, Result As Variant
+  Dim Db As Database, WS As Workspace, NewDB As Database, Result As Variant
   Dim i As Integer, NR  As Relation, nF  As Field, r1 As Recordset, r2 As Recordset           ' Create Access Database
   Dim j As Integer, RelationError As Integer, RelationErrorNames As String
   Dim RelationName  As String
@@ -666,15 +666,15 @@ Sub CheckRelationships(FileName As Variant)
   RelationErrorNames = ""
 
   Set WS = DBEngine.Workspaces(0)
-  Set NewDB = WS.OpenDatabase(FileName)                                                       ' Add relationships to
-  Set db = WS.Databases(0)
+  Set NewDB = WS.OpenDatabase(fileName)                                                       ' Add relationships to
+  Set Db = WS.Databases(0)
 
   ' Check if all relationships are valid.  If not then delete all and recreate
   
   On Error GoTo Err_ValidatingRelationships
   
   RelationError = False
-  Set r1 = db.OpenRecordset("zzz~Relationships Main", dbOpenSnapshot)       ' the database tables
+  Set r1 = Db.OpenRecordset("zzz~Relationships Main", dbOpenSnapshot)       ' the database tables
   
   ' If the total number of relations are not correct then recreate all relationships
   If NewDB.Relations.Count <> DCount("[R ID]", "zzz~Relationships Main") Then
@@ -687,11 +687,11 @@ Sub CheckRelationships(FileName As Variant)
     RelationName = r1![Relationship Name]
     Set NR = NewDB.Relations(RelationName)
     'If RelationName = "House-Competitors" Then Stop
-    If NR.Table <> r1![First Table] Or NR.ForeignTable <> r1![Second Table] Or NR.Attributes <> r1![Type] Then
+    If NR.table <> r1![First Table] Or NR.foreignTable <> r1![Second Table] Or NR.Attributes <> r1![Type] Then
       RelationError = True
     End If
     
-    Set r2 = db.OpenRecordset("SELECT * FROM [zzz~Relationships Second] WHERE [R ID] = " & r1![R ID], dbOpenSnapshot, dbForwardOnly)
+    Set r2 = Db.OpenRecordset("SELECT * FROM [zzz~Relationships Second] WHERE [R ID] = " & r1![R ID], dbOpenSnapshot, dbForwardOnly)
     Do Until r2.BOF Or r2.EOF Or RelationError
       Set nF = NR.Fields(r2![Field First])
       If nF.ForeignName <> r2![Field Second] Then RelationError = True
@@ -712,7 +712,7 @@ CreateNewRelationships: ' On relation problem exit to this point
     On Error GoTo Err_Deleting_Relationships
     
     For j = (NewDB.Relations.Count - 1) To 0 Step -1
-        NewDB.Relations.Delete NewDB.Relations(j).Name
+        NewDB.Relations.Delete NewDB.Relations(j).name
     Next j
     On Error GoTo Err_Creating_Relationships
 
@@ -721,10 +721,10 @@ CreateNewRelationships: ' On relation problem exit to this point
       
         GlobalVariable = SysCmd(acSysCmdSetStatus, "Updating relationship " & r1![Relationship Name] & " ... ")
         Set NR = NewDB.CreateRelation(r1![Relationship Name])
-        NR.Table = r1![First Table]
-        NR.ForeignTable = r1![Second Table]
+        NR.table = r1![First Table]
+        NR.foreignTable = r1![Second Table]
         NR.Attributes = r1![Type]
-        Set r2 = db.OpenRecordset("SELECT * FROM [zzz~Relationships Second] WHERE [R ID] = " & r1![R ID], dbOpenSnapshot, dbForwardOnly)
+        Set r2 = Db.OpenRecordset("SELECT * FROM [zzz~Relationships Second] WHERE [R ID] = " & r1![R ID], dbOpenSnapshot, dbForwardOnly)
         Do Until r2.EOF
             Set nF = NR.CreateField(r2![Field First])
             nF.ForeignName = r2![Field Second]
@@ -776,9 +776,9 @@ Function DBPath() As String
 ' Includes the final \
 
     On Error GoTo Err_DBPath
-    Dim App As String, db As Database
-    Set db = DBEngine.Workspaces(0).Databases(0)
-    App = db.Name
+    Dim App As String, Db As Database
+    Set Db = DBEngine.Workspaces(0).Databases(0)
+    App = Db.name
     DBPath = Left$(App, Len(App) - InStr(ReverseString(App), "\") + 1)
 Exit_DBPath:
     Exit Function
@@ -787,23 +787,23 @@ Err_DBPath:
     Resume Exit_DBPath
 End Function
 
-Function ExtractDirectory(F)
+Function ExtractDirectory(f)
 
     Dim Found As Variant, x As Integer, L As Integer
     
     Found = False
-    If IsNull(F) Then
+    If IsNull(f) Then
         ExtractDirectory = ""
     Else
-        L = Len(F)
+        L = Len(f)
         x = L
         'ExtractDirectory = F   ' was = Null
         ExtractDirectory = Null
     
         While Not Found And x > 0
-            If Mid$(F, x, 1) = "\" Then
+            If Mid$(f, x, 1) = "\" Then
                 Found = True
-                ExtractDirectory = Left$(F, x)
+                ExtractDirectory = Left$(f, x)
             Else
                 x = x - 1
             End If
@@ -812,7 +812,7 @@ Function ExtractDirectory(F)
     
 End Function
 
-Function Make_File(ByVal FileName As String) As Variant
+Function Make_File(ByVal fileName As String) As Variant
 '--------------------------------------------------------------------------------
 ' Makes the file specified in the parameter and copies an empty image of all the tables
 ' that begin with "zz~". Removes the "zz~" when making the tables name.
@@ -822,30 +822,30 @@ Function Make_File(ByVal FileName As String) As Variant
 
     On Error GoTo Err_Make_File
    
-    Dim db As Database, WS As Workspace, NewDB As Database, Result As Variant
+    Dim Db As Database, WS As Workspace, NewDB As Database, Result As Variant
     Dim i As Integer, NR  As Relation, nF  As Field, r1 As Recordset, r2 As Recordset           ' Create Access Database
     Result = False                                                                              ' and move in empty tables
     Set WS = DBEngine.Workspaces(0)
     DoCmd.SetWarnings False
-    Set NewDB = WS.CreateDatabase(FileName, dbLangGeneral, dbVersion120)
+    Set NewDB = WS.CreateDatabase(fileName, dbLangGeneral, dbVersion120)
     NewDB.Close
-    Set db = WS.Databases(0)
-    For i = db.TableDefs.Count - 1 To 0 Step -1
-        If Left$(db.TableDefs(i).Name, 3) = "zz~" Then
-            DoCmd.TransferDatabase acExport, "Microsoft Access", FileName, acTable, db.TableDefs(i).Name, Right$(db.TableDefs(i).Name, Len(db.TableDefs(i).Name) - 3), False
+    Set Db = WS.Databases(0)
+    For i = Db.TableDefs.Count - 1 To 0 Step -1
+        If Left$(Db.TableDefs(i).name, 3) = "zz~" Then
+            DoCmd.TransferDatabase acExport, "Microsoft Access", fileName, acTable, Db.TableDefs(i).name, Right$(Db.TableDefs(i).name, Len(Db.TableDefs(i).name) - 3), False
         End If
     Next i
 
     'Stop
     
-    Set NewDB = WS.OpenDatabase(FileName)                                                       ' Add relationships to
-    Set r1 = db.OpenRecordset("zzz~Relationships Main", dbOpenSnapshot, dbForwardOnly)       ' the database tables
+    Set NewDB = WS.OpenDatabase(fileName)                                                       ' Add relationships to
+    Set r1 = Db.OpenRecordset("zzz~Relationships Main", dbOpenSnapshot, dbForwardOnly)       ' the database tables
     Do Until r1.EOF
         Set NR = NewDB.CreateRelation(r1![Relationship Name])
-        NR.Table = r1![First Table]
-        NR.ForeignTable = r1![Second Table]
+        NR.table = r1![First Table]
+        NR.foreignTable = r1![Second Table]
         NR.Attributes = r1![Type]
-        Set r2 = db.OpenRecordset("SELECT * FROM [zzz~Relationships Second] WHERE [R ID] = " & r1![R ID], dbOpenSnapshot, dbForwardOnly)
+        Set r2 = Db.OpenRecordset("SELECT * FROM [zzz~Relationships Second] WHERE [R ID] = " & r1![R ID], dbOpenSnapshot, dbForwardOnly)
         Do Until r2.EOF
             Set nF = NR.CreateField(r2![Field First])
             nF.ForeignName = r2![Field Second]
@@ -905,7 +905,7 @@ Public Sub MaintainCompetitor(Action As String, PIN As Long)
 
 On Error GoTo err_sdc
 
-    Dim Criteria As String, db As Database, Crs As Recordset, CTrs As Recordset
+    Dim Criteria As String, Db As Database, Crs As Recordset, CTrs As Recordset
     Dim NewTitle As String, Q As String
     
     ' Add competitor details to Competitor-Temp
@@ -931,9 +931,9 @@ On Error GoTo err_sdc
 
     If Not GlobalCancel Then
       If GlobalChange Then
-        Set db = DBEngine.Workspaces(0).Databases(0)
-        Set Crs = db.OpenRecordset("Competitors", dbOpenDynaset)   ' Create dynaset.
-        Set CTrs = db.OpenRecordset("Competitors-Temp", dbOpenDynaset)   ' Create dynaset.
+        Set Db = DBEngine.Workspaces(0).Databases(0)
+        Set Crs = Db.OpenRecordset("Competitors", dbOpenDynaset)   ' Create dynaset.
+        Set CTrs = Db.OpenRecordset("Competitors-Temp", dbOpenDynaset)   ' Create dynaset.
         
         Crs.FindFirst "[Pin]=" & PIN
         CTrs.MoveFirst
@@ -995,14 +995,14 @@ Sub TransferToCompetitorOrdered()
   DoCmd.RunSQL "UPDATE CompetitorsOrdered SET CompetitorsOrdered.Flag = No;"
   DoCmd.SetWarnings True
   
-  Dim db As Database, RS As Recordset, ors As Recordset, i As Integer, NoMoreRecords As Boolean
-  Set db = CurrentDb
+  Dim Db As Database, rs As Recordset, ors As Recordset, i As Integer, NoMoreRecords As Boolean
+  Set Db = CurrentDb
   
-  Set RS = db.OpenRecordset("CompetitorsOrderedQ", dbOpenSnapshot)
-  Set ors = db.OpenRecordset("CompetitorsOrdered", dbOpenDynaset)
+  Set rs = Db.OpenRecordset("CompetitorsOrderedQ", dbOpenSnapshot)
+  Set ors = Db.OpenRecordset("CompetitorsOrdered", dbOpenDynaset)
   i = 0
     
-  If RS.BOF Then GoTo TransferToCompetitorOrdered_Exit
+  If rs.BOF Then GoTo TransferToCompetitorOrdered_Exit
   
   Do
     If ors.EOF Then
@@ -1013,32 +1013,32 @@ Sub TransferToCompetitorOrdered()
     
 '    If Left(ors!Surname, 6) = "aaaccc" Then Stop
     
-    ors!PIN = RS!PIN
-    ors!Include = RS!Include
-    ors!Gname = RS!Gname
-    ors!Surname = RS!Surname
-    ors!Sex = RS!Sex
-    ors!H_Code = RS!H_Code
-    ors!H_ID = RS!H_ID
-    ors!TotPts = RS!TotPts
-    ors!Age = RS!Age
+    ors!PIN = rs!PIN
+    ors!Include = rs!Include
+    ors!Gname = rs!Gname
+    ors!Surname = rs!Surname
+    ors!Sex = rs!Sex
+    ors!H_Code = rs!H_Code
+    ors!H_ID = rs!H_ID
+    ors!TotPts = rs!TotPts
+    ors!Age = rs!Age
     ors!Flag = True
     ors!Order = i
     ors.Update
     
     If Not ors.EOF Then ors.MoveNext
     
-    RS.MoveNext
+    rs.MoveNext
     i = i + 1
     
-  Loop Until RS.EOF
+  Loop Until rs.EOF
   
   'DoCmd.SetWarnings False
   'DoCmd.RunSQL "DELETE DISTINCTROW CompetitorsOrdered.PIN FROM CompetitorsOrdered"
   'DoCmd.OpenQuery "Transfer Competitors to CompetitorsOrdered"
   'DoCmd.SetWarnings True
 
-  RS.Close
+  rs.Close
   ors.Close
   
   
@@ -1062,7 +1062,7 @@ Public Sub OpenAlwaysOpenRS()
   Dim V As String
   
   On Error Resume Next
-  V = AlwaysOpenRS.Name
+  V = AlwaysOpenRS.name
   If Err.Number <> 0 Then 'Recordset is not open so open it
     Set AlwaysOpenRS = CurrentDb.OpenRecordset("_AlwaysOpen")
   End If

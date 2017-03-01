@@ -40,7 +40,7 @@ Function ConvertNull(ByVal Value As Variant, ByVal subs As Variant) As Variant
     ConvertNull = IIf(IsNull(Value), subs, Value)
 End Function
 
-Function FileExists(ByVal FileName As String) As Variant
+Function FileExists(ByVal fileName As String) As Variant
 '---------------------------------------------------------------
 ' Returns variant indicating files existence
 ' -1 (True) : The file exists
@@ -49,8 +49,8 @@ Function FileExists(ByVal FileName As String) As Variant
 ' 68        : The device is unavailable (an unconnected drive)
 
     On Error GoTo AssignErrorCode
-    If (InStr(FileName, "*") = 0) And (InStr(FileName, "?") = 0) Then
-        FileExists = (Dir(FileName) <> "")
+    If (InStr(fileName, "*") = 0) And (InStr(fileName, "?") = 0) Then
+        FileExists = (Dir(fileName) <> "")
     Else
         GoTo AssignErrorCode
     End If
@@ -134,7 +134,7 @@ Function MatchFiles(ByVal HdlWnd As Integer, Criteria() As String, FileArray() A
 '
 
     On Error GoTo Err_MatchFiles
-    Dim FileMatch As String, i As Integer, j As Integer, k As Integer, L As Integer, m As Integer
+    Dim FileMatch As String, i As Integer, j As Integer, K As Integer, L As Integer, m As Integer
     Dim FirstMatch As Variant, Result As String, ArrayMax  As Integer, Completed As Variant
     Dim temp As Variant
     Completed = False
@@ -168,16 +168,16 @@ Function MatchFiles(ByVal HdlWnd As Integer, Criteria() As String, FileArray() A
                 ArrayMax = UBound(FileArray)
                 Do Until i = ArrayMax                                                       ' insertion sort
                     j = i + 1                                                               ' of the array
-                    k = i
+                    K = i
                     Do Until j > ArrayMax
-                        If FileArray(j) < FileArray(k) Then
-                            k = j
+                        If FileArray(j) < FileArray(K) Then
+                            K = j
                         End If
                         j = j + 1
                     Loop
-                    If k <> i Then
-                        temp = FileArray(k)
-                        FileArray(k) = FileArray(i)
+                    If K <> i Then
+                        temp = FileArray(K)
+                        FileArray(K) = FileArray(i)
                         FileArray(i) = temp
                     End If
                     i = i + 1
