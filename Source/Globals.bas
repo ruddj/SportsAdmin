@@ -301,8 +301,8 @@ Public Function Calculate_Competitor_Lane(E_Code, F_Lev, H_Code, Heat)
     Dim Criteria As String, db As Database, RS As Recordset, LRS As Recordset
     
     Set db = DBEngine.Workspaces(0).Databases(0)
-    Set RS = db.OpenRecordset("SELECT * FROM Heats ORDER BY [F_Lev] Desc", DB_OPEN_DYNASET)   ' Create Recordset.
-    Set LRS = db.OpenRecordset("Lanes", DB_OPEN_DYNASET)   ' Create Recordset.
+    Set RS = db.OpenRecordset("SELECT * FROM Heats ORDER BY [F_Lev] Desc", dbOpenDynaset)   ' Create Recordset.
+    Set LRS = db.OpenRecordset("Lanes", dbOpenDynaset)   ' Create Recordset.
     
     Criteria = "[E_Code]=" & E_Code
     RS.FindFirst Criteria
@@ -584,7 +584,7 @@ On Error GoTo Err_CheckIfRecordBroken
             ' There is a previous record
             If Order = "ASC" Then
                 If Res1 <= DMin("[nResult]", "Records", "[E_Code]=" & E_Code) Then
-                    Set RS = CurrentDb.OpenRecordset("CompEvents-with Competitor Names", DB_OPEN_DYNASET)   ' Create dynaset.
+                    Set RS = CurrentDb.OpenRecordset("CompEvents-with Competitor Names", dbOpenDynaset)   ' Create dynaset.
                     Criteria = Criteria & " AND [nResult] = " & Res1
                     RS.FindFirst Criteria
                     While Not (RS.EOF Or RS.NoMatch)
@@ -596,7 +596,7 @@ On Error GoTo Err_CheckIfRecordBroken
     
             Else
                 If Res1 >= DMax("[nResult]", "Records", "[E_Code]=" & E_Code) Then
-                    Set RS = CurrentDb.OpenRecordset("CompEvents-with Competitor Names", DB_OPEN_DYNASET)   ' Create dynaset.
+                    Set RS = CurrentDb.OpenRecordset("CompEvents-with Competitor Names", dbOpenDynaset)   ' Create dynaset.
                     Criteria = Criteria & " AND [nResult] = " & Res1
                     RS.FindFirst Criteria
                     While Not (RS.EOF Or RS.NoMatch)
@@ -611,7 +611,7 @@ On Error GoTo Err_CheckIfRecordBroken
             ' There has been no previous record set
     
             Set db = DBEngine.Workspaces(0).Databases(0)
-            Set RS = db.OpenRecordset("CompEvents-with Competitor Names", DB_OPEN_DYNASET)   ' Create dynaset.
+            Set RS = db.OpenRecordset("CompEvents-with Competitor Names", dbOpenDynaset)   ' Create dynaset.
             Criteria = Criteria & " AND [nResult] = " & Res1
             RS.FindFirst Criteria
             While Not (RS.EOF Or RS.NoMatch)
@@ -825,7 +825,7 @@ On Error GoTo DetermineEventAge_Err
     Dim i As Variant, Eage  As Variant, AgeFil As Variant, AQ As Variant
     
     Q = "SELECT DISTINCT Events.Age FROM Events"
-    Set RS = CurrentDb.OpenRecordset(Q, DB_OPEN_DYNASET)   ' Create dynaset.
+    Set RS = CurrentDb.OpenRecordset(Q, dbOpenDynaset)   ' Create dynaset.
     
     'Stop
 
@@ -1005,7 +1005,7 @@ Function FindLastEntry(uTable, uField As Field)
 
     Dim db As Database, RS As Recordset
     Set db = DBEngine.Workspaces(0).Databases(0)
-    Set RS = db.OpenRecordset(uTable, DB_OPEN_DYNASET)   ' Create Recordset.
+    Set RS = db.OpenRecordset(uTable, dbOpenDynaset)   ' Create Recordset.
     
     RS.MoveLast
     FindLastEntry = RS!uField
@@ -1286,7 +1286,7 @@ Function PromoteEventFinal(E_Code)
     Dim EventsRS As Recordset, EventTypeRS As Recordset
     
     'Set db = DBEngine.Workspaces(0).Databases(0)
-    Set RS = CurrentDb.OpenRecordset("SELECT * FROM Heats ORDER BY [F_Lev] Asc", DB_OPEN_DYNASET)   ' Create Recordset.
+    Set RS = CurrentDb.OpenRecordset("SELECT * FROM Heats ORDER BY [F_Lev] Asc", dbOpenDynaset)   ' Create Recordset.
     Set EventsRS = CurrentDb.OpenRecordset("Events", dbOpenDynaset)
     Set EventTypeRS = CurrentDb.OpenRecordset("EventType", dbOpenDynaset)
     
@@ -1362,13 +1362,13 @@ Function PromoteEventFinal(E_Code)
                 Q = Q & "WHERE CompEvents.E_Code= " & E_Code & " AND CompEvents.F_Lev=" & Promote_FL
                 Q = Q & " ORDER BY " & uOrder
                               
-                Set Crs = CurrentDb.OpenRecordset(Q, DB_OPEN_DYNASET)   ' Create Recordset.
+                Set Crs = CurrentDb.OpenRecordset(Q, dbOpenDynaset)   ' Create Recordset.
     
                 Q = "SELECT DISTINCTROW Heats.E_Code, Heats.F_Lev, Heats.Heat FROM Heats "
                 Q = Q & "WHERE Heats.E_Code=" & E_Code & " AND Heats.F_Lev = " & New_FL
                 
-                Set Hrs = CurrentDb.OpenRecordset(Q, DB_OPEN_DYNASET)   ' Create Recordset.
-                Set NewCRS = CurrentDb.OpenRecordset("CompEvents", DB_OPEN_DYNASET)   ' Create Recordset.
+                Set Hrs = CurrentDb.OpenRecordset(Q, dbOpenDynaset)   ' Create Recordset.
+                Set NewCRS = CurrentDb.OpenRecordset("CompEvents", dbOpenDynaset)   ' Create Recordset.
     
                 Place = 1
                     
@@ -1532,7 +1532,7 @@ Sub SetCurrentFinal(E_Code)
     Dim LastFinalCompleted As Variant, Cur_Flevel As Variant
     
     Set db = DBEngine.Workspaces(0).Databases(0)
-    Set RS = db.OpenRecordset("SELECT * FROM Heats ORDER BY [F_Lev] Desc", DB_OPEN_DYNASET)   ' Create Recordset.
+    Set RS = db.OpenRecordset("SELECT * FROM Heats ORDER BY [F_Lev] Desc", dbOpenDynaset)   ' Create Recordset.
     
     Criteria = "E_Code = " & E_Code & " AND [Completed] = No"
     
@@ -1623,7 +1623,7 @@ Sub Update_Lane_Assignments(E_Code, F_Lev, Heat)
     Dim H_ID As Variant
 
     Set db = DBEngine.Workspaces(0).Databases(0)
-    Set RS = db.OpenRecordset("CompEvents", DB_OPEN_DYNASET)   ' Create Recordset.
+    Set RS = db.OpenRecordset("CompEvents", dbOpenDynaset)   ' Create Recordset.
     
     Criteria = "[E_Code]=" & E_Code & " AND [F_Lev]=" & F_Lev & " AND [Heat]=" & Heat
     RS.FindFirst Criteria
@@ -1756,7 +1756,7 @@ On Error GoTo UpdateEventCompetitorAge_Err
   
   Q = "SELECT DISTINCT Competitors.Age FROM Competitors"
   
-  Set RS = CurrentDb.OpenRecordset(Q, DB_OPEN_DYNASET)   ' Create dynaset.
+  Set RS = CurrentDb.OpenRecordset(Q, dbOpenDynaset)   ' Create dynaset.
   Set CEArs = CurrentDb.OpenRecordset("CompetitorEventAge", dbOpenDynaset)
   
   Do Until CEArs.BOF Or CEArs.EOF
@@ -1821,7 +1821,7 @@ Function Work_AutoEventNumber()
     Dim Criteria As String, db As Database, RS As Recordset, x As Variant
     
     Set db = DBEngine.Workspaces(0).Databases(0)
-    Set RS = db.OpenRecordset("Work-Heats in Some Order", DB_OPEN_DYNASET)   ' Create Recordset.
+    Set RS = db.OpenRecordset("Work-Heats in Some Order", dbOpenDynaset)   ' Create Recordset.
     
     x = 1
     RS.MoveFirst
