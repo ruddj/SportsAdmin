@@ -477,7 +477,7 @@ On Error Resume Next
   Dim x As Integer
   
   For x = 0 To Reports.Count - 1
-    DoCmd.SelectObject A_REPORT, Reports(0).name, False
+    DoCmd.SelectObject A_REPORT, Reports(0).Name, False
     DoCmd.Close
     
   Next x
@@ -553,7 +553,7 @@ On Error GoTo PrintAllReportsBut_Click_Err
   Dim x As Integer, msg As String
   
   For x = 0 To Reports.Count - 1
-    DoCmd.SelectObject A_REPORT, Reports(x).name, False
+    DoCmd.SelectObject A_REPORT, Reports(x).Name, False
     DoCmd.RunCommand acCmdPrint
   Next x
 

@@ -94,8 +94,8 @@ Public Sub SetPropertiesForAllForms(Optional MenuBar, Optional ToolBar, Optional
   Set ctr = dbs.Containers!Forms
   For Each doc In ctr.Documents
     
-    DoCmd.OpenForm doc.name, acDesign
-    Set f = Forms(doc.name)
+    DoCmd.OpenForm doc.Name, acDesign
+    Set f = Forms(doc.Name)
     
     If Not IsMissing(MenuBar) And (Override Or f.MenuBar = "") Then f.MenuBar = MenuBar
     If Not IsMissing(ToolBar) And (Override Or f.ToolBar = "") Then f.ToolBar = ToolBar
@@ -107,8 +107,8 @@ Public Sub SetPropertiesForAllForms(Optional MenuBar, Optional ToolBar, Optional
     'If F.ToolBar = "" Then F.ToolBar = ToolBar
     'If F.ShortcutMenuBar = "" Then F.ShortcutMenuBar = ShortcutMenuBar
   
-    DoCmd.Save acForm, doc.name
-    DoCmd.Close acForm, doc.name
+    DoCmd.Save acForm, doc.Name
+    DoCmd.Close acForm, doc.Name
     
   Next doc
   
@@ -126,8 +126,8 @@ Public Sub SetPropertiesForAllReports(Optional MenuBar, Optional ToolBar, Option
   Set ctr = dbs.Containers!Reports
   For Each doc In ctr.Documents
     
-    DoCmd.OpenReport doc.name, acDesign
-    Set r = Reports(doc.name)
+    DoCmd.OpenReport doc.Name, acDesign
+    Set r = Reports(doc.Name)
     
     If Not IsMissing(MenuBar) And (Override Or r.MenuBar = "") Then r.MenuBar = MenuBar
     If Not IsMissing(ToolBar) And (Override Or r.ToolBar = "") Then r.ToolBar = ToolBar
@@ -135,8 +135,8 @@ Public Sub SetPropertiesForAllReports(Optional MenuBar, Optional ToolBar, Option
     If Not IsMissing(HelpFile) And (Override Or r.HelpFile = "") Then r.HelpFile = HelpFile
     If Not IsMissing(HelpTopic) And (Override Or r.HelpContextId = 0) Then r.HelpContextId = HelpTopic
     
-    DoCmd.Save acReport, doc.name
-    DoCmd.Close acReport, doc.name
+    DoCmd.Save acReport, doc.Name
+    DoCmd.Close acReport, doc.Name
     
   Next doc
   
@@ -211,14 +211,14 @@ On Error GoTo DesignActiveForm_Err
   On Error Resume Next
   
   Dim Ob As String
-  Ob = Screen.ActiveForm.name
+  Ob = Screen.ActiveForm.Name
   
   If Err.Number = 0 Then
     DoCmd.Close acForm, Ob
     DoCmd.OpenForm Ob, acDesign
   Else
     On Error Resume Next
-    Ob = Screen.ActiveReport.name
+    Ob = Screen.ActiveReport.Name
     If Err.Number = 0 Then
       DoCmd.Close acReport, Ob
       DoCmd.OpenReport Ob, acViewDesign
@@ -346,7 +346,7 @@ Public Sub FixSccStatus()
       
       'Stop
       For Each doc In ctr.Documents
-        Call FixSccObjectStatus(intCurrentType, doc.name, True)
+        Call FixSccObjectStatus(intCurrentType, doc.Name, True)
       
       Next
     Next
@@ -424,6 +424,11 @@ End Sub
 ' Show and Hide Development User Interface
 '*******************
 Public Sub UserMode(HideDev As Boolean)
+  On Error Resume Next
+  
+  ' Can Check if runtime using SysCmd(acSysCmdRuntime)
+  ' If SysCmd(acSysCmdRuntime) = False Then
+        'The user is using a full blown version of MS Access
   
   If HideDev Then
     DevelopmentModeSet = False

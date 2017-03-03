@@ -147,25 +147,25 @@ Sub CreateHTMLfile(ByVal fileName As String, ByVal TemplateFilename As String, H
     
 End Sub
 
- Function Heading(level As Integer, T As Variant, Indent As Integer)
+ Function Heading(Level As Integer, T As Variant, Indent As Integer)
     Dim i As Integer
     
     s = ""
-    s = "<H" & Trim(Str(level)) & ">"
+    s = "<H" & Trim(Str(Level)) & ">"
     For i = 1 To Indent
         s = s & "&nbsp;"
     Next
-    s = s & T & "</H" & Trim(Str(level)) & ">" & LFCR()
+    s = s & T & "</H" & Trim(Str(Level)) & ">" & LFCR()
     Heading = s
     
 End Function
 
- Function HeadingEnd(level As Integer)
-    HeadingEnd = "</H" & Trim(Str(level)) & ">" & LFCR()
+ Function HeadingEnd(Level As Integer)
+    HeadingEnd = "</H" & Trim(Str(Level)) & ">" & LFCR()
 End Function
 
-Function HeadingStart(level As Integer)
-    HeadingStart = "<H" & Trim(Str(level)) & ">"
+Function HeadingStart(Level As Integer)
+    HeadingStart = "<H" & Trim(Str(Level)) & ">"
 End Function
 
 Function HTMLend()

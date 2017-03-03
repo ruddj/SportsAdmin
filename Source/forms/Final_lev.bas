@@ -283,7 +283,7 @@ On Error GoTo Err_Create_Click
 
   If AutomaticallyCreateHeatsAndFinals(Me!ET_Code, , , Me!ClearExisting) Then
     Response = MsgBox("Heats and finals have been successfully created.", vbInformation)
-    DoCmd.Close acForm, Me.name
+    DoCmd.Close acForm, Me.Name
   End If
   
 Exit_Create_Click:

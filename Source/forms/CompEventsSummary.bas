@@ -1055,7 +1055,7 @@ End Sub
 
 Private Sub Level_DblClick(Cancel As Integer)
 
-    Me![level] = "*"
+    Me![Level] = "*"
     Me![Summary].Requery
 
 End Sub

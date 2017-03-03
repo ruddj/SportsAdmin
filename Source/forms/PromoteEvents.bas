@@ -190,7 +190,7 @@ End Sub
 
 Private Sub Form_Open(Cancel As Integer)
 
-    Me![txt] = Me.OpenArgs
+    Me![Txt] = Me.OpenArgs
     
 End Sub
 

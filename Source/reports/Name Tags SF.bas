@@ -106,7 +106,7 @@ Dim nFontSize As Variant
 Private Sub Report_Open(Cancel As Integer)
 
   nFontSize = Val(DLookup("[NameTagFontSize]", "Misc-EventLists"))
-  Me!name.FontSize = nFontSize
+  Me!Name.FontSize = nFontSize
   Me!Number.FontSize = nFontSize
   
 End Sub

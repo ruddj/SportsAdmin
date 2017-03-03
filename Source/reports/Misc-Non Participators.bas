@@ -288,7 +288,7 @@ Private Sub PageHeader_Format(Cancel As Integer, FormatCount As Integer)
 End Sub
 
 Private Sub Report_Close()
-  Call CreateReportList(Me.name)
+  Call CreateReportList(Me.Name)
 End Sub
 
 Private Sub Report_NoData(Cancel As Integer)

@@ -56,7 +56,7 @@ Public bolVisible As Boolean    ' Used in Callback "getVisible"
 ' For Sample Callback "GetContent"
 ' Fuer Beispiel Callback "GetContent"
 Public Type ItemsVal
-    id As String
+    ID As String
     label As String
     imageMso As String
 End Type
@@ -134,7 +134,7 @@ Sub GetEnabled(control As IRibbonControl, ByRef enabled)
     ' Setzen der Enabled Eigenschaft eines Ribbon Controls
     ' Weitere Informationen: http://www.accessribbon.de/index.php?Downloads:12
 
-    Select Case control.id
+    Select Case control.ID
         
         Case "btn_crnmtn"
             ' Button
@@ -172,7 +172,7 @@ Sub GetEnabled(control As IRibbonControl, ByRef enabled)
             ' ToggleButton
             ' In Tab:   tab_setup
             ' In Group: grp_crn
-            enabled = True
+            enabled = Not SysCmd(acSysCmdRuntime)
         Case "btn_setutil"
             ' Button
             ' In Tab:   tab_setup
@@ -254,7 +254,7 @@ Sub GetVisible(control As IRibbonControl, ByRef visible)
     ' Setzen der Visible Eigenschaft eines Ribbon Controls
     ' Weitere Informationen: http://www.accessribbon.de/index.php?Downloads:12
 
-    Select Case control.id
+    Select Case control.ID
         
         Case "btn_crnmtn"
             ' Button
@@ -292,7 +292,7 @@ Sub GetVisible(control As IRibbonControl, ByRef visible)
             ' ToggleButton
             ' In Tab:   tab_setup
             ' In Group: grp_crn
-            visible = True
+            visible = Not SysCmd(acSysCmdRuntime)
         Case "grp_crn"
             ' Group:    grp_crn
             ' In Tab:   tab_setup
@@ -400,7 +400,7 @@ Sub GetLabel(control As IRibbonControl, ByRef label)
     ' Callbackname in XML File "getLabel"
     ' To set the property "label" to a Ribbon Control
 
-    Select Case control.id
+    Select Case control.ID
         
 
         Case Else
@@ -414,7 +414,7 @@ Sub GetScreentip(control As IRibbonControl, ByRef screentip)
     ' Callbackname in XML File "getScreentip"
     ' To set the property "screentip" to a Ribbon Control
 
-    Select Case control.id
+    Select Case control.ID
         
 
         Case Else
@@ -428,7 +428,7 @@ Sub GetSupertip(control As IRibbonControl, ByRef supertip)
     ' Callbackname in XML File "getSupertip"
     ' To set the property "supertip" to a Ribbon Control
 
-    Select Case control.id
+    Select Case control.ID
         
 
         Case Else
@@ -442,7 +442,7 @@ Sub GetDescription(control As IRibbonControl, ByRef Description)
     ' Callbackname in XML File "getDescription"
     ' To set the property "description" to a Ribbon Control
 
-    Select Case control.id
+    Select Case control.ID
         
 
         Case Else
@@ -456,7 +456,7 @@ Sub GetTitle(control As IRibbonControl, ByRef Title)
     ' Callbackname in XML File "getTitle"
     ' To set the property "title" to a Ribbon MenuSeparator Control
 
-    Select Case control.id
+    Select Case control.ID
         
 
         Case Else
@@ -474,7 +474,7 @@ Sub OnActionButton(control As IRibbonControl)
     ' Callback for event button click
     ' Callback fuer Button Click
     
-    Select Case control.id
+    Select Case control.ID
         
         Case "btn_crnmtn"
             ' In Tab:   tab_setup
@@ -554,7 +554,7 @@ Sub OnActionButton(control As IRibbonControl)
             If Response = vbYes Then DoCmd.Quit
       
         Case Else
-            MsgBox "Button """ & control.id & """ clicked", vbInformation
+            MsgBox "Button """ & control.ID & """ clicked", vbInformation
     End Select
 
 End Sub
@@ -582,11 +582,11 @@ Sub OnActionCheckBox(control As IRibbonControl, _
     ' Callback for event checkbox click
     ' Callback fuer Checkbox Click
 
-    Select Case control.id
+    Select Case control.ID
         
         
         Case Else
-            MsgBox "The Value of the Checkbox """ & control.id & """ is: " & pressed & vbCrLf, _
+            MsgBox "The Value of the Checkbox """ & control.ID & """ is: " & pressed & vbCrLf, _
                    vbInformation
 
     End Select
@@ -602,7 +602,7 @@ Sub GetPressedCheckBox(control As IRibbonControl, _
     ' Callback fuer Checkbox wie das Control
     ' angezeigt werden soll
 
-    Select Case control.id
+    Select Case control.ID
         
 
         Case Else
@@ -626,7 +626,7 @@ Sub OnActionTglButton(control As IRibbonControl, _
     ' Callback fuer einen Toggle Button Klick
     ' Callback for a Toggle Buttons click event
 
-    Select Case control.id
+    Select Case control.ID
         
         Case "tgb_dev"
             ' In Tab:   tab_setup
@@ -634,7 +634,7 @@ Sub OnActionTglButton(control As IRibbonControl, _
             Call UserMode(Not pressed)
 
         Case Else
-            MsgBox "The Value of the Toggle Button """ & control.id & """ is: " & pressed, _
+            MsgBox "The Value of the Toggle Button """ & control.ID & """ is: " & pressed, _
                    vbInformation
 
     End Select
@@ -647,7 +647,7 @@ Sub GetPressedTglButton(control As IRibbonControl, _
 
     ' Callback for an Access ToogleButton Control. Indicates how the control is displayed
 
-    Select Case control.id
+    Select Case control.ID
         
         Case "tgb_dev"
             ' In Tab:   tab_setup
@@ -680,7 +680,7 @@ Sub GetTextEditBox(control As IRibbonControl, _
     ' Callback for an EditBox Control
     ' Indicates which value is to set to the control
 
-    Select Case control.id
+    Select Case control.ID
         
 
         Case Else
@@ -697,11 +697,11 @@ Sub OnChangeEditBox(control As IRibbonControl, _
     ' Callback Editbox: Rueckgabewert der Editbox
     ' Callback Editbox: Return value of the Editbox
 
-    Select Case control.id
+    Select Case control.ID
         
 
         Case Else
-            MsgBox "The Value of the EditBox """ & control.id & """ is: " & strText, _
+            MsgBox "The Value of the EditBox """ & control.ID & """ is: " & strText, _
                    vbInformation
 
     End Select
@@ -717,14 +717,14 @@ Sub OnActionDropDown(control As IRibbonControl, _
     
     ' Callback onAction (DropDown)
     
-    Select Case control.id
+    Select Case control.ID
         
 
         Case Else
             Select Case selectedId
                 Case Else
-                    MsgBox "The selected ItemID of DropDown-Control """ & control.id & """ is : """ & selectedId & """" & vbCrLf & _
-                           "Die selektierte ItemID des DropDown-Control """ & control.id & """ ist : """ & selectedId & """", _
+                    MsgBox "The selected ItemID of DropDown-Control """ & control.ID & """ is : """ & selectedId & """" & vbCrLf & _
+                           "Die selektierte ItemID des DropDown-Control """ & control.ID & """ ist : """ & selectedId & """", _
                            vbInformation
             End Select
     End Select
@@ -742,7 +742,7 @@ Sub GetSelectedItemIndexDropDown(control As IRibbonControl, _
     varIndex = getTheValue(control.tag, "DefaultValue")
     
     If IsNumeric(varIndex) Then
-        Select Case control.id
+        Select Case control.ID
             
 
             Case Else
@@ -766,7 +766,7 @@ Sub GetSelectedItemIndexGallery(control As IRibbonControl, _
     varIndex = getTheValue(control.tag, "DefaultValue")
     
     If IsNumeric(varIndex) Then
-        Select Case control.id
+        Select Case control.ID
             
 
             Case Else
@@ -785,14 +785,14 @@ Sub OnActionGallery(control As IRibbonControl, _
     
     ' Callback onAction (Gallery)
     
-    Select Case control.id
+    Select Case control.ID
         
 
         Case Else
             Select Case selectedId
                 Case Else
-                    MsgBox "The selected ItemID of Gallery-Control """ & control.id & """ is : """ & selectedId & """" & vbCrLf & _
-                           "Die selektierte ItemID des Gallery-Control """ & control.id & """ ist : """ & selectedId & """", _
+                    MsgBox "The selected ItemID of Gallery-Control """ & control.ID & """ is : """ & selectedId & """" & vbCrLf & _
+                           "Die selektierte ItemID des Gallery-Control """ & control.ID & """ ist : """ & selectedId & """", _
                            vbInformation
             End Select
     End Select
@@ -808,7 +808,7 @@ Sub GetTextComboBox(control As IRibbonControl, _
     
     ' Callback getText (Combobox)
                            
-    Select Case control.id
+    Select Case control.ID
         
 
         Case Else
@@ -825,12 +825,12 @@ Sub OnChangeComboBox(control As IRibbonControl, _
     
     ' Callback onChange (Combobox)
    
-    Select Case control.id
+    Select Case control.ID
         
 
         Case Else
-            MsgBox "The selected Item of Combobox-Control """ & control.id & """ is : """ & strText & """" & vbCrLf & _
-                   "Das selektierte Item des Combobox-Control """ & control.id & """ ist : """ & strText & """", _
+            MsgBox "The selected Item of Combobox-Control """ & control.ID & """ is : """ & strText & """" & vbCrLf & _
+                   "Das selektierte Item des Combobox-Control """ & control.ID & """ ist : """ & strText & """", _
                    vbInformation
     End Select
 
@@ -849,7 +849,7 @@ Sub GetContent(control As IRibbonControl, _
     ' Siehe auch: http://www.accessribbon.de/index.php?Access_-_Ribbons:Callbacks:dynamicMenu_-_getContent
     '       und : http://www.accessribbon.de/?Access_-_Ribbons:Ribbon_XML___Controls:Dynamic_Menu
 
-    Select Case control.id
+    Select Case control.ID
         
 
         Case Else
@@ -873,19 +873,19 @@ Public Function getXMLForDynamicMenu() As String
     Dim strContent  As String
     
     Dim Items(4) As ItemsVal
-    Items(0).id = "btnDy1"
+    Items(0).ID = "btnDy1"
     Items(0).label = "Item 1"
     Items(0).imageMso = "_1"
-    Items(1).id = "btnDy2"
+    Items(1).ID = "btnDy2"
     Items(1).label = "Item 2"
     Items(1).imageMso = "_2"
-    Items(2).id = "btnDy3"
+    Items(2).ID = "btnDy3"
     Items(2).label = "Item 3"
     Items(2).imageMso = "_3"
-    Items(3).id = "btnDy4"
+    Items(3).ID = "btnDy4"
     Items(3).label = "Item 4"
     Items(3).imageMso = "_4"
-    Items(4).id = "btnDy5"
+    Items(4).ID = "btnDy5"
     Items(4).label = "Item 5"
     Items(4).imageMso = "_5"
     
@@ -893,7 +893,7 @@ Public Function getXMLForDynamicMenu() As String
     
         For lngDummy = LBound(Items) To UBound(Items)
             strContent = strContent & _
-                "<button id=""" & Items(lngDummy).id & """" & _
+                "<button id=""" & Items(lngDummy).ID & """" & _
                 " label=""" & Items(lngDummy).label & """" & _
                 " imageMso=""" & Items(lngDummy).imageMso & """" & _
                 " onAction=""OnActionButton""/>" & vbCrLf

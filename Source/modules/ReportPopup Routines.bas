@@ -28,12 +28,12 @@ On Error GoTo CreateReportList_err
     For x = 0 To NumberReports - 1
 '      DoCmd.SelectObject acReport, Reports(x).Name, False
 '      DoCmd.RunCommand acCmdPreviewTwoPages
-      rs.FindFirst "[ReportName]=""" & Reports(x).name & """"
+      rs.FindFirst "[ReportName]=""" & Reports(x).Name & """"
       If rs.NoMatch Then
         rs.AddNew
-        rs![ReportName] = Reports(x).name
+        rs![ReportName] = Reports(x).Name
         If VarEmpty(Reports(x).Caption) Then
-          rs![ReportCaption] = Reports(x).name
+          rs![ReportCaption] = Reports(x).Name
         Else
           rs![ReportCaption] = Reports(x).Caption
         End If
@@ -73,7 +73,7 @@ Public Function CreateReportShortcutMenu()
     Call DeleteReportMenu
 
    ' Create the shortcut menu.
-    Set cmbRightClick = CommandBars.Add(name:=REPORT_MENU, Position:=msoBarPopup, MenuBar:=False, Temporary:=True)
+    Set cmbRightClick = CommandBars.Add(Name:=REPORT_MENU, Position:=msoBarPopup, MenuBar:=False, Temporary:=True)
  
     With cmbRightClick
          

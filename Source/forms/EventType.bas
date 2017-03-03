@@ -920,10 +920,10 @@ Private Sub ET_Sub2_Enter()
     Set PrevControl = Screen.PreviousControl
     
     If IsNull([vE_Code]) Then
-        DoCmd.GoToControl PrevControl.name
+        DoCmd.GoToControl PrevControl.Name
         Response = MsgBox("You must select (or create) a 'Division' before modifying the heats for the division.", vbInformation)
     ElseIf DCount("[PtScale]", "PointsScale") = 0 Then
-        DoCmd.GoToControl PrevControl.name
+        DoCmd.GoToControl PrevControl.Name
         Response = MsgBox("You have not setup any points-scales. You must have setup at least one point-scale before you can setup up a heat.", vbInformation)
 
     End If

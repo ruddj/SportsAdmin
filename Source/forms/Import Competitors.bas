@@ -656,7 +656,7 @@ On Error GoTo Err_ImportData_Click
             Crs!H_ID = H_ID ' DetermineH_ID(Hcode)
             Crs!Age = ActualAge
             Crs!DOB = ActualDOB
-            Crs!id = Nz(ITRS!PIN) ' The new id field gets assigned the school
+            Crs!ID = Nz(ITRS!PIN) ' The new id field gets assigned the school
             Crs!TotPts = 0
 
             Crs.Update

@@ -85,7 +85,7 @@ Function AddField(Db As Database, tableName As String, _
     td.Fields.Append f
     
     If fieldName = "EffectsRecords" Then
-      If tableName = "Heats" Then
+      If False And tableName = "Heats" Then
         Q = "A new field has been added to each heat that enables you to specify whether the heat should effect event records.  "
         Q = Q & "Use this feature to ensure that new records are set only for the events of your choosing, say the grand final races.  "
         MsgBox Q, vbInformation
@@ -242,7 +242,7 @@ On Error GoTo ChangeAgeFieldType_Err
     
     Response = MsgBox(Q, vbQuestion + vbYesNo + vbDefaultButton2)
     If Response = vbYes Then
-      oF.name = "AgeOld"
+      oF.Name = "AgeOld"
       oF.Required = False
       
       Set f = td.CreateField("Age", dbByte)
@@ -712,7 +712,7 @@ CreateNewRelationships: ' On relation problem exit to this point
     On Error GoTo Err_Deleting_Relationships
     
     For j = (NewDB.Relations.Count - 1) To 0 Step -1
-        NewDB.Relations.Delete NewDB.Relations(j).name
+        NewDB.Relations.Delete NewDB.Relations(j).Name
     Next j
     On Error GoTo Err_Creating_Relationships
 
@@ -778,7 +778,7 @@ Function DBPath() As String
     On Error GoTo Err_DBPath
     Dim App As String, Db As Database
     Set Db = DBEngine.Workspaces(0).Databases(0)
-    App = Db.name
+    App = Db.Name
     DBPath = Left$(App, Len(App) - InStr(ReverseString(App), "\") + 1)
 Exit_DBPath:
     Exit Function
@@ -822,21 +822,32 @@ Function Make_File(ByVal fileName As String) As Variant
 
     On Error GoTo Err_Make_File
    
-    Dim Db As Database, WS As Workspace, NewDB As Database, Result As Variant
-    Dim i As Integer, NR  As Relation, nF  As Field, r1 As Recordset, r2 As Recordset           ' Create Access Database
-    Result = False                                                                              ' and move in empty tables
+    Dim Db As Database, WS As Workspace, NewDB As Database, Result As Variant                    ' Create Access Database
+    Dim i As Integer, NR  As Relation, nF  As Field, r1 As Recordset, r2 As Recordset              ' and move in empty tables
+    Dim iTrust As Integer, filePath As String
+            
+    Result = False
+    iTrust = -1
+    Dim StrgSQL As String
     Set WS = DBEngine.Workspaces(0)
     DoCmd.SetWarnings False
     Set NewDB = WS.CreateDatabase(fileName, dbLangGeneral, dbVersion120)
     NewDB.Close
     Set Db = WS.Databases(0)
+    
+    'MsgBox "If the file '" & fileName & "' is not in a trusted location, you will be prompted multiple times with an Access Security Notice. " & _
+   ' "You will need to click multiple times on the Open button to continue.", vbInformation
+    
+    ' This is required as TransferDatabase will give many warning prompts if data file is not in Trusted Location
+    filePath = Left(fileName, InStrRev(fileName, "\") - 1)
+    iTrust = AddTrustedLocation(filePath, "Sports Admin Datafile")
+    
     For i = Db.TableDefs.Count - 1 To 0 Step -1
-        If Left$(Db.TableDefs(i).name, 3) = "zz~" Then
-            DoCmd.TransferDatabase acExport, "Microsoft Access", fileName, acTable, Db.TableDefs(i).name, Right$(Db.TableDefs(i).name, Len(Db.TableDefs(i).name) - 3), False
+        If Left$(Db.TableDefs(i).Name, 3) = "zz~" Then
+            DoCmd.TransferDatabase acExport, "Microsoft Access", fileName, acTable, Db.TableDefs(i).Name, _
+           Right$(Db.TableDefs(i).Name, Len(Db.TableDefs(i).Name) - 3), False
         End If
     Next i
-
-    'Stop
     
     Set NewDB = WS.OpenDatabase(fileName)                                                       ' Add relationships to
     Set r1 = Db.OpenRecordset("zzz~Relationships Main", dbOpenSnapshot, dbForwardOnly)       ' the database tables
@@ -856,12 +867,14 @@ Function Make_File(ByVal fileName As String) As Variant
         r1.MoveNext
     Loop
 
+    DelTrustedLocation (iTrust)
     Result = True
 Exit_Make_File:
     DoCmd.SetWarnings True
     Make_File = Result
     Exit Function
 Err_Make_File:
+    DelTrustedLocation (iTrust)
     MsgBox Error$
     Resume Exit_Make_File
 End Function
@@ -964,7 +977,7 @@ On Error GoTo err_sdc
         Crs!Hphone = CTrs!Hphone
         Crs!Wphone = CTrs!Wphone
         Crs!Age = CTrs!Age
-        Crs!id = CTrs!id
+        Crs!ID = CTrs!ID
         
         Crs.Update
         
@@ -1062,7 +1075,7 @@ Public Sub OpenAlwaysOpenRS()
   Dim V As String
   
   On Error Resume Next
-  V = AlwaysOpenRS.name
+  V = AlwaysOpenRS.Name
   If Err.Number <> 0 Then 'Recordset is not open so open it
     Set AlwaysOpenRS = CurrentDb.OpenRecordset("_AlwaysOpen")
   End If

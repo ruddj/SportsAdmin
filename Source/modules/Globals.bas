@@ -1873,7 +1873,7 @@ End Function
 
 Public Sub QuitSportsAdministrator(f As Form)
 
-  DoCmd.Close acForm, f.name
+  DoCmd.Close acForm, f.Name
   Application.Quit
   
 End Sub
@@ -1976,13 +1976,15 @@ End Function
 
 
 Public Function SportsViewModule() As Boolean
-On Error GoTo SportsViewModule_Err
-
-  If StrConv(Left(CurrentDb.name, 10), vbLowerCase) = "sportsview" Then
-    SportsViewModule = True
-  Else
-    SportsViewModule = False
-  End If
+    On Error GoTo SportsViewModule_Err
+    
+    Dim currentFileName As String
+    currentFileName = StrConv(Left(Application.CurrentProject.Name, 10), vbLowerCase)
+    If currentFileName = "sportsview" Then
+        SportsViewModule = True
+    Else
+        SportsViewModule = False
+    End If
   
 SportsViewModule_Exit:
   Exit Function
