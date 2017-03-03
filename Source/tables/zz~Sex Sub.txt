@@ -1,0 +1,4 @@
+﻿Sex	Sex Sub
+-	Both
+F	Female
+M	Male

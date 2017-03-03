@@ -1,0 +1,7 @@
+﻿HT_Code	Desc
+1	Inter-House
+2	Inter-School
+3	Inter-Class
+4	Inter-Country
+5	Inter-Youth Group
+6	Inter-Church

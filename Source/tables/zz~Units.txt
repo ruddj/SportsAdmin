@@ -1,0 +1,7 @@
+﻿Unit_ID	Unit	DisplayUnit	Order
+1	Seconds	Secs	Asc
+2	Minutes	Mins	Asc
+3	Hours	Hrs	Asc
+4	Meters	m	Desc
+5	Kilometers	Km	Desc
+6	Points	Pts	Desc

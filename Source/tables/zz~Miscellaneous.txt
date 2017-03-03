@@ -1,0 +1,2 @@
+﻿OpenAge	ImportLocation	ExportLocation	ImportFormat	ExcelFormat	TextFormat	CESfuture	CESactive	CEScompleted	CESpromoted	CESflevel	CESmale	CESfemale	CESage	CESevent	CESheatcomplete	CESevent#	Rage	Rsex	Rfinal	Rheat	Rfuture	Ractive	Rcompleted	Rpromoted	CarnivalTitle	CarnivalFooter	Rsummary	Rdetailed	Rentry	Rhead1	Rhead2	Rresults	HouseType
+99			1	False	False	False	False	False	False	*	True	False	*	*	-1	*	*	*	*	*	True	True	True	True	Carnival Title	Hosted by	False	True	False	Lane	Time	False	2

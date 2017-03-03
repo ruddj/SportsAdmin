@@ -1,0 +1,9 @@
+﻿F_Lev	F_Lev_Sub
+0	Grand Final
+1	Semi Final
+2	Quater Final
+3	Round A
+4	Round B
+5	Round C
+6	Round D
+7	Round E

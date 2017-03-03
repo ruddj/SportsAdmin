@@ -1,0 +1,7 @@
+﻿R_Code	Desc	Report	EventReport	LimitedLanes	Flag	Relay	SummaryReport
+7	Track (Limited Lanes ie. 100m etc)	Track (Limited Lanes)	True	True	False	False	Track Small (Limited Lanes)
+8	Track (Unlimited lanes ie 800m, 1500m)	Track (unlimited Lanes)	True	False	False	False	Track Small (Unlimited Lanes)
+9	Field (3 attempts)	Field (3 attempts)	True	False	False	False	
+10	Field (High Jump)	Field (High Jump)	True	False	False	False	
+11	Results Entry Sheets	EventResultsEntrySheet	False	False	False	False	
+12	Relay (Limited Lanes)	Relay (Limited Lanes)	True	True	False	True	
