@@ -9,10 +9,10 @@ Begin Form
     GridY =20
     Width =10972
     ItemSuffix =71
-    Left =7860
-    Top =3780
-    Right =11520
-    Bottom =7590
+    Left =405
+    Top =3015
+    Right =15030
+    Bottom =8415
     AfterDelConfirm ="[Event Procedure]"
     OrderBy ="EnterCompetitorsSF.Place"
     RecSrcDt = Begin
@@ -187,6 +187,7 @@ Begin Form
                     FontName ="Arial"
                 End
                 Begin TextBox
+                    Visible = NotDefault
                     OverlapFlags =85
                     TextAlign =1
                     Left =8677
@@ -235,6 +236,7 @@ Begin Form
                     Name ="Unit"
                     ControlSource ="=[Forms]![EnterCompetitors]![Units]"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                 End
                 Begin TextBox
@@ -252,6 +254,7 @@ Begin Form
                     AfterUpdate ="[Event Procedure]"
                     FontName ="Arial"
                     ControlTipText ="Enter the place gained by the competitor."
+                    HorizontalAnchor =1
 
                 End
                 Begin TextBox
@@ -294,6 +297,7 @@ Begin Form
                     FontName ="Arial"
                     OnNotInList ="[Event Procedure]"
                     ControlTipText ="Select the competitors that are to compete in this event."
+                    HorizontalAnchor =2
 
                 End
                 Begin TextBox
@@ -310,6 +314,7 @@ Begin Form
                     AfterUpdate ="[Event Procedure]"
                     FontName ="Arial"
                     ControlTipText ="Enter the result gained by the competitor."
+                    HorizontalAnchor =1
 
                 End
                 Begin TextBox
@@ -325,6 +330,7 @@ Begin Form
                     Name ="nResult"
                     ControlSource ="nResult"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                 End
                 Begin TextBox
@@ -340,6 +346,7 @@ Begin Form
                     Name ="F_Lev"
                     ControlSource ="F_Lev"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                 End
                 Begin TextBox
@@ -355,6 +362,7 @@ Begin Form
                     Name ="HE_Code"
                     ControlSource ="HE_Code"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                 End
                 Begin TextBox
@@ -370,6 +378,7 @@ Begin Form
                     Name ="E_Code"
                     ControlSource ="E_Code"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                 End
                 Begin TextBox
@@ -385,6 +394,7 @@ Begin Form
                     Name ="Heat"
                     ControlSource ="Heat"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                 End
                 Begin TextBox
@@ -400,9 +410,11 @@ Begin Form
                     Name ="H_ID"
                     ControlSource ="H_ID"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                 End
                 Begin TextBox
+                    Visible = NotDefault
                     Enabled = NotDefault
                     Locked = NotDefault
                     TabStop = NotDefault
@@ -416,6 +428,7 @@ Begin Form
                     ControlSource ="PIN"
                     StatusBarText ="Personal ID Number"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                 End
                 Begin CommandButton
@@ -437,6 +450,7 @@ Begin Form
                         0x000301000000000000000000
                     End
                     ControlTipText ="Relay Team Members / Competitor comment."
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -456,6 +470,7 @@ Begin Form
                     Name ="MemoFld"
                     ControlSource ="Memo"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                 End
                 Begin TextBox
@@ -511,6 +526,7 @@ Begin Form
                         0x000301000000000000000000
                     End
                     ControlTipText ="Delete Competitor"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2

@@ -293,7 +293,6 @@ Begin Report
                 End
                 Begin Chart
                     ColumnHeads = NotDefault
-                    Locked = NotDefault
                     SizeMode =3
                     RowSourceTypeInt =2
                     Left =160
@@ -1326,7 +1325,7 @@ Option Compare Database   'Use database order for string comparisons
 ' Generate HTML Variables and Constants
 Dim sHTML As String, rHTML As String, PageNum As Integer
 Dim LastPage As Integer, DetailCount As Integer, NextPage As String, PrevPage As String
-Dim ReportHead As String, GenerateHTML As Integer, aIndex As Integer
+Dim ReportHead As String, GenerateHTML As Boolean, aIndex As Integer
 Dim ExportOleChart As Boolean
 
 Dim HTM() As HTMarrayType

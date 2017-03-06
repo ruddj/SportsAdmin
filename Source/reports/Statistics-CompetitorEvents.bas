@@ -425,7 +425,7 @@ Option Compare Database   'Use database order for string comparisons
 
 Dim sHTML As String, rHTML As String, PageNum As Integer
 Dim LastPage As Integer, DetailCount As Integer, NextPage As String, PrevPage As String
-Dim ReportHead As String, GenerateHTML As Integer
+Dim ReportHead As String, GenerateHTML As Boolean
 
 Const ReportTitle = "Competitor Results Ordered by House / Name"
 Const repName = "coev" ' Keep to 4 letters or less (and unique from all other reports

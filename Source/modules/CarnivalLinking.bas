@@ -464,22 +464,6 @@ Function Attach_Selected_File2(ByVal IFID As Long, Posi As Variant, HasError As 
     
     Set AlwaysOpenRS = Nothing
     
-    'Stop
-    If DEMO Then
-        Set Db = DBEngine.Workspaces(0).OpenDatabase(fileName)
-        'Stop
-        Set rs = Db.OpenRecordset("Competitors", dbOpenDynaset)   ' Create Recordset.
-        If Not (rs.EOF) Then
-            rs.MoveLast
-            'Stop
-            If rs.RecordCount > DEMOcompetitors Then
-                Response = MsgBox(DEMOmessage2, 16, "Demonstration Version")
-                HasError = True
-                GoTo Exit_Attach_Selected_File2
-            End If
-        End If
-    End If
-
 'Stop
     Posi = InStr(ReverseString(CStr(fileName)), "\")
     If Posi <> 0 Then
@@ -867,14 +851,13 @@ Function Make_File(ByVal fileName As String) As Variant
         r1.MoveNext
     Loop
 
-    DelTrustedLocation (iTrust)
     Result = True
 Exit_Make_File:
+    DelTrustedLocation (iTrust)
     DoCmd.SetWarnings True
     Make_File = Result
     Exit Function
 Err_Make_File:
-    DelTrustedLocation (iTrust)
     MsgBox Error$
     Resume Exit_Make_File
 End Function

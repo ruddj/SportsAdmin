@@ -1,6 +1,8 @@
 ﻿Version =20
 VersionRequired =20
 Begin Form
+    PopUp = NotDefault
+    Modal = NotDefault
     RecordSelectors = NotDefault
     MaxButton = NotDefault
     AutoCenter = NotDefault
@@ -10,15 +12,14 @@ Begin Form
     DefaultView =0
     ScrollBars =0
     ViewsAllowed =1
-    BorderStyle =3
     GridX =20
     GridY =20
     Width =9694
     ItemSuffix =167
-    Left =3960
-    Top =855
-    Right =15645
-    Bottom =9435
+    Left =-21405
+    Top =3300
+    Right =-6960
+    Bottom =12960
     HelpContextId =110
     RecSrcDt = Begin
         0xf2f778be6e4ae240
@@ -33,6 +34,7 @@ Begin Form
         0x010000006801000000000000a10700000100000000000000
     End
     OnLoad ="[Event Procedure]"
+    AllowDatasheetView =0
     FilterOnLoad =0
     AllowLayoutView =0
     Begin
@@ -745,6 +747,7 @@ Begin Form
                     Width =9666
                     BorderColor =12632256
                     Name ="Line166"
+                    HorizontalAnchor =2
                 End
             End
         End
@@ -768,6 +771,8 @@ Begin Form
                     LinkMasterFields ="E_Code;heat;F_Lev"
                     OnEnter ="[Event Procedure]"
                     OnExit ="[Event Procedure]"
+                    HorizontalAnchor =2
+                    VerticalAnchor =2
 
                 End
                 Begin CommandButton
@@ -784,6 +789,7 @@ Begin Form
                     Caption ="Maintain Competitors"
                     OnClick ="[Event Procedure]"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -804,6 +810,7 @@ Begin Form
                     Caption ="Calculate Places"
                     OnClick ="[Event Procedure]"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -824,6 +831,7 @@ Begin Form
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -844,6 +852,7 @@ Begin Form
                     Caption ="Enter Results in Place Order"
                     OnClick ="[Event Procedure]"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -865,6 +874,7 @@ Begin Form
                     Caption ="Help"
                     OnClick ="Open Help"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -881,6 +891,7 @@ Begin Form
                     Name ="OrderBy"
                     AfterUpdate ="[Event Procedure]"
                     DefaultValue ="1"
+                    HorizontalAnchor =1
 
                     Begin
                         Begin Label
@@ -895,6 +906,7 @@ Begin Form
                             Name ="Text139"
                             Caption ="Order by:"
                             FontName ="Arial"
+                            HorizontalAnchor =1
                         End
                         Begin OptionButton
                             OverlapFlags =87
@@ -902,6 +914,7 @@ Begin Form
                             Top =447
                             OptionValue =1
                             Name ="LaneOrder"
+                            HorizontalAnchor =1
 
                             Begin
                                 Begin Label
@@ -916,6 +929,7 @@ Begin Form
                                     Name ="field1111"
                                     Caption ="Lane"
                                     FontName ="Arial"
+                                    HorizontalAnchor =1
                                 End
                             End
                         End
@@ -925,6 +939,7 @@ Begin Form
                             Top =765
                             OptionValue =2
                             Name ="Button143"
+                            HorizontalAnchor =1
 
                             Begin
                                 Begin Label
@@ -939,6 +954,7 @@ Begin Form
                                     Name ="Text144"
                                     Caption ="Name"
                                     FontName ="Arial"
+                                    HorizontalAnchor =1
                                 End
                             End
                         End
@@ -948,6 +964,7 @@ Begin Form
                             Top =1083
                             OptionValue =3
                             Name ="Button145"
+                            HorizontalAnchor =1
 
                             Begin
                                 Begin Label
@@ -962,6 +979,7 @@ Begin Form
                                     Name ="Text146"
                                     Caption ="Place"
                                     FontName ="Arial"
+                                    HorizontalAnchor =1
                                 End
                             End
                         End
@@ -971,6 +989,7 @@ Begin Form
                             Top =1458
                             OptionValue =4
                             Name ="Button155"
+                            HorizontalAnchor =1
 
                             Begin
                                 Begin Label
@@ -985,6 +1004,7 @@ Begin Form
                                     Name ="Text156"
                                     Caption ="Not"
                                     FontName ="Arial"
+                                    HorizontalAnchor =1
                                 End
                             End
                         End
@@ -999,6 +1019,7 @@ Begin Form
                     Name ="QuickTab"
                     AfterUpdate ="[Event Procedure]"
                     DefaultValue ="True"
+                    HorizontalAnchor =1
 
                     Begin
                         Begin Label
@@ -1012,6 +1033,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Label159"
                             Caption ="Quick Tab"
+                            HorizontalAnchor =1
                         End
                     End
                 End

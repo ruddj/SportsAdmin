@@ -29,7 +29,10 @@ Begin Form
     RecordSource ="Miscellaneous"
     Caption ="Utilities"
     HelpFile ="sports.hlp"
-    OnLoad ="[Event Procedure]"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
     FilterOnLoad =0
     AllowLayoutView =0
     Begin
@@ -355,16 +358,6 @@ ClearResults_Click_Err:
 
 End Sub
 
-Private Sub Form_Load()
-
-    If DEMO = True Then
-        Me![CarnivalFooter].Locked = True
-        Me![CarnivalTitle].Locked = True
-    Else
-        Me![CarnivalFooter].Locked = False
-        Me![CarnivalTitle].Locked = False
-    End If
-End Sub
 
 Private Sub Remove_Click()
 

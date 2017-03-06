@@ -1,6 +1,8 @@
 ﻿Version =20
 VersionRequired =20
 Begin Form
+    PopUp = NotDefault
+    Modal = NotDefault
     RecordSelectors = NotDefault
     MaxButton = NotDefault
     MinButton = NotDefault
@@ -10,15 +12,14 @@ Begin Form
     AllowAdditions = NotDefault
     ScrollBars =0
     ViewsAllowed =1
-    BorderStyle =3
     GridX =20
     GridY =20
     Width =9949
     ItemSuffix =78
-    Left =5490
-    Top =1605
-    Right =18225
-    Bottom =10425
+    Left =-20640
+    Top =3375
+    Right =-7785
+    Bottom =13350
     HelpContextId =80
     RecSrcDt = Begin
         0x98553b042dc7e140
@@ -31,6 +32,7 @@ Begin Form
         0x010000006801000000000000a10700000100000001000000
     End
     OnLoad ="[Event Procedure]"
+    AllowDatasheetView =0
     FilterOnLoad =0
     AllowLayoutView =0
     Begin
@@ -129,6 +131,8 @@ Begin Form
                     OnKeyDown ="[Event Procedure]"
                     ControlTipText ="Double-Click an event to manage it (ie. add / remove competitors and enter resul"
                         "ts)."
+                    HorizontalAnchor =2
+                    VerticalAnchor =2
 
                 End
                 Begin CommandButton
@@ -145,6 +149,7 @@ Begin Form
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
                     FontName ="MS Sans Serif"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -320,6 +325,7 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="MS Sans Serif"
                     ControlTipText ="Promote competitors into the next final level for all completed final levels."
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -496,6 +502,7 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="MS Sans Serif"
                     ControlTipText ="Promote competitors into the next final level for the selected event only."
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -619,6 +626,7 @@ Begin Form
                     Caption ="Help"
                     OnClick ="Open Help"
                     FontName ="MS Sans Serif"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -641,6 +649,7 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="MS Sans Serif"
                     ControlTipText ="Manage the competitors in the event selected on the left."
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -689,6 +698,7 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="MS Sans Serif"
                     ControlTipText ="Maintenance Option: Update the status of a final level."
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -1292,7 +1302,8 @@ On Error GoTo err_sdc
     If Not IsNull([Summary]) Then
         PleaseWaitMsg = "Retrieving event data ..."
         DoCmd.RunMacro "ShowPleaseWait"
-        DoCmd.OpenForm "EnterCompetitors", , , "[HE_Code] = " & [Summary], , acDialog
+        'DoCmd.OpenForm "EnterCompetitors", , , "[HE_Code] = " & [Summary], , acDialog
+        DoCmd.OpenForm "EnterCompetitors", , , "[HE_Code] = " & [Summary], , acWindowNormal
         [Summary].Requery
     End If
                      

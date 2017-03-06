@@ -334,7 +334,6 @@ Begin Report
                 End
                 Begin Chart
                     ColumnHeads = NotDefault
-                    Locked = NotDefault
                     SizeMode =3
                     RowSourceTypeInt =2
                     Left =1133
@@ -919,7 +918,7 @@ Option Compare Database   'Use database order for string comparisons
 Dim sHTML As String, rHTML As String, PageNum As Integer
 Dim LastPage As Integer, DetailCount As Integer, NextPage As String, PrevPage As String
 Dim ReportHead As String
-Dim GenerateHTML As Integer
+Dim GenerateHTML As Boolean
 Dim ExportOleChart As Boolean
 
 Const ReportTitle = "Overall Statistical Summary - Ordered by Grand Total"

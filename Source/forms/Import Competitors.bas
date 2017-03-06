@@ -581,17 +581,8 @@ On Error GoTo Err_ImportData_Click
       Cname = ITRS!Gname & " " & ITRS!Sname & " (" & UCase(ITRS!H_Code) & ")"
       Response = 0
     
-      If DEMO Then
-        
-        If DCount("[PIN]", "Competitors") >= (DEMOcompetitors) Then
-          Response = MsgBox(DEMOmessage, 16, "Demonstration Version")
-          Continue = False
-        End If
-      End If
       
-      If Not Continue Then
-        ' Want to abort due to DEMO having too many competitors
-      ElseIf IsNull(ITRS!Gname) Then
+      If IsNull(ITRS!Gname) Then
         Response = MsgBox("The GIVEN NAME for competitor " & Cname & " is not complete.  Please fix the entry and import the file again.  Do you wish to continue?", 20, "Import Competitors")
       ElseIf IsNull(ITRS!Sname) Then
         Response = MsgBox("The SURNAME for competitor " & Cname & " is not complete.  Please fix the entry and import the file again.  Do you wish to continue?", 20, "Import Competitors")

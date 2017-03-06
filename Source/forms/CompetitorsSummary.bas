@@ -335,14 +335,6 @@ Dim UpdateCompetitorsOrdered
 Private Sub AddBut_Click()
 On Error GoTo Err_AddBut_Click
 
-    If DEMO Then
-    
-        If DCount("[PIN]", "Competitors") >= (DEMOcompetitors) Then
-            Response = MsgBox(DEMOmessage, vbCritical, "Demonstration Version")
-            GoTo Exit_AddBut_Click
-        End If
-    End If
-
     Call MaintainCompetitor("ADD", 0)
     UpdateCompetitorsOrdered = True
     Me!Summary.Requery

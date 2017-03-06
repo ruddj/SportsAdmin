@@ -28,7 +28,6 @@ Begin Form
     End
     RecordSource ="Competitors-Temp"
     Caption ="Competitors"
-    BeforeInsert ="[Event Procedure]"
     BeforeUpdate ="[Event Procedure]"
     OnClose ="[Event Procedure]"
     HelpFile ="Sports.hlp"
@@ -772,14 +771,6 @@ End Sub
 
 Private Sub Button56_Click()
 On Error GoTo Err_Button56_Click
-
-
-    If DEMO Then
-        If DCount("[PIN]", "Competitors") >= (DEMOcompetitors - 1) Then
-            Response = MsgBox(DEMOmessage, 16, "Demonstration Version")
-            GoTo Exit_Button56_Click
-        End If
-    End If
     
     DoCmd.GoToRecord , , A_NEWREC
 
@@ -935,16 +926,6 @@ Private Function FindFirstName(fn)
 
 End Function
 
-Private Sub Form_BeforeInsert(Cancel As Integer)
-
-    If DEMO Then
-        If DCount("[PIN]", "Competitors") >= (DEMOcompetitors) Then
-            Response = MsgBox(DEMOmessage, vbCritical, "Demonstration Version")
-            Cancel = True
-        End If
-    End If
-
-End Sub
 
 Private Sub Form_BeforeUpdate(Cancel As Integer)
 

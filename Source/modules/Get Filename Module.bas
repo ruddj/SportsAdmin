@@ -41,6 +41,7 @@ Function ConvertNull(ByVal Value As Variant, ByVal subs As Variant) As Variant
 End Function
 
 'Function FileExists(ByVal fileName As String) As Variant
+'' Commented out as smae function name in VCS_Dir
 ''---------------------------------------------------------------
 '' Returns variant indicating files existence
 '' -1 (True) : The file exists
