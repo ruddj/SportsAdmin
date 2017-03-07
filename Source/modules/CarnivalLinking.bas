@@ -456,7 +456,7 @@ Function Attach_Selected_File2(ByVal IFID As Long, Posi As Variant, HasError As 
 ' Note: Use function [Attach_Selected_File] if you want to be given a file selection window
 
     On Error GoTo Err_Attach_Selected_File2
-    Dim MyDB As Database, ITable As Recordset, SpecifiedPath As Variant, TT As TableDef, FTable As Recordset
+    Dim MyDb As Database, ITable As Recordset, SpecifiedPath As Variant, TT As TableDef, FTable As Recordset
     Dim DataExists As Variant, MyWS As Workspace, CPath  As Variant, AskUser  As Variant
     Dim Result As Variant, ReturnVal As Variant, Db As Database, rs As Recordset, Response As Variant
     ReturnVal = True
@@ -478,29 +478,29 @@ Function Attach_Selected_File2(ByVal IFID As Long, Posi As Variant, HasError As 
         HasError = EnsureDatabaseVersionIsCurrent(fileName)
         
         Set MyWS = DBEngine.Workspaces(0)
-        Set MyDB = CurrentDb
+        Set MyDb = CurrentDb
 
         'Call CheckRelationships(Filename)
 
         MyWS.BeginTrans
         On Error GoTo WKAttach_Selected_File2Error                                               ' Check Attachments
-        Set ITable = MyDB.OpenRecordset("SELECT * FROM [Inventory Attached Tables] ORDER BY [Table Name]")
+        Set ITable = MyDb.OpenRecordset("SELECT * FROM [Inventory Attached Tables] ORDER BY [Table Name]")
         Do Until ITable.EOF
           TableCount = TableCount + 1
             On Error Resume Next
-            Set TT = MyDB.TableDefs(ITable![Table Name])
+            Set TT = MyDb.TableDefs(ITable![Table Name])
             If Err = 0 Then
                 On Error GoTo WKAttach_Selected_File2Error
                 TT.connect = ";DATABASE=" & CStr(fileName)
                 SysCmd acSysCmdSetStatus, "Refreshing table: " & ITable![Table Name]
                 TT.RefreshLink
             Else
-                Set TT = MyDB.CreateTableDef(ITable![Table Name])
+                Set TT = MyDb.CreateTableDef(ITable![Table Name])
                 On Error GoTo WKAttach_Selected_File2Error
                 TT.connect = ";DATABASE=" & CStr(fileName)
                 TT.SourceTableName = ITable![Table Name]
                 GlobalVariable = SysCmd(acSysCmdSetStatus, "Attaching table: " & ITable![Table Name])
-                MyDB.TableDefs.Append TT
+                MyDb.TableDefs.Append TT
                 TT.RefreshLink
             End If
             ITable.MoveNext
@@ -547,20 +547,20 @@ Function CheckInventoryAttached() As Variant
     Set AlwaysOpenRS = Nothing
     
     On Error GoTo Err_CheckInventoryData
-    Dim MyDB As Database, ITable As Recordset, SpecifiedPath As Variant, TT As TableDef, FTable As Recordset, TB  As TableDef
+    Dim MyDb As Database, ITable As Recordset, SpecifiedPath As Variant, TT As TableDef, FTable As Recordset, TB  As TableDef
     Dim DataExists As Variant, MyWS As Workspace, CPath  As Variant, AskUser  As Variant, LTable As Recordset
     Dim DefaultLoc As Variant, DefaultLoc2 As Variant, Dummy As Variant, fileName As String, RPath As String, RFile As String
     Dim WhereCDF As Variant, RFPath As Variant, Response As Variant, filePath As Variant
 
 '    Stop
     Set MyWS = DBEngine.Workspaces(0)
-    Set MyDB = MyWS.Databases(0)
-    Set ITable = MyDB.OpenRecordset("Inventory Attached Tables", dbOpenDynaset)
+    Set MyDb = MyWS.Databases(0)
+    Set ITable = MyDb.OpenRecordset("Inventory Attached Tables", dbOpenDynaset)
     DoCmd.SetWarnings False
     
     DoCmd.RunSQL "UPDATE DISTINCTROW Carnivals SET Carnivals.Available = FileExists(GetCarnivalFullDir([Relative Directory]) & [Filename]);"
     DoCmd.SetWarnings True
-    Set TB = MyDB.TableDefs("Competitors")
+    Set TB = MyDb.TableDefs("Competitors")
     fileName = UCase$(Right$(TB.connect, Len(TB.connect) - InStr(TB.connect, "=")))
     filePath = Left$(fileName, Len(fileName) - InStr(ReverseString(fileName), "\") + 1)
     
@@ -583,21 +583,21 @@ Function CheckInventoryAttached() As Variant
       Do Until ITable.EOF
         TableCount = TableCount + 1
         On Error Resume Next
-        Set TT = MyDB.TableDefs(ITable![Table Name])
+        Set TT = MyDb.TableDefs(ITable![Table Name])
         If Err = 0 Then
             On Error GoTo WKError
             TT.connect = ";DATABASE=" & fileName
             TT.RefreshLink
         Else
             On Error Resume Next
-            Set TT = MyDB.CreateTableDef(ITable![Table Name])
+            Set TT = MyDb.CreateTableDef(ITable![Table Name])
             
             If Err.Number = 0 Or Err.Number = 3012 Then GoTo WKError ' 3012: Table already exists
             On Error GoTo WKError
             
             TT.connect = ";DATABASE=" & fileName
             TT.SourceTableName = ITable![Table Name]
-            MyDB.TableDefs.Append TT
+            MyDb.TableDefs.Append TT
             TT.RefreshLink
             
             

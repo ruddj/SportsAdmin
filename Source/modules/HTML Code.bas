@@ -52,7 +52,7 @@ Sub CellStart(HTML As String, Align As String, Valign As String, vWidth As Strin
     If Align <> "" Then s = s & " ALIGN=" & Align
     If Valign <> "" Then s = s & " VALIGN=" & Valign
     If vWidth <> "" Then s = s & " Width=""" & vWidth & """"
-    If BGcolor <> "" Then s = s & " BGCOLOR=""" & BGcolor & """"
+    If BGcolor <> "" Then s = s & " bgcolor=""" & BGcolor & """"
     s = s & ">"
     
     HTML = HTML & s
@@ -151,35 +151,35 @@ End Sub
     Dim i As Integer
     
     s = ""
-    s = "<H" & Trim(Str(Level)) & ">"
+    s = "<h" & Trim(Str(Level)) & ">"
     For i = 1 To Indent
         s = s & "&nbsp;"
     Next
-    s = s & T & "</H" & Trim(Str(Level)) & ">" & LFCR()
+    s = s & T & "</h" & Trim(Str(Level)) & ">" & LFCR()
     Heading = s
     
 End Function
 
  Function HeadingEnd(Level As Integer)
-    HeadingEnd = "</H" & Trim(Str(Level)) & ">" & LFCR()
+    HeadingEnd = "</h" & Trim(Str(Level)) & ">" & LFCR()
 End Function
 
 Function HeadingStart(Level As Integer)
-    HeadingStart = "<H" & Trim(Str(Level)) & ">"
+    HeadingStart = "<h" & Trim(Str(Level)) & ">"
 End Function
 
 Function HTMLend()
-    HTMLend = "</BODY>" & LFCR() & "</HTML>"
+    HTMLend = "</body>" & LFCR() & "</html>"
 End Function
 
 Function HTMLStart(Title As String, Author As String)
 
-    s = "<HTML>" & LFCR() & "<HEAD>" & LFCR()
-    s = s & "<META HTTP-EQUIV=""Content-Type"" CONTENT=""text/html; charset=iso-8859-1"">" & LFCR()
-    s = s & "<META NAME=""Author"" CONTENT=""" & Author & """>" & LFCR()
-    s = s & "<TITLE>" & Title & "</TITLE>" & LFCR()
-    s = s & "</HEAD>" & LFCR()
-    s = s & "<BODY>" & LFCR()
+    s = "<html>" & LFCR() & "<head>" & LFCR()
+    s = s & "<meta HTTP-EQUIV=""Content-Type"" CONTENT=""text/html; charset=iso-8859-1"">" & LFCR()
+    s = s & "<meta NAME=""Author"" CONTENT=""" & Author & """>" & LFCR()
+    s = s & "<title>" & Title & "</title>" & LFCR()
+    s = s & "</head>" & LFCR()
+    s = s & "<body>" & LFCR()
 
     HTMLStart = s
     
@@ -202,15 +202,15 @@ Function Indent(Count As Integer)
 End Function
 
 Function Link(LinkSource As String, T As String)
-    Link = "<A HREF=""" & LinkSource & """>" & T & "</A>"
+    Link = "<a href=""" & LinkSource & """>" & T & "</a>"
 End Function
 
 Function LinkEnd()
-    LinkEnd = "</A>"
+    LinkEnd = "</a>"
 End Function
 
 Function LinkStart(Link As String)
-    LinkStart = "<A HREF=""" & Link & """>"
+    LinkStart = "<a href=""" & Link & """>"
 End Function
 
 Function ParaStart()
@@ -250,24 +250,24 @@ End Sub
 
 Sub TableEnd(HTML As String)
 
-    HTML = HTML & "</TABLE>" & LFCR()
+    HTML = HTML & "</table>" & LFCR()
     
 End Sub
 
 Sub TableStart(HTML As String, vWidth As String, Height As String, BGcolor As String, Caption As String, Border As Integer)
-    s = "<TABLE"
+    s = "<table"
     If vWidth <> "" Then s = s & " Width=""" & vWidth & """ "
     If Height <> "" Then s = s & " HEIGHT=""" & Height & """ "
     If BGcolor <> "" Then
-        s = s & " BGCOLOR=""#" & BGcolor & """"
+        s = s & " bgcolor=""#" & BGcolor & """"
     Else
-        s = s & " BGCOLOR=""" & cWhite & """"
+        s = s & " bgcolor=""" & cWhite & """"
     End If
     s = s & " BORDER=" & Border
     s = s & ">"
     If Caption <> "" Then s = s & "<CAPTION>" & Caption & "</CAPTION>"
 
-    HTML = HTML & s
+    HTML = HTML & s & LFCR()
 
 End Sub
 

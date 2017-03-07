@@ -1,0 +1,30 @@
+body {
+    background-color: white;
+}
+
+h1 {
+    color: navy;
+    margin-left: 20px;
+}
+
+tr:nth-child(even) {background: #CCC}
+tr:nth-child(odd) {background: #FFF}
+
+/* Format for Grouping row */
+tr .groupRow {}
+
+tr .groupHeader {
+	background: #EEE8D2
+	font-weight: bold
+}
+
+
+/* Formattting For cells */
+
+td .place, td .result {
+	text-align: center
+}
+
+td .name {
+	text-align: left
+}

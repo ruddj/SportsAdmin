@@ -17,10 +17,10 @@ Begin Form
     GridY =20
     Width =10956
     ItemSuffix =113
-    Left =4935
-    Top =1155
-    Right =15885
-    Bottom =7830
+    Left =690
+    Top =1725
+    Right =11640
+    Bottom =8400
     HelpContextId =270
     RecSrcDt = Begin
         0x49d6923c4fcce140
@@ -33,6 +33,7 @@ Begin Form
         0x010000006801000000000000a10700000100000001000000
     End
     OnActivate ="[Event Procedure]"
+    AllowDatasheetView =0
     FilterOnLoad =0
     AllowLayoutView =0
     RibbonName ="SportsMenu"

@@ -105,7 +105,7 @@ Begin Form
                         0xffffffff52006f006f007400200045006e007400720079000000000000000000 ,
                         0x0000000000000000000000000000000000000000000000000000000000000000 ,
                         0x0000000016000500ffffffffffffffff020000000a00030000000000c0000000 ,
-                        0x00000046000000000000000000000000d04a6e5c1496d2010300000000010000 ,
+                        0x0000004600000000000000000000000090b839c42196d2010300000000010000 ,
                         0x0000000001004f006c0065000000000000000000000000000000000000000000 ,
                         0x0000000000000000000000000000000000000000000000000000000000000000 ,
                         0x000000000a000201ffffffffffffffffffffffff000000000000000000000000 ,
@@ -1075,8 +1075,8 @@ Begin Form
                     Height =510
                     FontSize =9
                     Name ="Text1"
-                    Caption ="Orignally developed by Andrew Rogers in conjunction \015\012with Christian Outre"
-                        "ach College, Brisbane."
+                    Caption ="Originally developed by Andrew Rogers in conjunction \015\012with Christian Outr"
+                        "each College, Brisbane."
                     FontName ="Arial"
                     LayoutCachedLeft =360
                     LayoutCachedTop =5265

@@ -684,7 +684,7 @@ End Sub
 Private Sub locateCarnival()
 
     On Error GoTo Err_locateCarnival
-    Dim MyDB As Database, ITable As Recordset, SpecifiedPath As Variant, TT As TableDef, FTable As Recordset
+    Dim MyDb As Database, ITable As Recordset, SpecifiedPath As Variant, TT As TableDef, FTable As Recordset
     Dim DataExists As Variant, MyWS As Workspace, CPath  As Variant, AskUser  As Variant
     Dim Result As Variant, ReturnVal As Variant, Db As Database
     Dim NewDir As String, OldDB As String, NextCarn As String
@@ -714,11 +714,11 @@ Private Sub locateCarnival()
         Result = Trim$(Result)
         If InStr(ReverseString(CStr(Result)), "\") <> 0 Then
             Set MyWS = DBEngine.Workspaces(0)
-            Set MyDB = MyWS.Databases(0)
+            Set MyDb = MyWS.Databases(0)
             Set Db = MyWS.OpenDatabase(Result)
-            Set ITable = MyDB.OpenRecordset("SELECT * FROM [Inventory Attached Tables] Where [IF ID] = 2;")
+            Set ITable = MyDb.OpenRecordset("SELECT * FROM [Inventory Attached Tables] Where [IF ID] = 2;")
             Do Until ITable.EOF
-                Set TT = MyDB.TableDefs(ITable![Table Name])
+                Set TT = MyDb.TableDefs(ITable![Table Name])
                 ITable.MoveNext
             Loop
             ITable.Close

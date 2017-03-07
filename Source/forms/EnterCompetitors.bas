@@ -1105,7 +1105,7 @@ Private Sub EnterResultsInPlaceOrderBut_Click()
 On Error GoTo EnterResultsInPlaceOrderBut_Click_Err
 
     Dim Criteria As String, Db As Database, rs As Recordset
-    Dim MyDB As Database, MySet As Recordset, Q As Variant, x As Variant, i As Variant, Place As Variant, Lane As Variant
+    Dim MyDb As Database, MySet As Recordset, Q As Variant, x As Variant, i As Variant, Place As Variant, Lane As Variant
     Dim NewTitle As String, Criteria1 As Variant, ECrs As Recordset
     Dim success As Boolean
     
@@ -1258,7 +1258,7 @@ End Sub
 
 Private Sub CalculatePlacesBut_Click()
 
-    Dim Criteria As String, MyDB As Database, MySet As Recordset
+    Dim Criteria As String, MyDb As Database, MySet As Recordset
     Dim NewTitle As String, Response As Variant, OK As Variant
         
     'If Not [HeatComplete] Then

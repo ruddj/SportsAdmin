@@ -247,7 +247,7 @@ End Sub
 
 Private Sub Form_BeforeDelConfirm(Cancel As Integer, Response As Integer)
 
-    Dim MyDB As Database
+    Dim MyDb As Database
 
     Response = MsgBox("Deleting this heat will remove any competitors that may be enrolled in the heat.  Do you want to continue?", 17)
     
@@ -255,7 +255,7 @@ Private Sub Form_BeforeDelConfirm(Cancel As Integer, Response As Integer)
         Cancel = 1
     Else
     
-        Set MyDB = DBEngine.Workspaces(0).Databases(0)
+        Set MyDb = DBEngine.Workspaces(0).Databases(0)
       
         Q = "DELETE DISTINCTROW Heats.E_Code, Heats.Heat "
         Q = Q & "FROM Heats "
@@ -263,7 +263,7 @@ Private Sub Form_BeforeDelConfirm(Cancel As Integer, Response As Integer)
         Q = Q & ") AND (Heats.Heat= " & Forms![EventType]![ET_Sub].Form![Heat]
         Q = Q & "))"
 
-        MyDB.Execute (Q)
+        MyDb.Execute (Q)
         
         
     End If

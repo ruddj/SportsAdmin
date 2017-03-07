@@ -721,7 +721,7 @@ Private Sub Age_BeforeUpdate(Cancel As Integer)
 
     
     Cancel = False
-    Dim MyDB As Database
+    Dim MyDb As Database
 
     OriginalValue = Forms![Competitors]![Age].OldValue
     x = Forms![Competitors]![Age]
@@ -738,10 +738,10 @@ Private Sub Age_BeforeUpdate(Cancel As Integer)
             
             If Conti = 6 Then
                 
-                Set MyDB = DBEngine.Workspaces(0).Databases(0)
+                Set MyDb = DBEngine.Workspaces(0).Databases(0)
                 q1 = "Delete * from CompEvents Where PIN="
                 q1 = q1 & Me![PIN]
-                MyDB.Execute (q1)
+                MyDb.Execute (q1)
     
             Else
                 Cancel = True
@@ -877,7 +877,7 @@ End Sub
 
 Private Sub Field66_BeforeUpdate(Cancel As Integer)
     Cancel = False
-    Dim MyDB As Database
+    Dim MyDb As Database
 
     OriginalValue = Forms![Competitors]![Age].OldValue
     x = Forms![Competitors]![Age]
@@ -888,10 +888,10 @@ Private Sub Field66_BeforeUpdate(Cancel As Integer)
         
         If Conti = vbYes Then
             
-            Set MyDB = DBEngine.Workspaces(0).Databases(0)
+            Set MyDb = DBEngine.Workspaces(0).Databases(0)
             q1 = "Delete * from CompEvents Where PIN="
             q1 = q1 & Forms![Competitors]![PIN]
-            MyDB.Execute (q1)
+            MyDb.Execute (q1)
 
         Else
             Cancel = True

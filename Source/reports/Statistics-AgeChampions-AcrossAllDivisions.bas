@@ -316,12 +316,14 @@ Option Compare Database   'Use database order for string comparisons
 Option Explicit
 
 Dim DisplayRecords As Variant
+Dim GroupName As String
+Dim LastName As String
 Dim NumberToDisplay As Variant
 
 ' Generate HTML Variables and Constants
 Dim sHTML As String, rHTML As String, PageNum As Integer, OldPg As Integer
 Dim LastPage As Integer, DetailCount As Integer, NextPage As String, PrevPage As String
-Dim ReportHead As String, GenerateHTML As Boolean, aIndex As Integer
+Dim ReportHead As String, GenerateHTML As Integer, aIndex As Integer
 
 Dim HTM() As HTMarrayType
 
@@ -348,49 +350,52 @@ Private Sub Detail1_Format(Cancel As Integer, FormatCount As Integer)
 On Error Resume Next
 
     'If Me!fullname = "BRADY, Naomi" Then Stop
-    If DisplayRecords >= NumberToDisplay Then
+    If DisplayRecords >= NumberToDisplay Or FormatCount > 1 Then
         Cancel = True
+        Exit Sub
     End If
 
-    DisplayRecords = DisplayRecords + 1
+    If LastName <> Me!Fullname Then
+        DisplayRecords = DisplayRecords + 1
 
-
-    '*** HTML Generation Code Start ***
+        '*** HTML Generation Code Start ***
+        
+        If GenerateHTML And Not Cancel And FormatCount = 1 Then
+            
+            DetailCount = DetailCount + 1
+            
+            If DetailCount Mod 2 = 0 Then BGcolor = cWhite Else BGcolor = cLightGray
+            
+            rHTML = ""
+            Call RowStart(rHTML)
+            
+            Call CellStart(rHTML, "Center", "", "", BGcolor, 1)
+            Call SpaceIndent(rHTML, 2)
+            Call Text(rHTML, "", "", Me!Position)
+            Call CellEnd(rHTML)
     
-    If GenerateHTML And Not Cancel And FormatCount = 1 Then
-        
-        DetailCount = DetailCount + 1
-        
-        If DetailCount Mod 2 = 0 Then BGcolor = cWhite Else BGcolor = cLightGray
-        
-        rHTML = ""
-        Call RowStart(rHTML)
-        
-        Call CellStart(rHTML, "Center", "", "", BGcolor, 1)
-        Call SpaceIndent(rHTML, 2)
-        Call Text(rHTML, "", "", Me!Position)
-        Call CellEnd(rHTML)
-
-        Call CellStart(rHTML, "", "", "", BGcolor, 1)
-        Call Text(rHTML, "", "", Me!Fullname)
-        Call CellEnd(rHTML)
-        
-        Call CellStart(rHTML, "Center", "", "", BGcolor, 1)
-        Call Text(rHTML, "", "", Me!H_NAme)
-        Call CellEnd(rHTML)
-        
-        Call CellStart(rHTML, "Center", "", "", BGcolor, 1)
-        Call Text(rHTML, "", "", Me!SumOfPoints)
-        Call CellEnd(rHTML)
-        
-        Call RowEnd(rHTML)
-
-        
-        Call AddToArray(Me!AgeSex, rDetail, rHTML)
-    End If
+            Call CellStart(rHTML, "", "", "", BGcolor, 1)
+            Call Text(rHTML, "", "", Me!Fullname)
+            Call CellEnd(rHTML)
+            
+            Call CellStart(rHTML, "Center", "", "", BGcolor, 1)
+            Call Text(rHTML, "", "", Me!H_NAme)
+            Call CellEnd(rHTML)
+    
+            Call CellStart(rHTML, "Center", "", "", BGcolor, 1)
+            Call Text(rHTML, "", "", Me!SumOfPoints)
+            Call CellEnd(rHTML)
+            
+            Call RowEnd(rHTML)
+    
+            
+            Call AddToArray(Me!AgeSex, rDetail, rHTML)
+        End If
 
     '*** HTML Generation Code End ***
-
+    End If
+    
+    LastName = Me!Fullname
 
 End Sub
 
@@ -457,8 +462,10 @@ End Sub
 Private Sub GroupHeader0_Format(Cancel As Integer, FormatCount As Integer)
     
 On Error Resume Next
-
-    DisplayRecords = 0
+    If (Me!AgeSex <> GroupName) Then
+        DisplayRecords = 0
+        GroupName = Me!AgeSex
+    End If
 
     '*** HTML Generation Code Start ***
     If GenerateHTML Then
@@ -466,7 +473,6 @@ On Error Resume Next
     End If
 
 End Sub
-
 Private Sub PageFooter2_Format(Cancel As Integer, FormatCount As Integer)
 
 On Error Resume Next
@@ -530,7 +536,8 @@ On Error Resume Next
     ReportHead = DLookup("[ReportHeader]", "MiscHTML")
     ' ***************************
 
-    DisplayRecords = 0
+    DisplayRecords = 1
+    GroupName = Me!AgeSex
     NumberToDisplay = DLookup("[AgeChampionNumber]", "Misc-Statistics")
     If IsNull(NumberToDisplay) Then
       NumberToDisplay = 1
@@ -555,7 +562,7 @@ Dim eHTML As String, AlleHTML As String, sEvents As String
         rHTML = ""
         Call TableEnd(rHTML)
     
-        'Debug.Print "RF - FormatCount="; FormatCount; " Page="; PageNum;  me!Etdes
+        Debug.Print "RF - FormatCount="; FormatCount; " Page="; PageNum; Me!ETdes
         Call AddToArray(Me!AgeSex, False, rHTML)
         
         Template = DLookup("[TemplateFile]", "MiscHTML")
