@@ -23,6 +23,7 @@ Statistics-Event	Statistics-Event	False
 Statistics-EventPlaces	Statistics-EventPlaces	False
 Statistics-EventTimesOverallAsc	Event Results - Best	False
 Statistics-Overall	Overall Statistics	False
+Statistics-Overall%	Statistics-Overall%	False
 Statistics-PointByEventNumber	Cumulative Points	False
 Statistics-Sex	Statistics-Sex	False
 Track (Limited Lanes)	Limited Lanes Detailed List	False

@@ -16,7 +16,7 @@ Begin Report
     RecordSource ="Statistics-Age Champion"
     Caption ="Statistics-Age Champion"
     OnOpen ="[Event Procedure]"
-    OnClose ="ReportPopup-Update"
+    OnClose ="[Event Procedure]"
     PrtMip = Begin
         0x350200003502000045020000d002000000000000a02900005401000001000000 ,
         0x010000006801000000000000a10700000100000000000000
@@ -66,7 +66,6 @@ Begin Report
         Begin FormHeader
             KeepTogether = NotDefault
             Height =0
-            OnFormat ="[Event Procedure]"
             Name ="ReportHeader0"
         End
         Begin PageHeader
@@ -300,7 +299,6 @@ Begin Report
         Begin FormFooter
             KeepTogether = NotDefault
             Height =0
-            OnFormat ="[Event Procedure]"
             Name ="ReportFooter1"
         End
     End
@@ -514,32 +512,8 @@ On Error Resume Next
 
 End Sub
 
-Private Sub Report_Open(Cancel As Integer)
 
-On Error Resume Next
-
-    ' *** HTML Creation Code ***
-    GenerateHTML = GlobalGenerateHTML
-    If GenerateHTML Then
-        aIndex = 0
-        PleaseWaitMsg = "Preparing HTML for """ & ReportTitle & """.  Please wait..."
-        DoCmd.RunMacro "ShowPleaseWait"
-    End If
-    
-    PageNum = 0
-    ReportHead = DLookup("[ReportHeader]", "MiscHTML")
-    ' ***************************
-
-    DisplayRecords = 0
-    NumberToDisplay = DLookup("[AgeChampionNumber]", "Misc-Statistics")
-    If IsNull(NumberToDisplay) Then
-      NumberToDisplay = 1
-    End If
-    Call UpdateEventCompetitorAge
-
-End Sub
-
-Private Sub ReportFooter1_Format(Cancel As Integer, FormatCount As Integer)
+Private Sub Report_Close()
 
 On Error Resume Next
 
@@ -684,20 +658,31 @@ Dim eHTML As String, AlleHTML As String, sEvents As String
 
 
     End If
-
+    
+    DoCmd.RunMacro "ReportPopup-Update"
 End Sub
 
-Private Sub ReportHeader0_Format(Cancel As Integer, FormatCount As Integer)
+Private Sub Report_Open(Cancel As Integer)
 
 On Error Resume Next
 
-    '*** HTML Generation Code ***
+    ' *** HTML Creation Code ***
+    GenerateHTML = GlobalGenerateHTML
     If GenerateHTML Then
-        'SendKeys "{f5}"
-        'SendKeys "9999"
-        'SendKeys "~"
-        
+        aIndex = 0
+        PleaseWaitMsg = "Preparing HTML for """ & ReportTitle & """.  Please wait..."
+        DoCmd.RunMacro "ShowPleaseWait"
     End If
-    '*** ***************** ***
+    
+    PageNum = 0
+    ReportHead = DLookup("[ReportHeader]", "MiscHTML")
+    ' ***************************
+
+    DisplayRecords = 0
+    NumberToDisplay = DLookup("[AgeChampionNumber]", "Misc-Statistics")
+    If IsNull(NumberToDisplay) Then
+      NumberToDisplay = 1
+    End If
+    Call UpdateEventCompetitorAge
 
 End Sub

@@ -26,7 +26,7 @@ Begin Report
         "AND ((House.Include)=True) AND ((House.Flag)=True)) ORDER BY [Surname] & \", \" "
         "& [Gname], CompEvents.Points DESC;"
     OnOpen ="[Event Procedure]"
-    OnClose ="ReportPopup-Update"
+    OnClose ="[Event Procedure]"
     PrtMip = Begin
         0x3702000037020000450200009602000000000000a02900003b01000001000000 ,
         0x010000006801000000000000a10700000100000000000000
@@ -410,7 +410,6 @@ Begin Report
         Begin FormFooter
             KeepTogether = NotDefault
             Height =0
-            OnFormat ="[Event Procedure]"
             Name ="ReportFooter1"
         End
     End
@@ -588,6 +587,30 @@ On Error Resume Next
 
 End Sub
 
+Private Sub Report_Close()
+    On Error Resume Next
+
+    If GenerateHTML Then
+        GenerateHTML = False
+        
+        NextPage = ""
+        Call TableEnd(rHTML)
+        
+        Template = DLookup("[TemplateFile]", "MiscHTML")
+        TemplateSummary = DLookup("[TemplateFileSummary]", "MiscHTML")
+    
+    
+        Call CreateHTMLfile(repName & PageNum & ".htm", Template, rHTML, PrevPage, NextPage, ReportTitle & "  - Page " & PageNum, ReportHead)
+        Call CreateHTMLfile("_" & repName & ".htm", TemplateSummary, sHTML, PrevPage, NextPage, "Summary of " & ReportTitle, ReportHead)
+    
+        DoCmd.RunMacro "ClosePleaseWait"
+        HTMLgenerateFinished = True
+        
+    End If
+    
+    DoCmd.RunMacro "ReportPopup-Update"
+End Sub
+
 Private Sub Report_Open(Cancel As Integer)
     
 On Error Resume Next
@@ -609,29 +632,6 @@ On Error Resume Next
 
 End Sub
 
-Private Sub ReportFooter1_Format(Cancel As Integer, FormatCount As Integer)
-
-On Error Resume Next
-
-    If GenerateHTML Then
-        GenerateHTML = False
-        
-        NextPage = ""
-        Call TableEnd(rHTML)
-        
-        Template = DLookup("[TemplateFile]", "MiscHTML")
-        TemplateSummary = DLookup("[TemplateFileSummary]", "MiscHTML")
-    
-    
-        Call CreateHTMLfile(repName & PageNum & ".htm", Template, rHTML, PrevPage, NextPage, ReportTitle & "  - Page " & PageNum, ReportHead)
-        Call CreateHTMLfile("_" & repName & ".htm", TemplateSummary, sHTML, PrevPage, NextPage, "Summary of " & ReportTitle, ReportHead)
-    
-        DoCmd.RunMacro "ClosePleaseWait"
-        HTMLgenerateFinished = True
-        
-    End If
-
-End Sub
 
 Private Sub ReportHeader0_Format(Cancel As Integer, FormatCount As Integer)
 

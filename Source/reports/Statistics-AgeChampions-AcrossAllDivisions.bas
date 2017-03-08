@@ -530,6 +530,9 @@ On Error Resume Next
         aIndex = 0
         PleaseWaitMsg = "Preparing HTML for """ & ReportTitle & """.  Please wait..."
         DoCmd.RunMacro "ShowPleaseWait"
+        
+        Call AgeChampionAll
+        GenerateHTML = False
     End If
     
     PageNum = 0

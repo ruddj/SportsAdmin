@@ -17,10 +17,10 @@ Begin Form
     GridY =20
     Width =10956
     ItemSuffix =113
-    Left =690
-    Top =1725
-    Right =11640
-    Bottom =8400
+    Left =1125
+    Top =2295
+    Right =12075
+    Bottom =8970
     HelpContextId =270
     RecSrcDt = Begin
         0x49d6923c4fcce140
@@ -1009,6 +1009,7 @@ Begin Form
                             Top =4695
                             Width =2145
                             Height =255
+                            ForeColor =8388608
                             Name ="Label108"
                             Caption ="From results across all divs"
                             FontName ="Arial"
@@ -1272,12 +1273,14 @@ Private Sub Form_GotFocus()
 End Sub
 
 Private Sub GenerateHTMLbut_Click()
-Dim fileName As Variant, FileNum As Integer
-
-On Error GoTo GenerateHTMLbut_Click_Err
+    Dim fileName As Variant, FileNum As Integer
+    
+    On Error GoTo GenerateHTMLbut_Click_Err
 
     Dim Response As Integer
     Close ' Close any opened files
+    
+    DoCmd.RunCommand acCmdSaveRecord
     
     ' *** Check that HTML Template Summary files have been set up ***
     fileName = DLookup("[TemplateFileSummary]", "MiscHTML")
@@ -1331,32 +1334,6 @@ On Error GoTo GenerateHTMLbut_Click_Err
  '       Application.Echo False
         Call PrintPreviewReports("PREVIEW", True)
         
-        'Dim x As Integer, NumberReports As Variant
-    
-        'NumberReports = Reports.Count   ' Count number of reports.
-    
-        'For x = 0 To NumberReports - 1
-        '    PleaseWaitMsg = "Finalising HTML for """ & Reports(x).Name & """.  Please wait..."
-        '    DoCmd.RunMacro "ShowPleaseWait"
-
-        '    DoCmd.SelectObject A_REPORT, Reports(x).Name, False
-        '    DoCmd.Maximize
-        '    SendKeys "{DEL}", True
-        '    SendKeys "{f5}", True
-        '    SendKeys "9999", True
-        '    SendKeys "~", True
-        '    DoCmd.Close acReport, Reports(x).Name
-            'DoCmd.SelectObject A_REPORT, Reports(x).Name, False
-        
-        'Next x
-    
-        'For x = 0 To NumberReports - 1
-        '
-        '    DoCmd.SelectObject A_REPORT, Reports(0).Name, False
-        '    DoCmd.Close
-   
-        'Next x
-    
         DoCmd.RunMacro "ClosePleaseWait"
         MsgBox "Web pages have been generated.", vbInformation
     End If
@@ -1384,9 +1361,10 @@ Private Sub GoToLastPage(n As Variant)
 
     DoCmd.SelectObject A_REPORT, n, False
     
-    SendKeys "{f5}"
-    SendKeys "9999"
-    SendKeys "~"
+    'SendKeys "{f5}"
+    'SendKeys "9999"
+    'SendKeys "~"
+    SendKeys "^{Right}"
     
 End Sub
 
@@ -1672,17 +1650,18 @@ HandleHTML:
 
     DoCmd.SelectObject acReport, DocName, False
     DoCmd.Maximize
-    SendKeys "{DEL}", True
-    SendKeys "{f5}", True
-    SendKeys "9999", True
-    SendKeys "~", True
-    DoCmd.Close acReport, DocName
+    ' As reports use .Format functions to generate code you need to move to last page of report to generate all entries
+    ' In newer versions of Access can just send Ctrl +  right arrow or End
+    'SendKeys "{End}", True
+    SendKeys "^{Right}"
 
     T = Timer
     SysCmd acSysCmdSetStatus, "Waiting for report process to finalise..."
+    ' Wait 1 second
     Do While Timer < T + 1
       DoEvents
     Loop
+    DoCmd.Close acReport, DocName
     SysCmd acSysCmdClearStatus
     
   Return

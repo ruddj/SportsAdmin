@@ -2,7 +2,7 @@ Option Compare Database
 
 Option Explicit
 
-Dim sHTML As String, rHTML As String, PageNum As Integer, OldPg As Integer
+Dim PageNum As Integer, OldPg As Integer
 Dim ReportHead As String, aIndex As Integer
 Dim HTM() As HTMarrayType
 
@@ -23,7 +23,7 @@ End Sub
 Function AgeChampionAll()
     Dim MyDb As Database, rs As Recordset, QryName As String
     Dim curGroup As String, iPosition As Integer, iDisplayMax As Integer
-    
+    Dim sHTML As String, rHTML As String
     Dim gHeader As Integer, OldPg As Integer, OldGroupName As String, i As Integer
     Dim NewPg As Integer, CurrentGroupHeader As String
     Dim eHTML As String, AlleHTML As String, sEvents As String
@@ -36,7 +36,7 @@ Function AgeChampionAll()
     ' Code maybe parametised
     QryName = "Statistics-Age Champion-AnyDivision"
     Const ReportTitle = "Age Champions"
-    Const repName = "agchtst"
+    Const repName = "agca"
     iDisplayMax = DLookup("[AgeChampionNumber]", "Misc-Statistics")
       
     ' Load Data
@@ -264,8 +264,7 @@ Function AgeChampionAll()
                 rHTML = HTM(i).row & rHTML
             End If
             
-
-            
+ 
             ' *** Set Old Group Header to current group header ***
             ' *** Ignore PageFooter groupType.  I hope it is not needed ever
             If (HTM(i).GrpHead <> rPageFooter) Then

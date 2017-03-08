@@ -17,7 +17,7 @@ Begin Report
     RecordSource ="Statistics-EventTimesOverallAsc"
     Caption ="Event Results - Best"
     OnOpen ="[Event Procedure]"
-    OnClose ="ReportPopup-Update"
+    OnClose ="[Event Procedure]"
     PrtMip = Begin
         0x370200003702000045020000d002000000000000bd2900008c01000001000000 ,
         0x010000006801000000000000a10700000100000000000000
@@ -447,7 +447,6 @@ Begin Report
         Begin FormFooter
             KeepTogether = NotDefault
             Height =0
-            OnFormat ="[Event Procedure]"
             Name ="ReportFooter1"
         End
     End
@@ -711,36 +710,12 @@ On Error Resume Next
 
 End Sub
 
-Private Sub Report_Open(Cancel As Integer)
+Private Sub Report_Close()
 
-PreviousPIN = Null
-
-On Error Resume Next
-
-    DisplayRecords = 0
-    'NumberToDisplay = DLookup("[CompetitorPlaces]", "MiscellaneousLocal")
-    NumberToDisplay = DLookup("[NumberOfRecords]", "Misc-Statistics")
-    ' *** HTML Creation Code ***
-    GenerateHTML = GlobalGenerateHTML
+    On Error Resume Next
     
-    If GenerateHTML Then
-        aIndex = 0
-        PleaseWaitMsg = "Preparing HTML for """ & ReportTitle & """.  Please wait..."
-        DoCmd.RunMacro "ShowPleaseWait"
-    End If
-    
-    PageNum = 0
-    ReportHead = DLookup("[ReportHeader]", "MiscHTML")
-    ' ***************************
-
-End Sub
-
-Private Sub ReportFooter1_Format(Cancel As Integer, FormatCount As Integer)
-
-On Error Resume Next
-
-Dim gHeader As Integer, OldPg As Integer, OldGroupName As String, i As Integer
-Dim NewPg As Integer
+    Dim gHeader As Integer, OldPg As Integer, OldGroupName As String, i As Integer
+    Dim NewPg As Integer
 
     If GenerateHTML Then
         Dim eHTML As String, AlleHTML As String, sEvents   As String
@@ -866,5 +841,31 @@ Dim NewPg As Integer
 
 
     End If
+    
+    DoCmd.RunMacro "ReportPopup-Update"
+    
+End Sub
+
+Private Sub Report_Open(Cancel As Integer)
+
+PreviousPIN = Null
+
+On Error Resume Next
+
+    DisplayRecords = 0
+    'NumberToDisplay = DLookup("[CompetitorPlaces]", "MiscellaneousLocal")
+    NumberToDisplay = DLookup("[NumberOfRecords]", "Misc-Statistics")
+    ' *** HTML Creation Code ***
+    GenerateHTML = GlobalGenerateHTML
+    
+    If GenerateHTML Then
+        aIndex = 0
+        PleaseWaitMsg = "Preparing HTML for """ & ReportTitle & """.  Please wait..."
+        DoCmd.RunMacro "ShowPleaseWait"
+    End If
+    
+    PageNum = 0
+    ReportHead = DLookup("[ReportHeader]", "MiscHTML")
+    ' ***************************
 
 End Sub

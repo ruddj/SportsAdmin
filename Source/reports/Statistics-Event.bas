@@ -293,6 +293,7 @@ Begin Report
                 End
                 Begin Chart
                     ColumnHeads = NotDefault
+                    Locked = NotDefault
                     SizeMode =3
                     RowSourceTypeInt =2
                     Left =160
@@ -1309,7 +1310,6 @@ Begin Report
         Begin FormFooter
             KeepTogether = NotDefault
             Height =0
-            OnFormat ="[Event Procedure]"
             Name ="ReportFooter1"
         End
     End
@@ -1518,51 +1518,6 @@ End Sub
 Private Sub Report_Close()
 On Error GoTo Report_Close_Err
 
-  If ExportOleChart Then
-    Dim oleGraph As Object
-    HTMLFileLocation = DLookup("[HTMLlocation]", "MiscHTML")
-    FileLocation = HTMLFileLocation & "\events.jpg"
-    Set oleGraph = Me.oleChart.Object
-    
-    oleGraph.export fileName:=FileLocation
-    oleGraph.Close
-    Set oleGraph = Nothing
-  End If
-  
-Report_Close_Exit:
-  DoCmd.RunMacro "ReportPopup-Update"
-  Exit Sub
-  
-Report_Close_Err:
-  GoTo Report_Close_Exit
-  
-End Sub
-
-Private Sub Report_Open(Cancel As Integer)
-
-On Error Resume Next
-
-    ' *** HTML Creation Code ***
-    GenerateHTML = GlobalGenerateHTML
-    ExportOleChart = GlobalGenerateHTML
-    
-    If GenerateHTML Then
-        aIndex = 0
-        PleaseWaitMsg = "Preparing HTML for """ & ReportTitle & """.  Please wait..."
-        DoCmd.RunMacro "ShowPleaseWait"
-    End If
-    
-    PageNum = 0
-    ReportHead = DLookup("[ReportHeader]", "MiscHTML")
-    ' ***************************
-
-
-End Sub
-
-Private Sub ReportFooter1_Format(Cancel As Integer, FormatCount As Integer)
-
-On Error Resume Next
-
     If GenerateHTML Then
         Dim eHTML As String, AlleHTML As String, sEvents   As String
         GenerateHTML = False
@@ -1686,5 +1641,44 @@ On Error Resume Next
 
 
     End If
+    
+  If ExportOleChart Then
+    Dim oleGraph As Object
+    HTMLFileLocation = DLookup("[HTMLlocation]", "MiscHTML")
+    FileLocation = HTMLFileLocation & "\events.jpg"
+    Set oleGraph = Me.oleChart.Object
+    
+    oleGraph.export fileName:=FileLocation
+    oleGraph.Close
+    Set oleGraph = Nothing
+  End If
+  
+Report_Close_Exit:
+  DoCmd.RunMacro "ReportPopup-Update"
+  Exit Sub
+  
+Report_Close_Err:
+  GoTo Report_Close_Exit
+  
+End Sub
+
+Private Sub Report_Open(Cancel As Integer)
+
+On Error Resume Next
+
+    ' *** HTML Creation Code ***
+    GenerateHTML = GlobalGenerateHTML
+    ExportOleChart = GlobalGenerateHTML
+    
+    If GenerateHTML Then
+        aIndex = 0
+        PleaseWaitMsg = "Preparing HTML for """ & ReportTitle & """.  Please wait..."
+        DoCmd.RunMacro "ShowPleaseWait"
+    End If
+    
+    PageNum = 0
+    ReportHead = DLookup("[ReportHeader]", "MiscHTML")
+    ' ***************************
+
 
 End Sub

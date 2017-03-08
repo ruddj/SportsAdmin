@@ -18,6 +18,9 @@ tr .groupHeader {
 	font-weight: bold
 }
 
+tr .firstPlace {
+	background: #FF8080
+}
 
 /* Formattting For cells */
 

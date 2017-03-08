@@ -482,8 +482,8 @@ End Sub
 
 Function CalculatePercTotal(T, H, p)
 
-    If p > 0 Then
-        CalculatePercTotal = Format(T / p * 100, "0.0") & " (" & p & ")"
+    If H > 0 Then
+        CalculatePercTotal = Format(T / H * 100, "0.0") & " (" & p & ")"
     Else
         CalculatePercTotal = 0
     End If

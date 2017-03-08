@@ -6,8 +6,8 @@ Begin Report
     GridY =10
     Width =10656
     ItemSuffix =118
-    Left =2010
-    Top =135
+    Left =-630
+    Top =675
     OnNoData ="[Event Procedure]"
     ShortcutMenuBar ="Sports Admin-Print Popup"
     Toolbar ="Sports Admin-Print"
@@ -16,7 +16,7 @@ Begin Report
     End
     RecordSource ="HousePoints-Total-Age-F"
     OnOpen ="[Event Procedure]"
-    OnClose ="ReportPopup-Update"
+    OnClose ="[Event Procedure]"
     PrtMip = Begin
         0x370200003702000045020000d002000000000000a02900005401000001000000 ,
         0x010000006801000000000000a10700000100000000000000
@@ -499,34 +499,7 @@ On Error Resume Next
 
 End Sub
 
-Private Sub Report_NoData(Cancel As Integer)
-
-  MsgBox ("There is no data to display for the report: " & Me.Caption)
-  Cancel = True
-  
-
-End Sub
-
-Private Sub Report_Open(Cancel As Integer)
-
-On Error Resume Next
-
-    ' *** HTML Creation Code ***
-    GenerateHTML = GlobalGenerateHTML
-    
-    If GenerateHTML Then
-        aIndex = 0
-        PleaseWaitMsg = "Preparing HTML for """ & ReportTitle & """.  Please wait..."
-        DoCmd.RunMacro "ShowPleaseWait"
-    End If
-    
-    PageNum = 0
-    ReportHead = DLookup("[ReportHeader]", "MiscHTML")
-    ' ***************************
-
-End Sub
-
-Private Sub ReportFooter1_Format(Cancel As Integer, FormatCount As Integer)
+Private Sub Report_Close()
 
 On Error Resume Next
 
@@ -657,5 +630,38 @@ Dim NewPg As Integer
 
 
     End If
+    
+    DoCmd.RunMacro "ReportPopup-Update"
+End Sub
+
+Private Sub Report_NoData(Cancel As Integer)
+
+  MsgBox ("There is no data to display for the report: " & Me.Caption)
+  Cancel = True
+  
+
+End Sub
+
+Private Sub Report_Open(Cancel As Integer)
+
+On Error Resume Next
+
+    ' *** HTML Creation Code ***
+    GenerateHTML = GlobalGenerateHTML
+    
+    If GenerateHTML Then
+        aIndex = 0
+        PleaseWaitMsg = "Preparing HTML for """ & ReportTitle & """.  Please wait..."
+        DoCmd.RunMacro "ShowPleaseWait"
+    End If
+    
+    PageNum = 0
+    ReportHead = DLookup("[ReportHeader]", "MiscHTML")
+    ' ***************************
+
+End Sub
+
+Private Sub ReportFooter1_Format(Cancel As Integer, FormatCount As Integer)
+
 
 End Sub

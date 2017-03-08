@@ -429,12 +429,6 @@ Private Sub CreateTeamNames_Click()
 
     Call UpdateEventCompetitorAge
     
-    'for each house do
-    '   for each age division do
-    '       for each sex
-    '           if competitor does not exist
-    '             Add competitor
-
     Set Db = DBEngine.Workspaces(0).Databases(0)
     
     Q = " SELECT DISTINCTROW House.H_Code, House.CompPool, House.Include, House.H_ID FROM House "
