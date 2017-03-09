@@ -14,20 +14,25 @@ tr:nth-child(odd) {background: #FFF}
 tr .groupRow {}
 
 tr .groupHeader {
-	background: #EEE8D2
-	font-weight: bold
+	background: #EEE8D2;
+	font-weight: bold;
 }
 
 tr .firstPlace {
-	background: #FF8080
+	background: #FF8080;
 }
 
 /* Formattting For cells */
 
 td .place, td .result {
-	text-align: center
+	text-align: center;
 }
 
 td .name {
-	text-align: left
+	text-align: left;
+}
+
+th  {
+	background-color: #EEE8D2;
+	font-weight: bold;
 }

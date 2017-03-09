@@ -281,3 +281,183 @@ Function AgeChampionAll()
 
 
 End Function
+
+
+Function AgeChampionHTML()
+    ' Version 2 of report. Try to use modern CSS output and more logical coding.
+    ' Also try to abstract out report details to allow it to be used for multiple reports
+    
+    'On Error Resume Next
+    
+    Dim MyDb As Database, rs As Recordset, QryName As String
+    Dim curGroup As String, iPosition As Integer, iDisplayMax As Integer
+    Dim sHTML As String, pHTML As String, rHTML As String
+    Dim gHeader As Integer, OldPg As Integer, OldGroupName As String, i As Integer
+    Dim NewPg As Integer, CurrentGroupHeader As String
+    Dim eHTML As String, AlleHTML As String, sEvents As String
+    Dim LastPage As Integer, DetailCount As Integer, NextPage As String, PrevPage As String
+    Dim repName As String
+    Dim ReportTitle As String, ReportCaption As Variant, repGroup As String, repGroupHeader As String
+    Dim cssGroup As String
+    Dim bAgeChamp As Boolean, repFinalLev As Variant, repPlace As Variant, strPlace As String
+           
+    Dim dataFields() As String, dataHeaders() As String
+    Dim varField As Variant, strField As String, strValue As String
+        
+    rHTML = "" ' Results
+    pHTML = "" ' Page Header
+    sHTML = "" ' Summary and Shortcuts
+    curGroup = ""
+    PageNum = 1
+    
+    repName = "etoa"
+    
+    ' Code maybe parametised
+    QryName = DLookup("[repQuery]", "tblReportsHTML", "[repShortCode] = """ & repName & """")
+    ReportTitle = DLookup("[repTitle]", "tblReportsHTML", "[repShortCode] = """ & repName & """")
+    ReportCaption = DLookup("[repCaption]", "tblReportsHTML", "[repShortCode] = """ & repName & """")
+    repGroup = DLookup("[repGroup]", "tblReportsHTML", "[repShortCode] = """ & repName & """")
+    If (IsNull(DLookup("[repGroupHeader]", "tblReportsHTML", "[repShortCode] = """ & repName & """"))) Then
+        repGroupHeader = ""
+    Else
+        repGroupHeader = DLookup("[repGroupHeader]", "tblReportsHTML", "[repShortCode] = """ & repName & """")
+    End If
+    
+    ' Load Fields
+    dataFields = Split(DLookup("[repFields]", "tblReportsHTML", "[repShortCode] = """ & repName & """"), ";")
+    dataHeaders = Split(DLookup("[repHeaders]", "tblReportsHTML", "[repShortCode] = """ & repName & """"), ";")
+    
+    
+    If (UBound(dataFields) <> UBound(dataHeaders)) Then
+        MsgBox "Report Fields and Headers do not match"
+    End If
+    
+    ' Is this an Age Championship
+    bAgeChamp = DLookup("[repAgeChamp]", "tblReportsHTML", "[repShortCode] = """ & repName & """")
+    If (bAgeChamp) Then
+        iDisplayMax = DLookup("[AgeChampionNumber]", "Misc-Statistics")
+    Else
+        iDisplayMax = DLookup("[NumberOfRecords]", "Misc-Statistics")
+        repFinalLev = DLookup("[repFinalLev]", "tblReportsHTML", "[repShortCode] = """ & repName & """")
+        repPlace = DLookup("[repPlace]", "tblReportsHTML", "[repShortCode] = """ & repName & """")
+    End If
+         
+    ' Load Data
+    Set MyDb = CurrentDb()
+    Set rs = MyDb.OpenRecordset(QryName, dbOpenDynaset)
+
+    ' Start Web Page Header
+    ReportHead = DLookup("[ReportHeader]", "MiscHTML")
+        
+    ' Name report based on
+    Call DivOpen(pHTML, "", repName)
+    
+    Call DivOpen(pHTML, "header")
+    rHTML = pHTML & Heading(1, ReportTitle, 0)
+    
+    If (Not IsNull(ReportCaption) And ReportCaption <> "") Then
+        Call DivOpen(pHTML, "caption")
+        rHTML = pHTML & Heading(3, ReportCaption, 0)
+        Call DivClose(pHTML)
+    End If
+    
+    Call DivClose(pHTML)
+    
+    ' Start Summary
+    Call DivOpen(sHTML, "", "summary")
+    
+    Call DivOpen(rHTML, "results")
+       
+    If (rs.EOF Or rs.BOF) Then
+        ' No Data
+        MsgBox "No Records for HTML Export"
+        Exit Function
+    End If
+    ' Cycle through Data and add to array
+    rs.MoveFirst 'Unnecessary in this case, but still a good habit
+    Do Until rs.EOF = True
+        ' If start of new group add entry
+        If curGroup <> rs(repGroup) Then
+            If rs.AbsolutePosition > 0 Then
+                ' Not First Group add end group
+                Call TableEnd(rHTML)
+                Call DivClose(rHTML) ' Close Data
+                Call DivClose(rHTML) ' Close Group
+            End If
+            curGroup = rs(repGroup)
+            iPosition = 1
+            
+            cssGroup = AlphaNumericOnly(curGroup)
+            
+            Call DivOpen(rHTML, "", "grp-" & cssGroup)
+            Call SpaceIndent(sHTML, 3)
+            sHTML = sHTML & "" & Link("#grp-" & cssGroup, curGroup)
+            Call DivOpen(rHTML, "hdr-" & cssGroup)
+            rHTML = rHTML & Heading(3, repGroupHeader & " " & curGroup, 0)
+            Call DivClose(rHTML)
+            
+            ' *** Create general record header ***
+            Call DivOpen(rHTML, "data-" & cssGroup)
+            Call TableOpen(rHTML, cssGroup)
+
+            Call TableHeadOpen(rHTML, "")
+            Call RowStart(rHTML)
+            'groupHeader
+            For Each varField In dataHeaders
+                strField = CStr(varField)
+                Call CellHead(rHTML, strField, StrConv(strField, vbLowerCase))
+            Next varField
+            
+            Call RowEnd(rHTML)
+            Call TableHeadEnd(rHTML)
+        
+        End If
+        
+        
+        ' Add individual student to export
+        If iPosition <= iDisplayMax Then
+            strPlace = ""
+            If (Not bAgeChamp And Not IsNull(repFinalLev) And Not IsNull(repPlace)) Then
+                strPlace = " place-" & Trim(rs(repFinalLev)) & "-" & Trim(rs(repPlace))
+            End If
+
+            Call RowStart(rHTML)
+            
+            For Each varField In dataFields
+                strField = CStr(strField)
+                If (strField = "_Position") Then
+                    strValue = iPosition
+                Else
+                    strValue = rs(varField)
+                End If
+                Call Cell(rHTML, strValue, strField & strPlace)
+            Next varField
+                        
+            Call RowEnd(rHTML)
+    
+        End If
+        'Move to the next record. Don't ever forget to do this.
+        iPosition = iPosition + 1
+        rs.MoveNext
+    Loop
+    
+    ' Close Last group
+    Call TableEnd(rHTML)
+    Call DivClose(rHTML) ' Close Data
+    Call DivClose(rHTML) ' Close Group
+    Call DivClose(rHTML) ' Close Results
+    Call DivClose(rHTML) ' Close Report
+    
+    Debug.Print "End Loop"
+    
+    ' Output HTML
+    Template = DLookup("[TemplateFile]", "MiscHTML")
+    TemplateSummary = DLookup("[TemplateFileSummary]", "MiscHTML")
+    
+    
+    Call DivClose(sHTML)
+
+    Call CreateHTMLfile(repName & "-class.htm", Template, pHTML & sHTML & rHTML, PrevPage, NextPage, ReportTitle, ReportHead)
+
+
+End Function

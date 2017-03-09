@@ -42,12 +42,12 @@ Function AlignStart(Alignment As String)
 End Function
 
 Sub CellEnd(HTML As String)
-    HTML = HTML & "</TD>"
+    HTML = HTML & "</td>"
 End Sub
 
 Sub CellStart(HTML As String, Align As String, Valign As String, vWidth As String, BGcolor As String, ColSpan As Integer)
     
-    s = "<TD"
+    s = "<td"
     If ColSpan > 1 Then s = s & " COLSPAN=""" & ColSpan & """"
     If Align <> "" Then s = s & " ALIGN=" & Align
     If Valign <> "" Then s = s & " VALIGN=" & Valign
@@ -225,19 +225,27 @@ Sub Paragraph(HTML As String, Count As Integer)
     Dim i As Integer
     s = ""
     For i = 1 To Count
-        s = s & "<BR>"
+        s = s & "<br>"
     Next
     HTML = HTML & s
         
 End Sub
 
 Sub RowEnd(HTML As String)
-    HTML = HTML & "</TR>" & LFCR()
+    HTML = HTML & "</tr>" & LFCR()
 End Sub
 
+
 Sub RowStart(HTML As String)
-    HTML = HTML & "<TR>"
+    HTML = HTML & "<tr>"
 End Sub
+Sub CellHStart(HTML As String)
+    HTML = HTML & "<th>"
+End Sub
+Sub CellHEnd(HTML As String)
+    HTML = HTML & "</th>"
+End Sub
+
 
 Sub SpaceIndent(HTML As String, Count As Integer)
     Dim i As Integer
@@ -271,6 +279,65 @@ Sub TableStart(HTML As String, vWidth As String, Height As String, BGcolor As St
 
 End Sub
 
+Sub TableOpen(HTML As String, sClass As String)
+    s = "<table"
+    If sClass <> "" Then s = s & " class=""" & sClass & """ "
+    s = s & ">"
+    HTML = HTML & s & LFCR()
+
+End Sub
+
+Sub Cell(HTML As String, strText As String, Optional sClass As String = "")
+    s = "<td"
+    If sClass <> "" Then s = s & " class=""" & sClass & """ "
+    s = s & ">" & strText & "</td>"
+    HTML = HTML & s
+End Sub
+Sub CellHead(HTML As String, strText As String, Optional sClass As String = "")
+    s = "<th"
+    If sClass <> "" Then s = s & " class=""" & sClass & """ "
+    s = s & ">" & strText & "</th>"
+    HTML = HTML & s
+End Sub
+
+Sub TableHeadOpen(HTML As String, sClass As String)
+    s = "<thead"
+    If sClass <> "" Then s = s & " class=""" & sClass & """ "
+    s = s & ">"
+    HTML = HTML & s & LFCR()
+End Sub
+Sub TableHeadEnd(HTML As String)
+    s = "</thead>"
+    HTML = HTML & s & LFCR()
+End Sub
+Sub TableBodyOpen(HTML As String, sClass As String)
+    s = "<tbody"
+    If sClass <> "" Then s = s & " class=""" & sClass & """ "
+    s = s & ">"
+    HTML = HTML & s & LFCR()
+End Sub
+Sub TableBodyEnd(HTML As String)
+    s = "</tbody>"
+    HTML = HTML & s & LFCR()
+End Sub
+
+Sub DivOpen(HTML As String, sClass As String, Optional sID As String = "")
+    s = "<div"
+    If sID <> "" Then
+        s = s & " id=""" & sID & """ "
+    ElseIf sClass <> "" Then
+    s = s & " class=""" & sClass & """ "
+    End If
+    s = s & ">"
+    HTML = HTML & s & LFCR()
+
+End Sub
+Sub DivClose(HTML As String)
+
+    HTML = HTML & "</div>" & LFCR()
+    
+End Sub
+
 Sub Text(HTML As String, Style As String, StyleEnd As String, ByVal T As String)
     s = ""
     If Style <> "" Then s = Style
@@ -289,4 +356,17 @@ Function UnIndent(Count As Integer)
     Next i
     UnIndent = s
 
+End Function
+
+Function AlphaNumericOnly(strSource As String) As String
+    Dim i As Integer
+    Dim strResult As String
+
+    For i = 1 To Len(strSource)
+        Select Case Asc(Mid(strSource, i, 1))
+            Case 48 To 57, 65 To 90, 97 To 122: 'include 32 if you want to include space
+                strResult = strResult & Mid(strSource, i, 1)
+        End Select
+    Next
+    AlphaNumericOnly = strResult
 End Function
