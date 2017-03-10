@@ -13,6 +13,9 @@ Global Const VersionDate = "(01/Mar/2017)"
 '   Added support for .ACCDB carnival files
 '   Added Ribbon Interface
 '   Adjusted Age Champions - All Div to use student age rather than event age
+'   Added temporary trusted location for new datafile to fix security warnings
+'   When started in Runtime mode adds current location as trusted to prevent future prompts
+'   HTML export VBA script instead of Report hooks. Start using CSS output.
 
 
 

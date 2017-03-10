@@ -550,7 +550,7 @@ Function CheckInventoryAttached() As Variant
     Dim MyDb As Database, ITable As Recordset, SpecifiedPath As Variant, TT As TableDef, FTable As Recordset, TB  As TableDef
     Dim DataExists As Variant, MyWS As Workspace, CPath  As Variant, AskUser  As Variant, LTable As Recordset
     Dim DefaultLoc As Variant, DefaultLoc2 As Variant, Dummy As Variant, fileName As String, RPath As String, RFile As String
-    Dim WhereCDF As Variant, RFPath As Variant, Response As Variant, filePath As Variant
+    Dim WhereCDF As Variant, RFPath As Variant, Response As Variant, FilePath As Variant
 
 '    Stop
     Set MyWS = DBEngine.Workspaces(0)
@@ -562,9 +562,9 @@ Function CheckInventoryAttached() As Variant
     DoCmd.SetWarnings True
     Set TB = MyDb.TableDefs("Competitors")
     fileName = UCase$(Right$(TB.connect, Len(TB.connect) - InStr(TB.connect, "=")))
-    filePath = Left$(fileName, Len(fileName) - InStr(ReverseString(fileName), "\") + 1)
+    FilePath = Left$(fileName, Len(fileName) - InStr(ReverseString(fileName), "\") + 1)
     
-    RPath = GetCarnivalRelDir(filePath)
+    RPath = GetCarnivalRelDir(FilePath)
     RFPath = GetCarnivalFullDir(fileName)
     RFile = GetCarnivalFile(fileName)
     
@@ -808,7 +808,7 @@ Function Make_File(ByVal fileName As String) As Variant
    
     Dim Db As Database, WS As Workspace, NewDB As Database, Result As Variant                    ' Create Access Database
     Dim i As Integer, NR  As Relation, nF  As Field, r1 As Recordset, r2 As Recordset              ' and move in empty tables
-    Dim iTrust As Integer, filePath As String
+    Dim iTrust As Integer, FilePath As String
             
     Result = False
     iTrust = -1
@@ -823,8 +823,8 @@ Function Make_File(ByVal fileName As String) As Variant
    ' "You will need to click multiple times on the Open button to continue.", vbInformation
     
     ' This is required as TransferDatabase will give many warning prompts if data file is not in Trusted Location
-    filePath = Left(fileName, InStrRev(fileName, "\") - 1)
-    iTrust = AddTrustedLocation(filePath, "Sports Admin Datafile")
+    FilePath = Left(fileName, InStrRev(fileName, "\") - 1)
+    iTrust = AddTrustedLocation(FilePath, "Sports Admin Datafile")
     
     For i = Db.TableDefs.Count - 1 To 0 Step -1
         If Left$(Db.TableDefs(i).Name, 3) = "zz~" Then

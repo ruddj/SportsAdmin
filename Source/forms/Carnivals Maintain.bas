@@ -799,7 +799,7 @@ Private Sub FinaliseCarnivalSelection()
 End Sub
 Private Sub CompactCarnivalBut_Click()
 
-Dim fileName As Variant, Db As Database, filePath As Variant, Response As Variant, TempName As Variant
+Dim fileName As Variant, Db As Database, FilePath As Variant, Response As Variant, TempName As Variant
 
 On Error GoTo Err_CompactCarnivalBut_Click
 
@@ -810,8 +810,8 @@ On Error GoTo Err_CompactCarnivalBut_Click
   
     PleaseWaitMsg = "Compacting carnival: " & Me!List & ".  Please wait ..."
     DoCmd.RunMacro "ShowPleaseWait"
-    filePath = CarnivalDir(DLookup("[Relative Directory]", "Carnivals", "[Carnival] = """ & Me.List & """"))
-    fileName = filePath & DLookup("[Filename]", "Carnivals", "[Carnival] = """ & Me.List & """")
+    FilePath = CarnivalDir(DLookup("[Relative Directory]", "Carnivals", "[Carnival] = """ & Me.List & """"))
+    fileName = FilePath & DLookup("[Filename]", "Carnivals", "[Carnival] = """ & Me.List & """")
     
     ' Check .mdb or .accdb
     If Upper(Right(fileName, 6)) = ".ACCDB" Then
@@ -820,25 +820,25 @@ On Error GoTo Err_CompactCarnivalBut_Click
       TempName = "__temp__.mdb"
     End If
     
-    If FileExists(filePath & TempName) Then Kill (filePath & TempName)
+    If FileExists(FilePath & TempName) Then Kill (FilePath & TempName)
     ReturnVar = SysCmd(acSysCmdSetStatus, "Verifying database ...")
     DBEngine.RepairDatabase fileName
     ReturnVar = SysCmd(acSysCmdSetStatus, "Compacting database ...")
-    DBEngine.CompactDatabase fileName, filePath & TempName
-    If FileExists(filePath & TempName) Then
+    DBEngine.CompactDatabase fileName, FilePath & TempName
+    If FileExists(FilePath & TempName) Then
       If FileExists(fileName & ".old") Then
         Response = MsgBox("INFORMATIONAL ALERT ONLY: The compact action makes a new copy of the carnival file and appends .OLD to the original carnival file.  However an OLD carnival file already exists (usually because the compact action has been run on this carnival before).  Do you want to delete the OLD carnival and finish compacting the carnival?", vbYesNo + vbInformation + vbDefaultButton2, "Delete Old Carnival File")
         If Response = 6 Then
           Kill (fileName & ".old")
         Else
-          Kill (filePath & TempName)
+          Kill (FilePath & TempName)
           GoTo Exit_CompactCarnivalBut_Click
           
         End If
       End If
       
       Name fileName As (fileName & ".old")
-      Name (filePath & TempName) As fileName
+      Name (FilePath & TempName) As fileName
     End If
   Else
     Response = MsgBox("The file for the selected carnival cannot be located.  Please locate the file manually and then retry compacting the carnival.", vbInformation)

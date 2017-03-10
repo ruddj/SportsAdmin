@@ -4,11 +4,19 @@ Option Explicit
 Public Function Startup()
 On Error GoTo Startup_Err
 
+    Dim FilePath As String
+    
   Application.MenuBar = "Sports Menu"
   Call UserMode(True)
   
   Call InitialiseWaitMessage
   DoCmd.RunMacro "ShowPleaseWait"
+  
+  ' If running in runtime mode add current location to Trusted Location if not already
+  If SysCmd(acSysCmdRuntime) Then
+    FilePath = Application.CurrentProject.Path
+    Call AddTrustedLocation(FilePath, "Sports Admin Application")
+  End If
   
  'DoCmd.RunCommand acCmdWindowHide
  ' DoCmd.ShowToolbar "Database", acToolbarNo
