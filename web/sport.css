@@ -13,10 +13,27 @@ h1 {
 	width: 70%;	
 }
 */
-
-table {
-	width: 70%;	
+/* Do not provide widths for printing or cells can't expand  */
+@media screen {
+	table {
+		width: 90%;	
+	}
 }
+
+@media print {
+	div.grp-return, div#summary, div#nav-header, 
+	div#nav-footer, div#footer  {
+		display: none !important;
+	}
+}
+
+/* Format for Summary links*/
+#summary ul.main {
+  columns: 4;
+  list-style-position: inside;
+}
+
+
 /* Format for Nav*/
 #nav-header p {
 	text-align: center;
@@ -64,10 +81,30 @@ table {
 	border: 0;
 }
 
+img.smalllogo {
+	width: 200px;
+    height: 69px;
+	background: url(https://raw.githubusercontent.com/ruddj/SportsAdmin/master/web/___small_logo.gif) no-repeat top left;
+}
+
 /* Format for Grouping row */
 
-.results td {
+.place td, .results td {
 	text-align: center;
+	white-space:nowrap;
+	/*width:1px;*/
+}
+
+.results div.grp-results {
+	page-break-inside: avoid;
+	page-break-before:auto;
+	display: block;
+}
+
+.results div.grp-results:after {
+	content: ' ';
+	display: block;
+	height: 20px;
 }
 
 .results td.name, .results td.Fullname {
@@ -75,20 +112,19 @@ table {
 }
 
 /* First Place */
-td.place-0-1 {
+.place-0-1 td {
 	background: #FF8080;
 }
 
 /* Formattting For table */
+.results table {
+	table-layout:fixed;	
+}
 
 tr:nth-child(even) {background: #CCC}
 tr:nth-child(odd) {background: #FFF}
 
 /* Formattting For cells */
-
-td .place, td .result {
-	text-align: center;
-}
 
 thead th, thead tr   {
 	background-color: #EEE8D2;
