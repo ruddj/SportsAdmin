@@ -7,20 +7,82 @@ h1 {
     margin-left: 20px;
 }
 
-tr:nth-child(even) {background: #CCC}
-tr:nth-child(odd) {background: #FFF}
+/* Whole Page Formats */
+/*
+#nav-header table, #nav-footer table, .results table {
+	width: 70%;	
+}
+*/
+
+table {
+	width: 70%;	
+}
+/* Format for Nav*/
+#nav-header p {
+	text-align: center;
+	font-size: small;
+	color: black;
+}
+
+#nav-header table, #nav-footer table {
+	border: 0;
+	background: #E2D3A7;
+}
+
+#nav-header td, #nav-footer td {
+	font-size: x-small;
+	text-align: center;
+}
+
+#nav-header td.nav-page-cell, #nav-footer td.nav-page-cell {
+	width: 5%;	
+}
+
+#nav-header td.nav-page-center, #nav-footer td.nav-page-center {
+	width: 90%;	
+	background: #E2D3A7;
+}
+
+#nav-footer td.nav-page-center {
+	font-size: small;
+}
+
+#nav-header td.nav-page-center {
+	font-size: x-large;
+	font-weight: bold
+}
+
+
+/* Format for Footer*/
+#footer p {
+	text-align: center;
+	font-size: x-small;
+	color: black;
+}
+
+#footer img {
+	border: 0;
+}
 
 /* Format for Grouping row */
-tr .groupRow {}
 
-tr .groupHeader {
-	background: #EEE8D2;
-	font-weight: bold;
+.results td {
+	text-align: center;
 }
 
-tr .firstPlace {
+.results td.name, .results td.Fullname {
+	text-align: left;
+}
+
+/* First Place */
+td.place-0-1 {
 	background: #FF8080;
 }
+
+/* Formattting For table */
+
+tr:nth-child(even) {background: #CCC}
+tr:nth-child(odd) {background: #FFF}
 
 /* Formattting For cells */
 
@@ -28,11 +90,17 @@ td .place, td .result {
 	text-align: center;
 }
 
-td .name {
-	text-align: left;
-}
-
-th  {
+thead th, thead tr   {
 	background-color: #EEE8D2;
 	font-weight: bold;
 }
+
+td._Position, td.SumOfPoints {
+	text-align: center;
+}
+
+th.competitor {
+	text-align: center;
+	width: 40%;
+}
+
