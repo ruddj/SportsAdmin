@@ -345,9 +345,9 @@ Private Sub Detail1_Format(Cancel As Integer, FormatCount As Integer)
 
 On Error Resume Next
 
-    'If Me!fullname = "BRADY, Naomi" Then Stop
     If DisplayRecords >= NumberToDisplay Then
         Cancel = True
+        Exit Sub
     End If
 
     DisplayRecords = DisplayRecords + 1

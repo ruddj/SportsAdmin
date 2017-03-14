@@ -5,6 +5,8 @@
 ;
 ; It will install example2.nsi into a directory that the user selects,
 
+; Requires AccessControl plugin http://nsis.sourceforge.net/AccessControl_plug-in
+
 ;--------------------------------
 
 !define PRODUCT_NAME "Sports Administrator"
@@ -15,6 +17,8 @@
 !define PRODUCT_PUBLISHER "Sports Administrator"
 !define PRODUCT_WEB_SITE "https://github.com/ruddj/SportsAdmin"
 !define PRODUCT_DIR_REGKEY "Software\SportsAdmin"
+!define CSIDL_COMMON_APPDATA 0x0023        
+Var AppDataPath
 ; The name of the installer
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
 
@@ -43,6 +47,9 @@ RequestExecutionLevel admin
 
 !include "StrFunc.nsh"
 
+System::Call "shell32::SHGetFolderPath(0, i ${CSIDL_COMMON_APPDATA}, 0, 0, t .r1)"  
+StrCpy $AppDataPath "$1\${PRODUCT_PUBLISHER}\${PRODUCT_NAME}"
+
 ;--------------------------------
 
 ; Pages
@@ -64,6 +71,8 @@ Section "SportAdmin (required)"
   ; Set output path to the installation directory.
   SetOutPath $INSTDIR
   
+  ;CreateDirectory "$AppDataPath"
+  
   ; Put file there
   File /oname=Sports.accdr Sports.accdb
   File Sports.ico
@@ -73,6 +82,8 @@ Section "SportAdmin (required)"
   
   ; Write the installation path into the registry
   WriteRegStr HKLM SOFTWARE\${PRODUCT_FOLDER} "Install_Dir" "$INSTDIR"
+  
+  ;AccessControl::GrantOnFile "$AppDataPath" "(BU)" "GenericRead + GenericWrite"
   
   ; Need to find Access Version and write Folder to Trusted Location
   

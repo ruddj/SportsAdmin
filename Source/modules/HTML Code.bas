@@ -235,9 +235,11 @@ Sub RowEnd(HTML As String)
     HTML = HTML & "</tr>" & LFCR()
 End Sub
 
-
-Sub RowStart(HTML As String)
-    HTML = HTML & "<tr>"
+Sub RowStart(HTML As String, Optional sClass As String)
+    s = "<tr"
+    If sClass <> "" Then s = s & " class=""" & sClass & """ "
+    s = s & ">"
+    HTML = HTML & s
 End Sub
 Sub CellHStart(HTML As String)
     HTML = HTML & "<th>"
@@ -287,6 +289,25 @@ Sub TableOpen(HTML As String, sClass As String)
 
 End Sub
 
+Sub ListOpen(HTML As String, Optional sClass As String)
+    s = "<ul"
+    If sClass <> "" Then s = s & " class=""" & sClass & """ "
+    s = s & ">"
+    HTML = HTML & s & LFCR()
+
+End Sub
+
+Sub ListClose(HTML As String)
+    s = "</ul>"
+    HTML = HTML & s & LFCR()
+End Sub
+Sub ListItem(HTML As String, strText As String, Optional sClass As String = "")
+    s = "<li"
+    If sClass <> "" Then s = s & " class=""" & sClass & """ "
+    s = s & ">" & strText & "</li>"
+    HTML = HTML & s & LFCR()
+End Sub
+
 Sub Cell(HTML As String, strText As String, Optional sClass As String = "")
     s = "<td"
     If sClass <> "" Then s = s & " class=""" & sClass & """ "
@@ -323,11 +344,8 @@ End Sub
 
 Sub DivOpen(HTML As String, sClass As String, Optional sID As String = "")
     s = "<div"
-    If sID <> "" Then
-        s = s & " id=""" & sID & """ "
-    ElseIf sClass <> "" Then
-    s = s & " class=""" & sClass & """ "
-    End If
+    If sID <> "" Then s = s & " id=""" & sID & """ "
+    If sClass <> "" Then s = s & " class=""" & sClass & """ "
     s = s & ">"
     HTML = HTML & s & LFCR()
 
@@ -369,4 +387,17 @@ Function AlphaNumericOnly(strSource As String) As String
         End Select
     Next
     AlphaNumericOnly = strResult
+End Function
+
+Function AlphaNumericDashOnly(strSource As String) As String
+    Dim i As Integer
+    Dim strResult As String
+
+    For i = 1 To Len(strSource)
+        Select Case Asc(Mid(strSource, i, 1))
+            Case 45, 48 To 57, 65 To 90, 97 To 122: 'include 32 if you want to include space
+                strResult = strResult & Mid(strSource, i, 1)
+        End Select
+    Next
+    AlphaNumericDashOnly = strResult
 End Function

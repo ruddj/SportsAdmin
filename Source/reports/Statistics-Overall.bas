@@ -18,7 +18,7 @@ Begin Report
     OnOpen ="[Event Procedure]"
     OnClose ="[Event Procedure]"
     PrtMip = Begin
-        0x350200003502000035020000d002000000000000d8290000c501000001000000 ,
+        0x350200003502000035020000d002000000000000d8290000d401000001000000 ,
         0x010000006801000000000000a10700000100000000000000
     End
     FilterOnLoad =0
@@ -334,6 +334,7 @@ Begin Report
                 End
                 Begin Chart
                     ColumnHeads = NotDefault
+                    Locked = NotDefault
                     SizeMode =3
                     RowSourceTypeInt =2
                     Left =1133
@@ -1040,16 +1041,14 @@ On Error Resume Next
         End If
         NextPage = Link(repName & PageNum + 1 & ".htm", "Next Page")
         
-        Call TableStart(rHTML, "95%", "", "", "", 0)
+        Call DivOpen(rHTML, "header")
+        Call TableOpen(rHTML, "header-" & repName)
             
-        Call RowStart(rHTML)
-        Call CellStart(rHTML, "Left", "Center", "100%", cWhite, 1)
-        rHTML = rHTML & Heading(3, "Overall Statistical Summary - Ordered by Grand Total", 3)
-        Call CellEnd(rHTML)
-        Call RowEnd(rHTML)
+        Call Cell(rHTML, Heading(3, "Overall Statistical Summary - Ordered by Grand Total", 3), "titleTable")
         Call TableEnd(rHTML)
+        Call DivClose(rHTML)
 
-        Call TableStart(rHTML, "95%", "", "", "", 0)
+        Call TableOpen(rHTML, "data-" & repName)
 
     End If
 

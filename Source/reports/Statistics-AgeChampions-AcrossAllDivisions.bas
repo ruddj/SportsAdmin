@@ -6,8 +6,8 @@ Begin Report
     GridY =10
     Width =10656
     ItemSuffix =132
-    Left =1515
-    Top =195
+    Left =510
+    Top =240
     ShortcutMenuBar ="Sports Admin-Print Popup"
     Toolbar ="Sports Admin-Print"
     RecSrcDt = Begin
@@ -66,7 +66,6 @@ Begin Report
         Begin FormHeader
             KeepTogether = NotDefault
             Height =0
-            OnFormat ="[Event Procedure]"
             Name ="ReportHeader0"
         End
         Begin PageHeader
@@ -328,7 +327,7 @@ Dim ReportHead As String, GenerateHTML As Integer, aIndex As Integer
 Dim HTM() As HTMarrayType
 
 Const ReportTitle = "Age Champions"
-Const repName = "agch" ' Keep to 4 letters or less (and unique from all other reports
+Const repName = "agca" ' Keep to 4 letters or less (and unique from all other reports
 
 
 Private Sub AddToArray(GrpName As Variant, GrpHead As Integer, s As String)
@@ -349,8 +348,7 @@ Private Sub Detail1_Format(Cancel As Integer, FormatCount As Integer)
 
 On Error Resume Next
 
-    'If Me!fullname = "BRADY, Naomi" Then Stop
-    If DisplayRecords >= NumberToDisplay Or FormatCount > 1 Then
+    If DisplayRecords >= NumberToDisplay Then
         Cancel = True
         Exit Sub
     End If
@@ -393,6 +391,8 @@ On Error Resume Next
         End If
 
     '*** HTML Generation Code End ***
+    Else
+        Debug.Print "Group=" & Me!AgeSex; "LastName=" & Me!Fullname; " Position=" & Me!Position
     End If
     
     LastName = Me!Fullname
@@ -465,11 +465,11 @@ On Error Resume Next
     If (Me!AgeSex <> GroupName) Then
         DisplayRecords = 0
         GroupName = Me!AgeSex
-    End If
-
-    '*** HTML Generation Code Start ***
-    If GenerateHTML Then
-        Call Group1
+    
+        '*** HTML Generation Code Start ***
+        If GenerateHTML Then
+            Call Group1
+        End If
     End If
 
 End Sub
@@ -694,20 +694,5 @@ Dim eHTML As String, AlleHTML As String, sEvents As String
 
 
     End If
-
-End Sub
-
-Private Sub ReportHeader0_Format(Cancel As Integer, FormatCount As Integer)
-
-On Error Resume Next
-
-    '*** HTML Generation Code ***
-    If GenerateHTML Then
-        'SendKeys "{f5}"
-        'SendKeys "9999"
-        'SendKeys "~"
-        
-    End If
-    '*** ***************** ***
 
 End Sub

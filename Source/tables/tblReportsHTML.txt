@@ -1,4 +1,5 @@
-﻿repID	repShortCode	repTitle	repCaption	repQuery	repFields	repHeaders	repGroup	repGroupHeader	repAgeChamp	repFinalLev	repPlace
-1	agca	Age Champions	The report tallies points that competitors gained for events in any age division.	Statistics-Age Champion-AnyDivision	_Position;Fullname;H_NAme;SumOfPoints	POS.;COMPETITOR;TEAM;TOTAL	AgeSex	Age / Gender:	True		
-2	agch	Age Champions	The report tallies points that competitors gained for events in the age division only. Points from other age divisions are not included.	Statistics-Age Champion	_Position;Fullname;H_NAme;SumOfPoints	POS.;COMPETITOR;TEAM;TOTAL	AgeSex	Age / Gender:	True		
-3	etoa	Event Results - Best		Statistics-EventTimesOverallAsc-EA	PlaceS;Fullname;H_Code;Age;ET_Des;F_Lev_Sub;fResult;Points	PLACE;COMPETITOR;TEAM;AGE;EVENT;FINAL;RESULT;PTS	ET_Des_Age		False	F_Lev	PlaceS
+﻿repID	repShortCode	repTitle	repCaption	repQuery	repFields	repHeaders	repGroup	repGroupHeader	repUnlimited	repAgeChamp	repFinalLev	repPlace
+1	agca	Age Champions	The report tallies points that competitors gained for events in any age division.	Statistics-Age Champion-AnyDivision	_Position;Fullname;H_NAme;SumOfPoints	POS.;COMPETITOR;TEAM;TOTAL	AgeSex	Age / Gender:	False	True		
+2	agch	Age Champions	The report tallies points that competitors gained for events in the age division only. Points from other age divisions are not included.	Statistics-Age Champion	_Position;Fullname;H_NAme;SumOfPoints	POS.;COMPETITOR;TEAM;TOTAL	AgeSex	Age / Gender:	False	True		
+3	etoa	Event Results - Best		Statistics-EventTimesOverallAsc-EA	PlaceS;Fullname;H_Code;Age;ET_Des;F_Lev_Sub;fResult;Points	PLACE;COMPETITOR;TEAM;AGE;EVENT;FINAL;RESULT;PTS	ET_Des_Age		False	False	F_Lev	PlaceS
+4	coev	Competitor Results Ordered by House / Name		Statistics-CompetitorEvents	Fullname;Age;ET_Des;F_Lev_Sub;Place;fResult;Points	COMPETITOR;AGE;EVENT;FINAL;PLACE;RESULT;PTS	H_NAme	House	True	False	F_Lev	Place

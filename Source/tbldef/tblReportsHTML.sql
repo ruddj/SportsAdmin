@@ -8,6 +8,7 @@ CREATE TABLE [tblReportsHTML] (
   [repHeaders] VARCHAR (255),
   [repGroup] VARCHAR (255),
   [repGroupHeader] VARCHAR (255),
+  [repUnlimited] BIT ,
   [repAgeChamp] BIT ,
   [repFinalLev] VARCHAR (255),
   [repPlace] VARCHAR (255)

@@ -283,11 +283,17 @@ Function AgeChampionAll()
 End Function
 
 
-Function AgeChampionHTML()
+Function ExportNamesHTML()
+'Function ExportNamesHTML(Optional repName As String = "agca")
+    ' Exports a list of competitors names in a formatted HTML page
+    ' The HTML is generated based on the options defined in tblReportsHTML
+    
     ' Version 2 of report. Try to use modern CSS output and more logical coding.
     ' Also try to abstract out report details to allow it to be used for multiple reports
     
     'On Error Resume Next
+    
+    Dim repName As String
     
     Dim MyDb As Database, rs As Recordset, QryName As String
     Dim curGroup As String, iPosition As Integer, iDisplayMax As Integer
@@ -296,10 +302,9 @@ Function AgeChampionHTML()
     Dim NewPg As Integer, CurrentGroupHeader As String
     Dim eHTML As String, AlleHTML As String, sEvents As String
     Dim LastPage As Integer, DetailCount As Integer, NextPage As String, PrevPage As String
-    Dim repName As String
     Dim ReportTitle As String, ReportCaption As Variant, repGroup As String, repGroupHeader As String
     Dim cssGroup As String
-    Dim bAgeChamp As Boolean, repFinalLev As Variant, repPlace As Variant, strPlace As String
+    Dim bAgeChamp As Boolean, bUnlimited As Boolean, repFinalLev As Variant, repPlace As Variant, strPlace As String
            
     Dim dataFields() As String, dataHeaders() As String
     Dim varField As Variant, strField As String, strValue As String
@@ -310,7 +315,15 @@ Function AgeChampionHTML()
     curGroup = ""
     PageNum = 1
     
-    repName = "etoa"
+    repName = "coev"
+    'repName = "agca"
+    
+    ' Check query definition exists
+    If (IsNull(DLookup("[repQuery]", "tblReportsHTML", "[repShortCode] = """ & repName & """"))) Then
+        MsgBox "No matching query entry found"
+        Exit Function
+    End If
+    
     
     ' Code maybe parametised
     QryName = DLookup("[repQuery]", "tblReportsHTML", "[repShortCode] = """ & repName & """")
@@ -330,16 +343,23 @@ Function AgeChampionHTML()
     
     If (UBound(dataFields) <> UBound(dataHeaders)) Then
         MsgBox "Report Fields and Headers do not match"
+        Exit Function
     End If
     
     ' Is this an Age Championship
+    bUnlimited = DLookup("[repUnlimited]", "tblReportsHTML", "[repShortCode] = """ & repName & """")
     bAgeChamp = DLookup("[repAgeChamp]", "tblReportsHTML", "[repShortCode] = """ & repName & """")
+
     If (bAgeChamp) Then
         iDisplayMax = DLookup("[AgeChampionNumber]", "Misc-Statistics")
     Else
         iDisplayMax = DLookup("[NumberOfRecords]", "Misc-Statistics")
         repFinalLev = DLookup("[repFinalLev]", "tblReportsHTML", "[repShortCode] = """ & repName & """")
         repPlace = DLookup("[repPlace]", "tblReportsHTML", "[repShortCode] = """ & repName & """")
+    End If
+    
+    If bUnlimited Then
+        iDisplayMax = 30000 ' near unlimited
     End If
          
     ' Load Data
@@ -353,11 +373,11 @@ Function AgeChampionHTML()
     Call DivOpen(pHTML, "", repName)
     
     Call DivOpen(pHTML, "header")
-    rHTML = pHTML & Heading(1, ReportTitle, 0)
+    pHTML = pHTML & Heading(1, ReportTitle, 0)
     
     If (Not IsNull(ReportCaption) And ReportCaption <> "") Then
         Call DivOpen(pHTML, "caption")
-        rHTML = pHTML & Heading(3, ReportCaption, 0)
+        pHTML = pHTML & Heading(3, ReportCaption, 0)
         Call DivClose(pHTML)
     End If
     
@@ -365,7 +385,10 @@ Function AgeChampionHTML()
     
     ' Start Summary
     Call DivOpen(sHTML, "", "summary")
+    sHTML = sHTML & Heading(2, "Summary of Results", 0)
+    Call ListOpen(sHTML, "main")
     
+    ' Start Results
     Call DivOpen(rHTML, "results")
        
     If (rs.EOF Or rs.BOF) Then
@@ -382,16 +405,19 @@ Function AgeChampionHTML()
                 ' Not First Group add end group
                 Call TableEnd(rHTML)
                 Call DivClose(rHTML) ' Close Data
+                Call DivOpen(rHTML, "grp-return")
+                rHTML = rHTML & Link("#summary", "Return to Summary")
+                Call DivClose(rHTML)
                 Call DivClose(rHTML) ' Close Group
             End If
             curGroup = rs(repGroup)
             iPosition = 1
             
-            cssGroup = AlphaNumericOnly(curGroup)
+            cssGroup = AlphaNumericDashOnly(curGroup)
             
-            Call DivOpen(rHTML, "", "grp-" & cssGroup)
-            Call SpaceIndent(sHTML, 3)
-            sHTML = sHTML & "" & Link("#grp-" & cssGroup, curGroup)
+            Call DivOpen(rHTML, "grp-results", "grp-" & cssGroup)
+            Call ListItem(sHTML, Link("#grp-" & cssGroup, curGroup))
+            'sHTML = sHTML & "" & Link("#grp-" & cssGroup, curGroup)
             Call DivOpen(rHTML, "hdr-" & cssGroup)
             rHTML = rHTML & Heading(3, repGroupHeader & " " & curGroup, 0)
             Call DivClose(rHTML)
@@ -418,19 +444,21 @@ Function AgeChampionHTML()
         If iPosition <= iDisplayMax Then
             strPlace = ""
             If (Not bAgeChamp And Not IsNull(repFinalLev) And Not IsNull(repPlace)) Then
-                strPlace = " place-" & Trim(rs(repFinalLev)) & "-" & Trim(rs(repPlace))
+                strPlace = "place-" & Trim(rs(repFinalLev)) & "-" & Trim(rs(repPlace))
+            Else
+                strPlace = "position-" & iPosition
             End If
 
-            Call RowStart(rHTML)
+            Call RowStart(rHTML, strPlace)
             
             For Each varField In dataFields
-                strField = CStr(strField)
+                strField = CStr(varField)
                 If (strField = "_Position") Then
                     strValue = iPosition
                 Else
                     strValue = rs(varField)
                 End If
-                Call Cell(rHTML, strValue, strField & strPlace)
+                Call Cell(rHTML, strValue, strField)
             Next varField
                         
             Call RowEnd(rHTML)
@@ -444,17 +472,20 @@ Function AgeChampionHTML()
     ' Close Last group
     Call TableEnd(rHTML)
     Call DivClose(rHTML) ' Close Data
+    Call DivOpen(rHTML, "grp-return")
+    rHTML = rHTML & Link("#summary", "Return to Summary")
+    Call DivClose(rHTML)
     Call DivClose(rHTML) ' Close Group
     Call DivClose(rHTML) ' Close Results
     Call DivClose(rHTML) ' Close Report
     
-    Debug.Print "End Loop"
+    Debug.Print "End Loop " & repName
     
     ' Output HTML
     Template = DLookup("[TemplateFile]", "MiscHTML")
     TemplateSummary = DLookup("[TemplateFileSummary]", "MiscHTML")
     
-    
+    Call ListClose(sHTML)
     Call DivClose(sHTML)
 
     Call CreateHTMLfile(repName & "-class.htm", Template, pHTML & sHTML & rHTML, PrevPage, NextPage, ReportTitle, ReportHead)
