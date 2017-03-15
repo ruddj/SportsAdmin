@@ -282,9 +282,18 @@ Function AgeChampionAll()
 
 End Function
 
+Private Sub TestExportNamesHTML()
+    Dim sReport As String
+    
+    sReport = "rh"
+    
+    'sReport = "agca"
+    Call ExportNamesHTML(sReport)
 
-Function ExportNamesHTML()
-'Function ExportNamesHTML(Optional repName As String = "agca")
+
+End Sub
+
+Public Function ExportNamesHTML(Optional repName As String = "agca")
     ' Exports a list of competitors names in a formatted HTML page
     ' The HTML is generated based on the options defined in tblReportsHTML
     
@@ -293,30 +302,20 @@ Function ExportNamesHTML()
     
     'On Error Resume Next
     
-    Dim repName As String
-    
     Dim MyDb As Database, rs As Recordset, QryName As String
     Dim curGroup As String, iPosition As Integer, iDisplayMax As Integer
-    Dim sHTML As String, pHTML As String, rHTML As String
-    Dim gHeader As Integer, OldPg As Integer, OldGroupName As String, i As Integer
-    Dim NewPg As Integer, CurrentGroupHeader As String
-    Dim eHTML As String, AlleHTML As String, sEvents As String
-    Dim LastPage As Integer, DetailCount As Integer, NextPage As String, PrevPage As String
+    Dim bAgeChamp As Boolean, iDisplayLimit As Integer
     Dim ReportTitle As String, ReportCaption As Variant, repGroup As String, repGroupHeader As String
-    Dim cssGroup As String
-    Dim bAgeChamp As Boolean, bUnlimited As Boolean, repFinalLev As Variant, repPlace As Variant, strPlace As String
-           
+    Dim repFinalLev As Variant, repPlace As Variant, strPlace As String
+       
     Dim dataFields() As String, dataHeaders() As String
-    Dim varField As Variant, strField As String, strValue As String
-        
-    rHTML = "" ' Results
-    pHTML = "" ' Page Header
-    sHTML = "" ' Summary and Shortcuts
-    curGroup = ""
-    PageNum = 1
+    Dim varField As Variant, varValue As Variant, strField As String, strValue As String
+    Dim cssGroup As String
     
-    repName = "coev"
-    'repName = "agca"
+    Dim sHTML As String ' Summary and Shortcuts
+    Dim pHTML As String ' Page Header
+    Dim rHTML As String ' Results
+    
     
     ' Check query definition exists
     If (IsNull(DLookup("[repQuery]", "tblReportsHTML", "[repShortCode] = """ & repName & """"))) Then
@@ -347,20 +346,25 @@ Function ExportNamesHTML()
     End If
     
     ' Is this an Age Championship
-    bUnlimited = DLookup("[repUnlimited]", "tblReportsHTML", "[repShortCode] = """ & repName & """")
+    iDisplayLimit = DLookup("[repDisplayLimit]", "tblReportsHTML", "[repShortCode] = """ & repName & """")
     bAgeChamp = DLookup("[repAgeChamp]", "tblReportsHTML", "[repShortCode] = """ & repName & """")
 
-    If (bAgeChamp) Then
-        iDisplayMax = DLookup("[AgeChampionNumber]", "Misc-Statistics")
+    If (iDisplayLimit > 0) Then
+        'Display Limit is hard coded
+        iDisplayMax = iDisplayLimit
     Else
-        iDisplayMax = DLookup("[NumberOfRecords]", "Misc-Statistics")
-        repFinalLev = DLookup("[repFinalLev]", "tblReportsHTML", "[repShortCode] = """ & repName & """")
-        repPlace = DLookup("[repPlace]", "tblReportsHTML", "[repShortCode] = """ & repName & """")
+        'Display Limit is set by user
+        
+        If (bAgeChamp) Then
+            iDisplayMax = DLookup("[AgeChampionNumber]", "Misc-Statistics")
+        Else
+            iDisplayMax = DLookup("[NumberOfRecords]", "Misc-Statistics")
+        End If
     End If
     
-    If bUnlimited Then
-        iDisplayMax = 30000 ' near unlimited
-    End If
+
+    repFinalLev = DLookup("[repFinalLev]", "tblReportsHTML", "[repShortCode] = """ & repName & """")
+    repPlace = DLookup("[repPlace]", "tblReportsHTML", "[repShortCode] = """ & repName & """")
          
     ' Load Data
     Set MyDb = CurrentDb()
@@ -396,6 +400,7 @@ Function ExportNamesHTML()
         MsgBox "No Records for HTML Export"
         Exit Function
     End If
+    
     ' Cycle through Data and add to array
     rs.MoveFirst 'Unnecessary in this case, but still a good habit
     Do Until rs.EOF = True
@@ -456,7 +461,12 @@ Function ExportNamesHTML()
                 If (strField = "_Position") Then
                     strValue = iPosition
                 Else
-                    strValue = rs(varField)
+                    varValue = rs(varField)
+                    If IsNull(varValue) Then
+                        strValue = ""
+                    Else
+                        strValue = CStr(varValue)
+                    End If
                 End If
                 Call Cell(rHTML, strValue, strField)
             Next varField
@@ -488,7 +498,7 @@ Function ExportNamesHTML()
     Call ListClose(sHTML)
     Call DivClose(sHTML)
 
-    Call CreateHTMLfile(repName & "-class.htm", Template, pHTML & sHTML & rHTML, PrevPage, NextPage, ReportTitle, ReportHead)
+    Call CreateHTMLfile(repName & "-class.htm", Template, pHTML & sHTML & rHTML, "", "", ReportTitle, ReportHead)
 
 
 End Function

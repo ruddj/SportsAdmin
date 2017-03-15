@@ -2,25 +2,29 @@
 Option =8
 Where ="(((EventType.Include)=Yes) AND ((EventType.Flag)=Yes And (EventType.Flag)=Yes))"
 Begin InputTables
+    Name ="House"
     Name ="EventType"
+    Name ="Units"
     Name ="Events"
     Name ="Sex Sub"
-    Name ="House"
     Name ="Records"
-    Name ="Units"
 End
 Begin OutputColumns
+    Expression ="EventType.ET_Des"
+    Expression ="Events.Sex"
+    Expression ="Events.Age"
     Alias ="BestResult"
     Expression ="IIf([Order]=\"ASC\",[nresult],1/[nResult])"
     Expression ="EventType.ET_Code"
     Expression ="Events.E_Code"
-    Expression ="EventType.ET_Des"
     Expression ="EventType.Units"
     Expression ="EventType.Include"
     Expression ="EventType.Flag"
-    Expression ="Events.Sex"
-    Expression ="Events.Age"
+    Alias ="AgeSex"
+    Expression ="Events.Age & \" \" & [Sex Sub].[Sex Sub]"
     Expression ="Records.Result"
+    Alias ="ResultFormated"
+    Expression ="Records.Result & \" \" & EventType.Units"
     Alias ="FullName"
     Expression ="[Gname] & \" \" & UCase([Surname])"
     Alias ="CompetitorHouse"
@@ -30,13 +34,13 @@ Begin OutputColumns
     Expression ="Records.Date"
 End
 Begin Joins
-    LeftTable ="Events"
-    RightTable ="Sex Sub"
-    Expression ="Events.Sex = [Sex Sub].Sex"
-    Flag =2
     LeftTable ="EventType"
     RightTable ="Units"
     Expression ="EventType.Units = Units.DisplayUnit"
+    Flag =2
+    LeftTable ="Events"
+    RightTable ="Sex Sub"
+    Expression ="Events.Sex = [Sex Sub].Sex"
     Flag =2
     LeftTable ="Events"
     RightTable ="Records"
@@ -52,6 +56,14 @@ Begin Joins
     Flag =3
 End
 Begin OrderBy
+    Expression ="EventType.ET_Des"
+    Flag =0
+    Expression ="Events.Sex"
+    Flag =1
+    Expression ="Events.Age"
+    Flag =0
+    Expression ="IIf([Order]=\"ASC\",[nresult],1/[nResult])"
+    Flag =0
     Expression ="Events.E_Code"
     Flag =0
 End
@@ -67,27 +79,97 @@ dbBoolean "TotalsRow" ="0"
 Begin
     Begin
         dbText "Name" ="BestResult"
+        dbLong "AggregateType" ="-1"
     End
     Begin
         dbText "Name" ="FullName"
+        dbLong "AggregateType" ="-1"
     End
     Begin
         dbText "Name" ="CompetitorHouse"
+        dbInteger "ColumnWidth" ="2280"
+        dbBoolean "ColumnHidden" ="0"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="EventType.ET_Des"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="EventType.Include"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="EventType.ET_Code"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="Events.E_Code"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="EventType.Units"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="Events.Sex"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="Events.Age"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="Records.Result"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="[Sex Sub].[Sex Sub]"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="EventType.Flag"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="Records.Date"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="AgeSex"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="ResultFormated"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="Expr1008"
+        dbLong "AggregateType" ="-1"
     End
 End
 Begin
     State =0
-    Left =53
-    Top =65
-    Right =896
-    Bottom =427
+    Left =56
+    Top =92
+    Right =1202
+    Bottom =621
     Left =-1
     Top =-1
-    Right =825
-    Bottom =184
+    Right =1128
+    Bottom =133
     Left =0
     Top =0
     ColumnsShown =539
+    Begin
+        Left =703
+        Top =8
+        Right =812
+        Bottom =160
+        Top =0
+        Name ="House"
+        Name =""
+    End
     Begin
         Left =144
         Top =9
@@ -95,6 +177,15 @@ Begin
         Bottom =146
         Top =0
         Name ="EventType"
+        Name =""
+    End
+    Begin
+        Left =17
+        Top =60
+        Right =113
+        Bottom =167
+        Top =0
+        Name ="Units"
         Name =""
     End
     Begin
@@ -116,30 +207,12 @@ Begin
         Name =""
     End
     Begin
-        Left =703
-        Top =8
-        Right =812
-        Bottom =160
-        Top =0
-        Name ="House"
-        Name =""
-    End
-    Begin
         Left =485
         Top =1
         Right =581
         Bottom =168
         Top =0
         Name ="Records"
-        Name =""
-    End
-    Begin
-        Left =17
-        Top =60
-        Right =113
-        Bottom =167
-        Top =0
-        Name ="Units"
         Name =""
     End
 End
