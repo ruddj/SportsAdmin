@@ -17,10 +17,10 @@ Begin Form
     GridY =20
     Width =10956
     ItemSuffix =113
-    Left =1125
-    Top =2295
-    Right =12075
-    Bottom =8970
+    Left =2130
+    Top =1530
+    Right =13080
+    Bottom =8205
     HelpContextId =270
     RecSrcDt = Begin
         0x49d6923c4fcce140
@@ -1504,8 +1504,11 @@ On Error GoTo PrintPreviewReports_Err
         
         DocName = "Statistics-AgeChampions"
         If Ty = "PREVIEW" Then
-          Call PreviewReport(DocName, acCmdPreviewTwoPages)
-          If GenerateHTML Then GoSub HandleHTML
+            If GenerateHTML Then
+                Call ExportNamesHTML("agch")
+            Else
+                Call PreviewReport(DocName, acCmdPreviewTwoPages)
+            End If
         Else
             DoCmd.OpenReport DocName, A_NORMAL
         End If
@@ -1515,8 +1518,11 @@ On Error GoTo PrintPreviewReports_Err
         
         DocName = "Statistics-AgeChampions-AcrossAllDivisions"
         If Ty = "PREVIEW" Then
-          Call PreviewReport(DocName, acCmdPreviewTwoPages)
-          If GenerateHTML Then GoSub HandleHTML
+            If GenerateHTML Then
+                Call ExportNamesHTML("agca")
+            Else
+                Call PreviewReport(DocName, acCmdPreviewTwoPages)
+            End If
         Else
             DoCmd.OpenReport DocName, A_NORMAL
         End If
@@ -1535,8 +1541,11 @@ On Error GoTo PrintPreviewReports_Err
     If Me![CompEvents].Value Then
         DocName = "Statistics-CompetitorEvents"
         If Ty = "PREVIEW" Then
-          Call PreviewReport(DocName, acCmdPreviewTwoPages)
-          If GenerateHTML Then GoSub HandleHTML
+            If GenerateHTML Then
+                Call ExportNamesHTML("coev")
+            Else
+                Call PreviewReport(DocName, acCmdPreviewTwoPages)
+            End If
         Else
             DoCmd.OpenReport DocName, A_NORMAL
         End If
@@ -1554,8 +1563,11 @@ On Error GoTo PrintPreviewReports_Err
     If Me![CurrentRecords].Value Then
         DocName = "RecordDetails-Current"
         If Ty = "PREVIEW" Then
-          Call PreviewReport(DocName, acCmdPreviewTwoPages)
-          If GenerateHTML Then GoSub HandleHTML
+            If GenerateHTML Then
+                Call ExportNamesHTML("rh")
+            Else
+                Call PreviewReport(DocName, acCmdPreviewTwoPages)
+            End If
         Else
           DoCmd.OpenReport DocName, A_NORMAL
         End If
@@ -1600,8 +1612,11 @@ On Error GoTo PrintPreviewReports_Err
     If Me![Statistics-EventTimesOverallAsc].Value Then
         DocName = "Statistics-EventTimesOverallAsc"
         If Ty = "PREVIEW" Then
-          Call PreviewReport(DocName, acCmdPreviewTwoPages)
-          If GenerateHTML Then GoSub HandleHTML
+            If GenerateHTML Then
+                Call ExportNamesHTML("etoa")
+            Else
+                Call PreviewReport(DocName, acCmdPreviewTwoPages)
+            End If
         Else
             DoCmd.OpenReport DocName, A_NORMAL
         End If
