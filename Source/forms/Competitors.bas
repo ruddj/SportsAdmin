@@ -18,10 +18,10 @@ Begin Form
     GridY =20
     Width =10080
     ItemSuffix =73
-    Left =1365
-    Top =45
-    Right =13290
-    Bottom =8355
+    Left =120
+    Top =450
+    Right =12045
+    Bottom =8760
     HelpContextId =70
     RecSrcDt = Begin
         0x2e9b3a042dc7e140
@@ -30,7 +30,7 @@ Begin Form
     Caption ="Competitors"
     BeforeUpdate ="[Event Procedure]"
     OnClose ="[Event Procedure]"
-    HelpFile ="Sports.hlp"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x8905000089050000890500008905000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000000000000

@@ -12,10 +12,12 @@ Begin Form
     Top =1320
     Right =11520
     Bottom =7590
+    HelpContextId =40
     RecSrcDt = Begin
         0x5fa1726d32cde140
     End
     RecordSource ="House Points-Extra"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

@@ -495,13 +495,13 @@ Private Sub AddCompet_Click()
                 TotalCompetitors = DCount("[PIN]", "Competitors", Criteria)
                 Crs.FindFirst Criteria
                 Continue = True
-                ReturnValue = SysCmd(SYSCMD_INITMETER, "Adding Competitors to heat ...", TotalCompetitors)
+                ReturnValue = SysCmd(acSysCmdInitMeter, "Adding Competitors to heat ...", TotalCompetitors)
                 x = 0
                 While Not Crs.NoMatch And Continue   ' This is the beggining of a new heat
                                                      ' If there are still competitors then we want to add a new heat
                                                      ' It will stop when a whole heat is left empty
                     
-                    ReturnValue = SysCmd(SYSCMD_UPDATEMETER, x)
+                    ReturnValue = SysCmd(acSysCmdUpdateMeter, x)
                     Continue = False
                     i = 1 'DCount("[F_Lev]", "CompEvents", "[E_Code]=" & ERS!E_Code & " AND [F_Lev]=" & Flev & " AND [Heat]=" & HeatRS!Heat) + 1
                     MoreCompetitors = True
@@ -583,7 +583,7 @@ Private Sub AddCompet_Click()
     Ers.Close
     Hrs.Close
     HeatRS.Close
-    ReturnValue = SysCmd(SYSCMD_REMOVEMETER)
+    ReturnValue = SysCmd(acSysCmdRemoveMeter)
     
 
     ' For each event (age/sex division) do

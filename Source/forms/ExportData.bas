@@ -13,17 +13,17 @@ Begin Form
     GridY =10
     Width =9127
     ItemSuffix =46
-    Left =7995
-    Top =2535
-    Right =18510
-    Bottom =11055
-    HelpContextId =10
+    Left =-17925
+    Top =3075
+    Right =-7410
+    Bottom =11595
+    HelpContextId =140
     RecSrcDt = Begin
         0x842055290fcde140
     End
     RecordSource ="MiscellaneousLocal"
     Caption ="Create Carnival Disks"
-    HelpFile ="sports.hlp"
+    HelpFile ="SportsAdmin.chm"
     OnLoad ="[Event Procedure]"
     FilterOnLoad =0
     AllowLayoutView =0

@@ -11,8 +11,9 @@ Begin Form
     ItemSuffix =71
     Left =405
     Top =3015
-    Right =15030
+    Right =12045
     Bottom =8415
+    HelpContextId =110
     AfterDelConfirm ="[Event Procedure]"
     OrderBy ="EnterCompetitorsSF.Place"
     RecSrcDt = Begin
@@ -21,6 +22,7 @@ Begin Form
     RecordSource ="EnterCompetitorsSF"
     BeforeUpdate ="[Event Procedure]"
     OnOpen ="[Event Procedure]"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x8905000089050000890500008905000000000000292200000001000001000000 ,
         0x010000006801000000000000a10700000100000000000000

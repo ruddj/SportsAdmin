@@ -16,9 +16,9 @@ Begin Form
     GridY =20
     Width =9694
     ItemSuffix =167
-    Left =-21405
+    Left =-18465
     Top =3300
-    Right =-6960
+    Right =-6420
     Bottom =12960
     HelpContextId =110
     RecSrcDt = Begin
@@ -28,7 +28,7 @@ Begin Form
     Caption ="Enter Results"
     OnCurrent ="[Event Procedure]"
     AfterUpdate ="[Event Procedure]"
-    HelpFile ="sports.hlp"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x8905000089050000890500008905000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000000000000

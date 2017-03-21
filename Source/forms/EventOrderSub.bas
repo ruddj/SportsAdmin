@@ -12,6 +12,7 @@ Begin Form
     Top =720
     Right =11520
     Bottom =4470
+    HelpContextId =250
     DatasheetGridlinesColor =12632256
     RecSrcDt = Begin
         0xb28f00a11c34e240
@@ -22,6 +23,7 @@ Begin Form
         "RE (((EventType.Include)=Yes) AND ((Events.Include)=Yes)) ORDER BY Heats.E_Numbe"
         "r, EventType.ET_Des, Events.Age, Events.Sex DESC , Heats.F_Lev, Heats.Heat;"
     OnOpen ="[Event Procedure]"
+    HelpFile ="SportsAdmin.chm"
     DatasheetFontName ="Arial"
     FilterOnLoad =0
     AllowLayoutView =0

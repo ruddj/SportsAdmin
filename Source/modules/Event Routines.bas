@@ -70,7 +70,7 @@ On Error GoTo AutomaticallyCreateHeatsAndFinals_Err
       CountRecs = CountRecs * FLSet.RecordCount
 
       msg = "Creating Heats and Finals ..."
-      ReturnValue = SysCmd(SYSCMD_INITMETER, msg, CountRecs)    ' Display message in status bar.
+      ReturnValue = SysCmd(acSysCmdInitMeter, msg, CountRecs)    ' Display message in status bar.
       
 
       ' ****************************************************************
@@ -81,7 +81,7 @@ On Error GoTo AutomaticallyCreateHeatsAndFinals_Err
 
       While Not Eset.EOF
           
-          SysCmd SYSCMD_UPDATEMETER, Count   ' Update meter.
+          SysCmd acSysCmdUpdateMeter, Count   ' Update meter.
           
           Ecode = Eset!E_Code
           
@@ -164,7 +164,7 @@ On Error GoTo AutomaticallyCreateHeatsAndFinals_Err
 
 AutomaticallyCreateHeatsAndFinals_Exit:
   
-  ReturnValue = SysCmd(SYSCMD_REMOVEMETER)
+  ReturnValue = SysCmd(acSysCmdRemoveMeter)
   DoCmd.RunMacro "ClosePleaseWait"
   Exit Function
   

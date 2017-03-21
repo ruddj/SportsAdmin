@@ -16,8 +16,9 @@ Begin Form
     ItemSuffix =33
     Left =3735
     Top =510
-    Right =8355
-    Bottom =6105
+    Right =11985
+    Bottom =8520
+    HelpContextId =520
     RecSrcDt = Begin
         0x2af6e5b911cde140
     End

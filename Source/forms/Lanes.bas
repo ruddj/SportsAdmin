@@ -17,12 +17,15 @@ Begin Form
     Top =1035
     Right =9825
     Bottom =7380
-    HelpContextId =10230
+    HelpContextId =130
     RecSrcDt = Begin
         0x23bb97290fcde140
     End
     Caption ="Default Lane Allocation"
-    HelpFile ="sports.hlp"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
     FilterOnLoad =0
     AllowLayoutView =0
     Begin
@@ -352,7 +355,7 @@ Private Sub Update_Click()
     Set rs = Db.OpenRecordset("Heats", dbOpenDynaset)   ' Create dynaset.
 
     msg = "Updating Lanes ... "
-    ReturnValue = SysCmd(SYSCMD_INITMETER, msg, DCount("[E_Code]", "Heats"))   ' Display message in status bar.
+    ReturnValue = SysCmd(acSysCmdInitMeter, msg, DCount("[E_Code]", "Heats"))   ' Display message in status bar.
     x = 0
 
     If Not rs.BOF Then
@@ -362,7 +365,7 @@ Private Sub Update_Click()
         Do Until rs.EOF
            Call Update_Lane_Assignments(rs!E_Code, rs!F_Lev, rs!Heat)
             x = x + 1
-            ReturnValue = SysCmd(SYSCMD_UPDATEMETER, x)   ' Update meter.
+            ReturnValue = SysCmd(acSysCmdUpdateMeter, x)   ' Update meter.
     
             rs.MoveNext
         Loop
@@ -375,7 +378,7 @@ Private Sub Update_Click()
 
 Update_Click_Exit:
     DoCmd.Hourglass False
-    ReturnValue = SysCmd(SYSCMD_REMOVEMETER)
+    ReturnValue = SysCmd(acSysCmdRemoveMeter)
     Exit Sub
     
 Update_Click_Error:

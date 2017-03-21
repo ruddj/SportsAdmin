@@ -811,7 +811,7 @@ On Error GoTo Err_RemoveEmpty_Click
         Criteria = Criteria & " AND ([Status]=" & Me![FutureEB] & " OR [Status]=" & Me![ActiveEB] & " OR [Status]=" & Me![CompletedEB] & " OR [Status]=" & Me![PromotedEB] & ")"
         
         TotalRecs = DCount("[E_Code]", "Events in Full", Criteria)
-        ReturnValue = SysCmd(SYSCMD_INITMETER, "Removing empty heats ... ", TotalRecs)    ' Display message in status bar.
+        ReturnValue = SysCmd(acSysCmdInitMeter, "Removing empty heats ... ", TotalRecs)    ' Display message in status bar.
         x = 0
 
         rs.FindFirst Criteria
@@ -820,7 +820,7 @@ On Error GoTo Err_RemoveEmpty_Click
         'Stop
         Debug.Print "+==============================+"
         Do Until rs.EOF Or rs.NoMatch  ' Loop until no matching records.
-            ReturnValue = SysCmd(SYSCMD_UPDATEMETER, x)   ' Update meter.
+            ReturnValue = SysCmd(acSysCmdUpdateMeter, x)   ' Update meter.
             x = x + 1
             He = rs!HE_Code
             Crit2 = "[E_Code]=" & rs!E_Code & " and [Heat]=" & rs!Heat & " and [F_Lev]=" & rs!F_Lev
@@ -839,7 +839,7 @@ On Error GoTo Err_RemoveEmpty_Click
         Loop
         Debug.Print "+==============================+"
         rs.Close
-        ReturnValue = SysCmd(SYSCMD_REMOVEMETER)
+        ReturnValue = SysCmd(acSysCmdRemoveMeter)
     End If
 
 Exit_RemoveEmpty_Click:

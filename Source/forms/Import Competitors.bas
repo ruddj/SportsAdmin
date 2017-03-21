@@ -32,6 +32,7 @@ Begin Form
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000
     End
+    AllowDatasheetView =0
     FilterOnLoad =0
     AllowLayoutView =0
     Begin
@@ -258,7 +259,7 @@ Begin Form
                     FontSize =8
                     FontWeight =400
                     TabIndex =5
-                    Name ="Button24"
+                    Name ="btnClearTemp"
                     Caption ="Clear Temporary Data"
                     OnClick ="[Event Procedure]"
                     FontName ="Arial"
@@ -489,19 +490,8 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
 Option Compare Database   'Use database order for string comparisons
+'Option Explicit
 
-Private Sub Button24_Click()
-
-    Mesg = "This will clear any imported data from the temporary table.  This action does not effect the Carnival Database itself.  Do you wish to contnue?"
-    Response = MsgBox(Mesg, 20)
-    If Response = 6 Then
-        DoCmd.SetWarnings False
-        DoCmd.RunSQL "DELETE DISTINCTROW [Import Competitors].* FROM [Import Competitors]"
-        DoCmd.SetWarnings True
-        [I_Data].Requery
-    End If
-
-End Sub
 
 Private Sub Button27_Click()
 On Error GoTo Err_Button27_Click
@@ -515,6 +505,18 @@ Err_Button27_Click:
     MsgBox Error$
     Resume Exit_Button27_Click
     
+End Sub
+
+Private Sub btnClearTemp_Click()
+    Mesg = "This will clear any imported data from the temporary table.  This action does not effect the Carnival Database itself.  Do you wish to contnue?"
+    Response = MsgBox(Mesg, 20)
+    If Response = 6 Then
+        DoCmd.SetWarnings False
+        DoCmd.RunSQL "DELETE DISTINCTROW [Import Competitors].* FROM [Import Competitors]"
+        DoCmd.SetWarnings True
+        [I_Data].Requery
+    End If
+
 End Sub
 
 Private Sub Close_Click()
@@ -572,11 +574,11 @@ On Error GoTo Err_ImportData_Click
     PleaseWaitMsg = "Importing competitors.  Please wait ..."
     DoCmd.RunMacro "ShowPleaseWait"
     msg = "Importing Competitors ... "
-    ReturnValue = SysCmd(SYSCMD_INITMETER, msg, DCount("[Gname]", "Import Competitors"))   ' Display message in status bar.
+    ReturnValue = SysCmd(acSysCmdInitMeter, msg, DCount("[Gname]", "Import Competitors"))   ' Display message in status bar.
     
     While Not ITRS.EOF And Continue
       x = x + 1
-      ReturnValue = SysCmd(SYSCMD_UPDATEMETER, x)   ' Update meter.
+      ReturnValue = SysCmd(acSysCmdUpdateMeter, x)   ' Update meter.
 
       Cname = ITRS!Gname & " " & ITRS!Sname & " (" & UCase(ITRS!H_Code) & ")"
       Response = 0
@@ -615,7 +617,6 @@ On Error GoTo Err_ImportData_Click
 
          If IsNull(ITRS!Age) Then
           ActualAge = DetermineAge_ImportCompetitors(ITRS!DOB, Me!CutDay, Me!CutMonth)
-          'ActualAge = DetermineAge(ITRS!DOB)
          Else
             ActualAge = ITRS!Age
          End If
@@ -667,7 +668,7 @@ On Error GoTo Err_ImportData_Click
        
      Wend
      Call TransferToCompetitorOrdered
-     ReturnValue = SysCmd(SYSCMD_REMOVEMETER)
+     ReturnValue = SysCmd(acSysCmdRemoveMeter)
      DoCmd.Beep
      Response = MsgBox("The import is now complete.", vbInformation)
      
@@ -691,7 +692,7 @@ On Error GoTo Locate_Click_Err
     Dim n As Variant
     Dim strFilter As String
     Dim lngFlags As Long
-    strFilter = ahtAddFilterItem(strFilter, "Web Files (*.txt)", "*.txt")
+    strFilter = ahtAddFilterItem(strFilter, "CSV, Tab, Web Delmited Files (*.csv;*.txt)", "*.csv;*.txt")
     strFilter = ahtAddFilterItem(strFilter, "All Files (*.*)", "*.*")
     
     n = ahtCommonFileOpenSave(InitialDir:="", _
@@ -740,8 +741,8 @@ On Error GoTo Err_Import_Click
       Response = MsgBox(Mesg, vbYesNo + vbInformation)
     End If
     If Response = vbYes Then
-        DoCmd.TransferText A_IMPORTDELIM, "Import Competitors", "Import Competitors", FullFileName
-        [I_Data].Requery
+        DoCmd.TransferText acImportDelim, "Import Competitors", "Import Competitors", FullFileName
+        [I_Data].Requery ' Refresh Subform
     End If
   Else
     Response = MsgBox("The text file cannot be found in the specified position. Make sure you have entered the location of this file correctly.", vbCritical)

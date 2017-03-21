@@ -14,17 +14,17 @@ Begin Form
     GridY =20
     Width =8965
     ItemSuffix =12
-    Left =3255
-    Top =2085
-    Right =13545
-    Bottom =8445
-    HelpContextId =10
+    Left =-17865
+    Top =4365
+    Right =-7575
+    Bottom =10725
+    HelpContextId =40
     RecSrcDt = Begin
         0x403f3e042dc7e140
     End
     Caption ="Special Points Allocation"
     OnCurrent ="[Event Procedure]"
-    HelpFile ="sports.hlp"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

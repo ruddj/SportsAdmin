@@ -550,13 +550,13 @@ On Error GoTo Err_ImportData_Click
     Continue = True
     
     msg = "Processing competitor ... "
-    'ReturnValue = SysCmd(SYSCMD_INITMETER, Msg, DCount("[HE_Code]", "ImportData"))   ' Display message in status bar.
+    'ReturnValue = SysCmd(acSysCmdInitMeter, Msg, DCount("[HE_Code]", "ImportData"))   ' Display message in status bar.
     ReturnValue = SysCmd(acSysCmdSetStatus, msg)
     x = 0
 
     While Not ITRS.EOF And Continue
       x = x + 1
-      'ReturnValue = SysCmd(SYSCMD_UPDATEMETER, X)   ' Update meter.
+      'ReturnValue = SysCmd(acSysCmdUpdateMeter, X)   ' Update meter.
       ReturnValue = ReturnValue = SysCmd(acSysCmdSetStatus, msg & x)
       ActualSex = DetermineSex(ITRS!Sex)
       
@@ -652,7 +652,7 @@ ResumeAddingCompetitorToHeat:
     
     Call TransferToCompetitorOrdered
     
-    'ReturnValue = SysCmd(SYSCMD_REMOVEMETER)
+    'ReturnValue = SysCmd(acSysCmdRemoveMeter)
     ReturnValue = SysCmd(acSysCmdClearStatus)
     
     
@@ -754,9 +754,9 @@ On Error GoTo Err_Import_Click
     If Response = 6 Then
 
         If [Format] = 1 Then
-            DoCmd.TransferText A_IMPORTDELIM, "Create Carnival Disks", "ImportData", FullFileName
+            DoCmd.TransferText acImportDelim, "Create Carnival Disks", "ImportData", FullFileName
         Else
-            DoCmd.OutputTo A_QUERY, "FirstFinal", A_FORMATXLS, FullFileName
+            DoCmd.OutputTo acOutputQuery, "FirstFinal", A_FORMATXLS, FullFileName
         End If
 
         [I_Data].Requery

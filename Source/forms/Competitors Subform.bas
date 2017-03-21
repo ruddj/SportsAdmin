@@ -18,10 +18,12 @@ Begin Form
     Top =990
     Right =9690
     Bottom =4965
+    HelpContextId =70
     RecSrcDt = Begin
         0x75173b042dc7e140
     End
     RecordSource ="CompetitorsSubform"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

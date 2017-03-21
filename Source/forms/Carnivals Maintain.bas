@@ -19,6 +19,7 @@ Begin Form
     Top =870
     Right =13605
     Bottom =9705
+    HelpContextId =30
     OnUnload ="[Event Procedure]"
     RecSrcDt = Begin
         0x2e9b3a042dc7e140
@@ -26,7 +27,7 @@ Begin Form
     RecordSource ="MiscellaneousLocal"
     Caption ="Maintain Carnivals"
     OnOpen ="[Event Procedure]"
-    HelpFile ="sports.hlp"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000

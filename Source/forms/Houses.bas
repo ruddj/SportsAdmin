@@ -12,10 +12,11 @@ Begin Form
     GridY =20
     Width =8280
     ItemSuffix =49
-    Left =8010
-    Top =2595
-    Right =11520
-    Bottom =7590
+    Left =1575
+    Top =2250
+    Right =11670
+    Bottom =10635
+    HelpContextId =40
     Filter ="[H_ID]=2"
     RecSrcDt = Begin
         0x7030d5b911cde140
@@ -24,7 +25,7 @@ Begin Form
         "CompPool, House.H_ID, House.Include FROM House ORDER BY House.H_NAme;"
     Caption ="Team Details"
     OnOpen ="[Event Procedure]"
-    HelpFile ="sports.hlp"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000

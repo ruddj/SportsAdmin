@@ -13,6 +13,7 @@ Begin Form
     Top =510
     Right =11520
     Bottom =7440
+    HelpContextId =40
     RecSrcDt = Begin
         0x119d78290fcde140
     End
@@ -20,6 +21,7 @@ Begin Form
         "se.Details, House.Lane, House.CompPool, House.Flag, House.H_ID FROM House ORDER "
         "BY House.H_NAme;"
     Caption ="House"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

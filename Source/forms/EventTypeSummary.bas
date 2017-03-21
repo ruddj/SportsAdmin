@@ -426,19 +426,19 @@ On Error GoTo UpdateRecords_Click_Err
         rs.MoveLast
         Tot = rs.RecordCount
         msg = "Updating Event Records ..."
-        ReturnValue = SysCmd(SYSCMD_INITMETER, msg, Tot)    ' Display message in status bar.
+        ReturnValue = SysCmd(acSysCmdInitMeter, msg, Tot)    ' Display message in status bar.
         x = 1
                 
         rs.MoveFirst
         While Not rs.EOF
             Call CheckIfRecordBroken(rs!E_Code, -1, -1)
             rs.MoveNext
-            ReturnValue = SysCmd(SYSCMD_UPDATEMETER, x)   ' Update meter.
+            ReturnValue = SysCmd(acSysCmdUpdateMeter, x)   ' Update meter.
             x = x + 1
         Wend
     
         rs.Close
-        ReturnValue = SysCmd(SYSCMD_REMOVEMETER)   ' Update meter.
+        ReturnValue = SysCmd(acSysCmdRemoveMeter)   ' Update meter.
     End If
   End If
   

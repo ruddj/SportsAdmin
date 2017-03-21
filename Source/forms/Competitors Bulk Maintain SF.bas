@@ -13,6 +13,7 @@ Begin Form
     Top =75
     Right =10860
     Bottom =6510
+    HelpContextId =70
     RecSrcDt = Begin
         0xd2dd269aefe5e140
     End
@@ -21,6 +22,11 @@ Begin Form
         " INNER JOIN Competitors ON House.H_Code = Competitors.H_Code WHERE (((House.Incl"
         "ude)=Yes)) ORDER BY Competitors.Surname, Competitors.Gname;"
     Caption ="Competitors-BulkMaintain SF"
+    HelpFile ="SportsAdmin.chm"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

@@ -24,6 +24,9 @@ On Error GoTo Startup_Err
  ' DoCmd.ShowToolbar "Print Preview", acToolbarWhereApprop
   Call UserMode(True)
   
+  ' Set Helpfile Path
+  SetHelp
+  
   Call CheckInventoryAttached
     
   'CurrentDb.Properties("AppTitle") = "Sports Administrator v" & VersionNumber

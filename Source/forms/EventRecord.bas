@@ -29,7 +29,7 @@ Begin Form
         "s, Events.Sex, Events.Age FROM EventType INNER JOIN Events ON EventType.ET_Code "
         "= Events.ET_Code;"
     Caption ="Event Record"
-    HelpFile ="Sports.hlp"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =255
     AllowLayoutView =0
     Begin

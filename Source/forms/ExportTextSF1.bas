@@ -14,12 +14,14 @@ Begin Form
     Top =3570
     Right =9030
     Bottom =7590
+    HelpContextId =140
     RecSrcDt = Begin
         0x7903b8b911cde140
     End
     RecordSource ="SELECT DISTINCTROW UCase([H_Code]) AS Hcode, House.H_NAme, House.Flag FROM House"
         " WHERE ((House.Include=True)) ORDER BY UCase([H_Code]);"
     Caption ="ExportTextSF1"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

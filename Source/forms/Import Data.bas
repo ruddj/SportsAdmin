@@ -13,15 +13,17 @@ Begin Form
     GridY =20
     Width =10368
     ItemSuffix =41
-    Left =10275
-    Top =1245
-    Right =20640
-    Bottom =8430
+    Left =1230
+    Top =1980
+    Right =11595
+    Bottom =9165
+    HelpContextId =150
     RecSrcDt = Begin
         0x4e2adfb911cde140
     End
     RecordSource ="MiscellaneousLocal"
     Caption ="Import Carnival Disks"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000
@@ -565,13 +567,13 @@ On Error GoTo Err_ImportData_Click
     Continue = True
     
     msg = "Processing competitor ... "
-    'ReturnValue = SysCmd(SYSCMD_INITMETER, Msg, DCount("[HE_Code]", "ImportData"))   ' Display message in status bar.
+    'ReturnValue = SysCmd(acSysCmdInitMeter, Msg, DCount("[HE_Code]", "ImportData"))   ' Display message in status bar.
     ReturnValue = SysCmd(acSysCmdSetStatus, msg)
     x = 0
 
     While Not ITRS.EOF And Continue
       x = x + 1
-      'ReturnValue = SysCmd(SYSCMD_UPDATEMETER, X)   ' Update meter.
+      'ReturnValue = SysCmd(acSysCmdUpdateMeter, X)   ' Update meter.
       ReturnValue = ReturnValue = SysCmd(acSysCmdSetStatus, msg & x)
       ActualSex = DetermineSex(ITRS!Sex)
       
@@ -674,7 +676,7 @@ ResumeAddingCompetitorToHeat:
     
     Call TransferToCompetitorOrdered
     
-    'ReturnValue = SysCmd(SYSCMD_REMOVEMETER)
+    'ReturnValue = SysCmd(acSysCmdRemoveMeter)
     ReturnValue = SysCmd(acSysCmdClearStatus)
     
     
@@ -776,9 +778,9 @@ On Error GoTo Err_Import_Click
     If Response = vbYes Then
 
         If Me.Format = 1 Then
-            DoCmd.TransferText A_IMPORTDELIM, "Create Carnival Disks", "ImportData", FullFileName
+            DoCmd.TransferText acImportDelim, "Create Carnival Disks", "ImportData", FullFileName
         ElseIf Me.Format = 2 Then
-            DoCmd.TransferText A_IMPORTDELIM, "Create Carnival Disks", "ImportData", FullFileName, True
+            DoCmd.TransferText acImportDelim, "Create Carnival Disks", "ImportData", FullFileName, True
         Else
           
           Dim tdf As TableDef

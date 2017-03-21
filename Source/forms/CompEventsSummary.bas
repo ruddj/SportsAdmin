@@ -16,9 +16,9 @@ Begin Form
     GridY =20
     Width =9949
     ItemSuffix =78
-    Left =-20640
+    Left =-18465
     Top =3375
-    Right =-7785
+    Right =-5610
     Bottom =13350
     HelpContextId =80
     RecSrcDt = Begin
@@ -26,7 +26,7 @@ Begin Form
     End
     RecordSource ="MiscellaneousLocal"
     Caption ="Enter Competitors in Events"
-    HelpFile ="sports.hlp"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000
@@ -1130,7 +1130,7 @@ On Error GoTo Err_PromoteBut_Click
       'Response = MsgBox("Are you sure you want to promote all finals that have been completed?", 20)
       'If Response = 6 Then
         
-        ReturnValue = SysCmd(SYSCMD_INITMETER, "Promoting Competitors", TotalEvents)    ' Display message in status bar.
+        ReturnValue = SysCmd(acSysCmdInitMeter, "Promoting Competitors", TotalEvents)    ' Display message in status bar.
             
         rs.MoveFirst
         x = 1
@@ -1165,7 +1165,7 @@ On Error GoTo Err_PromoteBut_Click
                     If Result = True Then
                         EventsPromoted = True
                     End If
-                    ReturnValue = SysCmd(SYSCMD_UPDATEMETER, x)   ' Update meter.
+                    ReturnValue = SysCmd(acSysCmdUpdateMeter, x)   ' Update meter.
                     x = x + 1
                 End If
             End If
@@ -1173,7 +1173,7 @@ On Error GoTo Err_PromoteBut_Click
     
         Wend
         
-        ReturnValue = SysCmd(SYSCMD_REMOVEMETER)
+        ReturnValue = SysCmd(acSysCmdRemoveMeter)
         
         [Summary].Requery
         If EventsPromoted Then

@@ -21,7 +21,7 @@ Begin Form
     Top =795
     Right =14100
     Bottom =9480
-    HelpContextId =60
+    HelpContextId =390
     Filter ="[ET_Code] = 3"
     RecSrcDt = Begin
         0xee9763512d29e240
@@ -32,7 +32,6 @@ Begin Form
         "N ReportTypes.R_Code = EventType.R_Code;"
     Caption ="Event Details"
     OnClose ="[Event Procedure]"
-    HelpFile ="sports.hlp"
     PrtMip = Begin
         0xa2050000a1050000a1050000a105000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000
