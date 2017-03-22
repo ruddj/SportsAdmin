@@ -17,6 +17,7 @@ Begin Report
         "se INNER JOIN Competitors ON House.H_Code = Competitors.H_Code WHERE (((House.In"
         "clude)=True) AND ((Competitors.Gname)<>\"Team\"));"
     OnClose ="ReportPopup-Update"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x37020000370200008f010000d002000000000000441300000f0f000001000000 ,
         0x020000005503000000000000a20700000100000000000000

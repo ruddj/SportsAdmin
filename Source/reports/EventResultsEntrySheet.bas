@@ -15,6 +15,7 @@ Begin Report
     End
     RecordSource ="EventEntrryLists"
     OnClose ="ReportPopup-Update"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x370200008d01000037020000d0020000000000007d140000bd09000000000000 ,
         0x020000003702000000000000a20700000100000000000000

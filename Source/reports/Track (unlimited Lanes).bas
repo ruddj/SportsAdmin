@@ -18,6 +18,7 @@ Begin Report
     RecordSource ="Field Events"
     Caption ="Unlimited Lanes Detailed List"
     OnClose ="ReportPopup-Update"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x4a020000370200003702000037020000000000009f390000d701000001000000 ,
         0x010000006801000000000000a10700000100000000000000

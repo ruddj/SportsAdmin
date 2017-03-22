@@ -16,15 +16,16 @@ Begin Form
     Width =5215
     ItemSuffix =12
     Left =3255
-    Top =2085
+    Top =2325
     Right =15795
-    Bottom =7470
+    Bottom =7710
     RecSrcDt = Begin
         0x2677765db6f2e140
     End
     RecordSource ="showDialog"
     Caption ="Promote Event"
     OnOpen ="[Event Procedure]"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

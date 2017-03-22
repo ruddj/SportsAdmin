@@ -23,6 +23,7 @@ Begin Report
         "NewPlace In (1,2,3,4,5,6,7,8,9,10,\"Other\");"
     Caption ="Number of Place Gained"
     OnClose ="ReportPopup-Update"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x370200003702000037020000d002000000000000992900008c01000001000000 ,
         0x010000006801000000000000a10700000100000000000000
@@ -481,6 +482,7 @@ Begin Report
                 End
                 Begin Chart
                     ColumnHeads = NotDefault
+                    Locked = NotDefault
                     SizeMode =3
                     RowSourceTypeInt =2
                     Left =1133

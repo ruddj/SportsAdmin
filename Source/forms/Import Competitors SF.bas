@@ -24,6 +24,7 @@ Begin Form
         "_Code, [Import Competitors].Age, [Import Competitors].DOB, [Import Competitors]."
         "Sex;"
     Caption ="ImportData"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

@@ -26,6 +26,7 @@ Begin Report
         "ame] & \", \" & [Gname], CompEvents.Points DESC;"
     OnOpen ="[Event Procedure]"
     OnClose ="ReportPopup-Update"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x3702000037020000450200009602000000000000a0290000fe01000001000000 ,
         0x010000006801000000000000a10700000100000000000000

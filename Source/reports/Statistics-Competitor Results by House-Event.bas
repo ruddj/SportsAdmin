@@ -26,6 +26,7 @@ Begin Report
         "e, EventType.ET_Des;"
     OnOpen ="[Event Procedure]"
     OnClose ="ReportPopup-Update"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x3702000037020000370200009602000000000000a22900001d01000001000000 ,
         0x010000006801000000000000a10700000100000000000000

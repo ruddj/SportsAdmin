@@ -24,6 +24,7 @@ Begin Form
         "at, ImportData.Competitor, ImportData.Memo FROM ImportData ORDER BY ImportData.S"
         "_Name, ImportData.G_Name, ImportData.H_Code, ImportData.Age;"
     Caption ="ImportData"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

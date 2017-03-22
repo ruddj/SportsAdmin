@@ -17,15 +17,15 @@ Begin Form
     Width =8103
     ItemSuffix =115
     Left =3255
-    Top =2085
+    Top =2325
     Right =13620
-    Bottom =11640
+    Bottom =11880
     HelpContextId =400
     RecSrcDt = Begin
         0x15c96b5db6f2e140
     End
     Caption ="Enter Competitors Automatically"
-    HelpFile ="sports.hlp"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x8905000089050000890500008905000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000000000000

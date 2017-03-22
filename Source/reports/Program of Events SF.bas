@@ -19,6 +19,7 @@ Begin Report
         0xf0164870efe5e140
     End
     RecordSource ="Program of Events SF"
+    HelpFile ="SportsAdmin.chm"
     DatasheetFontName ="Arial"
     PrtMip = Begin
         0x3702000037020000370200006e04000000000000fa0900001b01000000000000 ,

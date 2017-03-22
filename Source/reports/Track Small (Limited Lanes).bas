@@ -19,6 +19,7 @@ Begin Report
     RecordSource ="Lanes Limited Report"
     Caption ="Limited Lanes List"
     OnClose ="ReportPopup-Update"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x37020000370200008f0100009702000000000000152a00006a01000001000000 ,
         0x010000006801000000000000a10700000100000000000000

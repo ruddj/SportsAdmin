@@ -15,6 +15,7 @@ Begin Form
         0xda2f3cf510cde140
     End
     RecordSource ="SELECT DISTINCTROW Lanes.Lane, Lanes.H_Code FROM Lanes ORDER BY Lanes.Lane;"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

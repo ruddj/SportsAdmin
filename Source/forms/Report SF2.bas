@@ -16,7 +16,7 @@ Begin Form
     ItemSuffix =29
     Left =11550
     Top =2970
-    Right =12975
+    Right =13305
     Bottom =6105
     OrderBy ="[Report SF2].ET_Des"
     RecSrcDt = Begin
@@ -26,6 +26,7 @@ Begin Form
         " EventType.R_Code, EventType.Include, EventType.EntrantNum, EventType.Flag FROM "
         "EventType WHERE (((EventType.Include)=True));"
     Caption ="EventType"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

@@ -15,15 +15,17 @@ Begin Form
     GridY =20
     Width =11225
     ItemSuffix =103
-    Left =1860
-    Top =690
-    Right =13080
-    Bottom =7305
+    Left =405
+    Top =795
+    Right =11625
+    Bottom =7410
+    HelpContextId =600
     RecSrcDt = Begin
         0xba84b9290fcde140
     End
     Caption ="Setup A Carnival"
     OnOpen ="[Event Procedure]"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x8905000089050000890500008905000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000

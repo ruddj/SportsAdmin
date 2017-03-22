@@ -27,6 +27,7 @@ Begin Form
         "r, EventType.ET_Des, Events.Age, Events.Sex DESC , Heats.F_Lev, Heats.Heat;"
     Caption ="Maintain Event Sequence"
     OnOpen ="[Event Procedure]"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

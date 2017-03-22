@@ -24,6 +24,7 @@ Begin Form
         "e.Units = Units.DisplayUnit ORDER BY IIf([Order]=\"ASC\",[nResult],1/[nResult]),"
         " Records.Surname, Records.Gname;"
     AfterUpdate ="[Event Procedure]"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin
@@ -141,7 +142,7 @@ Begin Form
                     Top =30
                     Width =1285
                     TabIndex =2
-                    ColumnInfo ="\"\";\"\";\"\";\"\";\"10\";\"100\""
+                    ColumnInfo ="\"\";\">\";\"\";\"\";\"10\";\"100\""
                     Name ="Field4"
                     ControlSource ="H_Code"
                     RowSourceType ="Table/Query"

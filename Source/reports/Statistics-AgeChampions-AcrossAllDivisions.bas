@@ -17,6 +17,7 @@ Begin Report
     Caption ="Statistics-Age Champion-Any Division"
     OnOpen ="[Event Procedure]"
     OnClose ="ReportPopup-Update"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x350200003502000045020000d002000000000000a02900006301000001000000 ,
         0x010000006801000000000000a10700000100000000000000

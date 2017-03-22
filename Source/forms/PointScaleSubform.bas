@@ -17,6 +17,7 @@ Begin Form
     End
     RecordSource ="SELECT DISTINCTROW PointsScale.Place, PointsScale.Points, PointsScale.PtScale FR"
         "OM PointsScale ORDER BY PointsScale.Place, PointsScale.PtScale;"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

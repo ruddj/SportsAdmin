@@ -15,6 +15,7 @@ Begin Report
     End
     Caption ="Cumulative Points"
     OnClose ="ReportPopup-Update"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x3702000037020000370200009602000000000000102a0000152c000001000000 ,
         0x010000006801000000000000a10700000100000000000000
@@ -94,7 +95,6 @@ Begin Report
             Begin
                 Begin Chart
                     ColumnHeads = NotDefault
-                    Locked = NotDefault
                     SizeMode =1
                     RowSourceTypeInt =2
                     Left =56

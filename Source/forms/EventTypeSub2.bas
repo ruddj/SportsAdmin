@@ -24,6 +24,7 @@ Begin Form
     OnDelete ="[Event Procedure]"
     BeforeUpdate ="[Event Procedure]"
     AfterUpdate ="[Event Procedure]"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin
@@ -164,7 +165,7 @@ Begin Form
                     ColumnWidth =1230
                     ColumnOrder =3
                     TabIndex =2
-                    ColumnInfo ="\"\";\"\";\"10\";\"20\""
+                    ColumnInfo ="\"\";\">\";\"10\";\"20\""
                     Name ="Point Scale"
                     ControlSource ="PointScale"
                     RowSourceType ="Table/Query"

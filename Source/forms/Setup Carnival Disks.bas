@@ -23,6 +23,7 @@ Begin Form
         0x12a5bd290fcde140
     End
     Caption ="Setup Carnival Disks"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

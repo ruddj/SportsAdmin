@@ -24,6 +24,7 @@ Begin Report
     RecordSource ="Program of Events"
     Caption ="Program of Events"
     OnClose ="ReportPopup-Update"
+    HelpFile ="SportsAdmin.chm"
     DatasheetFontName ="Arial"
     PrtMip = Begin
         0x370200003702000037020000d002000000000000fc2800001b01000000000000 ,

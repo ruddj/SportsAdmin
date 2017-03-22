@@ -57,6 +57,11 @@ Public Function ShowVersionInformation(Optional ModuleName As String)
   
 End Function
 
+' Open Help File by using F1 Help key
+Public Function ShowHelp(Optional uContext As Long)
+    SendKeys "{F1}"
+End Function
+
 ' Sets (and creates if necessary) application properties like Icons and Titles
 Public Function AddAppProperty(strName As String, varType As Variant, varValue As Variant) As Integer
   
@@ -175,7 +180,7 @@ End Function
 ' Used to design the active object when under source control
 
 Public Function DesignActiveObject()
-On Error GoTo DesignActiveForm_Err
+  On Error GoTo DesignActiveForm_Err
 
   Dim intCurrentType As Integer
   Dim strCurrentName As String
@@ -291,7 +296,7 @@ Public Function AddErrorCheckingCode()
   StartLine = Mdl.ProcBodyLine(ProcedureName, vbext_pk_Proc)
   
   Q = ""
-  Q = Q & "On Error Goto " & ProcedureName & "_Err"
+  Q = Q & "  On Error Goto " & ProcedureName & "_Err"
   Mdl.InsertLines StartLine + 1, Q
   
   LastLine = Mdl.ProcStartLine(ProcedureName, vbext_pk_Proc) + Mdl.ProcCountLines(ProcedureName, vbext_pk_Proc)
@@ -359,7 +364,7 @@ End Sub
 
 
 Private Sub FixSccObjectStatus(oType, oName, Quiet As Boolean)
-On Error GoTo FixSccObjectStatus_Err
+  On Error GoTo FixSccObjectStatus_Err
 
   SysCmd acSysCmdSetStatus, "Checking: " & oName
   Dim dbs As Database, ctr As Container, doc As Document

@@ -25,7 +25,7 @@ Begin Form
     End
     RecordSource ="Misc-EventLists"
     Caption ="Generate Event Lists"
-    HelpFile ="sports.hlp"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x8905000089050000890500008905000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000000000000

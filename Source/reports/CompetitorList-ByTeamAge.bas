@@ -16,6 +16,7 @@ Begin Report
     RecordSource ="Competitor List"
     OnOpen ="[Event Procedure]"
     OnClose ="ReportPopup-Update"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x3702000037020000370200009702000000000000e52900006301000001000000 ,
         0x010000006801000000000000a10700000100000000000000

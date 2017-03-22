@@ -17,17 +17,17 @@ Begin Form
     GridY =10
     Width =7143
     ItemSuffix =123
-    Left =-21465
-    Top =2310
-    Right =-19710
-    Bottom =2310
+    Left =-18465
+    Top =2925
+    Right =-9540
+    Bottom =11925
     RecSrcDt = Begin
         0xb3dbca3c8df5e140
     End
     RecordSource ="Misc-EventLists"
     Caption ="Utilities 2"
     OnOpen ="[Event Procedure]"
-    HelpFile ="sports.hlp"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x8905000089050000890500008905000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000000000000

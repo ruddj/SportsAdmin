@@ -18,10 +18,10 @@ Begin Form
     GridY =20
     Width =11874
     ItemSuffix =87
-    Left =3735
-    Top =615
-    Right =15615
-    Bottom =11340
+    Left =165
+    Top =855
+    Right =12045
+    Bottom =11580
     HelpContextId =20
     RecSrcDt = Begin
         0xaf41e9ef3ccde140
@@ -30,7 +30,7 @@ Begin Form
     Caption ="Sports Administrator - Main Menu"
     OnOpen ="[Event Procedure]"
     OnClose ="[Event Procedure]"
-    HelpFile ="sports.hlp"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000
@@ -99,7 +99,7 @@ Begin Form
                     Top =5102
                     Width =5610
                     Height =4605
-                    TabIndex =23
+                    TabIndex =22
                     BackColor =-2147483633
                     Name ="Graph3"
                     OleData = Begin
@@ -2861,28 +2861,6 @@ Begin Form
                     LayoutCachedWidth =6006
                     LayoutCachedHeight =10742
                 End
-                Begin CommandButton
-                    Visible = NotDefault
-                    OverlapFlags =215
-                    Left =10289
-                    Width =225
-                    Height =225
-                    TabIndex =20
-                    ForeColor =4259584
-                    Name ="Restore"
-                    Caption ="*"
-                    OnClick ="Unhide Database.&Restore"
-
-                    LayoutCachedLeft =10289
-                    LayoutCachedWidth =10514
-                    LayoutCachedHeight =225
-                    UseTheme =1
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
-                    Overlaps =1
-                End
                 Begin Chart
                     Visible = NotDefault
                     ColumnHeads = NotDefault
@@ -2893,7 +2871,7 @@ Begin Form
                     Top =5442
                     Width =5595
                     Height =4605
-                    TabIndex =21
+                    TabIndex =20
                     BackColor =-2147483633
                     Name ="Graph2"
                     OleData = Begin
@@ -3677,7 +3655,7 @@ Begin Form
                     Top =5682
                     Width =1920
                     Height =285
-                    TabIndex =22
+                    TabIndex =21
                     BoundColumn =1
                     BorderColor =12632256
                     Name ="WhichGraph"
@@ -3710,7 +3688,7 @@ Begin Form
                     Height =510
                     FontSize =8
                     FontWeight =400
-                    TabIndex =24
+                    TabIndex =23
                     Name ="BackupBut"
                     Caption ="Backup Carnival"
                     OnClick ="[Event Procedure]"
@@ -4621,7 +4599,7 @@ Begin Form
                     End
                     Picture ="manimenu2.bmp"
 
-                    TabIndex =27
+                    TabIndex =26
                 End
                 Begin CommandButton
                     OverlapFlags =247
@@ -4629,7 +4607,7 @@ Begin Form
                     Top =6045
                     Width =606
                     Height =435
-                    TabIndex =25
+                    TabIndex =24
                     Name ="PreviewOverallResultsBut"
                     Caption ="Command85"
                     OnClick ="[Event Procedure]"
@@ -4673,7 +4651,7 @@ Begin Form
                     Top =1445
                     Width =5696
                     Height =4511
-                    TabIndex =26
+                    TabIndex =25
                     BackColor =-2147483633
                     Name ="Graph86"
                     OleData = Begin

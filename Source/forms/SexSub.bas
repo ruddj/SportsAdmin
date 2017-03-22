@@ -20,6 +20,7 @@ Begin Form
         0xa51a1eba11cde140
     End
     RecordSource ="Sex Sub"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

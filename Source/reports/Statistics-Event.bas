@@ -16,6 +16,7 @@ Begin Report
     RecordSource ="HousePoints-Total-Event-F"
     OnOpen ="[Event Procedure]"
     OnClose ="[Event Procedure]"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x370200003702000045020000d002000000000000a02900006301000001000000 ,
         0x010000006801000000000000a10700000100000000000000

@@ -26,6 +26,7 @@ Begin Report
         "te]\",\"Misc-Statistics\")));"
     Caption ="Records set on the Specified Day"
     OnClose ="ReportPopup-Update"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x370200003702000037020000d002000000000000da2900001801000001000000 ,
         0x010000006801000000000000a10700000100000000000000

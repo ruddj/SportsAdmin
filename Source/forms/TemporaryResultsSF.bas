@@ -21,6 +21,7 @@ Begin Form
         "ce Order].Lane, [Temporary Results-Place Order].Results FROM [Temporary Results-"
         "Place Order] ORDER BY [Temporary Results-Place Order].Place;"
     BeforeUpdate ="[Event Procedure]"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

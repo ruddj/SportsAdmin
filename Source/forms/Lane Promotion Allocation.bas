@@ -23,6 +23,7 @@ Begin Form
         0x2af6e5b911cde140
     End
     Caption ="Lane Promotion Allocation"
+    HelpFile ="SportsAdmin.chm"
     OnLoad ="[Event Procedure]"
     FilterOnLoad =0
     AllowLayoutView =0

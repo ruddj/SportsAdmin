@@ -17,6 +17,7 @@ Begin Report
     Caption ="Overall Statistics"
     OnOpen ="[Event Procedure]"
     OnClose ="[Event Procedure]"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x350200003502000035020000d002000000000000d8290000d401000001000000 ,
         0x010000006801000000000000a10700000100000000000000
@@ -334,7 +335,6 @@ Begin Report
                 End
                 Begin Chart
                     ColumnHeads = NotDefault
-                    Locked = NotDefault
                     SizeMode =3
                     RowSourceTypeInt =2
                     Left =1133

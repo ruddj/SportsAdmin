@@ -10,12 +10,13 @@ Begin Form
     ItemSuffix =30
     Left =10830
     Top =435
-    Right =12255
+    Right =12585
     Bottom =7065
     RecSrcDt = Begin
         0x386f898110cde140
     End
     Caption ="Copy Competitors from One Event to Another"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

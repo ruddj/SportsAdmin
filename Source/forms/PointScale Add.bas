@@ -21,6 +21,7 @@ Begin Form
         0x2677765db6f2e140
     End
     Caption ="Copy Event"
+    HelpFile ="SportsAdmin.chm"
     OnLoad ="[Event Procedure]"
     FilterOnLoad =0
     AllowLayoutView =0

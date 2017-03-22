@@ -15,14 +15,15 @@ Begin Form
     Width =3750
     ItemSuffix =11
     Left =3255
-    Top =2085
+    Top =2325
     Right =14595
-    Bottom =9060
+    Bottom =9300
     RecSrcDt = Begin
         0xb9e9a8e8eec6e140
     End
     Caption ="Please Wait ..."
     OnOpen ="[Event Procedure]"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

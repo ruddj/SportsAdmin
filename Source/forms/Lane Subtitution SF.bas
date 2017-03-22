@@ -17,6 +17,7 @@ Begin Form
     End
     RecordSource ="SELECT DISTINCTROW [Lane Sub].Lane, [Lane Sub].Lane_Sub FROM [Lane Sub] ORDER BY"
         " [Lane Sub].Lane;"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

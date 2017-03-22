@@ -17,6 +17,7 @@ Begin Form
     End
     RecordSource ="SELECT DISTINCTROW [Final Level Sub].F_Lev, [Final Level Sub].F_Lev_Sub FROM [Fi"
         "nal Level Sub] ORDER BY [Final Level Sub].F_Lev;"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

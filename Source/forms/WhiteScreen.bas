@@ -21,6 +21,7 @@ Begin Form
     RecSrcDt = Begin
         0x2e616e7cf135e240
     End
+    HelpFile ="SportsAdmin.chm"
     DatasheetFontName ="Arial"
     FilterOnLoad =0
     AllowLayoutView =0

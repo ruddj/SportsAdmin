@@ -1122,7 +1122,8 @@ End Function
 Public Function SportAddErrorCode()
 On Error GoTo SportAddErrorCode_Err
 
-  If CurrentUser = "Owner" Then Call AddErrorCheckingCode
+  'If CurrentUser = "Owner" Then
+  Call AddErrorCheckingCode
   
 SportAddErrorCode_Exit:
   On Error Resume Next

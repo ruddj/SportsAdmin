@@ -15,6 +15,7 @@ Begin Report
         0x0fb69d24ecdae140
     End
     OnClose ="ReportPopup-Update"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x8d010000370200008d0100005303000000000000e12a00000000000001000000 ,
         0x010000007100000000000000a20700000100000000000000

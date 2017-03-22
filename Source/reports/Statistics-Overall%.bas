@@ -15,6 +15,7 @@ Begin Report
     End
     RecordSource ="House points - GrandTotal"
     OnClose ="ReportPopup-Update"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x3702000037020000370200001c01000000000000cf290000c501000001000000 ,
         0x010000006801000000000000a10700000100000000000000
@@ -324,6 +325,7 @@ Begin Report
                 End
                 Begin Chart
                     ColumnHeads = NotDefault
+                    Locked = NotDefault
                     SizeMode =3
                     RowSourceTypeInt =2
                     Left =1133

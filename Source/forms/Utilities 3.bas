@@ -19,16 +19,16 @@ Begin Form
     GridY =10
     Width =7961
     ItemSuffix =56
-    Left =-19290
+    Left =-18465
     Top =5265
-    Right =-11535
+    Right =-10710
     Bottom =10365
     RecSrcDt = Begin
         0x6bd443042dc7e140
     End
     RecordSource ="Miscellaneous"
     Caption ="Utilities"
-    HelpFile ="sports.hlp"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000

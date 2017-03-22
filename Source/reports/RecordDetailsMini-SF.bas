@@ -12,6 +12,7 @@ Begin Report
         0xe9d140bccedae140
     End
     RecordSource ="Report-Records"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x130b000037020000130b000096020000000000003e1900001801000001000000 ,
         0x020000007100000000000000a20700000100000000000000

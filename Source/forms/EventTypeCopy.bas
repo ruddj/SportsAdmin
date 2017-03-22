@@ -17,13 +17,14 @@ Begin Form
     Width =5329
     ItemSuffix =5
     Left =3255
-    Top =2085
+    Top =2325
     Right =12645
-    Bottom =5025
+    Bottom =5265
     RecSrcDt = Begin
         0x6de96f5db6f2e140
     End
     Caption ="Copy Event"
+    HelpFile ="SportsAdmin.chm"
     OnLoad ="[Event Procedure]"
     FilterOnLoad =0
     AllowLayoutView =0

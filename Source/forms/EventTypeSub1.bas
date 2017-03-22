@@ -22,6 +22,7 @@ Begin Form
         "ents ORDER BY Events.Age, Events.Sex;"
     OnCurrent ="[Event Procedure]"
     BeforeUpdate ="[Event Procedure]"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =255
     AllowLayoutView =0
     Begin

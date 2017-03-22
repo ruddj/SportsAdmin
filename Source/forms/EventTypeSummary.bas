@@ -25,7 +25,7 @@ Begin Form
     End
     Caption ="Event Summary"
     OnOpen ="[Event Procedure]"
-    HelpFile ="sports.hlp"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

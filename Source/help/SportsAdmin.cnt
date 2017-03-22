@@ -1,0 +1,24 @@
+:Base SPORTS.HLP>Main
+:Title Sports Administrator Help
+:Index Sports help Filre=sports.hlp
+1 Setting up a Carnival
+2 Creating a Carnival=L20
+2 Create, Copy or Modify a Carnival=L30
+2 Creating Teams=L40
+2 Setup Point Scales=L50
+2 Create Events=L60
+2 Allocate Lanes to Teams=L45
+2 Set Event Order=L250
+2 Add Competitors
+3 Create Carnival Disks AND=L140
+3 Import Carnival Disks OR=L150
+3 Enter Competitors Manually OR=L70
+3 Import Competitors from a Text file=L330
+2 Enrol Competitors in Events
+3 Enter Competitors in Events=L80
+3 Generate Event Lists=L260
+1 Generate Reports
+2 Carnival Statistics=L270
+1 Navigating around Sports Administrator
+2 Form Navigation=L310
+2 Table Navigation=L340

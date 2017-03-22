@@ -19,6 +19,7 @@ Begin Report
         " = CompEvents.E_Code)) ON EventType.ET_Code = Events.ET_Code WHERE (((CompEvents"
         ".F_Lev)=0) AND ((EventType.Flag)=True)) ORDER BY CompEvents.PIN;"
     OnOpen ="[Event Procedure]"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0xa0050000a0050000a0050000a005000000000000251600005a00000001000000 ,
         0x010000006801000000000000a10700000100000001000000

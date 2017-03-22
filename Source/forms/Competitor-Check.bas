@@ -19,6 +19,7 @@ Begin Form
         "ll)) OR ((Competitors.Age Is Null));"
     Caption ="Competitor Check"
     OnOpen ="[Event Procedure]"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

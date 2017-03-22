@@ -83,14 +83,14 @@ Public Sub DisplayErrMsg(CurrentProcedure, Optional Var1, Optional Var2)
                   
         Case "OpenAllLinkedDatabases", "CheckIfLoginAllowed"
           Q = "You do not have the necessary permissions to view the table '" & Var1 & "'. " & CRLF(2)
-          Q = Q & "All users should have read permissions for this table.  Please talk to the SchoolPRO administrator "
+          Q = Q & "All users should have read permissions for this table.  Please check your file permissions "
           Q = Q & "to resolve the issue."
           Title = "INSUFFICIENT PERMISSIONS"
           DialogImage = vbExclamation
           
         Case Else
           Q = "You do not have permission to view the table '" & Var1 & "'.  " & CRLF(2)
-          Q = Q & "You should not use this SchoolPRO module until this issue is resolved by the SchoolPRO Administrator."
+          Q = Q & "You should check your file permissions."
           Title = "INSUFFICIENT PERMISSIONS"
           DialogImage = vbExclamation
       End Select

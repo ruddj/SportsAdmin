@@ -14,7 +14,7 @@ Begin Form
     ItemSuffix =21
     Left =11550
     Top =6705
-    Right =12975
+    Right =13305
     Bottom =7590
     RecSrcDt = Begin
         0x7903b8b911cde140
@@ -22,6 +22,7 @@ Begin Form
     RecordSource ="SELECT DISTINCTROW UCase([H_Code]) AS Hcode, House.H_NAme, House.Flag FROM House"
         " WHERE ((House.Include=True)) ORDER BY UCase([H_Code]);"
     Caption ="ExportTextSF1"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

@@ -16,10 +16,10 @@ Begin Form
     Width =3344
     DatasheetFontHeight =10
     ItemSuffix =27
-    Left =3255
-    Top =2085
-    Right =9870
-    Bottom =8220
+    Left =-18465
+    Top =2325
+    Right =-16710
+    Bottom =2325
     TimerInterval =1000
     DatasheetGridlinesColor =12632256
     RecSrcDt = Begin
@@ -27,6 +27,7 @@ Begin Form
     End
     RecordSource ="SELECT [Misc-ReportsPopUp].* FROM [Misc-ReportsPopUp];"
     Caption ="Open Reports"
+    HelpFile ="SportsAdmin.chm"
     DatasheetFontName ="Arial"
     PrtMip = Begin
         0x8905000089050000890500008905000000000000201c0000e010000001000000 ,

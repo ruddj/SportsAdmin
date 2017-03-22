@@ -30,7 +30,7 @@ Begin Form
     RecordSource ="SELECT DISTINCTROW EventType.ET_Code, EventType.ET_Des FROM EventType WHERE ((Ev"
         "entType.ET_Code=[Forms]![EventType]![ET_Code]));"
     Caption ="Maintain Heats and Finals"
-    HelpFile ="sports.hlp"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =255
     AllowLayoutView =0
     Begin

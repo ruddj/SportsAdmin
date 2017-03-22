@@ -23,6 +23,7 @@ Begin Form
         0x1bf2bb290fcde140
     End
     Caption ="Setup Carnival Competitors"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

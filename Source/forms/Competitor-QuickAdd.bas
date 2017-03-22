@@ -26,6 +26,7 @@ Begin Form
         0x45821f397025e240
     End
     Caption ="Competitor - Quick Add"
+    HelpFile ="SportsAdmin.chm"
     DatasheetFontName ="Arial"
     OnLoad ="[Event Procedure]"
     FilterOnLoad =0

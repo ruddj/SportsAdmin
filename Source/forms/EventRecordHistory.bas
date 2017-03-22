@@ -16,9 +16,9 @@ Begin Form
     Width =9411
     ItemSuffix =71
     Left =3255
-    Top =2205
+    Top =2325
     Right =12660
-    Bottom =7335
+    Bottom =7455
     RecSrcDt = Begin
         0xff4a5ef6abcde140
     End
@@ -27,6 +27,7 @@ Begin Form
         "s, Events.Sex, Events.Age FROM EventType INNER JOIN Events ON EventType.ET_Code "
         "= Events.ET_Code;"
     Caption ="Event Record"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

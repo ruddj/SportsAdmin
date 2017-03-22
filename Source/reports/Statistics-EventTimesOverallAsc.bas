@@ -18,6 +18,7 @@ Begin Report
     Caption ="Event Results - Best"
     OnOpen ="[Event Procedure]"
     OnClose ="[Event Procedure]"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x370200003702000045020000d002000000000000bd2900008c01000001000000 ,
         0x010000006801000000000000a10700000100000000000000

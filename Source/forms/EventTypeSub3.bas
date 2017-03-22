@@ -19,6 +19,7 @@ Begin Form
         "s ORDER BY Heats.F_Lev;"
     OnDelete ="[Event Procedure]"
     AfterUpdate ="[Event Procedure]"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

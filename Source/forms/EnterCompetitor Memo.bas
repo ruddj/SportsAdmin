@@ -19,6 +19,7 @@ Begin Form
     End
     RecordSource ="Temporary Memo"
     Caption ="Memo Attached to Event"
+    HelpFile ="SportsAdmin.chm"
     OnLoad ="[Event Procedure]"
     FilterOnLoad =0
     AllowLayoutView =0

@@ -32,7 +32,7 @@ Begin Form
         ".Include FROM ReportTypes INNER JOIN EventType ON ReportTypes.R_Code = EventType"
         ".R_Code ORDER BY EventType.ET_Des;"
     Caption ="Add Event Wizard"
-    HelpFile ="sports.hlp"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0xa2050000a1050000a1050000a105000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000

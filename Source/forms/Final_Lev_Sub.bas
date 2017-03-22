@@ -19,6 +19,7 @@ Begin Form
         "Lev.PtScale, Final_Lev.ProType, Final_Lev.UseTimes, Final_Lev.ProNum, Final_Lev."
         "EffectsRecords FROM Final_Lev ORDER BY Final_Lev.F_Lev;"
     BeforeUpdate ="[Event Procedure]"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0xa2050000a1050000a1050000a105000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000
@@ -223,7 +224,7 @@ Begin Form
                     Width =1285
                     Height =256
                     TabIndex =2
-                    ColumnInfo ="\"\";\"\";\"10\";\"20\""
+                    ColumnInfo ="\"\";\">\";\"10\";\"20\""
                     Name ="PtScale"
                     ControlSource ="PtScale"
                     RowSourceType ="Table/Query"

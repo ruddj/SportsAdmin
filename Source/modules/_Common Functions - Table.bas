@@ -9,11 +9,10 @@ Option Explicit
 'except as part of an application. You are free to use it in any application, provided the copyright notice is left unchanged.
 'Code Courtesy of Michel Walsh
 
-Public Function OpenForSeek(tableName As String, Optional Quiet, Optional IsQuery) As Recordset
-On Error GoTo OpenForSeek_Err
+Public Function OpenForSeek(tableName As String, Optional Quiet = False) As Recordset
+  On Error GoTo OpenForSeek_Err
 
-  If IsMissing(Quiet) Then Quiet = False
-' Assume MS-ACCESS table
+  ' Assume MS-ACCESS table
   If CurrentDb().TableDefs(tableName).connect = "" Then
     If Not Quiet Then MsgBox "Opening a LOCAL table for seek."
     Set OpenForSeek = CurrentDb.OpenRecordset(tableName, dbOpenTable)

@@ -18,6 +18,7 @@ Begin Form
         0x72946ef6abcde140
     End
     Caption ="Enter Results in Place Order"
+    HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

@@ -6,7 +6,6 @@ Begin Report
     GridY =10
     Width =10656
     ItemSuffix =118
-    Left =-630
     Top =675
     OnNoData ="[Event Procedure]"
     ShortcutMenuBar ="Sports Admin-Print Popup"
@@ -17,6 +16,7 @@ Begin Report
     RecordSource ="HousePoints-Total-Age-F"
     OnOpen ="[Event Procedure]"
     OnClose ="[Event Procedure]"
+    HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x370200003702000045020000d002000000000000a02900005401000001000000 ,
         0x010000006801000000000000a10700000100000000000000

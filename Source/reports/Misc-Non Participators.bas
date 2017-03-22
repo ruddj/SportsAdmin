@@ -30,6 +30,7 @@ Begin Report
         " Null) AND ((Competitors.Gname)<>\"Team\"));"
     Caption ="Non-Participants"
     OnClose ="ReportPopup-Update"
+    HelpFile ="SportsAdmin.chm"
     DatasheetFontName ="Arial"
     PrtMip = Begin
         0xd0020000d0020000d00200009602000000000000b01300002b01000000000000 ,
