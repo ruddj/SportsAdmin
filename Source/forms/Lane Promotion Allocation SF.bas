@@ -12,6 +12,7 @@ Begin Form
     Top =540
     Right =6345
     Bottom =6945
+    HelpContextId =520
     RecSrcDt = Begin
         0xd1dfe8b911cde140
     End

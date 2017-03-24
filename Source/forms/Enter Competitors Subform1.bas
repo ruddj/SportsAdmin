@@ -7,12 +7,12 @@ Begin Form
     ScrollBars =2
     GridX =20
     GridY =20
-    Width =10972
+    Width =8991
     ItemSuffix =71
     Left =405
     Top =3015
-    Right =12045
-    Bottom =8415
+    Right =14100
+    Bottom =9705
     HelpContextId =110
     AfterDelConfirm ="[Event Procedure]"
     OrderBy ="EnterCompetitorsSF.Place"
@@ -170,6 +170,7 @@ Begin Form
                     Top =72
                     Width =454
                     Height =213
+                    ColumnOrder =0
                     BackColor =-2147483633
                     Name ="nRes"
                     ControlSource ="nResult"
@@ -192,12 +193,16 @@ Begin Form
                     Visible = NotDefault
                     OverlapFlags =85
                     TextAlign =1
-                    Left =8677
+                    Left =8192
                     Width =621
+                    ColumnOrder =1
                     TabIndex =1
                     Name ="Count"
                     ControlSource ="=Count([H_Code])"
 
+                    LayoutCachedLeft =8192
+                    LayoutCachedWidth =8813
+                    LayoutCachedHeight =240
                 End
             End
         End
@@ -322,10 +327,10 @@ Begin Form
                 Begin TextBox
                     Visible = NotDefault
                     OldBorderStyle =1
-                    OverlapFlags =93
+                    OverlapFlags =85
                     TextAlign =3
-                    Left =9802
-                    Width =327
+                    Left =8844
+                    Width =147
                     Height =286
                     TabIndex =13
                     BackColor =16777215
@@ -334,11 +339,14 @@ Begin Form
                     FontName ="Arial"
                     HorizontalAnchor =1
 
+                    LayoutCachedLeft =8844
+                    LayoutCachedWidth =8991
+                    LayoutCachedHeight =286
                 End
                 Begin TextBox
                     Visible = NotDefault
                     OldBorderStyle =1
-                    OverlapFlags =85
+                    OverlapFlags =93
                     TextAlign =3
                     Left =7676
                     Width =327
@@ -357,7 +365,7 @@ Begin Form
                     OverlapFlags =85
                     TextAlign =1
                     Left =8073
-                    Width =327
+                    Width =177
                     Height =286
                     TabIndex =8
                     BackColor =16777215
@@ -366,14 +374,17 @@ Begin Form
                     FontName ="Arial"
                     HorizontalAnchor =1
 
+                    LayoutCachedLeft =8073
+                    LayoutCachedWidth =8250
+                    LayoutCachedHeight =286
                 End
                 Begin TextBox
                     Visible = NotDefault
                     OldBorderStyle =1
                     OverlapFlags =85
                     TextAlign =1
-                    Left =8469
-                    Width =327
+                    Left =8277
+                    Width =132
                     Height =286
                     TabIndex =9
                     BackColor =16777215
@@ -382,14 +393,17 @@ Begin Form
                     FontName ="Arial"
                     HorizontalAnchor =1
 
+                    LayoutCachedLeft =8277
+                    LayoutCachedWidth =8409
+                    LayoutCachedHeight =286
                 End
                 Begin TextBox
                     Visible = NotDefault
                     OldBorderStyle =1
-                    OverlapFlags =93
+                    OverlapFlags =85
                     TextAlign =1
-                    Left =8810
-                    Width =327
+                    Left =8447
+                    Width =117
                     Height =286
                     TabIndex =10
                     BackColor =16777215
@@ -398,14 +412,17 @@ Begin Form
                     FontName ="Arial"
                     HorizontalAnchor =1
 
+                    LayoutCachedLeft =8447
+                    LayoutCachedWidth =8564
+                    LayoutCachedHeight =286
                 End
                 Begin TextBox
                     Visible = NotDefault
                     OldBorderStyle =1
-                    OverlapFlags =247
+                    OverlapFlags =93
                     TextAlign =1
-                    Left =9121
-                    Width =327
+                    Left =8588
+                    Width =117
                     Height =286
                     TabIndex =11
                     BackColor =16777215
@@ -414,15 +431,18 @@ Begin Form
                     FontName ="Arial"
                     HorizontalAnchor =1
 
+                    LayoutCachedLeft =8588
+                    LayoutCachedWidth =8705
+                    LayoutCachedHeight =286
                 End
                 Begin TextBox
                     Visible = NotDefault
                     Enabled = NotDefault
                     Locked = NotDefault
                     TabStop = NotDefault
-                    OverlapFlags =85
+                    OverlapFlags =247
                     TextAlign =2
-                    Left =10207
+                    Left =7256
                     Width =765
                     Height =285
                     TabIndex =14
@@ -432,6 +452,9 @@ Begin Form
                     FontName ="Arial"
                     HorizontalAnchor =1
 
+                    LayoutCachedLeft =7256
+                    LayoutCachedWidth =8021
+                    LayoutCachedHeight =285
                 End
                 Begin CommandButton
                     TabStop = NotDefault
@@ -464,8 +487,8 @@ Begin Form
                     OldBorderStyle =1
                     OverlapFlags =87
                     TextAlign =1
-                    Left =9462
-                    Width =327
+                    Left =8702
+                    Width =117
                     Height =286
                     TabIndex =12
                     BackColor =16777215
@@ -474,6 +497,9 @@ Begin Form
                     FontName ="Arial"
                     HorizontalAnchor =1
 
+                    LayoutCachedLeft =8702
+                    LayoutCachedWidth =8819
+                    LayoutCachedHeight =286
                 End
                 Begin TextBox
                     TabStop = NotDefault

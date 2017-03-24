@@ -1,33 +1,36 @@
 ﻿Version =20
 VersionRequired =20
 Begin Form
+    PopUp = NotDefault
     Modal = NotDefault
     RecordSelectors = NotDefault
     MaxButton = NotDefault
     MinButton = NotDefault
     AutoCenter = NotDefault
     NavigationButtons = NotDefault
+    DefaultView =0
     ScrollBars =0
-    BorderStyle =3
     GridX =20
     GridY =20
     Width =9648
     ItemSuffix =19
-    Left =1080
-    Top =1890
-    Right =11895
-    Bottom =10665
+    Left =-19140
+    Top =3615
+    Right =-8655
+    Bottom =11610
     HelpContextId =70
     RecSrcDt = Begin
         0xd614db87edc6e140
     End
     Caption ="Competitor Summary"
+    OnOpen ="[Event Procedure]"
     OnClose ="[Event Procedure]"
     HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000
     End
+    OnResize ="[Event Procedure]"
     OnLoad ="[Event Procedure]"
     FilterOnLoad =0
     AllowLayoutView =0
@@ -74,6 +77,8 @@ Begin Form
                     ColumnWidths ="0;3402;567;567;1701"
                     OnDblClick ="[Event Procedure]"
                     OnKeyDown ="[Event Procedure]"
+                    HorizontalAnchor =2
+                    VerticalAnchor =2
 
                 End
                 Begin CommandButton
@@ -90,6 +95,7 @@ Begin Form
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -111,6 +117,7 @@ Begin Form
                     Caption ="Delete Competitor"
                     OnClick ="[Event Procedure]"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -132,6 +139,7 @@ Begin Form
                     Caption ="Add Competitor"
                     OnClick ="[Event Procedure]"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -195,6 +203,7 @@ Begin Form
                     BorderColor =12632256
                     Name ="Show"
                     DefaultValue ="0"
+                    HorizontalAnchor =1
 
                     Begin
                         Begin Label
@@ -208,6 +217,7 @@ Begin Form
                             Name ="Text13"
                             Caption ="Show All Competitors"
                             FontName ="Arial"
+                            HorizontalAnchor =1
                         End
                     End
                 End
@@ -226,6 +236,7 @@ Begin Form
                     Caption ="Help"
                     OnClick ="Open Help"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -248,6 +259,7 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="Arial"
                     EventProcPrefix ="Roll_Over"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -270,6 +282,7 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="Arial"
                     EventProcPrefix ="Roll_Back"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -291,6 +304,7 @@ Begin Form
                     Caption ="Bulk Maintenance"
                     OnClick ="[Event Procedure]"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -312,6 +326,7 @@ Begin Form
                     Caption ="Create Team Competitors"
                     OnClick ="[Event Procedure]"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -331,6 +346,10 @@ Attribute VB_Exposed = False
 Option Compare Database   'Use database order for string comparisons
 
 Dim UpdateCompetitorsOrdered
+
+' Form Dimensions
+Dim lMinHeight As Long
+Dim lMinWidth As Long
 
 Private Sub AddBut_Click()
 On Error GoTo Err_AddBut_Click
@@ -569,6 +588,15 @@ Err_Refresh_Click:
     MsgBox Error$
     Resume Exit_Refresh_Click
     
+End Sub
+
+Private Sub Form_Open(Cancel As Integer)
+    lMinHeight = frmHeight(Me)
+    lMinWidth = Me.Width
+End Sub
+
+Private Sub Form_Resize()
+    If Not m_blResize Then Call glrMinWindowSize(Me, lMinHeight, lMinWidth, True)
 End Sub
 
 Private Sub Roll_Back_Click()

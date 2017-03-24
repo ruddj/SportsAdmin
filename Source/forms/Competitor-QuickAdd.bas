@@ -21,6 +21,7 @@ Begin Form
     Top =1485
     Right =11925
     Bottom =7830
+    HelpContextId =70
     DatasheetGridlinesColor =12632256
     RecSrcDt = Begin
         0x45821f397025e240
@@ -28,6 +29,10 @@ Begin Form
     Caption ="Competitor - Quick Add"
     HelpFile ="SportsAdmin.chm"
     DatasheetFontName ="Arial"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
     OnLoad ="[Event Procedure]"
     FilterOnLoad =0
     AllowLayoutView =0

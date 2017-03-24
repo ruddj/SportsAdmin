@@ -1,6 +1,8 @@
 ﻿Version =20
 VersionRequired =20
 Begin Form
+    PopUp = NotDefault
+    Modal = NotDefault
     RecordSelectors = NotDefault
     MaxButton = NotDefault
     MinButton = NotDefault
@@ -9,15 +11,14 @@ Begin Form
     DefaultView =0
     ScrollBars =0
     ViewsAllowed =1
-    BorderStyle =3
     GridX =20
     GridY =20
     Width =10374
     ItemSuffix =9
-    Left =2550
-    Top =1080
-    Right =14595
-    Bottom =9645
+    Left =-20580
+    Top =3435
+    Right =-10200
+    Bottom =10185
     HelpContextId =80
     OnUnload ="[Event Procedure]"
     RecSrcDt = Begin
@@ -26,6 +27,11 @@ Begin Form
     Caption ="Event Summary"
     OnOpen ="[Event Procedure]"
     HelpFile ="SportsAdmin.chm"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
+    OnResize ="[Event Procedure]"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin
@@ -70,6 +76,7 @@ Begin Form
                     OnDblClick ="[Event Procedure]"
                     OnKeyDown ="[Event Procedure]"
                     ControlTipText ="Double-Click an event to edit it."
+                    VerticalAnchor =2
 
                     Begin
                         Begin Label
@@ -247,6 +254,10 @@ Attribute VB_Exposed = False
 
 Option Compare Database   'Use database order for string comparisons
 
+' Form Dimensions
+Dim lMinHeight As Long
+Dim lMinWidth As Long
+
 Private Sub AddBut_Click()
 On Error GoTo Err_AddBut_Click
     
@@ -352,9 +363,15 @@ Private Sub Edit_Click()
 End Sub
 
 Private Sub Form_Open(Cancel As Integer)
-
-  DoUpdateEventCompetitorAge = False
+    lMinHeight = frmHeight(Me)
+    lMinWidth = Me.Width
+    
+    DoUpdateEventCompetitorAge = False
   
+End Sub
+
+Private Sub Form_Resize()
+    If Not m_blResize Then Call glrMinWindowSize(Me, lMinHeight, lMinWidth, True)
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)

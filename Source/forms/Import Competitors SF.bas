@@ -13,6 +13,7 @@ Begin Form
     Top =3435
     Right =11520
     Bottom =7590
+    HelpContextId =120
     OrderBy ="[Import Competitors SF].H_Code"
     RecSrcDt = Begin
         0xe3ed7db97706e240

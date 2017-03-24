@@ -1,30 +1,40 @@
 ﻿Version =20
 VersionRequired =20
 Begin Form
+    RecordSelectors = NotDefault
+    AutoCenter = NotDefault
+    AllowDeletions = NotDefault
     DividingLines = NotDefault
+    AllowAdditions = NotDefault
+    ScrollBars =2
     PictureAlignment =2
     DatasheetGridlinesBehavior =3
     GridY =10
     Width =6803
     DatasheetFontHeight =10
     ItemSuffix =1
-    Left =6030
-    Top =720
-    Right =11520
-    Bottom =4470
+    Left =3150
+    Top =2160
+    Right =10275
+    Bottom =8310
     HelpContextId =250
     DatasheetGridlinesColor =12632256
     RecSrcDt = Begin
-        0xb28f00a11c34e240
+        0x292a080b4ee8e440
     End
     RecordSource ="SELECT DISTINCTROW Heats.E_Number, EventType.ET_Des, Events.Age, Events.Sex, Hea"
-        "ts.F_Lev, Heats.Heat, Heats.E_Time FROM EventType INNER JOIN (Events INNER JOIN "
-        "Heats ON Events.E_Code = Heats.E_Code) ON EventType.ET_Code = Events.ET_Code WHE"
-        "RE (((EventType.Include)=Yes) AND ((Events.Include)=Yes)) ORDER BY Heats.E_Numbe"
-        "r, EventType.ET_Des, Events.Age, Events.Sex DESC , Heats.F_Lev, Heats.Heat;"
+        "ts.F_lev, Heats.Heat, Heats.E_Time  FROM EventType INNER JOIN (Events INNER JOIN"
+        " Heats ON Events.E_Code = Heats.E_Code) ON EventType.ET_Code = Events.ET_Code OR"
+        "DER BY Heats.E_Number ASC, EventType.ET_Des ASC, Events.Age DESC, Events.Sex ASC"
+        ", Heats.F_Lev ASC, Heats.Heat ASC"
+    Caption ="Maintain Event Sequence"
     OnOpen ="[Event Procedure]"
     HelpFile ="SportsAdmin.chm"
     DatasheetFontName ="Arial"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
     FilterOnLoad =0
     AllowLayoutView =0
     DatasheetGridlinesColor12 =12632256

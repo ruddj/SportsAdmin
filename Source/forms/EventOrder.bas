@@ -14,15 +14,14 @@ Begin Form
     DefaultView =0
     ScrollBars =0
     ViewsAllowed =1
-    BorderStyle =3
     GridX =20
     GridY =20
     Width =10318
     ItemSuffix =109
-    Left =4980
-    Top =2475
-    Right =17790
-    Bottom =11490
+    Left =-18570
+    Top =2730
+    Right =-8250
+    Bottom =11430
     HelpContextId =250
     RecSrcDt = Begin
         0x24586aaaf1e5e140
@@ -35,6 +34,7 @@ Begin Form
         0x8905000089050000890500008905000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000000000000
     End
+    OnResize ="[Event Procedure]"
     FilterOnLoad =0
     AllowLayoutView =0
     Begin
@@ -133,6 +133,7 @@ Begin Form
                     RowSource ="\"Event #\";\"Description\";\"Age\";\"Sex\";\"Final Level\";\"Heat\""
                     ColumnWidths ="1134"
                     DefaultValue ="\"Event #\""
+                    HorizontalAnchor =1
 
                     Begin
                         Begin Label
@@ -146,6 +147,7 @@ Begin Form
                             Name ="Text30"
                             Caption ="First:"
                             FontName ="Arial"
+                            HorizontalAnchor =1
                         End
                     End
                 End
@@ -161,6 +163,7 @@ Begin Form
                     Name ="Text50"
                     Caption ="Order the events by:"
                     FontName ="Arial"
+                    HorizontalAnchor =1
                 End
                 Begin ComboBox
                     LimitToList = NotDefault
@@ -180,6 +183,7 @@ Begin Form
                     RowSource ="\"Event #\";\"Description\";\"Age\";\"Sex\";\"Final Level\";\"Heat\""
                     ColumnWidths ="1134"
                     DefaultValue ="\"Description\""
+                    HorizontalAnchor =1
 
                     Begin
                         Begin Label
@@ -193,6 +197,7 @@ Begin Form
                             Name ="dfgdf"
                             Caption ="Second:"
                             FontName ="Arial"
+                            HorizontalAnchor =1
                         End
                     End
                 End
@@ -214,6 +219,7 @@ Begin Form
                     RowSource ="\"Event #\";\"Description\";\"Age\";\"Sex\";\"Final Level\";\"Heat\""
                     ColumnWidths ="1134"
                     DefaultValue ="\"Age\""
+                    HorizontalAnchor =1
 
                     Begin
                         Begin Label
@@ -227,6 +233,7 @@ Begin Form
                             Name ="dgdg"
                             Caption ="Third:"
                             FontName ="Arial"
+                            HorizontalAnchor =1
                         End
                     End
                 End
@@ -248,6 +255,7 @@ Begin Form
                     RowSource ="\"Event #\";\"Description\";\"Age\";\"Sex\";\"Final Level\";\"Heat\""
                     ColumnWidths ="1134"
                     DefaultValue ="\"Sex\""
+                    HorizontalAnchor =1
 
                     Begin
                         Begin Label
@@ -261,6 +269,7 @@ Begin Form
                             Name ="Text75"
                             Caption ="Fourth:"
                             FontName ="Arial"
+                            HorizontalAnchor =1
                         End
                     End
                 End
@@ -278,6 +287,7 @@ Begin Form
                     Caption ="Refresh Display"
                     OnClick ="[Event Procedure]"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -382,6 +392,7 @@ Begin Form
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -406,6 +417,7 @@ Begin Form
                     RowSource ="\"Event #\";\"Description\";\"Age\";\"Sex\";\"Final Level\";\"Heat\""
                     ColumnWidths ="1134"
                     DefaultValue ="\"Final Level\""
+                    HorizontalAnchor =1
 
                     Begin
                         Begin Label
@@ -419,6 +431,7 @@ Begin Form
                             Name ="Text83"
                             Caption ="Fifth:"
                             FontName ="Arial"
+                            HorizontalAnchor =1
                         End
                     End
                 End
@@ -440,6 +453,7 @@ Begin Form
                     RowSource ="\"Event #\";\"Description\";\"Age\";\"Sex\";\"Final Level\";\"Heat\""
                     ColumnWidths ="1134"
                     DefaultValue ="\"Heat\""
+                    HorizontalAnchor =1
 
                     Begin
                         Begin Label
@@ -453,6 +467,7 @@ Begin Form
                             Name ="Text85"
                             Caption ="Sixth:"
                             FontName ="Arial"
+                            HorizontalAnchor =1
                         End
                     End
                 End
@@ -472,6 +487,7 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="Arial"
                     EventProcPrefix ="Default_Order"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -490,6 +506,7 @@ Begin Form
                     Name ="AutoNumber"
                     ControlSource ="AutoRenumber"
                     DefaultValue ="0"
+                    HorizontalAnchor =1
 
                     Begin
                         Begin Label
@@ -504,6 +521,7 @@ Begin Form
                             BackColor =16777215
                             Name ="Text91"
                             Caption ="Auto Renumber"
+                            HorizontalAnchor =1
                         End
                     End
                 End
@@ -522,6 +540,7 @@ Begin Form
                     Caption ="Slide Event Numbers Up"
                     OnClick ="[Event Procedure]"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -543,6 +562,7 @@ Begin Form
                     Caption ="Help"
                     OnClick ="Open Help"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -560,6 +580,7 @@ Begin Form
                     Name ="O1C"
                     ControlSource ="FirstOrder"
                     DefaultValue ="Yes"
+                    HorizontalAnchor =1
 
                 End
                 Begin Label
@@ -575,6 +596,7 @@ Begin Form
                     Name ="Text95"
                     Caption ="ASC"
                     FontName ="Arial"
+                    HorizontalAnchor =1
                 End
                 Begin CheckBox
                     SpecialEffect =0
@@ -587,6 +609,7 @@ Begin Form
                     Name ="o2C"
                     ControlSource ="SecondOrder"
                     DefaultValue ="Yes"
+                    HorizontalAnchor =1
 
                 End
                 Begin CheckBox
@@ -600,6 +623,7 @@ Begin Form
                     Name ="O3C"
                     ControlSource ="ThirdOrder"
                     DefaultValue ="Yes"
+                    HorizontalAnchor =1
 
                 End
                 Begin CheckBox
@@ -613,6 +637,7 @@ Begin Form
                     Name ="O4C"
                     ControlSource ="FourthOrder"
                     DefaultValue ="Yes"
+                    HorizontalAnchor =1
 
                 End
                 Begin CheckBox
@@ -626,6 +651,7 @@ Begin Form
                     Name ="O5C"
                     ControlSource ="FifthOrder"
                     DefaultValue ="Yes"
+                    HorizontalAnchor =1
 
                 End
                 Begin CheckBox
@@ -639,6 +665,7 @@ Begin Form
                     Name ="O6C"
                     ControlSource ="SixthOrder"
                     DefaultValue ="Yes"
+                    HorizontalAnchor =1
 
                 End
                 Begin Line
@@ -648,6 +675,7 @@ Begin Form
                     Top =3628
                     Width =2400
                     Name ="Line102"
+                    HorizontalAnchor =1
                 End
                 Begin Label
                     BackStyle =0
@@ -675,6 +703,7 @@ Begin Form
                     Name ="ShowAll"
                     ControlSource ="SwitchSex"
                     DefaultValue ="0"
+                    HorizontalAnchor =1
 
                     Begin
                         Begin Label
@@ -689,6 +718,7 @@ Begin Form
                             BackColor =16777215
                             Name ="Label105"
                             Caption ="Show All Events"
+                            HorizontalAnchor =1
                         End
                     End
                 End
@@ -702,6 +732,8 @@ Begin Form
                     TabIndex =19
                     Name ="EventOrderSub"
                     SourceObject ="Form.EventOrderSub"
+                    HorizontalAnchor =2
+                    VerticalAnchor =2
 
                 End
                 Begin Line
@@ -711,6 +743,10 @@ Begin Form
                     Width =0
                     Height =6996
                     Name ="Line101"
+                    HorizontalAnchor =1
+                    LayoutCachedLeft =7756
+                    LayoutCachedWidth =7756
+                    LayoutCachedHeight =6996
                 End
                 Begin CheckBox
                     SpecialEffect =0
@@ -723,6 +759,7 @@ Begin Form
                     BorderColor =12632256
                     Name ="SingleClickOption"
                     DefaultValue ="False"
+                    HorizontalAnchor =1
 
                     Begin
                         Begin Label
@@ -737,6 +774,7 @@ Begin Form
                             BackColor =16777215
                             Name ="Label107"
                             Caption ="Use single click option "
+                            HorizontalAnchor =1
                         End
                     End
                 End
@@ -755,6 +793,7 @@ Begin Form
                     Caption ="Clear all numbers"
                     OnClick ="[Event Procedure]"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -776,6 +815,10 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Compare Database   'Use database order for string comparisons
+
+' Form Dimensions
+Dim lMinHeight As Long
+Dim lMinWidth As Long
 
 Private Sub ClearAllNumbers_Click()
 
@@ -816,6 +859,9 @@ End Sub
 
 Private Sub Form_Open(Cancel As Integer)
 
+    lMinHeight = frmHeight(Me)
+    lMinWidth = Me.Width
+
     ' Update the Total Points field in Competitor's Table
     '
     'For Each Competitor
@@ -832,6 +878,10 @@ Private Sub Form_Open(Cancel As Integer)
     Call OrderEvents
 
 
+End Sub
+
+Private Sub Form_Resize()
+    If Not m_blResize Then Call glrMinWindowSize(Me, lMinHeight, lMinWidth, True)
 End Sub
 
 Private Sub OrderEvents()

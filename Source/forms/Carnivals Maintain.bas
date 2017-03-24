@@ -1,6 +1,8 @@
 ﻿Version =20
 VersionRequired =20
 Begin Form
+    PopUp = NotDefault
+    Modal = NotDefault
     RecordSelectors = NotDefault
     MaxButton = NotDefault
     MinButton = NotDefault
@@ -10,15 +12,14 @@ Begin Form
     DefaultView =0
     ScrollBars =0
     ViewsAllowed =1
-    BorderStyle =3
     GridX =20
     GridY =20
     Width =10658
     ItemSuffix =26
-    Left =465
-    Top =870
-    Right =13605
-    Bottom =9705
+    Left =-20805
+    Top =2715
+    Right =-10140
+    Bottom =10065
     HelpContextId =30
     OnUnload ="[Event Procedure]"
     RecSrcDt = Begin
@@ -32,6 +33,7 @@ Begin Form
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000
     End
+    OnResize ="[Event Procedure]"
     OnLoad ="[Event Procedure]"
     FilterOnLoad =0
     AllowLayoutView =0
@@ -89,6 +91,8 @@ Begin Form
                     OnDblClick ="[Event Procedure]"
                     FontName ="Arial"
                     ControlTipText ="Double click a carnival to work on it."
+                    HorizontalAnchor =2
+                    VerticalAnchor =2
 
                 End
                 Begin Label
@@ -117,6 +121,7 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="MS Sans Serif"
                     ControlTipText ="Return to the previous form."
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -137,6 +142,7 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="MS Sans Serif"
                     ControlTipText ="Create a new empty carnival."
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -158,6 +164,7 @@ Begin Form
                     FontName ="MS Sans Serif"
                     ControlTipText ="Copy an exisiting carnival.  Use this if you have already set up a carnival that"
                         " is similar or identical to the new carnival you will be conducting."
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -178,6 +185,7 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="MS Sans Serif"
                     ControlTipText ="Delete the selected carnival."
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -198,6 +206,7 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="MS Sans Serif"
                     ControlTipText ="Rename the carnival."
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -221,6 +230,7 @@ Begin Form
                     ControlSource ="ActiveCarnival"
                     FontName ="Arial"
                     ControlTipText ="This shows the carnival that is currently being worked on."
+                    VerticalAnchor =1
 
                 End
                 Begin Label
@@ -233,6 +243,7 @@ Begin Form
                     Name ="Text11"
                     Caption ="Active Carnival"
                     FontName ="Arial"
+                    VerticalAnchor =1
                 End
                 Begin Label
                     Visible = NotDefault
@@ -260,6 +271,7 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="MS Sans Serif"
                     ControlTipText ="Add an exisitng carnival (one you have already created) to the list."
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -279,6 +291,7 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="MS Sans Serif"
                     ControlTipText ="Exit the Sports Administrator."
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -299,6 +312,7 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="MS Sans Serif"
                     ControlTipText ="Start working on the carnival you have selected from the list."
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -312,6 +326,7 @@ Begin Form
                     Width =0
                     Height =7344
                     Name ="Line19"
+                    HorizontalAnchor =1
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -327,6 +342,7 @@ Begin Form
                     OnClick ="Open Help"
                     FontName ="MS Sans Serif"
                     EventProcPrefix ="Help_Button"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -346,6 +362,7 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="MS Sans Serif"
                     ControlTipText ="Change the file associated with the carnival."
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -365,6 +382,7 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="MS Sans Serif"
                     ControlTipText ="Compact the carnival file so that it is not wasting any disk space."
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -384,6 +402,7 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     ControlTipText ="If you have recently upgraded to a new version of the Sports Administrator, use "
                         "the button to import the carnival list from the old version."
+                    VerticalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -402,6 +421,10 @@ Attribute VB_Exposed = False
 
 Option Compare Database   'Use database order for string comparisons
 Option Explicit
+
+' Form Dimensions
+Dim lMinHeight As Long
+Dim lMinWidth As Long
 
 Private Sub Button15_Click()
 On Error GoTo Err_Button15_Click
@@ -552,9 +575,15 @@ Err_Form_Load:
 End Sub
 
 Private Sub Form_Open(Cancel As Integer)
-
+    lMinHeight = frmHeight(Me)
+    lMinWidth = Me.Width
+    
     DoCmd.RunMacro "ClosePleaseWait"
 
+End Sub
+
+Private Sub Form_Resize()
+    If Not m_blResize Then Call glrMinWindowSize(Me, lMinHeight, lMinWidth, True)
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
@@ -800,9 +829,9 @@ Private Sub FinaliseCarnivalSelection()
 End Sub
 Private Sub CompactCarnivalBut_Click()
 
-Dim fileName As Variant, Db As Database, FilePath As Variant, Response As Variant, TempName As Variant
+    Dim fileName As Variant, Db As Database, FilePath As Variant, Response As Variant, TempName As Variant
 
-On Error GoTo Err_CompactCarnivalBut_Click
+    On Error GoTo Err_CompactCarnivalBut_Click
 
   If IsNull(Me!List) Then
     MsgBox ("You must select a carnival to compact.")
@@ -815,16 +844,14 @@ On Error GoTo Err_CompactCarnivalBut_Click
     fileName = FilePath & DLookup("[Filename]", "Carnivals", "[Carnival] = """ & Me.List & """")
     
     ' Check .mdb or .accdb
-    If Upper(Right(fileName, 6)) = ".ACCDB" Then
+    If StrConv(Right(fileName, 6), vbLowerCase) = ".accdb" Then
       TempName = "__temp__.accdb"
     Else
       TempName = "__temp__.mdb"
     End If
     
     If FileExists(FilePath & TempName) Then Kill (FilePath & TempName)
-    ReturnVar = SysCmd(acSysCmdSetStatus, "Verifying database ...")
-    DBEngine.RepairDatabase fileName
-    ReturnVar = SysCmd(acSysCmdSetStatus, "Compacting database ...")
+    ReturnVar = SysCmd(acSysCmdSetStatus, "Compacting and Verifying database ...")
     DBEngine.CompactDatabase fileName, FilePath & TempName
     If FileExists(FilePath & TempName) Then
       If FileExists(fileName & ".old") Then

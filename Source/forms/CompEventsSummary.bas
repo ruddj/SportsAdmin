@@ -10,27 +10,30 @@ Begin Form
     NavigationButtons = NotDefault
     DividingLines = NotDefault
     AllowAdditions = NotDefault
+    DefaultView =0
     ScrollBars =0
     ViewsAllowed =1
     GridX =20
     GridY =20
     Width =9949
     ItemSuffix =78
-    Left =-18465
-    Top =3375
-    Right =-5610
-    Bottom =13350
+    Left =-18870
+    Top =2760
+    Right =-8925
+    Bottom =9360
     HelpContextId =80
     RecSrcDt = Begin
         0x98553b042dc7e140
     End
     RecordSource ="MiscellaneousLocal"
     Caption ="Enter Competitors in Events"
+    OnOpen ="[Event Procedure]"
     HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000
     End
+    OnResize ="[Event Procedure]"
     OnLoad ="[Event Procedure]"
     AllowDatasheetView =0
     FilterOnLoad =0
@@ -93,6 +96,7 @@ Begin Form
             End
         End
         Begin Section
+            CanGrow = NotDefault
             Height =6177
             BackColor =-2147483633
             Name ="Detail0"
@@ -801,6 +805,10 @@ Attribute VB_Exposed = False
 
 Option Compare Database   'Use database order for string comparisons
 
+' Form Dimensions
+Dim lMinHeight As Long
+Dim lMinWidth As Long
+
 Private Sub ActiveCB_AfterUpdate()
 
     If [ActiveCB] Then
@@ -1009,6 +1017,15 @@ Private Sub Form_Load()
     MaleCB_AfterUpdate
     FemaleCB_AfterUpdate
 
+End Sub
+
+Private Sub Form_Open(Cancel As Integer)
+    lMinHeight = frmHeight(Me)
+    lMinWidth = Me.Width
+End Sub
+
+Private Sub Form_Resize()
+    If Not m_blResize Then Call glrMinWindowSize(Me, lMinHeight, lMinWidth, True)
 End Sub
 
 Private Sub FutureCB_AfterUpdate()

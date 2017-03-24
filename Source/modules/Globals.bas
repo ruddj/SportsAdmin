@@ -1838,29 +1838,6 @@ Function Work_AutoEventNumber()
 
 
 End Function
-Function AddAppProperty(strName As String, varType As Variant, varValue As Variant) As Integer
-  Dim dbs As Database, prp As Property
-  Const conPropNotFoundError = 3270
-
-  Set dbs = CurrentDb
-  On Error GoTo AddProp_Err
-  dbs.Properties(strName) = varValue
-
-AddAppProperty = True
-
-AddProp_Bye:
-  Exit Function
-
-AddProp_Err:
-  If Err = conPropNotFoundError Then
-    Set prp = dbs.CreateProperty(strName, varType, varValue)
-    dbs.Properties.Append prp
-    Resume
-  Else
-    AddAppProperty = False
-    Resume AddProp_Bye
-  End If
-End Function
 
 Public Function ConvertNullToZero(V As Variant)
 

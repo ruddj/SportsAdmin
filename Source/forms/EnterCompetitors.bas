@@ -16,10 +16,10 @@ Begin Form
     GridY =20
     Width =9694
     ItemSuffix =167
-    Left =-18465
-    Top =3300
-    Right =-6420
-    Bottom =12960
+    Left =-13020
+    Top =6990
+    Right =-3330
+    Bottom =14055
     HelpContextId =110
     RecSrcDt = Begin
         0xf2f778be6e4ae240
@@ -28,11 +28,13 @@ Begin Form
     Caption ="Enter Results"
     OnCurrent ="[Event Procedure]"
     AfterUpdate ="[Event Procedure]"
+    OnOpen ="[Event Procedure]"
     HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x8905000089050000890500008905000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000000000000
     End
+    OnResize ="[Event Procedure]"
     OnLoad ="[Event Procedure]"
     AllowDatasheetView =0
     FilterOnLoad =0
@@ -1063,6 +1065,10 @@ Dim DontEditPromotionFinals As Variant
 Dim AllPlacesFilled As Variant
 Dim AllResultsFilled As Variant
 
+' Form Dimensions
+Dim lMinHeight As Long
+Dim lMinWidth As Long
+
 Private Sub AllNames_AfterUpdate()
 On Error GoTo AllNames_AfterUpdate_Err
 
@@ -1236,6 +1242,15 @@ Err_DoneBut_Click:
     MsgBox Error$
     Resume Exit_DoneBut_Click
     
+End Sub
+
+Private Sub Form_Open(Cancel As Integer)
+    lMinHeight = frmHeight(Me)
+    lMinWidth = Me.Width
+End Sub
+
+Private Sub Form_Resize()
+    If Not m_blResize Then Call glrMinWindowSize(Me, lMinHeight, lMinWidth, False)
 End Sub
 
 Private Sub MaintainCompetitorsBut_Click()

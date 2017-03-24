@@ -12,26 +12,27 @@ Begin Form
     DefaultView =0
     ScrollBars =0
     ViewsAllowed =1
-    BorderStyle =3
     GridX =20
     GridY =20
     Width =10370
     ItemSuffix =48
-    Left =645
-    Top =1290
-    Right =11010
-    Bottom =8070
+    Left =390
+    Top =390
+    Right =14040
+    Bottom =10410
     HelpContextId =120
     RecSrcDt = Begin
         0xbc1d08fbafdce140
     End
     RecordSource ="Misc-ImportCompetitors"
     Caption ="Import Competitors"
+    OnOpen ="[Event Procedure]"
     HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000
     End
+    OnResize ="[Event Procedure]"
     AllowDatasheetView =0
     FilterOnLoad =0
     AllowLayoutView =0
@@ -129,6 +130,7 @@ Begin Form
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -151,6 +153,7 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="Arial"
                     ControlTipText ="View the text file you want to import in the list on the left."
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -172,6 +175,7 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="Arial"
                     ControlTipText ="Import all competitors in the list on the left into the carnival."
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -247,6 +251,8 @@ Begin Form
                     Height =5506
                     Name ="I_Data"
                     SourceObject ="Form.Import Competitors SF"
+                    HorizontalAnchor =2
+                    VerticalAnchor =2
 
                 End
                 Begin CommandButton
@@ -264,6 +270,7 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="Arial"
                     ControlTipText ="Clears all the competitors shown in the list on the left."
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -340,6 +347,7 @@ Begin Form
                     Caption ="Help"
                     OnClick ="Open Help"
                     FontName ="Arial"
+                    HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -354,6 +362,10 @@ Begin Form
                     Width =0
                     Height =6789
                     Name ="Line37"
+                    HorizontalAnchor =1
+                    LayoutCachedLeft =8610
+                    LayoutCachedWidth =8610
+                    LayoutCachedHeight =6789
                 End
                 Begin TextBox
                     OverlapFlags =85
@@ -365,6 +377,7 @@ Begin Form
                     BorderColor =12632256
                     Name ="Text39"
                     ControlSource ="=Format(Now(),\"dd/mm/yyyy\")"
+                    HorizontalAnchor =1
 
                     Begin
                         Begin Label
@@ -375,6 +388,7 @@ Begin Form
                             Height =240
                             Name ="Label40"
                             Caption ="Current Date:"
+                            HorizontalAnchor =1
                         End
                     End
                 End
@@ -398,6 +412,7 @@ Begin Form
                     ColumnWidths ="0;975"
                     StatusBarText ="Choose the month when the competitor is moved into the next age division."
                     ControlTipText ="Choose the month when the competitor is moved into the next age division."
+                    HorizontalAnchor =1
 
                     Begin
                         Begin Label
@@ -408,6 +423,7 @@ Begin Form
                             Height =240
                             Name ="Month_Label"
                             Caption ="Month"
+                            HorizontalAnchor =1
                         End
                     End
                 End
@@ -433,6 +449,7 @@ Begin Form
                         "sion."
                     ControlTipText ="Choose the day of that month when the competitor is moved into the next age divi"
                         "sion."
+                    HorizontalAnchor =1
 
                     Begin
                         Begin Label
@@ -443,6 +460,7 @@ Begin Form
                             Height =240
                             Name ="Label44"
                             Caption ="Day"
+                            HorizontalAnchor =1
                         End
                     End
                 End
@@ -455,6 +473,7 @@ Begin Form
                     Width =1417
                     Height =1366
                     Name ="Box45"
+                    HorizontalAnchor =1
                 End
                 Begin Label
                     BackStyle =1
@@ -466,6 +485,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Label46"
                     Caption ="Age Cut-Off Date"
+                    HorizontalAnchor =1
                 End
                 Begin Label
                     OverlapFlags =85
@@ -492,6 +512,9 @@ Attribute VB_Exposed = False
 Option Compare Database   'Use database order for string comparisons
 'Option Explicit
 
+' Form Dimensions
+Dim lMinHeight As Long
+Dim lMinWidth As Long
 
 Private Sub Button27_Click()
 On Error GoTo Err_Button27_Click
@@ -543,6 +566,15 @@ Private Function CompetitorEnrolled(Gname, Sname)
     End If
 
 End Function
+
+Private Sub Form_Open(Cancel As Integer)
+    lMinHeight = frmHeight(Me)
+    lMinWidth = Me.Width
+End Sub
+
+Private Sub Form_Resize()
+    If Not m_blResize Then Call glrMinWindowSize(Me, lMinHeight, lMinWidth, True)
+End Sub
 
 Private Sub ImportData_Click()
 On Error GoTo Err_ImportData_Click

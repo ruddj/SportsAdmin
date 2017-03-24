@@ -14,12 +14,17 @@ Begin Form
     Top =450
     Right =11520
     Bottom =6480
+    HelpContextId =110
     RecSrcDt = Begin
         0x65926a5db6f2e140
     End
     RecordSource ="Temporary Memo"
     Caption ="Memo Attached to Event"
     HelpFile ="SportsAdmin.chm"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
     OnLoad ="[Event Procedure]"
     FilterOnLoad =0
     AllowLayoutView =0

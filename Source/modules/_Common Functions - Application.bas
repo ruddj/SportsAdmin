@@ -3,8 +3,8 @@ Option Explicit
 
 Global HourGlassCount As Integer
 
-Public Const APP_RIBBON As String = "SportsMenu"
-Public Const APP_RIBBON_ADM As String = "SportsAdmin"
+' Prevent resizing while already resizing
+Global m_blResize As Boolean
 
 
 '*****************************************************************************************************************************
@@ -16,10 +16,10 @@ Public Const APP_RIBBON_ADM As String = "SportsAdmin"
 'Created On:    Wed 2/Oct/2002
 'Comments:      None
 '*****************************************************************************************************************************
-Public Sub DontUseWheelMouse(Frm As Form)
+Public Sub DontUseWheelMouse(frm As Form)
 On Error GoTo DontUseWheelMouse_Err
  
- If Frm.NewRecord Then SendKeys ("{PGUP}")
+ If frm.NewRecord Then SendKeys ("{PGUP}")
   
 
 DontUseWheelMouse_Exit:
@@ -39,9 +39,8 @@ On Error Resume Next
   'Debug.Print HourGlassCount
 End Sub
 
-Public Sub HideHourGlass(Optional Force)
-On Error Resume Next
-  If IsMissing(Force) Then Force = False
+Public Sub HideHourGlass(Optional Force As Boolean = False)
+  On Error Resume Next
   If Force Then HourGlassCount = 0
   HourGlassCount = HourGlassCount - 1
   'Debug.Print HourGlassCount
@@ -86,9 +85,6 @@ AddProp_Err:
     Resume AddProp_Bye
   End If
 End Function
-
-
-
 
 
 Public Sub SetPropertiesForAllForms(Optional MenuBar, Optional ToolBar, Optional ShortcutMenuBar, Optional HelpFile, Optional HelpTopic, Optional Override = False)
@@ -148,7 +144,28 @@ Public Sub SetPropertiesForAllReports(Optional MenuBar, Optional ToolBar, Option
   Set dbs = Nothing
   
 End Sub
+Public Sub ShowPropertiesForAllForms()
 
+  Dim dbs As Database, ctr As Container, doc As Document, f As Form
+
+  Set dbs = CurrentDb
+  Set ctr = dbs.Containers!Forms
+  For Each doc In ctr.Documents
+    
+    DoCmd.OpenForm doc.Name, acDesign
+    Set f = Forms(doc.Name)
+    
+    Debug.Print f.Name & ": Menu: " & f.MenuBar & ": Toolbar: " & f.ToolBar & ": Shortcut: " & f.ShortcutMenuBar
+    Debug.Print "  Help: " & f.HelpFile & ": Context: " & f.HelpContextId
+  
+    DoCmd.Close acForm, doc.Name
+    
+  Next doc
+  
+  Set dbs = Nothing
+
+  
+End Sub
 
 Public Function MsgBox2(Prompt, Optional Buttons, Optional Title) As Long
 On Error GoTo MsgBox2_Err
@@ -445,7 +462,6 @@ Public Sub UserMode(HideDev As Boolean)
     DoCmd.ShowToolbar "Database", acToolbarNo
     DoCmd.ShowToolbar "Form View", acToolbarNo
     DoCmd.ShowToolbar "Print Preview", acToolbarWhereApprop
-    'LoadRibbons (APP_RIBBON)
   Else
     DevelopmentModeSet = True
     'DoCmd.RunCommand acCmdWindowUnhide
@@ -453,7 +469,6 @@ Public Sub UserMode(HideDev As Boolean)
     DoCmd.ShowToolbar "Database", acToolbarYes
     DoCmd.ShowToolbar "Form View", acToolbarYes
     DoCmd.ShowToolbar "Print Preview", acToolbarYes
-    'LoadRibbons (APP_RIBBON_ADM)
   End If
   
 End Sub
@@ -500,3 +515,93 @@ Error1:
      Resume Error1_Exit
 
  End Function
+ 
+Private Function fResize() As Boolean
+  Dim ctrl As control, lHeight As Long, lWidth As Long
+  m_blResize = True
+' Don't allow resize unless form is greater than original size.
+  If Me.InsideHeight < c_MinHeight Then Me.InsideHeight = c_MinHeight
+  If Me.InsideWidth < c_MinWidth Then Me.InsideWidth = c_MinWidth
+  lHeight = Me.InsideHeight
+  lWidth = Me.InsideWidth
+  Me.menuBox.Width = lWidth
+  Me.Section(acDetail).Height = lHeight
+  For Each ctrl In Me.Controls
+    If ctrl.tag = "Group_ApplicationName" Then
+'     Only change .Top if necessary
+      If ctrl.Top <> (lHeight - c_Top) Then ctrl.Top = (lHeight - c_Top)
+    End If
+  Next
+  m_blResize = False
+  fResize = (Err = 0)
+End Function
+
+Sub glrMinWindowSize(frm As Form, Optional intTotalFormHeight As Long, _
+  Optional intTotalFormWidth As Long, Optional bNoWidth As Boolean = False)
+    ' copied originally from Access Help files
+    ' modified by Charlotte Foust
+    Dim intWindowHeight As Long
+    Dim intWindowWidth As Long
+ 
+    ' Block reprocessing resizing
+    m_blResize = True
+    
+    ' Determine form's height.
+    If intTotalFormHeight = 0 Then
+        intTotalFormHeight = frmHeight(frm)
+    End If
+    
+    ' Determine form's width.
+    If intTotalFormWidth = 0 Then
+        intTotalFormWidth = frm.Width
+    End If
+    ' Determine window's height and width.
+    intWindowHeight = frm.InsideHeight
+    intWindowWidth = frm.InsideWidth
+    
+    If (bNoWidth And (intWindowWidth <> intTotalFormWidth)) Or _
+           intWindowWidth < intTotalFormWidth Then
+        frm.InsideWidth = intTotalFormWidth
+    End If
+    
+    If intWindowHeight < intTotalFormHeight Then
+        frm.InsideHeight = intTotalFormHeight
+    End If
+    
+    ' Allow resizing
+    m_blResize = False
+End Sub
+
+Function IsSectionThere(frm As Form, s As Long) As Boolean
+    Dim nm As String
+    On Error GoTo EH
+    nm = frm.Section(s).Name  '*** This will throw an error if the section is not there
+    IsSectionThere = True
+    Exit Function
+EH:
+    If Err.Number = 2462 Then     '*** handle specific error for section not found "seamlessly"
+        IsSectionThere = False    '*** You can specify the exact error number to trap, if you want...
+    Else
+        MsgBox "Error " & Err.Number & ": " & Err.Description ' Display message for all others
+    End If
+End Function
+
+Function frmHeight(frm As Form) As Long
+    On Error Resume Next
+    Dim intTotalFormHeight As Long
+    
+    Dim intHeightHeader As Long
+    Dim intHeightDetail As Long
+    Dim intHeightFooter As Long
+
+    ' Calculate
+    ' Just use Resume next instead of testing sections
+    'If IsSectionThere(frm, acHeader) Then intHeightHeader = frm.Section(acHeader).Height
+    intHeightHeader = frm.Section(acHeader).Height
+    intHeightDetail = frm.Section(acDetail).Height
+    'If IsSectionThere(frm, acFooter) Then intHeightFooter = frm.Section(acFooter).Height
+    intHeightFooter = frm.Section(acFooter).Height
+    intTotalFormHeight = intHeightHeader + intHeightDetail + intHeightFooter
+    
+    frmHeight = intTotalFormHeight
+End Function
