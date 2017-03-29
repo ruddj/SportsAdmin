@@ -516,18 +516,18 @@ End Sub
 Private Sub Delete_Click()
 
     On Error GoTo Err_Delete_Click
-    Dim fileName As String, Response As Variant
+    Dim FileName As String, Response As Variant
 
     If IsNull(Me.List) Then
         MsgBox "Select a carnival to delete before pressing this button.", vbExclamation, "Message"
     Else
         If MsgBox("Are you sure you want to delete the carnival " & Me.List & "?", 276, "Warning") = 6 Then
-            fileName = GetCarnivalFullDir(DLookup("[Relative Directory]", "Carnivals", "[Carnival] = """ & Me.List & """"))
-            fileName = fileName & DLookup("[Filename]", "Carnivals", "[Carnival] = """ & Me.List & """")
-            If FileExists(fileName) Then
-                Response = MsgBox("Do you wish to delete the file " & fileName & "?", vbYesNo + vbCritical + vbDefaultButton2, "Delete file?")
+            FileName = GetCarnivalFullDir(DLookup("[Relative Directory]", "Carnivals", "[Carnival] = """ & Me.List & """"))
+            FileName = FileName & DLookup("[Filename]", "Carnivals", "[Carnival] = """ & Me.List & """")
+            If FileExists(FileName) Then
+                Response = MsgBox("Do you wish to delete the file " & FileName & "?", vbYesNo + vbCritical + vbDefaultButton2, "Delete file?")
                 If Response = vbYes Then
-                    Kill fileName
+                    Kill FileName
                 End If
             Else
                 MsgBox ("The file associated with this carnival was not in the expected location and so could not be deleted.")
@@ -550,7 +550,7 @@ End Sub
 Private Sub Form_Load()
 
     On Error GoTo Err_Form_Load
-    Dim Db As Database, TB As TableDef, fileName As String, RPath As String, RFile As String, FilenamePath As Variant
+    Dim Db As Database, TB As TableDef, FileName As String, RPath As String, RFile As String, FilenamePath As Variant
     DoCmd.SetWarnings False
     
     DoCmd.RunSQL "UPDATE DISTINCTROW Carnivals SET Carnivals.Available = FileExists(GetCarnivalFullDir([Relative Directory]) & [Filename]);"
@@ -558,12 +558,12 @@ Private Sub Form_Load()
     Me.List = Null
     Set Db = DBEngine.Workspaces(0).Databases(0)
     Set TB = Db.TableDefs("Competitors")
-    fileName = UCase$(Right$(TB.connect, Len(TB.connect) - InStr(TB.connect, "=")))
-    FilenamePath = Left$(fileName, Len(fileName) - InStr(ReverseString(fileName), "\") + 1)
+    FileName = UCase$(Right$(TB.connect, Len(TB.connect) - InStr(TB.connect, "=")))
+    FilenamePath = Left$(FileName, Len(FileName) - InStr(ReverseString(FileName), "\") + 1)
     ''RFile = Right$(Filename, Len(Filename) - Len(RPath))
     RPath = GetCarnivalRelDir(FilenamePath)
-    RFile = GetCarnivalFile(fileName)
-    Me.ActiveCarnival = DLookup("[CArnival]", "Carnivals", "([Filename] = """ & RFile & """) AND ([Relative Directory] = """ & RPath & """) and [Available]")
+    RFile = GetCarnivalFile(FileName)
+    Me.ActiveCarnival = DLookup("[Carnival]", "Carnivals", "([Filename] = """ & RFile & """) AND ([Relative Directory] = """ & RPath & """) and [Available]")
     UserQuit = False
 
 Exit_Form_Load:
@@ -638,9 +638,9 @@ On Error GoTo ImportCarnivalList_Click_Err
           If Crs.NoMatch Then
             Crs.AddNew
             Crs!Carnival = ocrs!Carnival
-            Crs!fileName = ocrs!fileName
+            Crs!FileName = ocrs!FileName
             Crs![Relative Directory] = ocrs![Relative Directory]
-            Crs!available = FileExists(GetCarnivalFullDir(ocrs![Relative Directory]) & ocrs![fileName])
+            Crs!available = FileExists(GetCarnivalFullDir(ocrs![Relative Directory]) & ocrs![FileName])
             Crs.Update
           End If
           ocrs.MoveNext
@@ -666,7 +666,7 @@ Private Sub List_DblClick(Cancel As Integer)
 '
     On Error GoTo Err_List_DblClick
     'Stop
-    Dim fileName As String, Posi  As Variant, HasError As Variant
+    Dim FileName As String, Posi  As Variant, HasError As Variant
     DoCmd.Hourglass True
     If IsNull(Me.List) Then
         MsgBox "Select a carnival to connect.", vbExclamation, "Message"
@@ -675,18 +675,18 @@ Private Sub List_DblClick(Cancel As Integer)
         DoCmd.RunMacro "ShowPleaseWait"
         
         If DLookup("[Available]", "Carnivals", "[Carnival] = """ & Me.List & """") Then
-            fileName = CarnivalDir(DLookup("[Relative Directory]", "Carnivals", "[Carnival] = """ & Me.List & """")) & DLookup("[Filename]", "Carnivals", "[Carnival] = """ & Me.List & """")
-            If Attach_Selected_File2(2, Posi, HasError, fileName) Then
+            FileName = CarnivalDir(DLookup("[Relative Directory]", "Carnivals", "[Carnival] = """ & Me.List & """")) & DLookup("[Filename]", "Carnivals", "[Carnival] = """ & Me.List & """")
+            If Attach_Selected_File2(2, Posi, HasError, FileName) Then
                 If Not HasError Then
 
-                    GlobalVariable = SysCmd(acSysCmdSetStatus, "Verifying relationships ... ")
-                    Call CheckRelationships(fileName)
-                    GlobalVariable = SysCmd(acSysCmdSetStatus, "Finalising carnival selection ... ")
+                    Call SysCmd(acSysCmdSetStatus, "Verifying relationships ... ")
+                    Call CheckRelationships(FileName)
+                    Call SysCmd(acSysCmdSetStatus, "Finalising carnival selection ... ")
                     Call FinaliseCarnivalSelection
 
-                    Me.ActiveCarnival = DLookup("[CArnival]", "Carnivals", "[Carnival] = """ & Me.List & """ AND [Available]")
+                    Me.ActiveCarnival = DLookup("[Carnival]", "Carnivals", "[Carnival] = """ & Me.List & """ AND [Available]")
                     MsgBox "Selected carnival is now active.", vbInformation
-                    GlobalVariable = SysCmd(acSysCmdClearStatus)
+                    Call SysCmd(acSysCmdClearStatus)
                     DoCmd.RunMacro "ClosePleaseWait"
                     DoCmd.Close acForm, "Carnivals Maintain"
                 End If
@@ -818,7 +818,7 @@ Private Sub FinaliseCarnivalSelection()
     Dim Db As Database, rs As Recordset
     
     ' Check that there is at least one record in MiscHTML table
-    If DCount("[TemplateFileSummary]", "MiscHTML") = 0 Then
+    If DCount("[GenerateHTML]", "MiscHTML") = 0 Then
         Set Db = CurrentDb
         Set rs = Db.OpenRecordset("MiscHTML")
         rs.AddNew
@@ -829,7 +829,7 @@ Private Sub FinaliseCarnivalSelection()
 End Sub
 Private Sub CompactCarnivalBut_Click()
 
-    Dim fileName As Variant, Db As Database, FilePath As Variant, Response As Variant, TempName As Variant
+    Dim FileName As Variant, Db As Database, FilePath As Variant, Response As Variant, TempName As Variant
 
     On Error GoTo Err_CompactCarnivalBut_Click
 
@@ -841,10 +841,10 @@ Private Sub CompactCarnivalBut_Click()
     PleaseWaitMsg = "Compacting carnival: " & Me!List & ".  Please wait ..."
     DoCmd.RunMacro "ShowPleaseWait"
     FilePath = CarnivalDir(DLookup("[Relative Directory]", "Carnivals", "[Carnival] = """ & Me.List & """"))
-    fileName = FilePath & DLookup("[Filename]", "Carnivals", "[Carnival] = """ & Me.List & """")
+    FileName = FilePath & DLookup("[Filename]", "Carnivals", "[Carnival] = """ & Me.List & """")
     
     ' Check .mdb or .accdb
-    If StrConv(Right(fileName, 6), vbLowerCase) = ".accdb" Then
+    If StrConv(Right(FileName, 6), vbLowerCase) = ".accdb" Then
       TempName = "__temp__.accdb"
     Else
       TempName = "__temp__.mdb"
@@ -852,12 +852,12 @@ Private Sub CompactCarnivalBut_Click()
     
     If FileExists(FilePath & TempName) Then Kill (FilePath & TempName)
     ReturnVar = SysCmd(acSysCmdSetStatus, "Compacting and Verifying database ...")
-    DBEngine.CompactDatabase fileName, FilePath & TempName
+    DBEngine.CompactDatabase FileName, FilePath & TempName
     If FileExists(FilePath & TempName) Then
-      If FileExists(fileName & ".old") Then
+      If FileExists(FileName & ".old") Then
         Response = MsgBox("INFORMATIONAL ALERT ONLY: The compact action makes a new copy of the carnival file and appends .OLD to the original carnival file.  However an OLD carnival file already exists (usually because the compact action has been run on this carnival before).  Do you want to delete the OLD carnival and finish compacting the carnival?", vbYesNo + vbInformation + vbDefaultButton2, "Delete Old Carnival File")
         If Response = 6 Then
-          Kill (fileName & ".old")
+          Kill (FileName & ".old")
         Else
           Kill (FilePath & TempName)
           GoTo Exit_CompactCarnivalBut_Click
@@ -865,8 +865,8 @@ Private Sub CompactCarnivalBut_Click()
         End If
       End If
       
-      Name fileName As (fileName & ".old")
-      Name (FilePath & TempName) As fileName
+      Name FileName As (FileName & ".old")
+      Name (FilePath & TempName) As FileName
     End If
   Else
     Response = MsgBox("The file for the selected carnival cannot be located.  Please locate the file manually and then retry compacting the carnival.", vbInformation)

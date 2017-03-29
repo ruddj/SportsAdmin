@@ -294,7 +294,6 @@ Begin Report
         Begin FormFooter
             KeepTogether = NotDefault
             Height =0
-            OnFormat ="[Event Procedure]"
             Name ="ReportFooter1"
         End
     End
@@ -658,10 +657,5 @@ On Error Resume Next
     PageNum = 0
     ReportHead = DLookup("[ReportHeader]", "MiscHTML")
     ' ***************************
-
-End Sub
-
-Private Sub ReportFooter1_Format(Cancel As Integer, FormatCount As Integer)
-
 
 End Sub

@@ -724,12 +724,12 @@ Private Sub Age_BeforeUpdate(Cancel As Integer)
     Dim MyDb As Database
 
     OriginalValue = Forms![Competitors]![Age].OldValue
-    x = Forms![Competitors]![Age]
+    X = Forms![Competitors]![Age]
 
-    If IsNull(x) Then
+    If IsNull(X) Then
         Response = MsgBox("You must enter a value for the competitors age", vbInformation)
 
-    ElseIf Trim(Str(Val(x))) <> Trim(x) Then
+    ElseIf Trim(Str(Val(X))) <> Trim(X) Then
         Response = MsgBox("The age must be numeric.", vbInformation)
     Else
         If Not (IsNull(OriginalValue)) Then '**** ie not the first entry
@@ -860,10 +860,10 @@ Private Sub DOB_AfterUpdate()
     GlobalChange = True
 
       If IsNumeric(Me![Age]) Or IsNull(Me![Age]) Then
-        y = Format$(Me![DOB], "YYYY")
+        Y = Format$(Me![DOB], "YYYY")
         Yn = Format$(Now, "YYYY")
-        If Yn > y Then
-            Me![Age] = Yn - y
+        If Yn > Y Then
+            Me![Age] = Yn - Y
         End If
 
     End If
@@ -880,7 +880,7 @@ Private Sub Field66_BeforeUpdate(Cancel As Integer)
     Dim MyDb As Database
 
     OriginalValue = Forms![Competitors]![Age].OldValue
-    x = Forms![Competitors]![Age]
+    X = Forms![Competitors]![Age]
 
     If Not (IsNull(OriginalValue)) Then '**** ie not the first entry
         

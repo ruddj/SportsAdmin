@@ -38106,7 +38106,7 @@ On Error GoTo Err_StatisticalReportsBut_Click
     Dim stDocName As String
     Dim stLinkCriteria As String
 
-    stDocName = "Statiscal Reports"
+    stDocName = "Statistical Reports"
     DoCmd.OpenForm stDocName, , , stLinkCriteria
 
 Exit_StatisticalReportsBut_Click:

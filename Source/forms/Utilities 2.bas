@@ -812,7 +812,7 @@ On Error GoTo Err_RemoveEmpty_Click
         
         TotalRecs = DCount("[E_Code]", "Events in Full", Criteria)
         ReturnValue = SysCmd(acSysCmdInitMeter, "Removing empty heats ... ", TotalRecs)    ' Display message in status bar.
-        x = 0
+        X = 0
 
         rs.FindFirst Criteria
         
@@ -820,8 +820,8 @@ On Error GoTo Err_RemoveEmpty_Click
         'Stop
         Debug.Print "+==============================+"
         Do Until rs.EOF Or rs.NoMatch  ' Loop until no matching records.
-            ReturnValue = SysCmd(acSysCmdUpdateMeter, x)   ' Update meter.
-            x = x + 1
+            ReturnValue = SysCmd(acSysCmdUpdateMeter, X)   ' Update meter.
+            X = X + 1
             He = rs!HE_Code
             Crit2 = "[E_Code]=" & rs!E_Code & " and [Heat]=" & rs!Heat & " and [F_Lev]=" & rs!F_Lev
             If IsNull(DLookup("[E_Code]", "CompEvents", Crit2)) Then
@@ -866,23 +866,23 @@ End Sub
 
 Private Sub Sel_Event_Change()
 
-    y = 1
+    Y = 1
     z = 2
     K = 3
 
-    x = [Forms]![EnterCompetitors]![Sel_Event]
+    X = [Forms]![EnterCompetitors]![Sel_Event]
 
 End Sub
 
 Private Sub Sel_Event_DblClick(Cancel As Integer)
 
 
-    y = 1
+    Y = 1
     z = 2
     K = 3
 
-    x = [Forms]![EnterCompetitors]![Sel_Event]
-    y = x + 1
+    X = [Forms]![EnterCompetitors]![Sel_Event]
+    Y = X + 1
 
 
 End Sub

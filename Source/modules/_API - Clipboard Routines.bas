@@ -2,22 +2,22 @@ Option Compare Database
 Option Explicit
 
 'Windows API declarations
-Private Declare Function GetActiveWindow Lib "User32" () As Long
+Private Declare Function GetActiveWindow Lib "user32" () As Long
 
-Private Declare Function GetClassName Lib "User32" Alias "GetClassNameA" _
+Private Declare Function GetClassName Lib "user32" Alias "GetClassNameA" _
     (ByVal hWnd As Long, ByVal lpClassName As String, _
      ByVal nMaxCount As Long) As Long
 
-Private Declare Function GetWindow Lib "User32" _
+Private Declare Function GetWindow Lib "user32" _
     (ByVal hWnd As Long, ByVal wCmd As Long) As Long
 
-Private Declare Function OpenClipboard Lib "User32" _
+Private Declare Function OpenClipboard Lib "user32" _
     (ByVal hWnd As Long) As Long
 
-Private Declare Function GetClipboardData Lib "User32" _
+Private Declare Function GetClipboardData Lib "user32" _
     (ByVal wFormat As Long) As Long
 
-Private Declare Function CloseClipboard Lib "User32" () As Long
+Private Declare Function CloseClipboard Lib "user32" () As Long
 
 Private Declare Function GlobalAlloc Lib "kernel32" _
     (ByVal wFlags As Long, ByVal dwBytes As Long) As Long

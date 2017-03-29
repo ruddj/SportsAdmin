@@ -444,14 +444,14 @@ On Error GoTo UpdateRecords_Click_Err
         Tot = rs.RecordCount
         msg = "Updating Event Records ..."
         ReturnValue = SysCmd(acSysCmdInitMeter, msg, Tot)    ' Display message in status bar.
-        x = 1
+        X = 1
                 
         rs.MoveFirst
         While Not rs.EOF
             Call CheckIfRecordBroken(rs!E_Code, -1, -1)
             rs.MoveNext
-            ReturnValue = SysCmd(acSysCmdUpdateMeter, x)   ' Update meter.
-            x = x + 1
+            ReturnValue = SysCmd(acSysCmdUpdateMeter, X)   ' Update meter.
+            X = X + 1
         Wend
     
         rs.Close

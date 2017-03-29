@@ -582,7 +582,7 @@ Dim ShowAllCompetitors As Variant
 
 Private Sub Fname_BeforeUpdate(Cancel As Integer)
 
-    x = 1
+    X = 1
     
 End Sub
 

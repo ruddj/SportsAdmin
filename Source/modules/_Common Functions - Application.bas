@@ -516,34 +516,17 @@ Error1:
 
  End Function
  
-Private Function fResize() As Boolean
-  Dim ctrl As control, lHeight As Long, lWidth As Long
-  m_blResize = True
-' Don't allow resize unless form is greater than original size.
-  If Me.InsideHeight < c_MinHeight Then Me.InsideHeight = c_MinHeight
-  If Me.InsideWidth < c_MinWidth Then Me.InsideWidth = c_MinWidth
-  lHeight = Me.InsideHeight
-  lWidth = Me.InsideWidth
-  Me.menuBox.Width = lWidth
-  Me.Section(acDetail).Height = lHeight
-  For Each ctrl In Me.Controls
-    If ctrl.tag = "Group_ApplicationName" Then
-'     Only change .Top if necessary
-      If ctrl.Top <> (lHeight - c_Top) Then ctrl.Top = (lHeight - c_Top)
-    End If
-  Next
-  m_blResize = False
-  fResize = (Err = 0)
-End Function
 
 Sub glrMinWindowSize(frm As Form, Optional intTotalFormHeight As Long, _
   Optional intTotalFormWidth As Long, Optional bNoWidth As Boolean = False)
     ' copied originally from Access Help files
     ' modified by Charlotte Foust
+    ' From http://www.utteraccess.com/forum/lofiversion/index.php/t2041167.html
+    
     Dim intWindowHeight As Long
     Dim intWindowWidth As Long
  
-    ' Block reprocessing resizing
+    ' Stop reprocess during resizing
     m_blResize = True
     
     ' Determine form's height.
@@ -555,6 +538,7 @@ Sub glrMinWindowSize(frm As Form, Optional intTotalFormHeight As Long, _
     If intTotalFormWidth = 0 Then
         intTotalFormWidth = frm.Width
     End If
+    
     ' Determine window's height and width.
     intWindowHeight = frm.InsideHeight
     intWindowWidth = frm.InsideWidth

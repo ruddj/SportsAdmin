@@ -357,7 +357,7 @@ Private Sub Update_Click()
 
     msg = "Updating Lanes ... "
     ReturnValue = SysCmd(acSysCmdInitMeter, msg, DCount("[E_Code]", "Heats"))   ' Display message in status bar.
-    x = 0
+    X = 0
 
     If Not rs.BOF Then
     
@@ -365,8 +365,8 @@ Private Sub Update_Click()
         
         Do Until rs.EOF
            Call Update_Lane_Assignments(rs!E_Code, rs!F_Lev, rs!Heat)
-            x = x + 1
-            ReturnValue = SysCmd(acSysCmdUpdateMeter, x)   ' Update meter.
+            X = X + 1
+            ReturnValue = SysCmd(acSysCmdUpdateMeter, X)   ' Update meter.
     
             rs.MoveNext
         Loop

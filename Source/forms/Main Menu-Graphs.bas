@@ -3718,7 +3718,6 @@ Begin Form
                     Width =4380
                     Height =1380
                     Name ="Image84"
-                    OnDblClick ="[Event Procedure]"
                     PictureData = Begin
                         0x28000000240100005c0000000100080000000000f0680000c30e0000c30e0000 ,
                         0x00010000000000000e0c0c001616160016161500121213001617180016181b00 ,
@@ -5855,7 +5854,7 @@ On Error GoTo Err_Carnival_Statistics_Click
     Dim DocName As String
     Dim LinkCriteria As String
 
-    DocName = "Statiscal Reports"
+    DocName = "Statistical Reports"
     DoCmd.OpenForm DocName, , , LinkCriteria
 
 Exit_Carnival_Statistics_Click:
@@ -5951,12 +5950,6 @@ Private Sub Graph_DblClick(Cancel As Integer)
 
 End Sub
 
-Private Sub Image84_DblClick(Cancel As Integer)
-On Error Resume Next
-
-  If CurrentUser = "owner" Then Me.Restore.visible = Not Me.Restore.visible
-  
-End Sub
 
 Private Sub Import_Competitors_Click()
 

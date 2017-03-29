@@ -16,10 +16,10 @@ Begin Form
     GridY =20
     Width =10370
     ItemSuffix =48
-    Left =390
-    Top =390
-    Right =14040
-    Bottom =10410
+    Left =285
+    Top =2970
+    Right =13935
+    Bottom =12990
     HelpContextId =120
     RecSrcDt = Begin
         0xbc1d08fbafdce140
@@ -36,6 +36,7 @@ Begin Form
     AllowDatasheetView =0
     FilterOnLoad =0
     AllowLayoutView =0
+    RibbonName ="SportsMenu"
     Begin
         Begin Label
             BackStyle =0
@@ -609,8 +610,8 @@ On Error GoTo Err_ImportData_Click
     ReturnValue = SysCmd(acSysCmdInitMeter, msg, DCount("[Gname]", "Import Competitors"))   ' Display message in status bar.
     
     While Not ITRS.EOF And Continue
-      x = x + 1
-      ReturnValue = SysCmd(acSysCmdUpdateMeter, x)   ' Update meter.
+      X = X + 1
+      ReturnValue = SysCmd(acSysCmdUpdateMeter, X)   ' Update meter.
 
       Cname = ITRS!Gname & " " & ITRS!Sname & " (" & UCase(ITRS!H_Code) & ")"
       Response = 0

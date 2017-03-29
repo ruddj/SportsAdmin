@@ -6,7 +6,7 @@ Const REPORT_MENU As String = "cmdReportRightClick"
 Public Function CreateReportList(Optional CalledFromForm As Boolean)
 On Error GoTo CreateReportList_err
 
-  Dim NumberReports As Integer, x As Integer, ObjectType As String, ReportName As String
+  Dim NumberReports As Integer, X As Integer, ObjectType As String, ReportName As String
   Dim Db As Database, rs As Recordset
   
   ObjectType = Application.CurrentObjectType
@@ -25,17 +25,17 @@ On Error GoTo CreateReportList_err
   If NumberReports = 0 Or (NumberReports = 1 And ObjectType = acReport And Not CalledFromForm) Then
     DoCmd.Close acForm, "ReportsPopup"
   Else
-    For x = 0 To NumberReports - 1
+    For X = 0 To NumberReports - 1
 '      DoCmd.SelectObject acReport, Reports(x).Name, False
 '      DoCmd.RunCommand acCmdPreviewTwoPages
-      rs.FindFirst "[ReportName]=""" & Reports(x).Name & """"
+      rs.FindFirst "[ReportName]=""" & Reports(X).Name & """"
       If rs.NoMatch Then
         rs.AddNew
-        rs![ReportName] = Reports(x).Name
-        If VarEmpty(Reports(x).Caption) Then
-          rs![ReportCaption] = Reports(x).Name
+        rs![ReportName] = Reports(X).Name
+        If VarEmpty(Reports(X).Caption) Then
+          rs![ReportCaption] = Reports(X).Name
         Else
-          rs![ReportCaption] = Reports(x).Caption
+          rs![ReportCaption] = Reports(X).Caption
         End If
       Else
         rs.Edit
@@ -47,7 +47,7 @@ On Error GoTo CreateReportList_err
       End If
       
       rs.Update
-    Next x
+    Next X
     Forms![ReportsPopUp]!ReportList.Requery
   End If
   

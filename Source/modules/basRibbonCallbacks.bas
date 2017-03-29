@@ -75,8 +75,6 @@ Sub LoadImages(control, ByRef image)
 
     ' Loads an image with transparency to the ribbon
     ' Modul basGDIPlus is required
-    ' Laed ein Bild mit Transparenz in das Ribbon
-    ' Modul basGDIPlus wird dafuer benoetigt
     
     Dim strImage        As String
     Dim strPicture      As String
@@ -479,11 +477,11 @@ Sub OnActionButton(control As IRibbonControl)
         Case "btn_crnmtn"
             ' In Tab:   tab_setup
             ' In Group: grp_crn
-             DoCmd.OpenForm "Carnivals Maintain", , , , , acDialog
+             DoCmd.OpenForm "Carnivals Maintain", , , , , acWindowNormal
         Case "btn_crnset"
             ' In Tab:   tab_setup
             ' In Group: grp_crn
-            DoCmd.OpenForm "Setup Carnival" 'Opens the customers form'
+            DoCmd.OpenForm "Setup Carnival"
         Case "btn_crndskexp"
             ' In Tab:   tab_setup
             ' In Group: grp_crn
@@ -497,7 +495,7 @@ Sub OnActionButton(control As IRibbonControl)
         Case "btn_crnstat"
             ' In Tab:   tab_setup
             ' In Group: grp_crn
-            DoCmd.OpenForm "Statiscal Reports" 'Opens the customers form'
+            DoCmd.OpenForm "Statistical Reports"
         Case "btn_setutil"
             ' In Tab:   tab_setup
             ' In Group: grp_setup
@@ -513,39 +511,39 @@ Sub OnActionButton(control As IRibbonControl)
         Case "btn_compimp"
             ' In Tab:   tab_setup
             ' In Group: grp_comp
-            DoCmd.OpenForm "Import Competitors", , , , , acDialog
+            DoCmd.OpenForm "Import Competitors", , , , , acWindowNormal
         Case "btn_compman"
             ' In Tab:   tab_setup
             ' In Group: grp_comp
-            DoCmd.OpenForm "CompetitorsSummary", , , , , acDialog
+            DoCmd.OpenForm "CompetitorsSummary", , , , , acWindowNormal
         Case "btn_evntdetail"
             ' In Tab:   tab_setup
             ' In Group: grp_evnt
-            DoCmd.OpenForm "EventTypeSummary", , , , , acDialog
+            DoCmd.OpenForm "EventTypeSummary", , , , , acWindowNormal
         Case "btn_evntcomp"
             ' In Tab:   tab_setup
             ' In Group: grp_evnt
-            DoCmd.OpenForm "CompEventsSummary", , , , , acDialog
+            DoCmd.OpenForm "CompEventsSummary", , , , , acWindowNormal
         Case "btn_evntord"
             ' In Tab:   tab_setup
             ' In Group: grp_evnt
-            DoCmd.OpenForm "EventOrder", , , , , acDialog
+            DoCmd.OpenForm "EventOrder", , , , , acWindowNormal
         Case "btn_evntlist"
             ' In Tab:   tab_setup
             ' In Group: grp_evnt
-            DoCmd.OpenForm "Reports_Event" 'Opens the customers form'
+            DoCmd.OpenForm "Reports_Event"
         Case "btn_entres"
             ' In Tab:   tab_results
             ' In Group: grp_entry
-            DoCmd.OpenForm "CompEventsSummary", , , , , acDialog
+            DoCmd.OpenForm "CompEventsSummary", , , , , acWindowNormal
         Case "btn_repstat"
             ' In Tab:   tab_results
             ' In Group: grp_reports
-            DoCmd.OpenForm "Statiscal Reports" 'Opens the customers form'
+            DoCmd.OpenForm "Statistical Reports"
         Case "btn_repevntlist"
             ' In Tab:   tab_results
             ' In Group: grp_reports
-            DoCmd.OpenForm "Reports_Event" 'Opens the customers form'
+            DoCmd.OpenForm "Reports_Event"
             
         Case "btn_20"
             ' In Tab:   tab_results

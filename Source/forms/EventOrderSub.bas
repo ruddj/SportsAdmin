@@ -343,9 +343,9 @@ End Sub
 
 Private Sub Field2_DblClick(Cancel As Integer)
   
-  Dim y
+  Dim Y
   
-       y = DMax("[E_Number]", "Heats") + 1
+       Y = DMax("[E_Number]", "Heats") + 1
 
 End Sub
 

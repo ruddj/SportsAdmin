@@ -658,8 +658,3 @@ On Error Resume Next
     ' ***************************
 
 End Sub
-
-Private Sub ReportFooter1_Format(Cancel As Integer, FormatCount As Integer)
-
-
-End Sub

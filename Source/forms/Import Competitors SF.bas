@@ -28,6 +28,7 @@ Begin Form
     HelpFile ="SportsAdmin.chm"
     FilterOnLoad =0
     AllowLayoutView =0
+    RibbonName ="SportsMenu"
     Begin
         Begin Label
             FontWeight =700

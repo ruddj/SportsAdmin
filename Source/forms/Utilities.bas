@@ -747,14 +747,14 @@ Private Sub Edit_Lane_Click()
 
 End Sub
 
-Private Sub Edit_Lane_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub Edit_Lane_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
 
     Me![Lane Subtitution SF].visible = True
     Me![Final Level SF].visible = False
 
 End Sub
 
-Private Sub Final_Level_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub Final_Level_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
 
     Me![Lane Subtitution SF].visible = False
     Me![Final Level SF].visible = True

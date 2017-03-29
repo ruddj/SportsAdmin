@@ -948,8 +948,8 @@ End Sub
 
 Private Sub Button47_Click()
 
-    y = [Forms]![EnterCompetitors]![Sel_Event]
-    x = RTrim([Forms]![EnterCompetitors]![Sex_DD])
+    Y = [Forms]![EnterCompetitors]![Sel_Event]
+    X = RTrim([Forms]![EnterCompetitors]![Sex_DD])
 
 End Sub
 
@@ -1218,23 +1218,23 @@ End Sub
 
 Private Sub Sel_Event_Change()
 
-    y = 1
+    Y = 1
     z = 2
     K = 3
 
-    x = [Forms]![EnterCompetitors]![Sel_Event]
+    X = [Forms]![EnterCompetitors]![Sel_Event]
 
 End Sub
 
 Private Sub Sel_Event_DblClick(Cancel As Integer)
 
 
-    y = 1
+    Y = 1
     z = 2
     K = 3
 
-    x = [Forms]![EnterCompetitors]![Sel_Event]
-    y = x + 1
+    X = [Forms]![EnterCompetitors]![Sel_Event]
+    Y = X + 1
 
 
 End Sub

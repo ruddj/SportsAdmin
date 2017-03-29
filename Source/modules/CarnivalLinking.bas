@@ -3,7 +3,7 @@ Option Explicit
 
 Global GlobalFilename As Variant
 
-Private Function EnsureDatabaseVersionIsCurrent(fileName) As Boolean
+Private Function EnsureDatabaseVersionIsCurrent(FileName) As Boolean
 On Error GoTo EnsureDatabaseVersionIsCurrent_Err
 
   If SportsViewModule Then
@@ -13,16 +13,16 @@ On Error GoTo EnsureDatabaseVersionIsCurrent_Err
 
   Dim HasError As Boolean, Db As Database
   
-  Set Db = DBEngine.Workspaces(0).OpenDatabase(fileName)
+  Set Db = DBEngine.Workspaces(0).OpenDatabase(FileName)
   
   SysCmd acSysCmdSetStatus, "Checking table: _AlwaysOpen"
-  HasError = AddTable(fileName, "_AlwaysOpen")
+  HasError = AddTable(FileName, "_AlwaysOpen")
 
   SysCmd acSysCmdSetStatus, "Checking table: CompetitorEventAge"
-  HasError = AddTable(fileName, "CompetitorEventAge")
+  HasError = AddTable(FileName, "CompetitorEventAge")
   
   SysCmd acSysCmdSetStatus, "Checking table: MiscHTML"
-  HasError = AddTable(fileName, "MiscHTML")
+  HasError = AddTable(FileName, "MiscHTML")
 
   SysCmd acSysCmdSetStatus, "Applying field changes: 1 ... "
   HasError = AddField_nResult(Db)
@@ -235,7 +235,7 @@ On Error GoTo ChangeAgeFieldType_Err
   Set td = Db.TableDefs("Competitors")
   Set oF = td.Fields("Age")
   
-  If oF.Type <> dbByte Then
+  If oF.type <> dbByte Then
     Q = "The age field for competitiors needs to be updated to the latest version.  "
     Q = Q & "You should ensure you have a backup of that carnival file before making these changes.  "
     Q = Q & "Do you wish to continue?"
@@ -310,7 +310,7 @@ ChangeAgeFieldType_Err:
 End Function
 
 
-Function AddTable(fileName, NewTable)
+Function AddTable(FileName, NewTable)
     
     On Error Resume Next
     AddTable = False
@@ -320,7 +320,7 @@ Function AddTable(fileName, NewTable)
     Dim Db As Database, CurrentDatabase As Database
     Dim td As TableDef, CurrentTD As TableDef
     Dim f As Field
-    Set Db = DBEngine.Workspaces(0).OpenDatabase(fileName)
+    Set Db = DBEngine.Workspaces(0).OpenDatabase(FileName)
     Set CurrentDatabase = DBEngine.Workspaces(0).Databases(0)
     
     Set td = Db.TableDefs(NewTable)
@@ -346,7 +346,7 @@ AddTable_Err:
         Else
             GoTo AddTable_Err2
         End If
-        DoCmd.TransferDatabase acExport, "Microsoft Access", fileName, acTable, "zz~" & NewTable, NewTable, False
+        DoCmd.TransferDatabase acExport, "Microsoft Access", FileName, acTable, "zz~" & NewTable, NewTable, False
         'DoCmd.TransferDatabase acLink, "Microsoft Access", FileName, acTable, NewTable, NewTable, False
 
         GoTo AddTable_Exit
@@ -358,7 +358,7 @@ AddTable_Err2:
     
 End Function
 
-Function AddTable_Competitors(fileName)
+Function AddTable_Competitors(FileName)
 
     AddTable_Competitors = False
     On Error Resume Next
@@ -370,7 +370,7 @@ Function AddTable_Competitors(fileName)
     Dim Db As Database, CurrentDatabase As Database
     Dim td As TableDef, CurrentTD As TableDef
     Dim f As Field
-    Set Db = DBEngine.Workspaces(0).OpenDatabase(fileName)
+    Set Db = DBEngine.Workspaces(0).OpenDatabase(FileName)
     Set CurrentDatabase = DBEngine.Workspaces(0).Databases(0)
     
     Set td = Db.TableDefs("CompetitorsOrdered")
@@ -395,8 +395,8 @@ AddTable_Competitors_Err:
         Else
             GoTo AddTable_Competitors_Err2
         End If
-        DoCmd.TransferDatabase acExport, "Microsoft Access", fileName, acTable, "zz~CompetitorsOrdered", "CompetitorsOrdered", False
-        DoCmd.TransferDatabase acLink, "Microsoft Access", fileName, acTable, "CompetitorsOrdered", "CompetitorsOrdered", False
+        DoCmd.TransferDatabase acExport, "Microsoft Access", FileName, acTable, "zz~CompetitorsOrdered", "CompetitorsOrdered", False
+        DoCmd.TransferDatabase acLink, "Microsoft Access", FileName, acTable, "CompetitorsOrdered", "CompetitorsOrdered", False
 
         GoTo AddTable_Competitors_Exit
 
@@ -443,7 +443,7 @@ Err_Attach_Selected_File:
     Resume Exit_Attach_Selected_File
 End Function
 
-Function Attach_Selected_File2(ByVal IFID As Long, Posi As Variant, HasError As Variant, ByVal fileName As Variant) As Variant
+Function Attach_Selected_File2(ByVal IFID As Long, Posi As Variant, HasError As Variant, ByVal FileName As Variant) As Variant
 '--------------------------------------------------------------------------------------------------------
 ' This function is used to attach all the tables for a selected INVENTORY file
 ' It determines the appropiate tables to attach from the table (Inventory Attached Tables)
@@ -465,7 +465,7 @@ Function Attach_Selected_File2(ByVal IFID As Long, Posi As Variant, HasError As 
     Set AlwaysOpenRS = Nothing
     
 'Stop
-    Posi = InStr(ReverseString(CStr(fileName)), "\")
+    Posi = InStr(ReverseString(CStr(FileName)), "\")
     If Posi <> 0 Then
         
         ' Competitors Ordered in now local so don't need this
@@ -475,7 +475,7 @@ Function Attach_Selected_File2(ByVal IFID As Long, Posi As Variant, HasError As 
         
         TableCount = 0
         
-        HasError = EnsureDatabaseVersionIsCurrent(fileName)
+        HasError = EnsureDatabaseVersionIsCurrent(FileName)
         
         Set MyWS = DBEngine.Workspaces(0)
         Set MyDb = CurrentDb
@@ -491,13 +491,13 @@ Function Attach_Selected_File2(ByVal IFID As Long, Posi As Variant, HasError As 
             Set TT = MyDb.TableDefs(ITable![Table Name])
             If Err = 0 Then
                 On Error GoTo WKAttach_Selected_File2Error
-                TT.connect = ";DATABASE=" & CStr(fileName)
+                TT.connect = ";DATABASE=" & CStr(FileName)
                 SysCmd acSysCmdSetStatus, "Refreshing table: " & ITable![Table Name]
                 TT.RefreshLink
             Else
                 Set TT = MyDb.CreateTableDef(ITable![Table Name])
                 On Error GoTo WKAttach_Selected_File2Error
-                TT.connect = ";DATABASE=" & CStr(fileName)
+                TT.connect = ";DATABASE=" & CStr(FileName)
                 TT.SourceTableName = ITable![Table Name]
                 GlobalVariable = SysCmd(acSysCmdSetStatus, "Attaching table: " & ITable![Table Name])
                 MyDb.TableDefs.Append TT
@@ -549,7 +549,7 @@ Function CheckInventoryAttached() As Variant
     On Error GoTo Err_CheckInventoryData
     Dim MyDb As Database, ITable As Recordset, SpecifiedPath As Variant, TT As TableDef, FTable As Recordset, TB  As TableDef
     Dim DataExists As Variant, MyWS As Workspace, CPath  As Variant, AskUser  As Variant, LTable As Recordset
-    Dim DefaultLoc As Variant, DefaultLoc2 As Variant, Dummy As Variant, fileName As String, RPath As String, RFile As String
+    Dim DefaultLoc As Variant, DefaultLoc2 As Variant, Dummy As Variant, FileName As String, RPath As String, RFile As String
     Dim WhereCDF As Variant, RFPath As Variant, Response As Variant, FilePath As Variant
 
 '    Stop
@@ -561,22 +561,22 @@ Function CheckInventoryAttached() As Variant
     DoCmd.RunSQL "UPDATE DISTINCTROW Carnivals SET Carnivals.Available = FileExists(GetCarnivalFullDir([Relative Directory]) & [Filename]);"
     DoCmd.SetWarnings True
     Set TB = MyDb.TableDefs("Competitors")
-    fileName = UCase$(Right$(TB.connect, Len(TB.connect) - InStr(TB.connect, "=")))
-    FilePath = Left$(fileName, Len(fileName) - InStr(ReverseString(fileName), "\") + 1)
+    FileName = UCase$(Right$(TB.connect, Len(TB.connect) - InStr(TB.connect, "=")))
+    FilePath = Left$(FileName, Len(FileName) - InStr(ReverseString(FileName), "\") + 1)
     
     RPath = GetCarnivalRelDir(FilePath)
-    RFPath = GetCarnivalFullDir(fileName)
-    RFile = GetCarnivalFile(fileName)
+    RFPath = GetCarnivalFullDir(FileName)
+    RFile = GetCarnivalFile(FileName)
     
     WhereCDF = "([Filename] = """ & RFile & """) AND ([Relative Directory] = """ & RPath & """)"
     
-    If IsNull(DLookup("[CArnival]", "Carnivals", WhereCDF & " and [Available]")) Then
+    If IsNull(DLookup("[Carnival]", "Carnivals", WhereCDF & " and [Available]")) Then
         DoCmd.OpenForm "Carnivals Maintain", A_NORMAL, , , , acDialog       ' then ask the user for their selection
         Call UpdateEventCompetitorAge
     Else
       Dim TableCount As Long
       TableCount = 0
-      fileName = RFPath & RFile
+      FileName = RFPath & RFile
       MyWS.BeginTrans
       On Error GoTo WKError                                               ' If all file locations ok then
       ITable.MoveFirst                                                    ' check tables available
@@ -586,7 +586,7 @@ Function CheckInventoryAttached() As Variant
         Set TT = MyDb.TableDefs(ITable![Table Name])
         If Err = 0 Then
             On Error GoTo WKError
-            TT.connect = ";DATABASE=" & fileName
+            TT.connect = ";DATABASE=" & FileName
             TT.RefreshLink
         Else
             On Error Resume Next
@@ -595,7 +595,7 @@ Function CheckInventoryAttached() As Variant
             If Err.Number = 0 Or Err.Number = 3012 Then GoTo WKError ' 3012: Table already exists
             On Error GoTo WKError
             
-            TT.connect = ";DATABASE=" & fileName
+            TT.connect = ";DATABASE=" & FileName
             TT.SourceTableName = ITable![Table Name]
             MyDb.TableDefs.Append TT
             TT.RefreshLink
@@ -636,7 +636,7 @@ End Function
 Sub TestRelations()
   Call CheckRelationships("D:\Data\Sports\dist97\carnival\Demo-Sec Athletics.mdb")
 End Sub
-Sub CheckRelationships(fileName As Variant)
+Sub CheckRelationships(FileName As Variant)
 
   If SportsViewModule Then Exit Sub
   
@@ -650,7 +650,7 @@ Sub CheckRelationships(fileName As Variant)
   RelationErrorNames = ""
 
   Set WS = DBEngine.Workspaces(0)
-  Set NewDB = WS.OpenDatabase(fileName)                                                       ' Add relationships to
+  Set NewDB = WS.OpenDatabase(FileName)                                                       ' Add relationships to
   Set Db = WS.Databases(0)
 
   ' Check if all relationships are valid.  If not then delete all and recreate
@@ -671,7 +671,7 @@ Sub CheckRelationships(fileName As Variant)
     RelationName = r1![Relationship Name]
     Set NR = NewDB.Relations(RelationName)
     'If RelationName = "House-Competitors" Then Stop
-    If NR.table <> r1![First Table] Or NR.foreignTable <> r1![Second Table] Or NR.Attributes <> r1![Type] Then
+    If NR.table <> r1![First Table] Or NR.foreignTable <> r1![Second Table] Or NR.Attributes <> r1![type] Then
       RelationError = True
     End If
     
@@ -707,7 +707,7 @@ CreateNewRelationships: ' On relation problem exit to this point
         Set NR = NewDB.CreateRelation(r1![Relationship Name])
         NR.table = r1![First Table]
         NR.foreignTable = r1![Second Table]
-        NR.Attributes = r1![Type]
+        NR.Attributes = r1![type]
         Set r2 = Db.OpenRecordset("SELECT * FROM [zzz~Relationships Second] WHERE [R ID] = " & r1![R ID], dbOpenSnapshot, dbForwardOnly)
         Do Until r2.EOF
             Set nF = NR.CreateField(r2![Field First])
@@ -773,30 +773,30 @@ End Function
 
 Function ExtractDirectory(f)
 
-    Dim Found As Variant, x As Integer, L As Integer
+    Dim Found As Variant, X As Integer, L As Integer
     
     Found = False
     If IsNull(f) Then
         ExtractDirectory = ""
     Else
         L = Len(f)
-        x = L
+        X = L
         'ExtractDirectory = F   ' was = Null
         ExtractDirectory = Null
     
-        While Not Found And x > 0
-            If Mid$(f, x, 1) = "\" Then
+        While Not Found And X > 0
+            If Mid$(f, X, 1) = "\" Then
                 Found = True
-                ExtractDirectory = Left$(f, x)
+                ExtractDirectory = Left$(f, X)
             Else
-                x = x - 1
+                X = X - 1
             End If
         Wend
     End If
     
 End Function
 
-Function Make_File(ByVal fileName As String) As Variant
+Function Make_File(ByVal FileName As String) As Variant
 '--------------------------------------------------------------------------------
 ' Makes the file specified in the parameter and copies an empty image of all the tables
 ' that begin with "zz~". Removes the "zz~" when making the tables name.
@@ -815,7 +815,7 @@ Function Make_File(ByVal fileName As String) As Variant
     Dim StrgSQL As String
     Set WS = DBEngine.Workspaces(0)
     DoCmd.SetWarnings False
-    Set NewDB = WS.CreateDatabase(fileName, dbLangGeneral, dbVersion120)
+    Set NewDB = WS.CreateDatabase(FileName, dbLangGeneral, dbVersion120)
     NewDB.Close
     Set Db = WS.Databases(0)
     
@@ -823,23 +823,23 @@ Function Make_File(ByVal fileName As String) As Variant
    ' "You will need to click multiple times on the Open button to continue.", vbInformation
     
     ' This is required as TransferDatabase will give many warning prompts if data file is not in Trusted Location
-    FilePath = Left(fileName, InStrRev(fileName, "\") - 1)
+    FilePath = Left(FileName, InStrRev(FileName, "\") - 1)
     iTrust = AddTrustedLocation(FilePath, "Sports Admin Datafile")
     
     For i = Db.TableDefs.Count - 1 To 0 Step -1
         If Left$(Db.TableDefs(i).Name, 3) = "zz~" Then
-            DoCmd.TransferDatabase acExport, "Microsoft Access", fileName, acTable, Db.TableDefs(i).Name, _
+            DoCmd.TransferDatabase acExport, "Microsoft Access", FileName, acTable, Db.TableDefs(i).Name, _
            Right$(Db.TableDefs(i).Name, Len(Db.TableDefs(i).Name) - 3), False
         End If
     Next i
     
-    Set NewDB = WS.OpenDatabase(fileName)                                                       ' Add relationships to
+    Set NewDB = WS.OpenDatabase(FileName)                                                       ' Add relationships to
     Set r1 = Db.OpenRecordset("zzz~Relationships Main", dbOpenSnapshot, dbForwardOnly)       ' the database tables
     Do Until r1.EOF
         Set NR = NewDB.CreateRelation(r1![Relationship Name])
         NR.table = r1![First Table]
         NR.foreignTable = r1![Second Table]
-        NR.Attributes = r1![Type]
+        NR.Attributes = r1![type]
         Set r2 = Db.OpenRecordset("SELECT * FROM [zzz~Relationships Second] WHERE [R ID] = " & r1![R ID], dbOpenSnapshot, dbForwardOnly)
         Do Until r2.EOF
             Set nF = NR.CreateField(r2![Field First])

@@ -1020,7 +1020,7 @@ On Error GoTo Report_Close_Err
     FileLocation = HTMLFileLocation & "\sex.jpg"
     Set oleGraph = Me.oleChart.Object
     
-    oleGraph.export fileName:=FileLocation
+    oleGraph.export FileName:=FileLocation
     oleGraph.Close
     Set oleGraph = Nothing
   End If

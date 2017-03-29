@@ -1819,18 +1819,18 @@ End Sub
 
 Function Work_AutoEventNumber()
 
-    Dim Criteria As String, Db As Database, rs As Recordset, x As Variant
+    Dim Criteria As String, Db As Database, rs As Recordset, X As Variant
     
     Set Db = DBEngine.Workspaces(0).Databases(0)
     Set rs = Db.OpenRecordset("Work-Heats in Some Order", dbOpenDynaset)   ' Create Recordset.
     
-    x = 1
+    X = 1
     rs.MoveFirst
     While Not rs.EOF
         rs.Edit
-        rs!E_Number = x
+        rs!E_Number = X
         rs.Update
-        x = x + 1
+        X = X + 1
         rs.MoveNext
     Wend
 
