@@ -1575,7 +1575,7 @@ On Error GoTo Report_Close_Err
                 Else
                     NextPage = ""
                 End If
-                Call CreateHTMLfile(repName & OldPg & ".htm", Template, rHTML, PrevPage, NextPage, Heading(3, ReportTitle & "  - Page " & OldPg, 0), ReportHead)
+                Call CreateHTMLfile(repName & OldPg & ".htm", Template, rHTML, PrevPage, NextPage, Heading(3, ReportTitle & "  - Page " & OldPg, 0), ReportHead, repName)
                 rHTML = ""
                 
                 ' *** Create summary record ***
@@ -1638,7 +1638,7 @@ On Error GoTo Report_Close_Err
         sHTML = sHTML & AlleHTML
         Call TableEnd(sHTML)
         sHTML = sHTML & " <p align=""center""><img border=""0"" src=""events.jpg"" </p>"
-        Call CreateHTMLfile("_" & repName & ".htm", TemplateSummary, sHTML, PrevPage, NextPage, "Summary of " & ReportTitle, ReportHead)
+        Call CreateHTMLfile("_" & repName & ".htm", TemplateSummary, sHTML, PrevPage, NextPage, "Summary of " & ReportTitle, ReportHead, repName)
 
 
     End If

@@ -1019,7 +1019,7 @@ Private Sub PageFooter2_Format(Cancel As Integer, FormatCount As Integer)
     Call TableEnd(rHTML)
     
     
-    Call CreateHTMLfile(repName & PageNum & ".htm", Template, rHTML, PrevPage, NextPage, ReportTitle & "  - Page " & PageNum, ReportHead)
+    Call CreateHTMLfile(repName & PageNum & ".htm", Template, rHTML, PrevPage, NextPage, ReportTitle & "  - Page " & PageNum, ReportHead, repName)
   
   End If
 
@@ -1112,7 +1112,7 @@ On Error Resume Next
         Template = DLookup("[TemplateFile]", "MiscHTML")
         'TemplateSummary = DLookup("[TemplateFileSummary]", "MiscHTML")
     
-        Call CreateHTMLfile(repName & PageNum & ".htm", Template, rHTML, PrevPage, NextPage, ReportTitle & "  - Page " & PageNum, ReportHead)
+        Call CreateHTMLfile(repName & PageNum & ".htm", Template, rHTML, PrevPage, NextPage, ReportTitle & "  - Page " & PageNum, ReportHead, repName)
         
         DoCmd.RunMacro "ClosePleaseWait"
         

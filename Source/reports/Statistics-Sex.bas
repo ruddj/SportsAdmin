@@ -1121,7 +1121,7 @@ Dim NewPg As Integer
                     NextPage = ""
                 End If
                 rHTML = rHTML & " <p align=""center""><img border=""0"" src=""sex.jpg"" </p>"
-                Call CreateHTMLfile(repName & OldPg & ".htm", Template, rHTML, PrevPage, NextPage, ReportTitle & "  - Page " & OldPg, ReportHead)
+                Call CreateHTMLfile(repName & OldPg & ".htm", Template, rHTML, PrevPage, NextPage, ReportTitle & "  - Page " & OldPg, ReportHead, repName)
                 rHTML = ""
                 
                 ' *** Create summary record ***
@@ -1184,7 +1184,7 @@ Dim NewPg As Integer
         sHTML = sHTML & AlleHTML
         Call TableEnd(sHTML)
         sHTML = sHTML & " <p align=""center""><img border=""0"" src=""sex.jpg"" </p>"
-        Call CreateHTMLfile("_" & repName & ".htm", TemplateSummary, sHTML, PrevPage, NextPage, "Summary of " & ReportTitle, ReportHead)
+        Call CreateHTMLfile("_" & repName & ".htm", TemplateSummary, sHTML, PrevPage, NextPage, "Summary of " & ReportTitle, ReportHead, repName)
 
 
     End If

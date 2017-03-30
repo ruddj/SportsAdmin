@@ -532,7 +532,7 @@ On Error Resume Next
         PleaseWaitMsg = "Preparing HTML for """ & ReportTitle & """.  Please wait..."
         DoCmd.RunMacro "ShowPleaseWait"
         
-        Call AgeChampionAll
+        Call ExportNamesHTML(repName)
         GenerateHTML = False
     End If
     
@@ -622,7 +622,7 @@ Dim eHTML As String, AlleHTML As String, sEvents As String
                 Else
                     NextPage = ""
                 End If
-                Call CreateHTMLfile(repName & OldPg & ".htm", Template, rHTML, PrevPage, NextPage, ReportTitle & "  - Page " & OldPg, ReportHead)
+                Call CreateHTMLfile(repName & OldPg & ".htm", Template, rHTML, PrevPage, NextPage, ReportTitle & "  - Page " & OldPg, ReportHead, repName)
                 rHTML = ""
                 
                 ' *** Create summary record ***
@@ -691,7 +691,7 @@ Dim eHTML As String, AlleHTML As String, sEvents As String
         ' * Generate Summary Page file
         sHTML = sHTML & AlleHTML
         Call TableEnd(sHTML)
-        Call CreateHTMLfile("_" & repName & ".htm", TemplateSummary, sHTML, PrevPage, NextPage, "Summary of " & ReportTitle, ReportHead)
+        Call CreateHTMLfile("_" & repName & ".htm", TemplateSummary, sHTML, PrevPage, NextPage, "Summary of " & ReportTitle, ReportHead, repName)
 
 
     End If

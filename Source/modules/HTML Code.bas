@@ -59,42 +59,7 @@ Sub CellStart(HTML As String, Align As String, Valign As String, vWidth As Strin
 
 End Sub
 
-Sub CreateHTML()
-
-    Dim H As String, r As Integer, c As Integer, FileLocation As String
-    
-    'FileLocation = "c:\my documents\html_writer\test2.htm"
- 
-    'Open FileLocation For Output As #1    ' Open file for output.
-       
-    'H = HTMLStart("This is my first test page", "Andrew Rogers")
-    H = H & HeadingStart(1)
-    'call Text("<U>", "</U>", "This should be a underlined heading")
-    H = H & HeadingEnd(1) & LFCR()
-    H = H & LinkStart("test1.htm") & "Hello Everyone" & LinkEnd()
-    
-    'H = H & TableStart("60%", "", "FFFFCC", "Caption") & LFCR
-    For r = 1 To 2
-     '   H = H & RowStart()
-        For c = 1 To 5
-      '      H = H & CellStart("centre", "", "20%")
-            'H = H & Text("", "", "Row " & r & " / Cell " & c)
-       '     H = H & CellEnd()
-        Next
-        'H = H & RowEnd()
-    Next
-    'H = H & TableEnd() & LFCR
-    
-    'Call CreateHTMLfile("competitor.htm", H)
-    
-    'H = H & HTMLend()
-    'Print #1, H    ' Write comma-delimited data.
-    'Close #1
-    'Stop
-    
-End Sub
-
-Sub CreateHTMLfile(ByVal FileName As String, ByVal TemplateFilename As String, HTML As String, Prev As String, Nex As String, Title As String, Head As String)
+Sub CreateHTMLfile(ByVal FileName As String, ByVal TemplateFilename As String, HTML As String, Prev As String, Nex As String, Title As String, Head As String, Optional repClass As String = "report")
     
     Dim HTMLFileLocation, FileLocation, L As String, TemplateFile As String
     Dim HTMLinserted As Integer, Continue As Integer, i As Integer, tFile As Variant, oFile As Variant
@@ -113,25 +78,28 @@ Sub CreateHTMLfile(ByVal FileName As String, ByVal TemplateFilename As String, H
         Input #99, L
         i = 1
         Do While (i <= Len(L))
-            If UCase(Mid(L, i, 1)) = "{" Then
+            If Mid(L, i, 1) = "{" Then
                 Select Case UCase(Mid(L, i, 6))
-                Case "{HTML}"
-                    Print #1, HTML;
-                    i = i + 5
-                Case "{PREV}"
-                    Print #1, Prev;
-                    i = i + 5
-                Case "{NEXT}"
-                    Print #1, Nex;
-                    i = i + 5
-                Case "{HEAD}"
-                    Print #1, Head;
-                    i = i + 5
-                Case "{TITL}"
-                    Print #1, Title;
-                    i = i + 5
-                Case Else
-                    Print #1, "{";
+                    Case "{HTML}"
+                        Print #1, HTML;
+                        i = i + 5
+                    Case "{PREV}"
+                        Print #1, Prev;
+                        i = i + 5
+                    Case "{NEXT}"
+                        Print #1, Nex;
+                        i = i + 5
+                    Case "{HEAD}"
+                        Print #1, Head;
+                        i = i + 5
+                    Case "{TITL}"
+                        Print #1, Title;
+                        i = i + 5
+                    Case "{REPN}"
+                        Print #1, repClass;
+                        i = i + 5
+                    Case Else
+                        Print #1, "{";
                 End Select
             Else
                 Print #1, Mid(L, i, 1);
@@ -139,7 +107,7 @@ Sub CreateHTMLfile(ByVal FileName As String, ByVal TemplateFilename As String, H
         i = i + 1
         Loop
         
-        Print #1, LFCR()
+        Print #1, vbNewLine;
         
     Loop
     
@@ -155,13 +123,13 @@ End Sub
     For i = 1 To Indent
         s = s & "&nbsp;"
     Next
-    s = s & T & "</h" & Trim(Str(Level)) & ">" & LFCR()
+    s = s & T & "</h" & Trim(Str(Level)) & ">" & vbNewLine
     Heading = s
     
 End Function
 
  Function HeadingEnd(Level As Integer)
-    HeadingEnd = "</h" & Trim(Str(Level)) & ">" & LFCR()
+    HeadingEnd = "</h" & Trim(Str(Level)) & ">" & vbNewLine
 End Function
 
 Function HeadingStart(Level As Integer)
@@ -169,17 +137,17 @@ Function HeadingStart(Level As Integer)
 End Function
 
 Function HTMLend()
-    HTMLend = "</body>" & LFCR() & "</html>"
+    HTMLend = "</body>" & vbNewLine & "</html>"
 End Function
 
 Function HTMLStart(Title As String, Author As String)
 
-    s = "<html>" & LFCR() & "<head>" & LFCR()
-    s = s & "<meta HTTP-EQUIV=""Content-Type"" CONTENT=""text/html; charset=iso-8859-1"">" & LFCR()
-    s = s & "<meta NAME=""Author"" CONTENT=""" & Author & """>" & LFCR()
-    s = s & "<title>" & Title & "</title>" & LFCR()
-    s = s & "</head>" & LFCR()
-    s = s & "<body>" & LFCR()
+    s = "<html>" & vbNewLine & "<head>" & vbNewLine
+    s = s & "<meta HTTP-EQUIV=""Content-Type"" CONTENT=""text/html; charset=iso-8859-1"">" & vbNewLine
+    s = s & "<meta NAME=""Author"" CONTENT=""" & Author & """>" & vbNewLine
+    s = s & "<title>" & Title & "</title>" & vbNewLine
+    s = s & "</head>" & vbNewLine
+    s = s & "<body>" & vbNewLine
 
     HTMLStart = s
     
@@ -232,7 +200,7 @@ Sub Paragraph(HTML As String, Count As Integer)
 End Sub
 
 Sub RowEnd(HTML As String)
-    HTML = HTML & "</tr>" & LFCR()
+    HTML = HTML & "</tr>" & vbNewLine
 End Sub
 
 Sub RowStart(HTML As String, Optional sClass As String)
@@ -260,7 +228,7 @@ End Sub
 
 Sub TableEnd(HTML As String)
 
-    HTML = HTML & "</table>" & LFCR()
+    HTML = HTML & "</table>" & vbNewLine
     
 End Sub
 
@@ -277,7 +245,7 @@ Sub TableStart(HTML As String, vWidth As String, Height As String, BGcolor As St
     s = s & ">"
     If Caption <> "" Then s = s & "<CAPTION>" & Caption & "</CAPTION>"
 
-    HTML = HTML & s & LFCR()
+    HTML = HTML & s & vbNewLine
 
 End Sub
 
@@ -285,7 +253,7 @@ Sub TableOpen(HTML As String, sClass As String)
     s = "<table"
     If sClass <> "" Then s = s & " class=""" & sClass & """ "
     s = s & ">"
-    HTML = HTML & s & LFCR()
+    HTML = HTML & s & vbNewLine
 
 End Sub
 
@@ -293,19 +261,19 @@ Sub ListOpen(HTML As String, Optional sClass As String)
     s = "<ul"
     If sClass <> "" Then s = s & " class=""" & sClass & """ "
     s = s & ">"
-    HTML = HTML & s & LFCR()
+    HTML = HTML & s & vbNewLine
 
 End Sub
 
 Sub ListClose(HTML As String)
     s = "</ul>"
-    HTML = HTML & s & LFCR()
+    HTML = HTML & s & vbNewLine
 End Sub
 Sub ListItem(HTML As String, strText As String, Optional sClass As String = "")
     s = "<li"
     If sClass <> "" Then s = s & " class=""" & sClass & """ "
     s = s & ">" & strText & "</li>"
-    HTML = HTML & s & LFCR()
+    HTML = HTML & s & vbNewLine
 End Sub
 
 Sub Cell(HTML As String, strText As String, Optional sClass As String = "")
@@ -325,21 +293,21 @@ Sub TableHeadOpen(HTML As String, sClass As String)
     s = "<thead"
     If sClass <> "" Then s = s & " class=""" & sClass & """ "
     s = s & ">"
-    HTML = HTML & s & LFCR()
+    HTML = HTML & s & vbNewLine
 End Sub
 Sub TableHeadEnd(HTML As String)
     s = "</thead>"
-    HTML = HTML & s & LFCR()
+    HTML = HTML & s & vbNewLine
 End Sub
 Sub TableBodyOpen(HTML As String, sClass As String)
     s = "<tbody"
     If sClass <> "" Then s = s & " class=""" & sClass & """ "
     s = s & ">"
-    HTML = HTML & s & LFCR()
+    HTML = HTML & s & vbNewLine
 End Sub
 Sub TableBodyEnd(HTML As String)
     s = "</tbody>"
-    HTML = HTML & s & LFCR()
+    HTML = HTML & s & vbNewLine
 End Sub
 
 Sub DivOpen(HTML As String, sClass As String, Optional sID As String = "")
@@ -347,12 +315,12 @@ Sub DivOpen(HTML As String, sClass As String, Optional sID As String = "")
     If sID <> "" Then s = s & " id=""" & sID & """ "
     If sClass <> "" Then s = s & " class=""" & sClass & """ "
     s = s & ">"
-    HTML = HTML & s & LFCR()
+    HTML = HTML & s & vbNewLine
 
 End Sub
 Sub DivClose(HTML As String)
 
-    HTML = HTML & "</div>" & LFCR()
+    HTML = HTML & "</div>" & vbNewLine
     
 End Sub
 

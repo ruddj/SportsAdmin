@@ -551,7 +551,7 @@ On Error Resume Next
         Template = DLookup("[TemplateFile]", "MiscHTML")
         
         Call TableEnd(rHTML)
-        Call CreateHTMLfile(repName & PageNum & ".htm", Template, rHTML, PrevPage, NextPage, ReportTitle & "  - Page " & PageNum, ReportHead)
+        Call CreateHTMLfile(repName & PageNum & ".htm", Template, rHTML, PrevPage, NextPage, ReportTitle & "  - Page " & PageNum, ReportHead, repName)
     End If
 
 End Sub
@@ -601,8 +601,8 @@ Private Sub Report_Close()
         TemplateSummary = DLookup("[TemplateFileSummary]", "MiscHTML")
     
     
-        Call CreateHTMLfile(repName & PageNum & ".htm", Template, rHTML, PrevPage, NextPage, ReportTitle & "  - Page " & PageNum, ReportHead)
-        Call CreateHTMLfile("_" & repName & ".htm", TemplateSummary, sHTML, PrevPage, NextPage, "Summary of " & ReportTitle, ReportHead)
+        Call CreateHTMLfile(repName & PageNum & ".htm", Template, rHTML, PrevPage, NextPage, ReportTitle & "  - Page " & PageNum, ReportHead, repName)
+        Call CreateHTMLfile("_" & repName & ".htm", TemplateSummary, sHTML, PrevPage, NextPage, "Summary of " & ReportTitle, ReportHead, repName)
     
         DoCmd.RunMacro "ClosePleaseWait"
         HTMLgenerateFinished = True

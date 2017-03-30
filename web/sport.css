@@ -140,3 +140,21 @@ th.competitor {
 	width: 40%;
 }
 
+
+/* Formatting for Index Page */
+
+#index #nav-header td, #index #nav-footer td {
+	font-size: medium;
+	text-align: center;
+	width: 20%;
+	background: #E2D3A7;
+}
+
+#index #nav-header td.nav-page-center {
+	font-size: x-large;
+	font-weight: bold
+}
+
+#index table {
+	width: 100%;	
+}
