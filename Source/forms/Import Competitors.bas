@@ -19,7 +19,7 @@ Begin Form
     Left =285
     Top =2970
     Right =13935
-    Bottom =12990
+    Bottom =12285
     HelpContextId =120
     RecSrcDt = Begin
         0xbc1d08fbafdce140
@@ -578,7 +578,7 @@ Private Sub Form_Resize()
 End Sub
 
 Private Sub ImportData_Click()
-On Error GoTo Err_ImportData_Click
+  On Error GoTo Err_ImportData_Click
 
   DoCmd.RunCommand acCmdSaveRecord
   
@@ -586,7 +586,7 @@ On Error GoTo Err_ImportData_Click
   Dim Crs As Recordset, ITRS As Recordset, CErs As Recordset
   Dim Hrs As Recordset, H_ID As Variant
 
-  Set Db = DBEngine.Workspaces(0).Databases(0)
+  Set Db = CurrentDb()
   Set ITRS = Db.OpenRecordset("Import Competitors", dbOpenDynaset)   ' Create dynaset.
   Set Crs = OpenForSeek("Competitors")
   
@@ -709,6 +709,7 @@ On Error GoTo Err_ImportData_Click
   End If
   
 Exit_ImportData_Click:
+    Set Db = Nothing
     DoCmd.RunMacro "ClosePleaseWait"
     Exit Sub
 

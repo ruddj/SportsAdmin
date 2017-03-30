@@ -17,10 +17,10 @@ Begin Form
     GridY =10
     Width =7143
     ItemSuffix =123
-    Left =-18465
-    Top =2925
-    Right =-9540
-    Bottom =11925
+    Left =-22905
+    Top =5370
+    Right =-15795
+    Bottom =10305
     RecSrcDt = Begin
         0xb3dbca3c8df5e140
     End
@@ -632,7 +632,7 @@ On Error GoTo Err_Button65_Click
 
     Dim Criteria As String, Db As Database, rs As Recordset
     Dim NewTitle As String
-    Set Db = DBEngine.Workspaces(0).Databases(0)
+    Set Db = CurrentDb()
 
     Q = "SELECT DISTINCTROW EventType.ET_Code, EventType.Flag, EventType.R_Code "
     Q = Q & "FROM EventType WHERE EventType.Flag = True ORDER BY EventType.R_Code"
@@ -681,6 +681,7 @@ On Error GoTo Err_Button65_Click
     rs.Close
 
 Exit_Button65_Click:
+    Set Db = Nothing
     Exit Sub
 
 Err_Button65_Click:
@@ -793,7 +794,7 @@ On Error GoTo Err_RemoveEmpty_Click
         Dim Criteria As String, Db As Database, rs As Recordset
         Dim NewTitle As String, F_LevCriteria  As String
         
-        Set Db = DBEngine.Workspaces(0).Databases(0)
+        Set Db = CurrentDb()
     
         Q = "SELECT DISTINCTROW EventType.ET_Code, EventType.Flag, EventType.R_Code "
         Q = Q & "FROM EventType WHERE EventType.Flag = True ORDER BY EventType.R_Code"
@@ -843,6 +844,7 @@ On Error GoTo Err_RemoveEmpty_Click
     End If
 
 Exit_RemoveEmpty_Click:
+    Set Db = Nothing
     Exit Sub
 
 Err_RemoveEmpty_Click:

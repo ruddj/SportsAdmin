@@ -1279,6 +1279,7 @@ Function PromoteEventFinal(E_Code)
     PromoteEventFinal = False
 
     Dim Criteria As String, rs As Recordset, Promote_FL As Variant, Pro_Ty As Variant
+    Dim Db As Database
     Dim Time_Pro As Variant, Ev As Variant, New_FL As Variant, Num_Heats As Variant
     Dim ET_Code As Variant, LaneCount As Variant, Num_Lanes As Variant, Num_Competitors As Variant
     Dim Q As Variant, uOrder As Variant, Place As Variant, i As Variant, L As Variant, H As Variant
@@ -1286,10 +1287,10 @@ Function PromoteEventFinal(E_Code)
 
     Dim EventsRS As Recordset, EventTypeRS As Recordset
     
-    'Set db = DBEngine.Workspaces(0).Databases(0)
-    Set rs = CurrentDb.OpenRecordset("SELECT * FROM Heats ORDER BY [F_Lev] Asc", dbOpenDynaset)   ' Create Recordset.
-    Set EventsRS = CurrentDb.OpenRecordset("Events", dbOpenDynaset)
-    Set EventTypeRS = CurrentDb.OpenRecordset("EventType", dbOpenDynaset)
+    Set Db = CurrentDb()
+    Set rs = Db.OpenRecordset("SELECT * FROM Heats ORDER BY [F_Lev] Asc", dbOpenDynaset)   ' Create Recordset.
+    Set EventsRS = Db.OpenRecordset("Events", dbOpenDynaset)
+    Set EventTypeRS = Db.OpenRecordset("EventType", dbOpenDynaset)
     
     If Not IsNull(DCount("[E_Code]", "Heats", "E_Code = " & E_Code & " AND [Status] = 2")) Then
         Criteria = "E_Code = " & E_Code & " AND [Status] = 2" ' Final Completed
@@ -1363,13 +1364,13 @@ Function PromoteEventFinal(E_Code)
                 Q = Q & "WHERE CompEvents.E_Code= " & E_Code & " AND CompEvents.F_Lev=" & Promote_FL
                 Q = Q & " ORDER BY " & uOrder
                               
-                Set Crs = CurrentDb.OpenRecordset(Q, dbOpenDynaset)   ' Create Recordset.
+                Set Crs = Db.OpenRecordset(Q, dbOpenDynaset)   ' Create Recordset.
     
                 Q = "SELECT DISTINCTROW Heats.E_Code, Heats.F_Lev, Heats.Heat FROM Heats "
                 Q = Q & "WHERE Heats.E_Code=" & E_Code & " AND Heats.F_Lev = " & New_FL
                 
-                Set Hrs = CurrentDb.OpenRecordset(Q, dbOpenDynaset)   ' Create Recordset.
-                Set NewCRS = CurrentDb.OpenRecordset("CompEvents", dbOpenDynaset)   ' Create Recordset.
+                Set Hrs = Db.OpenRecordset(Q, dbOpenDynaset)   ' Create Recordset.
+                Set NewCRS = Db.OpenRecordset("CompEvents", dbOpenDynaset)   ' Create Recordset.
     
                 Place = 1
                     
@@ -1507,6 +1508,7 @@ UpdateStatusOfPromotedFinal:
 ' ----------------------------------
 Exit_PEF:
     DoCmd.SetWarnings True
+    Set Db = Nothing
     Exit Function
 
 PromoteEventFinal_Err:
@@ -1532,7 +1534,7 @@ Sub SetCurrentFinal(E_Code)
     Dim Criteria As String, Db As Database, rs As Recordset
     Dim LastFinalCompleted As Variant, Cur_Flevel As Variant
     
-    Set Db = DBEngine.Workspaces(0).Databases(0)
+    Set Db = CurrentDb()
     Set rs = Db.OpenRecordset("SELECT * FROM Heats ORDER BY [F_Lev] Desc", dbOpenDynaset)   ' Create Recordset.
     
     Criteria = "E_Code = " & E_Code & " AND [Completed] = No"
@@ -1581,6 +1583,7 @@ Sub SetCurrentFinal(E_Code)
     
 
 SetCurrentFinal_Exit:
+    Set Db = Nothing
     Exit Sub
 
 SetCurrentFinal_Error:

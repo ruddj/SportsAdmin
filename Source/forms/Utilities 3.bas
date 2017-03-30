@@ -19,10 +19,10 @@ Begin Form
     GridY =10
     Width =7961
     ItemSuffix =56
-    Left =-18465
-    Top =5265
-    Right =-10710
-    Bottom =10365
+    Left =-22980
+    Top =5280
+    Right =-15225
+    Bottom =10380
     RecSrcDt = Begin
         0x6bd443042dc7e140
     End
@@ -390,7 +390,7 @@ On Error GoTo Reset_Click_Err
     
         Dim Criteria As String, Db As Database, rs As Recordset
         
-        Set Db = DBEngine.Workspaces(0).Databases(0)
+        Set Db = CurrentDb()
         Set rs = Db.OpenRecordset("SELECT * FROM Heats ORDER BY [E_CODE], [F_LEV] DESC ", dbOpenDynaset)   ' Create dynaset.
         
         rs.MoveFirst
@@ -452,6 +452,7 @@ On Error GoTo Reset_Click_Err
 
 
 Reset_Click_Exit:
+    Set Db = Nothing
     Exit Sub
 
 Reset_Click_Err:

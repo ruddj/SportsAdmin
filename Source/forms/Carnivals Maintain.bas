@@ -35,6 +35,7 @@ Begin Form
     End
     OnResize ="[Event Procedure]"
     OnLoad ="[Event Procedure]"
+    AllowDatasheetView =0
     FilterOnLoad =0
     AllowLayoutView =0
     Begin
@@ -556,7 +557,8 @@ Private Sub Form_Load()
     DoCmd.RunSQL "UPDATE DISTINCTROW Carnivals SET Carnivals.Available = FileExists(GetCarnivalFullDir([Relative Directory]) & [Filename]);"
     Me.List.Requery
     Me.List = Null
-    Set Db = DBEngine.Workspaces(0).Databases(0)
+    Set Db = CurrentDb()
+    'Db.TableDefs.Refresh
     Set TB = Db.TableDefs("Competitors")
     FileName = UCase$(Right$(TB.connect, Len(TB.connect) - InStr(TB.connect, "=")))
     FilenamePath = Left$(FileName, Len(FileName) - InStr(ReverseString(FileName), "\") + 1)
@@ -567,6 +569,7 @@ Private Sub Form_Load()
     UserQuit = False
 
 Exit_Form_Load:
+    Set Db = Nothing
     DoCmd.SetWarnings True
     Exit Sub
 Err_Form_Load:
@@ -619,7 +622,7 @@ On Error GoTo ImportCarnivalList_Click_Err
       Dim Db As Database, adb As Database, Crs As Recordset, ocrs As Recordset
       Dim wsp As Workspace, Criteria As String
       
-      Set Db = CurrentDb
+      Set Db = CurrentDb()
       Set wsp = DBEngine.Workspaces(0)
       ' Return reference to Another.mdb.
       Set adb = wsp.OpenDatabase(ReturnVar)
@@ -648,10 +651,13 @@ On Error GoTo ImportCarnivalList_Click_Err
       
         Me.List.Requery
        End If
-    
+       adb.Close
+           
     End If
    
 ImportCarnivalList_Click_Exit:
+    Set Db = Nothing
+    Set adb = Nothing
     Exit Sub
     
 ImportCarnivalList_Click_Err:
@@ -685,6 +691,7 @@ Private Sub List_DblClick(Cancel As Integer)
                     Call FinaliseCarnivalSelection
 
                     Me.ActiveCarnival = DLookup("[Carnival]", "Carnivals", "[Carnival] = """ & Me.List & """ AND [Available]")
+                    
                     MsgBox "Selected carnival is now active.", vbInformation
                     Call SysCmd(acSysCmdClearStatus)
                     DoCmd.RunMacro "ClosePleaseWait"
@@ -722,13 +729,6 @@ Private Sub locateCarnival()
 '    Stop
     
     AskUser = False
-
-    'Me!ctlCommonDialog.DialogTitle = "Locate Carnival File"
-    'Me!ctlCommonDialog.Filter = "Carnival Files (*.mdb)|*.mdb|All (*.*)|*.*"
-    'Me!ctlCommonDialog.DefaultExt = "mdb"
-    'Me!ctlCommonDialog.FileName = ""
-    
-    'Me!ctlCommonDialog.ShowOpen
     
     Dim strFilter As String
     Dim lngFlags As Long
@@ -753,31 +753,27 @@ Private Sub locateCarnival()
             Loop
             ITable.Close
             OldDB = DBPath()
-            ''If Left$(Result, Len(OldDB)) = OldDB Then
-            ''    NewDir = Right$(Result, Len(Result) - Len(OldDB))
-            ''    If InStr(ReverseString(NewDir), "\") = 0 Then
-            ''        NextCarn = NewDir
-            ''        NewDir = ""
-            ''    Else
-            ''        NextCarn = Right$(NewDir, InStr(ReverseString(NewDir), "\") - 1)
-            ''        NewDir = Left$(NewDir, Len(NewDir) - Len(NextCarn))
-            ''    End If
 
             NextCarn = GetCarnivalFile(Result)
             NewDir = GetCarnivalRelDir(Result)
             
-                DoCmd.SetWarnings False
-                DoCmd.RunSQL "UPDATE DISTINCTROW Carnivals SET Carnivals.Filename = """ & NextCarn & """, Carnivals.[Relative Directory] = """ & NewDir & """, Carnivals.Available = True WHERE ((Carnivals.Carnival=""" & Me.List & """));"
-                DoCmd.SetWarnings True
-                AskUser = True
-            ''Else
-            ''    MsgBox "This carnival must be put in the global directory before it can be connected.", vbExclamation, "Message"
-            ''End If
+            DoCmd.SetWarnings False
+            DoCmd.RunSQL "UPDATE DISTINCTROW Carnivals SET Carnivals.Filename = """ & NextCarn & """, Carnivals.[Relative Directory] = """ & NewDir & """, Carnivals.Available = True WHERE ((Carnivals.Carnival=""" & Me.List & """));"
+            DoCmd.SetWarnings True
+            AskUser = True
+            
+            Db.Close
+
         End If
     End If
+    
 Exit_locateCarnival:
+    Set MyDb = Nothing
+    Set Db = Nothing
+    
     DoCmd.SetWarnings True
     Exit Sub
+    
 Err_locateCarnival:
     MsgBox "This file does not meet the specified format for a carnival file.", vbExclamation, "Message"
     Resume Exit_locateCarnival
@@ -814,12 +810,15 @@ Private Sub Rename_Click()
 
 End Sub
 Private Sub FinaliseCarnivalSelection()
-
     Dim Db As Database, rs As Recordset
     
     ' Check that there is at least one record in MiscHTML table
     If DCount("[GenerateHTML]", "MiscHTML") = 0 Then
-        Set Db = CurrentDb
+    
+        Set Db = DBEngine.Workspaces(0).Databases(0)
+        ' Update DAO object after chaning DB Structure
+        Db.TableDefs.Refresh
+        
         Set rs = Db.OpenRecordset("MiscHTML")
         rs.AddNew
         rs!GenerateHTML = False

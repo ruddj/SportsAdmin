@@ -551,7 +551,7 @@ On Error GoTo Err_ImportData_Click
   Dim NamesIncomplete  As Integer, H_CodeIncomplete As Integer, msg As Variant
   Dim ShowCompetitorAlreadyEnrolledMessage As Boolean
   
-  Set Db = DBEngine.Workspaces(0).Databases(0)
+  Set Db = CurrentDb()
   Set ITRS = Db.OpenRecordset("SELECT * FROM ImportData ORDER BY [Age]", dbOpenDynaset)   ' Create dynaset.
   Set Crs = Db.OpenRecordset("SELECT * FROM Competitors ORDER BY [Age] DESC", dbOpenDynaset)   ' Create dynaset.
   Set CErs = Db.OpenRecordset("CompEvents", dbOpenDynaset)   ' Create dynaset.
@@ -701,6 +701,7 @@ Exit_ImportData_Click:
     Crs.Close
     CErs.Close
     
+    Set Db = Nothing
     DoCmd.Hourglass False
     DoCmd.RunMacro "ClosePleaseWait"
 

@@ -17,6 +17,10 @@ Begin Form
     End
     Caption ="Copy Competitors from One Event to Another"
     HelpFile ="SportsAdmin.chm"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
     FilterOnLoad =0
     AllowLayoutView =0
     Begin
@@ -403,7 +407,7 @@ On Error GoTo Err_CopyCompetitors_Click
     '       New entry in CompEvents table
     '           All fields remain the same except for E_Code (generate by looking up in "Events in Full" query
 
-  Set Db = DBEngine.Workspaces(0).Databases(0)
+  Set Db = CurrentDb()
   Set Frs = Db.OpenRecordset("CompEvents-With Event Type", dbOpenDynaset)   ' Create Recordset.
   Set Trs = Db.OpenRecordset("CompEvents", dbOpenDynaset)   ' Create Recordset.
     
@@ -483,7 +487,7 @@ On Error GoTo Err_CopyCompetitors_Click
 
 Exit_CopyCompetitors_Click:
     DoCmd.RunMacro "ClosePleaseWait"
-
+    Set Db = Nothing
     Exit Sub
 
 Err_CopyCompetitors_Click:

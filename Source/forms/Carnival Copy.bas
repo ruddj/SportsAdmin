@@ -232,7 +232,7 @@ Private Function AddCarnival() As Variant
         Result = Trim$(Result)
         If InStr(ReverseString(CStr(Result)), "\") <> 0 Then
             Set MyWS = DBEngine.Workspaces(0)
-            Set MyDb = MyWS.Databases(0)
+            Set MyDb = CurrentDb()
             Set Db = MyWS.OpenDatabase(Result)
             Set ITable = MyDb.OpenRecordset("SELECT * FROM [Inventory Attached Tables] Where [IF ID] = 2;")
             Do Until ITable.EOF
@@ -257,13 +257,17 @@ Private Function AddCarnival() As Variant
         
         End If
     End If
+    
 Exit_AddCarnival:
+    Set MyDb = Nothing
     DoCmd.SetWarnings True
     AddCarnival = AskUser
     Exit Function
+    
 Err_AddCarnival:
     MsgBox "This file does not meet the specified format for a carnival file.  Problem: " & Error$, vbExclamation, "Message"
     Resume Exit_AddCarnival
+    
 End Function
 
 

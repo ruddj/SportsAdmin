@@ -24,6 +24,10 @@ Begin Form
     RecordSource ="MiscellaneousLocal"
     Caption ="Create Carnival Disks"
     HelpFile ="SportsAdmin.chm"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
     OnLoad ="[Event Procedure]"
     FilterOnLoad =0
     AllowLayoutView =0
@@ -526,7 +530,7 @@ On Error GoTo Err_CreateBut_Click
     Dim Criteria As String, Db As Database, rs As Recordset
     Dim ETrs As Recordset, TTRS As Recordset
 
-    Set Db = DBEngine.Workspaces(0).Databases(0)
+    Set Db = CurrentDb()
     Set rs = Db.OpenRecordset("House", dbOpenDynaset)   ' Create dynaset.
 
     GoSub Fill_Num_Of_Entrants
@@ -559,6 +563,7 @@ Abort_DiskCreate:
     rs.Close
 
 Exit_CreateBut_Click:
+    Set Db = Nothing
     Exit Sub
 
 Err_CreateBut_Click:

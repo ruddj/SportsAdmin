@@ -3,7 +3,7 @@ Option Explicit
 
 
 Global Const VersionNumber = "5.0"
-Global Const VersionDate = "(01/Mar/2017)"
+Global Const VersionDate = "(30/Mar/2017)"
 
 ' Version 5.0
 '   (01/Mar/2017)
@@ -16,6 +16,7 @@ Global Const VersionDate = "(01/Mar/2017)"
 '   Added temporary trusted location for new datafile to fix security warnings
 '   When started in Runtime mode adds current location as trusted to prevent future prompts
 '   HTML export VBA script instead of Report hooks. Start using CSS output.
+'   Multiple Forms made resizable
 
 
 

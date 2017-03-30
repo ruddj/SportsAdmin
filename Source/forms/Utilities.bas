@@ -862,7 +862,7 @@ Remove_Click_Err:
 End Sub
 
 Private Sub Reset_Click()
-On Error GoTo Reset_Click_Err
+    On Error GoTo Reset_Click_Err
     
     ' Set the highest final level to active and the rest to future
     ' Set all compeitor points to 0
@@ -876,7 +876,7 @@ On Error GoTo Reset_Click_Err
     
         Dim Criteria As String, Db As Database, rs As Recordset
         
-        Set Db = DBEngine.Workspaces(0).Databases(0)
+        Set Db = CurrentDb()
         Set rs = Db.OpenRecordset("SELECT * FROM Heats ORDER BY [E_CODE], [F_LEV] DESC ", dbOpenDynaset)   ' Create dynaset.
         
         rs.MoveFirst
@@ -938,6 +938,7 @@ On Error GoTo Reset_Click_Err
 
 
 Reset_Click_Exit:
+    Set Db = Nothing
     Exit Sub
 
 Reset_Click_Err:

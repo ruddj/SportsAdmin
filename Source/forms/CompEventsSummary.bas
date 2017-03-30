@@ -1131,7 +1131,7 @@ On Error GoTo Err_PromoteBut_Click
     
     EventsPromoted = False
 
-    Set Db = DBEngine.Workspaces(0).Databases(0)
+    Set Db = CurrentDb()
     
     Q = "SELECT DISTINCT Events.E_Code, Heats.Status, Heats.F_Lev "
     Q = Q & "FROM EventType INNER JOIN (Events INNER JOIN Heats ON Events.E_Code = Heats.E_Code) ON EventType.ET_Code = Events.ET_Code "
@@ -1207,6 +1207,7 @@ On Error GoTo Err_PromoteBut_Click
 
 
 Exit_PromoteBut_Click:
+    Set Db = Nothing
     Exit Sub
 
 Err_PromoteBut_Click:

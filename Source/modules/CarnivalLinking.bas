@@ -321,7 +321,7 @@ Function AddTable(FileName, NewTable)
     Dim td As TableDef, CurrentTD As TableDef
     Dim f As Field
     Set Db = DBEngine.Workspaces(0).OpenDatabase(FileName)
-    Set CurrentDatabase = DBEngine.Workspaces(0).Databases(0)
+    Set CurrentDatabase = CurrentDb()
     
     Set td = Db.TableDefs(NewTable)
     'MsgBox ("Error1: Adding Table: " & Err)
@@ -334,7 +334,9 @@ Function AddTable(FileName, NewTable)
     End If
 
 AddTable_Exit:
-
+    Db.Close
+    Set Db = Nothing
+    Set CurrentDatabase = Nothing
     Exit Function
 
 AddTable_Err:
@@ -371,7 +373,7 @@ Function AddTable_Competitors(FileName)
     Dim td As TableDef, CurrentTD As TableDef
     Dim f As Field
     Set Db = DBEngine.Workspaces(0).OpenDatabase(FileName)
-    Set CurrentDatabase = DBEngine.Workspaces(0).Databases(0)
+    Set CurrentDatabase = CurrentDb()
     
     Set td = Db.TableDefs("CompetitorsOrdered")
     If Err = 3265 Then 'Table doesn't exist
@@ -384,7 +386,9 @@ Function AddTable_Competitors(FileName)
 
 
 AddTable_Competitors_Exit:
-
+    Db.Close
+    Set Db = Nothing
+    Set CurrentDatabase = Nothing
     Exit Function
 
 AddTable_Competitors_Err:
@@ -554,7 +558,7 @@ Function CheckInventoryAttached() As Variant
 
 '    Stop
     Set MyWS = DBEngine.Workspaces(0)
-    Set MyDb = MyWS.Databases(0)
+    Set MyDb = CurrentDb()
     Set ITable = MyDb.OpenRecordset("Inventory Attached Tables", dbOpenDynaset)
     DoCmd.SetWarnings False
     
@@ -622,9 +626,12 @@ Function CheckInventoryAttached() As Variant
     CheckInventoryAttached = True
     
 Exit_CheckInventoryData:
+    Set MyDb = Nothing
     Exit Function
+    
 WKError:
     MyWS.Rollback
+    
 Err_CheckInventoryData:
     'MsgBox Error$ & "   Quitting Database."
     'DoCmd.Quit
@@ -641,7 +648,7 @@ Sub CheckRelationships(FileName As Variant)
   If SportsViewModule Then Exit Sub
   
   Dim Db As Database, WS As Workspace, NewDB As Database, Result As Variant
-  Dim i As Integer, NR  As Relation, nF  As Field, r1 As Recordset, r2 As Recordset           ' Create Access Database
+  Dim i As Integer, NR  As Relation, nF  As Field, r1 As Recordset, r2 As Recordset   ' Create Access Database
   Dim j As Integer, RelationError As Integer, RelationErrorNames As String
   Dim RelationName  As String
   
@@ -650,7 +657,7 @@ Sub CheckRelationships(FileName As Variant)
   RelationErrorNames = ""
 
   Set WS = DBEngine.Workspaces(0)
-  Set NewDB = WS.OpenDatabase(FileName)                                                       ' Add relationships to
+  Set NewDB = WS.OpenDatabase(FileName)               ' Add relationships to
   Set Db = WS.Databases(0)
 
   ' Check if all relationships are valid.  If not then delete all and recreate
@@ -729,6 +736,11 @@ Exit_Creating_Relationships:
   If RelationError Then
       MsgBox "There was a problem creating these relationships: " & RelationErrorNames & ".  This usually only occurs when accessing older carnivals.  This problem is not serious.  However small problems may arise.  Creating a new carnival file from scratch is the only way to resolve these issues.", vbInformation
   End If
+  
+  NewDB.Close
+  Set NewDB = Nothing
+  Set Db = Nothing
+  
   ReturnVar = SysCmd(acSysCmdClearStatus)
   Exit Sub
 
@@ -761,11 +773,13 @@ Function DBPath() As String
 
     On Error GoTo Err_DBPath
     Dim App As String, Db As Database
-    Set Db = DBEngine.Workspaces(0).Databases(0)
+    Set Db = CurrentDb()
     App = Db.Name
     DBPath = Left$(App, Len(App) - InStr(ReverseString(App), "\") + 1)
 Exit_DBPath:
+    Set Db = Nothing
     Exit Function
+    
 Err_DBPath:
     DBPath = Error$
     Resume Exit_DBPath
@@ -817,7 +831,7 @@ Function Make_File(ByVal FileName As String) As Variant
     DoCmd.SetWarnings False
     Set NewDB = WS.CreateDatabase(FileName, dbLangGeneral, dbVersion120)
     NewDB.Close
-    Set Db = WS.Databases(0)
+    Set Db = CurrentDb()
     
     'MsgBox "If the file '" & fileName & "' is not in a trusted location, you will be prompted multiple times with an Access Security Notice. " & _
    ' "You will need to click multiple times on the Open button to continue.", vbInformation
@@ -854,9 +868,11 @@ Function Make_File(ByVal FileName As String) As Variant
     Result = True
 Exit_Make_File:
     DelTrustedLocation (iTrust)
+    Set Db = Nothing
     DoCmd.SetWarnings True
     Make_File = Result
     Exit Function
+    
 Err_Make_File:
     MsgBox Error$
     Resume Exit_Make_File
@@ -927,7 +943,7 @@ On Error GoTo err_sdc
 
     If Not GlobalCancel Then
       If GlobalChange Then
-        Set Db = DBEngine.Workspaces(0).Databases(0)
+        Set Db = CurrentDb()
         Set Crs = Db.OpenRecordset("Competitors", dbOpenDynaset)   ' Create dynaset.
         Set CTrs = Db.OpenRecordset("Competitors-Temp", dbOpenDynaset)   ' Create dynaset.
         
@@ -970,6 +986,7 @@ On Error GoTo err_sdc
     End If
     
 exit_sdc:
+    Set Db = Nothing
     Exit Sub
 
 err_sdc:
