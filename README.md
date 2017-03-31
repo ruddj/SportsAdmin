@@ -52,22 +52,18 @@ If you wish to have a version for end users you can change the Sports.accdb file
 
 ## Screens
 
-###Main Screen
-
+### Main Screen
 ![Sports Admin Main Screen](https://github.com/ruddj/SportsAdmin/blob/master/docs/MainScreen.png?raw=true)
 
 
-###Setup Carnival Guide
-
+### Setup Carnival Guide
 ![Setup Carnival Guide](https://github.com/ruddj/SportsAdmin/blob/master/docs/SetupCarnival.png?raw=true)
 
 
-###Competitor Results Entry
-
+### Competitor Results Entry
 ![Competitor Results Entry](https://github.com/ruddj/SportsAdmin/blob/master/docs/ResultsEntry.png?raw=true)
 
 
-###Report Options
-
+### Report Options
 ![Report Options](https://github.com/ruddj/SportsAdmin/blob/master/docs/Reports.png?raw=true)
 
