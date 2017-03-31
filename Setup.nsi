@@ -156,13 +156,13 @@ Section "Sample Databases" SectionDemo
 	
 SectionEnd
 
-Section "Sports View" SectionViewer
-	SectionIn 1 3
-	
-	SetOutPath $INSTDIR	
-	;File /nonfatal /a /r "demo"
-	
-SectionEnd
+;Section "Sports View" SectionViewer
+;	SectionIn 1 3
+;	
+;	SetOutPath $INSTDIR	
+;	;File /nonfatal /a /r "demo"
+;	
+;SectionEnd
 
 SectionGroup /e "Integration" SectionGroupIntegration
 
@@ -217,7 +217,7 @@ SectionGroupEnd
 	!insertmacro MUI_DESCRIPTION_TEXT ${SectionCoreFiles} "Core files requred to run ${PRODUCT_NAME}."
 	!insertmacro MUI_DESCRIPTION_TEXT ${SectionTemplates} "HTML Template files for ${PRODUCT_NAME}."
 	!insertmacro MUI_DESCRIPTION_TEXT ${SectionDemo} "Sample Carnival Database files for ${PRODUCT_NAME}."
-	!insertmacro MUI_DESCRIPTION_TEXT ${SectionViewer} "Read-only version for competitors to view results."
+	;!insertmacro MUI_DESCRIPTION_TEXT ${SectionViewer} "Read-only version for competitors to view results."
 	
   !insertmacro MUI_DESCRIPTION_TEXT ${SectionGroupIntegration} "Select how to integrate the program in Windows."
 	!insertmacro MUI_DESCRIPTION_TEXT ${SectionProgramGroup} "Create a ${PRODUCT_NAME} program group under Start Menu->Programs."
