@@ -49,3 +49,17 @@ To export source run "ExportAllSource" in Immediate window.
 This database requires Microsoft Access 2013 or newer. If you do not have this installed you can download the [Microsoft Access 2016 Runtime](https://www.microsoft.com/en-us/download/details.aspx?id=50040).
 
 If you wish to have a version for end users you can change the Sports.accdb file extension to .accdr to load in runtime only mode.
+
+## Screens
+Main Screen
+![Sports Admin Main Screen](https://github.com/ruddj/SportsAdmin/blob/master/docs/MainScreen.png?raw=true)
+
+Setup Carnival Guide
+![Setup Carnival Guide](https://github.com/ruddj/SportsAdmin/blob/master/docs/SetupCarnival.png?raw=true)
+
+Competitor Results Entry
+![Competitor Results Entry](https://github.com/ruddj/SportsAdmin/blob/master/docs/ResultsEntry.png?raw=true)
+
+Report Options
+![Report Options](https://github.com/ruddj/SportsAdmin/blob/master/docs/Reports.png?raw=true)
+
