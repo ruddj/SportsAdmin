@@ -411,6 +411,7 @@ Begin Form
                     TabIndex =10
                     BackColor =-2147483633
                     Name ="FutureEB"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -423,6 +424,7 @@ Begin Form
                     TabIndex =11
                     BackColor =-2147483633
                     Name ="ActiveEB"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -435,6 +437,7 @@ Begin Form
                     TabIndex =12
                     BackColor =-2147483633
                     Name ="CompletedEB"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -447,6 +450,7 @@ Begin Form
                     TabIndex =13
                     BackColor =-2147483633
                     Name ="PromotedEB"
+                    FontName ="Tahoma"
 
                 End
                 Begin Rectangle
@@ -495,7 +499,7 @@ Begin Form
                     Name ="Close"
                     Caption ="Close"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -512,6 +516,7 @@ Begin Form
                     TabIndex =16
                     BackColor =-2147483633
                     Name ="Checking"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -525,6 +530,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text120"
                             Caption ="Checking:"
+                            FontName ="Tahoma"
                         End
                     End
                 End

@@ -121,7 +121,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text36"
                     Caption ="Lane"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =95
@@ -133,7 +133,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text37"
                     Caption ="Team"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -149,7 +149,7 @@ Begin Form
                     Name ="Button28"
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -169,7 +169,7 @@ Begin Form
                     Name ="Order"
                     Caption ="Refresh Order"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     ControlTipText ="Refreshes the list on the left so that it is in lane order."
 
                     WebImagePaddingLeft =2
@@ -190,7 +190,7 @@ Begin Form
                     Name ="Update"
                     Caption ="Update Lanes for all Events"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     ControlTipText ="Put all competitors already in events in the lanes as specified in the list."
 
                     WebImagePaddingLeft =2
@@ -212,7 +212,7 @@ Begin Form
                     Name ="Help"
                     Caption ="Help"
                     OnClick ="Open Help"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2

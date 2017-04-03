@@ -60,7 +60,7 @@ Begin Form
                     Name ="YesBut"
                     Caption ="Yes"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -80,7 +80,7 @@ Begin Form
                     Name ="NoBut"
                     Caption ="No"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -100,7 +100,7 @@ Begin Form
                     TabIndex =2
                     BackColor =-2147483633
                     Name ="Txt"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin CheckBox
@@ -123,7 +123,7 @@ Begin Form
                             Height =240
                             Name ="Text5"
                             Caption ="Yes to all"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -136,7 +136,7 @@ Begin Form
                     Height =210
                     Name ="Text6"
                     Caption ="Are you sure you wish to promote:"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin CheckBox
                     Visible = NotDefault
@@ -163,7 +163,7 @@ Begin Form
                     Name ="Cancel"
                     Caption ="Cancel"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2

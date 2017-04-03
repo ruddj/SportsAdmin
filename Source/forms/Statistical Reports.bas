@@ -625,6 +625,7 @@ Begin Form
                     TabIndex =22
                     Name ="Field70"
                     ControlSource ="AgeChampionNumber"
+                    FontName ="Tahoma"
                     ControlTipText ="Enter the number of competitors to show in each age division."
 
                 End

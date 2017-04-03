@@ -59,6 +59,7 @@ Begin Form
                     Height =210
                     Name ="Text2"
                     Caption ="Place"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -69,6 +70,7 @@ Begin Form
                     Height =210
                     Name ="Text3"
                     Caption ="Lane"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -79,6 +81,7 @@ Begin Form
                     Height =210
                     Name ="Text4"
                     Caption ="Result"
+                    FontName ="Tahoma"
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -93,7 +96,7 @@ Begin Form
                     Name ="Close"
                     Caption ="Enter Results"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -113,7 +116,7 @@ Begin Form
                     Name ="Cancel"
                     Caption ="Cancel"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2

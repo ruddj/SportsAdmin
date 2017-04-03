@@ -324,7 +324,7 @@ Begin Form
                         0x0000000000000000000000000000000000000000000000000000000000000000 ,
                         0x0000000000000000
                     End
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ObjectPalette = Begin
                         0x000301000000000000000000
                     End

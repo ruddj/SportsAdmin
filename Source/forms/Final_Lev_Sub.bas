@@ -98,7 +98,7 @@ Begin Form
                     FontWeight =400
                     Name ="Text13"
                     Caption ="Final Level"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -111,7 +111,7 @@ Begin Form
                     FontWeight =400
                     Name ="Text15"
                     Caption ="# of Heats"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -124,7 +124,7 @@ Begin Form
                     FontWeight =400
                     Name ="Text17"
                     Caption ="Point Scale"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -137,7 +137,7 @@ Begin Form
                     FontWeight =400
                     Name ="Text19"
                     Caption ="Promotion Method"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -149,7 +149,7 @@ Begin Form
                     FontWeight =400
                     Name ="Text21"
                     Caption ="Use Results (X) / Places ()"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -161,7 +161,7 @@ Begin Form
                     FontWeight =400
                     Name ="Text28"
                     Caption ="# of Comp. in Heat"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -173,7 +173,7 @@ Begin Form
                     FontWeight =400
                     Name ="Label30"
                     Caption ="Results effect event records."
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
             End
         End
@@ -194,6 +194,7 @@ Begin Form
                     StatusBarText ="The number of heats in this final level."
                     ValidationRule =">0 And <1000"
                     ValidationText ="You must enter a number between 0 and 1000 (or push Esc to cancel)."
+                    FontName ="Tahoma"
                     ControlTipText ="The number of heats in this final level."
 
                 End
@@ -230,7 +231,7 @@ Begin Form
                     RowSourceType ="Table/Query"
                     RowSource ="SELECT DISTINCT PointsScale.PtScale FROM PointsScale;"
                     ColumnWidths ="975"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="The pointscale used to allocate points for the final level."
 
                 End
@@ -252,7 +253,7 @@ Begin Form
                     RowSourceType ="Table/Query"
                     RowSource ="SELECT DISTINCTROW Promotion.ProType, Promotion.Desc FROM Promotion;"
                     ColumnWidths ="900;1650"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="The manner competitiors are promoted into the next final level."
 
                 End
@@ -267,6 +268,7 @@ Begin Form
                     ControlSource ="ProNum"
                     StatusBarText ="Optional: This value is used to promote competitors in events that don't use lan"
                         "es."
+                    FontName ="Tahoma"
                     ControlTipText ="Optional: This value is used to promote competitors in events that don't use lan"
                         "es."
 
@@ -290,7 +292,7 @@ Begin Form
                     ColumnWidths ="567;1701"
                     StatusBarText ="Final Levels start at 0 (0: Grand Final, 1: Semi-Final, 2: Quarter-Final etc)"
                     AfterUpdate ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Final Levels start at 0 (0: Grand Final, 1: Semi-Final, 2: Quarter-Final etc)"
 
                 End

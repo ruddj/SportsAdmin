@@ -62,7 +62,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Field0"
                     ControlSource ="ET_Des"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -80,7 +80,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Field3"
                     ControlSource ="F_Lev"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -100,7 +100,7 @@ Begin Form
                     ForeColor =255
                     Name ="Field5"
                     ControlSource ="Place"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -118,7 +118,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Field10"
                     ControlSource ="res"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -137,7 +137,7 @@ Begin Form
                     ForeColor =255
                     Name ="PtsFld"
                     ControlSource ="Points"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -154,7 +154,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Field11"
                     ControlSource ="Heat"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin Line
@@ -183,7 +183,7 @@ Begin Form
                     BorderColor =12632256
                     Name ="TotFld"
                     ControlSource ="=Sum([Points])"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -195,7 +195,6 @@ Begin Form
                             BackColor =8454143
                             Name ="Text8"
                             Caption ="Total Points"
-                            FontName ="MS Sans Serif"
                         End
                     End
                 End

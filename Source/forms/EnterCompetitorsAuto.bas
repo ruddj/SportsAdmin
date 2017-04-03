@@ -132,7 +132,7 @@ Begin Form
                     Name ="Close"
                     Caption ="Close"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -153,7 +153,7 @@ Begin Form
                     Name ="Help"
                     Caption ="Help"
                     OnClick ="Open Help"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -175,7 +175,7 @@ Begin Form
                     RowSource ="SELECT EventType.ET_Code, EventType.ET_Des FROM EventType ORDER BY EventType.ET_"
                         "Des;"
                     ColumnWidths ="0;1590"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     Begin
                         Begin Label
                             OverlapFlags =223
@@ -187,7 +187,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text94"
                             Caption ="Event:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -205,7 +205,7 @@ Begin Form
                     RowSourceType ="Table/Query"
                     RowSource ="SELECT DISTINCT Events.Age FROM Events ORDER BY Events.Age;"
                     ColumnWidths ="0;1591"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     EventProcPrefix ="Selected_Age"
 
                     Begin
@@ -219,7 +219,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text96"
                             Caption ="Age:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -243,7 +243,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text98"
                             Caption ="All Ages:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -270,7 +270,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text100"
                             Caption ="Heat creation"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                         Begin OptionButton
                             Visible = NotDefault
@@ -293,7 +293,7 @@ Begin Form
                                     FontWeight =400
                                     Name ="Text103"
                                     Caption ="Fill All Available Heats only"
-                                    FontName ="Arial"
+                                    FontName ="Tahoma"
                                 End
                             End
                         End
@@ -316,7 +316,7 @@ Begin Form
                                     FontWeight =400
                                     Name ="Text105"
                                     Caption ="Create Heats until all competitors have been added"
-                                    FontName ="Arial"
+                                    FontName ="Tahoma"
                                 End
                             End
                         End
@@ -344,7 +344,7 @@ Begin Form
                     Name ="AddCompet"
                     Caption ="Add Competitors"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2

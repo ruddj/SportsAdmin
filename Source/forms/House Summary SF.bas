@@ -175,6 +175,7 @@ Begin Form
                     TabIndex =4
                     Name ="H_ID"
                     ControlSource ="H_ID"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox

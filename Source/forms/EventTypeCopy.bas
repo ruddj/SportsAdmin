@@ -57,6 +57,7 @@ Begin Form
                     Top =229
                     Width =2046
                     Name ="Description"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -69,6 +70,7 @@ Begin Form
                             Height =240
                             Name ="Text1"
                             Caption ="Enter the Name of the new Event:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -86,7 +88,7 @@ Begin Form
                     Name ="CreateBut"
                     Caption ="Create"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -106,7 +108,7 @@ Begin Form
                     Name ="CancelBut"
                     Caption ="Cancel"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2

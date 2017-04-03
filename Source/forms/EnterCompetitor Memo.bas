@@ -58,6 +58,7 @@ Begin Form
                     Height =2479
                     Name ="Field0"
                     ControlSource ="Memo"
+                    FontName ="Tahoma"
 
                 End
                 Begin CommandButton
@@ -73,7 +74,7 @@ Begin Form
                     Name ="Close"
                     Caption ="Update"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -93,7 +94,7 @@ Begin Form
                     Name ="Cancel"
                     Caption ="Cancel"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -109,6 +110,7 @@ Begin Form
                     Height =210
                     Name ="Text4"
                     Caption ="Enter the information you require for the event below."
+                    FontName ="Tahoma"
                 End
                 Begin ComboBox
                     OverlapFlags =85
@@ -119,6 +121,7 @@ Begin Form
                     Name ="Competitor"
                     RowSourceType ="Table/Query"
                     OnDblClick ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -130,6 +133,7 @@ Begin Form
                             Height =240
                             Name ="Text6"
                             Caption ="Competitor:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -164,7 +168,7 @@ Begin Form
                         0x0000000000000000000000000000000000000000000000000000000000000000 ,
                         0x0000000000000000
                     End
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ObjectPalette = Begin
                         0x000301000000000000000000
                     End

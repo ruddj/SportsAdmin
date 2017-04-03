@@ -62,6 +62,7 @@ Begin Form
                     Top =737
                     Width =4701
                     Name ="Description"
+                    FontName ="Tahoma"
                     ControlTipText ="Enter a descriptive name for the carnival."
 
                     Begin
@@ -75,7 +76,7 @@ Begin Form
                             Height =240
                             Name ="Text1"
                             Caption ="Enter a descriptive name for the new Carnival:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -92,7 +93,7 @@ Begin Form
                     Name ="Button"
                     Caption ="Create"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Create the carnival."
 
                     WebImagePaddingLeft =2
@@ -113,7 +114,7 @@ Begin Form
                     Name ="CancelBut"
                     Caption ="Cancel"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Cancel this operation."
 
                     WebImagePaddingLeft =2
@@ -133,6 +134,7 @@ Begin Form
                     TabIndex =4
                     BackColor =12632256
                     Name ="FullFileName"
+                    FontName ="Tahoma"
                     ControlTipText ="Click the 'Open' button to enter or select the name of a carnival."
 
                     Begin
@@ -146,7 +148,7 @@ Begin Form
                             Height =240
                             Name ="FileNameText"
                             Caption ="Click the 'Open' button to select a file name for the new carnival."
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -191,7 +193,7 @@ Begin Form
                         0x0000000000000000000000000000000000000000000000000000000000000000 ,
                         0x0000000000000000
                     End
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ObjectPalette = Begin
                         0x000301000000000000000000
                     End

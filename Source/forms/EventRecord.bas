@@ -129,6 +129,7 @@ Begin Form
                     Name ="Sex"
                     ControlSource ="Sex"
                     StatusBarText ="Male (M) / Female (F)"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -141,6 +142,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text19"
                             Caption ="Sex:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -162,6 +164,7 @@ Begin Form
                     Name ="Age"
                     ControlSource ="Age"
                     StatusBarText ="Age Group for event - ie. 13 year boys=13; 21 year girls =21; Open Boys=0"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -174,6 +177,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text21"
                             Caption ="Age:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -190,6 +194,7 @@ Begin Form
                     Name ="Record"
                     StatusBarText ="Record for this event stored as a text value"
                     AfterUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -202,6 +207,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text27"
                             Caption ="Record:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -215,6 +221,7 @@ Begin Form
                     BorderColor =12632256
                     Name ="Gname"
                     StatusBarText ="name of Competitor who holds current record"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -227,6 +234,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text29"
                             Caption ="Given Name:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -247,6 +255,7 @@ Begin Form
                     RowSourceType ="Table/Query"
                     RowSource ="SELECT House.H_Code, House.H_NAme FROM House ORDER BY House.H_NAme;"
                     ColumnWidths ="0;1441"
+                    FontName ="Tahoma"
                     Begin
                         Begin Label
                             OverlapFlags =85
@@ -258,6 +267,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text33"
                             Caption ="Team:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -277,6 +287,7 @@ Begin Form
                     Name ="ET_Des"
                     ControlSource ="ET_Des"
                     StatusBarText ="Age Group for event - ie. 13 year boys=13; 21 year girls =21; Open Boys=0"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -289,6 +300,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text36"
                             Caption ="Event:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -309,6 +321,7 @@ Begin Form
                     Name ="nUnit"
                     ControlSource ="Units"
                     StatusBarText ="Record for this event stored as a text value"
+                    FontName ="Tahoma"
 
                 End
                 Begin CommandButton
@@ -324,7 +337,7 @@ Begin Form
                     Name ="Close"
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -358,7 +371,7 @@ Begin Form
                     Name ="E_Code"
                     ControlSource ="E_Code"
                     StatusBarText ="Record for this event"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -371,7 +384,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text44"
                             Caption ="E_Code"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -396,6 +409,7 @@ Begin Form
                     BorderColor =12632256
                     Name ="Surname"
                     StatusBarText ="name of Competitor who holds current record"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -408,6 +422,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text47"
                             Caption ="Surname:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -425,7 +440,7 @@ Begin Form
                     Name ="Add"
                     Caption ="&Add New Record"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -445,6 +460,7 @@ Begin Form
                     Format ="Short Date"
                     StatusBarText ="name of Competitor who holds current record"
                     DefaultValue ="=Date()"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -457,6 +473,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text50"
                             Caption ="Date:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -471,6 +488,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text51"
                     Caption ="Surname"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =93
@@ -483,6 +501,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text52"
                     Caption ="Given Name"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =93
@@ -495,6 +514,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text54"
                     Caption ="Team"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =93
@@ -507,6 +527,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text55"
                     Caption ="Result"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =93
@@ -519,6 +540,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text56"
                     Caption ="Date"
+                    FontName ="Tahoma"
                 End
                 Begin Rectangle
                     SpecialEffect =3
@@ -540,6 +562,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text58"
                     Caption ="Current Record"
+                    FontName ="Tahoma"
                 End
                 Begin ComboBox
                     SpecialEffect =0
@@ -560,6 +583,7 @@ Begin Form
                         "((House.Include=Yes)) ORDER BY UCase([Surname]) & \", \" & [Gname];"
                     ColumnWidths ="0;1815;0"
                     AfterUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
                     Begin
                         Begin Label
                             OverlapFlags =85
@@ -571,6 +595,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text60"
                             Caption ="Add Competitor:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -599,6 +624,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text62"
                     Caption ="Surname"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =93
@@ -611,6 +637,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text63"
                     Caption ="Given Name"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =93
@@ -623,6 +650,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text64"
                     Caption ="Team"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =93
@@ -635,6 +663,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text65"
                     Caption ="Result"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =93
@@ -647,6 +676,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text66"
                     Caption ="Date"
+                    FontName ="Tahoma"
                 End
                 Begin Rectangle
                     SpecialEffect =3
@@ -668,6 +698,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text68"
                     Caption ="Record History"
+                    FontName ="Tahoma"
                 End
                 Begin TextBox
                     Visible = NotDefault
@@ -682,6 +713,7 @@ Begin Form
                     BorderColor =12632256
                     Name ="nRecord"
                     StatusBarText ="Record for this event stored as a text value"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -694,6 +726,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text70"
                             Caption ="Record:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -720,7 +753,7 @@ Begin Form
                     Name ="HelpButton"
                     Caption ="&Help"
                     OnClick ="Open Help"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2

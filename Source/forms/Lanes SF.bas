@@ -50,6 +50,7 @@ Begin Form
                     Name ="Field2"
                     ControlSource ="Lane"
                     DefaultValue ="=DMax(\"[Lane]\",\"Lanes\")+2"
+                    FontName ="Tahoma"
 
                 End
                 Begin ComboBox
@@ -70,6 +71,7 @@ Begin Form
                     RowSource ="SELECT House.H_ID, House.H_NAme, House.Include FROM House WHERE ((House.Include="
                         "Yes)) ORDER BY House.H_NAme;"
                     ColumnWidths ="0;2095;0"
+                    FontName ="Tahoma"
 
                 End
             End

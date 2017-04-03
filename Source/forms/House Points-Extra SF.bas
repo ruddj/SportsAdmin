@@ -42,7 +42,7 @@ Begin Form
                     Height =225
                     Name ="Text5"
                     Caption ="# Pts"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =85
@@ -51,7 +51,7 @@ Begin Form
                     Height =225
                     Name ="Text6"
                     Caption ="Reason for allocation / deallocation of points"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
             End
         End
@@ -68,6 +68,7 @@ Begin Form
                     Height =285
                     Name ="NumPts"
                     ControlSource ="NumPts"
+                    FontName ="Tahoma"
                     ControlTipText ="Number of extra points to add or subtract."
 
                 End
@@ -80,6 +81,7 @@ Begin Form
                     TabIndex =1
                     Name ="Reason"
                     ControlSource ="Reason"
+                    FontName ="Tahoma"
                     ControlTipText ="Optional: The reason for the extra points."
 
                 End
@@ -92,6 +94,7 @@ Begin Form
                     TabIndex =2
                     Name ="H_ID"
                     ControlSource ="H_ID"
+                    FontName ="Tahoma"
 
                 End
             End

@@ -63,6 +63,7 @@ Begin Form
                     Height =227
                     Name ="E_Code"
                     ControlSource ="E_Code"
+                    FontName ="Tahoma"
 
                 End
                 Begin Label
@@ -74,7 +75,7 @@ Begin Form
                     Height =235
                     Name ="Text9"
                     Caption ="Age"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -85,7 +86,7 @@ Begin Form
                     Height =220
                     Name ="Text8"
                     Caption ="Sex"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -96,7 +97,7 @@ Begin Form
                     Height =220
                     Name ="Text33"
                     Caption ="Inc."
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -107,7 +108,7 @@ Begin Form
                     Height =225
                     Name ="Text39"
                     Caption ="Record"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
             End
         End
@@ -129,7 +130,7 @@ Begin Form
                     Name ="Age"
                     ControlSource ="Age"
                     AfterUpdate ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Age Division (eg. 13_U, 14, 15, 16, 17_U, OPEN)"
 
                 End
@@ -165,7 +166,7 @@ Begin Form
                     RowSourceType ="Value List"
                     RowSource ="M;F;-"
                     ColumnWidths ="567"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Division gender."
 
                 End
@@ -183,7 +184,7 @@ Begin Form
                     Name ="Record"
                     ControlSource ="Record"
                     OnDblClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Double-Click to edit the records for this division."
 
                 End
@@ -198,7 +199,7 @@ Begin Form
                     TabIndex =4
                     Name ="nRecord"
                     ControlSource ="nRecord"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -212,7 +213,7 @@ Begin Form
                     TabIndex =5
                     Name ="RecHouse"
                     ControlSource ="RecHouse"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -226,11 +227,12 @@ Begin Form
                     TabIndex =6
                     Name ="RecName"
                     ControlSource ="RecName"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin CommandButton
                     OverlapFlags =85
+                    TextFontFamily =34
                     Left =2535
                     Top =15
                     Width =336
@@ -259,6 +261,7 @@ Begin Form
                         0x0000000000000000000000000000000000000000000000000000000000000000 ,
                         0x00000000
                     End
+                    FontName ="Tahoma"
                     ObjectPalette = Begin
                         0x000301000000000000000000
                     End
@@ -288,7 +291,7 @@ Begin Form
                     Name ="EditRecord"
                     Caption ="Edit Record For Selected Division"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     ControlTipText ="Edit the record for the selected division."
 
                     WebImagePaddingLeft =2
@@ -309,6 +312,7 @@ Begin Form
                     ForeColor =255
                     Name ="Alert"
                     Caption ="ALERT: No Divisions are setup"
+                    FontName ="Tahoma"
                 End
             End
         End

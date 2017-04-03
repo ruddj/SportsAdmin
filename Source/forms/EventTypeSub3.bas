@@ -57,7 +57,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text11"
                     Caption ="Pt. Scale"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =93
@@ -69,7 +69,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text28"
                     Caption ="Prom. Ty."
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =215
@@ -81,7 +81,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text29"
                     Caption ="Times?"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =215
@@ -92,7 +92,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text30"
                     Caption ="Final"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
             End
         End
@@ -110,7 +110,7 @@ Begin Form
                     Height =227
                     Name ="F_Lev"
                     ControlSource ="FinalLevel"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin ComboBox
@@ -131,7 +131,7 @@ Begin Form
                     RowSource ="SELECT PointsScale.PtScale FROM PointsScale GROUP BY PointsScale.PtScale;"
                     ColumnWidths ="1440"
                     AfterUpdate ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     EventProcPrefix ="Point_Scale"
 
                 End
@@ -163,6 +163,7 @@ Begin Form
                     RowSourceType ="Table/Query"
                     RowSource ="Select [ProType],[Desc] From [Promotion];"
                     ColumnWidths ="885;1620"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -175,6 +176,7 @@ Begin Form
                     TabIndex =4
                     Name ="E_Code"
                     ControlSource ="E_Code"
+                    FontName ="Tahoma"
 
                 End
             End

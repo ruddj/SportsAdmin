@@ -18572,7 +18572,7 @@ Begin Form
                     Name ="CreateCarnivalBut"
                     Caption ="Create Carnival"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -18593,7 +18593,7 @@ Begin Form
                     Name ="CreateTeamsBut"
                     Caption ="Create Teams"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -18614,7 +18614,7 @@ Begin Form
                     Name ="AllocateLanesBut"
                     Caption ="AllocateLanesBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -18635,7 +18635,7 @@ Begin Form
                     Name ="SetupPointscalesBut"
                     Caption ="SetupPointscalesBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -18656,7 +18656,7 @@ Begin Form
                     Name ="ImportCompetitorsBut"
                     Caption ="ImportCompetitorsBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -18677,7 +18677,7 @@ Begin Form
                     Name ="AddCompetitorsBut"
                     Caption ="AddCompetitorsBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -18698,7 +18698,7 @@ Begin Form
                     Name ="MaintainCompetitorsBut"
                     Caption ="MaintainCompetitorsBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -18719,7 +18719,7 @@ Begin Form
                     Name ="MaintainEventsBut"
                     Caption ="MaintainEventsBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -18740,7 +18740,7 @@ Begin Form
                     Name ="EnterResultsBut"
                     Caption ="EnterResultsBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -18761,7 +18761,7 @@ Begin Form
                     Name ="GenerateEventListsBut"
                     Caption ="GenerateEventListsBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -18782,7 +18782,7 @@ Begin Form
                     Name ="ImportCarnivalDisksBut"
                     Caption ="ImportCarnivalDisksBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -18803,7 +18803,7 @@ Begin Form
                     Name ="CreateCarnivalDisksBut"
                     Caption ="CreateCarnivalDisksBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -18824,7 +18824,7 @@ Begin Form
                     Name ="StatisticalReportsBut"
                     Caption ="StatisticalReportsBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -18845,7 +18845,7 @@ Begin Form
                     Name ="MiscInfoBut"
                     Caption ="MiscInfoBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -18866,7 +18866,7 @@ Begin Form
                     Name ="EventOrderBut"
                     Caption ="EventOrderBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -37352,7 +37352,7 @@ Begin Form
                     Name ="CopyCarnivalBut"
                     Caption ="Create Carnival"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -37373,7 +37373,7 @@ Begin Form
                     Name ="MaintainTeamsBut"
                     Caption ="Maintain Teams"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -37394,7 +37394,7 @@ Begin Form
                     Name ="AllocatelanesBut2"
                     Caption ="AllocateLanesBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -37415,7 +37415,7 @@ Begin Form
                     Name ="MaintainPointScalesBut"
                     Caption ="SetupPointscalesBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -37436,7 +37436,7 @@ Begin Form
                     Name ="UtilitiesBut2"
                     Caption ="UtilitiesBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -37457,7 +37457,7 @@ Begin Form
                     Name ="ImportCompetitorsBut2"
                     Caption ="ImportCompetitorsBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -37478,7 +37478,7 @@ Begin Form
                     Name ="AddCompetitorsBut2"
                     Caption ="AddCompetitorsBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -37499,7 +37499,7 @@ Begin Form
                     Name ="MaintainCompetitorsBut2"
                     Caption ="MaintainCompetitorsBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -37520,7 +37520,7 @@ Begin Form
                     Name ="MaintainEventsBut2"
                     Caption ="MaintainEventsBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -37541,7 +37541,7 @@ Begin Form
                     Name ="EnterResultsBut2"
                     Caption ="EnterResultsBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -37562,7 +37562,7 @@ Begin Form
                     Name ="GenerateEventLists2"
                     Caption ="GenerateEventListsBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -37583,7 +37583,7 @@ Begin Form
                     Name ="ImportCarnivalDisks2"
                     Caption ="ImportCarnivalDisksBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -37604,7 +37604,7 @@ Begin Form
                     Name ="CreateCarnivalDisks2"
                     Caption ="CreateCarnivalDisksBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -37625,7 +37625,7 @@ Begin Form
                     Name ="StatisticalReportsBut2"
                     Caption ="StatisticalReportsBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -37646,7 +37646,7 @@ Begin Form
                     Name ="MiscInfoBut2"
                     Caption ="MiscInfoBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -37667,7 +37667,7 @@ Begin Form
                     Name ="EventOrderBut2"
                     Caption ="EventOrderBut"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -37692,7 +37692,7 @@ Begin Form
                     Name ="Close"
                     Caption ="Done"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -37724,6 +37724,7 @@ Begin Form
                             ForeColor =4227072
                             Name ="TogBut1"
                             Caption ="Setup a Carnival from Scratch"
+                            FontName ="Tahoma"
 
                             WebImagePaddingLeft =2
                             WebImagePaddingTop =2
@@ -37740,6 +37741,7 @@ Begin Form
                             OptionValue =2
                             Name ="TogBut2"
                             Caption ="Copy an Existing Carnival"
+                            FontName ="Tahoma"
 
                             WebImagePaddingLeft =2
                             WebImagePaddingTop =2

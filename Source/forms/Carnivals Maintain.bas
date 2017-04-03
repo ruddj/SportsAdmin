@@ -243,7 +243,7 @@ Begin Form
                     Height =225
                     Name ="Text11"
                     Caption ="Active Carnival"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     VerticalAnchor =1
                 End
                 Begin Label
@@ -256,7 +256,7 @@ Begin Form
                     Height =225
                     Name ="Text13"
                     Caption ="Global Data"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin CommandButton
                     OverlapFlags =85

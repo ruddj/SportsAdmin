@@ -138,7 +138,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text10"
                     Caption ="Place"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -152,7 +152,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text12"
                     Caption ="Lane"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin TextBox
                     Visible = NotDefault
@@ -162,6 +162,7 @@ Begin Form
                     Width =786
                     TabIndex =1
                     Name ="ET_Code"
+                    FontName ="Tahoma"
 
                 End
                 Begin CommandButton
@@ -178,7 +179,7 @@ Begin Form
                     Name ="Close But"
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     EventProcPrefix ="Close_But"
 
                     WebImagePaddingLeft =2
@@ -210,7 +211,7 @@ Begin Form
                             OptionValue =1
                             Name ="Place"
                             Caption ="Order by Place"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                             OnMouseDown ="[Event Procedure]"
 
                             WebImagePaddingLeft =2
@@ -230,7 +231,7 @@ Begin Form
                             OptionValue =2
                             Name ="Lane"
                             Caption ="Order by  Lane"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                             OnMouseDown ="[Event Procedure]"
 
                             WebImagePaddingLeft =2
@@ -255,6 +256,7 @@ Begin Form
                     BackColor =12632256
                     Name ="Field21"
                     ControlSource ="=[Forms]![EventType]![ET_Des]"
+                    FontName ="Tahoma"
 
                 End
                 Begin Line

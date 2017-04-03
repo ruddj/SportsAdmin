@@ -62,7 +62,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text10"
                     Caption ="Heat"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =93
@@ -74,7 +74,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text11"
                     Caption ="Pt. Scale"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =215
@@ -86,7 +86,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text28"
                     Caption ="Prom. Ty."
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =93
@@ -98,7 +98,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text29"
                     Caption ="Times?"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =85
@@ -110,7 +110,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text30"
                     Caption ="Final"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =87
@@ -122,7 +122,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Label40"
                     Caption ="Records?"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
             End
         End
@@ -149,7 +149,7 @@ Begin Form
                     ValidationText ="A heat must be between 0 and 1000."
                     BeforeUpdate ="[Event Procedure]"
                     AfterUpdate ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Each heat in a particular final-level needs a number (1,2,3 etc)"
 
                 End
@@ -174,7 +174,7 @@ Begin Form
                     StatusBarText ="What pointscale is used to allocate points."
                     BeforeUpdate ="[Event Procedure]"
                     AfterUpdate ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     EventProcPrefix ="Point_Scale"
                     ControlTipText ="What pointscale is used to allocate points."
 
@@ -211,6 +211,7 @@ Begin Form
                     RowSource ="SELECT Promotion.ProType, Promotion.Desc FROM Promotion;"
                     ColumnWidths ="885;1620"
                     BeforeUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
                     ControlTipText ="How are competitors promoted into the next final level"
 
                 End
@@ -224,6 +225,7 @@ Begin Form
                     TabIndex =5
                     Name ="E_Code"
                     ControlSource ="E_Code"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -236,10 +238,12 @@ Begin Form
                     TabIndex =6
                     Name ="HE_Code"
                     ControlSource ="HE_Code"
+                    FontName ="Tahoma"
 
                 End
                 Begin CommandButton
                     OverlapFlags =85
+                    TextFontFamily =34
                     Left =4755
                     Width =441
                     Height =290
@@ -266,6 +270,7 @@ Begin Form
                         0x0000000000000000000000000000000000000000000000000000000000000000 ,
                         0x000000000000000000000000000000000000000000000000
                     End
+                    FontName ="Tahoma"
                     ObjectPalette = Begin
                         0x000301000000000000000000
                     End
@@ -296,12 +301,13 @@ Begin Form
                     ColumnWidths ="567;1701"
                     StatusBarText ="Final Levels start at 0 (0: Grand Final, 1:Semi-Final, 2: Quarter-Final etc)"
                     AfterUpdate ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Final Levels start at 0 (0: Grand Final, 1:Semi-Final, 2: Quarter-Final etc)"
 
                 End
                 Begin CommandButton
                     OverlapFlags =85
+                    TextFontFamily =34
                     Left =5247
                     Width =336
                     Height =290
@@ -328,6 +334,7 @@ Begin Form
                         0x0000000000000000000000000000000000000000000000000000000000000000 ,
                         0x000000000000000000000000000000000000000000000000
                     End
+                    FontName ="Tahoma"
                     ObjectPalette = Begin
                         0x000301000000000000000000
                     End
@@ -371,6 +378,7 @@ Begin Form
                     ForeColor =255
                     Name ="NoRecords"
                     Caption ="ALERT: No heats are setup for this division."
+                    FontName ="Tahoma"
                 End
             End
         End

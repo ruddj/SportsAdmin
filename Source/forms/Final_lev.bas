@@ -136,7 +136,7 @@ Begin Form
                     Name ="Create"
                     Caption ="&Create Heats and Finals"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -153,7 +153,7 @@ Begin Form
                     FontWeight =400
                     Name ="Text20"
                     Caption ="Event:"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin TextBox
                     Locked = NotDefault
@@ -170,6 +170,7 @@ Begin Form
                     BackColor =12632256
                     Name ="Field21"
                     ControlSource ="ET_Des"
+                    FontName ="Tahoma"
 
                 End
                 Begin CommandButton
@@ -185,7 +186,7 @@ Begin Form
                     Name ="Button17"
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -206,7 +207,7 @@ Begin Form
                     Name ="Help"
                     Caption ="Help"
                     OnClick ="Open Help"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -222,6 +223,7 @@ Begin Form
                     TabIndex =5
                     Name ="ET_Code"
                     ControlSource ="ET_Code"
+                    FontName ="Tahoma"
 
                 End
                 Begin CheckBox
@@ -242,6 +244,7 @@ Begin Form
                             FontWeight =400
                             Name ="Label29"
                             Caption ="Remove all existing heats"
+                            FontName ="Tahoma"
                         End
                     End
                 End

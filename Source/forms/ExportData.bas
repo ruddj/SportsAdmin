@@ -433,6 +433,7 @@ Begin Form
                 End
                 Begin CommandButton
                     OverlapFlags =247
+                    TextFontFamily =34
                     Left =6705
                     Top =435
                     Width =576
@@ -460,6 +461,7 @@ Begin Form
                         0x0000000000000000000000000000000000000000000000000000000000000000 ,
                         0x000000000000000000000000000000000000000000000000
                     End
+                    FontName ="Tahoma"
                     ObjectPalette = Begin
                         0x000301000000000000000000
                     End

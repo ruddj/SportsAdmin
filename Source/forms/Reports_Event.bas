@@ -462,6 +462,7 @@ Begin Form
                                     TabIndex =8
                                     BackColor =-2147483633
                                     Name ="FutureEB"
+                                    FontName ="Tahoma"
 
                                 End
                                 Begin TextBox
@@ -474,6 +475,7 @@ Begin Form
                                     TabIndex =9
                                     BackColor =-2147483633
                                     Name ="ActiveEB"
+                                    FontName ="Tahoma"
 
                                 End
                                 Begin TextBox
@@ -486,6 +488,7 @@ Begin Form
                                     TabIndex =10
                                     BackColor =-2147483633
                                     Name ="CompletedEB"
+                                    FontName ="Tahoma"
 
                                 End
                                 Begin TextBox
@@ -496,6 +499,7 @@ Begin Form
                                     Width =216
                                     TabIndex =11
                                     Name ="PromotedEB"
+                                    FontName ="Tahoma"
 
                                 End
                                 Begin Rectangle

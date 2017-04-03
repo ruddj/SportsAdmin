@@ -144,6 +144,7 @@ Begin Form
                     Name ="ET_Des"
                     ControlSource ="ET_Des"
                     StatusBarText ="Event Description - ie. 200m; 100m Hurdles; High Jump- No sex / age specifics"
+                    FontName ="Tahoma"
                     ControlTipText ="A description of the event."
 
                     Begin
@@ -157,7 +158,7 @@ Begin Form
                             FontWeight =400
                             Name ="Text19"
                             Caption ="Description:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -178,6 +179,7 @@ Begin Form
                     ValidationRule =">=0"
                     BeforeUpdate ="[Event Procedure]"
                     AfterUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
                     ControlTipText ="How many competitors can compete in a single heat."
 
                     Begin
@@ -191,7 +193,7 @@ Begin Form
                             FontWeight =400
                             Name ="Text23"
                             Caption ="Lane / Competitor Count (0 if unlimited):"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -219,7 +221,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text34"
                             Caption ="Divisions"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -235,7 +237,7 @@ Begin Form
                     Name ="Button35"
                     Caption ="REORDER"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Reorder the heats below."
 
                     WebImagePaddingLeft =2
@@ -264,6 +266,7 @@ Begin Form
                     RowSource ="SELECT ReportTypes.R_Code, ReportTypes.Desc, ReportTypes.EventReport FROM Report"
                         "Types WHERE ((ReportTypes.EventReport=Yes)) ORDER BY ReportTypes.Desc;"
                     ColumnWidths ="0;3451"
+                    FontName ="Tahoma"
                     ControlTipText ="Select the appropriate report style for this event."
 
                     Begin
@@ -277,7 +280,7 @@ Begin Form
                             FontWeight =400
                             Name ="Text39"
                             Caption ="Report Style:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -300,6 +303,7 @@ Begin Form
                     RowSourceType ="Table/Query"
                     RowSource ="SELECT DISTINCTROW Units.DisplayUnit, Units.Unit FROM Units;"
                     ColumnWidths ="0;902"
+                    FontName ="Tahoma"
                     ControlTipText ="What units are used to measure the results of this event."
 
                     Begin
@@ -313,7 +317,7 @@ Begin Form
                             FontWeight =400
                             Name ="Text46"
                             Caption ="Units"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -328,6 +332,7 @@ Begin Form
                     TabIndex =11
                     Name ="ET_Code"
                     ControlSource ="ET_Code"
+                    FontName ="Tahoma"
 
                 End
                 Begin CommandButton
@@ -345,7 +350,7 @@ Begin Form
                     Name ="SetupHeats"
                     Caption ="Quickly Setup Heats"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Quickly setup heats for all divisions."
 
                     WebImagePaddingLeft =2
@@ -386,7 +391,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="vAge"
                     ControlSource ="=[Forms]![EventType]![ET_Sub1].[Form]![Age]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -405,7 +410,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="vSex"
                     ControlSource ="=[Forms]![EventType]![ET_Sub1].[Form]![Sex]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -418,6 +423,7 @@ Begin Form
                     TabIndex =15
                     Name ="vE_Code"
                     ControlSource ="=[Forms]![EventType]![ET_Sub1].[Form]![E_Code]"
+                    FontName ="Tahoma"
 
                 End
                 Begin Label
@@ -431,7 +437,7 @@ Begin Form
                     FontWeight =400
                     Name ="Text58"
                     Caption ="Age:"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -444,7 +450,7 @@ Begin Form
                     FontWeight =400
                     Name ="Text59"
                     Caption ="Sex:"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -456,7 +462,7 @@ Begin Form
                     Height =225
                     Name ="Text60"
                     Caption ="Heats for selected division:"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -471,7 +477,7 @@ Begin Form
                     Name ="Close"
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -503,7 +509,7 @@ Begin Form
                     Name ="Lane Allocation"
                     Caption ="Lane Promotion"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     EventProcPrefix ="Lane_Allocation"
                     ControlTipText ="Setup what lanes competitors receive when promoted into the next final level."
 
@@ -526,6 +532,7 @@ Begin Form
                     Name ="EntrantNum"
                     ControlSource ="EntrantNum"
                     StatusBarText ="Lane / Competitor Count"
+                    FontName ="Tahoma"
                     ControlTipText ="This is required only if you are generating carnival disks."
 
                     Begin
@@ -539,7 +546,7 @@ Begin Form
                             FontWeight =400
                             Name ="Text66"
                             Caption ="Number of Entrants from each House/School:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -557,7 +564,7 @@ Begin Form
                     Name ="Help"
                     Caption ="Help"
                     OnClick ="Open Help"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -587,7 +594,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text72"
                             Caption ="Include Event in Carnival:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -614,7 +621,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text74"
                             Caption ="Sychronize Point Scales:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -640,7 +647,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Label79"
                             Caption ="Places determined across all heats:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End

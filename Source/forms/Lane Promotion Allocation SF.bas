@@ -102,7 +102,7 @@ Begin Form
                     Height =230
                     Name ="Place"
                     ControlSource ="Place"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -118,7 +118,7 @@ Begin Form
                     ControlSource ="Lane"
                     StatusBarText ="The lane allocated to the competitor who achieves Place."
                     BeforeUpdate ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -130,7 +130,7 @@ Begin Form
                     Width =786
                     TabIndex =2
                     Name ="Field14"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
             End

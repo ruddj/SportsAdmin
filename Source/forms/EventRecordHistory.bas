@@ -125,7 +125,7 @@ Begin Form
                     Name ="Sex"
                     ControlSource ="Sex"
                     StatusBarText ="Male (M) / Female (F)"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -138,7 +138,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text19"
                             Caption ="Sex:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -158,7 +158,7 @@ Begin Form
                     Name ="Age"
                     ControlSource ="Age"
                     StatusBarText ="Age Group for event - ie. 13 year boys=13; 21 year girls =21; Open Boys=0"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -171,7 +171,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text21"
                             Caption ="Age:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -189,7 +189,7 @@ Begin Form
                     Name ="ET_Des"
                     ControlSource ="ET_Des"
                     StatusBarText ="Age Group for event - ie. 13 year boys=13; 21 year girls =21; Open Boys=0"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -202,7 +202,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text36"
                             Caption ="Event:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -226,7 +226,7 @@ Begin Form
                     Name ="Close"
                     Caption ="Close"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -268,7 +268,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text62"
                     Caption ="Surname"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =255
@@ -281,7 +281,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text63"
                     Caption ="Given Name"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =255
@@ -294,7 +294,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text64"
                     Caption ="Team"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =255
@@ -307,7 +307,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text65"
                     Caption ="Result"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =255
@@ -320,7 +320,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text66"
                     Caption ="Date"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Rectangle
                     BackStyle =0
@@ -342,7 +342,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text68"
                     Caption ="Event Record History"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
             End
         End

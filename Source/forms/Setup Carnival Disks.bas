@@ -56,7 +56,7 @@ Begin Form
                     Name ="But2"
                     Caption ="Import Carnival Diskettes"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -82,7 +82,7 @@ Begin Form
                     Name ="Text0"
                     Caption ="Create these disks ONLY when you have completed the setting up of ALL the events"
                         " (and ALL their respective heats)."
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin CommandButton
                     OverlapFlags =215
@@ -98,7 +98,7 @@ Begin Form
                     Name ="But1"
                     Caption ="Create Carnival Diskettes"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -118,7 +118,7 @@ Begin Form
                         "(and then checked) as they are received.  It is advisable to check that the info"
                         "rmation has been successfully added to the database and to do a \"spot check\" o"
                         "n a number of events to ensure that the competitor information is correct."
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -133,7 +133,7 @@ Begin Form
                     Name ="Close"
                     Caption ="Close"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2

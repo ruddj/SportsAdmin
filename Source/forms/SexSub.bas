@@ -44,6 +44,7 @@ Begin Form
                     Height =225
                     Name ="Field0"
                     ControlSource ="Sex"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -55,6 +56,7 @@ Begin Form
                     TabIndex =1
                     Name ="Field2"
                     ControlSource ="Sex Sub"
+                    FontName ="Tahoma"
 
                 End
             End

@@ -118,7 +118,7 @@ Begin Form
                     ControlSource ="H_Code"
                     Format =">"
                     StatusBarText ="House / School Code ie. Asher, COC, Beaudesert, Australia, Individual?)"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -132,7 +132,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text15"
                             Caption ="Code:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -147,7 +147,7 @@ Begin Form
                     Name ="H_NAme"
                     ControlSource ="H_NAme"
                     StatusBarText ="House / School Name"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -161,7 +161,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text17"
                             Caption ="Name:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -178,7 +178,7 @@ Begin Form
                     Name ="Details"
                     ControlSource ="Details"
                     StatusBarText ="Address etc."
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -192,7 +192,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text21"
                             Caption ="Details:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -217,7 +217,7 @@ Begin Form
                     RowSource ="SELECT HouseTypes.HT_Code, HouseTypes.Desc FROM HouseTypes;"
                     ColumnWidths ="0;2161"
                     DefaultValue ="1"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     Begin
                         Begin Label
                             BackStyle =0
@@ -230,7 +230,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text23"
                             Caption ="Team Type:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -249,7 +249,7 @@ Begin Form
                     Name ="Button34"
                     Caption ="Allocate Lanes"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -268,7 +268,7 @@ Begin Form
                     ControlSource ="CompPool"
                     Format =">"
                     StatusBarText ="House / School Code ie. Asher, COC, Beaudesert, Australia, Individual?)"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -282,7 +282,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text36"
                             Caption ="Competitor Pool:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -300,7 +300,7 @@ Begin Form
                     Name ="Button28"
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -330,7 +330,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text39"
                             Caption ="Include"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -348,7 +348,7 @@ Begin Form
                     Name ="Extra"
                     Caption ="Allocate Extra Points"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -380,7 +380,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text45"
                     Caption ="Extra Points"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Line
                     LineSlant = NotDefault

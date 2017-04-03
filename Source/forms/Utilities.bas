@@ -204,7 +204,6 @@ Begin Form
                                             Height =240
                                             Name ="Text23"
                                             Caption ="Gender Substitution"
-                                            FontName ="MS Sans Serif"
                                             LayoutCachedLeft =4200
                                             LayoutCachedTop =3795
                                             LayoutCachedWidth =5670
@@ -486,6 +485,7 @@ Begin Form
                                     Name ="HelpHTML"
                                     Caption ="Help"
                                     OnClick ="Open Help"
+                                    FontName ="Tahoma"
 
                                     WebImagePaddingLeft =2
                                     WebImagePaddingTop =2
@@ -641,7 +641,7 @@ Begin Form
                                         0xadadadadadadadad000000000000000000000000000000000000000000000000 ,
                                         0x000000000000000000000000
                                     End
-                                    FontName ="System"
+                                    FontName ="Tahoma"
                                     ObjectPalette = Begin
                                         0x000301000000000000000000
                                     End
@@ -694,6 +694,7 @@ Begin Form
                     TabIndex =2
                     Name ="CurrentTab"
                     ControlSource ="CurrentTab"
+                    FontName ="Tahoma"
 
                 End
             End

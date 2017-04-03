@@ -359,7 +359,7 @@ Begin Form
                     Name ="CopyCompetitors"
                     Caption ="Copy Competitors"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -379,7 +379,7 @@ Begin Form
                     Name ="CloseBut"
                     Caption ="Close"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2

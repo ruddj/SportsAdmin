@@ -132,6 +132,7 @@ Begin Form
                         " Heats.F_Lev, Val([Heat]);"
                     ColumnWidths ="0;510;2439;626;631;864;567"
                     OnDblClick ="[Event Procedure]"
+                    FontName ="Tahoma"
                     OnKeyDown ="[Event Procedure]"
                     ControlTipText ="Double-Click an event to manage it (ie. add / remove competitors and enter resul"
                         "ts)."
@@ -262,6 +263,7 @@ Begin Form
                     Width =231
                     TabIndex =14
                     Name ="Future"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -271,6 +273,7 @@ Begin Form
                     Width =231
                     TabIndex =15
                     Name ="Active"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -280,6 +283,7 @@ Begin Form
                     Width =231
                     TabIndex =16
                     Name ="Completed"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -289,6 +293,7 @@ Begin Form
                     Width =231
                     TabIndex =17
                     Name ="Promoted"
+                    FontName ="Tahoma"
 
                 End
                 Begin Rectangle
@@ -392,6 +397,7 @@ Begin Form
                     Width =231
                     TabIndex =18
                     Name ="Male"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -401,6 +407,7 @@ Begin Form
                     Width =231
                     TabIndex =19
                     Name ="Female"
+                    FontName ="Tahoma"
 
                 End
                 Begin Rectangle
@@ -582,6 +589,7 @@ Begin Form
                     TabIndex =20
                     Name ="HeatComplete"
                     DefaultValue ="=\"*\""
+                    FontName ="Tahoma"
 
                 End
                 Begin ComboBox
@@ -690,7 +698,7 @@ Begin Form
                     BackColor =12632256
                     Name ="PWtext"
                     Caption ="Please wait ..."
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -792,6 +800,7 @@ Begin Form
                     Width =231
                     TabIndex =28
                     Name ="Mixed"
+                    FontName ="Tahoma"
 
                 End
             End

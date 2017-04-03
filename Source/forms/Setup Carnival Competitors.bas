@@ -56,7 +56,7 @@ Begin Form
                     Name ="But2"
                     Caption ="Enter Carnival Competitor Manually"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -85,7 +85,7 @@ Begin Form
                     Caption ="If you can generate a plain text file with competitor information from an admini"
                         "stration system in the format given in the Help file, you can import it using th"
                         "is option.  "
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin CommandButton
                     OverlapFlags =215
@@ -101,7 +101,7 @@ Begin Form
                     Name ="But1"
                     Caption ="Import Carnival Competitors from a Text File"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -118,7 +118,7 @@ Begin Form
                     Height =390
                     Name ="Text6"
                     Caption ="Competitor information can be entered manually using this option."
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -133,7 +133,7 @@ Begin Form
                     Name ="Close"
                     Caption ="Close"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -151,7 +151,7 @@ Begin Form
                     FontWeight =700
                     Name ="Text8"
                     Caption ="AND / OR"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -167,7 +167,7 @@ Begin Form
                     Name ="but3"
                     Caption ="Enter Competitors into Events"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -184,7 +184,7 @@ Begin Form
                     Name ="Text19"
                     Caption ="Competitors need to be added to each event.  Before doing this ensure that the h"
                         "ouse or school default lane allocation has been setup correctly."
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
             End
         End

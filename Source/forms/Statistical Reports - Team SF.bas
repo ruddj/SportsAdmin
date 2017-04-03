@@ -163,7 +163,7 @@ Begin Form
                     Name ="SelectAllBut"
                     Caption ="ALL"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Select all teams."
 
                     WebImagePaddingLeft =2
@@ -184,7 +184,7 @@ Begin Form
                     Name ="DEselectBut"
                     Caption ="NONE"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Select no teams."
 
                     WebImagePaddingLeft =2

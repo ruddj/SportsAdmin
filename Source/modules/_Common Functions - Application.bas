@@ -118,6 +118,40 @@ Public Sub SetPropertiesForAllForms(Optional MenuBar, Optional ToolBar, Optional
   
 End Sub
 
+Public Sub SetFontForAllForms()
+  On Error Resume Next
+
+  Dim dbs As Database, ctr As Container, doc As Document, f As Form
+  Dim ctl As control
+  
+  Set dbs = CurrentDb
+  Set ctr = dbs.Containers!Forms
+  For Each doc In ctr.Documents
+    
+    DoCmd.OpenForm doc.Name, acDesign
+    Set f = Forms(doc.Name)
+    
+    For Each ctl In f
+        If ctl.FontName Then
+            ctl.FontName = "Tahoma"
+        End If
+    Next ctl
+    Set ctl = Nothing
+    
+    'If F.MenuBar = "" Then F.MenuBar = MenuBar
+    'If F.ToolBar = "" Then F.ToolBar = ToolBar
+    'If F.ShortcutMenuBar = "" Then F.ShortcutMenuBar = ShortcutMenuBar
+  
+    DoCmd.Save acForm, doc.Name
+    DoCmd.Close acForm, doc.Name
+    
+  Next doc
+  
+  Set dbs = Nothing
+
+  
+End Sub
+
 
 Public Sub SetPropertiesForAllReports(Optional MenuBar, Optional ToolBar, Optional ShortcutMenuBar, Optional HelpFile, Optional HelpTopic, Optional Override = False)
 

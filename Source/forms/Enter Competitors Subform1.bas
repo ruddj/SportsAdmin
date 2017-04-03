@@ -109,7 +109,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text20"
                     Caption ="Place"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =85
@@ -121,7 +121,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="LaneTXT"
                     Caption ="Lane"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =85
@@ -134,7 +134,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text24"
                     Caption ="Name"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =85
@@ -147,7 +147,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text30"
                     Caption ="Result"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =85
@@ -160,7 +160,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text34"
                     Caption ="Team"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin TextBox
                     Visible = NotDefault
@@ -174,6 +174,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="nRes"
                     ControlSource ="nResult"
+                    FontName ="Tahoma"
 
                 End
                 Begin Label
@@ -187,7 +188,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text66"
                     Caption ="Pts"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin TextBox
                     Visible = NotDefault
@@ -199,6 +200,7 @@ Begin Form
                     TabIndex =1
                     Name ="Count"
                     ControlSource ="=Count([H_Code])"
+                    FontName ="Tahoma"
 
                     LayoutCachedLeft =8192
                     LayoutCachedWidth =8813
@@ -226,7 +228,7 @@ Begin Form
                     ControlSource ="H_Code"
                     Format =">"
                     StatusBarText ="Personal ID Number"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -242,7 +244,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Unit"
                     ControlSource ="=[Forms]![EnterCompetitors]![Units]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                 End
@@ -259,7 +261,7 @@ Begin Form
                     ControlSource ="Place"
                     StatusBarText ="Place gained by competitor"
                     AfterUpdate ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Enter the place gained by the competitor."
                     HorizontalAnchor =1
 
@@ -275,7 +277,7 @@ Begin Form
                     Name ="Lane"
                     ControlSource ="Lane"
                     StatusBarText ="Lane: Lane 0 defaults to the lane allocated to the competitors House"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="The lane will be added automatically if you have allocated lanes to teams.  Othe"
                         "rwise enter the lane manually."
 
@@ -301,7 +303,7 @@ Begin Form
                     StatusBarText ="Choose a competitor from the list"
                     BeforeUpdate ="[Event Procedure]"
                     OnDblClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     OnNotInList ="[Event Procedure]"
                     ControlTipText ="Select the competitors that are to compete in this event."
                     HorizontalAnchor =2
@@ -319,7 +321,7 @@ Begin Form
                     ControlSource ="Result"
                     BeforeUpdate ="[Event Procedure]"
                     AfterUpdate ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Enter the result gained by the competitor."
                     HorizontalAnchor =1
 
@@ -336,7 +338,7 @@ Begin Form
                     BackColor =16777215
                     Name ="nResult"
                     ControlSource ="nResult"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     LayoutCachedLeft =8844
@@ -355,7 +357,7 @@ Begin Form
                     BackColor =16777215
                     Name ="F_Lev"
                     ControlSource ="F_Lev"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                 End
@@ -371,7 +373,7 @@ Begin Form
                     BackColor =16777215
                     Name ="HE_Code"
                     ControlSource ="HE_Code"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     LayoutCachedLeft =8073
@@ -390,7 +392,7 @@ Begin Form
                     BackColor =16777215
                     Name ="E_Code"
                     ControlSource ="E_Code"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     LayoutCachedLeft =8277
@@ -409,7 +411,7 @@ Begin Form
                     BackColor =16777215
                     Name ="Heat"
                     ControlSource ="Heat"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     LayoutCachedLeft =8447
@@ -428,7 +430,7 @@ Begin Form
                     BackColor =16777215
                     Name ="H_ID"
                     ControlSource ="H_ID"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     LayoutCachedLeft =8588
@@ -449,7 +451,7 @@ Begin Form
                     Name ="PIN"
                     ControlSource ="PIN"
                     StatusBarText ="Personal ID Number"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     LayoutCachedLeft =7256
@@ -494,7 +496,7 @@ Begin Form
                     BackColor =16777215
                     Name ="MemoFld"
                     ControlSource ="Memo"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     LayoutCachedLeft =8702
@@ -514,7 +516,7 @@ Begin Form
                     ControlSource ="Points"
                     StatusBarText ="Points gained by the competitor.  This can be edited manuallu but is normally up"
                         "dated automatically depending upon the place gained."
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Points gained by the competitor.  This can be edited manuallu but is normally up"
                         "dated automatically depending upon the place gained."
 
@@ -522,6 +524,7 @@ Begin Form
                 Begin CommandButton
                     TabStop = NotDefault
                     OverlapFlags =85
+                    TextFontFamily =34
                     Left =6930
                     Top =15
                     Width =284
@@ -550,6 +553,7 @@ Begin Form
                         0x0000000000000000000000000000000000000000000000000000000000000000 ,
                         0x0000000000000000000000000000000000000000
                     End
+                    FontName ="Tahoma"
                     ObjectPalette = Begin
                         0x000301000000000000000000
                     End

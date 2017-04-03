@@ -50,7 +50,7 @@ Begin Form
                     Height =227
                     Name ="Field2"
                     ControlSource ="Lane"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -63,7 +63,7 @@ Begin Form
                     TabIndex =1
                     Name ="Field13"
                     ControlSource ="Lane_Sub"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
             End

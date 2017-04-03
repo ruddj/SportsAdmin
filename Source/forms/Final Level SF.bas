@@ -49,7 +49,7 @@ Begin Form
                     Height =227
                     Name ="Field2"
                     ControlSource ="F_Lev"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -62,7 +62,7 @@ Begin Form
                     TabIndex =1
                     Name ="Field13"
                     ControlSource ="F_Lev_Sub"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
             End

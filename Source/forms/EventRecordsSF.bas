@@ -74,7 +74,7 @@ Begin Form
                     TabIndex =7
                     Name ="Units"
                     ControlSource ="Units"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -85,6 +85,7 @@ Begin Form
                     Width =1146
                     Name ="Surname"
                     ControlSource ="Surname"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -96,6 +97,7 @@ Begin Form
                     TabIndex =1
                     Name ="Gname"
                     ControlSource ="Gname"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -109,6 +111,7 @@ Begin Form
                     Name ="Record"
                     ControlSource ="Result"
                     AfterUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -122,6 +125,7 @@ Begin Form
                     TabIndex =5
                     Name ="nResult"
                     ControlSource ="nResult"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -135,6 +139,7 @@ Begin Form
                     TabIndex =6
                     Name ="E_Code"
                     ControlSource ="E_Code"
+                    FontName ="Tahoma"
 
                 End
                 Begin ComboBox
@@ -153,6 +158,7 @@ Begin Form
                     RowSourceType ="Table/Query"
                     RowSource ="Select [H_Code],[H_NAme] From [House];"
                     ColumnWidths ="0;1830"
+                    FontName ="Tahoma"
                     OldBorderStyle =0
                     OverlapFlags =85
                     TextAlign =2
@@ -162,6 +168,7 @@ Begin Form
                     TabIndex =4
                     Name ="Date"
                     ControlSource ="Date"
+                    FontName ="Tahoma"
 
                 End
                 Begin CommandButton
@@ -192,6 +199,7 @@ Begin Form
                         0x0000000000000000000000000000000000000000000000000000000000000000 ,
                         0x000000000000000000000000000000000000000000000000
                     End
+                    FontName ="Tahoma"
                     ObjectPalette = Begin
                         0x000301000000000000000000
                     End

@@ -106,7 +106,7 @@ Begin Form
                     Name ="Sex"
                     ControlSource ="Sex"
                     Format =">"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -122,7 +122,7 @@ Begin Form
                     ControlSource ="H_Code"
                     Format =">"
                     StatusBarText ="House Code"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -137,7 +137,7 @@ Begin Form
                     Name ="Age"
                     ControlSource ="Age"
                     Format =">"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -149,7 +149,7 @@ Begin Form
                     Height =225
                     Name ="Gname"
                     ControlSource ="Gname"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -162,7 +162,7 @@ Begin Form
                     TabIndex =1
                     Name ="Surname"
                     ControlSource ="Surname"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -176,7 +176,7 @@ Begin Form
                     TabIndex =5
                     Name ="DOB"
                     ControlSource ="DOB"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin OptionButton
@@ -207,7 +207,7 @@ Begin Form
                     Name ="All"
                     Caption ="ALL"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -226,7 +226,7 @@ Begin Form
                     Name ="None"
                     Caption ="None"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2

@@ -76,7 +76,7 @@ Begin Form
                     Name ="Close"
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -97,7 +97,7 @@ Begin Form
                     Name ="Help"
                     Caption ="Help"
                     OnClick ="Open Help"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -112,6 +112,7 @@ Begin Form
                     Height =3405
                     TabIndex =2
                     Name ="TabCtl8"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Page
@@ -141,6 +142,7 @@ Begin Form
                                         "Yes));"
                                     ColumnWidths ="0;1562"
                                     AfterUpdate ="[Event Procedure]"
+                                    FontName ="Tahoma"
                                     ControlTipText ="Click on the team you wish to add points to."
 
                                 End
@@ -166,7 +168,7 @@ Begin Form
                                     FontWeight =700
                                     Name ="Text4"
                                     Caption ="Teams"
-                                    FontName ="Arial"
+                                    FontName ="Tahoma"
                                 End
                             End
                         End
@@ -193,6 +195,7 @@ Begin Form
                                     Caption ="Click on a Team and enter the extra points you wish to allocate in the box on th"
                                         "e right.  You can enter both positive and negative points.\015\012\015\012You ca"
                                         "n also enter an explanantion as to why extra points were added or deducted."
+                                    FontName ="Tahoma"
                                 End
                             End
                         End

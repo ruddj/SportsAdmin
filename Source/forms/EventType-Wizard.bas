@@ -131,7 +131,7 @@ Begin Form
                     Name ="Close"
                     Caption ="Finish"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -146,6 +146,7 @@ Begin Form
                     Height =5850
                     TabIndex =1
                     Name ="TabCtl"
+                    FontName ="Tahoma"
                     OnChange ="[Event Procedure]"
 
                     Begin
@@ -174,6 +175,7 @@ Begin Form
                                     Name ="Label93"
                                     Caption ="How are results recorded for this event.  (100m sprint would be recorded in seco"
                                         "nds, Long Jump in meters etc.)"
+                                    FontName ="Tahoma"
                                 End
                                 Begin Rectangle
                                     SpecialEffect =3
@@ -196,6 +198,7 @@ Begin Form
                                     Name ="ET_Des"
                                     ControlSource ="ET_Des"
                                     StatusBarText ="Event Description - ie. 200m; 100m Hurdles; High Jump- No sex / age specifics"
+                                    FontName ="Tahoma"
 
                                     Begin
                                         Begin Label
@@ -208,7 +211,7 @@ Begin Form
                                             Height =245
                                             Name ="Text19"
                                             Caption ="Description:"
-                                            FontName ="Arial"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -226,6 +229,7 @@ Begin Form
                                     ControlSource ="Lane_Cnt"
                                     StatusBarText ="Lane / Competitor Count"
                                     AfterUpdate ="[Event Procedure]"
+                                    FontName ="Tahoma"
 
                                     Begin
                                         Begin Label
@@ -238,7 +242,7 @@ Begin Form
                                             Height =290
                                             Name ="Text23"
                                             Caption ="Lane Count (0 if unlimited)"
-                                            FontName ="Arial"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -262,6 +266,7 @@ Begin Form
                                     RowSource ="SELECT ReportTypes.R_Code, ReportTypes.Desc, ReportTypes.EventReport FROM Report"
                                         "Types WHERE ((ReportTypes.EventReport=Yes)) ORDER BY ReportTypes.Desc;"
                                     ColumnWidths ="0;3452"
+                                    FontName ="Tahoma"
 
                                     Begin
                                         Begin Label
@@ -274,7 +279,7 @@ Begin Form
                                             Height =245
                                             Name ="Text39"
                                             Caption ="Report Style:"
-                                            FontName ="Arial"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -296,6 +301,7 @@ Begin Form
                                     RowSourceType ="Table/Query"
                                     RowSource ="SELECT DISTINCTROW Units.DisplayUnit, Units.Unit FROM Units;"
                                     ColumnWidths ="0;903"
+                                    FontName ="Tahoma"
 
                                     Begin
                                         Begin Label
@@ -308,7 +314,7 @@ Begin Form
                                             Height =245
                                             Name ="Text46"
                                             Caption ="Units"
-                                            FontName ="Arial"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -325,6 +331,7 @@ Begin Form
                                     Name ="EntrantNum"
                                     ControlSource ="EntrantNum"
                                     StatusBarText ="Lane / Competitor Count"
+                                    FontName ="Tahoma"
 
                                     Begin
                                         Begin Label
@@ -337,7 +344,7 @@ Begin Form
                                             Height =245
                                             Name ="Text66"
                                             Caption ="Number of Entrants from each Team"
-                                            FontName ="Arial"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -361,7 +368,7 @@ Begin Form
                                             BackColor =-2147483633
                                             Name ="Text72"
                                             Caption ="Include Event in Carnival"
-                                            FontName ="Arial"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -377,6 +384,7 @@ Begin Form
                                     Name ="Label87"
                                     Caption ="The event description should not be gender or age specific. Correct examples: 10"
                                         "0m Sprint, High Jump"
+                                    FontName ="Tahoma"
                                 End
                                 Begin Rectangle
                                     SpecialEffect =3
@@ -400,6 +408,7 @@ Begin Form
                                     Name ="Label89"
                                     Caption ="The marshalling list style varies depending on the event type.  Select the corre"
                                         "ct style for this event."
+                                    FontName ="Tahoma"
                                 End
                                 Begin Rectangle
                                     SpecialEffect =3
@@ -425,6 +434,7 @@ Begin Form
                                         "romoting competitors from one final level into the next.  This value determines "
                                         "how many competitors are allowed in each race.  Enter 0 for events where the lan"
                                         "e count is not applicable (eg. 800m, 1500m, most field events etc)"
+                                    FontName ="Tahoma"
                                 End
                                 Begin Rectangle
                                     SpecialEffect =3
@@ -458,6 +468,7 @@ Begin Form
                                     Name ="Label96"
                                     Caption ="This value is used when generating carnival disks.  Specify the number of compet"
                                         "itors from each team that are allowed to compete in each heat"
+                                    FontName ="Tahoma"
                                 End
                             End
                         End
@@ -497,7 +508,7 @@ Begin Form
                                             Height =240
                                             Name ="Text34"
                                             Caption ="Age \\ Gender Divisions"
-                                            FontName ="Arial"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -514,6 +525,7 @@ Begin Form
                                     Caption ="Enter the various age \\ gender divisions you require for this event.  For examp"
                                         "le, if you are conducting a secondary carnival then you age divisions would be s"
                                         "imilar to:\015\012"
+                                    FontName ="Tahoma"
                                 End
                                 Begin Label
                                     BackStyle =0
@@ -525,6 +537,7 @@ Begin Form
                                     Height =265
                                     Name ="Label100"
                                     Caption ="13_U, 14, 15, 16, 17_O, OPEN"
+                                    FontName ="Tahoma"
                                 End
                                 Begin Label
                                     BackStyle =0
@@ -541,6 +554,7 @@ Begin Form
                                         "ur age divisions.  However, by specifying the divisions as shown above (with the"
                                         " age first) the Sports Administrator will show only the appropriate competitors."
                                         "\015\012\015\012Note that you can use:\015\012\015\012"
+                                    FontName ="Tahoma"
                                 End
                                 Begin Label
                                     BackStyle =0
@@ -553,6 +567,7 @@ Begin Form
                                     Name ="Label102"
                                     Caption ="_U      : to represent 'and under'\015\012_O      : to represent 'and over'\015\012"
                                         "OPEN  : for ALL competitors"
+                                    FontName ="Tahoma"
                                 End
                                 Begin Label
                                     BackStyle =0
@@ -568,6 +583,7 @@ Begin Form
                                         "the records for an event by double-clicking in the record field of the division "
                                         "or by clicking once in the division and pushing the 'Edit Record for Selected Di"
                                         "vision' button.\015\012"
+                                    FontName ="Tahoma"
                                 End
                             End
                         End
@@ -608,6 +624,7 @@ Begin Form
                                             Height =240
                                             Name ="Final Level SF Label"
                                             Caption ="Heats and Final Setup"
+                                            FontName ="Tahoma"
                                             EventProcPrefix ="Final_Level_SF_Label"
                                         End
                                     End
@@ -626,7 +643,7 @@ Begin Form
                                     Name ="Command108"
                                     Caption ="Specific Help on Setting up Heats and Finals"
                                     OnClick ="Open Help"
-                                    FontName ="MS Sans Serif"
+                                    FontName ="Tahoma"
 
                                     WebImagePaddingLeft =2
                                     WebImagePaddingTop =2
@@ -654,6 +671,7 @@ Begin Form
                                         "ats in that final level, the Pointscale used for the final level, the PromotionM"
                                         "ethod, and whether you wish to promote competitors by result or place.\015\012\015"
                                         "\012Add extra final levels if you need them.  "
+                                    FontName ="Tahoma"
                                 End
                             End
                         End
@@ -694,6 +712,7 @@ Begin Form
                                     Height =240
                                     Name ="Label106"
                                     Caption ="Place"
+                                    FontName ="Tahoma"
                                 End
                                 Begin Label
                                     BackStyle =0
@@ -705,6 +724,7 @@ Begin Form
                                     Height =240
                                     Name ="Label107"
                                     Caption ="Lane"
+                                    FontName ="Tahoma"
                                 End
                                 Begin Label
                                     BackStyle =0
@@ -723,6 +743,7 @@ Begin Form
                                         "e competitor attained on the left and the lane which he or she receives in the n"
                                         "ext race on the right.\015\012\015\012There should be the same number of lane pr"
                                         "omotion entries as there are available lanes."
+                                    FontName ="Tahoma"
                                 End
                             End
                         End
@@ -741,7 +762,7 @@ Begin Form
                     Name ="NextBut"
                     Caption ="Next >>"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -761,7 +782,7 @@ Begin Form
                     Name ="PrevBut"
                     Caption ="<< Previous"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -776,6 +797,7 @@ Begin Form
                     TabIndex =4
                     Name ="ET_Code"
                     ControlSource ="ET_Code"
+                    FontName ="Tahoma"
 
                 End
             End

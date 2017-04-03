@@ -486,6 +486,7 @@ Begin Form
                                         "e \"Create Points Quickly\" box to automatically create the specified number of "
                                         "places and assign them the specified number of points.  Note: No existing places"
                                         " and points will be over-written."
+                                    FontName ="Tahoma"
                                 End
                             End
                         End

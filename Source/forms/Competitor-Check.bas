@@ -67,6 +67,7 @@ Begin Form
                     FontSize =14
                     Name ="Text6"
                     Caption ="Competitors Check"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =85
@@ -76,6 +77,7 @@ Begin Form
                     Height =240
                     Name ="Text8"
                     Caption ="Gname"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =85
@@ -84,6 +86,7 @@ Begin Form
                     Height =240
                     Name ="Text10"
                     Caption ="Surname"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =85
@@ -93,6 +96,7 @@ Begin Form
                     Height =240
                     Name ="Text12"
                     Caption ="Sex"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =85
@@ -102,6 +106,7 @@ Begin Form
                     Height =240
                     Name ="Text14"
                     Caption ="H_Code"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =85
@@ -111,6 +116,7 @@ Begin Form
                     Height =240
                     Name ="Text18"
                     Caption ="DOB"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =85
@@ -120,6 +126,7 @@ Begin Form
                     Height =240
                     Name ="Text20"
                     Caption ="Age"
+                    FontName ="Tahoma"
                 End
             End
         End
@@ -136,6 +143,7 @@ Begin Form
                     Name ="Gname"
                     ControlSource ="Gname"
                     StatusBarText ="Given Name(s)"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -144,6 +152,7 @@ Begin Form
                     TabIndex =1
                     Name ="Surname"
                     ControlSource ="Surname"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -155,6 +164,7 @@ Begin Form
                     Name ="DOB"
                     ControlSource ="DOB"
                     StatusBarText ="Date of Birth"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -166,6 +176,7 @@ Begin Form
                     Name ="Age"
                     ControlSource ="Age"
                     StatusBarText ="Age group (13 , 14, 15, OPEN, ETC.)"
+                    FontName ="Tahoma"
 
                 End
                 Begin ComboBox
@@ -180,6 +191,7 @@ Begin Form
                     RowSourceType ="Value List"
                     RowSource ="\"M\";\"F\""
                     ColumnWidths ="1440"
+                    FontName ="Tahoma"
 
                 End
                 Begin ComboBox
@@ -188,12 +200,13 @@ Begin Form
                     Left =3744
                     Width =1330
                     TabIndex =5
-                    ColumnInfo ="\"\";\">\";\"10\";\"14\""
+                    ColumnInfo ="\"\";\"\";\"10\";\"14\""
                     Name ="Field22"
                     ControlSource ="H_Code"
                     RowSourceType ="Table/Query"
                     RowSource ="Select [H_Code] From [House];"
                     ColumnWidths ="1080"
+                    FontName ="Tahoma"
 
                 End
             End

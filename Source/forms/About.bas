@@ -107,7 +107,7 @@ Begin Form
                         0xffffffff52006f006f007400200045006e007400720079000000000000000000 ,
                         0x0000000000000000000000000000000000000000000000000000000000000000 ,
                         0x0000000016000500ffffffffffffffff020000000a00030000000000c0000000 ,
-                        0x000000460000000000000000000000004062cf0b74a3d2010300000000010000 ,
+                        0x0000004600000000000000000000000010ccf00624acd2010300000000010000 ,
                         0x0000000001004f006c0065000000000000000000000000000000000000000000 ,
                         0x0000000000000000000000000000000000000000000000000000000000000000 ,
                         0x000000000a000201ffffffffffffffffffffffff000000000000000000000000 ,
@@ -1079,7 +1079,7 @@ Begin Form
                     Name ="Text1"
                     Caption ="Originally developed by Andrew Rogers in conjunction \015\012with Christian Outr"
                         "each College, Brisbane."
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     LayoutCachedLeft =360
                     LayoutCachedTop =5265
                     LayoutCachedWidth =5340
@@ -1103,7 +1103,7 @@ Begin Form
                         "nished to do so, subject to the following conditions:\015\012\015\012The above c"
                         "opyright notice and this permission notice shall be included \015\012in all copi"
                         "es or substantial portions of the Software."
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     LayoutCachedLeft =225
                     LayoutCachedTop =1815
                     LayoutCachedWidth =6696
@@ -1122,7 +1122,7 @@ Begin Form
                     Name ="Close"
                     Caption ="Close"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -1137,7 +1137,7 @@ Begin Form
                     Width =4095
                     Height =300
                     Name ="VersionText"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     LayoutCachedLeft =2385
                     LayoutCachedTop =345
                     LayoutCachedWidth =6480
@@ -1154,7 +1154,7 @@ Begin Form
                     Name ="Text8"
                     Caption ="For support or to report \"bugs\" please visit.\015\012https://github.com/ruddj/"
                         "SportsAdmin"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     LayoutCachedLeft =225
                     LayoutCachedTop =960
                     LayoutCachedWidth =6696
@@ -1214,7 +1214,7 @@ Begin Form
                     FontSize =9
                     Name ="Label20"
                     Caption ="Maintained by James Rudd in conjunction with Sydney Boys High School"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     LayoutCachedLeft =225
                     LayoutCachedTop =4680
                     LayoutCachedWidth =6696

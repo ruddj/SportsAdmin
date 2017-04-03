@@ -96,6 +96,7 @@ Begin Form
                     Height =256
                     Name ="Gname"
                     AfterUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -106,6 +107,7 @@ Begin Form
                             Height =256
                             Name ="Label1"
                             Caption ="First Name"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -118,6 +120,7 @@ Begin Form
                     TabIndex =1
                     Name ="Surname"
                     AfterUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -128,6 +131,7 @@ Begin Form
                             Height =256
                             Name ="Label3"
                             Caption ="Last Name"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -142,6 +146,7 @@ Begin Form
                     Name ="ExisitngCompetitors"
                     RowSourceType ="Table/Query"
                     ColumnWidths ="0;1985;455;852;287"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -155,6 +160,7 @@ Begin Form
                             BackColor =16767152
                             Name ="ListLabel"
                             Caption ="Competitors with similar name"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -177,6 +183,7 @@ Begin Form
                     BackColor =16767152
                     Name ="Label13"
                     Caption ="New Competitor"
+                    FontName ="Tahoma"
                 End
                 Begin ComboBox
                     OldBorderStyle =0
@@ -193,6 +200,7 @@ Begin Form
                     RowSource ="SELECT House.H_Code, House.H_NAme, House.H_ID FROM House WHERE (((House.Include)"
                         "=True)) ORDER BY House.H_NAme;"
                     ColumnWidths ="0;2155;0"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -203,6 +211,7 @@ Begin Form
                             Height =256
                             Name ="Label7"
                             Caption ="House"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -221,6 +230,7 @@ Begin Form
                     RowSourceType ="Value List"
                     RowSource ="\"M\";\"Male\";\"F\";\"Female\""
                     ColumnWidths ="271;631"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -233,7 +243,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text67"
                             Caption ="Gender"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -252,6 +262,7 @@ Begin Form
                     RowSource ="SELECT DISTINCT Competitors.Age, IIf(IsNull([age]),Null,Val([age])) AS Expr1 FRO"
                         "M Competitors ORDER BY IIf(IsNull([age]),Null,Val([age]));"
                     ColumnWidths ="705"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -264,7 +275,7 @@ Begin Form
                             BackColor =12632256
                             Name ="Text69"
                             Caption ="Age:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -280,6 +291,7 @@ Begin Form
                     Name ="AddCompetitorBut"
                     Caption ="Add Competitor"
                     OnClick ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -298,6 +310,7 @@ Begin Form
                     Name ="CancelBut"
                     Caption ="Cancel"
                     OnClick ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -322,6 +335,7 @@ Begin Form
                             Height =240
                             Name ="Label17"
                             Caption ="Show all"
+                            FontName ="Tahoma"
                         End
                     End
                 End

@@ -59,6 +59,7 @@ Begin Form
                     Top =229
                     Width =2046
                     Name ="Description"
+                    FontName ="Tahoma"
                     InputMask =">CCCCCCCCCC"
 
                     Begin
@@ -72,6 +73,7 @@ Begin Form
                             Height =240
                             Name ="Text1"
                             Caption ="Enter the name of the new Scale:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -88,7 +90,7 @@ Begin Form
                     Name ="CreateBut"
                     Caption ="Create"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -108,7 +110,7 @@ Begin Form
                     Name ="CancelBut"
                     Caption ="Cancel"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2

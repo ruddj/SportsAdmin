@@ -88,7 +88,7 @@ Begin Form
                     FontWeight =400
                     Name ="Text8"
                     Caption ="ET_Code"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =85
@@ -130,6 +130,7 @@ Begin Form
                     Name ="ET_Code"
                     ControlSource ="ET_Code"
                     StatusBarText ="Event Type Code"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -165,6 +166,7 @@ Begin Form
                     TabIndex =3
                     Name ="R_Code"
                     ControlSource ="R_Code"
+                    FontName ="Tahoma"
 
                 End
             End

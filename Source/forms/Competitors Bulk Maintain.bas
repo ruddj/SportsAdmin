@@ -93,7 +93,7 @@ Begin Form
                     Name ="Close"
                     Caption ="Close"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -113,7 +113,7 @@ Begin Form
                     Name ="Delete"
                     Caption ="Delete Tagged Competitors"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -130,7 +130,7 @@ Begin Form
                     Height =210
                     Name ="Text14"
                     Caption ="House"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -142,7 +142,7 @@ Begin Form
                     Height =225
                     Name ="Text15"
                     Caption ="Sex"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -154,7 +154,7 @@ Begin Form
                     Height =225
                     Name ="Text16"
                     Caption ="Age"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -166,7 +166,7 @@ Begin Form
                     Height =225
                     Name ="Text20"
                     Caption ="Given Name"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -178,7 +178,7 @@ Begin Form
                     Height =225
                     Name ="Text21"
                     Caption ="Surname"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Subform
                     OverlapFlags =87
@@ -201,7 +201,7 @@ Begin Form
                     Height =225
                     Name ="Text30"
                     Caption ="DOB"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -217,7 +217,7 @@ Begin Form
                     Name ="Help"
                     Caption ="Help"
                     OnClick ="Open Help"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -242,6 +242,7 @@ Begin Form
                         "].Table=\"Competitors\")) ORDER BY [Table Field Names].DisplayName;"
                     ColumnWidths ="0;1441"
                     AfterUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -253,6 +254,7 @@ Begin Form
                             Height =240
                             Name ="Text35"
                             Caption ="Field:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -272,6 +274,7 @@ Begin Form
                     RowSourceType ="Table/Query"
                     RowSource ="Select [Operator] From [Operators];"
                     ColumnWidths ="1440"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -282,6 +285,7 @@ Begin Form
                     BorderColor =12632256
                     Name ="Value1"
                     ControlSource ="CompBulkValue"
+                    FontName ="Tahoma"
 
                 End
                 Begin CommandButton
@@ -297,7 +301,7 @@ Begin Form
                     Name ="Update Display"
                     Caption ="Update Display"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     EventProcPrefix ="Update_Display"
 
                     WebImagePaddingLeft =2
@@ -315,7 +319,7 @@ Begin Form
                     Height =225
                     Name ="Text42"
                     Caption ="Tag"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
             End
         End

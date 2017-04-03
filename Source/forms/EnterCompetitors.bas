@@ -18,7 +18,7 @@ Begin Form
     ItemSuffix =167
     Left =-13020
     Top =6990
-    Right =-3330
+    Right =-6405
     Bottom =14055
     HelpContextId =110
     RecSrcDt = Begin
@@ -180,7 +180,7 @@ Begin Form
                             FontWeight =400
                             Name ="Text21"
                             Caption ="Sex:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -238,6 +238,7 @@ Begin Form
                     Name ="Heat"
                     ControlSource ="Heat"
                     StatusBarText ="Age Group for event - ie. 13 year boys=13; 21 year girls =21; Open Boys=0"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -251,7 +252,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text57"
                             Caption ="Heat:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -270,6 +271,7 @@ Begin Form
                     ControlSource ="=nz([Record],\"-\") & \" \" & [units]"
                     StatusBarText ="Age Group for event - ie. 13 year boys=13; 21 year girls =21; Open Boys=0"
                     OnDblClick ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -305,6 +307,7 @@ Begin Form
                     Name ="F_Lev"
                     ControlSource ="F_Lev"
                     StatusBarText ="Age Group for event - ie. 13 year boys=13; 21 year girls =21; Open Boys=0"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -318,7 +321,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text81"
                             Caption ="Final:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -333,6 +336,7 @@ Begin Form
                     TabIndex =7
                     BackColor =-2147483633
                     Name ="NoHeats"
+                    FontName ="Tahoma"
 
                 End
                 Begin Label
@@ -346,7 +350,7 @@ Begin Form
                     FontSize =9
                     Name ="Text100"
                     Caption ="/"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin TextBox
                     Visible = NotDefault
@@ -360,6 +364,7 @@ Begin Form
                     TabIndex =8
                     BackColor =-2147483633
                     Name ="NoFinals"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -372,6 +377,7 @@ Begin Form
                     BackColor =16744703
                     Name ="Field112"
                     ControlSource ="=Count([HE_Code])"
+                    FontName ="Tahoma"
 
                 End
                 Begin ComboBox
@@ -394,7 +400,7 @@ Begin Form
                     ColumnWidths ="0;855"
                     BeforeUpdate ="[Event Procedure]"
                     AfterUpdate ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     SpecialEffect =0
                     OverlapFlags =93
                     Left =7727
@@ -416,7 +422,7 @@ Begin Form
                             FontWeight =400
                             Name ="Text117"
                             Caption ="Complete:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -441,7 +447,7 @@ Begin Form
                     FontWeight =400
                     Name ="Text120"
                     Caption ="Status:"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin CheckBox
                     SpecialEffect =0
@@ -466,7 +472,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text130"
                             Caption ="Select from all Names"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -500,7 +506,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text133"
                             Caption ="Pt Scale:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -533,7 +539,7 @@ Begin Form
                             FontWeight =400
                             Name ="Text128"
                             Caption ="Total Lanes:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -552,6 +558,7 @@ Begin Form
                     Name ="Record"
                     ControlSource ="Record"
                     StatusBarText ="Age Group for event - ie. 13 year boys=13; 21 year girls =21; Open Boys=0"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -569,6 +576,7 @@ Begin Form
                     Name ="nRecord"
                     ControlSource ="nRecord"
                     StatusBarText ="Age Group for event - ie. 13 year boys=13; 21 year girls =21; Open Boys=0"
+                    FontName ="Tahoma"
 
                 End
                 Begin Line
@@ -591,6 +599,7 @@ Begin Form
                     BackColor =16744703
                     Name ="E_Code"
                     ControlSource ="E_Code"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -601,6 +610,7 @@ Begin Form
                             BackColor =16744703
                             Name ="Text94"
                             Caption ="E_Code"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -616,6 +626,7 @@ Begin Form
                     BackColor =16744703
                     Name ="Field95"
                     ControlSource ="HE_Code"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -628,6 +639,7 @@ Begin Form
                             BackColor =16744703
                             Name ="Text96"
                             Caption ="HE_Code"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -645,6 +657,7 @@ Begin Form
                     Name ="EventNumber"
                     ControlSource ="E_Number"
                     StatusBarText ="Age Group for event - ie. 13 year boys=13; 21 year girls =21; Open Boys=0"
+                    FontName ="Tahoma"
                     ControlTipText ="The event number for this event."
 
                     Begin
@@ -660,7 +673,7 @@ Begin Form
                             BackColor =16744703
                             Name ="Text71"
                             Caption ="Event #:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -688,6 +701,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Label161"
                             Caption ="Places allocated across all heats:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -714,6 +728,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="DontOverridePlacesLabel"
                             Caption ="Don't override places:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -739,6 +754,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Label165"
                             Caption ="Heat Effects Event Records:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -790,7 +806,7 @@ Begin Form
                     Name ="MaintainCompetitorsBut"
                     Caption ="Maintain Competitors"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
@@ -811,7 +827,7 @@ Begin Form
                     Name ="CalculatePlacesBut"
                     Caption ="Calculate Places"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
@@ -832,7 +848,7 @@ Begin Form
                     Name ="DoneBut"
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
@@ -853,7 +869,7 @@ Begin Form
                     Name ="EnterResultsInPlaceOrderBut"
                     Caption ="Enter Results in Place Order"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
@@ -875,7 +891,7 @@ Begin Form
                     Name ="Help"
                     Caption ="Help"
                     OnClick ="Open Help"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
@@ -907,7 +923,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text139"
                             Caption ="Order by:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                             HorizontalAnchor =1
                         End
                         Begin OptionButton
@@ -930,7 +946,7 @@ Begin Form
                                     FontWeight =400
                                     Name ="field1111"
                                     Caption ="Lane"
-                                    FontName ="Arial"
+                                    FontName ="Tahoma"
                                     HorizontalAnchor =1
                                 End
                             End
@@ -955,7 +971,7 @@ Begin Form
                                     FontWeight =400
                                     Name ="Text144"
                                     Caption ="Name"
-                                    FontName ="Arial"
+                                    FontName ="Tahoma"
                                     HorizontalAnchor =1
                                 End
                             End
@@ -980,7 +996,7 @@ Begin Form
                                     FontWeight =400
                                     Name ="Text146"
                                     Caption ="Place"
-                                    FontName ="Arial"
+                                    FontName ="Tahoma"
                                     HorizontalAnchor =1
                                 End
                             End
@@ -1005,7 +1021,7 @@ Begin Form
                                     FontWeight =400
                                     Name ="Text156"
                                     Caption ="Not"
-                                    FontName ="Arial"
+                                    FontName ="Tahoma"
                                     HorizontalAnchor =1
                                 End
                             End
@@ -1035,6 +1051,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Label159"
                             Caption ="Quick Tab"
+                            FontName ="Tahoma"
                             HorizontalAnchor =1
                         End
                     End

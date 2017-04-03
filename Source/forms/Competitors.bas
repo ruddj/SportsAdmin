@@ -125,6 +125,7 @@ Begin Form
                     Name ="PIN"
                     ControlSource ="PIN"
                     StatusBarText ="Personal ID Number"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -138,7 +139,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text15"
                             Caption ="System #:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -155,6 +156,7 @@ Begin Form
                     ControlSource ="Gname"
                     StatusBarText ="Given Name(s)"
                     AfterUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -167,7 +169,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text17"
                             Caption ="Given Name:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -183,6 +185,7 @@ Begin Form
                     Name ="Surname"
                     ControlSource ="Surname"
                     AfterUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -196,7 +199,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text19"
                             Caption ="Surname:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -214,6 +217,7 @@ Begin Form
                     ControlSource ="DOB"
                     StatusBarText ="Date of Birth"
                     AfterUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -227,7 +231,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text25"
                             Caption ="DOB:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -243,6 +247,7 @@ Begin Form
                     Name ="Comments"
                     ControlSource ="Comments"
                     AfterUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -257,7 +262,7 @@ Begin Form
                             BackColor =8421631
                             Name ="Text29"
                             Caption ="Comments:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -272,6 +277,7 @@ Begin Form
                     Name ="State"
                     ControlSource ="ID"
                     AfterUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -285,7 +291,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text37"
                             Caption ="ID Number:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -301,6 +307,7 @@ Begin Form
                     Name ="Postcode"
                     ControlSource ="Postcode"
                     AfterUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -314,7 +321,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text39"
                             Caption ="ID #"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -330,6 +337,7 @@ Begin Form
                     Name ="Hphone"
                     ControlSource ="Hphone"
                     AfterUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -344,7 +352,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text41"
                             Caption ="Home Phone:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -360,6 +368,7 @@ Begin Form
                     Name ="Wphone"
                     ControlSource ="Wphone"
                     AfterUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -374,7 +383,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text43"
                             Caption ="Work Phone:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -397,6 +406,7 @@ Begin Form
                         "e=Yes)) ORDER BY House.H_Code;"
                     ColumnWidths ="885;3015"
                     AfterUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -410,7 +420,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text46"
                             Caption ="Team:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -452,7 +462,7 @@ Begin Form
                             FontWeight =400
                             Name ="Text61"
                             Caption ="Include in Carnival:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -475,6 +485,7 @@ Begin Form
                     RowSource ="\"M\";\"Male\";\"F\";\"Female\";\"-\";\"Both\""
                     ColumnWidths ="270;630"
                     AfterUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -488,7 +499,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text67"
                             Caption ="Sex"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -505,7 +516,7 @@ Begin Form
                     Name ="SaveBut"
                     Caption ="Save"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -531,6 +542,7 @@ Begin Form
                     ColumnWidths ="705"
                     BeforeUpdate ="[Event Procedure]"
                     AfterUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -543,7 +555,7 @@ Begin Form
                             FontWeight =400
                             Name ="Text69"
                             Caption ="Age:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -561,7 +573,7 @@ Begin Form
                     Name ="Help"
                     Caption ="Help"
                     OnClick ="Open Help"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -582,7 +594,7 @@ Begin Form
                     Name ="CancelBut"
                     Caption ="Cancel"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -601,7 +613,7 @@ Begin Form
                     BackColor =8421631
                     Name ="Text50"
                     Caption ="Event"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -615,7 +627,7 @@ Begin Form
                     BackColor =8421631
                     Name ="Text51"
                     Caption ="Final"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -629,7 +641,7 @@ Begin Form
                     BackColor =8421631
                     Name ="Text52"
                     Caption ="Pl."
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -643,7 +655,7 @@ Begin Form
                     BackColor =8421631
                     Name ="Text53"
                     Caption ="Pts"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -657,7 +669,7 @@ Begin Form
                     BackColor =8421631
                     Name ="Text64"
                     Caption ="Result"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -671,7 +683,7 @@ Begin Form
                     BackColor =8421631
                     Name ="Text71"
                     Caption ="Heat"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
             End
         End

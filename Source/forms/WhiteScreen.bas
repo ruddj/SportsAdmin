@@ -36,7 +36,6 @@ Begin Form
             Begin
                 Begin Label
                     OverlapFlags =85
-                    TextFontFamily =18
                     Left =4478
                     Top =963
                     Width =3180
@@ -45,7 +44,7 @@ Begin Form
                     FontWeight =700
                     Name ="Label0"
                     Caption ="Generating HTML..."
-                    FontName ="Times New Roman"
+                    FontName ="Tahoma"
                 End
             End
         End

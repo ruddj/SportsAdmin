@@ -126,6 +126,7 @@ Begin Form
                         "ReportList.Open)=True)) ORDER BY ReportList.ReportCaption;"
                     ColumnWidths ="0;2948"
                     StatusBarText ="Select the report you want to look at."
+                    FontName ="Tahoma"
                     OnClick ="[Event Procedure]"
                     ControlTipText ="Select the report you want to look at."
 
@@ -140,6 +141,7 @@ Begin Form
                     FontWeight =700
                     Name ="Label4"
                     Caption ="Finding open reports ..."
+                    FontName ="Tahoma"
                 End
             End
         End
@@ -155,6 +157,7 @@ Begin Form
                     Width =3184
                     Height =1410
                     Name ="TabCtl17"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Page
@@ -180,6 +183,7 @@ Begin Form
                                     Name ="CloseRepBut"
                                     Caption ="Close Report"
                                     OnClick ="[Event Procedure]"
+                                    FontName ="Tahoma"
 
                                     WebImagePaddingLeft =2
                                     WebImagePaddingTop =2
@@ -195,6 +199,7 @@ Begin Form
                                     Name ="CloseAllReportsBut"
                                     Caption ="Close All Reports"
                                     OnClick ="[Event Procedure]"
+                                    FontName ="Tahoma"
 
                                     WebImagePaddingLeft =2
                                     WebImagePaddingTop =2
@@ -211,6 +216,7 @@ Begin Form
                                     Name ="PrintReport"
                                     Caption ="Print Report"
                                     OnClick ="[Event Procedure]"
+                                    FontName ="Tahoma"
 
                                     WebImagePaddingLeft =2
                                     WebImagePaddingTop =2
@@ -226,6 +232,7 @@ Begin Form
                                     Name ="PrintAllReportsBut"
                                     Caption ="Print  All Reports"
                                     OnClick ="[Event Procedure]"
+                                    FontName ="Tahoma"
 
                                     WebImagePaddingLeft =2
                                     WebImagePaddingTop =2
@@ -257,6 +264,7 @@ Begin Form
                                     Name ="ReportPopupX"
                                     ControlSource ="ReportPopupX"
                                     AfterUpdate ="[Event Procedure]"
+                                    FontName ="Tahoma"
 
                                     Begin
                                         Begin Label
@@ -283,6 +291,7 @@ Begin Form
                                     Name ="ReportPopupY"
                                     ControlSource ="ReportPopupY"
                                     AfterUpdate ="[Event Procedure]"
+                                    FontName ="Tahoma"
 
                                     Begin
                                         Begin Label
@@ -349,6 +358,7 @@ Begin Form
                                         0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ,
                                         0xffffffffffffffff000000000000000000000000
                                     End
+                                    FontName ="Tahoma"
                                     ObjectPalette = Begin
                                         0x000301000000000000000000
                                     End
@@ -380,6 +390,7 @@ Begin Form
                                         0xff000000000000ffffffffffffffffffffffffffffffffffff000000000000ff ,
                                         0xffffffffffffffff000000000000000000000000
                                     End
+                                    FontName ="Tahoma"
                                     ObjectPalette = Begin
                                         0x000301000000000000000000
                                     End
@@ -412,6 +423,7 @@ Begin Form
                                         0xffffffffffffffff000000000000000000000000000000000000000000000000 ,
                                         0x0000000000000000
                                     End
+                                    FontName ="Tahoma"
                                     ObjectPalette = Begin
                                         0x000301000000000000000000
                                     End
@@ -443,6 +455,7 @@ Begin Form
                                         0xff000000000000ffffffffffffffffffffffffffffffffffff000000000000ff ,
                                         0xffffffffffffffff000000000000000000000000
                                     End
+                                    FontName ="Tahoma"
                                     ObjectPalette = Begin
                                         0x000301000000000000000000
                                     End

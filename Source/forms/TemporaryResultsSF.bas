@@ -48,6 +48,7 @@ Begin Form
                     Width =576
                     Name ="Place"
                     ControlSource ="Place"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -59,6 +60,7 @@ Begin Form
                     TabIndex =2
                     Name ="Results"
                     ControlSource ="Results"
+                    FontName ="Tahoma"
 
                 End
                 Begin ComboBox
@@ -77,6 +79,7 @@ Begin Form
                     RowSource ="SELECT [Temporary Results-Place Order].AvailableLanes FROM [Temporary Results-Pl"
                         "ace Order] ORDER BY [Temporary Results-Place Order].AvailableLanes;"
                     ColumnWidths ="570"
+                    FontName ="Tahoma"
 
                 End
             End
