@@ -123,7 +123,7 @@ Begin Form
                     Name ="Close"
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -144,7 +144,7 @@ Begin Form
                     Name ="Add"
                     Caption ="Add Pointscale"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -165,7 +165,7 @@ Begin Form
                     Name ="Delete"
                     Caption ="Delete Pointscale"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -186,7 +186,7 @@ Begin Form
                     Name ="Rename"
                     Caption ="Rename Pointscale"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -207,7 +207,7 @@ Begin Form
                     Name ="Update"
                     Caption ="Update all Points"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Update all competitor results to reflect the current pointscales."
 
                     WebImagePaddingLeft =2
@@ -229,7 +229,7 @@ Begin Form
                     Name ="HelpBut"
                     Caption ="Help"
                     OnClick ="Open Help"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -244,6 +244,7 @@ Begin Form
                     Height =5325
                     TabIndex =6
                     Name ="TabCtl39"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Page
@@ -286,6 +287,7 @@ Begin Form
                                     ColumnWidths ="1441"
                                     AfterUpdate ="[Event Procedure]"
                                     OnDblClick ="[Event Procedure]"
+                                    FontName ="Tahoma"
                                     OnKeyDown ="[Event Procedure]"
 
                                 End
@@ -300,7 +302,7 @@ Begin Form
                                     BackColor =-2147483633
                                     Name ="Text21"
                                     Caption ="Point Scale"
-                                    FontName ="Arial"
+                                    FontName ="Tahoma"
                                 End
                                 Begin Label
                                     OverlapFlags =223
@@ -313,7 +315,7 @@ Begin Form
                                     BackColor =-2147483633
                                     Name ="Text22"
                                     Caption ="Allocated Points"
-                                    FontName ="Arial"
+                                    FontName ="Tahoma"
                                 End
                                 Begin Rectangle
                                     SpecialEffect =3
@@ -336,7 +338,7 @@ Begin Form
                                     BackColor =-2147483633
                                     Name ="Text25"
                                     Caption ="Place"
-                                    FontName ="Arial"
+                                    FontName ="Tahoma"
                                 End
                                 Begin Label
                                     OverlapFlags =215
@@ -349,7 +351,7 @@ Begin Form
                                     BackColor =-2147483633
                                     Name ="Text26"
                                     Caption ="Points"
-                                    FontName ="Arial"
+                                    FontName ="Tahoma"
                                 End
                                 Begin TextBox
                                     OverlapFlags =223
@@ -360,7 +362,7 @@ Begin Form
                                     BorderColor =12632256
                                     Name ="NumPlaces"
                                     DefaultValue ="50"
-                                    FontName ="Arial"
+                                    FontName ="Tahoma"
                                     ControlTipText ="Number of places to create quickly."
 
                                     Begin
@@ -375,7 +377,7 @@ Begin Form
                                             BackColor =-2147483633
                                             Name ="Text30"
                                             Caption ="Number of Places"
-                                            FontName ="Arial"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -388,7 +390,7 @@ Begin Form
                                     BorderColor =12632256
                                     Name ="NumPoints"
                                     DefaultValue ="1"
-                                    FontName ="Arial"
+                                    FontName ="Tahoma"
 
                                     Begin
                                         Begin Label
@@ -402,7 +404,7 @@ Begin Form
                                             BackColor =-2147483633
                                             Name ="Text32"
                                             Caption ="Number of Points"
-                                            FontName ="Arial"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -427,7 +429,7 @@ Begin Form
                                     BackColor =-2147483633
                                     Name ="Text34"
                                     Caption ="Create Points Quickly"
-                                    FontName ="Arial"
+                                    FontName ="Tahoma"
                                 End
                                 Begin CommandButton
                                     OverlapFlags =247
@@ -442,7 +444,7 @@ Begin Form
                                     Name ="AllocateDefPoints"
                                     Caption ="Create Points"
                                     OnClick ="[Event Procedure]"
-                                    FontName ="Arial"
+                                    FontName ="Tahoma"
 
                                     WebImagePaddingLeft =2
                                     WebImagePaddingTop =2

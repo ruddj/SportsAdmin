@@ -13,10 +13,10 @@ Begin Form
     GridY =20
     Width =10368
     ItemSuffix =41
-    Left =1230
-    Top =1980
-    Right =11595
-    Bottom =9165
+    Left =390
+    Top =390
+    Right =11430
+    Bottom =8790
     HelpContextId =150
     RecSrcDt = Begin
         0x4e2adfb911cde140
@@ -90,6 +90,7 @@ Begin Form
                     ControlSource ="ImportLocation"
                     AfterUpdate ="[Event Procedure]"
                     DefaultValue ="\"A:\\\""
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -102,6 +103,7 @@ Begin Form
                             Height =285
                             Name ="Text1"
                             Caption ="Filename to Import (include full path):"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -127,6 +129,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text3"
                             Caption ="Format Type"
+                            FontName ="Tahoma"
                         End
                         Begin CheckBox
                             OverlapFlags =87
@@ -146,6 +149,7 @@ Begin Form
                                     Height =240
                                     Name ="Text6"
                                     Caption ="Plain Text"
+                                    FontName ="Tahoma"
                                 End
                             End
                         End
@@ -167,6 +171,7 @@ Begin Form
                                     Height =240
                                     Name ="Text8"
                                     Caption ="Plain Text (CSV)"
+                                    FontName ="Tahoma"
                                 End
                             End
                         End
@@ -185,7 +190,7 @@ Begin Form
                     Name ="Close"
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -206,7 +211,7 @@ Begin Form
                     Name ="View"
                     Caption ="Show Text File"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -227,7 +232,7 @@ Begin Form
                     Name ="ImportData"
                     Caption ="Import All Displayed Data"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -244,7 +249,7 @@ Begin Form
                     Height =210
                     Name ="Text14"
                     Caption ="House"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -256,7 +261,7 @@ Begin Form
                     Height =225
                     Name ="Text15"
                     Caption ="Sex"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -268,7 +273,7 @@ Begin Form
                     Height =225
                     Name ="Text16"
                     Caption ="Age"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -280,7 +285,7 @@ Begin Form
                     Height =225
                     Name ="Text17"
                     Caption ="Event"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -292,7 +297,7 @@ Begin Form
                     Height =225
                     Name ="Text18"
                     Caption ="Heat"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -304,7 +309,7 @@ Begin Form
                     Height =225
                     Name ="Text19"
                     Caption ="#"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -316,7 +321,7 @@ Begin Form
                     Height =225
                     Name ="Text20"
                     Caption ="Given Name"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -328,7 +333,7 @@ Begin Form
                     Height =225
                     Name ="Text21"
                     Caption ="Surname"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Subform
                     OverlapFlags =85
@@ -355,7 +360,7 @@ Begin Form
                     Name ="Button24"
                     Caption ="Clear Temporary Data"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -372,6 +377,7 @@ Begin Form
                     Name ="Field25"
                     ControlSource ="OpenAge"
                     DefaultValue ="\"A:\\\""
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -385,6 +391,7 @@ Begin Form
                             Height =285
                             Name ="Text26"
                             Caption ="Open Age:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -409,6 +416,7 @@ Begin Form
                             Height =240
                             Name ="Text29"
                             Caption ="Sort by Name"
+                            FontName ="Tahoma"
                         End
                     End
                 End

@@ -11,14 +11,15 @@ Begin Form
     AllowAdditions = NotDefault
     DefaultView =0
     ScrollBars =0
+    ViewsAllowed =1
     BorderStyle =3
     GridY =10
     Width =8503
     ItemSuffix =144
-    Left =6165
-    Top =1470
-    Right =14670
-    Bottom =7230
+    Left =5625
+    Top =2265
+    Right =14805
+    Bottom =9090
     HelpContextId =260
     RecSrcDt = Begin
         0x03b3b85379f4e140
@@ -32,6 +33,7 @@ Begin Form
     End
     OnActivate ="[Event Procedure]"
     OnLoad ="[Event Procedure]"
+    AllowDatasheetView =0
     FilterOnLoad =0
     AllowLayoutView =0
     RibbonName ="SportsMenu"
@@ -148,6 +150,7 @@ Begin Form
                     Name ="Help"
                     Caption ="Help"
                     OnClick ="Open Help"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -166,6 +169,7 @@ Begin Form
                     Name ="Close"
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -180,6 +184,7 @@ Begin Form
                     Height =4845
                     TabIndex =3
                     Name ="TabCtl125"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Page
@@ -213,6 +218,7 @@ Begin Form
                                     ColumnWidths ="391;735"
                                     OnDblClick ="[Event Procedure]"
                                     DefaultValue ="\"*\""
+                                    FontName ="Tahoma"
                                     ControlTipText ="Enter a '*' for any gender."
 
                                     Begin
@@ -226,7 +232,7 @@ Begin Form
                                             FontWeight =400
                                             Name ="Sex_DD_Tit"
                                             Caption ="Gender"
-                                            FontName ="Arial"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -248,6 +254,7 @@ Begin Form
                                     ColumnWidths ="1510"
                                     OnDblClick ="[Event Procedure]"
                                     DefaultValue ="\"*\""
+                                    FontName ="Tahoma"
                                     ControlTipText ="Enter a '*' for all final-levels."
 
                                     Begin
@@ -261,7 +268,7 @@ Begin Form
                                             FontWeight =400
                                             Name ="Text71"
                                             Caption ="Final"
-                                            FontName ="Arial"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -283,6 +290,7 @@ Begin Form
                                     ColumnWidths ="1510"
                                     OnDblClick ="[Event Procedure]"
                                     DefaultValue ="\"*\""
+                                    FontName ="Tahoma"
                                     ControlTipText ="Enter a '*' for all heats,"
 
                                     Begin
@@ -296,7 +304,7 @@ Begin Form
                                             FontWeight =400
                                             Name ="Text73"
                                             Caption ="Heat"
-                                            FontName ="Arial"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -318,6 +326,7 @@ Begin Form
                                     ColumnWidths ="1510"
                                     OnDblClick ="[Event Procedure]"
                                     DefaultValue ="\"*\""
+                                    FontName ="Tahoma"
                                     ControlTipText ="Enter a '*' for all ages."
 
                                     Begin
@@ -331,7 +340,7 @@ Begin Form
                                             FontWeight =400
                                             Name ="Text75"
                                             Caption ="Age"
-                                            FontName ="Arial"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -358,7 +367,7 @@ Begin Form
                                             BackColor =-2147483633
                                             Name ="Text81"
                                             Caption ="Future"
-                                            FontName ="Arial"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -385,7 +394,7 @@ Begin Form
                                             BackColor =-2147483633
                                             Name ="Text83"
                                             Caption ="Active"
-                                            FontName ="Arial"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -412,7 +421,7 @@ Begin Form
                                             BackColor =-2147483633
                                             Name ="Text85"
                                             Caption ="Completed"
-                                            FontName ="Arial"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -439,7 +448,7 @@ Begin Form
                                             BackColor =-2147483633
                                             Name ="Text87"
                                             Caption ="Promoted"
-                                            FontName ="Arial"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -522,7 +531,7 @@ Begin Form
                                             BackColor =-2147483633
                                             Name ="Text101"
                                             Caption ="Detailed Lists"
-                                            FontName ="Arial"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -549,7 +558,7 @@ Begin Form
                                             BackColor =-2147483633
                                             Name ="Text115"
                                             Caption ="Summary Lists"
-                                            FontName ="Arial"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -565,6 +574,7 @@ Begin Form
                                     Name ="Button65"
                                     Caption ="Generate Event Lists"
                                     OnClick ="[Event Procedure]"
+                                    FontName ="Tahoma"
 
                                     WebImagePaddingLeft =2
                                     WebImagePaddingTop =2
@@ -582,6 +592,7 @@ Begin Form
                                     Name ="ProgramOfEvents"
                                     Caption ="Program of Events\015\012(4 Columns)"
                                     OnClick ="[Event Procedure]"
+                                    FontName ="Tahoma"
 
                                     WebImagePaddingLeft =2
                                     WebImagePaddingTop =2
@@ -599,6 +610,7 @@ Begin Form
                                     Name ="ProgramSummaryBut"
                                     Caption ="Program of Events Summary"
                                     OnClick ="[Event Procedure]"
+                                    FontName ="Tahoma"
 
                                     WebImagePaddingLeft =2
                                     WebImagePaddingTop =2
@@ -625,6 +637,7 @@ Begin Form
                                     BackColor =-2147483633
                                     Name ="Label137"
                                     Caption ="Generate lists for events satisfying this criteria:"
+                                    FontName ="Tahoma"
                                 End
                                 Begin Rectangle
                                     SpecialEffect =3
@@ -647,6 +660,7 @@ Begin Form
                                     BackColor =-2147483633
                                     Name ="Label139"
                                     Caption ="List type:"
+                                    FontName ="Tahoma"
                                 End
                                 Begin Label
                                     OverlapFlags =247
@@ -659,6 +673,7 @@ Begin Form
                                     BackColor =-2147483633
                                     Name ="Label140"
                                     Caption ="Final status:"
+                                    FontName ="Tahoma"
                                 End
                                 Begin CommandButton
                                     OverlapFlags =247
@@ -671,6 +686,7 @@ Begin Form
                                     Name ="ProgOfEvents3Cols"
                                     Caption ="Program of Events\015\012(3 Columns)"
                                     OnClick ="[Event Procedure]"
+                                    FontName ="Tahoma"
 
                                     WebImagePaddingLeft =2
                                     WebImagePaddingTop =2
@@ -722,7 +738,7 @@ Begin Form
                                             BackColor =-2147483633
                                             Name ="Text97"
                                             Caption ="Generic Event Entry Sheets"
-                                            FontName ="Arial"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -736,6 +752,7 @@ Begin Form
                                     BorderColor =12632256
                                     Name ="Field108"
                                     ControlSource ="Rhead1"
+                                    FontName ="Tahoma"
 
                                     Begin
                                         Begin Label
@@ -748,6 +765,7 @@ Begin Form
                                             BackColor =-2147483633
                                             Name ="Text109"
                                             Caption ="Heading1:"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -761,6 +779,7 @@ Begin Form
                                     BorderColor =12632256
                                     Name ="Field110"
                                     ControlSource ="Rhead2"
+                                    FontName ="Tahoma"
 
                                     Begin
                                         Begin Label
@@ -773,6 +792,7 @@ Begin Form
                                             BackColor =-2147483633
                                             Name ="Text111"
                                             Caption ="Heading2:"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -787,6 +807,7 @@ Begin Form
                                     Name ="GenerateSpecial"
                                     Caption ="Generate Age / Gender / Team Lists"
                                     OnClick ="[Event Procedure]"
+                                    FontName ="Tahoma"
 
                                     WebImagePaddingLeft =2
                                     WebImagePaddingTop =2
@@ -804,6 +825,7 @@ Begin Form
                                     Name ="GenerateNameTags"
                                     Caption ="Generate Name Tags"
                                     OnClick ="[Event Procedure]"
+                                    FontName ="Tahoma"
 
                                     WebImagePaddingLeft =2
                                     WebImagePaddingTop =2
@@ -821,6 +843,7 @@ Begin Form
                                     Name ="GenericListBut"
                                     Caption ="Generic Entry Sheets"
                                     OnClick ="[Event Procedure]"
+                                    FontName ="Tahoma"
 
                                     WebImagePaddingLeft =2
                                     WebImagePaddingTop =2
@@ -838,6 +861,7 @@ Begin Form
                                     BorderColor =12632256
                                     Name ="Text130"
                                     ControlSource ="NameTagFontSize"
+                                    FontName ="Tahoma"
 
                                     Begin
                                         Begin Label
@@ -849,6 +873,7 @@ Begin Form
                                             BackColor =-2147483633
                                             Name ="Label131"
                                             Caption ="Font Size:"
+                                            FontName ="Tahoma"
                                         End
                                     End
                                 End
@@ -884,6 +909,7 @@ Begin Form
                                             BackColor =-2147483633
                                             Name ="Houses Label"
                                             Caption ="Houses"
+                                            FontName ="Tahoma"
                                             EventProcPrefix ="Houses_Label"
                                         End
                                     End

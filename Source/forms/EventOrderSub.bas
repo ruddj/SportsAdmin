@@ -13,10 +13,10 @@ Begin Form
     Width =6803
     DatasheetFontHeight =10
     ItemSuffix =1
-    Left =3150
-    Top =2160
-    Right =10275
-    Bottom =8310
+    Left =7125
+    Top =2175
+    Right =14250
+    Bottom =8325
     HelpContextId =250
     DatasheetGridlinesColor =12632256
     RecSrcDt = Begin
@@ -66,7 +66,7 @@ Begin Form
                     BeforeUpdate ="[Event Procedure]"
                     OnEnter ="[Event Procedure]"
                     OnDblClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     OnClick ="[Event Procedure]"
 
                 End
@@ -83,7 +83,7 @@ Begin Form
                     TabIndex =1
                     Name ="Field4"
                     ControlSource ="ET_Des"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -99,7 +99,7 @@ Begin Form
                     TabIndex =2
                     Name ="Field6"
                     ControlSource ="Sex"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -115,7 +115,7 @@ Begin Form
                     TabIndex =3
                     Name ="Field8"
                     ControlSource ="Age"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -131,7 +131,7 @@ Begin Form
                     TabIndex =4
                     Name ="F_Lev"
                     ControlSource ="F_Lev"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -147,7 +147,7 @@ Begin Form
                     TabIndex =5
                     Name ="Field27"
                     ControlSource ="Heat"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -163,7 +163,7 @@ Begin Form
                     StatusBarText ="Enter either the date, time or date and time."
                     AfterUpdate ="[Event Procedure]"
                     OnEnter ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Enter either the date, time or date and time."
 
                 End

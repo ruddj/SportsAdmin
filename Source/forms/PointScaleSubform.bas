@@ -8,10 +8,10 @@ Begin Form
     GridY =20
     Width =3458
     ItemSuffix =18
-    Left =2040
-    Top =810
-    Right =11115
-    Bottom =6390
+    Left =4680
+    Top =3045
+    Right =6990
+    Bottom =6885
     HelpContextId =50
     RecSrcDt = Begin
         0xbce33bd310cde140
@@ -97,6 +97,7 @@ Begin Form
                     Name ="Place"
                     ControlSource ="Place"
                     StatusBarText ="Place that is achieved by competitor"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -109,6 +110,7 @@ Begin Form
                     Name ="Points"
                     ControlSource ="Points"
                     StatusBarText ="Points allocated to the competitor who gains this place"
+                    FontName ="Tahoma"
 
                 End
                 Begin CommandButton

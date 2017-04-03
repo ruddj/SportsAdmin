@@ -116,6 +116,7 @@ Begin Form
                     Name ="Close"
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -132,6 +133,10 @@ Begin Form
                     Name ="TabCtl"
                     OnChange ="[Event Procedure]"
 
+                    LayoutCachedLeft =60
+                    LayoutCachedTop =60
+                    LayoutCachedWidth =9870
+                    LayoutCachedHeight =6030
                     Begin
                         Begin Page
                             OverlapFlags =87
@@ -141,6 +146,10 @@ Begin Form
                             Height =5430
                             Name ="Page30"
                             Caption ="Substitutions"
+                            LayoutCachedLeft =195
+                            LayoutCachedTop =465
+                            LayoutCachedWidth =9735
+                            LayoutCachedHeight =5895
                             WebImagePaddingLeft =2
                             WebImagePaddingTop =2
                             WebImagePaddingRight =2
@@ -167,7 +176,6 @@ Begin Form
                                             Height =240
                                             Name ="Text12"
                                             Caption ="Lane Substitiuion"
-                                            FontName ="Arial"
                                         End
                                     End
                                 End
@@ -230,7 +238,6 @@ Begin Form
                                             Height =240
                                             Name ="Title"
                                             Caption ="Final Level Substitiuion"
-                                            FontName ="Arial"
                                         End
                                     End
                                 End
@@ -244,6 +251,10 @@ Begin Form
                             Height =5430
                             Name ="Page33"
                             Caption ="Misc"
+                            LayoutCachedLeft =195
+                            LayoutCachedTop =465
+                            LayoutCachedWidth =9735
+                            LayoutCachedHeight =5895
                             WebImagePaddingLeft =2
                             WebImagePaddingTop =2
                             WebImagePaddingRight =2
@@ -258,7 +269,7 @@ Begin Form
                                     Name ="Remove"
                                     Caption ="Delete All Competitors"
                                     OnClick ="[Event Procedure]"
-                                    FontName ="MS Sans Serif"
+                                    FontName ="Tahoma"
 
                                     WebImagePaddingLeft =2
                                     WebImagePaddingTop =2
@@ -275,7 +286,7 @@ Begin Form
                                     Name ="Reset"
                                     Caption ="Reset All Events"
                                     OnClick ="[Event Procedure]"
-                                    FontName ="MS Sans Serif"
+                                    FontName ="Tahoma"
 
                                     WebImagePaddingLeft =2
                                     WebImagePaddingTop =2
@@ -338,7 +349,7 @@ Begin Form
                                     Name ="ClearResults"
                                     Caption ="Clear all Results"
                                     OnClick ="[Event Procedure]"
-                                    FontName ="MS Sans Serif"
+                                    FontName ="Tahoma"
 
                                     WebImagePaddingLeft =2
                                     WebImagePaddingTop =2
@@ -377,7 +388,7 @@ Begin Form
                                     Name ="RecereateHeatsBut"
                                     Caption ="Recreate All Heats"
                                     OnClick ="[Event Procedure]"
-                                    FontName ="MS Sans Serif"
+                                    FontName ="Tahoma"
 
                                     WebImagePaddingLeft =2
                                     WebImagePaddingTop =2
@@ -414,6 +425,10 @@ Begin Form
                             Height =5435
                             Name ="Page68"
                             Caption ="Titles"
+                            LayoutCachedLeft =195
+                            LayoutCachedTop =465
+                            LayoutCachedWidth =9735
+                            LayoutCachedHeight =5900
                             WebImagePaddingLeft =2
                             WebImagePaddingTop =2
                             WebImagePaddingRight =2
@@ -439,6 +454,10 @@ Begin Form
                             Height =5430
                             Name ="Page34"
                             Caption ="HTML Settings"
+                            LayoutCachedLeft =195
+                            LayoutCachedTop =465
+                            LayoutCachedWidth =9735
+                            LayoutCachedHeight =5895
                             WebImagePaddingLeft =2
                             WebImagePaddingTop =2
                             WebImagePaddingRight =2
@@ -483,6 +502,10 @@ Begin Form
                             Height =5430
                             Name ="Page37"
                             Caption ="Remove Empty Heats"
+                            LayoutCachedLeft =195
+                            LayoutCachedTop =465
+                            LayoutCachedWidth =9735
+                            LayoutCachedHeight =5895
                             WebImagePaddingLeft =2
                             WebImagePaddingTop =2
                             WebImagePaddingRight =2
@@ -509,6 +532,10 @@ Begin Form
                             Height =5430
                             Name ="Copy Competitors"
                             EventProcPrefix ="Copy_Competitors"
+                            LayoutCachedLeft =195
+                            LayoutCachedTop =465
+                            LayoutCachedWidth =9735
+                            LayoutCachedHeight =5895
                             WebImagePaddingLeft =2
                             WebImagePaddingTop =2
                             WebImagePaddingRight =2
@@ -523,6 +550,10 @@ Begin Form
                                     Name ="CopyCompetitorsBetweenEvents"
                                     SourceObject ="Form.CopyCompetitorsBetweenEvents"
 
+                                    LayoutCachedLeft =359
+                                    LayoutCachedTop =776
+                                    LayoutCachedWidth =7424
+                                    LayoutCachedHeight =5666
                                 End
                             End
                         End
@@ -534,6 +565,10 @@ Begin Form
                             Height =5430
                             Name ="Page49"
                             Caption ="Backup"
+                            LayoutCachedLeft =195
+                            LayoutCachedTop =465
+                            LayoutCachedWidth =9735
+                            LayoutCachedHeight =5895
                             WebImagePaddingLeft =2
                             WebImagePaddingTop =2
                             WebImagePaddingRight =2
@@ -570,6 +605,7 @@ Begin Form
                                     BorderColor =12632256
                                     Name ="BackupPath"
                                     ControlSource ="BackupPath"
+                                    FontName ="Tahoma"
 
                                     Begin
                                         Begin Label
@@ -625,6 +661,10 @@ Begin Form
                             Height =5430
                             Name ="Page58"
                             Caption ="Report Popup"
+                            LayoutCachedLeft =195
+                            LayoutCachedTop =465
+                            LayoutCachedWidth =9735
+                            LayoutCachedHeight =5895
                             WebImagePaddingLeft =2
                             WebImagePaddingTop =2
                             WebImagePaddingRight =2

@@ -9,10 +9,10 @@ Begin Form
     GridY =20
     Width =15953
     ItemSuffix =27
-    Left =7470
-    Top =3435
-    Right =11520
-    Bottom =7590
+    Left =735
+    Top =5220
+    Right =8880
+    Bottom =10440
     HelpContextId =120
     OrderBy ="[Import Competitors SF].H_Code"
     RecSrcDt = Begin
@@ -101,7 +101,7 @@ Begin Form
                     Name ="Sex"
                     ControlSource ="Sex"
                     Format =">"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -118,7 +118,7 @@ Begin Form
                     ControlSource ="H_Code"
                     Format =">"
                     StatusBarText ="House Code"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -134,7 +134,7 @@ Begin Form
                     Name ="Age"
                     ControlSource ="Age"
                     Format =">"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -147,7 +147,7 @@ Begin Form
                     Height =240
                     Name ="Gname"
                     ControlSource ="Gname"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -161,7 +161,7 @@ Begin Form
                     TabIndex =1
                     Name ="Sname"
                     ControlSource ="Sname"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -176,7 +176,7 @@ Begin Form
                     TabIndex =5
                     Name ="DOB"
                     ControlSource ="DOB"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -191,7 +191,7 @@ Begin Form
                     TabIndex =6
                     Name ="Text26"
                     ControlSource ="PIN"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
             End

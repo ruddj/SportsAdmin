@@ -101,6 +101,7 @@ Begin Form
                     Name ="FullFileName"
                     ControlSource ="ImportCompetitors"
                     DefaultValue ="\"A:\\\""
+                    FontName ="Tahoma"
                     ControlTipText ="Enter the location of the competitors text file to import."
 
                     Begin
@@ -114,6 +115,7 @@ Begin Form
                             FontWeight =700
                             Name ="Text1"
                             Caption ="Filename to Import (include full path):"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -130,7 +132,7 @@ Begin Form
                     Name ="Close"
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
@@ -152,7 +154,7 @@ Begin Form
                     Name ="View"
                     Caption ="View Text File"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="View the text file you want to import in the list on the left."
                     HorizontalAnchor =1
 
@@ -174,7 +176,7 @@ Begin Form
                     Name ="ImportData"
                     Caption ="Import Competitors"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Import all competitors in the list on the left into the carnival."
                     HorizontalAnchor =1
 
@@ -193,7 +195,7 @@ Begin Form
                     FontWeight =700
                     Name ="Text14"
                     Caption ="House"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =85
@@ -205,7 +207,7 @@ Begin Form
                     FontWeight =700
                     Name ="Text15"
                     Caption ="Sex"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =85
@@ -217,7 +219,7 @@ Begin Form
                     FontWeight =700
                     Name ="Text16"
                     Caption ="Age"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =85
@@ -229,7 +231,7 @@ Begin Form
                     FontWeight =700
                     Name ="Text20"
                     Caption ="Given Name"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =85
@@ -241,7 +243,7 @@ Begin Form
                     FontWeight =700
                     Name ="Text21"
                     Caption ="Surname"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Subform
                     OverlapFlags =85
@@ -269,7 +271,7 @@ Begin Form
                     Name ="btnClearTemp"
                     Caption ="Clear Temporary Data"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Clears all the competitors shown in the list on the left."
                     HorizontalAnchor =1
 
@@ -288,7 +290,7 @@ Begin Form
                     FontWeight =700
                     Name ="Text30"
                     Caption ="DOB"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -347,7 +349,7 @@ Begin Form
                     Name ="Help"
                     Caption ="Help"
                     OnClick ="Open Help"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
@@ -378,6 +380,7 @@ Begin Form
                     BorderColor =12632256
                     Name ="Text39"
                     ControlSource ="=Format(Now(),\"dd/mm/yyyy\")"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     Begin
@@ -389,6 +392,7 @@ Begin Form
                             Height =240
                             Name ="Label40"
                             Caption ="Current Date:"
+                            FontName ="Tahoma"
                             HorizontalAnchor =1
                         End
                     End
@@ -412,6 +416,7 @@ Begin Form
                         "ly\";8;\"August\";9;\"September\";10;\"October\";11;\"November\";12;\"December\""
                     ColumnWidths ="0;975"
                     StatusBarText ="Choose the month when the competitor is moved into the next age division."
+                    FontName ="Tahoma"
                     ControlTipText ="Choose the month when the competitor is moved into the next age division."
                     HorizontalAnchor =1
 
@@ -424,6 +429,7 @@ Begin Form
                             Height =240
                             Name ="Month_Label"
                             Caption ="Month"
+                            FontName ="Tahoma"
                             HorizontalAnchor =1
                         End
                     End
@@ -448,6 +454,7 @@ Begin Form
                     ColumnWidths ="975"
                     StatusBarText ="Choose the day of that month when the competitor is moved into the next age divi"
                         "sion."
+                    FontName ="Tahoma"
                     ControlTipText ="Choose the day of that month when the competitor is moved into the next age divi"
                         "sion."
                     HorizontalAnchor =1
@@ -461,6 +468,7 @@ Begin Form
                             Height =240
                             Name ="Label44"
                             Caption ="Day"
+                            FontName ="Tahoma"
                             HorizontalAnchor =1
                         End
                     End
@@ -486,6 +494,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Label46"
                     Caption ="Age Cut-Off Date"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
                 End
                 Begin Label
@@ -498,7 +507,7 @@ Begin Form
                     FontWeight =700
                     Name ="Label47"
                     Caption ="PIN"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
             End
         End

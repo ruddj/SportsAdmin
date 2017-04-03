@@ -19,8 +19,8 @@ Begin Form
     ItemSuffix =78
     Left =-18870
     Top =2760
-    Right =-8925
-    Bottom =9360
+    Right =-7125
+    Bottom =11490
     HelpContextId =80
     RecSrcDt = Begin
         0x98553b042dc7e140
@@ -152,7 +152,7 @@ Begin Form
                     Name ="CloseBut"
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
@@ -179,7 +179,7 @@ Begin Form
                             Height =240
                             Name ="Text19"
                             Caption ="Future"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -203,7 +203,7 @@ Begin Form
                             Height =240
                             Name ="Text22"
                             Caption ="Active"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -227,7 +227,7 @@ Begin Form
                             Height =240
                             Name ="Text24"
                             Caption ="Completed"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -251,7 +251,7 @@ Begin Form
                             Height =240
                             Name ="Text26"
                             Caption ="Promoted"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -312,6 +312,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text33"
                     Caption ="Show Finals"
+                    FontName ="Tahoma"
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -327,7 +328,7 @@ Begin Form
                     Name ="PromoteBut"
                     Caption ="Promote ALL"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     ControlTipText ="Promote competitors into the next final level for all completed final levels."
                     HorizontalAnchor =1
 
@@ -356,7 +357,7 @@ Begin Form
                             Height =240
                             Name ="Text36"
                             Caption ="Male"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -380,7 +381,7 @@ Begin Form
                             Height =240
                             Name ="Text38"
                             Caption ="Female"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -423,6 +424,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text48"
                     Caption ="Show:"
+                    FontName ="Tahoma"
                 End
                 Begin ComboBox
                     OverlapFlags =247
@@ -443,6 +445,7 @@ Begin Form
                     AfterUpdate ="[Event Procedure]"
                     OnDblClick ="[Event Procedure]"
                     DefaultValue ="\"*\""
+                    FontName ="Tahoma"
                     ControlTipText ="Show the selected event."
 
                     Begin
@@ -454,7 +457,7 @@ Begin Form
                             Height =240
                             Name ="Text50"
                             Caption ="Event (* for all):"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -475,6 +478,7 @@ Begin Form
                     AfterUpdate ="[Event Procedure]"
                     OnDblClick ="[Event Procedure]"
                     DefaultValue ="\"*\""
+                    FontName ="Tahoma"
                     ControlTipText ="Show events for the selected age."
 
                     Begin
@@ -486,7 +490,7 @@ Begin Form
                             Height =240
                             Name ="Text52"
                             Caption ="Age (* for all):"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -504,7 +508,7 @@ Begin Form
                     Name ="PromoteSelectedBut"
                     Caption ="Promote SELECTED"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     ControlTipText ="Promote competitors into the next final level for the selected event only."
                     HorizontalAnchor =1
 
@@ -531,6 +535,7 @@ Begin Form
                     AfterUpdate ="[Event Procedure]"
                     OnDblClick ="[Event Procedure]"
                     DefaultValue ="\"*\""
+                    FontName ="Tahoma"
                     ControlTipText ="Show a particular final level (* for all)."
 
                     Begin
@@ -542,7 +547,7 @@ Begin Form
                             Height =240
                             Name ="Text57"
                             Caption ="Level (* for all):"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -565,7 +570,7 @@ Begin Form
                             Height =240
                             Name ="Text61"
                             Caption ="Heat Completed"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -599,6 +604,7 @@ Begin Form
                     AfterUpdate ="[Event Procedure]"
                     OnDblClick ="[Event Procedure]"
                     DefaultValue ="\"*\""
+                    FontName ="Tahoma"
                     EventProcPrefix ="Event_"
                     ControlTipText ="Show the event with the selected number."
 
@@ -611,7 +617,7 @@ Begin Form
                             Height =240
                             Name ="Text64"
                             Caption ="Event # (* for all):"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -629,7 +635,7 @@ Begin Form
                     Name ="Help"
                     Caption ="Help"
                     OnClick ="Open Help"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
@@ -651,7 +657,7 @@ Begin Form
                     Name ="Edit"
                     Caption ="Manage the Selected Event"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     ControlTipText ="Manage the competitors in the event selected on the left."
                     HorizontalAnchor =1
 
@@ -700,7 +706,7 @@ Begin Form
                     Name ="UpdateFinalStat"
                     Caption ="Update Final Status"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     ControlTipText ="Maintenance Option: Update the status of a final level."
                     HorizontalAnchor =1
 
@@ -729,7 +735,7 @@ Begin Form
                             Height =240
                             Name ="Text69"
                             Caption ="Alert to new records"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -751,7 +757,7 @@ Begin Form
                             Height =525
                             Name ="Text73"
                             Caption ="Show \"No allocated lane alert\""
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -775,7 +781,7 @@ Begin Form
                             Height =240
                             Name ="Label75"
                             Caption ="Mixed"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End

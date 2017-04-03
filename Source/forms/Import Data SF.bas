@@ -10,10 +10,10 @@ Begin Form
     GridY =20
     Width =15953
     ItemSuffix =25
-    Left =7530
-    Top =3150
-    Right =11520
-    Bottom =7590
+    Left =900
+    Top =2880
+    Right =8955
+    Bottom =8175
     HelpContextId =150
     Filter ="(([Import Data SF].S_Name=\"Biggs\"))"
     OrderBy ="Age"
@@ -99,7 +99,7 @@ Begin Form
                     TabIndex =1
                     Name ="Sex"
                     ControlSource ="Sex"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -114,7 +114,7 @@ Begin Form
                     TabIndex =3
                     Name ="ET_Des"
                     ControlSource ="ET_Des"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -129,7 +129,7 @@ Begin Form
                     TabIndex =5
                     Name ="Competitor"
                     ControlSource ="Competitor"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -145,7 +145,7 @@ Begin Form
                     ControlSource ="H_Code"
                     Format =">"
                     StatusBarText ="House Code"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -161,7 +161,7 @@ Begin Form
                     Name ="Age"
                     ControlSource ="Age"
                     Format =">"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -177,7 +177,7 @@ Begin Form
                     Name ="Heat"
                     ControlSource ="Heat"
                     Format =">"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -190,7 +190,7 @@ Begin Form
                     TabIndex =6
                     Name ="G_Name"
                     ControlSource ="G_Name"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -203,7 +203,7 @@ Begin Form
                     TabIndex =7
                     Name ="S_Name"
                     ControlSource ="S_Name"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
             End

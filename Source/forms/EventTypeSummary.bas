@@ -17,8 +17,8 @@ Begin Form
     ItemSuffix =9
     Left =-20580
     Top =3435
-    Right =-10200
-    Bottom =10185
+    Right =-8385
+    Bottom =11280
     HelpContextId =80
     OnUnload ="[Event Procedure]"
     RecSrcDt = Begin
@@ -74,6 +74,7 @@ Begin Form
                         "EventType.ET_Des;"
                     ColumnWidths ="0;2552;680;680;3686;466"
                     OnDblClick ="[Event Procedure]"
+                    FontName ="Tahoma"
                     OnKeyDown ="[Event Procedure]"
                     ControlTipText ="Double-Click an event to edit it."
                     VerticalAnchor =2
@@ -89,6 +90,7 @@ Begin Form
                             FontWeight =700
                             Name ="Text1"
                             Caption ="Summary of Events"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -105,7 +107,7 @@ Begin Form
                     Name ="CloseBut"
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -126,7 +128,7 @@ Begin Form
                     Name ="DeleteBut"
                     Caption ="Delete Event"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -147,7 +149,7 @@ Begin Form
                     Name ="CopyBut"
                     Caption ="Copy Event"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     ControlTipText ="Copy the select event."
 
                     WebImagePaddingLeft =2
@@ -169,7 +171,7 @@ Begin Form
                     Name ="AddBut"
                     Caption ="Add Event"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     ControlTipText ="Add a new event."
 
                     WebImagePaddingLeft =2
@@ -191,7 +193,7 @@ Begin Form
                     Name ="Help"
                     Caption ="Help"
                     OnClick ="Open Help"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -212,7 +214,7 @@ Begin Form
                     Name ="Edit"
                     Caption ="Edit Event"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     ControlTipText ="Edit the selected event."
 
                     WebImagePaddingLeft =2
@@ -234,7 +236,7 @@ Begin Form
                     Name ="UpdateRecords"
                     Caption ="Update Event Records"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     ControlTipText ="Maintenance: Check if the record for selected event has been broken."
 
                     WebImagePaddingLeft =2

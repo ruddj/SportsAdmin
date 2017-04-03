@@ -76,6 +76,7 @@ Begin Form
                         "[Surname]) & \", \" & [Gname], Competitors.Age, Competitors.Sex, House.H_NAme;"
                     ColumnWidths ="0;3402;567;567;1701"
                     OnDblClick ="[Event Procedure]"
+                    FontName ="Tahoma"
                     OnKeyDown ="[Event Procedure]"
                     HorizontalAnchor =2
                     VerticalAnchor =2
@@ -94,7 +95,7 @@ Begin Form
                     Name ="CloseBut"
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
@@ -116,7 +117,7 @@ Begin Form
                     Name ="DeleteBut"
                     Caption ="Delete Competitor"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
@@ -138,7 +139,7 @@ Begin Form
                     Name ="AddBut"
                     Caption ="Add Competitor"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
@@ -156,7 +157,7 @@ Begin Form
                     FontWeight =700
                     Name ="Text7"
                     Caption ="Name"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -168,7 +169,7 @@ Begin Form
                     FontWeight =700
                     Name ="Text8"
                     Caption ="Age"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -180,7 +181,7 @@ Begin Form
                     FontWeight =700
                     Name ="Text9"
                     Caption ="Team"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -192,7 +193,7 @@ Begin Form
                     FontWeight =700
                     Name ="Text10"
                     Caption ="Sex"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin CheckBox
                     Visible = NotDefault
@@ -216,7 +217,7 @@ Begin Form
                             Height =525
                             Name ="Text13"
                             Caption ="Show All Competitors"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                             HorizontalAnchor =1
                         End
                     End
@@ -235,7 +236,7 @@ Begin Form
                     Name ="Help"
                     Caption ="Help"
                     OnClick ="Open Help"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
@@ -257,7 +258,7 @@ Begin Form
                     Name ="Roll Over"
                     Caption ="Competitor Roll Over"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     EventProcPrefix ="Roll_Over"
                     HorizontalAnchor =1
 
@@ -280,7 +281,7 @@ Begin Form
                     Name ="Roll Back"
                     Caption ="Competitor Roll Back"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     EventProcPrefix ="Roll_Back"
                     HorizontalAnchor =1
 
@@ -303,7 +304,7 @@ Begin Form
                     Name ="Bulk"
                     Caption ="Bulk Maintenance"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
@@ -325,7 +326,7 @@ Begin Form
                     Name ="CreateTeamNames"
                     Caption ="Create Team Competitors"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     WebImagePaddingLeft =2

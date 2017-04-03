@@ -8,10 +8,10 @@ Begin Form
     ScrollBars =0
     Width =7056
     ItemSuffix =30
-    Left =10830
-    Top =435
-    Right =12585
-    Bottom =7065
+    Left =2265
+    Top =3195
+    Right =9075
+    Bottom =7830
     RecSrcDt = Begin
         0x386f898110cde140
     End
@@ -62,6 +62,7 @@ Begin Form
                     Height =210
                     Name ="Text2"
                     Caption ="Event:"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -73,6 +74,7 @@ Begin Form
                     Height =210
                     Name ="Text4"
                     Caption ="Age:"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -84,6 +86,7 @@ Begin Form
                     Height =210
                     Name ="Text5"
                     Caption ="Gender:"
+                    FontName ="Tahoma"
                 End
                 Begin ComboBox
                     OverlapFlags =215
@@ -99,6 +102,7 @@ Begin Form
                     RowSource ="SELECT EventType.ET_Code, EventType.ET_Des FROM EventType WHERE (((EventType.Inc"
                         "lude)=Yes)) ORDER BY EventType.ET_Des;"
                     ColumnWidths ="0;2130"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -113,6 +117,7 @@ Begin Form
                     Format ="Fixed"
                     AfterUpdate ="[Event Procedure]"
                     OnDblClick ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -127,6 +132,7 @@ Begin Form
                     Format ="Fixed"
                     BeforeUpdate ="[Event Procedure]"
                     OnDblClick ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                 End
                 Begin Label
@@ -139,6 +145,7 @@ Begin Form
                     Height =210
                     Name ="Text11"
                     Caption ="Final Level:"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -150,6 +157,7 @@ Begin Form
                     Height =210
                     Name ="Text12"
                     Caption ="Heat:"
+                    FontName ="Tahoma"
                 End
                 Begin TextBox
                     OverlapFlags =215
@@ -160,6 +168,7 @@ Begin Form
                     Name ="FmAge"
                     AfterUpdate ="[Event Procedure]"
                     OnDblClick ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -171,6 +180,7 @@ Begin Form
                     Name ="FmSex"
                     AfterUpdate ="[Event Procedure]"
                     OnDblClick ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                 End
                 Begin Label
@@ -184,6 +194,7 @@ Begin Form
                     FontWeight =700
                     Name ="Text15"
                     Caption ="From Event"
+                    FontName ="Tahoma"
                 End
                 Begin Rectangle
                     SpecialEffect =3
@@ -205,6 +216,7 @@ Begin Form
                     Height =210
                     Name ="Text17"
                     Caption ="Event:"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     Visible = NotDefault
@@ -217,6 +229,7 @@ Begin Form
                     Height =210
                     Name ="Text18"
                     Caption ="Age:"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     Visible = NotDefault
@@ -229,6 +242,7 @@ Begin Form
                     Height =210
                     Name ="Text19"
                     Caption ="Gender:"
+                    FontName ="Tahoma"
                 End
                 Begin ComboBox
                     OverlapFlags =215
@@ -245,6 +259,7 @@ Begin Form
                     RowSource ="SELECT EventType.ET_Code, EventType.ET_Des FROM EventType WHERE (((EventType.Inc"
                         "lude)=Yes)) ORDER BY EventType.ET_Des;"
                     ColumnWidths ="0;2130"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -255,6 +270,7 @@ Begin Form
                     TabIndex =6
                     BorderColor =12632256
                     Name ="ToAge"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -265,6 +281,7 @@ Begin Form
                     TabIndex =7
                     BorderColor =12632256
                     Name ="ToSex"
+                    FontName ="Tahoma"
 
                 End
                 Begin Label
@@ -278,6 +295,7 @@ Begin Form
                     Height =210
                     Name ="Text23"
                     Caption ="Final Level:"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     Visible = NotDefault
@@ -290,6 +308,7 @@ Begin Form
                     Height =210
                     Name ="Text24"
                     Caption ="Heat:"
+                    FontName ="Tahoma"
                 End
                 Begin TextBox
                     Visible = NotDefault
@@ -299,6 +318,7 @@ Begin Form
                     TabIndex =8
                     BorderColor =12632256
                     Name ="ToFinalLev"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -309,6 +329,7 @@ Begin Form
                     TabIndex =9
                     BorderColor =12632256
                     Name ="ToHeat"
+                    FontName ="Tahoma"
 
                 End
                 Begin Label
@@ -322,6 +343,7 @@ Begin Form
                     FontWeight =700
                     Name ="Text27"
                     Caption ="To Event"
+                    FontName ="Tahoma"
                 End
                 Begin CommandButton
                     OverlapFlags =85

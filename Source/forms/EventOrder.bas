@@ -20,8 +20,8 @@ Begin Form
     ItemSuffix =109
     Left =-18570
     Top =2730
-    Right =-8250
-    Bottom =11430
+    Right =-6525
+    Bottom =11520
     HelpContextId =250
     RecSrcDt = Begin
         0x24586aaaf1e5e140
@@ -133,6 +133,7 @@ Begin Form
                     RowSource ="\"Event #\";\"Description\";\"Age\";\"Sex\";\"Final Level\";\"Heat\""
                     ColumnWidths ="1134"
                     DefaultValue ="\"Event #\""
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     Begin
@@ -146,7 +147,7 @@ Begin Form
                             FontWeight =400
                             Name ="Text30"
                             Caption ="First:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                             HorizontalAnchor =1
                         End
                     End
@@ -162,7 +163,7 @@ Begin Form
                     FontWeight =400
                     Name ="Text50"
                     Caption ="Order the events by:"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
                 End
                 Begin ComboBox
@@ -183,6 +184,7 @@ Begin Form
                     RowSource ="\"Event #\";\"Description\";\"Age\";\"Sex\";\"Final Level\";\"Heat\""
                     ColumnWidths ="1134"
                     DefaultValue ="\"Description\""
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     Begin
@@ -196,7 +198,7 @@ Begin Form
                             FontWeight =400
                             Name ="dfgdf"
                             Caption ="Second:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                             HorizontalAnchor =1
                         End
                     End
@@ -219,6 +221,7 @@ Begin Form
                     RowSource ="\"Event #\";\"Description\";\"Age\";\"Sex\";\"Final Level\";\"Heat\""
                     ColumnWidths ="1134"
                     DefaultValue ="\"Age\""
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     Begin
@@ -232,7 +235,7 @@ Begin Form
                             FontWeight =400
                             Name ="dgdg"
                             Caption ="Third:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                             HorizontalAnchor =1
                         End
                     End
@@ -255,6 +258,7 @@ Begin Form
                     RowSource ="\"Event #\";\"Description\";\"Age\";\"Sex\";\"Final Level\";\"Heat\""
                     ColumnWidths ="1134"
                     DefaultValue ="\"Sex\""
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     Begin
@@ -268,7 +272,7 @@ Begin Form
                             FontWeight =400
                             Name ="Text75"
                             Caption ="Fourth:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                             HorizontalAnchor =1
                         End
                     End
@@ -286,7 +290,7 @@ Begin Form
                     Name ="Refresh"
                     Caption ="Refresh Display"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
@@ -306,7 +310,7 @@ Begin Form
                     BackColor =16777215
                     Name ="Text12"
                     Caption ="#"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -320,7 +324,7 @@ Begin Form
                     BackColor =16777215
                     Name ="Text15"
                     Caption ="Description"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -334,7 +338,7 @@ Begin Form
                     BackColor =16777215
                     Name ="Text16"
                     Caption ="Sex"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -348,7 +352,7 @@ Begin Form
                     BackColor =16777215
                     Name ="Text19"
                     Caption ="Age"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -362,7 +366,7 @@ Begin Form
                     BackColor =16777215
                     Name ="Text20"
                     Caption ="Final"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     BackStyle =0
@@ -376,7 +380,7 @@ Begin Form
                     BackColor =16777215
                     Name ="Text80"
                     Caption ="Heat"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -391,7 +395,7 @@ Begin Form
                     Name ="Close"
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
@@ -417,6 +421,7 @@ Begin Form
                     RowSource ="\"Event #\";\"Description\";\"Age\";\"Sex\";\"Final Level\";\"Heat\""
                     ColumnWidths ="1134"
                     DefaultValue ="\"Final Level\""
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     Begin
@@ -430,7 +435,7 @@ Begin Form
                             FontWeight =400
                             Name ="Text83"
                             Caption ="Fifth:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                             HorizontalAnchor =1
                         End
                     End
@@ -453,6 +458,7 @@ Begin Form
                     RowSource ="\"Event #\";\"Description\";\"Age\";\"Sex\";\"Final Level\";\"Heat\""
                     ColumnWidths ="1134"
                     DefaultValue ="\"Heat\""
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     Begin
@@ -466,7 +472,7 @@ Begin Form
                             FontWeight =400
                             Name ="Text85"
                             Caption ="Sixth:"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                             HorizontalAnchor =1
                         End
                     End
@@ -485,7 +491,7 @@ Begin Form
                     Name ="Default Order"
                     Caption ="Default Order"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     EventProcPrefix ="Default_Order"
                     HorizontalAnchor =1
 
@@ -521,6 +527,7 @@ Begin Form
                             BackColor =16777215
                             Name ="Text91"
                             Caption ="Auto Renumber"
+                            FontName ="Tahoma"
                             HorizontalAnchor =1
                         End
                     End
@@ -539,7 +546,7 @@ Begin Form
                     Name ="SlideUp"
                     Caption ="Slide Event Numbers Up"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
@@ -561,7 +568,7 @@ Begin Form
                     Name ="Help"
                     Caption ="Help"
                     OnClick ="Open Help"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     WebImagePaddingLeft =2
@@ -595,7 +602,7 @@ Begin Form
                     FontWeight =400
                     Name ="Text95"
                     Caption ="ASC"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
                 End
                 Begin CheckBox
@@ -689,7 +696,7 @@ Begin Form
                     BackColor =16777215
                     Name ="Label103"
                     Caption ="Event Time"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin CheckBox
                     SpecialEffect =0
@@ -718,6 +725,7 @@ Begin Form
                             BackColor =16777215
                             Name ="Label105"
                             Caption ="Show All Events"
+                            FontName ="Tahoma"
                             HorizontalAnchor =1
                         End
                     End
@@ -774,6 +782,7 @@ Begin Form
                             BackColor =16777215
                             Name ="Label107"
                             Caption ="Use single click option "
+                            FontName ="Tahoma"
                             HorizontalAnchor =1
                         End
                     End
@@ -792,7 +801,7 @@ Begin Form
                     Name ="ClearAllNumbers"
                     Caption ="Clear all numbers"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     HorizontalAnchor =1
 
                     WebImagePaddingLeft =2

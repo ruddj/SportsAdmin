@@ -16,10 +16,10 @@ Begin Form
     Width =3344
     DatasheetFontHeight =10
     ItemSuffix =27
-    Left =-18465
-    Top =2325
-    Right =-16710
-    Bottom =2325
+    Left =-18930
+    Top =5340
+    Right =-15390
+    Bottom =6480
     TimerInterval =1000
     DatasheetGridlinesColor =12632256
     RecSrcDt = Begin
@@ -118,6 +118,7 @@ Begin Form
                     Name ="ReportPopupX"
                     ControlSource ="ReportPopupX"
                     AfterUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -145,6 +146,7 @@ Begin Form
                     Name ="ReportPopupY"
                     ControlSource ="ReportPopupY"
                     AfterUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label

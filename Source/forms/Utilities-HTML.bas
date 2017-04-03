@@ -16,10 +16,10 @@ Begin Form
     GridY =20
     Width =7758
     ItemSuffix =140
-    Left =405
-    Top =570
-    Right =9090
-    Bottom =6315
+    Left =2265
+    Top =3285
+    Right =9495
+    Bottom =6975
     HelpContextId =540
     RecSrcDt = Begin
         0x8e1244042dc7e140
@@ -166,6 +166,7 @@ Begin Form
                     BorderColor =12632256
                     Name ="Field123"
                     ControlSource ="ReportHeader"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -179,6 +180,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text124"
                             Caption ="Web Page Header:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -193,6 +195,7 @@ Begin Form
                     BorderColor =12632256
                     Name ="TemplateFile"
                     ControlSource ="TemplateFile"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -206,6 +209,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text126"
                             Caption ="Template File:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -259,6 +263,7 @@ Begin Form
                     BorderColor =12632256
                     Name ="TemplateFileSummary"
                     ControlSource ="TemplateFileSummary"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -271,6 +276,7 @@ Begin Form
                             FontWeight =400
                             Name ="Text129"
                             Caption ="Template File Summary:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -324,6 +330,7 @@ Begin Form
                     BorderColor =12632256
                     Name ="HTMLlocation"
                     ControlSource ="HTMLlocation"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -336,6 +343,7 @@ Begin Form
                             FontWeight =400
                             Name ="Text132"
                             Caption ="Location to put Generated Web Pages:"
+                            FontName ="Tahoma"
                         End
                     End
                 End

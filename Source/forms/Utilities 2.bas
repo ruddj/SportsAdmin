@@ -17,10 +17,10 @@ Begin Form
     GridY =10
     Width =7143
     ItemSuffix =123
-    Left =-22905
-    Top =5370
-    Right =-15795
-    Bottom =10305
+    Left =-18960
+    Top =5355
+    Right =-11850
+    Bottom =10290
     RecSrcDt = Begin
         0xb3dbca3c8df5e140
     End
@@ -139,6 +139,7 @@ Begin Form
                     ColumnWidths ="390;735"
                     OnDblClick ="[Event Procedure]"
                     DefaultValue ="\"*\""
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -151,7 +152,7 @@ Begin Form
                             FontWeight =400
                             Name ="Sex_DD_Tit"
                             Caption ="Sex"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -168,7 +169,7 @@ Begin Form
                     Name ="RemoveEmpty"
                     Caption ="Remove Empty Heats"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -193,6 +194,7 @@ Begin Form
                     ColumnWidths ="1510"
                     OnDblClick ="[Event Procedure]"
                     DefaultValue ="\"*\""
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -205,7 +207,7 @@ Begin Form
                             FontWeight =400
                             Name ="Text71"
                             Caption ="Final"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -227,6 +229,7 @@ Begin Form
                     ColumnWidths ="1510"
                     OnDblClick ="[Event Procedure]"
                     DefaultValue ="\"*\""
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -239,7 +242,7 @@ Begin Form
                             FontWeight =400
                             Name ="Text73"
                             Caption ="Heat"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -261,6 +264,7 @@ Begin Form
                     ColumnWidths ="1510"
                     OnDblClick ="[Event Procedure]"
                     DefaultValue ="\"*\""
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -273,7 +277,7 @@ Begin Form
                             FontWeight =400
                             Name ="Text75"
                             Caption ="Age"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -312,7 +316,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text81"
                             Caption ="Future"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -339,7 +343,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text83"
                             Caption ="Active"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -366,7 +370,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text85"
                             Caption ="Completed"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -393,7 +397,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text87"
                             Caption ="Promoted"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -470,7 +474,7 @@ Begin Form
                     Name ="Help"
                     Caption ="Help"
                     OnClick ="Open Help"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -537,6 +541,7 @@ Begin Form
                     BackColor =-2147483633
                     BorderColor =12632256
                     Name ="Changes"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -549,6 +554,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text122"
                             Caption ="Changes:"
+                            FontName ="Tahoma"
                         End
                     End
                 End

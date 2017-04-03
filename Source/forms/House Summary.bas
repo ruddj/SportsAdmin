@@ -12,10 +12,8 @@ Begin Form
     GridY =20
     Width =10368
     ItemSuffix =30
-    Left =960
-    Top =1860
-    Right =11325
-    Bottom =8820
+    Right =14340
+    Bottom =9495
     HelpContextId =40
     RecSrcDt = Begin
         0x637d3e042dc7e140
@@ -91,7 +89,7 @@ Begin Form
                     Name ="Close"
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -113,7 +111,7 @@ Begin Form
                     Name ="AddB"
                     Caption ="Add &Team"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -135,7 +133,7 @@ Begin Form
                     Name ="DeleteB"
                     Caption ="De&lete  Team"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Delete the selected team."
 
                     WebImagePaddingLeft =2
@@ -160,6 +158,7 @@ Begin Form
                     RowSourceType ="Table/Query"
                     RowSource ="Select [HT_Code],[Desc] From [HouseTypes];"
                     ColumnWidths ="0;1440"
+                    FontName ="Tahoma"
                     Visible = NotDefault
                     BackStyle =0
                     OverlapFlags =87
@@ -170,7 +169,7 @@ Begin Form
                     Height =225
                     Name ="Text15"
                     Caption ="Show the following:"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -187,7 +186,7 @@ Begin Form
                     Name ="Help"
                     Caption ="&Help"
                     OnClick ="Open Help"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -209,7 +208,7 @@ Begin Form
                     Name ="Extra"
                     Caption ="&Allocate Extra Points"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -231,7 +230,7 @@ Begin Form
                     Name ="AllocateLanes"
                     Caption ="&Allocate Lanes"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -252,7 +251,7 @@ Begin Form
                     Name ="Edit"
                     Caption ="&Edit Team"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -267,6 +266,7 @@ Begin Form
                     Height =6690
                     TabIndex =8
                     Name ="TabCtl19"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Page
@@ -293,7 +293,7 @@ Begin Form
                                     FontWeight =700
                                     Name ="Text2"
                                     Caption ="Code"
-                                    FontName ="Arial"
+                                    FontName ="Tahoma"
                                 End
                                 Begin Label
                                     BackStyle =0
@@ -306,7 +306,7 @@ Begin Form
                                     FontWeight =700
                                     Name ="Text3"
                                     Caption ="Description"
-                                    FontName ="Arial"
+                                    FontName ="Tahoma"
                                 End
                                 Begin Subform
                                     OverlapFlags =215
@@ -332,7 +332,7 @@ Begin Form
                                     FontWeight =700
                                     Name ="Text10"
                                     Caption ="Comp. Pool"
-                                    FontName ="Arial"
+                                    FontName ="Tahoma"
                                 End
                                 Begin Label
                                     BackStyle =0
@@ -345,7 +345,7 @@ Begin Form
                                     FontWeight =700
                                     Name ="Text11"
                                     Caption ="Inc."
-                                    FontName ="Arial"
+                                    FontName ="Tahoma"
                                 End
                             End
                         End
@@ -372,6 +372,7 @@ Begin Form
                                     FontWeight =700
                                     Name ="Label22"
                                     Caption ="General"
+                                    FontName ="Tahoma"
                                 End
                                 Begin Label
                                     BackStyle =0
@@ -384,6 +385,7 @@ Begin Form
                                     Name ="Label24"
                                     Caption ="Add each team that will be competing in this carnival by pushing the 'Add Team' "
                                         "button."
+                                    FontName ="Tahoma"
                                 End
                                 Begin Label
                                     BackStyle =0
@@ -395,6 +397,7 @@ Begin Form
                                     FontWeight =700
                                     Name ="Label26"
                                     Caption ="Allocate Extra Points"
+                                    FontName ="Tahoma"
                                 End
                                 Begin Label
                                     BackStyle =0
@@ -408,6 +411,7 @@ Begin Form
                                     Caption ="If you wish to give a team extra points for, say cheerleading, do so by pushing "
                                         "the 'Allocate Extra Points' button.  You can also deduct points from team this w"
                                         "ay.  Simply enter a negative value for the points."
+                                    FontName ="Tahoma"
                                 End
                                 Begin Label
                                     BackStyle =0
@@ -419,6 +423,7 @@ Begin Form
                                     FontWeight =700
                                     Name ="Label28"
                                     Caption ="Allocate Lanes"
+                                    FontName ="Tahoma"
                                 End
                                 Begin Label
                                     BackStyle =0
@@ -432,6 +437,7 @@ Begin Form
                                     Caption ="When adding competitors to an event the program will automatically place them in"
                                         " the lanes you specify in the 'Allocate Default lanes' form.  You can specify an"
                                         "y number lanes for a team.  Puch the 'Allocate Lanes' button."
+                                    FontName ="Tahoma"
                                 End
                             End
                         End

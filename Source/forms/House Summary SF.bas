@@ -9,10 +9,10 @@ Begin Form
     GridY =10
     Width =9490
     ItemSuffix =41
-    Left =2400
-    Top =510
-    Right =11520
-    Bottom =7440
+    Left =720
+    Top =2010
+    Right =8730
+    Bottom =7500
     HelpContextId =40
     RecSrcDt = Begin
         0x119d78290fcde140
@@ -113,7 +113,7 @@ Begin Form
                     Format =">"
                     StatusBarText ="House / School Code ie. Asher, COC, Beaudesert, Australia, Individual?)"
                     OnDblClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Enter a short code for the team."
 
                 End
@@ -128,7 +128,7 @@ Begin Form
                     ControlSource ="H_NAme"
                     StatusBarText ="House / School Name"
                     OnDblClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Enter a descriptive name for the team."
 
                 End
@@ -161,7 +161,7 @@ Begin Form
                     Format ="General Number"
                     StatusBarText ="The number of people the House / School has available to them"
                     OnDblClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="The size of the school or region that the team was selected from."
 
                 End
@@ -188,6 +188,7 @@ Begin Form
                     TabIndex =5
                     Name ="Field32"
                     ControlSource ="HT_Code"
+                    FontName ="Tahoma"
 
                 End
             End
@@ -209,7 +210,7 @@ Begin Form
                     Name ="Select All"
                     Caption ="Include All"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     EventProcPrefix ="Select_All"
                     ControlTipText ="Tick the 'Include' box for all teams."
 
@@ -231,7 +232,7 @@ Begin Form
                     Name ="Exclude All"
                     Caption ="Exclude All"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     EventProcPrefix ="Exclude_All"
                     ControlTipText ="Untick the 'Include' box for all competitors."
 

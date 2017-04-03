@@ -19,10 +19,10 @@ Begin Form
     GridY =10
     Width =7961
     ItemSuffix =56
-    Left =-22980
-    Top =5280
-    Right =-15225
-    Bottom =10380
+    Left =-19035
+    Top =5265
+    Right =-11280
+    Bottom =10365
     RecSrcDt = Begin
         0x6bd443042dc7e140
     End
@@ -96,6 +96,7 @@ Begin Form
                     BorderColor =12632256
                     Name ="Field18"
                     ControlSource ="OpenAge"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -107,7 +108,6 @@ Begin Form
                             Height =240
                             Name ="Text19"
                             Caption ="Open Age:"
-                            FontName ="Arial"
                         End
                     End
                 End
@@ -126,7 +126,7 @@ Begin Form
                     Name ="Remove"
                     Caption ="Delete All Competitors"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -149,7 +149,7 @@ Begin Form
                     Name ="Reset"
                     Caption ="Reset All Events"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -166,6 +166,7 @@ Begin Form
                     BorderColor =12632256
                     Name ="CarnivalTitle"
                     ControlSource ="CarnivalTitle"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -176,7 +177,6 @@ Begin Form
                             Height =240
                             Name ="Text15"
                             Caption ="Report Header:"
-                            FontName ="Arial"
                         End
                     End
                 End
@@ -189,6 +189,7 @@ Begin Form
                     BorderColor =12632256
                     Name ="CarnivalFooter"
                     ControlSource ="CarnivalFooter"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -199,7 +200,6 @@ Begin Form
                             Height =240
                             Name ="Text17"
                             Caption ="Report Footer:"
-                            FontName ="Arial"
                         End
                     End
                 End
@@ -213,6 +213,7 @@ Begin Form
                     BorderColor =12632256
                     Name ="Text47"
                     ControlSource ="ImportLocation"
+                    FontName ="Tahoma"
 
                     Begin
                         Begin Label
@@ -225,7 +226,6 @@ Begin Form
                             Height =240
                             Name ="Label48"
                             Caption ="Password:"
-                            FontName ="Arial"
                         End
                     End
                 End
@@ -294,7 +294,7 @@ Begin Form
                     Name ="ClearResults"
                     Caption ="Clear all Results"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2

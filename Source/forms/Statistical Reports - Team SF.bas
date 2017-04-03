@@ -12,10 +12,10 @@ Begin Form
     GridY =20
     Width =4536
     ItemSuffix =21
-    Left =11550
-    Top =6705
-    Right =13305
-    Bottom =7590
+    Left =9165
+    Top =5565
+    Right =11370
+    Bottom =7065
     RecSrcDt = Begin
         0x7903b8b911cde140
     End
@@ -97,7 +97,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Label19"
                     Caption ="Name"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =85
@@ -109,7 +109,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Label20"
                     Caption ="Include"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
             End
         End
@@ -129,7 +129,7 @@ Begin Form
                     Name ="H_NAme"
                     ControlSource ="H_NAme"
                     StatusBarText ="House / School Name"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin CheckBox

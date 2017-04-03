@@ -14,10 +14,10 @@ Begin Form
     GridY =20
     Width =12940
     ItemSuffix =29
-    Left =11550
-    Top =2970
-    Right =13305
-    Bottom =6105
+    Left =6135
+    Top =3795
+    Right =8250
+    Bottom =9015
     OrderBy ="[Report SF2].ET_Des"
     RecSrcDt = Begin
         0xff6a99cdede5e140
@@ -99,7 +99,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text12"
                     Caption ="Event"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =85
@@ -110,7 +110,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text24"
                     Caption ="Include"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
             End
         End
@@ -143,7 +143,7 @@ Begin Form
                     Name ="ET_Des"
                     ControlSource ="ET_Des"
                     StatusBarText ="Event Description - ie. 200m; 100m Hurdles; High Jump- No sex / age specifics"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin CheckBox
@@ -186,7 +186,7 @@ Begin Form
                     Name ="All"
                     Caption ="ALL"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Include all events."
 
                     WebImagePaddingLeft =2
@@ -207,7 +207,7 @@ Begin Form
                     Name ="None"
                     Caption ="NONE"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Include no events."
 
                     WebImagePaddingLeft =2

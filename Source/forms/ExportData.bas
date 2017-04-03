@@ -13,10 +13,10 @@ Begin Form
     GridY =10
     Width =9127
     ItemSuffix =46
-    Left =-17925
-    Top =3075
-    Right =-7410
-    Bottom =11595
+    Left =-17970
+    Top =2655
+    Right =-8205
+    Bottom =10665
     HelpContextId =140
     RecSrcDt = Begin
         0x842055290fcde140
@@ -97,6 +97,7 @@ Begin Form
                             FontWeight =700
                             Name ="Text1"
                             Caption ="Team to generate Carnival Disk(s) for:"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -120,7 +121,7 @@ Begin Form
                     Height =225
                     Name ="Text4"
                     Caption ="Team"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin OptionGroup
                     SpecialEffect =3
@@ -145,6 +146,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text7"
                             Caption ="Sex Format"
+                            FontName ="Tahoma"
                         End
                         Begin CheckBox
                             OverlapFlags =87
@@ -164,6 +166,7 @@ Begin Form
                                     Height =240
                                     Name ="Text10"
                                     Caption ="Boys / Girls"
+                                    FontName ="Tahoma"
                                 End
                             End
                         End
@@ -185,6 +188,7 @@ Begin Form
                                     Height =240
                                     Name ="Text12"
                                     Caption ="Male / Female"
+                                    FontName ="Tahoma"
                                 End
                             End
                         End
@@ -213,6 +217,7 @@ Begin Form
                             BackColor =-2147483633
                             Name ="Text14"
                             Caption ="Heat Format"
+                            FontName ="Tahoma"
                         End
                         Begin CheckBox
                             OverlapFlags =87
@@ -232,6 +237,7 @@ Begin Form
                                     Height =240
                                     Name ="Text17"
                                     Caption ="1, 2, 3, 4 etc"
+                                    FontName ="Tahoma"
                                 End
                             End
                         End
@@ -253,6 +259,7 @@ Begin Form
                                     Height =240
                                     Name ="Text19"
                                     Caption ="A, B, C, D etc"
+                                    FontName ="Tahoma"
                                 End
                             End
                         End
@@ -271,7 +278,7 @@ Begin Form
                     Name ="CreateBut"
                     Caption ="Create Disks"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Create the carnival disks."
 
                     WebImagePaddingLeft =2
@@ -292,7 +299,7 @@ Begin Form
                     Name ="CloseBut"
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -310,6 +317,7 @@ Begin Form
                     Name ="Path"
                     ControlSource ="ExportLocation"
                     DefaultValue ="\"A:\\\""
+                    FontName ="Tahoma"
                     ControlTipText ="Enter the path where you want to create the carnival (don't include the file nam"
                         "e)."
 
@@ -333,6 +341,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text25"
                     Caption ="Full Path for Carnival File"
+                    FontName ="Tahoma"
                 End
                 Begin CheckBox
                     OverlapFlags =93
@@ -353,6 +362,7 @@ Begin Form
                             Height =225
                             Name ="Text33"
                             Caption ="Plain Text"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -375,6 +385,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Text35"
                     Caption ="Disk Format:"
+                    FontName ="Tahoma"
                 End
                 Begin CheckBox
                     OverlapFlags =247
@@ -395,6 +406,7 @@ Begin Form
                             Height =225
                             Name ="Text38"
                             Caption ="Plain Text (CSV)"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -412,7 +424,7 @@ Begin Form
                     Name ="Help"
                     Caption ="Help"
                     OnClick ="Open Help"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -488,6 +500,7 @@ Begin Form
                             Height =225
                             Name ="Label45"
                             Caption ="Rich Text Format "
+                            FontName ="Tahoma"
                         End
                     End
                 End

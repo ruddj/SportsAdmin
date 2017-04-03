@@ -17,10 +17,10 @@ Begin Form
     GridY =20
     Width =10956
     ItemSuffix =113
-    Left =2130
-    Top =1530
-    Right =13080
-    Bottom =8205
+    Left =570
+    Top =240
+    Right =14865
+    Bottom =9600
     HelpContextId =270
     RecSrcDt = Begin
         0x49d6923c4fcce140
@@ -126,7 +126,7 @@ Begin Form
                     Name ="Close"
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -154,7 +154,7 @@ Begin Form
                     Height =225
                     Name ="Text9"
                     Caption ="Selected events "
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Subform
                     OverlapFlags =85
@@ -177,7 +177,7 @@ Begin Form
                     Height =225
                     Name ="Text10"
                     Caption ="Selected Teams:"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -192,7 +192,7 @@ Begin Form
                     Name ="Selected"
                     Caption ="Preview Selected Reports"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -219,7 +219,11 @@ Begin Form
                             ForeColor =8388608
                             Name ="Text33"
                             Caption ="Overall Results^"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
+                            LayoutCachedLeft =680
+                            LayoutCachedTop =314
+                            LayoutCachedWidth =2465
+                            LayoutCachedHeight =614
                         End
                     End
                 End
@@ -243,7 +247,7 @@ Begin Form
                             ForeColor =8388608
                             Name ="Text36"
                             Caption ="Overall Results by Age^"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -268,7 +272,7 @@ Begin Form
                             ForeColor =8388608
                             Name ="Text38"
                             Caption ="Overall Results by Gender^"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -292,7 +296,7 @@ Begin Form
                             ForeColor =8388608
                             Name ="Text40"
                             Caption ="Overall Res. by Gender/Age^"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -316,7 +320,7 @@ Begin Form
                             ForeColor =8388608
                             Name ="Text42"
                             Caption ="From results in age div only"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                             ControlTipText ="Determine the competitors points by totaling the points gained \015\012for event"
                                 "s in the age division only.  Points from other divisions\015\012are not counted."
                         End
@@ -343,7 +347,7 @@ Begin Form
                             ForeColor =8388608
                             Name ="Text44"
                             Caption ="Competitor Events^"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -367,7 +371,7 @@ Begin Form
                             ForeColor =8388608
                             Name ="Text46"
                             Caption ="Event Results^"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -392,7 +396,7 @@ Begin Form
                             Height =270
                             Name ="Text48"
                             Caption ="Competitor List (by Team)"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                             ControlTipText ="Useful list for manual entry of field event results."
                         End
                     End
@@ -417,7 +421,7 @@ Begin Form
                             ForeColor =8388608
                             Name ="Current Records"
                             Caption ="Current Records^"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                             EventProcPrefix ="Current_Records"
                         End
                     End
@@ -443,7 +447,7 @@ Begin Form
                             Height =510
                             Name ="Text52"
                             Caption ="Competitors Results (by Team / Event) *"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -460,7 +464,7 @@ Begin Form
                     Name ="All1"
                     Caption ="All"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -481,7 +485,7 @@ Begin Form
                     Name ="None1"
                     Caption ="None"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -502,7 +506,7 @@ Begin Form
                     Name ="All2"
                     Caption ="All"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -523,7 +527,7 @@ Begin Form
                     Name ="None2"
                     Caption ="None"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -544,7 +548,7 @@ Begin Form
                     Name ="All3"
                     Caption ="All"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -565,7 +569,7 @@ Begin Form
                     Name ="None3"
                     Caption ="None"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -594,7 +598,7 @@ Begin Form
                             Height =300
                             Name ="Text65"
                             Caption ="Competitor Places *"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -607,6 +611,7 @@ Begin Form
                     TabIndex =21
                     Name ="CompetitorPlaces#"
                     ControlSource ="NumberOfRecords"
+                    FontName ="Tahoma"
                     EventProcPrefix ="CompetitorPlaces_"
                     ControlTipText ="Reports that have an '*' will limit the rows returned."
 
@@ -643,7 +648,7 @@ Begin Form
                             Height =300
                             Name ="Text72"
                             Caption ="Current Records (Mini)"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                             ControlTipText ="Report results affected by Selected Events"
                         End
                     End
@@ -669,7 +674,7 @@ Begin Form
                             Height =270
                             Name ="Text74"
                             Caption ="Records set on "
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                             LayoutCachedLeft =3529
                             LayoutCachedTop =1648
                             LayoutCachedWidth =4729
@@ -690,7 +695,7 @@ Begin Form
                     Name ="PrintSelected"
                     Caption ="Print Selected Reports"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -710,7 +715,7 @@ Begin Form
                     Name ="PrintOpen"
                     Caption ="Print All Open  Reports"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -736,6 +741,7 @@ Begin Form
                     ColumnWidths ="855"
                     AfterUpdate ="[Event Procedure]"
                     OnDblClick ="[Event Procedure]"
+                    FontName ="Tahoma"
                     Format ="Medium Date"
 
                 End
@@ -753,7 +759,7 @@ Begin Form
                     Name ="Button81"
                     Caption ="Help"
                     OnClick ="Open Help"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -769,6 +775,7 @@ Begin Form
                     Height =600
                     Name ="Text82"
                     Caption ="(*) Number of records to display"
+                    FontName ="Tahoma"
                 End
                 Begin CheckBox
                     SpecialEffect =3
@@ -793,7 +800,7 @@ Begin Form
                             ForeColor =8388608
                             Name ="Q"
                             Caption ="Competitor Results*^"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -817,7 +824,7 @@ Begin Form
                             Height =300
                             Name ="Text88"
                             Caption ="Overall Res. by Place"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -834,7 +841,7 @@ Begin Form
                     Name ="GenerateHTMLbut"
                     Caption ="Generate HTML for Selected Reports"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -851,6 +858,7 @@ Begin Form
                     ForeColor =8388608
                     Name ="Text90"
                     Caption ="(^) Has Web Page Facility"
+                    FontName ="Tahoma"
                 End
                 Begin CheckBox
                     Enabled = NotDefault
@@ -874,7 +882,7 @@ Begin Form
                             Height =285
                             Name ="Label93"
                             Caption ="the \"Selected Events\""
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -900,7 +908,7 @@ Begin Form
                             Height =285
                             Name ="Label96"
                             Caption ="the \"Selected Teams\""
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -926,7 +934,7 @@ Begin Form
                             Height =435
                             Name ="Label98"
                             Caption ="the \"Selected Events\" AND  \"Selected Teams\""
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -939,6 +947,7 @@ Begin Form
                     FontWeight =700
                     Name ="Label99"
                     Caption ="The type of checkbox against each report indicates that results are affected by:"
+                    FontName ="Tahoma"
                 End
                 Begin CheckBox
                     SpecialEffect =0
@@ -961,7 +970,7 @@ Begin Form
                             Height =300
                             Name ="Label104"
                             Caption ="Cumulative Res. by Event #"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                         End
                     End
                 End
@@ -987,7 +996,7 @@ Begin Form
                             Height =270
                             Name ="Label106"
                             Caption ="Non-Participants"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                             ControlTipText ="Useful list for manual entry of field event results."
                         End
                     End
@@ -1012,7 +1021,7 @@ Begin Form
                             ForeColor =8388608
                             Name ="Label108"
                             Caption ="From results across all divs"
-                            FontName ="Arial"
+                            FontName ="Tahoma"
                             ControlTipText ="Determine the competitors points by totaling the points gained \015\012in ANY ag"
                                 "e division."
                         End
@@ -1027,6 +1036,7 @@ Begin Form
                     FontWeight =700
                     Name ="Label111"
                     Caption ="Age Champions"
+                    FontName ="Tahoma"
                 End
             End
         End

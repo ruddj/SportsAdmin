@@ -10,10 +10,10 @@ Begin Form
     GridY =20
     Width =5256
     ItemSuffix =20
-    Left =5220
-    Top =3570
-    Right =9030
-    Bottom =7590
+    Left =4170
+    Top =3240
+    Right =7980
+    Bottom =8010
     HelpContextId =140
     RecSrcDt = Begin
         0x7903b8b911cde140
@@ -95,7 +95,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Label18"
                     Caption ="Code"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin Label
                     OverlapFlags =85
@@ -106,7 +106,7 @@ Begin Form
                     BackColor =-2147483633
                     Name ="Label19"
                     Caption ="Name"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
             End
         End
@@ -126,7 +126,7 @@ Begin Form
                     Name ="H_Code"
                     ControlSource ="Hcode"
                     StatusBarText ="House / School Code ie. Asher, COC, Beaudesert, Australia, Individual?)"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin TextBox
@@ -141,7 +141,7 @@ Begin Form
                     Name ="H_NAme"
                     ControlSource ="H_NAme"
                     StatusBarText ="House / School Name"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
                 Begin CheckBox
@@ -175,7 +175,7 @@ Begin Form
                     Name ="SelectAllBut"
                     Caption ="ALL"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Select all teams."
 
                     WebImagePaddingLeft =2
@@ -196,7 +196,7 @@ Begin Form
                     Name ="DEselectBut"
                     Caption ="NONE"
                     OnClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Select no teams."
 
                     WebImagePaddingLeft =2

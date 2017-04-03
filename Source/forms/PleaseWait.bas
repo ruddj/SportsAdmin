@@ -14,10 +14,10 @@ Begin Form
     GridY =5
     Width =3750
     ItemSuffix =11
-    Left =3255
-    Top =2325
-    Right =14595
-    Bottom =9300
+    Left =-18330
+    Top =5115
+    Right =-7815
+    Bottom =13125
     RecSrcDt = Begin
         0xb9e9a8e8eec6e140
     End
@@ -1544,7 +1544,7 @@ Begin Form
                     Height =1004
                     BackColor =12632256
                     Name ="Mesg"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
 
                 End
             End
