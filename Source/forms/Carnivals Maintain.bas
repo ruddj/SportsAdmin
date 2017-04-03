@@ -18,8 +18,8 @@ Begin Form
     ItemSuffix =26
     Left =-20805
     Top =2715
-    Right =-10140
-    Bottom =10065
+    Right =-8280
+    Bottom =12105
     HelpContextId =30
     OnUnload ="[Event Procedure]"
     RecSrcDt = Begin
@@ -90,7 +90,7 @@ Begin Form
                         "ailable DESC , Carnivals.Carnival;"
                     ColumnWidths ="2268;3536;1851;567"
                     OnDblClick ="[Event Procedure]"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="Double click a carnival to work on it."
                     HorizontalAnchor =2
                     VerticalAnchor =2
@@ -106,7 +106,7 @@ Begin Form
                     FontWeight =700
                     Name ="Text2"
                     Caption ="Available Carnivals"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -120,7 +120,7 @@ Begin Form
                     Name ="Close"
                     Caption ="&Done"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     ControlTipText ="Return to the previous form."
                     HorizontalAnchor =1
 
@@ -141,7 +141,7 @@ Begin Form
                     Name ="New"
                     Caption ="&New"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     ControlTipText ="Create a new empty carnival."
                     HorizontalAnchor =1
 
@@ -162,7 +162,7 @@ Begin Form
                     Name ="Copy"
                     Caption ="C&opy"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     ControlTipText ="Copy an exisiting carnival.  Use this if you have already set up a carnival that"
                         " is similar or identical to the new carnival you will be conducting."
                     HorizontalAnchor =1
@@ -184,7 +184,7 @@ Begin Form
                     Name ="Delete"
                     Caption ="D&elete"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     ControlTipText ="Delete the selected carnival."
                     HorizontalAnchor =1
 
@@ -205,7 +205,7 @@ Begin Form
                     Name ="Rename"
                     Caption ="&Rename"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     ControlTipText ="Rename the carnival."
                     HorizontalAnchor =1
 
@@ -229,7 +229,7 @@ Begin Form
                     BackColor =12632256
                     Name ="ActiveCarnival"
                     ControlSource ="ActiveCarnival"
-                    FontName ="Arial"
+                    FontName ="Tahoma"
                     ControlTipText ="This shows the carnival that is currently being worked on."
                     VerticalAnchor =1
 
@@ -270,7 +270,7 @@ Begin Form
                     Name ="Button16"
                     Caption ="&Add"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     ControlTipText ="Add an exisitng carnival (one you have already created) to the list."
                     HorizontalAnchor =1
 
@@ -290,7 +290,7 @@ Begin Form
                     Name ="Button17"
                     Caption ="&Quit"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     ControlTipText ="Exit the Sports Administrator."
                     HorizontalAnchor =1
 
@@ -311,7 +311,7 @@ Begin Form
                     Name ="MakeActive"
                     Caption ="&Work on selected carnival"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     ControlTipText ="Start working on the carnival you have selected from the list."
                     HorizontalAnchor =1
 
@@ -341,7 +341,7 @@ Begin Form
                     Name ="Help Button"
                     Caption ="&Help"
                     OnClick ="Open Help"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     EventProcPrefix ="Help_Button"
                     HorizontalAnchor =1
 
@@ -361,7 +361,7 @@ Begin Form
                     Name ="ChangeFile"
                     Caption ="Change File"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     ControlTipText ="Change the file associated with the carnival."
                     HorizontalAnchor =1
 
@@ -381,7 +381,7 @@ Begin Form
                     Name ="CompactCarnivalBut"
                     Caption ="Compact"
                     OnClick ="[Event Procedure]"
-                    FontName ="MS Sans Serif"
+                    FontName ="Tahoma"
                     ControlTipText ="Compact the carnival file so that it is not wasting any disk space."
                     HorizontalAnchor =1
 
@@ -401,6 +401,7 @@ Begin Form
                     Name ="ImportCarnivalList"
                     Caption ="&Import Carnival List"
                     OnClick ="[Event Procedure]"
+                    FontName ="Tahoma"
                     ControlTipText ="If you have recently upgraded to a new version of the Sports Administrator, use "
                         "the button to import the carnival list from the old version."
                     VerticalAnchor =1
@@ -607,13 +608,13 @@ On Error GoTo ImportCarnivalList_Click_Err
     Dim strFilter As String
     Dim lngFlags As Long
     
-    strFilter = ahtAddFilterItem(strFilter, "Carnival Files (*.mde)", "*.mde")
+    strFilter = ahtAddFilterItem(strFilter, "Carnival Files (*.accdr, *.accdb)", "*.accdb; *.accdr")
     strFilter = ahtAddFilterItem(strFilter, "Old Files (*.old)", "*.old")
     strFilter = ahtAddFilterItem(strFilter, "All Files (*.*)", "*.*")
     
     ReturnVar = ahtCommonFileOpenSave(InitialDir:="", _
         Filter:=strFilter, FilterIndex:=1, Flags:=lngFlags, _
-        DialogTitle:="Locate Old Sports.MDE Program file")
+        DialogTitle:="Locate Old Sports.accdr Program file")
 
     
     If ReturnVar = "" Then
