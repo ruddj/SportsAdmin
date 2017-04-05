@@ -56,17 +56,17 @@ For end users you can change the Sports.accdb file extension to .accdr to load i
 ## Screens
 
 ### Main Screen
-![Sports Admin Main Screen](https://github.com/ruddj/SportsAdmin/blob/master/docs/MainScreen.png?raw=true)
+![Sports Admin Main Screen](https://github.com/ruddj/SportsAdmin/blob/sa-pages/images/welcome-screen.png?raw=true)
 
 
 ### Setup Carnival Guide
-![Setup Carnival Guide](https://github.com/ruddj/SportsAdmin/blob/master/docs/SetupCarnival.png?raw=true)
+![Setup Carnival Guide](https://github.com/ruddj/SportsAdmin/blob/sa-pages/images/setup-carnival.png?raw=true)
 
 
 ### Competitor Results Entry
-![Competitor Results Entry](https://github.com/ruddj/SportsAdmin/blob/master/docs/ResultsEntry.png?raw=true)
+![Competitor Results Entry](https://github.com/ruddj/SportsAdmin/blob/sa-pages/images/event-results.png?raw=true)
 
 
 ### Report Options
-![Report Options](https://github.com/ruddj/SportsAdmin/blob/master/docs/Reports.png?raw=true)
+![Report Options](https://github.com/ruddj/SportsAdmin/blob/sa-pages/images/Reports.png?raw=true)
 
