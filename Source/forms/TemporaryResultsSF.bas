@@ -10,10 +10,11 @@ Begin Form
     GridY =25
     Width =4266
     ItemSuffix =6
-    Left =5955
-    Top =1080
-    Right =11520
-    Bottom =4515
+    Left =480
+    Top =1470
+    Right =3390
+    Bottom =3900
+    HelpContextId =110
     RecSrcDt = Begin
         0x72946ef6abcde140
     End

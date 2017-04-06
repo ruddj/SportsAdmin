@@ -6,19 +6,24 @@ Begin Form
     NavigationButtons = NotDefault
     DefaultView =0
     ScrollBars =0
+    ViewsAllowed =1
     GridX =25
     GridY =25
     Width =3398
     ItemSuffix =7
-    Left =1380
-    Top =540
-    Right =11520
-    Bottom =7590
+    Right =15225
+    Bottom =8010
+    HelpContextId =110
     RecSrcDt = Begin
         0x72946ef6abcde140
     End
     Caption ="Enter Results in Place Order"
     HelpFile ="SportsAdmin.chm"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
+    AllowDatasheetView =0
     FilterOnLoad =0
     AllowLayoutView =0
     Begin

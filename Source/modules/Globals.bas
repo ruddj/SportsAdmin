@@ -468,7 +468,7 @@ Sub Calculate_Results(res As String, nValu As String, Runit As String, ByRef suc
 
   End If
     
-  res = Str(nRes)
+  res = str(nRes)
   success = True
   
 Calculate_Results_Exit:
@@ -732,7 +732,7 @@ Function OLDDetermineAge(Eage As String)
         If TempAge >= DLookup("[OpenAge]", "Miscellaneous") Then
             OLDDetermineAge = "OPEN"
         Else
-            OLDDetermineAge = Trim(Str(TempAge))
+            OLDDetermineAge = Trim(str(TempAge))
         End If
             
     ElseIf Eage = "OPEN" Then
@@ -778,14 +778,14 @@ Function DetermineAge_ImportCompetitors(DOB As Variant, CutDay As Integer, CutMo
     CurYear = Int(Format(Now, "yyyy")) ' CurYear
     
     If Cmonth > CutMonth Then
-      Cage = Str(CurYear - Cyear)
+      Cage = str(CurYear - Cyear)
     ElseIf Cmonth < CutMonth Then
-      Cage = Str(CurYear - Cyear) + 1
+      Cage = str(CurYear - Cyear) + 1
     Else ' Born in the same month as the CutOff month
       If Cday >= CutDay Then
-        Cage = Str(CurYear - Cyear)
+        Cage = str(CurYear - Cyear)
       Else
-        Cage = Str(CurYear - Cyear) + 1
+        Cage = str(CurYear - Cyear) + 1
       End If
     End If
   End If

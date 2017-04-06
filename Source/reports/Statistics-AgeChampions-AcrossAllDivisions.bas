@@ -632,7 +632,7 @@ Dim eHTML As String, AlleHTML As String, sEvents As String
     
                 Call CellStart(eHTML, "Center", "", "20%", BGcolor, 1)
                 eHTML = eHTML & LinkStart(repName & OldPg & ".htm")
-                Call Text(eHTML, "", "", Str(OldPg))
+                Call Text(eHTML, "", "", str(OldPg))
                 eHTML = eHTML & LinkEnd()
                 Call CellEnd(eHTML)
     

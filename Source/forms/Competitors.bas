@@ -741,7 +741,7 @@ Private Sub Age_BeforeUpdate(Cancel As Integer)
     If IsNull(X) Then
         Response = MsgBox("You must enter a value for the competitors age", vbInformation)
 
-    ElseIf Trim(Str(Val(X))) <> Trim(X) Then
+    ElseIf Trim(str(Val(X))) <> Trim(X) Then
         Response = MsgBox("The age must be numeric.", vbInformation)
     Else
         If Not (IsNull(OriginalValue)) Then '**** ie not the first entry

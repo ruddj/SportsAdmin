@@ -278,7 +278,7 @@ Private Sub Form_Delete(Cancel As Integer)
     CompInEvent = CompetitorsInEvent(Me![E_Code], Me![F_Lev], Me![Heat])
 
     If CompInEvent > 0 Then
-        Response = MsgBox("There are " & Str(CompInEvent) & " competitor(s) in this heat.  Are you sure you want to delete it?", 20, "Delete Heat")
+        Response = MsgBox("There are " & str(CompInEvent) & " competitor(s) in this heat.  Are you sure you want to delete it?", 20, "Delete Heat")
         If Response = 7 Then Cancel = True
     End If
 

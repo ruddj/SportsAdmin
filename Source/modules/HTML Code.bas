@@ -119,21 +119,21 @@ End Sub
     Dim i As Integer
     
     s = ""
-    s = "<h" & Trim(Str(Level)) & ">"
+    s = "<h" & Trim(str(Level)) & ">"
     For i = 1 To Indent
         s = s & "&nbsp;"
     Next
-    s = s & T & "</h" & Trim(Str(Level)) & ">" & vbNewLine
+    s = s & T & "</h" & Trim(str(Level)) & ">" & vbNewLine
     Heading = s
     
 End Function
 
  Function HeadingEnd(Level As Integer)
-    HeadingEnd = "</h" & Trim(Str(Level)) & ">" & vbNewLine
+    HeadingEnd = "</h" & Trim(str(Level)) & ">" & vbNewLine
 End Function
 
 Function HeadingStart(Level As Integer)
-    HeadingStart = "<h" & Trim(Str(Level)) & ">"
+    HeadingStart = "<h" & Trim(str(Level)) & ">"
 End Function
 
 Function HTMLend()

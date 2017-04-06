@@ -335,7 +335,7 @@ On Error Resume Next
 
             Call CellStart(sHTML, "Center", "", "10%", BGcolor, 1)
             sHTML = sHTML & LinkStart(repName & PageNum & ".htm")
-            Call Text(sHTML, "", "", Str(PageNum))
+            Call Text(sHTML, "", "", str(PageNum))
             sHTML = sHTML & LinkEnd()
             Call CellEnd(sHTML)
 

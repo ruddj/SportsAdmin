@@ -393,7 +393,7 @@ Private Sub Delete_Click()
 
     DelComp = DCount("[PIN]", "Competitors", W2)
     
-    Response = MsgBox("Are you sure you wish to delete " & Str(DelComp) & " competitors?", vbYesNo + vbInformation + vbDefaultButton2, "Delete Competitors")
+    Response = MsgBox("Are you sure you wish to delete " & str(DelComp) & " competitors?", vbYesNo + vbInformation + vbDefaultButton2, "Delete Competitors")
     If Response = vbYes Then
         Q = "DELETE DISTINCTROW Competitors.Gname, Competitors.Surname, Competitors.Sex, Competitors.H_Code, Competitors.DOB, Competitors.Age "
         Q = Q & "FROM Competitors "

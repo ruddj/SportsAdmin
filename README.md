@@ -1,9 +1,9 @@
 # Sports Administrator
 Sports Carnival Management Software 
 
-This is an access database for managing results for a school Athletics or Swimming carnival.
+This is an easy to use access database for managing results for a school Athletics or Swimming carnival.
  
-It has many features listed below as well as been easy to use.
+It has many [features](https://github.com/ruddj/SportsAdmin/wiki/Feature-List) with some of the main ones listed below:
 * Easy entry of event results 
 * Tracking of event records 
 * Cumulative house points 
@@ -11,9 +11,9 @@ It has many features listed below as well as been easy to use.
 * Multiple Reports to print results
 * HTML export of results
 
-This database requires Microsoft Access 2013 or newer. If you do not have this installed you can download the [Microsoft Access 2016 Runtime](https://www.microsoft.com/en-us/download/details.aspx?id=50040).
+This database requires Microsoft Access 2010 or newer. If you do not have this installed you can download the [Microsoft Access 2016 Runtime](https://www.microsoft.com/en-us/download/details.aspx?id=50040) for free.
 
-The database was originally developed by Andrew Rogers, in conjunction with Christian Outreach College, Brisbane. He has generously allowed it to be made open source, to allow further development and allow it to run on more modern systems.
+The database was [originally developed by Andrew Rogers](https://github.com/ruddj/SportsAdmin/wiki/Background), in conjunction with Christian Outreach College, Brisbane. He has generously allowed it to be made open source, to allow further development and allow it to run on more modern systems.
 
 ## Download
 You can download the most [recent release](https://github.com/ruddj/SportsAdmin/releases/latest) from [Releases tab](https://github.com/ruddj/SportsAdmin/releases/latest)
