@@ -2,11 +2,21 @@ Option Compare Database
 Option Explicit
 
 
-Global Const VersionNumber = "5.0"
-Global Const VersionDate = "(30/Mar/2017)"
+Global Const VersionNumber = "5.0.1"
+Global Const VersionDate = "(03/Apr/2017)"
 
-' Version 5.0
-'   (01/Mar/2017)
+
+' Version 5.1.0
+'   (03/Apr/2017)
+'   Maintain Competitors listbox now supports type-ahead search
+
+' Version 5.0.1
+'   (03/Apr/2017)
+'   Updated UI font to Tahoma
+'   Fixed bug importing Carinval list from older data file
+
+' Version 5.0.0
+'   (01/Apr/2017)
 '   Released under MIT license
 '   Migrated software from Access 97 .MDB/.MDE to Access 2013/2016 .ACCDB
 '       Adjusted code functions to use more modern equivalents (on-going)

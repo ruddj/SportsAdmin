@@ -99,3 +99,9 @@ StringParse_Err:
   Resume StringParse_Exit
   
 End Function
+
+' Checks if a string starts with a prefix string
+' http://stackoverflow.com/questions/20802870/vba-test-if-string-begins-with-a-string
+Public Function startsWith(str As String, prefix As String) As Boolean
+    startsWith = Left(str, Len(prefix)) = prefix
+End Function

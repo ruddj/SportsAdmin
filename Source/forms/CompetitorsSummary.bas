@@ -14,10 +14,10 @@ Begin Form
     GridY =20
     Width =9648
     ItemSuffix =19
-    Left =-19140
-    Top =3615
-    Right =-8655
-    Bottom =11610
+    Left =-18270
+    Top =2730
+    Right =-8625
+    Bottom =9510
     HelpContextId =70
     RecSrcDt = Begin
         0xd614db87edc6e140
@@ -75,9 +75,11 @@ Begin Form
                         " House.H_Code = Competitors.H_Code WHERE (((House.Include)=Yes)) ORDER BY UCase("
                         "[Surname]) & \", \" & [Gname], Competitors.Age, Competitors.Sex, House.H_NAme;"
                     ColumnWidths ="0;3402;567;567;1701"
+                    AfterUpdate ="[Event Procedure]"
                     OnDblClick ="[Event Procedure]"
                     FontName ="Tahoma"
                     OnKeyDown ="[Event Procedure]"
+                    OnMouseUp ="[Event Procedure]"
                     HorizontalAnchor =2
                     VerticalAnchor =2
 
@@ -352,6 +354,9 @@ Dim UpdateCompetitorsOrdered
 Dim lMinHeight As Long
 Dim lMinWidth As Long
 
+Dim strSearch As String  ' Search Listbox
+Dim lLastSearch As Long  ' Timeout search if nothing typed
+
 Private Sub AddBut_Click()
 On Error GoTo Err_AddBut_Click
 
@@ -572,6 +577,9 @@ End Sub
 Private Sub Form_Load()
 
     UpdateCompetitorsOrdered = False
+    
+    ' Clear string search of listbox
+    strSearch = ""
 
 End Sub
 
@@ -659,9 +667,15 @@ Err_Roll_Over_Click:
     
 End Sub
 
+Private Sub Summary_AfterUpdate()
+    strSearch = ""
+End Sub
+
 Private Sub Summary_DblClick(Cancel As Integer)
     
     On Error GoTo Summary_DblClick_Err
+    
+    strSearch = ""
     
     If IsNull(Me!Summary) Then
         MsgBox ("You must select a competitor first.")
@@ -678,12 +692,67 @@ Summary_DblClick_Err:
     
 End Sub
 
+' Runs commands or searchs list box
+' Search based on ideas presented here
+' http://www.tek-tips.com/viewthread.cfm?qid=585567
 Private Sub Summary_KeyDown(KeyCode As Integer, Shift As Integer)
+    Dim lCurrentTime As Long
     
-    If KeyCode = 46 Then
+    If KeyCode = vbKeyDelete Then
         DeleteBut_Click
-    ElseIf KeyCode = 13 Then
+        Exit Sub
+    ElseIf KeyCode = vbKeyReturn Then
         Summary_DblClick (Cancel)
+        Exit Sub
+    ElseIf KeyCode = vbKeyEscape Then
+        strSearch = ""
+        KeyCode = 0
+    ElseIf KeyCode = vbKeyBack Then
+        strSearch = Left(strSearch, Len(strSearch) - 1)
+        KeyCode = 0
+    ElseIf KeyCode = 0 Or KeyCode = vbKeyTab Or _
+        KeyCode < vbKey0 Or KeyCode > vbKeyDivide Then
+        
+        Exit Sub
+    Else
+        ' Check how old query is, if last letter older than x sec clear and start again
+        lCurrentTime = Timer
+        If (lCurrentTime - lLastSearch) <= 2 Then
+            strSearch = strSearch & Chr$(KeyCode)
+        Else
+            strSearch = Chr$(KeyCode)
+        End If
+        
+        Call ScrollSummary
+        
+        lLastSearch = lCurrentTime
+        KeyCode = 0
     End If
+       
 
+End Sub
+
+' Multi character search as you type in Access listbox
+' Based on ListBox cycle from
+' http://stackoverflow.com/questions/2933113/cycling-through-values-in-a-ms-access-list-box
+Private Sub ScrollSummary()
+    Dim lngRow As Long
+    Dim strMsg As String
+    Dim strMatch As String
+
+    strMatch = StrConv(strSearch, vbUpperCase)
+
+    With Me.Summary
+        For lngRow = 0 To .ListCount - 1
+            If startsWith(.Column(1, lngRow), strMatch) Then
+                .Value = .Column(0, lngRow)
+                Exit For
+            End If
+        Next lngRow
+    End With
+
+End Sub
+
+Private Sub Summary_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    strSearch = ""
 End Sub
