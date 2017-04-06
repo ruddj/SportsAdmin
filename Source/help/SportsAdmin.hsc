@@ -569,7 +569,7 @@ Imported
 
 FALSE
 52
-{\rtf1\ansi\deff0{\fonttbl{\f0\fswiss Arial;}{\f1\fswiss MS Sans Serif;}{\f2\froman Times New Roman;}}
+{\rtf1\ansi\deff0{\fonttbl{\f0\fswiss Arial;}{\f1\fswiss MS Sans Serif;}{\f2\froman Times New Roman;}{\f3\fswiss\fcharset0 MS Sans Serif;}}
 {\colortbl ;\red0\green0\blue0;\red0\green0\blue128;\red128\green0\blue0;}
 \viewkind4\uc1\pard\cf1\lang1033\b\f0\fs32 Enter Competitor Results
 \par \b0\f1\fs20 
@@ -608,7 +608,7 @@ FALSE
 \par 
 \par \cf2\b\fs22 Enter Results in Place Order
 \par \cf0\b0\f2\fs24 
-\par \cf1\f1\fs20 This action opens another form where the competitors lanes and results can be entered beside the place gained.  This form is only useful when the competitors lanes are know prior to the running of the event.  Some computerized timing systems will only give results in place order with the competitor's lane beside the place gained.  This form allow the user to enter the results into the Sports Administrator directly from the timing sheet received from computerized timing system.
+\par \cf1\f1\fs20 This action opens another form where the competitors lanes and results can be entered beside the place gained.  This form is only useful when the competitors lanes are know\lang3081\f3 n\lang1033\f1  prior to the running of the event.  Some computerized timing systems will only give results in place order with the competitor's lane beside the place gained.  This form allow the user to enter the results into the Sports Administrator directly from the timing sheet received from computerized timing system.
 \par 
 \par \cf2\b\fs22 Calculate places
 \par \cf1\b0\fs20 
