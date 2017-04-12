@@ -341,9 +341,9 @@ Private Sub Update_Click()
 
  On Error GoTo Update_Click_Error
  
- Response = MsgBox("This will update the lanes allocated to all competitors.  All old lane allocations will be removed and updated.  Do you wish to continue?", 36, "Update Lane Allocation")
+ Response = MsgBox("This will update the lanes allocated to all competitors.  All old lane allocations will be removed and updated.  Do you wish to continue?", vbYesNo + vbQuestion, "Update Lane Allocation")
  
- If Response = 6 Then
+ If Response = vbYes Then
     Dim Criteria As String, Db As Database, rs As Recordset
     Q = "UPDATE DISTINCTROW CompEvents SET CompEvents.Lane = 0"
     DoCmd.SetWarnings False

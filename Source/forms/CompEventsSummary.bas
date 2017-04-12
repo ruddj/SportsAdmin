@@ -952,9 +952,9 @@ On Error GoTo Err_DeleteBut_Click
 
     WarningMessage = "This competitor is presently in " & NumCompEvent & " event.  If you continue with this delete operation, all this data will be lost.  Do you wish to continue?"
 
-    Response = MsgBox(WarningMessage, 20)
+    Response = MsgBox(WarningMessage, vbCritical + vbYesNo)
         
-    If Response = 6 Then 'Yes
+    If Response = vbYes Then 'Yes
         Q = "DELETE DISTINCTROW Competitors.PIN FROM Competitors WHERE Competitors.PIN= " & [Summary]
         DoCmd.RunSQL Q
         [Summary].Requery
@@ -1160,7 +1160,7 @@ On Error GoTo Err_PromoteBut_Click
         MsgBox ("There are no Finals to be promoted.")
     Else
       'Response = MsgBox("Are you sure you want to promote all finals that have been completed?", 20)
-      'If Response = 6 Then
+      'If Response = vbYes Then
         
         ReturnValue = SysCmd(acSysCmdInitMeter, "Promoting Competitors", TotalEvents)    ' Display message in status bar.
             

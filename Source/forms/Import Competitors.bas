@@ -19,7 +19,7 @@ Begin Form
     Left =285
     Top =2970
     Right =13935
-    Bottom =12285
+    Bottom =12045
     HelpContextId =120
     RecSrcDt = Begin
         0xbc1d08fbafdce140
@@ -542,8 +542,8 @@ End Sub
 
 Private Sub btnClearTemp_Click()
     Mesg = "This will clear any imported data from the temporary table.  This action does not effect the Carnival Database itself.  Do you wish to contnue?"
-    Response = MsgBox(Mesg, 20)
-    If Response = 6 Then
+    Response = MsgBox(Mesg, vbYesNo + vbCritical)
+    If Response = vbYes Then
         DoCmd.SetWarnings False
         DoCmd.RunSQL "DELETE DISTINCTROW [Import Competitors].* FROM [Import Competitors]"
         DoCmd.SetWarnings True
@@ -627,15 +627,15 @@ Private Sub ImportData_Click()
     
       
       If IsNull(ITRS!Gname) Then
-        Response = MsgBox("The GIVEN NAME for competitor " & Cname & " is not complete.  Please fix the entry and import the file again.  Do you wish to continue?", 20, "Import Competitors")
+        Response = MsgBox("The GIVEN NAME for competitor " & Cname & " is not complete.  Please fix the entry and import the file again.  Do you wish to continue?", vbYesNo + vbCritical, "Import Competitors")
       ElseIf IsNull(ITRS!Sname) Then
-        Response = MsgBox("The SURNAME for competitor " & Cname & " is not complete.  Please fix the entry and import the file again.  Do you wish to continue?", 20, "Import Competitors")
+        Response = MsgBox("The SURNAME for competitor " & Cname & " is not complete.  Please fix the entry and import the file again.  Do you wish to continue?", vbYesNo + vbCritical, "Import Competitors")
       ElseIf IsNull(ITRS!Sex) Then
-        Response = MsgBox("The SEX FIELD for competitor " & Cname & " is not complete.  Please fix the entry and import the file again.  Do you wish to continue?", 20, "Import Competitors")
+        Response = MsgBox("The SEX FIELD for competitor " & Cname & " is not complete.  Please fix the entry and import the file again.  Do you wish to continue?", vbYesNo + vbCritical, "Import Competitors")
       ElseIf IsNull(ITRS!Age) And IsNull(ITRS!DOB) Then
-        Response = MsgBox("Both the AGE and DOB fields are empty for competitor " & Cname & ".  Please fix the entry and import the file again.  Do you wish to continue?", 20, "Import Competitors")
+        Response = MsgBox("Both the AGE and DOB fields are empty for competitor " & Cname & ".  Please fix the entry and import the file again.  Do you wish to continue?", vbYesNo + vbCritical, "Import Competitors")
       ElseIf IsNull(ITRS!H_Code) Then
-        Response = MsgBox("The TEAM NAME for competitor " & Cname & " is empty.  Please fix the entry and import the file again.  Do you wish to continue?", 20, "Import Competitors")
+        Response = MsgBox("The TEAM NAME for competitor " & Cname & " is empty.  Please fix the entry and import the file again.  Do you wish to continue?", vbYesNo + vbCritical, "Import Competitors")
       Else
          Hcode = UCase(ITRS!H_Code)
          Hrs.FindFirst "[H_Code]=""" & Hcode & """"

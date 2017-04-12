@@ -17,9 +17,9 @@ Begin Form
     GridY =10
     Width =7143
     ItemSuffix =123
-    Left =-18960
+    Left =-22920
     Top =5355
-    Right =-11850
+    Right =-15810
     Bottom =10290
     RecSrcDt = Begin
         0xb3dbca3c8df5e140
@@ -799,8 +799,8 @@ Private Sub RemoveEmpty_Click()
 'Stop
 On Error GoTo Err_RemoveEmpty_Click
          
-    Response = MsgBox("This action will remove all heats that satisfy your selection and that have NO competitors in.  Care must be taken that future events that have not yet had competitors promoted into them are not accidentally removed.  Do you wish to continue?", 20, "Remove Empty Heats?")
-    If Response = 6 Then
+    Response = MsgBox("This action will remove all heats that satisfy your selection and that have NO competitors in.  Care must be taken that future events that have not yet had competitors promoted into them are not accidentally removed.  Do you wish to continue?", vbYesNo + vbCritical, "Remove Empty Heats?")
+    If Response = vbYes Then
         DoCmd.RunCommand acCmdSaveRecord
     
         Dim Criteria As String, Db As Database, rs As Recordset

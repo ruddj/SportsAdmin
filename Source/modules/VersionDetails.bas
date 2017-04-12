@@ -9,6 +9,7 @@ Global Const VersionDate = "(03/Apr/2017)"
 ' Version 5.1.0
 '   (03/Apr/2017)
 '   Maintain Competitors listbox now supports type-ahead search
+'   Update MsgBox parameters to use names instead of magic numbers
 
 ' Version 5.0.1
 '   (03/Apr/2017)

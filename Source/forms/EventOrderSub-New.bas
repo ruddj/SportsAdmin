@@ -228,7 +228,7 @@ Private Sub E_Number_BeforeUpdate(Cancel As Integer)
 
    If (new_val > TotRecs) Or (new_val < 1) Then
        Cancel = True
-       MsgBox "The event number cannot exceed the total number of events or be less than 1!", 48
+       MsgBox "The event number cannot exceed the total number of events or be less than 1!", vbExclamation
        ReOrder = False
    End If
 

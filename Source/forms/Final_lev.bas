@@ -31,6 +31,10 @@ Begin Form
         "entType.ET_Code=[Forms]![EventType]![ET_Code]));"
     Caption ="Maintain Heats and Finals"
     HelpFile ="SportsAdmin.chm"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
     FilterOnLoad =255
     AllowLayoutView =0
     Begin
@@ -305,8 +309,8 @@ End Sub
 Private Sub Final_Lev_Sub_Exit(Cancel As Integer)
     
     If Not CheckFinalIntegrity(Me![ET_Code], "Events") Then
-         Response = MsgBox("Finals should be in consecutive order starting at 0 and increasing by one (1) only.  This is not necessary but is recommended.  Do you wish to continue?", 20, "Final Integrity Warning")
-         If Response = 6 Then
+         Response = MsgBox("Finals should be in consecutive order starting at 0 and increasing by one (1) only.  This is not necessary but is recommended.  Do you wish to continue?", vbYesNo + vbCritical, "Final Integrity Warning")
+         If Response = vbYes Then
             Cancel = False
          Else
             Cancel = True

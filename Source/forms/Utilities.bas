@@ -885,8 +885,8 @@ On Error GoTo Remove_Click_Err
 
     Q = "DELETE DISTINCTROW Competitors.PIN FROM Competitors"
 
-    r = MsgBox("Are you sure you want to remove all competitors from this carnival?", 36, "Remove all")
-    If r = 6 Then
+    r = MsgBox("Are you sure you want to remove all competitors from this carnival?", vbYesNo + vbQuestion, "Remove all")
+    If r = vbYes Then
         DoCmd.SetWarnings False
         DoCmd.RunSQL Q
         DoCmd.SetWarnings True
@@ -908,8 +908,8 @@ Private Sub Reset_Click()
     ' Set the highest final level to active and the rest to future
     ' Set all compeitor points to 0
 
-     r = MsgBox("Resetting all events will set the first heats to active and all others to future.  Are you sure you wish to reset all events?", 36, "Reset all events")
-     If r = 6 Then
+     r = MsgBox("Resetting all events will set the first heats to active and all others to future.  Are you sure you wish to reset all events?", vbYesNo + vbQuestion, "Reset all events")
+     If r = vbYes Then
         
         PleaseWaitMsg = "Resetting all events ..."
         DoCmd.RunMacro "ShowPleaseWait"

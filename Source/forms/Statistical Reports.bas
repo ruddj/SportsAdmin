@@ -1328,7 +1328,7 @@ Private Sub GenerateHTMLbut_Click()
         GlobalVariable = Dir(FileName & "\", vbDirectory)
         If GlobalVariable = "" Then
             Response = MsgBox("It appears that the folder where you want the web pages stored does not exist.  Do you want to create it now?", vbYesNo + vbInformation + vbDefaultButton1, "Create Folder Confirmation")
-            If Response = 6 Then
+            If Response = vbYes Then
                 MkDir (FileName)
             Else
                 MsgBox ("No web pages have been created.")
@@ -1339,7 +1339,7 @@ Private Sub GenerateHTMLbut_Click()
     End If
     
     Response = MsgBox("This action may overwrite web pags in the web directory " & DLookup("[HTMLlocation]", "MiscHTML") & ".  Do you want to continue?", vbInformation + vbYesNo, "Continue")
-    If Response = 6 Then
+    If Response = vbYes Then
         GlobalGenerateHTML = True
         
  '       Application.Echo False

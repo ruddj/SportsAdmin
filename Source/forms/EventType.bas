@@ -867,8 +867,8 @@ On Error GoTo Err_Close_But_Click
     X = DCount("[ET_Code]", "Lane Promotion Allocation", "[ET_Code]=" & Me![ET_Code])
 
     If X < Forms![EventType]![Lane_Cnt] And DCount("[ET_Code]", "EventTypeHeats", "[ET_Code]=" & Me![ET_Code] & " AND [F_Lev]>0") Then
-        Response = MsgBox("The number of promotion lanes you have set up is less than the Lane / Competitor count.  Do you still wish to continue?", 36, "Too few lanes?")
-        If Response <> 6 Then
+        Response = MsgBox("The number of promotion lanes you have set up is less than the Lane / Competitor count.  Do you still wish to continue?", vbYesNo + vbQuestion, "Too few lanes?")
+        If Response <> vbYes Then
             Cl = False
         End If
     End If
@@ -887,13 +887,11 @@ On Error GoTo Err_Close_But_Click
         If Not IsNull(DLookup("[F_Lev]", "Events in Full", "[F_Lev]>0 AND [ET_Code]=" & Me![ET_Code])) Then
             For i = 0 To (DMax("[F_Lev]", "Events in Full", "[F_Lev]>0 AND [ET_Code]=" & Me![ET_Code]) - 1)
                 ProNum = DLookup("[ProNum]", "Final_Lev", "[ET_Code]=" & Me![ET_Code] & " AND [F_Lev]=" & i)
-                Response = 6
-                If IsNull(ProNum) Then
-                    Response = MsgBox("You have not entered the number of competitors that are to be promoted into final level " & i & ".  This is required to automatically promote the best competitors.  It is set in the Setup Heats form.  Do you wish to continue?", 20, "Promotion Details Incomplete")
-                ElseIf ProNum = 0 Then
-                    Response = MsgBox("You have not entered the number of competitors that are to be promoted into final level " & i & ".  This is required to automatically promote the best competitors.  It is set in the Setup Heats form.  Do you wish to continue?", 20, "Promotion Details Incomplete")
+                Response = vbYes
+                If IsNull(ProNum) Or ProNum = 0 Then
+                    Response = MsgBox("You have not entered the number of competitors that are to be promoted into final level " & i & ".  This is required to automatically promote the best competitors.  It is set in the Setup Heats form.  Do you wish to continue?", vbYesNo + vbCritical, "Promotion Details Incomplete")
                 End If
-                If Response = 7 Then
+                If Response = vbNo Then
                     Cl = False
                     GoTo Exit_Close_But_Click
                 End If
@@ -944,8 +942,8 @@ Private Sub ET_Sub2_Exit(Cancel As Integer)
     End If
 
     If Not CheckFinalIntegrity(vE_Code, "HEATS") Then
-         Response = MsgBox("Finals should be in consecutive order starting at 0 and increasing by one (1) only.  This is not necessary but is recommended.  Do you wish to continue?", 20, "Final Integrity Warning")
-         If Response = 6 Then
+         Response = MsgBox("Finals should be in consecutive order starting at 0 and increasing by one (1) only.  This is not necessary but is recommended.  Do you wish to continue?", vbYesNo + vbCritical, "Final Integrity Warning")
+         If Response = vbYes Then
             Cancel = False
          Else
             Cancel = True

@@ -612,8 +612,8 @@ Private Sub Delete_Click()
 
     If Not IsNull(p) Then
         If IsNull(DLookup("[HE_Code]", "Heats", "[PtScale]=""" & p & """")) Then
-            Response = MsgBox("Are you sure you want to delete this pointscale?", 20, "Delete Pointscale")
-            If Response = 6 Then
+            Response = MsgBox("Are you sure you want to delete this pointscale?", vbYesNo + vbCritical, "Delete Pointscale")
+            If Response = vbYes Then
                 Q = "DELETE DISTINCTROW PointsScale.PtScale FROM PointsScale "
                 Q = Q & "WHERE PointsScale.PtScale=""" & p & """"
             
@@ -689,8 +689,8 @@ End Sub
 
 Private Sub Update_Click()
 
-    Response = MsgBox("This will update ALL points allocated to competitors to the current PointScale values.  This action should only be necessary if the points allocated to a place has been changed AND if events have already been completed.  Do you wish to continue?", 20, "Update Points")
-    If Response = 6 Then
+    Response = MsgBox("This will update ALL points allocated to competitors to the current PointScale values.  This action should only be necessary if the points allocated to a place has been changed AND if events have already been completed.  Do you wish to continue?", vbYesNo + vbCritical, "Update Points")
+    If Response = vbYes Then
         DoCmd.SetWarnings False
         DoCmd.OpenQuery "Update Competitor Points"
         DoCmd.SetWarnings True

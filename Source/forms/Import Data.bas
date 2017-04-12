@@ -484,8 +484,8 @@ Option Compare Database   'Use database order for string comparisons
 Private Sub Button24_Click()
 
     Mesg = "This will remove all the data shown on the previous form.  This will not effect the Carnival Database.  Do you wish to contnue?"
-    Response = MsgBox(Mesg, 20)
-    If Response = 6 Then
+    Response = MsgBox(Mesg, vbYesNo + vbCritical)
+    If Response = vbYes Then
       CurrentDb.Execute "DELETE DISTINCTROW ImportData.* FROM ImportData"
       Me.I_Data.Requery
     End If

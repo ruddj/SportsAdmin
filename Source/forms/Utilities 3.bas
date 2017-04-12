@@ -19,9 +19,9 @@ Begin Form
     GridY =10
     Width =7961
     ItemSuffix =56
-    Left =-19035
+    Left =-22995
     Top =5265
-    Right =-11280
+    Right =-15240
     Bottom =10365
     RecSrcDt = Begin
         0x6bd443042dc7e140
@@ -363,8 +363,8 @@ Private Sub Remove_Click()
 
     Q = "DELETE DISTINCTROW Competitors.PIN FROM Competitors"
 
-    r = MsgBox("Are you sure you want to remove all competitors from this carnival?", 36, "Remove all")
-    If r = 6 Then
+    r = MsgBox("Are you sure you want to remove all competitors from this carnival?", vbYesNo + vbQuestion, "Remove all")
+    If r = vbYes Then
         DoCmd.SetWarnings False
         DoCmd.RunSQL Q
         DoCmd.SetWarnings True
@@ -381,8 +381,8 @@ On Error GoTo Reset_Click_Err
     ' Set the highest final level to active and the rest to future
     ' Set all compeitor points to 0
 
-     r = MsgBox("Resetting all events will set the first heats to active and all others to future.  Are you sure you wish to reset all events?", 36, "Reset all events")
-     If r = 6 Then
+     r = MsgBox("Resetting all events will set the first heats to active and all others to future.  Are you sure you wish to reset all events?", vbYesNo + vbQuestion, "Reset all events")
+     If r = vbYes Then
         
         PleaseWaitMsg = "Resetting all events ..."
         DoCmd.RunMacro "ShowPleaseWait"

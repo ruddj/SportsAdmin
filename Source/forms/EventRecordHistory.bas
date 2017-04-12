@@ -392,13 +392,13 @@ Private Sub Add_Click()
         nUnit = Me![nUnit]
         Call Calculate_Results(res, nValu, nUnit, success)
         If Not (Better(Val(res), Me![E_Code])) Then
-            Response = MsgBox("The event record you are about to add is not better than the existing record.  Do you want to continue?", 20, "Record Integrity Violation")
-            If Response <> 6 Then Continue = False
+            Response = MsgBox("The event record you are about to add is not better than the existing record.  Do you want to continue?", vbYesNo + vbCritical, "Record Integrity Violation")
+            If Response <> vbYes Then Continue = False
         End If
         
         If Me![Date] < DMax("[Date]", "Records", "[E_Code]=" & Me![E_Code]) Then
-            Response = MsgBox("The date for the event record you are about to add is older than the most recent record.  Do you want to continue?", 20, "Record Integrity Violation")
-            If Response <> 6 Then Continue = False
+            Response = MsgBox("The date for the event record you are about to add is older than the most recent record.  Do you want to continue?", vbYesNo + vbCritical, "Record Integrity Violation")
+            If Response <> vbYes Then Continue = False
         End If
 
         If Continue Then
@@ -418,8 +418,8 @@ Private Sub Add_Click()
                 
             Else
     
-                Response = MsgBox("Do you want to replace the existing record?", 20, "Replace Record")
-                If Response = 6 Then
+                Response = MsgBox("Do you want to replace the existing record?", vbYesNo + vbCritical, "Replace Record")
+                If Response = vbYes Then
                     rs.Edit
                     rs!E_Code = Me![E_Code]
                     rs!Surname = Me![Surname]

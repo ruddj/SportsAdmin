@@ -9,10 +9,10 @@ Begin Form
     GridY =20
     Width =7310
     ItemSuffix =42
-    Left =5220
-    Top =6300
-    Right =11520
-    Bottom =7590
+    Left =4575
+    Top =5385
+    Right =10485
+    Bottom =8655
     RecSrcDt = Begin
         0x64e50da4704ae240
     End
@@ -516,7 +516,7 @@ Private Sub Form_Delete(Cancel As Integer)
     CompInEvent = CompetitorsInEvent(Me![E_Code], Me![F_Lev], Me![Heat])
 
     If CompInEvent > 0 Then
-        Response = MsgBox("There are " & str(CompInEvent) & " competitor(s) in this heat.  Are you sure you want to delete it?", 20, "Delete Heat")
+        Response = MsgBox("There are " & str(CompInEvent) & " competitor(s) in this heat.  Are you sure you want to delete it?", vbYesNo + vbCritical, "Delete Heat")
         If Response = 7 Then Cancel = True
     End If
 

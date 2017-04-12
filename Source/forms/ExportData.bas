@@ -558,12 +558,12 @@ On Error GoTo Err_CreateBut_Click
         HouseName = rs!H_NAme
 
         Mesg = "Please insert disk for " & HouseName & ".  Do you wish to create this disk?"
-        Response = MsgBox(Mesg, 35, "Next Disk")
+        Response = MsgBox(Mesg, vbYesNoCancel + vbQuestion, "Next Disk")
 
-        If Response = 6 Then 'Yes
+        If Response = vbYes Then 'Yes
             ChosenFinalHouse = rs!H_Code
             GoSub Create_Carnival_Disk
-        ElseIf Response = 2 Then
+        ElseIf Response = vbCancel Then
             GoTo Abort_DiskCreate
         End If
         

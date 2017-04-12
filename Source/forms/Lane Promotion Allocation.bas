@@ -24,6 +24,10 @@ Begin Form
     End
     Caption ="Lane Promotion Allocation"
     HelpFile ="SportsAdmin.chm"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
     OnLoad ="[Event Procedure]"
     FilterOnLoad =0
     AllowLayoutView =0
@@ -290,8 +294,8 @@ On Error GoTo Err_Close_But_Click
     X = DCount("[ET_Code]", "Lane Promotion Allocation", "[ET_Code]=" & Me![ET_Code])
     
     If X < Forms![EventType]![Lane_Cnt] Then
-        Response = MsgBox("The number of lanes you have set up is less than the Lane / Competitor count specified on the previous form.  Do you still wish to continue?", 36, "Too few lanes?")
-        If Response = 6 Then
+        Response = MsgBox("The number of lanes you have set up is less than the Lane / Competitor count specified on the previous form.  Do you still wish to continue?", vbYesNo + vbQuestion, "Too few lanes?")
+        If Response = vbYes Then
             DoCmd.Close
         End If
         

@@ -336,9 +336,9 @@ On Error GoTo Err_DeleteBut_Click
 
     WarningMessage = "There are presently " & NumCompetitors & " competitors, " & NumRecords & " record(s) and " & NumHeats & " heat(s) connected to this event type.  If you continue with this delete operation, all this data will be lost.  Do you wish to continue?"
 
-    Response = MsgBox(WarningMessage, 20)
+    Response = MsgBox(WarningMessage, vbYesNo + vbCritical)
         
-    If Response = 6 Then 'Yes
+    If Response = vbYes Then 'Yes
         Q = "DELETE DISTINCTROW EventType.ET_Code FROM EventType WHERE EventType.ET_Code= " & [Summary]
         DoCmd.SetWarnings False
         DoCmd.RunSQL Q

@@ -458,7 +458,7 @@ End Sub
 
 Private Sub Button17_Click()
     UserQuit = False
-    If MsgBox("Are you sure you want to close the database?", vbDefaultButton2 + vbCritical + vbYesNo, "Warning") = vbYes Then
+    If MsgBox("Are you sure you want to close the database?", vbYesNo + vbCritical + vbDefaultButton2, "Warning") = vbYes Then
         UserQuit = True
         Call QuitSportsAdministrator(Me)
         
@@ -523,7 +523,7 @@ Private Sub Delete_Click()
     If IsNull(Me.List) Then
         MsgBox "Select a carnival to delete before pressing this button.", vbExclamation, "Message"
     Else
-        If MsgBox("Are you sure you want to delete the carnival " & Me.List & "?", 276, "Warning") = 6 Then
+        If MsgBox("Are you sure you want to delete the carnival " & Me.List & "?", vbYesNo + vbCritical + vbDefaultButton2, "Warning") = vbYes Then
             FileName = GetCarnivalFullDir(DLookup("[Relative Directory]", "Carnivals", "[Carnival] = """ & Me.List & """"))
             FileName = FileName & DLookup("[Filename]", "Carnivals", "[Carnival] = """ & Me.List & """")
             If FileExists(FileName) Then
@@ -856,7 +856,7 @@ Private Sub CompactCarnivalBut_Click()
     If FileExists(FilePath & TempName) Then
       If FileExists(FileName & ".old") Then
         Response = MsgBox("INFORMATIONAL ALERT ONLY: The compact action makes a new copy of the carnival file and appends .OLD to the original carnival file.  However an OLD carnival file already exists (usually because the compact action has been run on this carnival before).  Do you want to delete the OLD carnival and finish compacting the carnival?", vbYesNo + vbInformation + vbDefaultButton2, "Delete Old Carnival File")
-        If Response = 6 Then
+        If Response = vbYes Then
           Kill (FileName & ".old")
         Else
           Kill (FilePath & TempName)

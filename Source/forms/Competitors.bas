@@ -748,7 +748,7 @@ Private Sub Age_BeforeUpdate(Cancel As Integer)
             
             Conti = MsgBox("This competitor will be removed from all events if this value is changed.  This action cannot be undone.  Do you want to continue?", vbYesNo + vbDefaultButton2 + vbInformation)
             
-            If Conti = 6 Then
+            If Conti = vbYes Then
                 
                 Set MyDb = DBEngine.Workspaces(0).Databases(0)
                 q1 = "Delete * from CompEvents Where PIN="
