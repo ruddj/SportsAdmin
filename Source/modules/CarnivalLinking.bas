@@ -838,7 +838,7 @@ Function Make_File(ByVal FileName As String) As Variant
     
     ' This is required as TransferDatabase will give many warning prompts if data file is not in Trusted Location
     FilePath = Left(FileName, InStrRev(FileName, "\") - 1)
-    iTrust = AddTrustedLocation(FilePath, "Sports Admin Datafile")
+    iTrust = AddTrustedLocation(FilePath, "Sports Admin Datafile", False)
     
     For i = Db.TableDefs.Count - 1 To 0 Step -1
         If Left$(Db.TableDefs(i).Name, 3) = "zz~" Then

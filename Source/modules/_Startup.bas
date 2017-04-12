@@ -15,7 +15,7 @@ On Error GoTo Startup_Err
   ' If running in runtime mode add current location to Trusted Location if not already
   If SysCmd(acSysCmdRuntime) Then
     FilePath = Application.CurrentProject.Path
-    Call AddTrustedLocation(FilePath, "Sports Admin Application")
+    Call AddTrustedLocation(FilePath, "Sports Admin Application", True)
   End If
   
  'DoCmd.RunCommand acCmdWindowHide

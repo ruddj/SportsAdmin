@@ -1,6 +1,6 @@
 Option Compare Database
 
-Public Function AddTrustedLocation(trustPath As String, Optional trustName As String = "") As Integer
+Public Function AddTrustedLocation(trustPath As String, Optional trustName As String = "", Optional promptUser As Boolean = True) As Integer
 On Error GoTo err_proc
 'WARNING:  THIS CODE MODIFIES THE REGISTRY
 'sets registry key for 'trusted location - This code was obtained from http://allenbrowne.com/Access2007.html
@@ -13,6 +13,7 @@ On Error GoTo err_proc
   Dim reg As Object
   Dim strPath As String
   Dim strTitle As String
+  Dim strMsg As String
   AddTrustedLocation = -1
   
   Set reg = CreateObject("Wscript.Shell")
@@ -63,6 +64,14 @@ NextLocn:
   End If
   'if no unused location found then set new location for path
   If intNotUsed = 0 Then intNotUsed = i + 1
+  
+  ' Check if user wants to add trusted location
+  If promptUser Then
+    strMsg = "Would you like to add " & strPath & " as a trusted location?"
+    If MsgBox(strMsg, vbQuestion + vbYesNo, "Add Trusted Location") = vbNo Then
+         GoTo exit_proc
+    End If
+  End If
   
 'Write Trusted Location regstry key to unused location in registry
 On Error GoTo err_proc:

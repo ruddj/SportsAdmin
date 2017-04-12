@@ -458,7 +458,7 @@ End Sub
 
 Private Sub Button17_Click()
     UserQuit = False
-    If MsgBox("Are you sure you want to close the database?", 276, "Warning") = 6 Then
+    If MsgBox("Are you sure you want to close the database?", vbDefaultButton2 + vbCritical + vbYesNo, "Warning") = vbYes Then
         UserQuit = True
         Call QuitSportsAdministrator(Me)
         
