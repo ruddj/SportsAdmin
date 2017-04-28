@@ -1,6 +1,6 @@
-# Sports Administrator
+# <img src="https://github.com/ruddj/SportsAdmin/raw/sa-pages/images/sports.png?raw=true" height=132 alt="Sports Administrator" />
 
-[![download][download-badge]][DOWNLOAD] [![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE] 
+[![Download Latest Release][download-badge]][DOWNLOAD] [![Current Version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE] 
 
 Sports Carnival Management Software 
 
@@ -19,7 +19,8 @@ This database requires Microsoft Access 2010 or newer. If you do not have this i
 The database was [originally developed by Andrew Rogers](https://github.com/ruddj/SportsAdmin/wiki/Background), in conjunction with Christian Outreach College, Brisbane. He has generously allowed it to be made open source, to allow further development and allow it to run on more modern systems.
 
 ## Download
-You can download the most [recent release](https://github.com/ruddj/SportsAdmin/releases/latest) from [Releases tab](https://github.com/ruddj/SportsAdmin/releases/latest)
+You can download the most [recent release](https://github.com/ruddj/SportsAdmin/releases/latest) from [Releases tab](https://github.com/ruddj/SportsAdmin/releases/latest).
+A list of changes between versions can be seen here [CHANGELOG].
 
 ## Upgrading
 ### From Previous Commercial Release
