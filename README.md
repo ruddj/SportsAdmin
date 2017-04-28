@@ -74,3 +74,5 @@ For end users you can change the Sports.accdb file extension to .accdr to load i
 
 [CHANGELOG]: ./CHANGELOG.md
 [LICENSE]: ./License.txt
+[version-badge]: https://img.shields.io/badge/version-5.0.2-blue.svg
+[license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
