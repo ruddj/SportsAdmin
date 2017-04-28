@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [5.0.2] - 2017-04-28
 ### Added
 - Maintain Competitors listbox now supports type-ahead search
 
@@ -40,46 +42,46 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Multiple minor bugs relating to migration changes in Access 97 to 2013 code
 
 ## Following changes were made by Andrew Rogers
-## [4.1.0] - 2010-05-19
+## 4.1.0 - 2010-05-19
 ### Changed
 - Changed the order of the unlimited lane reports back to name order (at request of HCC-V)
 
-## [4.0.0] - 2010-03-01
+## 4.0.0 - 2010-03-01
 ### Fixed
 - Fixed an import problem for carnival disks with OPEN age competitors
 
-## [3.9.0] - 2006-09-01
+## 3.9.0 - 2006-09-01
 ### Added
 - Added 3 column program summary.
 
 ### Changed
 - Changed look of forms to flat.  
 
-## [3.8.0] - 2006-08-28
+## 3.8.0 - 2006-08-28
 ### Changed
 - Updated minor things.
 
-## [3.7.2] - 2005-08-23
+## 3.7.2 - 2005-08-23
 ### Fixed
  - Fixed the reports that were showing Boys when it should have shown mixed.
 
-## [3.7.1] - 2003-02-16
+## 3.7.1 - 2003-02-16
 ### Changed
 - Changed the way EventAges are determined.  Means the age champion report should work better.
 
-## [3.7.0] - 2003-02-12
+## 3.7.0 - 2003-02-12
 ### Fixed
 - Fixed bug in determing places across all heats
 
-## [3.6.1] - 2002-07-22
+## 3.6.1 - 2002-07-22
 ### Added
 - Added field to stop records from being generated for certain heats.
 
-## [3.6.0] - 2002-07-16
+## 3.6.0 - 2002-07-16
 ### Added
 - Added removal of competitors from events
 
-## [3.5.2] - 2001-10-29
+## 3.5.2 - 2001-10-29
 ### Added
 - Added checkbox to allow places to be calculated across entire final level, not just heat
 
@@ -87,7 +89,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Completely redid how the places were calculated.  Added checkbox to stop recalculation of places.
 - Speeded up the promote competitors option
 
-## [3.5.1] - 2001-09-29
+## 3.5.1 - 2001-09-29
 ### Added
 - Added quick add of competitor
 - Add ID field
@@ -101,44 +103,44 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Tidied up various routines
 - Tidied up the statistical report generation
 
-## [3.5.0] - 2001-03-14
+## 3.5.0 - 2001-03-14
 ### Added
 - Added jpeg graph export to web page generation
 
-## [3.4.0] - 2001-02-10
+## 3.4.0 - 2001-02-10
 ### Changed
 - Improved the import of carnival disks.  Better error handling.
 
-## [3.3.1] - 2001-01-31
+## 3.3.1 - 2001-01-31
 ### Changed
 - Modified the Team / Event report slightly
 
-## [3.3.0] - 2000-11-13
+## 3.3.0 - 2000-11-13
 ### Fixed
 - Fixed the Null error in Order competitor events
 
-## [3.2.0] - 2000-11-10
+## 3.2.0 - 2000-11-10
 ### Changed
 - Updated the version number
 
-## [3.1.2] - 2000-11-02
+## 3.1.2 - 2000-11-02
 ### Fixed 
 - Fixed the relationship between Heats and CompEvents so that updates would cascade.
 - Fixed the bulk maintain of competitiors missing table bug
 
-## [3.1.1] - 2000-10-17
+## 3.1.1 - 2000-10-17
 ### Changed
 - Improved the PopupWindow option for reports by allowing it to remember its last position.
 - Re-Created the installation routine seeing I lost the previous one.
 
-## [3.1.0] - 2000-09-01
+## 3.1.0 - 2000-09-01
 ### Fixed 
 - Fixed Utilities|Remove Empty Heats.  Based on fields that no longer existed in original table.
 
 ### Changed
 - Modified Generate Reports:  Maximises reports and added Popup Window menu option.
 
-## [3.0.0] - 2000-08-01
+## 3.0.0 - 2000-08-01
 ### Added
 - Added New Setup Carnival form
 - Added AddEvent Wizard
