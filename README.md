@@ -1,6 +1,8 @@
 # Sports Administrator
 Sports Carnival Management Software 
 
+[![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE] 
+
 This is an easy to use access database for managing results for a school Athletics or Swimming carnival.
  
 It has many [features](https://github.com/ruddj/SportsAdmin/wiki/Feature-List) with some of the main ones listed below:
@@ -70,3 +72,5 @@ For end users you can change the Sports.accdb file extension to .accdr to load i
 ### Report Options
 ![Report Options](https://github.com/ruddj/SportsAdmin/blob/sa-pages/images/Reports.png?raw=true)
 
+[CHANGELOG]: ./CHANGELOG.md
+[LICENSE]: ./License.txt
