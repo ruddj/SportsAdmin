@@ -156,6 +156,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 [Unreleased]: https://github.com/ruddj/SportsAdmin/compare/v5.0.2...HEAD
-[5.0.2]: https://github.com/ruddj/SportsAdmin/compare/v5.0.2...v5.0.1
-[5.0.1]: https://github.com/ruddj/SportsAdmin/compare/v5.0.1...v5.0.0
+[5.0.2]: https://github.com/ruddj/SportsAdmin/compare/v5.0.1...v5.0.2
+[5.0.1]: https://github.com/ruddj/SportsAdmin/compare/v5.0.0...v5.0.1
 [5.0.0]: https://github.com/ruddj/SportsAdmin/tree/v5.0.0
