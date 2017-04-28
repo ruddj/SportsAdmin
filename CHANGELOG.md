@@ -153,3 +153,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Modified relationship creation: No longer deletes relationships if they all exists
 - Ordered Competitors handled differently: Table held locally.  Does not delete old but overwrites them.
+
+
+[Unreleased]: https://github.com/ruddj/SportsAdmin/compare/v5.0.2...HEAD
+[5.0.2]: https://github.com/ruddj/SportsAdmin/compare/v5.0.2...v5.0.1
+[5.0.1]: https://github.com/ruddj/SportsAdmin/compare/v5.0.1...v5.0.0
+[5.0.0]: https://github.com/ruddj/SportsAdmin/tree/v5.0.0
