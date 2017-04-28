@@ -78,5 +78,5 @@ For end users you can change the Sports.accdb file extension to .accdr to load i
 [DOWNLOAD]: https://github.com/ruddj/SportsAdmin/releases/latest
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
 
-[download-badge]: https://img.shields.io/badge/download-5.0.2-blue.svg
+[download-badge]: https://img.shields.io/badge/download-latest-blue.svg
 [version-badge]: https://img.shields.io/badge/version-5.0.2-blue.svg
