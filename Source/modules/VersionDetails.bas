@@ -2,12 +2,12 @@ Option Compare Database
 Option Explicit
 
 
-Global Const VersionNumber = "5.0.1"
-Global Const VersionDate = "(03/Apr/2017)"
+Global Const VersionNumber = "5.0.2"
+Global Const VersionDate = "(28/Apr/2017)"
 
 
-' Version 5.1.0
-'   (03/Apr/2017)
+' Version 5.0.2
+'   (28/Apr/2017)
 '   Maintain Competitors listbox now supports type-ahead search
 '   Update MsgBox parameters to use names instead of magic numbers
 
