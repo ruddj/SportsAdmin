@@ -61,16 +61,16 @@ End Sub
 
 Sub CreateHTMLfile(ByVal FileName As String, ByVal TemplateFilename As String, HTML As String, Prev As String, Nex As String, Title As String, Head As String, Optional repClass As String = "report")
     
-    Dim HTMLFileLocation, FileLocation, L As String, TemplateFile As String
+    Dim HTMLFileLocation, fileLocation, L As String, TemplateFile As String
     Dim HTMLinserted As Integer, Continue As Integer, i As Integer, tFile As Variant, oFile As Variant
     
     HTMLFileLocation = DLookup("[HTMLlocation]", "MiscHTML")
-    FileLocation = HTMLFileLocation & "\" & FileName
+    fileLocation = HTMLFileLocation & "\" & FileName
     
     tFile = FreeFile
     Open TemplateFilename For Input As #99
     oFile = FreeFile
-    Open FileLocation For Output As #1 ' Open file for output.
+    Open fileLocation For Output As #1 ' Open file for output.
     
     Continue = True
     Do While Not EOF(99)

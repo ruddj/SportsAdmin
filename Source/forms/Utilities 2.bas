@@ -642,22 +642,22 @@ On Error GoTo Err_Button65_Click
      
     DoCmd.RunCommand acCmdSaveRecord
 
-    Dim Criteria As String, Db As Database, rs As Recordset
+    Dim Criteria As String, db As Database, Rs As Recordset
     Dim NewTitle As String
-    Set Db = CurrentDb()
+    Set db = CurrentDb()
 
     Q = "SELECT DISTINCTROW EventType.ET_Code, EventType.Flag, EventType.R_Code "
     Q = Q & "FROM EventType WHERE EventType.Flag = True ORDER BY EventType.R_Code"
 
-    Set rs = Db.OpenRecordset(Q, dbOpenDynaset)   ' Create dynaset.
+    Set Rs = db.OpenRecordset(Q, dbOpenDynaset)   ' Create dynaset.
     
-    rs.MoveFirst
+    Rs.MoveFirst
     
     Old_R_Code = -1
 
-    Do Until rs.EOF  ' Loop until no matching records.
+    Do Until Rs.EOF  ' Loop until no matching records.
         
-        R_Code = rs!R_Code
+        R_Code = Rs!R_Code
         If R_Code <> Old_R_Code Then
             If Me![SummaryReport] Then
                 ReportName = DLookup("[SummaryReport]", "ReportTypes", "[R_Code] = " & R_Code)
@@ -687,13 +687,13 @@ On Error GoTo Err_Button65_Click
 
         Old_R_Code = R_Code
 
-        rs.MoveNext
+        Rs.MoveNext
     Loop
     
-    rs.Close
+    Rs.Close
 
 Exit_Button65_Click:
-    Set Db = Nothing
+    Set db = Nothing
     Exit Sub
 
 Err_Button65_Click:
@@ -803,15 +803,15 @@ On Error GoTo Err_RemoveEmpty_Click
     If Response = vbYes Then
         DoCmd.RunCommand acCmdSaveRecord
     
-        Dim Criteria As String, Db As Database, rs As Recordset
+        Dim Criteria As String, db As Database, Rs As Recordset
         Dim NewTitle As String, F_LevCriteria  As String
         
-        Set Db = CurrentDb()
+        Set db = CurrentDb()
     
         Q = "SELECT DISTINCTROW EventType.ET_Code, EventType.Flag, EventType.R_Code "
         Q = Q & "FROM EventType WHERE EventType.Flag = True ORDER BY EventType.R_Code"
     
-        Set rs = Db.OpenRecordset("Events in Full", dbOpenDynaset)   ' Create dynaset.
+        Set Rs = db.OpenRecordset("Events in Full", dbOpenDynaset)   ' Create dynaset.
             
         If Me![Flev_DD] = "*" Then
             F_LevCriteria = "like ""*"""
@@ -827,36 +827,36 @@ On Error GoTo Err_RemoveEmpty_Click
         ReturnValue = SysCmd(acSysCmdInitMeter, "Removing empty heats ... ", TotalRecs)    ' Display message in status bar.
         X = 0
 
-        rs.FindFirst Criteria
+        Rs.FindFirst Criteria
         
         Old_R_Code = -1
         'Stop
         Debug.Print "+==============================+"
-        Do Until rs.EOF Or rs.NoMatch  ' Loop until no matching records.
+        Do Until Rs.EOF Or Rs.NoMatch  ' Loop until no matching records.
             ReturnValue = SysCmd(acSysCmdUpdateMeter, X)   ' Update meter.
             X = X + 1
-            He = rs!HE_Code
-            Crit2 = "[E_Code]=" & rs!E_Code & " and [Heat]=" & rs!Heat & " and [F_Lev]=" & rs!F_Lev
+            He = Rs!HE_Code
+            Crit2 = "[E_Code]=" & Rs!E_Code & " and [Heat]=" & Rs!Heat & " and [F_Lev]=" & Rs!F_Lev
             If IsNull(DLookup("[E_Code]", "CompEvents", Crit2)) Then
                 'Stop
                 'Debug.Print He, rs.ET_Des, rs.Sex, rs.Age, rs.F_Lev, rs.Heat
                 Q = "DELETE DISTINCTROW Heats!E_Code, Heats!Heat, Heats!F_Lev FROM Heats "
-                Me![Changes] = Me![Changes] & "Event " & rs!ET_Des & ", " & rs!Sex & ", " & rs!Age & ", " & rs!F_Lev & ", " & rs!Heat & Chr$(13)
+                Me![Changes] = Me![Changes] & "Event " & Rs!ET_Des & ", " & Rs!Sex & ", " & Rs!Age & ", " & Rs!F_Lev & ", " & Rs!Heat & Chr$(13)
                 Q = Q & "WHERE " & Crit2
                 DoCmd.SetWarnings False
                 DoCmd.RunSQL Q
                 DoCmd.SetWarnings True
     
             End If
-            rs.FindNext Criteria
+            Rs.FindNext Criteria
         Loop
         Debug.Print "+==============================+"
-        rs.Close
+        Rs.Close
         ReturnValue = SysCmd(acSysCmdRemoveMeter)
     End If
 
 Exit_RemoveEmpty_Click:
-    Set Db = Nothing
+    Set db = Nothing
     Exit Sub
 
 Err_RemoveEmpty_Click:

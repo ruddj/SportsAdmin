@@ -956,26 +956,26 @@ Public Function getIconFromTable(strFileName As String) As Picture
 
 Dim lSize As Long
 Dim arrBin() As Byte
-Dim rs As DAO.Recordset
+Dim Rs As DAO.Recordset
  
     On Error GoTo Errr
  
-    Set rs = DBEngine(0)(0).OpenRecordset("tblBinary", dbOpenDynaset)
-    rs.FindFirst "[FileName]='" & strFileName & "'"
-    If rs.NoMatch Then
+    Set Rs = DBEngine(0)(0).OpenRecordset("tblBinary", dbOpenDynaset)
+    Rs.FindFirst "[FileName]='" & strFileName & "'"
+    If Rs.NoMatch Then
         Set getIconFromTable = Nothing
     Else
-        lSize = rs.Fields("binary").FieldSize
+        lSize = Rs.Fields("binary").FieldSize
         ReDim arrBin(lSize)
-        arrBin = rs.Fields("binary").GetChunk(0, lSize)
+        arrBin = Rs.Fields("binary").GetChunk(0, lSize)
         Set getIconFromTable = ArrayToPicture(arrBin)
     End If
-    rs.Close
+    Rs.Close
  
 fExit:
     Reset
     Erase arrBin
-    Set rs = Nothing
+    Set Rs = Nothing
     Exit Function
 Errr:
     Resume fExit

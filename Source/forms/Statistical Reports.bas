@@ -1735,14 +1735,14 @@ End Sub
 Private Sub PrintPreviewCumulativeReport(Ty As String)
 On Error GoTo PrintPreviewCumulativeReport_Err
 
-  Dim DocName As String, rs As Recordset, brs As Recordset
+  Dim DocName As String, Rs As Recordset, brs As Recordset
   Dim OldTeam As Variant, OldEvent As Variant, Points As Integer
   Dim MinEventNum As Variant, MaxEventNum As Variant, EventNum As Variant
 
   DocName = "Statistics-PointByEventNumber"
   
   Set brs = CurrentDb.OpenRecordset("Points by EventNumber and Team", dbOpenDynaset)
-  Set rs = CurrentDb.OpenRecordset("Points-House-Cumulative", dbOpenDynaset)
+  Set Rs = CurrentDb.OpenRecordset("Points-House-Cumulative", dbOpenDynaset)
   
   MinEventNum = DMin("[E_Num]", "Points by EventNumber and Team")
   MaxEventNum = DMax("[E_Num]", "Points by EventNumber and Team")
@@ -1756,7 +1756,7 @@ On Error GoTo PrintPreviewCumulativeReport_Err
     DoCmd.RunSQL "UPDATE [Points-House-Cumulative] SET [Points-House-Cumulative].Flag = False"
 
     DoCmd.SetWarnings True
-    If rs.BOF Then ' Ensure there is at least on record in table
+    If Rs.BOF Then ' Ensure there is at least on record in table
       'rs.AddNew
       
       'rs!Flag = False
@@ -1780,18 +1780,18 @@ On Error GoTo PrintPreviewCumulativeReport_Err
         Wend
 ExitLoop:
         
-        If rs.EOF Then
-          rs.AddNew
+        If Rs.EOF Then
+          Rs.AddNew
         Else
-          rs.Edit
+          Rs.Edit
           
         End If
-        rs!H_ID = OldTeam
-        rs!E_Number = EventNum
-        rs!Points = Points
-        rs!Flag = True
-        rs.Update
-        If Not rs.EOF Then rs.MoveNext
+        Rs!H_ID = OldTeam
+        Rs!E_Number = EventNum
+        Rs!Points = Points
+        Rs!Flag = True
+        Rs.Update
+        If Not Rs.EOF Then Rs.MoveNext
       Next
       Points = 0
 

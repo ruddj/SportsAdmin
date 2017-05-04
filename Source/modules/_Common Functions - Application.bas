@@ -511,7 +511,7 @@ Private Function LoadRibbons(strRibbon)
 
         On Error GoTo Error1
 
-        Dim rs As DAO.Recordset
+        Dim Rs As DAO.Recordset
         Dim strRibbonData As String
 
       '  Set RS = CurrentDb.OpenRecordset("SELECT * FROM USysRibbons")
@@ -534,7 +534,7 @@ Error1_Exit:
 
      On Error Resume Next
     ' RS.Close
-     Set rs = Nothing
+     Set Rs = Nothing
      Exit Function
 
 Error1:

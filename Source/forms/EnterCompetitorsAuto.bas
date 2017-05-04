@@ -428,7 +428,7 @@ Private Sub AddCompet_Click()
 
     'Stop
 
-    Dim Crs As Recordset, Db As Database, Q As Variant, Ers As Recordset, Hrs As Recordset, HeatRS As Recordset
+    Dim Crs As Recordset, db As Database, Q As Variant, Ers As Recordset, Hrs As Recordset, HeatRS As Recordset
     Dim TotalHouses As Variant, NumOfLanes As Variant, FLev As Variant, CriteriaHeat As Variant
     Dim CreateHeat As Variant, PointScale As Variant, ProType As Variant, UseTimes As Variant
     Dim Criteria As Variant, Continue As Variant, i As Variant, HouseIndex As Variant, CompLane As Variant
@@ -436,11 +436,11 @@ Private Sub AddCompet_Click()
     Dim CErs As Recordset
     Dim HC() As HouseComp
 
-    Set Db = DBEngine.Workspaces(0).Databases(0)
+    Set db = DBEngine.Workspaces(0).Databases(0)
 
     Q = "SELECT DISTINCTROW Competitors.PIN, [Surname] & [Gname] & Str([Pin]) AS FullName, Competitors.Age, Competitors.sex, Competitors.H_Code FROM Competitors "
     Q = Q & " ORDER BY [Surname] & [Gname] & Str([Pin])"
-    Set Crs = Db.OpenRecordset(Q, dbOpenDynaset)   ' Create dynaset.
+    Set Crs = db.OpenRecordset(Q, dbOpenDynaset)   ' Create dynaset.
 
     Q = "SELECT DISTINCTROW Events.E_Code, Events.Sex, Events.Age, EventType.ET_Des, EventType.EntrantNum, EventType.Lane_Cnt "
     Q = Q & "FROM EventType INNER JOIN Events ON EventType.ET_Code = Events.ET_Code "
@@ -448,17 +448,17 @@ Private Sub AddCompet_Click()
     If Not Me![AllAges] Then
         Q = Q & " AND Events.Age=""" & Me![Selected Age] & """"
     End If
-    Set Ers = Db.OpenRecordset(Q, dbOpenDynaset)   ' Create dynaset.
+    Set Ers = db.OpenRecordset(Q, dbOpenDynaset)   ' Create dynaset.
 
     Q = "SELECT DISTINCTROW House.H_Code, House.Include, House.H_ID FROM House "
     Q = Q & "WHERE House.Include=Yes"
-    Set Hrs = Db.OpenRecordset(Q, dbOpenDynaset)   ' Create dynaset.
+    Set Hrs = db.OpenRecordset(Q, dbOpenDynaset)   ' Create dynaset.
 
-    Set CErs = Db.OpenRecordset("CompEvents", dbOpenDynaset)   ' Create dynaset.
+    Set CErs = db.OpenRecordset("CompEvents", dbOpenDynaset)   ' Create dynaset.
 
     Q = "SELECT DISTINCTROW Heats.E_Code, Heats.Heat, Heats.PtScale, Heats.Pro_Type, Heats.UseTimes, Heats.F_Lev, Heats.Completed, Heats.Status FROM Heats"
     'q = q & " ORDER [E_Code],[F_Lev],[Heat]"
-    Set HeatRS = Db.OpenRecordset(Q, dbOpenDynaset)   ' Create dynaset.
+    Set HeatRS = db.OpenRecordset(Q, dbOpenDynaset)   ' Create dynaset.
 
     Hrs.MoveFirst
     TotalHouses = 0

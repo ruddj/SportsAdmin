@@ -449,25 +449,25 @@ Private Sub CreateTeamNames_Click()
     PleaseWaitMsg = "Adding Team Competitor Names ..."
     DoCmd.RunMacro "ShowPleaseWait"
 
-    Dim Criteria As String, Db As Database, Hrs As Recordset, Ars As Recordset
+    Dim Criteria As String, db As Database, Hrs As Recordset, Ars As Recordset
     Dim NewTitle As String
 
     Call UpdateEventCompetitorAge
     
-    Set Db = DBEngine.Workspaces(0).Databases(0)
+    Set db = DBEngine.Workspaces(0).Databases(0)
     
     Q = " SELECT DISTINCTROW House.H_Code, House.CompPool, House.Include, House.H_ID FROM House "
     Q = Q & "GROUP BY House.H_Code, House.CompPool, House.Include, House.H_ID "
     Q = Q & "HAVING House.Include=Yes"
 
-    Set Hrs = Db.OpenRecordset(Q, dbOpenDynaset)   ' Create dynaset.
+    Set Hrs = db.OpenRecordset(Q, dbOpenDynaset)   ' Create dynaset.
 
     
     Q = "SELECT DISTINCT CompetitorEventAge.Eage, Str(Val([Eage])) AS Age "
     Q = Q & "FROM CompetitorEventAge "
     Q = Q & "GROUP BY CompetitorEventAge.Eage, Str(Val([Eage]))"
 
-    Set Ars = Db.OpenRecordset(Q, dbOpenDynaset)   ' Create dynaset.
+    Set Ars = db.OpenRecordset(Q, dbOpenDynaset)   ' Create dynaset.
     
     If Hrs.BOF Then
       ' No Teams so do nothing

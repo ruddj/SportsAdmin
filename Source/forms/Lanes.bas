@@ -344,7 +344,7 @@ Private Sub Update_Click()
  Response = MsgBox("This will update the lanes allocated to all competitors.  All old lane allocations will be removed and updated.  Do you wish to continue?", vbYesNo + vbQuestion, "Update Lane Allocation")
  
  If Response = vbYes Then
-    Dim Criteria As String, Db As Database, rs As Recordset
+    Dim Criteria As String, db As Database, Rs As Recordset
     Q = "UPDATE DISTINCTROW CompEvents SET CompEvents.Lane = 0"
     DoCmd.SetWarnings False
     DoCmd.RunSQL Q
@@ -352,26 +352,26 @@ Private Sub Update_Click()
 
     DoCmd.Hourglass True
 
-    Set Db = DBEngine.Workspaces(0).Databases(0)
-    Set rs = Db.OpenRecordset("Heats", dbOpenDynaset)   ' Create dynaset.
+    Set db = DBEngine.Workspaces(0).Databases(0)
+    Set Rs = db.OpenRecordset("Heats", dbOpenDynaset)   ' Create dynaset.
 
     msg = "Updating Lanes ... "
     ReturnValue = SysCmd(acSysCmdInitMeter, msg, DCount("[E_Code]", "Heats"))   ' Display message in status bar.
     X = 0
 
-    If Not rs.BOF Then
+    If Not Rs.BOF Then
     
-        rs.MoveFirst
+        Rs.MoveFirst
         
-        Do Until rs.EOF
-           Call Update_Lane_Assignments(rs!E_Code, rs!F_Lev, rs!Heat)
+        Do Until Rs.EOF
+           Call Update_Lane_Assignments(Rs!E_Code, Rs!F_Lev, Rs!Heat)
             X = X + 1
             ReturnValue = SysCmd(acSysCmdUpdateMeter, X)   ' Update meter.
     
-            rs.MoveNext
+            Rs.MoveNext
         Loop
     
-        rs.Close
+        Rs.Close
     Else
         MsgBox ("There are no lane to be updated.")
     End If

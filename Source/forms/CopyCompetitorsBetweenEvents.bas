@@ -415,7 +415,7 @@ End Sub
 Private Sub CopyCompetitors_Click()
 On Error GoTo Err_CopyCompetitors_Click
 
-  Dim Db As Database, Frs As Recordset, Trs As Recordset, Retval As Variant
+  Dim db As Database, Frs As Recordset, Trs As Recordset, Retval As Variant
   Dim FailedI As Integer, msg As Variant, success As Variant
   
   If MsgBox("Are you sure you want to copy competitors from one event to another?", vbYesNo + vbDefaultButton2 + vbQuestion) = vbNo Then Exit Sub
@@ -429,9 +429,9 @@ On Error GoTo Err_CopyCompetitors_Click
     '       New entry in CompEvents table
     '           All fields remain the same except for E_Code (generate by looking up in "Events in Full" query
 
-  Set Db = CurrentDb()
-  Set Frs = Db.OpenRecordset("CompEvents-With Event Type", dbOpenDynaset)   ' Create Recordset.
-  Set Trs = Db.OpenRecordset("CompEvents", dbOpenDynaset)   ' Create Recordset.
+  Set db = CurrentDb()
+  Set Frs = db.OpenRecordset("CompEvents-With Event Type", dbOpenDynaset)   ' Create Recordset.
+  Set Trs = db.OpenRecordset("CompEvents", dbOpenDynaset)   ' Create Recordset.
     
     'Stop
   
@@ -509,7 +509,7 @@ On Error GoTo Err_CopyCompetitors_Click
 
 Exit_CopyCompetitors_Click:
     DoCmd.RunMacro "ClosePleaseWait"
-    Set Db = Nothing
+    Set db = Nothing
     Exit Sub
 
 Err_CopyCompetitors_Click:

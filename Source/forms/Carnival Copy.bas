@@ -223,7 +223,7 @@ Private Function AddCarnival() As Variant
     On Error GoTo Err_AddCarnival
     Dim MyDb As Database, ITable As Recordset, SpecifiedPath As Variant, TT As TableDef, FTable As Recordset
     Dim DataExists As Variant, MyWS As Workspace, CPath  As Variant, AskUser  As Variant
-    Dim Result As Variant, ReturnVal As Variant, Db As Database
+    Dim Result As Variant, ReturnVal As Variant, db As Database
     Dim NewDir As String, OldDB As String, NextCarn As String
     AskUser = False
     
@@ -235,7 +235,7 @@ Private Function AddCarnival() As Variant
         If InStr(ReverseString(CStr(Result)), "\") <> 0 Then
             Set MyWS = DBEngine.Workspaces(0)
             Set MyDb = CurrentDb()
-            Set Db = MyWS.OpenDatabase(Result)
+            Set db = MyWS.OpenDatabase(Result)
             Set ITable = MyDb.OpenRecordset("SELECT * FROM [Inventory Attached Tables] Where [IF ID] = 2;")
             Do Until ITable.EOF
                 If ITable![Table Name] = "CompetitorsOrdered" Then

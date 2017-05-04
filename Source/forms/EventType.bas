@@ -16,20 +16,19 @@ Begin Form
     GridX =20
     GridY =20
     Width =11469
-    ItemSuffix =80
-    Left =375
-    Top =795
-    Right =14100
-    Bottom =9480
+    ItemSuffix =81
+    Left =525
+    Top =660
+    Right =14250
+    Bottom =9345
     HelpContextId =390
-    Filter ="[ET_Code] = 3"
     RecSrcDt = Begin
-        0xee9763512d29e240
+        0x9dadbd4472ede440
     End
     RecordSource ="SELECT DISTINCTROW EventType.ET_Code, EventType.ET_Des, EventType.Units, EventTy"
         "pe.Lane_Cnt, EventType.R_Code, ReportTypes.Desc, EventType.EntrantNum, EventType"
-        ".Include, EventType.PlacesAcrossAllHeats FROM ReportTypes INNER JOIN EventType O"
-        "N ReportTypes.R_Code = EventType.R_Code;"
+        ".Include, EventType.PlacesAcrossAllHeats, EventType.Mevent FROM ReportTypes INNE"
+        "R JOIN EventType ON ReportTypes.R_Code = EventType.R_Code;"
     Caption ="Event Details"
     OnClose ="[Event Procedure]"
     HelpFile ="SportsAdmin.chm"
@@ -38,6 +37,7 @@ Begin Form
         0x010000006801000000000000a10700000100000001000000
     End
     OnLoad ="[Event Procedure]"
+    AllowDatasheetView =0
     FilterOnLoad =0
     AllowLayoutView =0
     Begin
@@ -325,8 +325,8 @@ Begin Form
                     Visible = NotDefault
                     SpecialEffect =0
                     OverlapFlags =93
-                    Left =6040
-                    Top =288
+                    Left =5612
+                    Top =737
                     Width =680
                     Height =238
                     TabIndex =11
@@ -334,6 +334,10 @@ Begin Form
                     ControlSource ="ET_Code"
                     FontName ="Tahoma"
 
+                    LayoutCachedLeft =5612
+                    LayoutCachedTop =737
+                    LayoutCachedWidth =6292
+                    LayoutCachedHeight =975
                 End
                 Begin CommandButton
                     OverlapFlags =85
@@ -417,14 +421,18 @@ Begin Form
                     Visible = NotDefault
                     SpecialEffect =0
                     OverlapFlags =93
-                    Left =5832
-                    Top =595
+                    Left =5640
+                    Top =1077
                     Width =702
                     TabIndex =15
                     Name ="vE_Code"
                     ControlSource ="=[Forms]![EventType]![ET_Sub1].[Form]![E_Code]"
                     FontName ="Tahoma"
 
+                    LayoutCachedLeft =5640
+                    LayoutCachedTop =1077
+                    LayoutCachedWidth =6342
+                    LayoutCachedHeight =1332
                 End
                 Begin Label
                     BackStyle =0
@@ -648,6 +656,42 @@ Begin Form
                             Name ="Label79"
                             Caption ="Places determined across all heats:"
                             FontName ="Tahoma"
+                        End
+                    End
+                End
+                Begin TextBox
+                    OverlapFlags =247
+                    IMESentenceMode =3
+                    Left =7538
+                    Top =283
+                    TabIndex =19
+                    HelpContextId =390
+                    Name ="Mevent"
+                    ControlSource ="Mevent"
+                    StatusBarText ="Meet Manager Event Code. e.g. 100, 100H, HJ, DT"
+                    ControlTipText ="Meet Manager Event Code. See Help File. e.g. 100, 100H, HJ, DT"
+
+                    LayoutCachedLeft =7538
+                    LayoutCachedTop =283
+                    LayoutCachedWidth =8978
+                    LayoutCachedHeight =538
+                    Begin
+                        Begin Label
+                            BackStyle =0
+                            OverlapFlags =247
+                            Left =5550
+                            Top =285
+                            Width =1830
+                            Height =240
+                            FontWeight =400
+                            BackColor =-2147483613
+                            Name ="Label80"
+                            Caption ="Meet Manager Mapping:"
+                            FontName ="Tahoma"
+                            LayoutCachedLeft =5550
+                            LayoutCachedTop =285
+                            LayoutCachedWidth =7380
+                            LayoutCachedHeight =525
                         End
                     End
                 End

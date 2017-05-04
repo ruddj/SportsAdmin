@@ -1646,10 +1646,10 @@ On Error GoTo Report_Close_Err
   If ExportOleChart Then
     Dim oleGraph As Object
     HTMLFileLocation = DLookup("[HTMLlocation]", "MiscHTML")
-    FileLocation = HTMLFileLocation & "\events.jpg"
+    fileLocation = HTMLFileLocation & "\events.jpg"
     Set oleGraph = Me.oleChart.Object
     
-    oleGraph.export FileName:=FileLocation
+    oleGraph.Export FileName:=fileLocation
     oleGraph.Close
     Set oleGraph = Nothing
   End If

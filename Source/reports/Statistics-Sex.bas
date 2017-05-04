@@ -1013,14 +1013,14 @@ End Sub
 
 Private Sub Report_Close()
 On Error GoTo Report_Close_Err
-  Dim HTMLFileLocation As String, FileLocation As String
+  Dim HTMLFileLocation As String, fileLocation As String
   If ExportOleChart Then
     Dim oleGraph As Object
     HTMLFileLocation = DLookup("[HTMLlocation]", "MiscHTML")
-    FileLocation = HTMLFileLocation & "\sex.jpg"
+    fileLocation = HTMLFileLocation & "\sex.jpg"
     Set oleGraph = Me.oleChart.Object
     
-    oleGraph.export FileName:=FileLocation
+    oleGraph.Export FileName:=fileLocation
     oleGraph.Close
     Set oleGraph = Nothing
   End If

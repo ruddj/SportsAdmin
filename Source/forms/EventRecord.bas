@@ -783,12 +783,12 @@ Private Sub Add_Click()
 
     Dim Continue As Variant, Response As Variant
 
-    Dim Criteria As String, Db As Database, rs As Recordset
+    Dim Criteria As String, db As Database, Rs As Recordset
     Dim nValu As String, res As String, nUnit As String
     Dim success As Boolean
     
-    Set Db = DBEngine.Workspaces(0).Databases(0)
-    Set rs = Db.OpenRecordset("Records", dbOpenDynaset)   ' Create dynaset.
+    Set db = DBEngine.Workspaces(0).Databases(0)
+    Set Rs = db.OpenRecordset("Records", dbOpenDynaset)   ' Create dynaset.
     
     If IsNull(Me![Surname]) Then
         Response = MsgBox("You must enter a surname.", vbInformation)
@@ -821,31 +821,31 @@ Private Sub Add_Click()
         If Continue Then
             Criteria = "[E_Code]=" & Me![E_Code] & " AND [Date]=#" & Format(Me![Date], "mm/dd/yy") & "#"
         
-            rs.FindFirst Criteria    ' Find first occurrence.
-            If rs.NoMatch Then
-                rs.AddNew
-                rs!E_Code = Me![E_Code]
-                rs!Surname = Me![Surname]
-                rs!Gname = Me![Gname]
-                rs!H_Code = Me![House]
-                rs!Date = Me![Date]
-                rs!Result = Me![Record]
-                rs!nResult = Val(res)
-                rs.Update
+            Rs.FindFirst Criteria    ' Find first occurrence.
+            If Rs.NoMatch Then
+                Rs.AddNew
+                Rs!E_Code = Me![E_Code]
+                Rs!Surname = Me![Surname]
+                Rs!Gname = Me![Gname]
+                Rs!H_Code = Me![House]
+                Rs!Date = Me![Date]
+                Rs!Result = Me![Record]
+                Rs!nResult = Val(res)
+                Rs.Update
                 
             Else
     
                 Response = MsgBox("A record has already been set on this day.  Do you want to replace the existing record?", vbYesNo + vbInformation, "Replace Record")
                 If Response = vbYes Then
-                    rs.Edit
-                    rs!E_Code = Me![E_Code]
-                    rs!Surname = Me![Surname]
-                    rs!Gname = Me![Gname]
-                    rs!H_Code = Me![House]
-                    rs!Date = Me![Date]
-                    rs!Result = Me![Record]
-                    rs!nResult = Val(res)
-                    rs.Update
+                    Rs.Edit
+                    Rs!E_Code = Me![E_Code]
+                    Rs!Surname = Me![Surname]
+                    Rs!Gname = Me![Gname]
+                    Rs!H_Code = Me![House]
+                    Rs!Date = Me![Date]
+                    Rs!Result = Me![Record]
+                    Rs!nResult = Val(res)
+                    Rs.Update
 
                 End If
                 
@@ -857,7 +857,7 @@ Private Sub Add_Click()
         
     End If
 
-    rs.Close
+    Rs.Close
 End Sub
 
 Private Sub Close_Click()

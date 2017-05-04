@@ -41,7 +41,7 @@ Public Function ExportNamesHTML(Optional repName As String = "agca")
     
     'On Error Resume Next
     
-    Dim MyDb As Database, rs As Recordset, QryName As String
+    Dim MyDb As Database, Rs As Recordset, QryName As String
     Dim curGroup As String, iPosition As Integer, iDisplayMax As Integer
     Dim bAgeChamp As Boolean, iDisplayLimit As Integer
     Dim ReportTitle As String, ReportCaption As Variant, repGroup As String, repGroupHeader As String
@@ -107,7 +107,7 @@ Public Function ExportNamesHTML(Optional repName As String = "agca")
          
     ' Load Data
     Set MyDb = CurrentDb()
-    Set rs = MyDb.OpenRecordset(QryName, dbOpenDynaset)
+    Set Rs = MyDb.OpenRecordset(QryName, dbOpenDynaset)
 
     ' Start Web Page Header
     ReportHead = DLookup("[ReportHeader]", "MiscHTML")
@@ -134,18 +134,18 @@ Public Function ExportNamesHTML(Optional repName As String = "agca")
     ' Start Results
     Call DivOpen(rHTML, "results")
        
-    If (rs.EOF Or rs.BOF) Then
+    If (Rs.EOF Or Rs.BOF) Then
         ' No Data
         MsgBox "No Records for HTML Export"
         Exit Function
     End If
     
     ' Cycle through Data and add to array
-    rs.MoveFirst 'Unnecessary in this case, but still a good habit
-    Do Until rs.EOF = True
+    Rs.MoveFirst 'Unnecessary in this case, but still a good habit
+    Do Until Rs.EOF = True
         ' If start of new group add entry
-        If curGroup <> rs(repGroup) Then
-            If rs.AbsolutePosition > 0 Then
+        If curGroup <> Rs(repGroup) Then
+            If Rs.AbsolutePosition > 0 Then
                 ' Not First Group add end group
                 Call TableEnd(rHTML)
                 Call DivClose(rHTML) ' Close Data
@@ -154,7 +154,7 @@ Public Function ExportNamesHTML(Optional repName As String = "agca")
                 Call DivClose(rHTML)
                 Call DivClose(rHTML) ' Close Group
             End If
-            curGroup = rs(repGroup)
+            curGroup = Rs(repGroup)
             iPosition = 1
             
             cssGroup = AlphaNumericDashOnly(curGroup)
@@ -188,7 +188,7 @@ Public Function ExportNamesHTML(Optional repName As String = "agca")
         If iPosition <= iDisplayMax Then
             strPlace = ""
             If (Not bAgeChamp And Not IsNull(repFinalLev) And Not IsNull(repPlace)) Then
-                strPlace = "place-" & Trim(rs(repFinalLev)) & "-" & Trim(rs(repPlace))
+                strPlace = "place-" & Trim(Rs(repFinalLev)) & "-" & Trim(Rs(repPlace))
             Else
                 strPlace = "position-" & iPosition
             End If
@@ -200,7 +200,7 @@ Public Function ExportNamesHTML(Optional repName As String = "agca")
                 If (strField = "_Position") Then
                     strValue = iPosition
                 Else
-                    varValue = rs(varField)
+                    varValue = Rs(varField)
                     If IsNull(varValue) Then
                         strValue = ""
                     Else
@@ -215,7 +215,7 @@ Public Function ExportNamesHTML(Optional repName As String = "agca")
         End If
         'Move to the next record. Don't ever forget to do this.
         iPosition = iPosition + 1
-        rs.MoveNext
+        Rs.MoveNext
     Loop
     
     ' Close Last group

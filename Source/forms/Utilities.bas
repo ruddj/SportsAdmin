@@ -16,11 +16,11 @@ Begin Form
     BorderStyle =3
     GridY =10
     Width =9924
-    ItemSuffix =73
+    ItemSuffix =75
     Left =1560
     Top =1305
-    Right =13755
-    Bottom =10530
+    Right =11490
+    Bottom =7920
     RecSrcDt = Begin
         0xe130be95d6e5e140
     End
@@ -32,6 +32,7 @@ Begin Form
         0x010000006801000000000000a10700000100000001000000
     End
     OnLoad ="[Event Procedure]"
+    AllowDatasheetView =0
     FilterOnLoad =0
     AllowLayoutView =0
     Begin
@@ -659,6 +660,39 @@ Begin Form
                             Top =465
                             Width =9540
                             Height =5430
+                            Name ="Export"
+                            LayoutCachedLeft =195
+                            LayoutCachedTop =465
+                            LayoutCachedWidth =9735
+                            LayoutCachedHeight =5895
+                            WebImagePaddingLeft =2
+                            WebImagePaddingTop =2
+                            WebImagePaddingRight =2
+                            WebImagePaddingBottom =2
+                            Begin
+                                Begin Subform
+                                    OverlapFlags =247
+                                    Left =275
+                                    Top =545
+                                    Width =9270
+                                    Height =4890
+                                    Name ="Utilities-Export"
+                                    SourceObject ="Form.Utilities-Export"
+                                    EventProcPrefix ="Utilities_Export"
+
+                                    LayoutCachedLeft =275
+                                    LayoutCachedTop =545
+                                    LayoutCachedWidth =9545
+                                    LayoutCachedHeight =5435
+                                End
+                            End
+                        End
+                        Begin Page
+                            OverlapFlags =247
+                            Left =195
+                            Top =465
+                            Width =9540
+                            Height =5430
                             Name ="Page58"
                             Caption ="Report Popup"
                             LayoutCachedLeft =195
@@ -853,19 +887,19 @@ On Error GoTo RecereateHeatsBut_Click_Err
   Response = MsgBox("Are you sure you want to re-create all heats?  (This will remove all competitors from all heats)", vbQuestion + vbDefaultButton2 + vbYesNo)
   If Response = vbNo Then Exit Sub
 
-  Dim rs As Recordset
-  Set rs = CurrentDb.OpenRecordset("EventType")
+  Dim Rs As Recordset
+  Set Rs = CurrentDb.OpenRecordset("EventType")
   
-  If rs.BOF Then
+  If Rs.BOF Then
     MsgBox "No events to process.", vbInformation
     Exit Sub
   End If
   
-  Do Until rs.BOF Or rs.EOF
-    If Not AutomaticallyCreateHeatsAndFinals(rs!ET_Code, , True) Then
-      MsgBox "An error occurred recreating heats for: " & rs!ET_Des, vbExclamation
+  Do Until Rs.BOF Or Rs.EOF
+    If Not AutomaticallyCreateHeatsAndFinals(Rs!ET_Code, , True) Then
+      MsgBox "An error occurred recreating heats for: " & Rs!ET_Des, vbExclamation
     End If
-    rs.MoveNext
+    Rs.MoveNext
   Loop
   
   Response = MsgBox("Heats and finals have been created.", vbInformation)
@@ -915,59 +949,59 @@ Private Sub Reset_Click()
         DoCmd.RunMacro "ShowPleaseWait"
 
     
-        Dim Criteria As String, Db As Database, rs As Recordset
+        Dim Criteria As String, db As Database, Rs As Recordset
         
-        Set Db = CurrentDb()
-        Set rs = Db.OpenRecordset("SELECT * FROM Heats ORDER BY [E_CODE], [F_LEV] DESC ", dbOpenDynaset)   ' Create dynaset.
+        Set db = CurrentDb()
+        Set Rs = db.OpenRecordset("SELECT * FROM Heats ORDER BY [E_CODE], [F_LEV] DESC ", dbOpenDynaset)   ' Create dynaset.
         
-        rs.MoveFirst
-        PrevE_Code = rs![E_Code]
-        PrevF_Lev = rs![F_Lev]
-        rs.Edit
-        rs![Completed] = No
-        rs![Status] = 1           ' 0=future; 1=active
-        rs.Update
+        Rs.MoveFirst
+        PrevE_Code = Rs![E_Code]
+        PrevF_Lev = Rs![F_Lev]
+        Rs.Edit
+        Rs![Completed] = No
+        Rs![Status] = 1           ' 0=future; 1=active
+        Rs.Update
     
-        rs.MoveNext
+        Rs.MoveNext
     
         CurrentlyActive = True
     
-        Do Until rs.EOF
+        Do Until Rs.EOF
             
-            rs.Edit
-            rs![Completed] = No
+            Rs.Edit
+            Rs![Completed] = No
             
     
-            If rs![E_Code] = PrevE_Code Then
+            If Rs![E_Code] = PrevE_Code Then
                 
-                If PrevF_Lev <> rs![F_Lev] Then
+                If PrevF_Lev <> Rs![F_Lev] Then
                     CurrentlyActive = False
                 End If
                 
                 If CurrentlyActive Then
-                    rs![Status] = 1           ' 0=future; 1=active
+                    Rs![Status] = 1           ' 0=future; 1=active
                 Else
-                    rs![Status] = 0
+                    Rs![Status] = 0
                 End If
     
-                PrevE_Code = rs![E_Code]
-                PrevF_Lev = rs![F_Lev]
+                PrevE_Code = Rs![E_Code]
+                PrevF_Lev = Rs![F_Lev]
     
-                rs.Update
-                rs.MoveNext
+                Rs.Update
+                Rs.MoveNext
     
             Else
                 CurrentlyActive = True
-                rs![Status] = 1
-                PrevE_Code = rs![E_Code]
-                PrevF_Lev = rs![F_Lev]
-                rs.Update
-                rs.MoveNext
+                Rs![Status] = 1
+                PrevE_Code = Rs![E_Code]
+                PrevF_Lev = Rs![F_Lev]
+                Rs.Update
+                Rs.MoveNext
             End If
     
         Loop
     
-        rs.Close
+        Rs.Close
     
         'q = "DELETE DISTINCTROW CompEvents.* FROM CompEvents"
         
@@ -979,7 +1013,7 @@ Private Sub Reset_Click()
 
 
 Reset_Click_Exit:
-    Set Db = Nothing
+    Set db = Nothing
     Exit Sub
 
 Reset_Click_Err:

@@ -15,11 +15,11 @@ Begin Form
     GridY =20
     Width =10374
     ItemSuffix =9
-    Left =-20580
-    Top =3435
-    Right =-8385
-    Bottom =11280
-    HelpContextId =80
+    Left =-20685
+    Top =7095
+    Right =-8490
+    Bottom =14940
+    HelpContextId =60
     OnUnload ="[Event Procedure]"
     RecSrcDt = Begin
         0xb2463d042dc7e140
@@ -32,6 +32,7 @@ Begin Form
         0x010000006801000000000000a10700000100000001000000
     End
     OnResize ="[Event Procedure]"
+    AllowDatasheetView =0
     FilterOnLoad =0
     AllowLayoutView =0
     Begin
@@ -437,26 +438,26 @@ On Error GoTo UpdateRecords_Click_Err
     If DCount("[Heat]", "Heats") > 0 Then
         PleaseWaitMsg = "Updating event records ..."
         DoCmd.RunMacro "ShowPleaseWait"
-        Dim Db As Database, rs As Recordset
+        Dim db As Database, Rs As Recordset
         'Stop
-        Set Db = DBEngine.Workspaces(0).Databases(0)
-        Set rs = Db.OpenRecordset("Heats", dbOpenDynaset)   ' Create dynaset.
+        Set db = DBEngine.Workspaces(0).Databases(0)
+        Set Rs = db.OpenRecordset("Heats", dbOpenDynaset)   ' Create dynaset.
         GlobalVariable = False
-        rs.MoveLast
-        Tot = rs.RecordCount
+        Rs.MoveLast
+        Tot = Rs.RecordCount
         msg = "Updating Event Records ..."
         ReturnValue = SysCmd(acSysCmdInitMeter, msg, Tot)    ' Display message in status bar.
         X = 1
                 
-        rs.MoveFirst
-        While Not rs.EOF
-            Call CheckIfRecordBroken(rs!E_Code, -1, -1)
-            rs.MoveNext
+        Rs.MoveFirst
+        While Not Rs.EOF
+            Call CheckIfRecordBroken(Rs!E_Code, -1, -1)
+            Rs.MoveNext
             ReturnValue = SysCmd(acSysCmdUpdateMeter, X)   ' Update meter.
             X = X + 1
         Wend
     
-        rs.Close
+        Rs.Close
         ReturnValue = SysCmd(acSysCmdRemoveMeter)   ' Update meter.
     End If
   End If

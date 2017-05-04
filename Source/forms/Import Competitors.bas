@@ -591,22 +591,22 @@ Private Sub ImportData_Click()
 
   DoCmd.RunCommand acCmdSaveRecord
   
-  Dim Criteria As String, Db As Database, rs As Recordset
+  Dim Criteria As String, db As Database, Rs As Recordset
   Dim Crs As Recordset, ITRS As Recordset, CErs As Recordset
   Dim Hrs As Recordset, H_ID As Variant
 
-  Set Db = CurrentDb()
-  Set ITRS = Db.OpenRecordset("Import Competitors", dbOpenDynaset)   ' Create dynaset.
+  Set db = CurrentDb()
+  Set ITRS = db.OpenRecordset("Import Competitors", dbOpenDynaset)   ' Create dynaset.
   Set Crs = OpenForSeek("Competitors")
   
   On Error Resume Next
   Crs.index = "Name&House"
   
-  If Err.Number <> 0 Then Set Crs = Db.OpenRecordset("Competitors", dbOpenDynaset)   ' Create dynaset.
+  If Err.Number <> 0 Then Set Crs = db.OpenRecordset("Competitors", dbOpenDynaset)   ' Create dynaset.
   
   On Error GoTo Err_ImportData_Click
   
-  Set Hrs = Db.OpenRecordset("House", dbOpenDynaset)
+  Set Hrs = db.OpenRecordset("House", dbOpenDynaset)
     
   If ITRS.BOF Then
     Response = MsgBox("There are no competitors in the list to import.  First 'View the Text File' for correctness then push the import button.", vbInformation)
@@ -718,7 +718,7 @@ Private Sub ImportData_Click()
   End If
   
 Exit_ImportData_Click:
-    Set Db = Nothing
+    Set db = Nothing
     DoCmd.RunMacro "ClosePleaseWait"
     Exit Sub
 

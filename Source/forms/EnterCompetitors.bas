@@ -1127,14 +1127,14 @@ Private Sub EnterResultsInPlaceOrderBut_Click()
 
 On Error GoTo EnterResultsInPlaceOrderBut_Click_Err
 
-    Dim Criteria As String, Db As Database, rs As Recordset
+    Dim Criteria As String, db As Database, Rs As Recordset
     Dim MyDb As Database, MySet As Recordset, Q As Variant, X As Variant, i As Variant, Place As Variant, Lane As Variant
     Dim NewTitle As String, Criteria1 As Variant, ECrs As Recordset
     Dim success As Boolean
     
-    Set Db = DBEngine.Workspaces(0).Databases(0)
-    Set rs = Db.OpenRecordset("Temporary Results-Place Order", dbOpenDynaset)   ' Create dynaset.
-    Set ECrs = Db.OpenRecordset("CompEvents", dbOpenDynaset)   ' Create dynaset.
+    Set db = DBEngine.Workspaces(0).Databases(0)
+    Set Rs = db.OpenRecordset("Temporary Results-Place Order", dbOpenDynaset)   ' Create dynaset.
+    Set ECrs = db.OpenRecordset("CompEvents", dbOpenDynaset)   ' Create dynaset.
     
     'Stop
     
@@ -1156,10 +1156,10 @@ On Error GoTo EnterResultsInPlaceOrderBut_Click_Err
         ECrs.FindFirst Criteria
         i = 1
         While Not ECrs.NoMatch
-            rs.AddNew
-            rs!Place = i
-            rs!AvailableLanes = ECrs!Lane
-            rs.Update
+            Rs.AddNew
+            Rs!Place = i
+            Rs!AvailableLanes = ECrs!Lane
+            Rs.Update
             ECrs.FindNext Criteria
             i = i + 1
         Wend
@@ -1180,19 +1180,19 @@ On Error GoTo EnterResultsInPlaceOrderBut_Click_Err
         PleaseWaitMsg = "Updating competitor placings and results ..."
         DoCmd.RunMacro "ShowPleaseWait"
         
-        Set rs = Db.OpenRecordset("Temporary Results-Place Order", dbOpenDynaset)   ' Create dynaset.
+        Set Rs = db.OpenRecordset("Temporary Results-Place Order", dbOpenDynaset)   ' Create dynaset.
     
         Dim nValu As String, Result As String, Runit As String
     
-        rs.MoveFirst
-        Do Until rs.EOF  ' Loop until no matching records.
-            Place = rs!Place
-            Lane = rs!Lane
+        Rs.MoveFirst
+        Do Until Rs.EOF  ' Loop until no matching records.
+            Place = Rs!Place
+            Lane = Rs!Lane
             
-            If IsNull(rs!Results) Then
+            If IsNull(Rs!Results) Then
                 Result = "0"
             Else
-                Result = rs!Results
+                Result = Rs!Results
             End If
             Runit = Me![Units]
             Call Calculate_Results(Result, nValu, Runit, success)
@@ -1204,11 +1204,11 @@ On Error GoTo EnterResultsInPlaceOrderBut_Click_Err
             DoCmd.RunSQL Q
             DoCmd.SetWarnings True
             
-            rs.MoveNext
+            Rs.MoveNext
     
         Loop
     
-        rs.Close
+        Rs.Close
             
         Criteria1 = "[HE_Code] = " & Me![HE_Code] & " AND [Place] = 0"
         If IsNull(DLookup("[HE_Code]", "EnterCompetitorsSF", Criteria1)) Then
@@ -1700,8 +1700,8 @@ Private Sub Form_Current()
 
     End If
 
-    Dim Db As Database
-    Set Db = CurrentDb
+    Dim db As Database
+    Set db = CurrentDb
     
     'Me![EC_Subform].Form![Fname].RowSource = GenerateAgeFilter([Forms]![EnterCompetitors]![AgeFld])
     

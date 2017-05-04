@@ -388,59 +388,59 @@ On Error GoTo Reset_Click_Err
         DoCmd.RunMacro "ShowPleaseWait"
 
     
-        Dim Criteria As String, Db As Database, rs As Recordset
+        Dim Criteria As String, db As Database, Rs As Recordset
         
-        Set Db = CurrentDb()
-        Set rs = Db.OpenRecordset("SELECT * FROM Heats ORDER BY [E_CODE], [F_LEV] DESC ", dbOpenDynaset)   ' Create dynaset.
+        Set db = CurrentDb()
+        Set Rs = db.OpenRecordset("SELECT * FROM Heats ORDER BY [E_CODE], [F_LEV] DESC ", dbOpenDynaset)   ' Create dynaset.
         
-        rs.MoveFirst
-        PrevE_Code = rs![E_Code]
-        PrevF_Lev = rs![F_Lev]
-        rs.Edit
-        rs![Completed] = No
-        rs![Status] = 1           ' 0=future; 1=active
-        rs.Update
+        Rs.MoveFirst
+        PrevE_Code = Rs![E_Code]
+        PrevF_Lev = Rs![F_Lev]
+        Rs.Edit
+        Rs![Completed] = No
+        Rs![Status] = 1           ' 0=future; 1=active
+        Rs.Update
     
-        rs.MoveNext
+        Rs.MoveNext
     
         CurrentlyActive = True
     
-        Do Until rs.EOF
+        Do Until Rs.EOF
             
-            rs.Edit
-            rs![Completed] = No
+            Rs.Edit
+            Rs![Completed] = No
             
     
-            If rs![E_Code] = PrevE_Code Then
+            If Rs![E_Code] = PrevE_Code Then
                 
-                If PrevF_Lev <> rs![F_Lev] Then
+                If PrevF_Lev <> Rs![F_Lev] Then
                     CurrentlyActive = False
                 End If
                 
                 If CurrentlyActive Then
-                    rs![Status] = 1           ' 0=future; 1=active
+                    Rs![Status] = 1           ' 0=future; 1=active
                 Else
-                    rs![Status] = 0
+                    Rs![Status] = 0
                 End If
     
-                PrevE_Code = rs![E_Code]
-                PrevF_Lev = rs![F_Lev]
+                PrevE_Code = Rs![E_Code]
+                PrevF_Lev = Rs![F_Lev]
     
-                rs.Update
-                rs.MoveNext
+                Rs.Update
+                Rs.MoveNext
     
             Else
                 CurrentlyActive = True
-                rs![Status] = 1
-                PrevE_Code = rs![E_Code]
-                PrevF_Lev = rs![F_Lev]
-                rs.Update
-                rs.MoveNext
+                Rs![Status] = 1
+                PrevE_Code = Rs![E_Code]
+                PrevF_Lev = Rs![F_Lev]
+                Rs.Update
+                Rs.MoveNext
             End If
     
         Loop
     
-        rs.Close
+        Rs.Close
     
         'q = "DELETE DISTINCTROW CompEvents.* FROM CompEvents"
         
@@ -452,7 +452,7 @@ On Error GoTo Reset_Click_Err
 
 
 Reset_Click_Exit:
-    Set Db = Nothing
+    Set db = Nothing
     Exit Sub
 
 Reset_Click_Err:

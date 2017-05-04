@@ -553,16 +553,16 @@ On Error GoTo Err_ImportData_Click
   DoCmd.Hourglass True
   DoCmd.RunCommand acCmdSaveRecord
   
-  Dim Criteria As String, Db As Database, rs As Recordset, Q
+  Dim Criteria As String, db As Database, Rs As Recordset, Q
   Dim Crs As Recordset, ITRS As Recordset, CErs As Recordset, NewAge As Variant
 
   Dim NamesIncomplete  As Integer, H_CodeIncomplete As Integer, msg As Variant
   Dim ShowCompetitorAlreadyEnrolledMessage As Boolean
   
-  Set Db = CurrentDb()
-  Set ITRS = Db.OpenRecordset("SELECT * FROM ImportData ORDER BY [Age]", dbOpenDynaset)   ' Create dynaset.
-  Set Crs = Db.OpenRecordset("SELECT * FROM Competitors ORDER BY [Age] DESC", dbOpenDynaset)   ' Create dynaset.
-  Set CErs = Db.OpenRecordset("CompEvents", dbOpenDynaset)   ' Create dynaset.
+  Set db = CurrentDb()
+  Set ITRS = db.OpenRecordset("SELECT * FROM ImportData ORDER BY [Age]", dbOpenDynaset)   ' Create dynaset.
+  Set Crs = db.OpenRecordset("SELECT * FROM Competitors ORDER BY [Age] DESC", dbOpenDynaset)   ' Create dynaset.
+  Set CErs = db.OpenRecordset("CompEvents", dbOpenDynaset)   ' Create dynaset.
   
   ShowCompetitorAlreadyEnrolledMessage = True
   NamesIncomplete = 0
@@ -709,7 +709,7 @@ Exit_ImportData_Click:
     Crs.Close
     CErs.Close
     
-    Set Db = Nothing
+    Set db = Nothing
     DoCmd.Hourglass False
     DoCmd.RunMacro "ClosePleaseWait"
 
@@ -793,8 +793,8 @@ On Error GoTo Err_Import_Click
         Else
           
           Dim tdf As TableDef
-          Dim Db As Database
-          Dim rs As Recordset
+          Dim db As Database
+          Dim Rs As Recordset
             
         End If
 

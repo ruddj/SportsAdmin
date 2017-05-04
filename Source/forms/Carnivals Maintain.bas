@@ -552,15 +552,15 @@ End Sub
 Private Sub Form_Load()
 
     On Error GoTo Err_Form_Load
-    Dim Db As Database, TB As TableDef, FileName As String, RPath As String, RFile As String, FilenamePath As Variant
+    Dim db As Database, TB As TableDef, FileName As String, RPath As String, RFile As String, FilenamePath As Variant
     DoCmd.SetWarnings False
     
     DoCmd.RunSQL "UPDATE DISTINCTROW Carnivals SET Carnivals.Available = FileExists(GetCarnivalFullDir([Relative Directory]) & [Filename]);"
     Me.List.Requery
     Me.List = Null
-    Set Db = CurrentDb()
+    Set db = CurrentDb()
     'Db.TableDefs.Refresh
-    Set TB = Db.TableDefs("Competitors")
+    Set TB = db.TableDefs("Competitors")
     FileName = UCase$(Right$(TB.connect, Len(TB.connect) - InStr(TB.connect, "=")))
     FilenamePath = Left$(FileName, Len(FileName) - InStr(ReverseString(FileName), "\") + 1)
     ''RFile = Right$(Filename, Len(Filename) - Len(RPath))
@@ -570,7 +570,7 @@ Private Sub Form_Load()
     UserQuit = False
 
 Exit_Form_Load:
-    Set Db = Nothing
+    Set db = Nothing
     DoCmd.SetWarnings True
     Exit Sub
 Err_Form_Load:
@@ -620,15 +620,15 @@ On Error GoTo ImportCarnivalList_Click_Err
     If ReturnVar = "" Then
       ' Action Cancelled
     Else
-      Dim Db As Database, adb As Database, Crs As Recordset, ocrs As Recordset
+      Dim db As Database, adb As Database, Crs As Recordset, ocrs As Recordset
       Dim wsp As Workspace, Criteria As String
       
-      Set Db = CurrentDb()
+      Set db = CurrentDb()
       Set wsp = DBEngine.Workspaces(0)
       ' Return reference to Another.mdb.
       Set adb = wsp.OpenDatabase(ReturnVar)
 
-      Set Crs = Db.OpenRecordset("Carnivals", dbOpenDynaset)
+      Set Crs = db.OpenRecordset("Carnivals", dbOpenDynaset)
       Set ocrs = adb.OpenRecordset("Carnivals")
       
       ocrs.MoveFirst
@@ -657,7 +657,7 @@ On Error GoTo ImportCarnivalList_Click_Err
     End If
    
 ImportCarnivalList_Click_Exit:
-    Set Db = Nothing
+    Set db = Nothing
     Set adb = Nothing
     Exit Sub
     
@@ -724,7 +724,7 @@ Private Sub locateCarnival()
     On Error GoTo Err_locateCarnival
     Dim MyDb As Database, ITable As Recordset, SpecifiedPath As Variant, TT As TableDef, FTable As Recordset
     Dim DataExists As Variant, MyWS As Workspace, CPath  As Variant, AskUser  As Variant
-    Dim Result As Variant, ReturnVal As Variant, Db As Database
+    Dim Result As Variant, ReturnVal As Variant, db As Database
     Dim NewDir As String, OldDB As String, NextCarn As String
        
 '    Stop
@@ -746,7 +746,7 @@ Private Sub locateCarnival()
         If InStr(ReverseString(CStr(Result)), "\") <> 0 Then
             Set MyWS = DBEngine.Workspaces(0)
             Set MyDb = MyWS.Databases(0)
-            Set Db = MyWS.OpenDatabase(Result)
+            Set db = MyWS.OpenDatabase(Result)
             Set ITable = MyDb.OpenRecordset("SELECT * FROM [Inventory Attached Tables] Where [IF ID] = 2;")
             Do Until ITable.EOF
                 Set TT = MyDb.TableDefs(ITable![Table Name])
@@ -763,14 +763,14 @@ Private Sub locateCarnival()
             DoCmd.SetWarnings True
             AskUser = True
             
-            Db.Close
+            db.Close
 
         End If
     End If
     
 Exit_locateCarnival:
     Set MyDb = Nothing
-    Set Db = Nothing
+    Set db = Nothing
     
     DoCmd.SetWarnings True
     Exit Sub
@@ -811,25 +811,25 @@ Private Sub Rename_Click()
 
 End Sub
 Private Sub FinaliseCarnivalSelection()
-    Dim Db As Database, rs As Recordset
+    Dim db As Database, Rs As Recordset
     
     ' Check that there is at least one record in MiscHTML table
     If DCount("[GenerateHTML]", "MiscHTML") = 0 Then
     
-        Set Db = DBEngine.Workspaces(0).Databases(0)
+        Set db = DBEngine.Workspaces(0).Databases(0)
         ' Update DAO object after chaning DB Structure
-        Db.TableDefs.Refresh
+        db.TableDefs.Refresh
         
-        Set rs = Db.OpenRecordset("MiscHTML")
-        rs.AddNew
-        rs!GenerateHTML = False
-        rs.Update
-        rs.Close
+        Set Rs = db.OpenRecordset("MiscHTML")
+        Rs.AddNew
+        Rs!GenerateHTML = False
+        Rs.Update
+        Rs.Close
     End If
 End Sub
 Private Sub CompactCarnivalBut_Click()
 
-    Dim FileName As Variant, Db As Database, FilePath As Variant, Response As Variant, TempName As Variant
+    Dim FileName As Variant, db As Database, FilePath As Variant, Response As Variant, TempName As Variant
 
     On Error GoTo Err_CompactCarnivalBut_Click
 

@@ -540,10 +540,10 @@ On Error GoTo AllocateDefPoints_Click_Err
     Else
         'Stop
         DoCmd.Hourglass True
-        Dim Criteria As String, Db As Database, rs As Recordset
+        Dim Criteria As String, db As Database, Rs As Recordset
         
-        Set Db = DBEngine.Workspaces(0).Databases(0)
-        Set rs = Db.OpenRecordset("PointsScale", dbOpenDynaset)   ' Create dynaset.
+        Set db = DBEngine.Workspaces(0).Databases(0)
+        Set Rs = db.OpenRecordset("PointsScale", dbOpenDynaset)   ' Create dynaset.
         
         msg = "Adding default points ..."
         CountRecs = Me![NumPlaces]
@@ -552,17 +552,17 @@ On Error GoTo AllocateDefPoints_Click_Err
         For i = 1 To Me![NumPlaces]
             ReturnValue = SysCmd(acSysCmdUpdateMeter, i)   ' Update meter.
             Criteria = "[PtScale] = """ & Me![PtScale] & """ AND [Place]= " & i
-            rs.FindNext Criteria    ' Find first occurrence.
-            If rs.NoMatch Then
-                rs.AddNew          ' Enable editing.
-                rs!PtScale = Me![PtScale]
-                rs!Place = i
-                rs!Points = Me![NumPoints]
-                rs.Update
+            Rs.FindNext Criteria    ' Find first occurrence.
+            If Rs.NoMatch Then
+                Rs.AddNew          ' Enable editing.
+                Rs!PtScale = Me![PtScale]
+                Rs!Place = i
+                Rs!Points = Me![NumPoints]
+                Rs.Update
             End If
 
         Next i
-        rs.Close
+        Rs.Close
         Me.Refresh
         ReturnValue = SysCmd(acSysCmdRemoveMeter)   ' Update meter.
         DoCmd.Hourglass False

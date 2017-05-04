@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [5.1.0] - 2017-05-04
+### Added
+- Meet Manager Export. 
+
+### Changed
+- Database Schema of Carnival files modified to add Meet Manager Mappings. 
+ - New fields added in Miscellaneous: Mteam,  Mcode, Mtop. 
+ - New fields added in EventType: Mevent.
+ - Updated Sample Databases
+
 ## [5.0.2] - 2017-04-28
 ### Added
 - Maintain Competitors listbox now supports type-ahead search
@@ -156,6 +166,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 [Unreleased]: https://github.com/ruddj/SportsAdmin/compare/v5.0.2...HEAD
+[5.1.0]: https://github.com/ruddj/SportsAdmin/compare/v5.0.2...v5.1.0
 [5.0.2]: https://github.com/ruddj/SportsAdmin/compare/v5.0.1...v5.0.2
 [5.0.1]: https://github.com/ruddj/SportsAdmin/compare/v5.0.0...v5.0.1
 [5.0.0]: https://github.com/ruddj/SportsAdmin/tree/v5.0.0

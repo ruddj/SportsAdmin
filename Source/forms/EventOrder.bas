@@ -895,10 +895,10 @@ End Sub
 
 Private Sub OrderEvents()
 
-    Squery = "SELECT DISTINCTROW Heats.E_Number, EventType.ET_Des, Events.Age, Events.Sex, Heats.F_lev, Heats.Heat, Heats.E_Time "
-    Squery = Squery & " FROM EventType INNER JOIN (Events INNER JOIN Heats ON Events.E_Code = Heats.E_Code) ON EventType.ET_Code = Events.ET_Code"
-    If Not Me!ShowAll Then Squery = Squery & " WHERE EventType.Include = True "
-    Squery = Squery & " ORDER BY "
+    sQuery = "SELECT DISTINCTROW Heats.E_Number, EventType.ET_Des, Events.Age, Events.Sex, Heats.F_lev, Heats.Heat, Heats.E_Time "
+    sQuery = sQuery & " FROM EventType INNER JOIN (Events INNER JOIN Heats ON Events.E_Code = Heats.E_Code) ON EventType.ET_Code = Events.ET_Code"
+    If Not Me!ShowAll Then sQuery = sQuery & " WHERE EventType.Include = True "
+    sQuery = sQuery & " ORDER BY "
 
     For i = 1 To 6
         Select Case i
@@ -925,28 +925,28 @@ Private Sub OrderEvents()
         
        Select Case oType
         Case "Event #"
-            Squery = Squery & "Heats.E_Number"
+            sQuery = sQuery & "Heats.E_Number"
             If OrderAsc Then
-                Squery = Squery & " ASC"
+                sQuery = sQuery & " ASC"
             Else
-                Squery = Squery & " DESC"
+                sQuery = sQuery & " DESC"
             End If
         
         
         Case "Description"
-            Squery = Squery & "EventType.ET_Des"
+            sQuery = sQuery & "EventType.ET_Des"
             If OrderAsc Then
-                Squery = Squery & " ASC"
+                sQuery = sQuery & " ASC"
             Else
-                Squery = Squery & " DESC"
+                sQuery = sQuery & " DESC"
             End If
         
         Case "Sex"
-            Squery = Squery & "Events.Sex"
+            sQuery = sQuery & "Events.Sex"
             If OrderAsc Then
-                Squery = Squery & " ASC"
+                sQuery = sQuery & " ASC"
             Else
-                Squery = Squery & " DESC"
+                sQuery = sQuery & " DESC"
             End If
         
 '            If Me![SwitchSex] Then
@@ -954,41 +954,41 @@ Private Sub OrderEvents()
 '            End If
 
         Case "Age"
-            Squery = Squery & "Events.Age"
+            sQuery = sQuery & "Events.Age"
             If OrderAsc Then
-                Squery = Squery & " ASC"
+                sQuery = sQuery & " ASC"
             Else
-                Squery = Squery & " DESC"
+                sQuery = sQuery & " DESC"
             End If
         
         
         Case "Final Level"
-            Squery = Squery & "Heats.F_Lev"
+            sQuery = sQuery & "Heats.F_Lev"
             If OrderAsc Then
-                Squery = Squery & " ASC"
+                sQuery = sQuery & " ASC"
             Else
-                Squery = Squery & " DESC"
+                sQuery = sQuery & " DESC"
             End If
         
         
         Case "Heat"
-            Squery = Squery & "Heats.Heat"
+            sQuery = sQuery & "Heats.Heat"
             If OrderAsc Then
-                Squery = Squery & " ASC"
+                sQuery = sQuery & " ASC"
             Else
-                Squery = Squery & " DESC"
+                sQuery = sQuery & " DESC"
             End If
         
        End Select
 
         If i < 6 Then
-            Squery = Squery & ", "
+            sQuery = sQuery & ", "
         Else
             'Squery = Squery & ";"
         End If
     Next i
 
-    Me.EventOrderSub.Form.RecordSource = Squery
+    Me.EventOrderSub.Form.RecordSource = sQuery
     Me.EventOrderSub.Form.Requery
      
 End Sub
@@ -1003,24 +1003,24 @@ End Sub
 Private Sub SlideUp_Click()
 
     
-    Dim Criteria As String, rs As Recordset, Enumm As Variant
+    Dim Criteria As String, Rs As Recordset, Enumm As Variant
     
-    Set rs = CurrentDb.OpenRecordset("select * from heats order by [E_Number]", dbOpenDynaset)   ' Create dynaset.
+    Set Rs = CurrentDb.OpenRecordset("select * from heats order by [E_Number]", dbOpenDynaset)   ' Create dynaset.
 
     Enumm = 1
-    rs.MoveFirst
-    Do Until rs.EOF
-        If Not IsNull(rs![E_Number]) Then
-            rs.Edit
-            rs![E_Number] = Enumm
-            rs.Update
+    Rs.MoveFirst
+    Do Until Rs.EOF
+        If Not IsNull(Rs![E_Number]) Then
+            Rs.Edit
+            Rs![E_Number] = Enumm
+            Rs.Update
             Enumm = Enumm + 1
         End If
         
-        rs.MoveNext
+        Rs.MoveNext
     Loop
     
-    rs.Close
+    Rs.Close
     Me![EventOrderSub].Requery
     
 End Sub

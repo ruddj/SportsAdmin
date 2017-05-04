@@ -542,32 +542,32 @@ On Error GoTo Err_CreateBut_Click
         GoTo Exit_CreateBut_Click
     End If
 
-    Dim Criteria As String, Db As Database, rs As Recordset
+    Dim Criteria As String, db As Database, Rs As Recordset
     Dim ETrs As Recordset, TTRS As Recordset
 
-    Set Db = CurrentDb()
-    Set rs = Db.OpenRecordset("House", dbOpenDynaset)   ' Create dynaset.
+    Set db = CurrentDb()
+    Set Rs = db.OpenRecordset("House", dbOpenDynaset)   ' Create dynaset.
 
     GoSub Fill_Num_Of_Entrants
 
     Criteria = "[Include]=Yes and [Flag]= Yes"
-    rs.FindFirst Criteria    ' Find first occurrence.
+    Rs.FindFirst Criteria    ' Find first occurrence.
     
-    Do Until rs.NoMatch  ' Loop until no matching records.
+    Do Until Rs.NoMatch  ' Loop until no matching records.
         
-        HouseName = rs!H_NAme
+        HouseName = Rs!H_NAme
 
         Mesg = "Please insert disk for " & HouseName & ".  Do you wish to create this disk?"
         Response = MsgBox(Mesg, vbYesNoCancel + vbQuestion, "Next Disk")
 
         If Response = vbYes Then 'Yes
-            ChosenFinalHouse = rs!H_Code
+            ChosenFinalHouse = Rs!H_Code
             GoSub Create_Carnival_Disk
         ElseIf Response = vbCancel Then
             GoTo Abort_DiskCreate
         End If
         
-        rs.FindNext Criteria ' Find next occurrence.
+        Rs.FindNext Criteria ' Find next occurrence.
 
     Loop                            ' End of loop.
 
@@ -575,10 +575,10 @@ On Error GoTo Err_CreateBut_Click
 
 
 Abort_DiskCreate:
-    rs.Close
+    Rs.Close
 
 Exit_CreateBut_Click:
-    Set Db = Nothing
+    Set db = Nothing
     Exit Sub
 
 Err_CreateBut_Click:
@@ -608,8 +608,8 @@ Create_Carnival_Disk:
 
 Fill_Num_Of_Entrants:
     
-    Set ETrs = Db.OpenRecordset("EventType", dbOpenDynaset)   ' Create dynaset.
-    Set TTRS = Db.OpenRecordset("Temporary Table", dbOpenDynaset)   ' Create dynaset.
+    Set ETrs = db.OpenRecordset("EventType", dbOpenDynaset)   ' Create dynaset.
+    Set TTRS = db.OpenRecordset("Temporary Table", dbOpenDynaset)   ' Create dynaset.
 
     DoCmd.SetWarnings False
     DoCmd.RunSQL "DELETE DISTINCTROW [Temporary Table].Field1 FROM [Temporary Table]"

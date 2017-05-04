@@ -4,7 +4,7 @@ Option Explicit
 Private Function FixCompEvents()
 
   Dim Ers As Recordset
-  Dim rs As Recordset
+  Dim Rs As Recordset
   Dim MoveCompetitor  As Boolean
   Dim A As String
   
@@ -12,26 +12,26 @@ Private Function FixCompEvents()
   Q = "SELECT CompEvents.PIN, Events.ET_Code, CompEvents.E_Code, CompEvents.Heat, CompEvents.F_Lev, Competitors.Age AS CompetitorAge, Events.Age AS EventAge, Events.Sex"
   Q = Q & " FROM (Events INNER JOIN Heats ON Events.E_Code = Heats.E_Code) INNER JOIN (Competitors INNER JOIN CompEvents ON Competitors.PIN = CompEvents.PIN) ON (Heats.Heat = CompEvents.Heat) AND (Heats.F_Lev = CompEvents.F_Lev) AND (Heats.E_Code = CompEvents.E_Code);"
 
-  Set rs = CurrentDb.OpenRecordset(Q)
+  Set Rs = CurrentDb.OpenRecordset(Q)
   
-  Do Until rs.EOF
+  Do Until Rs.EOF
     MoveCompetitor = False
-    If Right(rs!EventAge, 2) = "_O" Then
-      If rs!CompetitorAge < Val(rs!EventAge) Then
+    If Right(Rs!EventAge, 2) = "_O" Then
+      If Rs!CompetitorAge < Val(Rs!EventAge) Then
         MoveCompetitor = True
       End If
     
-    ElseIf Right(rs!EventAge, 2) = "_U" Then
-      If rs!CompetitorAge > Val(rs!EventAge) Then
+    ElseIf Right(Rs!EventAge, 2) = "_U" Then
+      If Rs!CompetitorAge > Val(Rs!EventAge) Then
         MoveCompetitor = True
       End If
     
-    ElseIf Val(rs!EventAge) <> rs!CompetitorAge Then
+    ElseIf Val(Rs!EventAge) <> Rs!CompetitorAge Then
         MoveCompetitor = True
     End If
     
     If MoveCompetitor Then
-      Select Case rs!CompetitorAge
+      Select Case Rs!CompetitorAge
         Case 12: A = "13_U"
         Case 13: A = "13_U"
         Case 14: A = "14"
@@ -42,18 +42,18 @@ Private Function FixCompEvents()
         Case Else: Stop
       End Select
       
-      Ers.FindFirst "[ET_Code]=" & rs![ET_Code] & " AND [Sex]='" & rs!Sex & "' AND [Age]='" & A & "'"
+      Ers.FindFirst "[ET_Code]=" & Rs![ET_Code] & " AND [Sex]='" & Rs!Sex & "' AND [Age]='" & A & "'"
       If Ers.NoMatch Then
-        Debug.Print rs![ET_Code]
+        Debug.Print Rs![ET_Code]
         'Stop
       Else
         Debug.Print "Changed"
-        rs.Edit
-        rs!E_Code = Ers!E_Code
-        rs.Update
+        Rs.Edit
+        Rs!E_Code = Ers!E_Code
+        Rs.Update
       End If
     End If
   
-    rs.MoveNext
+    Rs.MoveNext
   Loop
 End Function

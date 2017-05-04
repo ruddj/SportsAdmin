@@ -156,8 +156,8 @@ End Sub
 
 Private Sub CreateBut_Click()
 
-    Dim Db As Database, rs As Recordset, Ers As Recordset, Hrs As Recordset
-    Set Db = DBEngine.Workspaces(0).Databases(0)
+    Dim db As Database, Rs As Recordset, Ers As Recordset, Hrs As Recordset
+    Set db = DBEngine.Workspaces(0).Databases(0)
     Dim Rept As Variant, Q As Variant, OldET_Code As Variant, NewET_Code As Variant, Criteria As Variant
     Dim E_Code As Variant, Sex As Variant, Age As Variant, Record As Variant, Include As Variant
     Dim BMark As Variant, NewE_Code As Variant
@@ -178,12 +178,12 @@ On Error GoTo Err_CreateBut_Click
             DoCmd.RunSQL Q
             DoCmd.SetWarnings True
             
-            Set rs = Db.OpenRecordset("EventType", dbOpenDynaset)   ' Create Recordset.
+            Set Rs = db.OpenRecordset("EventType", dbOpenDynaset)   ' Create Recordset.
         
-            rs.MoveLast
-            NewET_Code = rs!ET_Code
+            Rs.MoveLast
+            NewET_Code = Rs!ET_Code
         
-            rs.Close
+            Rs.Close
             
             GlobalVariable = NewET_Code
             GlobalCancel = False
@@ -206,12 +206,12 @@ On Error GoTo Err_CreateBut_Click
         DoCmd.SetWarnings True
 
 
-        Set rs = Db.OpenRecordset("EventType", dbOpenDynaset)   ' Create Recordset.
+        Set Rs = db.OpenRecordset("EventType", dbOpenDynaset)   ' Create Recordset.
     
-        rs.MoveLast
-        NewET_Code = rs!ET_Code
+        Rs.MoveLast
+        NewET_Code = Rs!ET_Code
     
-        rs.Close
+        Rs.Close
         
         ' Add to Final_Lev Table
         Q = "INSERT INTO Final_Lev ( ET_Code, F_Lev, NoHeats, PtScale, ProType, UseTimes ) "
@@ -241,8 +241,8 @@ On Error GoTo Err_CreateBut_Click
 
         ' Add to Events Table
         
-        Set Ers = Db.OpenRecordset("Events", dbOpenDynaset)   ' Create Recordset.
-        Set Hrs = Db.OpenRecordset("Heats", dbOpenDynaset)   ' Create Recordset.
+        Set Ers = db.OpenRecordset("Events", dbOpenDynaset)   ' Create Recordset.
+        Set Hrs = db.OpenRecordset("Heats", dbOpenDynaset)   ' Create Recordset.
         
         Criteria = "[ET_Code] = " & OldET_Code
         Ers.FindFirst Criteria

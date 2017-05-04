@@ -1005,31 +1005,31 @@ On Error GoTo Err_Button65_Click
   DoCmd.RunMacro "ShowPleaseWait"
   DoCmd.RunCommand acCmdSaveRecord
   
-  Dim Criteria As String, Db As Database, rs As Recordset
+  Dim Criteria As String, db As Database, Rs As Recordset
   Dim NewTitle As String
   Dim Filter As String
 
   Call GenerateFinalStatusFilter(Filter)
     
-  Set Db = DBEngine.Workspaces(0).Databases(0)
+  Set db = DBEngine.Workspaces(0).Databases(0)
 
   Q = "SELECT DISTINCTROW EventType.ET_Code, EventType.Flag, EventType.R_Code "
   Q = Q & "FROM EventType WHERE (EventType.Flag = True AND EventType.Include = true) ORDER BY EventType.R_Code"
 
-  Set rs = Db.OpenRecordset(Q, dbOpenDynaset)   ' Create dynaset.
+  Set Rs = db.OpenRecordset(Q, dbOpenDynaset)   ' Create dynaset.
     
-  If rs.BOF Then
+  If Rs.BOF Then
     Response = MsgBox("No Events have been selected thus no report will be generated.", vbInformation)
   ElseIf Me![SummaryReport] = False And Me!Detailed = False Then
     Response = MsgBox("Specify the type of list you wish to generate.", vbInformation)
   Else
-    rs.MoveFirst
+    Rs.MoveFirst
     
     Old_R_Code = -1
 
-    Do Until rs.EOF  ' Loop until no matching records.
+    Do Until Rs.EOF  ' Loop until no matching records.
         
-        R_Code = rs!R_Code
+        R_Code = Rs!R_Code
         If R_Code <> Old_R_Code Then
             If Me![SummaryReport] Then
                 ReportName = DLookup("[SummaryReport]", "ReportTypes", "[R_Code] = " & R_Code)
@@ -1051,10 +1051,10 @@ On Error GoTo Err_Button65_Click
 
         Old_R_Code = R_Code
 
-        rs.MoveNext
+        Rs.MoveNext
     Loop
   End If
-  rs.Close
+  Rs.Close
   
   
 Exit_Button65_Click:

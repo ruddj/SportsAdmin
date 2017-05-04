@@ -2,9 +2,12 @@ Option Compare Database
 Option Explicit
 
 
-Global Const VersionNumber = "5.0.2"
-Global Const VersionDate = "(28/Apr/2017)"
+Global Const VersionNumber = "5.1.0"
+Global Const VersionDate = "(4/May/2017)"
 
+' Version 5.1.0
+'   (4/May/2017)
+'   Added Meet Manager Export
 
 ' Version 5.0.2
 '   (28/Apr/2017)

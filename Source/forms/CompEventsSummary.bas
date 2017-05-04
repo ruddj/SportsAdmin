@@ -1142,19 +1142,19 @@ On Error GoTo Err_PromoteBut_Click
     DoCmd.SetWarnings True
     GlobalCancel = False
 
-    Dim Db As Database, rs As Recordset, EventsPromoted As Variant
+    Dim db As Database, Rs As Recordset, EventsPromoted As Variant
     
     EventsPromoted = False
 
-    Set Db = CurrentDb()
+    Set db = CurrentDb()
     
     Q = "SELECT DISTINCT Events.E_Code, Heats.Status, Heats.F_Lev "
     Q = Q & "FROM EventType INNER JOIN (Events INNER JOIN Heats ON Events.E_Code = Heats.E_Code) ON EventType.ET_Code = Events.ET_Code "
     Q = Q & "WHERE Heats.Status=2 and Heats.F_Lev <> 0 "
 
-    Set rs = Db.OpenRecordset(Q, dbOpenDynaset)   ' Create Recordset.
+    Set Rs = db.OpenRecordset(Q, dbOpenDynaset)   ' Create Recordset.
 
-    TotalEvents = rs.RecordCount
+    TotalEvents = Rs.RecordCount
 
     If TotalEvents = 0 Then
         MsgBox ("There are no Finals to be promoted.")
@@ -1164,7 +1164,7 @@ On Error GoTo Err_PromoteBut_Click
         
         ReturnValue = SysCmd(acSysCmdInitMeter, "Promoting Competitors", TotalEvents)    ' Display message in status bar.
             
-        rs.MoveFirst
+        Rs.MoveFirst
         X = 1
         
         DoCmd.SetWarnings False
@@ -1172,10 +1172,10 @@ On Error GoTo Err_PromoteBut_Click
         DoCmd.SetWarnings True
     
 
-        While Not rs.EOF And Not GlobalCancel
+        While Not Rs.EOF And Not GlobalCancel
             'Stop
-            If rs!F_Lev <> 0 Then
-                E_Code = rs!E_Code
+            If Rs!F_Lev <> 0 Then
+                E_Code = Rs!E_Code
                 Ev = DLookup("[ET_Des]", "Events in Full", "[E_Code]=" & E_Code)
                 Ev = Ev & "  Age: " & DLookup("[Age]", "Events in Full", "[E_Code]=" & E_Code)
                 Ev = Ev & "  Sex: " & DLookup("[Sex]", "Events in Full", "[E_Code]=" & E_Code)
@@ -1193,7 +1193,7 @@ On Error GoTo Err_PromoteBut_Click
                 
                 If Not GlobalNo And Not GlobalCancel Then
                     
-                    Result = PromoteEventFinal(rs!E_Code)
+                    Result = PromoteEventFinal(Rs!E_Code)
                     If Result = True Then
                         EventsPromoted = True
                     End If
@@ -1201,7 +1201,7 @@ On Error GoTo Err_PromoteBut_Click
                     X = X + 1
                 End If
             End If
-            rs.MoveNext
+            Rs.MoveNext
     
         Wend
         
@@ -1216,13 +1216,13 @@ On Error GoTo Err_PromoteBut_Click
 
     End If
 
-    rs.Close
+    Rs.Close
 
 
 
 
 Exit_PromoteBut_Click:
-    Set Db = Nothing
+    Set db = Nothing
     Exit Sub
 
 Err_PromoteBut_Click:
@@ -1245,25 +1245,25 @@ End Sub
 
 Private Sub PromoteSelectedBut_Click()
 
-    Dim Db As Database, rs As Recordset
-    Set Db = DBEngine.Workspaces(0).Databases(0)
+    Dim db As Database, Rs As Recordset
+    Set db = DBEngine.Workspaces(0).Databases(0)
     
-    Set rs = Db.OpenRecordset("Heats", dbOpenDynaset)   ' Create Recordset.
+    Set Rs = db.OpenRecordset("Heats", dbOpenDynaset)   ' Create Recordset.
 
   If IsNull([Summary]) Then
       MsgBox ("You must select an event from the 'Completed' Final list.")
   Else
     Criteria = "[HE_Code]= " & [Summary]
-    rs.FindFirst Criteria
+    Rs.FindFirst Criteria
     
-    If rs.NoMatch Or rs!Status <> 2 Then
+    If Rs.NoMatch Or Rs!Status <> 2 Then
         MsgBox ("You must select an event from the 'Completed' Final list.")
-    ElseIf rs!F_Lev = 0 Then
+    ElseIf Rs!F_Lev = 0 Then
         MsgBox ("The event you are trying to promote is at the highest final level.  There is no final for competitors to be promoted into.")
         
     Else
-        E_Code = rs!E_Code
-        F_Lev = rs!F_Lev
+        E_Code = Rs!E_Code
+        F_Lev = Rs!F_Lev
         E_Des = EventDescription(E_Code)
         E_Sex = EventSex(E_Code)
         E_Age = EventAge(E_Code)

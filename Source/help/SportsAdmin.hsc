@@ -43,7 +43,7 @@ Previous
 Next
 FALSE
 
-61
+62
 10
 L10
 Sports Administrator Help Contents
@@ -1434,28 +1434,39 @@ Imported
 
 
 FALSE
-23
-{\rtf1\ansi\deff0{\fonttbl{\f0\fswiss Arial;}{\f1\fswiss MS Sans Serif;}{\f2\froman\fcharset2 Symbol;}{\f3\froman Symbol;}}
-{\colortbl ;\red0\green0\blue0;\red128\green0\blue0;\red0\green128\blue0;\red0\green0\blue128;}
-\viewkind4\uc1\pard\cf1\lang1033\b\f0\fs32 Event Details\cf2 
+34
+{\rtf1\fbidis\ansi\deff0{\fonttbl{\f0\fswiss\fcharset0 Arial;}{\f1\fswiss\fcharset0 MS Sans Serif;}{\f2\fswiss MS Sans Serif;}{\f3\fswiss Arial;}{\f4\fnil\fcharset0 MS Sans Serif;}{\f5\fswiss\fprq2\fcharset0 Arial;}{\f6\fnil\fcharset0 Courier New;}}
+{\colortbl ;\red0\green0\blue0;\red128\green0\blue0;\red0\green128\blue0;\red0\green0\blue128;\red0\green0\blue255;}
+\viewkind4\uc1\pard\ltrpar\cf1\lang1033\b\f0\fs32 Event Details\cf2 
 \par \cf1\b0\f1\fs20 
-\par The term "Event" describes any single \b type \b0 of event.  For example, an Event might be "100m Sprint", "High Jump", "50m Freestyle Relay".  It is important to understand that an event \b does not incorporate either \b0 Age, Sex or Heat distinctions.  An event is made up of the following:
+\par \f2 The term "Event" describes any single \b type \b0 of event.  For example, an Event might be "100m Sprint", "High Jump", "50m Freestyle Relay".  It is important to understand that an event \b does not incorporate either \b0 Age, Sex or Heat distinctions.  An event is made up of the following:
 \par 
-\par \pard\fi-355\li355\tx355\cf3\f2\fs18\'b7\f3\tab\ul\f1\fs20 Description\ulnone\{linkID=400\}\cf1   \tab\tab\tab 
-\par \cf3\f2\fs18\'b7\f3\tab\strike\f0\fs20 Report Style\strike0\{linkID=410\}\cf1\f1 
-\par \cf3\f2\fs18\'b7\f3\tab\ul\f1\fs20 Lane / Competitor Count\ulnone\{linkID=420\}\cf1 
-\par \cf3\f2\fs18\'b7\f3\tab\ul\f1\fs20 Event Units\ulnone\{linkID=430\}\cf1 
-\par \cf3\f2\fs18\'b7\f3\tab\ul\f1\fs20 Number of Entrants\ulnone\{linkID=440\}\cf1\tab 
-\par \cf3\f2\fs18\'b7\f3\tab\strike\f0\fs20 Lane Promotion\strike0\{linkID=520\}\cf1\f1 
-\par \cf3\f2\fs18\'b7\f3\tab\strike\f0\fs20 Age Divisions\strike0\{linkID=450\}\cf1\f1\tab\tab 
-\par \cf3\f2\fs18\'b7\f3\tab\strike\f0\fs20 Heats\strike0\{linkID=460\}\cf1\b\f1 
-\par \pard\tx355\cf3\b0\strike\f0 
-\par \cf0\strike0 The \cf1\b\f1 Sports Administrator\cf0\b0\f0  has a feature that helps you to quickly \cf3\strike Set up Heats\strike0\{linkID=530\}\cf0 .\cf1\f1 
-\par \pard\li295\tx355 
-\par \pard\tx355\cf4\b\fs22 Edit Records
+\par \pard\ltrpar\fi-355\li355\tx355\cf3\ul\f1 Description\ulnone\{linkID=400\}\cf1   \tab\tab\tab 
+\par \cf3\strike\f0 Report Style\strike0\{linkID=410\}\cf1\f1 
+\par \cf3\ul Lane / Competitor Count\ulnone\{linkID=420\}\cf1 
+\par \cf3\ul Event Units\ulnone\{linkID=430\}\cf1 
+\par \cf3\ul Number of Entrants\ulnone\{linkID=440\}\cf1\tab 
+\par \cf3\strike\f0 Lane Promotion\strike0\{linkID=520\}\cf1\f1 
+\par \cf3\strike\f0 Age Divisions\strike0\{linkID=450\}\cf1\f2\tab\tab\f1 
+\par \cf3\strike\f0 Heats\strike0\{linkID=460\}\cf1\b\f1 
+\par \pard\ltrpar\tx355\cf3\b0\strike\f0 
+\par \cf0\strike0\f3 The \cf1\b\f1 Sports Administrator\cf0\b0\f0  has a feature that helps you to quickly \cf3\strike Set up Heats\strike0\{linkID=530\}\cf0 .\cf1\f1 
+\par \pard\ltrpar\li295\tx355\f2 
+\par \pard\ltrpar\tx355\cf4\b\fs22 Edit Records
 \par \cf1\b0\fs20 This option can be activated by either pushing the \cf2\f0 Edit Record\cf1\f1  button or double-clicking the event record in the \b Age Division\b0  section.  The \cf3\strike\f0 Event Record\strike0\{linkID=280\}\cf1\f1  form will be displayed.
 \par 
-\par \pard\qc\tx355\cf2\{bmc bm6.SHG\}\cf1 
+\par \pard\ltrpar\cf4\lang3081\b\f4\fs22 Event Codes\cf0\b0\f5\fs20 
+\par To export events to Meet Manager you need to have defined mappings.
+\par 
+\par \b Running Events\b0 :   Distance without commas, such as 100, 800, 3200, 10000, 1MILE, 2MILE, HMAR half marathon, MAR 
+\par \b Hurdle Events\b0 :   Distance plus H, such as 80H, 400H. 
+\par \b Steeplechase Events\b0 :   Distance plus S, such as 2000S, 3000S. 
+\par \b Race Walk Events\b0 :   Distance plus W, such as 5000W, 20000W. 
+\par \b Field Events\b0 :   HJ High Jump, PV Pole Vault, LJ Long Jump, TJ Triple Jump, SP Shot Put, DT Discus, HT Hammer, JT Javelin, WT Weight Throw, SWT Super Weight Throw 
+\par \b Combined-Events\b0 :   DEC Decathlon, HEP Heptathlon, IPENT Indoor Pentathlon, OPENT Outdoor Pentathlon, TRI Triathlon, WPENT Weight Pentathlon, BI Biathlon, TET Tetrathlon, OCT Octathlon 
+\par 
+\par \pard\ltrpar\tx355 Codes from \cf5\strike\f6 Meet Manager Help\cf2\strike0\{link=*! ExecFile("https://www.hy-tekltd.com/User_Guides_HTML/TFMM4/index.html?importentriesfromsemicolon.htm")\}\cf1\lang1033\f1 
+\par \pard\ltrpar\qc\tx355\cf2\{bmc bm6.SHG\}\cf1 
 \par 
 \par }
 400
@@ -1901,8 +1912,8 @@ Imported
 
 
 FALSE
-34
-{\rtf1\ansi\deff0{\fonttbl{\f0\fswiss Arial;}{\f1\fswiss MS Sans Serif;}{\f2\froman\fcharset2 Symbol;}{\f3\froman Symbol;}{\f4\froman Times New Roman;}{\f5\froman\fcharset0 Times New Roman;}}
+38
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fswiss Arial;}{\f1\fswiss MS Sans Serif;}{\f2\froman Times New Roman;}{\f3\froman\fcharset0 Times New Roman;}{\f4\fswiss\fcharset0 MS Sans Serif;}{\f5\fswiss\fcharset0 Arial;}}
 {\colortbl ;\red0\green0\blue0;\red0\green0\blue128;\red0\green128\blue0;}
 \viewkind4\uc1\pard\cf1\lang1033\b\f0\fs32 Utilities
 \par \b0\f1\fs20 
@@ -1911,11 +1922,11 @@ FALSE
 \par \cf2\b\f1\fs22 HTML Utilities Tab
 \par \cf0\b0\f0\fs20 
 \par The HTML Utilities tab allows you to tell the Sports Administrator where the HTML template files are located.
-\par \pard\fi-355\li355\tx355\b\f2\fs18\'b7\f3\tab\f0\fs20 Web Page Header\b0 : Enter the name that you wish to appear on the top of the generated HTML pages
-\par \b\f2\fs18\'b7\f3\tab\f0\fs20 Template File\b0 : Locate the template file that will be used to format the standard HTML pages. \b Summary Template File\b0 : locate template file that will be used to format the summary HTML pages\f4 
-\par \b\f2\fs18\'b7\f3\tab\f0\fs20 Location to put generated Web pages\b0 : Locate the folder into which you want the generated Web pages to be placed.
+\par \pard\fi-355\li355\tx355\b Web Page Header\b0 : Enter the name that you wish to appear on the top of the generated HTML pages
+\par \b Template File\b0 : Locate the template file that will be used to format the standard HTML pages. \b Summary Template File\b0 : locate template file that will be used to format the summary HTML pages\f2 
+\par \b\f0 Location to put generated Web pages\b0 : Locate the folder into which you want the generated Web pages to be placed.
 \par \pard\tx355\b 
-\par Note\b0 : Template files are provided with the Sports Administrator.  They are  called \f5\ldblquote\f0 _template.htm\f5\rdblquote\f0  and \f5\ldblquote\f0 _template-summary\f5\rdblquote\f0 .htm.  Look at or modify these files in order to create your own template files.  They use simple tags to insert the appropriate report data.
+\par Note\b0 : Template files are provided with the Sports Administrator.  They are  called \f3 "\f0 _template.htm\f3 "\f0  and \f3 "\f0 _template-summary\f3 "\f0 .htm.  Look at or modify these files in order to create your own template files.  They use simple tags to insert the appropriate report data.
 \par \cf2\b\f1\fs22 
 \par Remove Empty Heats Tab
 \par \cf0\b0\f0\fs20 
@@ -1927,13 +1938,17 @@ FALSE
 \par \cf0\b0\f0\fs20 
 \par Sometimes the carnival organiser wishes to have the same competitors in two or more different events.  This feature enables you to enroll competitors into one event and then copy them into another.  You must ensure that there is a sufficient number of heats to accommodate those competitors you are copying into the second event.
 \par 
-\par You must enter a value in all the fields of both the \f5\ldblquote\f0 From Event\f5\rdblquote\f0  and the \f5\ldblquote\f0 To Event\f5\rdblquote\f0 .  You can use the wildcard character (*) to select all the events in that category.
+\par You must enter a value in all the fields of both the \f3 "\f0 From Event\f3 "\f0  and the \f3 "\f0 To Event\f3 "\f0 .  You can use the wildcard character (*) to select all the events in that category.
 \par 
-\par Competitors will not be copied if the \f5\ldblquote\f0 To Event\f5\rdblquote\f0  does not have sufficient heats, or if the competitor is already enrolled in that event.
+\par Competitors will not be copied if the \f3 "\f0 To Event\f3 "\f0  does not have sufficient heats, or if the competitor is already enrolled in that event.
 \par 
 \par \cf2\b\f1\fs22 Backup Tab
 \par \cf0\b0\f0\fs20 
 \par See the \cf3\strike backup topic\strike0\{linkID=560\}\cf0 .
+\par 
+\par \cf2\lang3081\b\f4\fs22 Export\lang1033\f1  Tab
+\par \cf0\b0\f0\fs20 
+\par See the \cf3\strike backup topic\strike0\{linkID=56\lang3081\f5 5\lang1033\f0\}\cf0 .
 \par 
 \par }
 550
@@ -1980,6 +1995,55 @@ FALSE
 \par \pard\tx355 
 \par The name of the backup file is the same as the carnival file but with \f4\ldblquote\f1 _backup\f4\rdblquote\f1  appended to it.  So a file called \f4\ldblquote\f1 primary.mdb\f4\rdblquote\f1  has a backup file called \f4\ldblquote\f1 primary_backup.mdb\f4\rdblquote\f1 .  The backup file will usually be smaller than the original due to the compression that is applied at the time of the backup.
 \par 
+\par }
+565
+Scribble565
+Export
+
+
+
+
+Writing
+
+
+
+FALSE
+36
+{\rtf1\fbidis\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}{\f1\fnil\fcharset0 MS Sans Serif;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fnil\fcharset0 Courier New;}{\f4\fnil Courier New;}{\f5\fswiss\fprq2\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue0;\red0\green0\blue255;\red0\green128\blue0;\red128\green0\blue0;}
+\viewkind4\uc1\pard\ltrpar\cf1\lang3081\b\fs32 Export\cf0\lang1033\b0\fs20 
+\par 
+\par \cf2\lang3081\b\f1\fs26 Meet Manager Export\cf0\b0\f0\fs20 
+\par Meet Manager Track and Field is often used by regional athletics meets that require you to submit a list of competitors 
+\par 
+\par \cf2\b\f2\fs22 Export Options\cf0\b0\fs20 
+\par You need to enter your school/team name and code, which you should have received from the meet organisers.
+\par \cf3 Team Name\cf0 
+\par  The name of your school or team. (Max 30 characters)
+\par \cf3 Team Code\cf0 
+\par  The code of your school or team. (Max 4 characters)
+\par \cf3 Number Competitors\cf0 
+\par  The number of places for each event you wish to export, e.g. 1 is only the person who came first in final, while 2 would include 2\super nd\nosupersub  position as well.
+\par 
+\par 
+\par You can export a list of competitors with the events they won and their final time, or just a list of competitors without events.
+\par 
+\par \cf2\b Event Codes\cf0\b0 
+\par To export events you also need to have defined Meet Manager Mappings in the \cf3\strike Maintain Event Details\cf4\strike0\{linkID=390\}\cf0  section.
+\par 
+\par \b Running Events\b0 :   Distance without commas, such as 100, 800, 3200, 10000, 1MILE, 2MILE, HMAR half marathon, MAR 
+\par \b Hurdle Events\b0 :   Distance plus H, such as 80H, 400H. 
+\par \b Steeplechase Events\b0 :   Distance plus S, such as 2000S, 3000S. 
+\par \b Race Walk Events\b0 :   Distance plus W, such as 5000W, 20000W. 
+\par \b Field Events\b0 :   HJ High Jump, PV Pole Vault, LJ Long Jump, TJ Triple Jump, SP Shot Put, DT Discus, HT Hammer, JT Javelin, WT Weight Throw, SWT Super Weight Throw 
+\par \b Combined-Events\b0 :   DEC Decathlon, HEP Heptathlon, IPENT Indoor Pentathlon, OPENT Outdoor Pentathlon, TRI Triathlon, WPENT Weight Pentathlon, BI Biathlon, TET Tetrathlon, OCT Octathlon 
+\par 
+\par Codes from \cf2\strike\f3 Meet Manager Help\cf4\strike0\{link=*! ExecFile("https://www.hy-tekltd.com/User_Guides_HTML/TFMM4/index.html?importentriesfromsemicolon.htm")\}\cf0\f2 
+\par 
+\par \cf2\b\fs22 Importing\cf0\b0\fs20 
+\par \cf2\strike\f4 Meet Manager Track and Field\cf4\strike0\{link=*! ExecFile("https://www.hy-tekltd.com/track-meet-management.html")\}\cf0\f2  allows you to import a list of competitors with their events as a Semi-Colon Delimited.
+\par \pard\ltrpar\sa160\sl252\slmult1 This can be imported by using File -> Import -> Semi-Colon Delimited Rosters/Entries\f5\fs22 
+\par \pard\ltrpar\lang1033\f0\fs20 
 \par }
 570
 L570
@@ -2125,7 +2189,7 @@ FALSE
 main="",,4294963460,(255,255,226),,f2
 0
 0
-24
+25
 1 Setting up Carnival
 2 About=L15
 2 Main Screen=L10
@@ -2147,6 +2211,7 @@ main="",,4294963460,(255,255,226),,f2
 1 Generating Reports
 2 How to Generate Reports=L90
 2 Carnival Statistics=L270
+2 Export to Meet Manager=Scribble565
 1 Navigating around Sports Administrator
 2 Form Navigation=L310
 2 Table Navigation=L340

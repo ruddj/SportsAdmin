@@ -7,5 +7,6 @@ CREATE TABLE [zz~EventType] (
   [Include] BIT ,
   [EntrantNum] SHORT ,
   [Flag] BIT ,
-  [PlacesAcrossAllHeats] BIT 
+  [PlacesAcrossAllHeats] BIT ,
+  [Mevent] VARCHAR (10)
 )

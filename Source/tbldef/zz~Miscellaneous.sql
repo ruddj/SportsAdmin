@@ -32,5 +32,8 @@ CREATE TABLE [zz~Miscellaneous] (
   [Rhead1] VARCHAR (50),
   [Rhead2] VARCHAR (50),
   [Rresults] BIT ,
-  [HouseType] LONG 
+  [HouseType] LONG ,
+  [Mteam] VARCHAR (30),
+  [Mcode] VARCHAR (4),
+  [Mtop] SHORT 
 )
