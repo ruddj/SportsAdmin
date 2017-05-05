@@ -577,12 +577,12 @@ On Error GoTo Err_ImportData_Click
     msg = "Processing competitor ... "
     'ReturnValue = SysCmd(acSysCmdInitMeter, Msg, DCount("[HE_Code]", "ImportData"))   ' Display message in status bar.
     ReturnValue = SysCmd(acSysCmdSetStatus, msg)
-    X = 0
+    x = 0
 
     While Not ITRS.EOF And Continue
-      X = X + 1
+      x = x + 1
       'ReturnValue = SysCmd(acSysCmdUpdateMeter, X)   ' Update meter.
-      ReturnValue = ReturnValue = SysCmd(acSysCmdSetStatus, msg & X)
+      ReturnValue = ReturnValue = SysCmd(acSysCmdSetStatus, msg & x)
       ActualSex = DetermineSex(ITRS!Sex)
       
       If IsNull(ITRS!G_name) Or IsNull(ITRS!S_name) Then

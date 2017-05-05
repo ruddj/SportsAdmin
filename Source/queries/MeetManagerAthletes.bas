@@ -1,5 +1,5 @@
 ﻿Operation =1
-Option =0
+Option =8
 Where ="(((Competitors.Gname)<>\"Team\") AND (([Statistics-CompetitorEvents].F_Lev)=0) A"
     "ND (([Statistics-CompetitorEvents].Place)<=DLookUp(\"[Mtop]\",\"Miscellaneous\")"
     "))"
@@ -50,7 +50,7 @@ Begin
     Left =-1
     Top =-1
     Right =1240
-    Bottom =433
+    Bottom =416
     Left =0
     Top =0
     ColumnsShown =539

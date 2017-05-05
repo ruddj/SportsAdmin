@@ -799,23 +799,23 @@ End Function
 
 Function ExtractDirectory(f)
 
-    Dim Found As Variant, X As Integer, L As Integer
+    Dim Found As Variant, x As Integer, L As Integer
     
     Found = False
     If IsNull(f) Then
         ExtractDirectory = ""
     Else
         L = Len(f)
-        X = L
+        x = L
         'ExtractDirectory = F   ' was = Null
         ExtractDirectory = Null
     
-        While Not Found And X > 0
-            If Mid$(f, X, 1) = "\" Then
+        While Not Found And x > 0
+            If Mid$(f, x, 1) = "\" Then
                 Found = True
-                ExtractDirectory = Left$(f, X)
+                ExtractDirectory = Left$(f, x)
             Else
-                X = X - 1
+                x = x - 1
             End If
         Wend
     End If

@@ -2008,28 +2008,28 @@ Writing
 
 
 FALSE
-36
-{\rtf1\fbidis\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}{\f1\fnil\fcharset0 MS Sans Serif;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fnil\fcharset0 Courier New;}{\f4\fnil Courier New;}{\f5\fswiss\fprq2\fcharset0 Calibri;}}
-{\colortbl ;\red0\green0\blue0;\red0\green0\blue255;\red0\green128\blue0;\red128\green0\blue0;}
-\viewkind4\uc1\pard\ltrpar\cf1\lang3081\b\fs32 Export\cf0\lang1033\b0\fs20 
+52
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}{\f1\fnil\fcharset0 MS Sans Serif;}{\f2\fnil Courier New;}{\f3\fswiss\fprq2\fcharset0 Arial;}{\f4\fnil\fcharset0 Courier New;}{\f5\fswiss\fprq2\fcharset0 Calibri;}{\f6\fnil\fcharset2 Symbol;}}
+{\colortbl ;\red0\green0\blue0;\red0\green0\blue128;\red0\green0\blue255;\red128\green0\blue0;\red0\green128\blue0;}
+\viewkind4\uc1\pard\cf1\lang3081\b\fs32 Export\cf0\lang1033\b0\fs20 
 \par 
 \par \cf2\lang3081\b\f1\fs26 Meet Manager Export\cf0\b0\f0\fs20 
-\par Meet Manager Track and Field is often used by regional athletics meets that require you to submit a list of competitors 
+\par \cf3\strike\f2 Meet Manager\cf4\strike0\{link=*! ExecFile("http://www.hy-tekltd.com/")\}\cf0\f0  is often used by regional athletics and swim meets that require you to submit a list of competitors.
 \par 
-\par \cf2\b\f2\fs22 Export Options\cf0\b0\fs20 
+\par \cf2\b\f3\fs22 Export Options\cf0\b0\fs20 
 \par You need to enter your school/team name and code, which you should have received from the meet organisers.
-\par \cf3 Team Name\cf0 
+\par \cf5 Team Name\cf0 
 \par  The name of your school or team. (Max 30 characters)
-\par \cf3 Team Code\cf0 
+\par \cf5 Team Code\cf0 
 \par  The code of your school or team. (Max 4 characters)
-\par \cf3 Number Competitors\cf0 
+\par \cf5 Number Competitors\cf0 
 \par  The number of places for each event you wish to export, e.g. 1 is only the person who came first in final, while 2 would include 2\super nd\nosupersub  position as well.
 \par 
 \par 
 \par You can export a list of competitors with the events they won and their final time, or just a list of competitors without events.
 \par 
-\par \cf2\b Event Codes\cf0\b0 
-\par To export events you also need to have defined Meet Manager Mappings in the \cf3\strike Maintain Event Details\cf4\strike0\{linkID=390\}\cf0  section.
+\par \cf3\b Event Codes \fs16 (Only required for Athletics)\cf0\b0\fs20 
+\par To export events you also need to have defined Meet Manager Mappings in the \cf5\strike Maintain Event Details\cf4\strike0\{linkID=390\}\cf0  section.
 \par 
 \par \b Running Events\b0 :   Distance without commas, such as 100, 800, 3200, 10000, 1MILE, 2MILE, HMAR half marathon, MAR 
 \par \b Hurdle Events\b0 :   Distance plus H, such as 80H, 400H. 
@@ -2038,12 +2038,28 @@ FALSE
 \par \b Field Events\b0 :   HJ High Jump, PV Pole Vault, LJ Long Jump, TJ Triple Jump, SP Shot Put, DT Discus, HT Hammer, JT Javelin, WT Weight Throw, SWT Super Weight Throw 
 \par \b Combined-Events\b0 :   DEC Decathlon, HEP Heptathlon, IPENT Indoor Pentathlon, OPENT Outdoor Pentathlon, TRI Triathlon, WPENT Weight Pentathlon, BI Biathlon, TET Tetrathlon, OCT Octathlon 
 \par 
-\par Codes from \cf2\strike\f3 Meet Manager Help\cf4\strike0\{link=*! ExecFile("https://www.hy-tekltd.com/User_Guides_HTML/TFMM4/index.html?importentriesfromsemicolon.htm")\}\cf0\f2 
+\par Codes from \cf3\strike\f4 Meet Manager Help\cf4\strike0\{link=*! ExecFile("https://www.hy-tekltd.com/User_Guides_HTML/TFMM4/index.html?importentriesfromsemicolon.htm")\}\cf0\f3 
 \par 
-\par \cf2\b\fs22 Importing\cf0\b0\fs20 
-\par \cf2\strike\f4 Meet Manager Track and Field\cf4\strike0\{link=*! ExecFile("https://www.hy-tekltd.com/track-meet-management.html")\}\cf0\f2  allows you to import a list of competitors with their events as a Semi-Colon Delimited.
-\par \pard\ltrpar\sa160\sl252\slmult1 This can be imported by using File -> Import -> Semi-Colon Delimited Rosters/Entries\f5\fs22 
-\par \pard\ltrpar\lang1033\f0\fs20 
+\par \cf2\b\fs22 Importing\cf3 
+\par \fs20 Track and Field\cf0\b0 
+\par \cf3\strike\f2 Meet Manager Track and Field\cf4\strike0\{link=*! ExecFile("https://www.hy-tekltd.com/track-meet-management.html")\}\cf0\f3  allows you to import a list of competitors with their events as a Semi-Colon Delimited.
+\par \pard\sa160\sl252\slmult1 This can be imported by using File -> Import -> Semi-Colon Delimited Rosters/Entries\f5\fs22 
+\par \pard\cf3\b\f3\fs20 Swimming
+\par \cf0\b0 You can only import the competitor list, not their events.
+\par 
+\par In \cf3\strike\f2 Swim Meet Manager\cf4\strike0\{link=*! ExecFile("http://www.hy-tekltd.com/swim-meet-software.html")\}\cf0\f3 :
+\par \pard{\pntext\f6\'B7\tab}{\*\pn\pnlvlblt\pnf6\pnindent0{\pntxtb\'B7}}\fi-200\li200\tx200 Choose _File -> Import -> Registration File_. Choose the RE1 file you exported above.
+\par {\pntext\f6\'B7\tab}Click **Yes** to continue import if you are happy with summary.
+\par {\pntext\f6\'B7\tab}Click **Yes** to _import all Teams_
+\par {\pntext\f6\'B7\tab}Click **Yes** to _Add New Athletes_
+\par {\pntext\f6\'B7\tab}Click **OK** to review\lang1033\f0 
+\par \pard\tx200 
+\par Note:
+\par \lang3081\f3 There is a bug in the import process where if you have two or more students with the same first and last name, but different ID and DoB Meet Manager will assume they are the same athlete.
+\par It will then update the first athlete's details with the second ones DOB and ID. 
+\par If this occurs you will receive a warning about "existing athletes were updated with ID or birth date".
+\par You can manually edit the RE1 file in a text editor and add an Athlete initial in field 4 after the given name, between the ;;
+\par e.g. "4323";"Bao";"Bob";"R";"M";\lang1033\f0 
 \par }
 570
 L570

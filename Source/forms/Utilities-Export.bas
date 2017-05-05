@@ -18,11 +18,11 @@ Begin Form
     BorderStyle =3
     GridY =10
     Width =5499
-    ItemSuffix =62
-    Left =-19995
-    Top =2565
-    Right =-12735
-    Bottom =8430
+    ItemSuffix =70
+    Left =-18000
+    Top =3795
+    Right =-12495
+    Bottom =8025
     HelpContextId =565
     RecSrcDt = Begin
         0x6bd443042dc7e140
@@ -86,7 +86,7 @@ Begin Form
         End
         Begin Section
             CanGrow = NotDefault
-            Height =2948
+            Height =4251
             BackColor =-2147483633
             Name ="Detail0"
             Begin
@@ -97,135 +97,136 @@ Begin Form
                     Left =113
                     Top =163
                     Width =4541
-                    Height =1984
+                    Height =2839
                     Name ="Box50"
                     LayoutCachedLeft =113
                     LayoutCachedTop =163
                     LayoutCachedWidth =4654
-                    LayoutCachedHeight =2147
+                    LayoutCachedHeight =3002
                 End
                 Begin Label
                     OverlapFlags =215
                     Left =226
                     Top =226
-                    Width =1987
+                    Width =2092
                     Height =220
+                    FontSize =9
                     FontWeight =700
                     Name ="Label56"
                     Caption ="Meet Manager Export"
                     LayoutCachedLeft =226
                     LayoutCachedTop =226
-                    LayoutCachedWidth =2213
+                    LayoutCachedWidth =2318
                     LayoutCachedHeight =446
                 End
                 Begin TextBox
                     OverlapFlags =223
                     IMESentenceMode =3
-                    Left =1302
-                    Top =566
-                    Width =3021
+                    Left =1247
+                    Top =570
+                    Width =3126
                     Name ="Mteam"
                     ControlSource ="Mteam"
 
-                    LayoutCachedLeft =1302
-                    LayoutCachedTop =566
-                    LayoutCachedWidth =4323
-                    LayoutCachedHeight =806
+                    LayoutCachedLeft =1247
+                    LayoutCachedTop =570
+                    LayoutCachedWidth =4373
+                    LayoutCachedHeight =810
                     Begin
                         Begin Label
                             OverlapFlags =223
-                            Left =340
-                            Top =570
+                            Left =285
+                            Top =574
                             Width =975
                             Height =240
                             Name ="Label57"
                             Caption ="Team Name:"
-                            LayoutCachedLeft =340
-                            LayoutCachedTop =570
-                            LayoutCachedWidth =1315
-                            LayoutCachedHeight =810
+                            LayoutCachedLeft =285
+                            LayoutCachedTop =574
+                            LayoutCachedWidth =1260
+                            LayoutCachedHeight =814
                         End
                     End
                 End
                 Begin TextBox
                     OverlapFlags =223
                     IMESentenceMode =3
-                    Left =1302
-                    Top =963
+                    Left =1247
+                    Top =967
                     Width =606
                     TabIndex =1
                     Name ="Mcode"
                     ControlSource ="Mcode"
 
-                    LayoutCachedLeft =1302
-                    LayoutCachedTop =963
-                    LayoutCachedWidth =1908
-                    LayoutCachedHeight =1203
+                    LayoutCachedLeft =1247
+                    LayoutCachedTop =967
+                    LayoutCachedWidth =1853
+                    LayoutCachedHeight =1207
                     Begin
                         Begin Label
                             OverlapFlags =223
-                            Left =340
-                            Top =960
+                            Left =285
+                            Top =964
                             Width =945
                             Height =240
                             Name ="Label58"
                             Caption ="Team Code:"
-                            LayoutCachedLeft =340
-                            LayoutCachedTop =960
-                            LayoutCachedWidth =1285
-                            LayoutCachedHeight =1200
+                            LayoutCachedLeft =285
+                            LayoutCachedTop =964
+                            LayoutCachedWidth =1230
+                            LayoutCachedHeight =1204
                         End
                     End
                 End
                 Begin TextBox
                     OverlapFlags =223
                     IMESentenceMode =3
-                    Left =3741
+                    Left =3911
                     Top =963
                     Width =516
                     TabIndex =2
                     Name ="Mtop"
                     ControlSource ="Mtop"
 
-                    LayoutCachedLeft =3741
+                    LayoutCachedLeft =3911
                     LayoutCachedTop =963
-                    LayoutCachedWidth =4257
+                    LayoutCachedWidth =4427
                     LayoutCachedHeight =1203
                     Begin
                         Begin Label
                             OverlapFlags =223
-                            Left =2154
-                            Top =963
-                            Width =1545
+                            Left =1980
+                            Top =960
+                            Width =1995
                             Height =240
                             Name ="Label59"
-                            Caption ="Number Competiors:"
-                            LayoutCachedLeft =2154
-                            LayoutCachedTop =963
-                            LayoutCachedWidth =3699
-                            LayoutCachedHeight =1203
+                            Caption ="# Top Competitors/Event:"
+                            LayoutCachedLeft =1980
+                            LayoutCachedTop =960
+                            LayoutCachedWidth =3975
+                            LayoutCachedHeight =1200
                         End
                     End
                 End
                 Begin CommandButton
-                    OverlapFlags =215
+                    OverlapFlags =223
                     TextFontFamily =34
-                    Left =566
-                    Top =1417
-                    Width =1584
-                    Height =600
+                    Left =396
+                    Top =2267
+                    Width =1029
+                    Height =570
                     FontSize =8
                     FontWeight =400
                     TabIndex =3
                     Name ="MMExportEntry"
-                    Caption ="Export Competitors and Entries"
+                    Caption ="Semi-Colon\015\012Delimited"
                     OnClick ="[Event Procedure]"
                     FontName ="Tahoma"
 
-                    LayoutCachedLeft =566
-                    LayoutCachedTop =1417
-                    LayoutCachedWidth =2150
-                    LayoutCachedHeight =2017
+                    LayoutCachedLeft =396
+                    LayoutCachedTop =2267
+                    LayoutCachedWidth =1425
+                    LayoutCachedHeight =2837
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
@@ -233,24 +234,24 @@ Begin Form
                     Overlaps =1
                 End
                 Begin CommandButton
-                    OverlapFlags =215
+                    OverlapFlags =223
                     TextFontFamily =34
-                    Left =2607
-                    Top =1417
-                    Width =1584
+                    Left =1920
+                    Top =2265
+                    Width =1134
                     Height =600
                     FontSize =8
                     FontWeight =400
                     TabIndex =4
                     Name ="MMExportComp"
-                    Caption ="Export Only Competitors"
+                    Caption ="Semi-Colon\015\012Delimited"
                     OnClick ="[Event Procedure]"
                     FontName ="Tahoma"
 
-                    LayoutCachedLeft =2607
-                    LayoutCachedTop =1417
-                    LayoutCachedWidth =4191
-                    LayoutCachedHeight =2017
+                    LayoutCachedLeft =1920
+                    LayoutCachedTop =2265
+                    LayoutCachedWidth =3054
+                    LayoutCachedHeight =2865
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
@@ -274,8 +275,8 @@ Begin Form
                 Begin CommandButton
                     OverlapFlags =85
                     TextFontFamily =34
-                    Left =113
-                    Top =2324
+                    Left =170
+                    Top =3628
                     Width =1134
                     Height =510
                     FontSize =8
@@ -287,14 +288,137 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="Tahoma"
 
-                    LayoutCachedLeft =113
-                    LayoutCachedTop =2324
-                    LayoutCachedWidth =1247
-                    LayoutCachedHeight =2834
+                    LayoutCachedLeft =170
+                    LayoutCachedTop =3628
+                    LayoutCachedWidth =1304
+                    LayoutCachedHeight =4138
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
                     WebImagePaddingBottom =1
+                End
+                Begin CommandButton
+                    OverlapFlags =223
+                    TextFontFamily =34
+                    Left =3180
+                    Top =2265
+                    Width =1194
+                    Height =600
+                    FontSize =8
+                    FontWeight =400
+                    TabIndex =6
+                    Name ="MMExportRE1"
+                    Caption ="RE1 Registrations"
+                    OnClick ="[Event Procedure]"
+                    FontName ="Tahoma"
+
+                    LayoutCachedLeft =3180
+                    LayoutCachedTop =2265
+                    LayoutCachedWidth =4374
+                    LayoutCachedHeight =2865
+                    WebImagePaddingLeft =2
+                    WebImagePaddingTop =2
+                    WebImagePaddingRight =1
+                    WebImagePaddingBottom =1
+                    Overlaps =1
+                End
+                Begin Rectangle
+                    SpecialEffect =3
+                    BackStyle =0
+                    OverlapFlags =223
+                    Left =170
+                    Top =1700
+                    Width =1586
+                    Height =1235
+                    Name ="Box63"
+                    LayoutCachedLeft =170
+                    LayoutCachedTop =1700
+                    LayoutCachedWidth =1756
+                    LayoutCachedHeight =2935
+                End
+                Begin Rectangle
+                    SpecialEffect =3
+                    BackStyle =0
+                    OverlapFlags =223
+                    Left =1814
+                    Top =1700
+                    Width =2711
+                    Height =1235
+                    Name ="Box64"
+                    LayoutCachedLeft =1814
+                    LayoutCachedTop =1700
+                    LayoutCachedWidth =4525
+                    LayoutCachedHeight =2935
+                End
+                Begin Label
+                    OverlapFlags =215
+                    TextAlign =2
+                    Left =225
+                    Top =1755
+                    Width =1425
+                    Height =450
+                    Name ="Label65"
+                    Caption ="Top Competitors and Event Entry"
+                    LayoutCachedLeft =225
+                    LayoutCachedTop =1755
+                    LayoutCachedWidth =1650
+                    LayoutCachedHeight =2205
+                End
+                Begin Label
+                    OverlapFlags =223
+                    TextAlign =2
+                    Left =1920
+                    Top =1755
+                    Width =2445
+                    Height =225
+                    Name ="Label66"
+                    Caption ="Only Top Competitors:"
+                    LayoutCachedLeft =1920
+                    LayoutCachedTop =1755
+                    LayoutCachedWidth =4365
+                    LayoutCachedHeight =1980
+                End
+                Begin Label
+                    OverlapFlags =215
+                    Left =226
+                    Top =1417
+                    Width =1987
+                    Height =220
+                    FontWeight =700
+                    Name ="Label67"
+                    Caption ="Export Data"
+                    LayoutCachedLeft =226
+                    LayoutCachedTop =1417
+                    LayoutCachedWidth =2213
+                    LayoutCachedHeight =1637
+                End
+                Begin Label
+                    OverlapFlags =215
+                    TextAlign =2
+                    Left =1905
+                    Top =1980
+                    Width =1155
+                    Height =225
+                    Name ="Label68"
+                    Caption ="Track && Field"
+                    LayoutCachedLeft =1905
+                    LayoutCachedTop =1980
+                    LayoutCachedWidth =3060
+                    LayoutCachedHeight =2205
+                End
+                Begin Label
+                    OverlapFlags =215
+                    TextAlign =2
+                    Left =3165
+                    Top =1980
+                    Width =1215
+                    Height =225
+                    Name ="Label69"
+                    Caption ="Swimming"
+                    LayoutCachedLeft =3165
+                    LayoutCachedTop =1980
+                    LayoutCachedWidth =4380
+                    LayoutCachedHeight =2205
                 End
             End
         End
@@ -369,6 +493,7 @@ Private Function MMSaveFile() As String
     Dim strFilter As String
     Dim strFile As String
     Dim strDefaultFile As String
+    Dim lngFlags As Long
     
     Dim strTitle As String
     Dim varFileName As Variant
@@ -379,9 +504,12 @@ Private Function MMSaveFile() As String
     strFilter = ahtAddFilterItem(strFilter, "Text Files (*.txt)", "*.txt")
     strFilter = ahtAddFilterItem(strFilter, "All Files (*.*)", "*.*")
     
+    lngFlags = ahtOFN_OVERWRITEPROMPT Or ahtOFN_HIDEREADONLY
+    
     varFileName = ahtCommonFileOpenSave( _
                OpenFile:=False, _
                Filter:=strFilter, _
+               Flags:=lngFlags, _
                FileName:=strDefaultFile, _
                DialogTitle:=strTitle)
                
@@ -472,4 +600,125 @@ ExportMeetManager_Exit:
 ExportMeetManager_Err:
     MsgBox ("Error in ExportMeetManager: " & Error$)
     GoTo ExportMeetManager_Exit
+End Function
+
+Private Sub MMExportRE1_Click()
+ On Error GoTo MMExportRE1_Click_Err
+    
+    Dim strFile As String
+    Dim strQuery As String
+    Dim lngFlags As Long
+    
+    ' Save record to set Export details
+    DoCmd.RunCommand acCmdSaveRecord
+
+    'strFile = MMSaveFile
+    
+    Dim strFilter As String
+    Dim strDefaultFile As String
+    
+    Dim strTitle As String
+    Dim varFileName As Variant
+    
+    strTitle = "Meet Manager Registration Export"
+    strDefaultFile = "MeetManager-" & Format(Date, "yyyy-mm-dd") & ".re1"
+    
+    lngFlags = ahtOFN_OVERWRITEPROMPT Or ahtOFN_HIDEREADONLY
+    
+    strFilter = ahtAddFilterItem(strFilter, "Registration File (*.re1)", "*.re1")
+    strFilter = ahtAddFilterItem(strFilter, "All Files (*.*)", "*.*")
+    
+    varFileName = ahtCommonFileOpenSave( _
+               OpenFile:=False, _
+               Filter:=strFilter, _
+               Flags:=lngFlags, _
+               FileName:=strDefaultFile, _
+               DialogTitle:=strTitle)
+               
+    If varFileName <> "" Then
+        strFile = Trim(varFileName)
+    End If
+    
+
+    If strFile <> "" Then
+        Call ExportToRE1("MeetManagerRE1", strFile)
+    End If
+   
+MMExportRE1_Click_Exit:
+    Exit Sub
+
+MMExportRE1_Click_Err:
+    MsgBox ("Error in MMExportRE1_Click: " & Error$)
+    GoTo MMExportRE1_Click_Exit
+End Sub
+
+Public Function ExportToRE1(sQuery As String, sFilePath As String)
+    ' Code based from https://access-programmers.co.uk/forums/showthread.php?t=202570
+    On Error GoTo ExportToRE1_Err
+    
+    Dim Rs As DAO.Recordset
+    Dim ff As Long
+    
+    Dim sStr As String
+    Dim sTeam As String
+    Dim sTAbbr As String
+    Dim sID As String
+    
+    Set Rs = CurrentDb.OpenRecordset(sQuery)
+    
+    ff = FreeFile
+    
+    sTeam = Clean(DLookup("[Mteam]", "Miscellaneous"))
+    sTAbbr = DLookup("[Mcode]", "Miscellaneous")
+    
+    Open sFilePath For Output As #ff
+    ' Header Line
+    ' e.g. "USA Swimming Registration List";"5/28/2009";"LSCDB for Windows";"1.08";"SE"
+    sStr = Replace(Clean(DLookup("[CarnivalTitle]", "Miscellaneous")), """", "")
+    sStr = """" & sStr & """;""" & Format(Now(), "mm/dd/yyyy") & _
+    """;""Sports Administrator"";""" & VersionNumber & """"
+    
+    '     sStr = """" & DLookup("[CarnivalTitle]", "Miscellaneous") & """;""" & Format(Now(), "mm/dd/yyyy") & _
+    """;""Sports Administrator"";""" & VersionNumber & """;""SE"""
+    
+    Print #ff, sStr
+    
+    sStr = ""
+     
+    Do Until Rs.EOF
+       '/Loop though all the fields for each record and concat them together with a comma delimiter only.
+       '/Note:The Trim(Rs(nIndex) & "") syntax contends with Null or ZLS fields
+    
+       '"030391JOHFDOEL";"Doel";"John";"J";"F";"03/03/1991";"HURR";"Hurricane Swim Club";"Johnny";"N"
+       
+       ' ID is PIN or if not set a mix of DoB and name
+       
+        If Rs("ID") <> "" Then
+            sID = Rs("ID")
+        Else
+            sID = Format(Rs("DOB"), "yymmdd") & Left(Rs("Given"), 3) & Rs("Sex") & Left(Rs("Surname"), 3)
+        End If
+       
+       sStr = """" & sID & """;""" & Rs("Surname") & """;""" & Rs("Given") & """;;""" & Rs("Sex") & """;""" _
+       & Format(Rs("DOB"), "mm/dd/yyyy") & """;""" & sTAbbr & """;""" & sTeam & """;""" & Rs("Given") & """;""N"""
+    
+       '/Write record to the csv file
+    
+       Print #ff, sStr
+    
+       '/Reset the sStr to ""
+    
+       sStr = ""
+       Rs.MoveNext
+    Loop
+    Close #ff
+    
+ExportToRE1_Exit:
+    Rs.Close
+    Set Rs = Nothing
+    Exit Function
+
+ExportToRE1_Err:
+    MsgBox ("Error in ExportToRE1: " & Error$)
+    GoTo ExportToRE1_Exit
 End Function

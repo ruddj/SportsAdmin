@@ -182,7 +182,7 @@ End Function
 
 Public Sub UpdateLaneTemplate(ET_Code As Long, Lane_Cnt As Variant)
 
-  Dim Q As String, i As Integer, Db As Database, rs As Recordset
+  Dim Q As String, i As Integer, db As Database, Rs As Recordset
     
   Q = "DELETE DISTINCTROW [Lane Template].ET_Code FROM [Lane Template]"
   Q = Q & " WHERE [Lane Template].ET_Code=" & ET_Code
@@ -191,18 +191,18 @@ Public Sub UpdateLaneTemplate(ET_Code As Long, Lane_Cnt As Variant)
   DoCmd.RunSQL Q
   DoCmd.SetWarnings True
 
-  Set Db = CurrentDb
-  Set rs = Db.OpenRecordset("Lane Template", dbOpenDynaset)   ' Create Recordset.
+  Set db = CurrentDb
+  Set Rs = db.OpenRecordset("Lane Template", dbOpenDynaset)   ' Create Recordset.
 
   For i = 1 To Lane_Cnt
 
-      rs.AddNew
-      rs!ET_Code = ET_Code
-      rs![Lanes] = i
-      rs.Update
+      Rs.AddNew
+      Rs!ET_Code = ET_Code
+      Rs![Lanes] = i
+      Rs.Update
                
   Next i
 
-  rs.Close
+  Rs.Close
 
 End Sub

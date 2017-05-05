@@ -432,7 +432,7 @@ Private Sub AddCompet_Click()
     Dim TotalHouses As Variant, NumOfLanes As Variant, FLev As Variant, CriteriaHeat As Variant
     Dim CreateHeat As Variant, PointScale As Variant, ProType As Variant, UseTimes As Variant
     Dim Criteria As Variant, Continue As Variant, i As Variant, HouseIndex As Variant, CompLane As Variant
-    Dim MoreCompetitors As Variant, ReturnValue As Variant, X As Variant, TotalCompetitors As Variant
+    Dim MoreCompetitors As Variant, ReturnValue As Variant, x As Variant, TotalCompetitors As Variant
     Dim CErs As Recordset
     Dim HC() As HouseComp
 
@@ -496,12 +496,12 @@ Private Sub AddCompet_Click()
                 Crs.FindFirst Criteria
                 Continue = True
                 ReturnValue = SysCmd(acSysCmdInitMeter, "Adding Competitors to heat ...", TotalCompetitors)
-                X = 0
+                x = 0
                 While Not Crs.NoMatch And Continue   ' This is the beggining of a new heat
                                                      ' If there are still competitors then we want to add a new heat
                                                      ' It will stop when a whole heat is left empty
                     
-                    ReturnValue = SysCmd(acSysCmdUpdateMeter, X)
+                    ReturnValue = SysCmd(acSysCmdUpdateMeter, x)
                     Continue = False
                     i = 1 'DCount("[F_Lev]", "CompEvents", "[E_Code]=" & ERS!E_Code & " AND [F_Lev]=" & Flev & " AND [Heat]=" & HeatRS!Heat) + 1
                     MoreCompetitors = True
@@ -515,7 +515,7 @@ Private Sub AddCompet_Click()
                             Crs.FindFirst Criteria
                             If Not Crs.NoMatch Then
                                 MoreCompetitors = True
-                                X = X + 1
+                                x = x + 1
                                 If CreateHeat Then
                                     'Stop
                                      HeatRS.AddNew

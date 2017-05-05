@@ -753,6 +753,6 @@ Private Sub ScrollSummary()
 
 End Sub
 
-Private Sub Summary_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Summary_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
     strSearch = ""
 End Sub

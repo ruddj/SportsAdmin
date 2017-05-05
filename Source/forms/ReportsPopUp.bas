@@ -489,13 +489,13 @@ Private Sub CloseAllReportsBut_Click()
 On Error Resume Next
 
   'DoCmd.Echo False
-  Dim X As Integer
+  Dim x As Integer
   
-  For X = 0 To Reports.Count - 1
+  For x = 0 To Reports.Count - 1
     DoCmd.SelectObject A_REPORT, Reports(0).Name, False
     DoCmd.Close
     
-  Next X
+  Next x
 
   'DoCmd.Echo True
 
@@ -565,12 +565,12 @@ End Sub
 Private Sub PrintAllReportsBut_Click()
 
 On Error GoTo PrintAllReportsBut_Click_Err
-  Dim X As Integer, msg As String
+  Dim x As Integer, msg As String
   
-  For X = 0 To Reports.Count - 1
-    DoCmd.SelectObject A_REPORT, Reports(X).Name, False
+  For x = 0 To Reports.Count - 1
+    DoCmd.SelectObject A_REPORT, Reports(x).Name, False
     DoCmd.RunCommand acCmdPrint
-  Next X
+  Next x
 
 PrintAllReportsBut_Click_Exit:
   Exit Sub
@@ -578,14 +578,14 @@ PrintAllReportsBut_Click_Exit:
 PrintAllReportsBut_Click_Err:
   msg = ""
   If (Err.Number = 2501) Then
-    If (X < (Reports.Count - 1)) Then
+    If (x < (Reports.Count - 1)) Then
       msg = "You have cancelled printing report '"
     End If
   Else
     msg = "An error has occured printing '"
   End If
   If msg <> "" Then
-    Response = MsgBox(msg & Reports(X).Caption & "'.  Do you wish to continue printing?", vbInformation + vbYesNo)
+    Response = MsgBox(msg & Reports(x).Caption & "'.  Do you wish to continue printing?", vbInformation + vbYesNo)
     If Response = vbNo Then
       Exit Sub
     Else
@@ -691,7 +691,7 @@ Private Sub PositionForm()
 
 On Error GoTo PositionForm_Exit
     
-  Dim X As Integer, Y As Integer
+  Dim x As Integer, Y As Integer
   
   If VarEmpty(Me!ReportPopupX) Then
     Me!ReportPopupX = 0
@@ -703,7 +703,7 @@ On Error GoTo PositionForm_Exit
     End If
   End If
   
-  X = Me!ReportPopupX
+  x = Me!ReportPopupX
     
   If VarEmpty(Me!ReportPopupY) Then
     Me!ReportPopupY = 0
@@ -716,7 +716,7 @@ On Error GoTo PositionForm_Exit
   End If
   Y = Me!ReportPopupY
   
-  DoCmd.MoveSize X, Y
+  DoCmd.MoveSize x, Y
   
 PositionForm_Exit:
 

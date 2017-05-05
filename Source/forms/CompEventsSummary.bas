@@ -1165,7 +1165,7 @@ On Error GoTo Err_PromoteBut_Click
         ReturnValue = SysCmd(acSysCmdInitMeter, "Promoting Competitors", TotalEvents)    ' Display message in status bar.
             
         Rs.MoveFirst
-        X = 1
+        x = 1
         
         DoCmd.SetWarnings False
         DoCmd.RunSQL "UPDATE DISTINCTROW ShowDialog SET ShowDialog.ShowDialog = Yes"
@@ -1197,8 +1197,8 @@ On Error GoTo Err_PromoteBut_Click
                     If Result = True Then
                         EventsPromoted = True
                     End If
-                    ReturnValue = SysCmd(acSysCmdUpdateMeter, X)   ' Update meter.
-                    X = X + 1
+                    ReturnValue = SysCmd(acSysCmdUpdateMeter, x)   ' Update meter.
+                    x = x + 1
                 End If
             End If
             Rs.MoveNext

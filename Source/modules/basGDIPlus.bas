@@ -34,7 +34,7 @@ Public Type GUID
 End Type
 
 Public Type TSize
-    X As Double
+    x As Double
     Y As Double
 End Type
 
@@ -138,7 +138,7 @@ End Type
     'Delete GDIP graphical area :
     Private Declare PtrSafe Function GdipDeleteGraphics Lib "gdiplus" (ByVal graphics As LongPtr) As Long
     'Copy GDIP-Image to graphical area:
-    Private Declare PtrSafe Function GdipDrawImageRect Lib "gdiplus" (ByVal graphics As LongPtr, ByVal image As LongPtr, ByVal X As Single, ByVal Y As Single, ByVal Width As Single, ByVal Height As Single) As Long
+    Private Declare PtrSafe Function GdipDrawImageRect Lib "gdiplus" (ByVal graphics As LongPtr, ByVal image As LongPtr, ByVal x As Single, ByVal Y As Single, ByVal Width As Single, ByVal Height As Single) As Long
     'Clear allocated bitmap memory from GDIP :
     Private Declare PtrSafe Function GdipDisposeImage Lib "gdiplus" (ByVal image As LongPtr) As Long
     'Retrieve windows bitmap handle from GDIP-Image:
@@ -220,7 +220,7 @@ End Type
     'Delete GDIP graphical area :
     Private Declare Function GdipDeleteGraphics Lib "gdiplus" (ByVal graphics As Long) As Long
     'Copy GDIP-Image to graphical area:
-    Private Declare Function GdipDrawImageRect Lib "gdiplus" (ByVal graphics As Long, ByVal image As Long, ByVal X As Single, ByVal Y As Single, ByVal Width As Single, ByVal Height As Single) As Long
+    Private Declare Function GdipDrawImageRect Lib "gdiplus" (ByVal graphics As Long, ByVal image As Long, ByVal x As Single, ByVal Y As Single, ByVal Width As Single, ByVal Height As Single) As Long
     'Clear allocated bitmap memory from GDIP :
     Private Declare Function GdipDisposeImage Lib "gdiplus" (ByVal image As Long) As Long
     'Retrieve windows bitmap handle from GDIP-Image:

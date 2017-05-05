@@ -619,8 +619,8 @@ Private Sub ImportData_Click()
     ReturnValue = SysCmd(acSysCmdInitMeter, msg, DCount("[Gname]", "Import Competitors"))   ' Display message in status bar.
     
     While Not ITRS.EOF And Continue
-      X = X + 1
-      ReturnValue = SysCmd(acSysCmdUpdateMeter, X)   ' Update meter.
+      x = x + 1
+      ReturnValue = SysCmd(acSysCmdUpdateMeter, x)   ' Update meter.
 
       Cname = ITRS!Gname & " " & ITRS!Sname & " (" & UCase(ITRS!H_Code) & ")"
       Response = 0

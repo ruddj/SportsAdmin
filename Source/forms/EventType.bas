@@ -908,9 +908,9 @@ On Error GoTo Err_Close_But_Click
     'Stop
     Cl = True
 
-    X = DCount("[ET_Code]", "Lane Promotion Allocation", "[ET_Code]=" & Me![ET_Code])
+    x = DCount("[ET_Code]", "Lane Promotion Allocation", "[ET_Code]=" & Me![ET_Code])
 
-    If X < Forms![EventType]![Lane_Cnt] And DCount("[ET_Code]", "EventTypeHeats", "[ET_Code]=" & Me![ET_Code] & " AND [F_Lev]>0") Then
+    If x < Forms![EventType]![Lane_Cnt] And DCount("[ET_Code]", "EventTypeHeats", "[ET_Code]=" & Me![ET_Code] & " AND [F_Lev]>0") Then
         Response = MsgBox("The number of promotion lanes you have set up is less than the Lane / Competitor count.  Do you still wish to continue?", vbYesNo + vbQuestion, "Too few lanes?")
         If Response <> vbYes Then
             Cl = False

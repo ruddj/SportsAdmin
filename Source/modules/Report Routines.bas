@@ -34,15 +34,15 @@ Function PrintOpenReports()
 
 On Error GoTo PrintOpen_Click_Err
 
-    Dim X As Integer, NumberReports As Variant
+    Dim x As Integer, NumberReports As Variant
 
     NumberReports = Reports.Count   ' Count number of reports.
 
-    For X = 0 To NumberReports - 1
+    For x = 0 To NumberReports - 1
         
-        DoCmd.OpenReport Reports(X).Name, A_NORMAL
+        DoCmd.OpenReport Reports(x).Name, A_NORMAL
 
-    Next X
+    Next x
 
 PrintOpen_Click_Exit:
     Exit Function

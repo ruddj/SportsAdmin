@@ -2,8 +2,12 @@ Option Compare Database
 Option Explicit
 
 
-Global Const VersionNumber = "5.1.0"
-Global Const VersionDate = "(4/May/2017)"
+Global Const VersionNumber = "5.1.1"
+Global Const VersionDate = "(5/May/2017)"
+
+' Version 5.1.1
+'   (5/May/2017)
+'   Added Swim Meet Manager Export
 
 ' Version 5.1.0
 '   (4/May/2017)

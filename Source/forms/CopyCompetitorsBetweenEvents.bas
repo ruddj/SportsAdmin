@@ -459,14 +459,14 @@ On Error GoTo Err_CopyCompetitors_Click
   End If
   Frs.FindFirst Fcriteria
 
-  X = 0
+  x = 0
   FailedI = 0
   SuccessI = 0
 
   While Not Frs.NoMatch
 
-    Retval = SysCmd(SYSCMD_SETSTATUS, "Processing competitor " & X)
-    X = X + 1
+    Retval = SysCmd(SYSCMD_SETSTATUS, "Processing competitor " & x)
+    x = x + 1
 
     NewE_Code = DLookup("[E_Code]", "Events", "[ET_Code]=" & Me!ToET_Code & " AND [Sex]=""" & Frs![Sex] & """ AND [Age]=""" & Frs![Age] & """")
     If IsNull(NewE_Code) Then
@@ -503,7 +503,7 @@ On Error GoTo Err_CopyCompetitors_Click
   Trs.Close
   msg = "Copy complete.  " & SuccessI & " competitors copied."
   If FailedI > 0 Then
-    msg = msg & " However " & FailedI & " of " & X & " heats could not be processed because the TO heat did not exist."
+    msg = msg & " However " & FailedI & " of " & x & " heats could not be processed because the TO heat did not exist."
   End If
   Response = MsgBox(msg, vbInformation)
 

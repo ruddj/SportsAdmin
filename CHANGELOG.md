@@ -6,9 +6,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [5.1.1] - 2017-05-05
+### Added
+- Competitor export for Meet Manager Swimming. Can now generate a RE1 Registration file for import into Meet Manager Swimming.
+
+### Fixed
+- Meet Manager T&F competitor only export was including duplicates.
+
 ## [5.1.0] - 2017-05-04
 ### Added
-- Meet Manager Export. 
+- Meet Manager Export. Can now generate a semicolon delimited file for import into Meet Manager Track and Field.
 
 ### Changed
 - Database Schema of Carnival files modified to add Meet Manager Mappings. 
@@ -165,7 +172,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Ordered Competitors handled differently: Table held locally.  Does not delete old but overwrites them.
 
 
-[Unreleased]: https://github.com/ruddj/SportsAdmin/compare/v5.0.2...HEAD
+[Unreleased]: https://github.com/ruddj/SportsAdmin/compare/v5.1.0...HEAD
 [5.1.0]: https://github.com/ruddj/SportsAdmin/compare/v5.0.2...v5.1.0
 [5.0.2]: https://github.com/ruddj/SportsAdmin/compare/v5.0.1...v5.0.2
 [5.0.1]: https://github.com/ruddj/SportsAdmin/compare/v5.0.0...v5.0.1

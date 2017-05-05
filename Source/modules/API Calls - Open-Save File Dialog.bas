@@ -40,6 +40,10 @@ Declare Function aht_apiGetOpenFileName Lib "comdlg32.dll" _
 Declare Function aht_apiGetSaveFileName Lib "comdlg32.dll" _
     Alias "GetSaveFileNameA" (OFN As tagOPENFILENAME) As Boolean
 Declare Function CommDlgExtendedError Lib "comdlg32.dll" () As Long
+
+' Definition of Flags
+' https://msdn.microsoft.com/en-us/library/aa238842(v=vs.60).aspx
+
 Global Const ahtOFN_READONLY = &H1
 Global Const ahtOFN_OVERWRITEPROMPT = &H2
 Global Const ahtOFN_HIDEREADONLY = &H4

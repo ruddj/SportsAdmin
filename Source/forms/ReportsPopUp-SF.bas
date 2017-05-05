@@ -230,7 +230,7 @@ Private Sub PositionForm()
 
 On Error GoTo PositionForm_Exit
     
-  Dim X As Integer, Y As Integer
+  Dim x As Integer, Y As Integer
   
   If VarEmpty(Me!ReportPopupX) Then
     Me!ReportPopupX = 0
@@ -242,7 +242,7 @@ On Error GoTo PositionForm_Exit
     End If
   End If
   
-  X = Me!ReportPopupX
+  x = Me!ReportPopupX
     
   If VarEmpty(Me!ReportPopupY) Then
     Me!ReportPopupY = 0

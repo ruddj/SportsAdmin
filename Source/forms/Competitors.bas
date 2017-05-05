@@ -736,12 +736,12 @@ Private Sub Age_BeforeUpdate(Cancel As Integer)
     Dim MyDb As Database
 
     OriginalValue = Forms![Competitors]![Age].OldValue
-    X = Forms![Competitors]![Age]
+    x = Forms![Competitors]![Age]
 
-    If IsNull(X) Then
+    If IsNull(x) Then
         Response = MsgBox("You must enter a value for the competitors age", vbInformation)
 
-    ElseIf Trim(str(Val(X))) <> Trim(X) Then
+    ElseIf Trim(str(Val(x))) <> Trim(x) Then
         Response = MsgBox("The age must be numeric.", vbInformation)
     Else
         If Not (IsNull(OriginalValue)) Then '**** ie not the first entry
@@ -892,7 +892,7 @@ Private Sub Field66_BeforeUpdate(Cancel As Integer)
     Dim MyDb As Database
 
     OriginalValue = Forms![Competitors]![Age].OldValue
-    X = Forms![Competitors]![Age]
+    x = Forms![Competitors]![Age]
 
     If Not (IsNull(OriginalValue)) Then '**** ie not the first entry
         
