@@ -109,7 +109,7 @@ Sub GetImages(control As IRibbonControl, ByRef image)
     Dim strPicturePath  As String
     Dim strPicture      As String
     
-    strPicture = getTheValue(control.tag, "CustomPicture")
+    strPicture = getTheValue(control.Tag, "CustomPicture")
     
     If bolUsePicturesFromTable = True Then
         Set image = getIconFromTable(strPicture)
@@ -117,7 +117,7 @@ Sub GetImages(control As IRibbonControl, ByRef image)
         If bolUseDynamicPicturePath = True Then
             strPicturePath = getAppPath & strAppPicturePath & "\"
         Else
-            strPicturePath = getTheValue(control.tag, "CustomPicturePath")
+            strPicturePath = getTheValue(control.Tag, "CustomPicturePath")
         End If
         Set image = LoadPictureGDIP(strPicturePath & strPicture)
     End If
@@ -604,7 +604,7 @@ Sub GetPressedCheckBox(control As IRibbonControl, _
         
 
         Case Else
-            If getTheValue(control.tag, "DefaultValue") = "1" Then
+            If getTheValue(control.Tag, "DefaultValue") = "1" Then
                 bolReturn = True
             Else
                 bolReturn = False
@@ -650,14 +650,14 @@ Sub GetPressedTglButton(control As IRibbonControl, _
         Case "tgb_dev"
             ' In Tab:   tab_setup
             ' In Group: grp_crn
-            If getTheValue(control.tag, "DefaultValue") = "1" Then
+            If getTheValue(control.Tag, "DefaultValue") = "1" Then
                 pressed = True
             Else
                 pressed = False
             End If
 
         Case Else
-            If getTheValue(control.tag, "DefaultValue") = "1" Then
+            If getTheValue(control.Tag, "DefaultValue") = "1" Then
                 pressed = True
             Else
                 pressed = False
@@ -682,7 +682,7 @@ Sub GetTextEditBox(control As IRibbonControl, _
         
 
         Case Else
-            strText = getTheValue(control.tag, "DefaultValue")
+            strText = getTheValue(control.Tag, "DefaultValue")
     
     End Select
     
@@ -737,14 +737,14 @@ Sub GetSelectedItemIndexDropDown(control As IRibbonControl, _
     ' Callback getSelectedItemIndex
     
     Dim varIndex As Variant
-    varIndex = getTheValue(control.tag, "DefaultValue")
+    varIndex = getTheValue(control.Tag, "DefaultValue")
     
     If IsNumeric(varIndex) Then
         Select Case control.ID
             
 
             Case Else
-                index = getTheValue(control.tag, "DefaultValue")
+                index = getTheValue(control.Tag, "DefaultValue")
 
         End Select
 
@@ -761,7 +761,7 @@ Sub GetSelectedItemIndexGallery(control As IRibbonControl, _
     ' Callback GetSelectedItemIndexGallery
     
     Dim varIndex As Variant
-    varIndex = getTheValue(control.tag, "DefaultValue")
+    varIndex = getTheValue(control.Tag, "DefaultValue")
     
     If IsNumeric(varIndex) Then
         Select Case control.ID
@@ -810,7 +810,7 @@ Sub GetTextComboBox(control As IRibbonControl, _
         
 
         Case Else
-            strText = getTheValue(control.tag, "DefaultValue")
+            strText = getTheValue(control.Tag, "DefaultValue")
     End Select
 
 End Sub

@@ -49,16 +49,19 @@ On Error GoTo EnsureDatabaseVersionIsCurrent_Err
   HasError = AddField(db, "Final_Lev", "EffectsRecords", dbBoolean, False, , False)
   
   SysCmd acSysCmdSetStatus, "Applying Meet Manager field changes: 1 ... "
-  HasError = AddField(db, "Miscellaneous", "Mteam", dbText, False, 30, False)
+  HasError = AddField(db, "Miscellaneous", "Mteam", dbText, False, 30)
   
   SysCmd acSysCmdSetStatus, "Applying Meet Manager field changes: 2 ... "
-  HasError = AddField(db, "Miscellaneous", "Mcode", dbText, False, 4, False)
+  HasError = AddField(db, "Miscellaneous", "Mcode", dbText, False, 4)
   
   SysCmd acSysCmdSetStatus, "Applying Meet Manager field changes: 3 ... "
   HasError = AddField(db, "Miscellaneous", "Mtop", dbInteger, False, 3, 3)
   
   SysCmd acSysCmdSetStatus, "Applying Meet Manager field changes: 4 ... "
-  HasError = AddField(db, "EventType", "Mevent", dbText, False, 10, False)
+  HasError = AddField(db, "EventType", "Mevent", dbText, False, 10)
+  
+  SysCmd acSysCmdSetStatus, "Applying Meet Manager field changes: 5 ... "
+  HasError = AddField(db, "CompetitorEventAge", "Mdiv", dbText, False, 2)
   
   Set db = Nothing
   

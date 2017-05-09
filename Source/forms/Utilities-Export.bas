@@ -17,11 +17,11 @@ Begin Form
     ViewsAllowed =1
     BorderStyle =3
     GridY =10
-    Width =5499
-    ItemSuffix =70
+    Width =5546
+    ItemSuffix =71
     Left =-18000
     Top =3795
-    Right =-12495
+    Right =-12450
     Bottom =8025
     HelpContextId =565
     RecSrcDt = Begin
@@ -96,12 +96,12 @@ Begin Form
                     OverlapFlags =93
                     Left =113
                     Top =163
-                    Width =4541
+                    Width =5336
                     Height =2839
                     Name ="Box50"
                     LayoutCachedLeft =113
                     LayoutCachedTop =163
-                    LayoutCachedWidth =4654
+                    LayoutCachedWidth =5449
                     LayoutCachedHeight =3002
                 End
                 Begin Label
@@ -211,7 +211,7 @@ Begin Form
                 Begin CommandButton
                     OverlapFlags =223
                     TextFontFamily =34
-                    Left =396
+                    Left =1474
                     Top =2267
                     Width =1029
                     Height =570
@@ -223,9 +223,9 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="Tahoma"
 
-                    LayoutCachedLeft =396
+                    LayoutCachedLeft =1474
                     LayoutCachedTop =2267
-                    LayoutCachedWidth =1425
+                    LayoutCachedWidth =2503
                     LayoutCachedHeight =2837
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -236,8 +236,8 @@ Begin Form
                 Begin CommandButton
                     OverlapFlags =223
                     TextFontFamily =34
-                    Left =1920
-                    Top =2265
+                    Left =2761
+                    Top =2260
                     Width =1134
                     Height =600
                     FontSize =8
@@ -248,10 +248,10 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="Tahoma"
 
-                    LayoutCachedLeft =1920
-                    LayoutCachedTop =2265
-                    LayoutCachedWidth =3054
-                    LayoutCachedHeight =2865
+                    LayoutCachedLeft =2761
+                    LayoutCachedTop =2260
+                    LayoutCachedWidth =3895
+                    LayoutCachedHeight =2860
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
@@ -300,8 +300,8 @@ Begin Form
                 Begin CommandButton
                     OverlapFlags =223
                     TextFontFamily =34
-                    Left =3180
-                    Top =2265
+                    Left =4021
+                    Top =2260
                     Width =1194
                     Height =600
                     FontSize =8
@@ -312,10 +312,10 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="Tahoma"
 
-                    LayoutCachedLeft =3180
-                    LayoutCachedTop =2265
-                    LayoutCachedWidth =4374
-                    LayoutCachedHeight =2865
+                    LayoutCachedLeft =4021
+                    LayoutCachedTop =2260
+                    LayoutCachedWidth =5215
+                    LayoutCachedHeight =2860
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
@@ -328,55 +328,55 @@ Begin Form
                     OverlapFlags =223
                     Left =170
                     Top =1700
-                    Width =1586
+                    Width =2426
                     Height =1235
                     Name ="Box63"
                     LayoutCachedLeft =170
                     LayoutCachedTop =1700
-                    LayoutCachedWidth =1756
+                    LayoutCachedWidth =2596
                     LayoutCachedHeight =2935
                 End
                 Begin Rectangle
                     SpecialEffect =3
                     BackStyle =0
                     OverlapFlags =223
-                    Left =1814
-                    Top =1700
+                    Left =2655
+                    Top =1695
                     Width =2711
                     Height =1235
                     Name ="Box64"
-                    LayoutCachedLeft =1814
-                    LayoutCachedTop =1700
-                    LayoutCachedWidth =4525
-                    LayoutCachedHeight =2935
+                    LayoutCachedLeft =2655
+                    LayoutCachedTop =1695
+                    LayoutCachedWidth =5366
+                    LayoutCachedHeight =2930
                 End
                 Begin Label
                     OverlapFlags =215
                     TextAlign =2
                     Left =225
                     Top =1755
-                    Width =1425
+                    Width =2265
                     Height =450
                     Name ="Label65"
-                    Caption ="Top Competitors and Event Entry"
+                    Caption ="Top Competitors and \015\012Event Entry (T&&F Only)"
                     LayoutCachedLeft =225
                     LayoutCachedTop =1755
-                    LayoutCachedWidth =1650
+                    LayoutCachedWidth =2490
                     LayoutCachedHeight =2205
                 End
                 Begin Label
                     OverlapFlags =223
                     TextAlign =2
-                    Left =1920
-                    Top =1755
+                    Left =2761
+                    Top =1750
                     Width =2445
                     Height =225
                     Name ="Label66"
                     Caption ="Only Top Competitors:"
-                    LayoutCachedLeft =1920
-                    LayoutCachedTop =1755
-                    LayoutCachedWidth =4365
-                    LayoutCachedHeight =1980
+                    LayoutCachedLeft =2761
+                    LayoutCachedTop =1750
+                    LayoutCachedWidth =5206
+                    LayoutCachedHeight =1975
                 End
                 Begin Label
                     OverlapFlags =215
@@ -395,30 +395,55 @@ Begin Form
                 Begin Label
                     OverlapFlags =215
                     TextAlign =2
-                    Left =1905
-                    Top =1980
+                    Left =2746
+                    Top =1975
                     Width =1155
                     Height =225
                     Name ="Label68"
                     Caption ="Track && Field"
-                    LayoutCachedLeft =1905
-                    LayoutCachedTop =1980
-                    LayoutCachedWidth =3060
-                    LayoutCachedHeight =2205
+                    LayoutCachedLeft =2746
+                    LayoutCachedTop =1975
+                    LayoutCachedWidth =3901
+                    LayoutCachedHeight =2200
                 End
                 Begin Label
                     OverlapFlags =215
                     TextAlign =2
-                    Left =3165
-                    Top =1980
+                    Left =4006
+                    Top =1975
                     Width =1215
                     Height =225
                     Name ="Label69"
                     Caption ="Swimming"
-                    LayoutCachedLeft =3165
-                    LayoutCachedTop =1980
-                    LayoutCachedWidth =4380
-                    LayoutCachedHeight =2205
+                    LayoutCachedLeft =4006
+                    LayoutCachedTop =1975
+                    LayoutCachedWidth =5221
+                    LayoutCachedHeight =2200
+                End
+                Begin CommandButton
+                    OverlapFlags =215
+                    TextFontFamily =34
+                    Left =226
+                    Top =2267
+                    Width =1029
+                    Height =570
+                    FontSize =8
+                    FontWeight =400
+                    TabIndex =7
+                    Name ="MMmapping"
+                    Caption ="Configure\015\012Age Mapping"
+                    OnClick ="[Event Procedure]"
+                    FontName ="Tahoma"
+
+                    LayoutCachedLeft =226
+                    LayoutCachedTop =2267
+                    LayoutCachedWidth =1255
+                    LayoutCachedHeight =2837
+                    WebImagePaddingLeft =2
+                    WebImagePaddingTop =2
+                    WebImagePaddingRight =1
+                    WebImagePaddingBottom =1
+                    Overlaps =1
                 End
             End
         End
@@ -722,3 +747,14 @@ ExportToRE1_Err:
     MsgBox ("Error in ExportToRE1: " & Error$)
     GoTo ExportToRE1_Exit
 End Function
+
+Private Sub MMmapping_Click()
+    ' Open Form
+        Dim DocName As String
+    Dim LinkCriteria As String
+
+    DocName = "MeetManagerDivisions"
+    DoCmd.OpenForm DocName, , , LinkCriteria, , acWindowNormal
+
+    
+End Sub

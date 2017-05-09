@@ -2,8 +2,12 @@ Option Compare Database
 Option Explicit
 
 
-Global Const VersionNumber = "5.1.1"
-Global Const VersionDate = "(5/May/2017)"
+Global Const VersionNumber = "5.1.2"
+Global Const VersionDate = "(8/May/2017)"
+
+' Version 5.1.2
+'   (8/May/2017)
+'   Meet Manager T&F Event Export - Age Division Mapping
 
 ' Version 5.1.1
 '   (5/May/2017)

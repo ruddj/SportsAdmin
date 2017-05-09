@@ -43,7 +43,7 @@ Previous
 Next
 FALSE
 
-62
+63
 10
 L10
 Sports Administrator Help Contents
@@ -2008,7 +2008,7 @@ Writing
 
 
 FALSE
-52
+63
 {\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}{\f1\fnil\fcharset0 MS Sans Serif;}{\f2\fnil Courier New;}{\f3\fswiss\fprq2\fcharset0 Arial;}{\f4\fnil\fcharset0 Courier New;}{\f5\fswiss\fprq2\fcharset0 Calibri;}{\f6\fnil\fcharset2 Symbol;}}
 {\colortbl ;\red0\green0\blue0;\red0\green0\blue128;\red0\green0\blue255;\red128\green0\blue0;\red0\green128\blue0;}
 \viewkind4\uc1\pard\cf1\lang3081\b\fs32 Export\cf0\lang1033\b0\fs20 
@@ -2028,6 +2028,9 @@ FALSE
 \par 
 \par You can export a list of competitors with the events they won and their final time, or just a list of competitors without events.
 \par 
+\par \cf2\b Athletics Event Export
+\par \cf0\b0 To export events you need to have defined mappings to Meet Manager in the \cf5\strike Maintain Event Details\cf4\strike0\{linkID=390\}\cf0  section and between the ages and Meet Manager Divisions.
+\par 
 \par \cf3\b Event Codes \fs16 (Only required for Athletics)\cf0\b0\fs20 
 \par To export events you also need to have defined Meet Manager Mappings in the \cf5\strike Maintain Event Details\cf4\strike0\{linkID=390\}\cf0  section.
 \par 
@@ -2039,6 +2042,14 @@ FALSE
 \par \b Combined-Events\b0 :   DEC Decathlon, HEP Heptathlon, IPENT Indoor Pentathlon, OPENT Outdoor Pentathlon, TRI Triathlon, WPENT Weight Pentathlon, BI Biathlon, TET Tetrathlon, OCT Octathlon 
 \par 
 \par Codes from \cf3\strike\f4 Meet Manager Help\cf4\strike0\{link=*! ExecFile("https://www.hy-tekltd.com/User_Guides_HTML/TFMM4/index.html?importentriesfromsemicolon.htm")\}\cf0\f3 
+\par 
+\par \cf3\b Divisions\cf0\b0 
+\par For Meet Manager to import times and distances it needs to know which Division the athlete is competing in. To facilitate this you need to create a mapping between the ages in your events and the divisions defined for the meet. These will vary for different meets and are set by the meet organiser. 
+\par 
+\par To view the mappings click the \cf5\strike Configure Age Mapping \cf4\strike0\{linkID=610\} \cf0 button.
+\par 
+\par Instructions on where to find the Meet Manager division numbers can be found \cf5\strike here\cf4\strike0\{linkID=610\}\cf0 .
+\par 
 \par 
 \par \cf2\b\fs22 Importing\cf3 
 \par \fs20 Track and Field\cf0\b0 
@@ -2200,6 +2211,31 @@ FALSE
 \par \fs22 
 \par \fs20 Your carnival is now ready.  When competitor results start coming in push the \i Enter Results\i0  button on the Main Menu to begin entering them. 
 \par \pard\tx355 
+\par }
+610
+Scribble610
+Meet Manager Division Mappings
+
+
+
+
+Writing
+
+
+
+FALSE
+12
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}{\f1\fnil Arial;}}
+{\colortbl ;\red0\green0\blue255;}
+\viewkind4\uc1\pard\cf1\lang3081\b\fs32 Meet Manager Division Mappings\cf0\lang1033\b0\f1\fs20 
+\par 
+\par \lang3081\f0 To import competitors with their Event entries you will need to map the Sports Administrator age categories to the Meet Manager Divisions for your regional Carnival.
+\par 
+\par In Meet Manager Track and Field demo edition open the Meet file that has been sent to you.
+\par 
+\par Click Set-up -> Division / Region Names -> Divisions
+\par 
+\par Take note of the Div# column as this is what you will need to enter for each of your age groups shown.\lang1033\f1 
 \par }
 1
 main="",,4294963460,(255,255,226),,f2

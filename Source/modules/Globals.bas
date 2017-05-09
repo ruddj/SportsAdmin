@@ -1693,7 +1693,7 @@ On Error GoTo UpdateEventCompetitorAge_Err
         Else
           CEArs.Edit
         End If
-        CEArs!tag = False
+        CEArs!Tag = False
         CEArs.Update
         Debug.Print CArs!Age, EArs!Age
       End If
@@ -1897,13 +1897,13 @@ On Error GoTo PopUpFormsVisible_Err
       If Visibility = False Then 'Hide All Popup forms
         If f.visible Then
           f.visible = False
-          f.tag = "Hidden By PopUpFormsVisible"
+          f.Tag = "Hidden By PopUpFormsVisible"
         End If
         
       Else ' SHow all popup forms
-        If f.tag = "Hidden By PopUpFormsVisible" Then
+        If f.Tag = "Hidden By PopUpFormsVisible" Then
           f.visible = True
-          f.tag = ""
+          f.Tag = ""
         End If
       End If
     End If
