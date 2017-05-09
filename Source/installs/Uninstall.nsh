@@ -24,10 +24,15 @@ Section "un.Program Files" SectionUninstallProgram
 	!endif
 	
 	Delete "$INSTDIR\*.ico"
+	Delete "$INSTDIR\Sports-old.accdr"
 	Delete "$INSTDIR\SportsAdmin.chm"
+	Delete "$INSTDIR\SportsAdmin.chw"
+	
+	
 	; Clean up "Documentation"
 	;!insertmacro un.DeleteRetryAbort "$INSTDIR\readme.txt"
 	Delete "$INSTDIR\web\sample\*.*"
+	Delete "$INSTDIR\*.md"
 
 	
   ; Clean up "Program Group" - we check that we created Start menu folder, if $StartMenuFolder is empty, the whole $SMPROGRAMS directory will be removed!

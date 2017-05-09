@@ -12,7 +12,7 @@
 !include "..\NsisMultiUser\Demos\Common\Utils.nsh"
 
 !define PRODUCT_NAME "Sports Administrator" ; name of the application as displayed to the user
-!define VERSION "5.0" ; main version of the application (may be 0.1, alpha, beta, etc.)
+!define VERSION "5.1.2" ; main version of the application (may be 0.1, alpha, beta, etc.)
 !define PROGEXE "Sports.accdr" ; main application filename
 !define COMPANY_NAME "Sports Administrator" ; company, used for registry tree hierarchy
 !define PRODUCT_FOLDER "SportsAdmin"
@@ -88,6 +88,7 @@ SetCompressor /SOLID lzma
 
 !include Uninstall.nsh
 
+
 !insertmacro MUI_LANGUAGE "English" ; Set languages (first is default language) - must be inserted after all pages 
 
 InstType "Typical" 
@@ -123,10 +124,22 @@ Section "Core Files (required)" SectionCoreFiles
 	!insertmacro MULTIUSER_RegistryAddInstallInfo ; add registry keys		
 	
      ; Put file there
+	 ; Backup old file
+	SetOverwrite on
+	IfFileExists $INSTDIR\Sports.accdr 0 +3
+	Delete $INSTDIR\Sports-old.accdr
+	Rename $INSTDIR\Sports.accdr $INSTDIR\Sports-old.accdr
+	 
 	File /oname=Sports.accdr Sports.accdb
-	File SportsAdmin.chm
+	File /oname=SportsAdmin.chm Source\help\SportsAdmin.chm
+	File /oname=SportsAdmin.chw Source\help\SportsAdmin.chw   ; Adds Search to Help
 	File Sports.ico
-	File sports2.ico
+	File /oname=sports2.ico Source\installs\sports2.ico
+	
+	; Local Documentation
+	File CHANGELOG.md
+	File README.md
+	File License.txt
 	
 	${if} $MultiUser.InstallMode == "AllUsers"
 		; Allow Folder Security User Modify
@@ -144,7 +157,7 @@ Section "HTML Templates" SectionTemplates
 	SectionIn 1 3
 	
 	SetOutPath $INSTDIR	
-	File /nonfatal /a /r "web"
+	File /nonfatal /a /r "web" 
 	
 SectionEnd
 
@@ -164,7 +177,7 @@ SectionEnd
 ;	
 ;SectionEnd
 
-SectionGroup /e "Integration" SectionGroupIntegration
+SectionGroup /e "Integration" SectionGroupShortcuts
 
 Section "Program Group" SectionProgramGroup
 	SectionIn 1	3
@@ -179,6 +192,8 @@ Section "Program Group" SectionProgramGroup
 	CreateDirectory "$SMPROGRAMS\$StartMenuFolder\Utilities"  
   	CreateShortcut "$SMPROGRAMS\$StartMenuFolder\Utilities\Compact ${PRODUCT_NAME}.lnk"  \
 	  $AccessExe "/runtime /compact $\"$INSTDIR\${PROGEXE}$\""
+	  
+	CreateShortcut "$SMPROGRAMS\$StartMenuFolder\Utilities\Web Templates.lnk"  "$INSTDIR\web" 
 
 		${if} $MultiUser.InstallMode == "AllUsers" 
 			CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" "$INSTDIR\${UNINSTALL_FILENAME}" "/allusers"
@@ -190,7 +205,7 @@ Section "Program Group" SectionProgramGroup
 SectionEnd
 
 Section "Desktop Icon" SectionDesktopIcon
-	SectionIn 1 3
+	SectionIn 3
 
 	CreateShortcut "$SMPROGRAMS\$StartMenuFolder\${PRODUCT_NAME}.lnk"  \
 	  $AccessExe "/runtime $\"$INSTDIR\${PROGEXE}$\"" "$INSTDIR\Sports.ico" 0
@@ -201,15 +216,9 @@ Section /o "Start Menu Icon" SectionStartMenuIcon
 
 	CreateShortcut "$SMPROGRAMS\$StartMenuFolder\${PRODUCT_NAME}.lnk"  \
 	  $AccessExe "/runtime $\"$INSTDIR\${PROGEXE}$\"" "$INSTDIR\Sports.ico" 0
+	  
 SectionEnd
 
-Section /o "Quick Launch" SectionQuickLaunchIcon
-	SectionIn 3
-
-  ; The QuickLaunch is always only for the current user
-	CreateShortcut "$SMPROGRAMS\$StartMenuFolder\${PRODUCT_NAME}.lnk"  \
-	  $AccessExe "/runtime $\"$INSTDIR\${PROGEXE}$\"" "$INSTDIR\Sports.ico" 0
-SectionEnd
 SectionGroupEnd
 
 ; Modern install component descriptions
@@ -219,11 +228,10 @@ SectionGroupEnd
 	!insertmacro MUI_DESCRIPTION_TEXT ${SectionDemo} "Sample Carnival Database files for ${PRODUCT_NAME}."
 	;!insertmacro MUI_DESCRIPTION_TEXT ${SectionViewer} "Read-only version for competitors to view results."
 	
-  !insertmacro MUI_DESCRIPTION_TEXT ${SectionGroupIntegration} "Select how to integrate the program in Windows."
+  !insertmacro MUI_DESCRIPTION_TEXT ${SectionGroupShortcuts} "Select where to create shortcuts."
 	!insertmacro MUI_DESCRIPTION_TEXT ${SectionProgramGroup} "Create a ${PRODUCT_NAME} program group under Start Menu->Programs."
 	!insertmacro MUI_DESCRIPTION_TEXT ${SectionDesktopIcon} "Create ${PRODUCT_NAME} icon on the Desktop."
 	!insertmacro MUI_DESCRIPTION_TEXT ${SectionStartMenuIcon} "Create ${PRODUCT_NAME} icon in the Start Menu."
-	!insertmacro MUI_DESCRIPTION_TEXT ${SectionQuickLaunchIcon} "Create ${PRODUCT_NAME} icon in Quick Launch."
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 ; Callbacks 
