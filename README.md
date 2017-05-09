@@ -80,4 +80,4 @@ For end users you can change the Sports.accdb file extension to .accdr to load i
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
 
 [download-badge]: https://img.shields.io/badge/download-latest-blue.svg
-[version-badge]: https://img.shields.io/badge/version-5.0.2-blue.svg
+[version-badge]: https://img.shields.io/badge/version-5.1.2-blue.svg
