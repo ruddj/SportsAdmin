@@ -37,7 +37,7 @@ Var AccessExe
 ; Installer Attributes
 Name "${PRODUCT_NAME} ${VERSION}"
 ; The file to write
-OutFile "${PRODUCT_FOLDER}-${VERSION}.exe"
+OutFile "${PRODUCT_FOLDER}-${VERSION}-Install.exe"
 BrandingText "©2017 ${COMPANY_NAME}"
 
 ; SetShellVarContext all
