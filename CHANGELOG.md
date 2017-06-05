@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Changed
+- Default location that Import Carnivals List views to Database directory. 
 
 ## [5.1.3] - 2017-06-05
 ### Fixed

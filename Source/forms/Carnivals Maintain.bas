@@ -18,8 +18,8 @@ Begin Form
     ItemSuffix =26
     Left =-20805
     Top =2715
-    Right =-8280
-    Bottom =12105
+    Right =-10140
+    Bottom =10065
     HelpContextId =30
     OnUnload ="[Event Procedure]"
     RecSrcDt = Begin
@@ -607,12 +607,16 @@ On Error GoTo ImportCarnivalList_Click_Err
     Dim ReturnVar As Variant
     Dim strFilter As String
     Dim lngFlags As Long
+    Dim strCurrentDir As String
+    
+    ' Default to path of current DB as that is where installer leaves -old version.
+    strCurrentDir = CurrentProject.Path
     
     strFilter = ahtAddFilterItem(strFilter, "Carnival Files (*.accdr, *.accdb)", "*.accdb; *.accdr")
     strFilter = ahtAddFilterItem(strFilter, "Old Files (*.old)", "*.old")
     strFilter = ahtAddFilterItem(strFilter, "All Files (*.*)", "*.*")
     
-    ReturnVar = ahtCommonFileOpenSave(InitialDir:="", _
+    ReturnVar = ahtCommonFileOpenSave(InitialDir:=strCurrentDir, _
         Filter:=strFilter, FilterIndex:=1, Flags:=lngFlags, _
         DialogTitle:="Locate Old Sports.accdr Program file")
 
