@@ -19,8 +19,8 @@ Begin Form
     ItemSuffix =78
     Left =-18870
     Top =2760
-    Right =-7125
-    Bottom =11490
+    Right =-8925
+    Bottom =9360
     HelpContextId =80
     RecSrcDt = Begin
         0x98553b042dc7e140
@@ -1023,6 +1023,8 @@ Private Sub Field63_AfterUpdate()
 
 End Sub
 
+
+
 Private Sub Form_Load()
 
     FutureCB_AfterUpdate
@@ -1256,7 +1258,7 @@ Private Sub PromoteSelectedBut_Click()
     Criteria = "[HE_Code]= " & [Summary]
     Rs.FindFirst Criteria
     
-    If Rs.NoMatch Or Rs!Status <> 2 Then
+    If Rs.NoMatch Or Rs!Status <> evStatus.Completed Then
         MsgBox ("You must select an event from the 'Completed' Final list.")
     ElseIf Rs!F_Lev = 0 Then
         MsgBox ("The event you are trying to promote is at the highest final level.  There is no final for competitors to be promoted into.")
@@ -1351,7 +1353,7 @@ End Sub
 
 Private Sub Summary_KeyDown(KeyCode As Integer, Shift As Integer)
 
-    If KeyCode = 13 Then
+    If KeyCode = vbKeyReturn Then
         Summary_DblClick (Cancel)
     End If
 

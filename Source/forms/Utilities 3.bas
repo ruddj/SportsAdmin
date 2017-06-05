@@ -398,7 +398,7 @@ On Error GoTo Reset_Click_Err
         PrevF_Lev = Rs![F_Lev]
         Rs.Edit
         Rs![Completed] = No
-        Rs![Status] = 1           ' 0=future; 1=active
+        Rs![Status] = evStatus.Current    ' 0=future; 1=active
         Rs.Update
     
         Rs.MoveNext
@@ -418,9 +418,9 @@ On Error GoTo Reset_Click_Err
                 End If
                 
                 If CurrentlyActive Then
-                    Rs![Status] = 1           ' 0=future; 1=active
+                    Rs![Status] = evStatus.Current   ' 0=future; 1=active
                 Else
-                    Rs![Status] = 0
+                    Rs![Status] = evStatus.Future
                 End If
     
                 PrevE_Code = Rs![E_Code]
@@ -431,7 +431,7 @@ On Error GoTo Reset_Click_Err
     
             Else
                 CurrentlyActive = True
-                Rs![Status] = 1
+                Rs![Status] = evStatus.Current
                 PrevE_Code = Rs![E_Code]
                 PrevF_Lev = Rs![F_Lev]
                 Rs.Update

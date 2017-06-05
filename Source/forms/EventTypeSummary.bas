@@ -18,7 +18,7 @@ Begin Form
     Left =-20685
     Top =7095
     Right =-8490
-    Bottom =14940
+    Bottom =14355
     HelpContextId =60
     OnUnload ="[Event Procedure]"
     RecSrcDt = Begin
@@ -419,9 +419,9 @@ End Sub
 Private Sub Summary_KeyDown(KeyCode As Integer, Shift As Integer)
 
     'Stop
-    If KeyCode = 46 Then
+    If KeyCode = vbKeyDelete Then
         DeleteBut_Click
-    ElseIf KeyCode = 13 Then
+    ElseIf KeyCode = vbKeyReturn Then
         Summary_DblClick (Cancel)
     End If
         

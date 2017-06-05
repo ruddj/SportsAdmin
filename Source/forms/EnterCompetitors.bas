@@ -16,10 +16,10 @@ Begin Form
     GridY =20
     Width =9694
     ItemSuffix =167
-    Left =-13020
-    Top =6990
-    Right =-6405
-    Bottom =14055
+    Left =-19245
+    Top =4650
+    Right =-9555
+    Bottom =11715
     HelpContextId =110
     RecSrcDt = Begin
         0xf2f778be6e4ae240
@@ -29,6 +29,7 @@ Begin Form
     OnCurrent ="[Event Procedure]"
     AfterUpdate ="[Event Procedure]"
     OnOpen ="[Event Procedure]"
+    OnClose ="[Event Procedure]"
     HelpFile ="SportsAdmin.chm"
     PrtMip = Begin
         0x8905000089050000890500008905000000000000201c0000e010000001000000 ,
@@ -1247,8 +1248,7 @@ Private Sub Button47_Click()
 End Sub
 
 Private Sub DoneBut_Click()
-On Error GoTo Err_DoneBut_Click
-
+    On Error GoTo Err_DoneBut_Click
 
     DoCmd.Close
 
@@ -1258,6 +1258,22 @@ Exit_DoneBut_Click:
 Err_DoneBut_Click:
     MsgBox Error$
     Resume Exit_DoneBut_Click
+    
+End Sub
+
+Private Sub Form_Close()
+    On Error GoTo Err_Form_Close
+
+    ' Update event list when closing.
+    ' Need to catch error in case form not open.
+    Forms!CompEventsSummary!Summary.Requery
+    
+Exit_Form_Close:
+    Exit Sub
+    
+Err_Form_Close:
+    'MsgBox Error$
+    Resume Exit_Form_Close
     
 End Sub
 
@@ -1446,8 +1462,6 @@ On Error GoTo CalculatePoints_Err
           CRrs!Points = Points
   
           CRrs.Update        ' Save changes.
-          ''CRrs.FindNext Criteria ' Find next occurrence.
-          
           CRrs.MoveNext
           
         Next j
@@ -1459,8 +1473,6 @@ On Error GoTo CalculatePoints_Err
     Loop
 
     CRrs.Close
-
-    'Forms![EnterCompetitors]![EC_Subform].Requery
     
     Me.EC_Subform.Requery
     
@@ -1675,19 +1687,19 @@ Private Sub Form_Current()
     End If
 
     
-    If [Status] = 0 Then ' Future
+    If [Status] = evStatus.Future Then ' Future
         Me![F_Lev].BackColor = White
         Me![FinalStatus].BackColor = White
 
-    ElseIf [Status] = 1 Then ' Current
+    ElseIf [Status] = evStatus.Current Then ' Current
         Me![F_Lev].BackColor = LightBlue
         Me![FinalStatus].BackColor = LightBlue
 
-    ElseIf [Status] = 2 Then ' Completed
+    ElseIf [Status] = evStatus.Completed Then ' Completed
         Me![F_Lev].BackColor = LightRed
         Me![FinalStatus].BackColor = LightRed
 
-    ElseIf [Status] = 3 Then ' Promoted
+    ElseIf [Status] = evStatus.Promoted Then ' Promoted
         Me![F_Lev].BackColor = DarkGrey
         Me![FinalStatus].BackColor = DarkGrey
 

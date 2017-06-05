@@ -58,6 +58,15 @@ Type HouseComp
     Hid As Long
 End Type
 
+' Enum for Event State
+Public Enum evStatus
+    Future
+    Current
+    Completed
+    Promoted
+End Enum
+
+
 '*****************************************************************************************************************************
 'Purpose:       -
 'Parameters:    None
@@ -1292,8 +1301,8 @@ Function PromoteEventFinal(E_Code)
     Set EventsRS = db.OpenRecordset("Events", dbOpenDynaset)
     Set EventTypeRS = db.OpenRecordset("EventType", dbOpenDynaset)
     
-    If Not IsNull(DCount("[E_Code]", "Heats", "E_Code = " & E_Code & " AND [Status] = 2")) Then
-        Criteria = "E_Code = " & E_Code & " AND [Status] = 2" ' Final Completed
+    If Not IsNull(DCount("[E_Code]", "Heats", "E_Code = " & E_Code & " AND [Status] = " & evStatus.Completed)) Then
+        Criteria = "E_Code = " & E_Code & " AND [Status] = " & evStatus.Completed ' Final Completed
         
         Rs.FindFirst Criteria    ' Locate first occurrence.
     
@@ -1305,7 +1314,7 @@ Function PromoteEventFinal(E_Code)
             Pro_Ty = Rs!Pro_Type
             Time_Pro = Rs!UseTimes
             
-            Criteria = "E_Code = " & E_Code & " AND [Status] = 1" ' Final Completed
+            Criteria = "E_Code = " & E_Code & " AND [Status] = " & evStatus.Current ' Final Completed
             Rs.FindPrevious Criteria
     
             If Rs.NoMatch Then  'Beggining of file
@@ -1495,7 +1504,7 @@ UpdateStatusOfPromotedFinal:
 
   ' Set the status to promoted
   
-    Q = "UPDATE DISTINCTROW Heats SET Heats.Status = 3 "
+    Q = "UPDATE DISTINCTROW Heats SET Heats.Status = " & evStatus.Promoted & " "
     Q = Q & "WHERE Heats.E_Code= " & E_Code & " AND Heats.F_Lev = " & Promote_FL
     
     DoCmd.SetWarnings False
@@ -1539,12 +1548,14 @@ Sub SetCurrentFinal(E_Code)
     
     Criteria = "E_Code = " & E_Code & " AND [Completed] = No"
     
-    Rs.FindFirst Criteria    ' Locate first occurrence.
-    
     LastFinalCompleted = False
     
     If DCount("[HE_Code]", "Heats", Criteria) > 0 Then ' Only determine current finals if their are heats already entered
                                                         ' Used to trap no PointsScales potential error
+                                                        
+        ' Are there any heats for event not completed?
+        Rs.FindFirst Criteria    ' Locate first occurrence.
+        
         If Rs.NoMatch Then
             Rs.MoveLast
             LastFinalCompleted = True
@@ -1559,16 +1570,16 @@ Sub SetCurrentFinal(E_Code)
             Rs.Edit          ' Enable editing.
         
             If Rs!F_Lev < Cur_Flevel Then
-                Rs!Status = 0   ' Future
+                Rs!Status = evStatus.Future
             ElseIf Rs!F_Lev = Cur_Flevel Then
                 If LastFinalCompleted = True Then
-                    Rs!Status = 2 ' Completed
+                    Rs!Status = evStatus.Completed
                 Else
-                    Rs!Status = 1  ' Current
+                    Rs!Status = evStatus.Current
                 End If
             Else
-                If Rs!Status <> 3 Then ' Completed
-                    Rs!Status = 2
+                If Rs!Status <> evStatus.Promoted Then
+                    Rs!Status = evStatus.Completed
                 End If
                      
             End If

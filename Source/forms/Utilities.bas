@@ -959,7 +959,7 @@ Private Sub Reset_Click()
         PrevF_Lev = Rs![F_Lev]
         Rs.Edit
         Rs![Completed] = No
-        Rs![Status] = 1           ' 0=future; 1=active
+        Rs![Status] = evStatus.Current       ' 0=future; 1=active
         Rs.Update
     
         Rs.MoveNext
@@ -979,9 +979,9 @@ Private Sub Reset_Click()
                 End If
                 
                 If CurrentlyActive Then
-                    Rs![Status] = 1           ' 0=future; 1=active
+                    Rs![Status] = evStatus.Current           ' 0=future; 1=active
                 Else
-                    Rs![Status] = 0
+                    Rs![Status] = evStatus.Future
                 End If
     
                 PrevE_Code = Rs![E_Code]
@@ -992,7 +992,7 @@ Private Sub Reset_Click()
     
             Else
                 CurrentlyActive = True
-                Rs![Status] = 1
+                Rs![Status] = evStatus.Current
                 PrevE_Code = Rs![E_Code]
                 PrevF_Lev = Rs![F_Lev]
                 Rs.Update

@@ -525,7 +525,7 @@ Private Sub AddCompet_Click()
                                      HeatRS!Pro_Type = ProType
                                      HeatRS!UseTimes = UseTimes
                                      HeatRS!F_Lev = FLev
-                                     HeatRS!Status = 1
+                                     HeatRS!Status = evStatus.Current
                                      HeatRS!Completed = False
                                      HeatRS.Update
                                      HeatRS.MoveLast

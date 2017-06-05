@@ -662,7 +662,7 @@ End Sub
 Private Sub PtScale_KeyDown(KeyCode As Integer, Shift As Integer)
 
     'Stop
-    If KeyCode = 46 Then
+    If KeyCode = vbKeyDelete Then
         Delete_Click
     End If
 

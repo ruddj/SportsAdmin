@@ -137,9 +137,9 @@ On Error GoTo AutomaticallyCreateHeatsAndFinals_Err
                 Hset!UseTimes = FLSet!UseTimes
                 Hset!EffectsRecords = FLSet!EffectsRecords
                 If First_FL Then
-                    Hset!Status = 1
+                    Hset!Status = evStatus.Current
                 Else
-                    Hset!Status = 0
+                    Hset!Status = evStatus.Future
                 End If
                 
                 Hset.Update
