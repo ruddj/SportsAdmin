@@ -13,6 +13,7 @@ It has many [features](https://github.com/ruddj/SportsAdmin/wiki/Feature-List) w
 * Age Champions
 * Multiple Reports to print results
 * HTML export of results
+* Export of top athletes for Meet Manager Swim and Track & Field
 
 This database requires Microsoft Access 2010 or newer. If you do not have this installed you can download the [Microsoft Access 2016 Runtime](https://www.microsoft.com/en-us/download/details.aspx?id=50040) for free.
 

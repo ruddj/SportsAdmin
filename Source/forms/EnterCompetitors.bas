@@ -1586,13 +1586,6 @@ Private Sub Event_DD_DblClick(Cancel As Integer)
 
 End Sub
 
-Private Sub Field114_BeforeUpdate(Cancel As Integer)
-
-End Sub
-
-Private Sub Field138_AfterUpdate()
-
-End Sub
 
 Private Sub FinalCompleted()
 
@@ -1694,7 +1687,7 @@ Private Sub Form_Current()
         Me![F_Lev].BackColor = LightRed
         Me![FinalStatus].BackColor = LightRed
 
-    ElseIf [Status] = 3 Then ' Completed
+    ElseIf [Status] = 3 Then ' Promoted
         Me![F_Lev].BackColor = DarkGrey
         Me![FinalStatus].BackColor = DarkGrey
 

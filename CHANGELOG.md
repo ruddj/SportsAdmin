@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [5.1.3] - 2017-06-05
+### Fixed
+- Meet Manager Export was incorrectly formatting times > 60 secs
+- Installer Desktop Shortcuts
+
 ## [5.1.2] - 2017-05-08
 ### Added
 - Meet Manager Export. New Age -> Division mapping form to allow exporting event results to Meet Manager Track and Field.
@@ -183,7 +188,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Ordered Competitors handled differently: Table held locally.  Does not delete old but overwrites them.
 
 
-[Unreleased]: https://github.com/ruddj/SportsAdmin/compare/v5.1.2...HEAD
+[Unreleased]: https://github.com/ruddj/SportsAdmin/compare/v5.1.3...HEAD
+[5.1.3]: https://github.com/ruddj/SportsAdmin/compare/v5.1.2...v5.1.3
 [5.1.2]: https://github.com/ruddj/SportsAdmin/compare/v5.1.1...v5.1.2
 [5.1.1]: https://github.com/ruddj/SportsAdmin/compare/v5.1.0...v5.1.1
 [5.1.0]: https://github.com/ruddj/SportsAdmin/compare/v5.0.2...v5.1.0

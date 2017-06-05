@@ -2,8 +2,12 @@ Option Compare Database
 Option Explicit
 
 
-Global Const VersionNumber = "5.1.2"
-Global Const VersionDate = "(8/May/2017)"
+Global Const VersionNumber = "5.1.3"
+Global Const VersionDate = "(5/June/2017)"
+
+' Version 5.1.3
+'   (5/June/2017)
+'   Meet Manager Export was incorrectly formatting times > 60 secs
 
 ' Version 5.1.2
 '   (8/May/2017)
