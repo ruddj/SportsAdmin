@@ -63,9 +63,12 @@ Sub CreateHTMLfile(ByVal FileName As String, ByVal TemplateFilename As String, H
     
     Dim HTMLFileLocation, fileLocation, L As String, TemplateFile As String
     Dim HTMLinserted As Integer, Continue As Integer, i As Integer, tFile As Variant, oFile As Variant
+    Dim bReplaced As Boolean
     
     HTMLFileLocation = DLookup("[HTMLlocation]", "MiscHTML")
     fileLocation = HTMLFileLocation & "\" & FileName
+    
+    bReplaced = False  ' Check template worked
     
     tFile = FreeFile
     Open TemplateFilename For Input As #99
@@ -82,6 +85,7 @@ Sub CreateHTMLfile(ByVal FileName As String, ByVal TemplateFilename As String, H
                 Select Case UCase(Mid(L, i, 6))
                     Case "{HTML}"
                         Print #1, HTML;
+                        bReplaced = True
                         i = i + 5
                     Case "{PREV}"
                         Print #1, Prev;
@@ -112,6 +116,11 @@ Sub CreateHTMLfile(ByVal FileName As String, ByVal TemplateFilename As String, H
     Loop
     
     Close
+    
+    If Not bReplaced Then
+        ' Replacement did not occur
+        MsgBox "No data was filled in. Please check your template.", vbExclamation
+    End If
     
 End Sub
 

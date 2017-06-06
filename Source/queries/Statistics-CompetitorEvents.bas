@@ -63,6 +63,8 @@ Begin OrderBy
     Flag =0
     Expression ="CompEvents.Points"
     Flag =1
+    Expression ="CompEvents.nResult"
+    Flag =0
 End
 dbBoolean "ReturnsRecords" ="-1"
 dbInteger "ODBCTimeout" ="0"
@@ -86,17 +88,65 @@ Begin
         dbText "Name" ="House.Include"
         dbLong "AggregateType" ="-1"
     End
+    Begin
+        dbText "Name" ="Competitors.PIN"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="[Sex Sub].[Sex Sub]"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="EventType.Flag"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="Events.Include"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="Fullname"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="Events.Age"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="EventType.ET_Des"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="CompEvents.Points"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="fResult"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="CompEvents.Place"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="[Final Level Sub].F_Lev_Sub"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="CompEvents.F_Lev"
+        dbLong "AggregateType" ="-1"
+    End
 End
 Begin
     State =0
-    Left =88
-    Top =146
-    Right =1118
-    Bottom =853
+    Left =81
+    Top =85
+    Right =1299
+    Bottom =860
     Left =-1
     Top =-1
-    Right =1012
-    Bottom =254
+    Right =1200
+    Bottom =324
     Left =0
     Top =0
     ColumnsShown =539
@@ -149,7 +199,7 @@ Begin
         Left =48
         Top =156
         Right =192
-        Bottom =300
+        Bottom =325
         Top =0
         Name ="CompEvents"
         Name =""

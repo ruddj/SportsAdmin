@@ -32,6 +32,8 @@ Begin OrderBy
     Flag =0
     Expression ="[Statistics-EventTimesOverallAsc].F_Lev"
     Flag =0
+    Expression ="[Statistics-EventTimesOverallAsc].OrderedResult"
+    Flag =0
     Expression ="[Statistics-EventTimesOverallAsc].PlaceN"
     Flag =0
 End
@@ -145,12 +147,12 @@ Begin
     State =0
     Left =0
     Top =40
-    Right =1120
-    Bottom =854
+    Right =1243
+    Bottom =859
     Left =-1
     Top =-1
-    Right =1102
-    Bottom =312
+    Right =1225
+    Bottom =363
     Left =0
     Top =0
     ColumnsShown =539

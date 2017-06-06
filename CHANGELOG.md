@@ -8,9 +8,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Default location that Import Carnivals List views to Database directory. 
 - Changed Event Status from constant to enum
+- Changed web ordering of Competitor Results based on result within heat level
 
 ### Fixed
 - Add Results list was not updating after closing an event (Caused by code making forms resizable)
+
+### Added
+- Warning if Web export does not fill in data due to faulty template
 
 ## [5.1.3] - 2017-06-05
 ### Fixed
