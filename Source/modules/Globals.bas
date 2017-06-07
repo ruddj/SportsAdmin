@@ -75,10 +75,10 @@ End Enum
 'Created On:    Sun 16/Feb/2003
 'Comments:      None
 '*****************************************************************************************************************************
-Public Function AgeFilter(HeatAge)
+Public Function AgeFilter(HeatAge As String) As String
 On Error GoTo AgeFilter_Err
 
-    Dim Length As Variant
+    Dim Length As Integer
 
     If UCase(Right(HeatAge, 2)) = "_U" Then
         
@@ -97,9 +97,6 @@ On Error GoTo AgeFilter_Err
         AgeFilter = "=" & Val(HeatAge)
     End If
     
-
-
-
 AgeFilter_Exit:
   On Error Resume Next
   Exit Function
@@ -110,10 +107,10 @@ AgeFilter_Err:
 
 End Function
 
-Function Better(Res1, Ecode)
+Function Better(Res1 As Single, Ecode As Long) As Boolean
 
 On Error GoTo Better_Err
-    Dim U As Variant, Order As Variant, ET_Code As Long
+    Dim U As String, Order As String, ET_Code As Long
 
     ' Determines whether a given result is better than
     
@@ -767,7 +764,7 @@ Function OLDDetermineAge(Eage As String)
 
 End Function
 
-Function DetermineAge_ImportCompetitors(DOB As Variant, CutDay As Integer, CutMonth As Integer)
+Function DetermineAge_ImportCompetitors(DOB As Variant, CutDay As Integer, CutMonth As Integer) As String
 
   ' Should have already trapped for DOB being null
   Dim Cage As String
@@ -777,14 +774,14 @@ Function DetermineAge_ImportCompetitors(DOB As Variant, CutDay As Integer, CutMo
     Cage = ""
   Else
     
-    Dim TempAge As Variant, CurYear As Variant
+    Dim CurYear As Integer
     Dim Cday As Integer, Cmonth As Integer, Cyear As Integer
     
-    Cday = Format(DOB, "dd") ' Day competitor was born
-    Cmonth = Int(Format(DOB, "mm")) ' Month competitor was born
-    Cyear = Int(Format(DOB, "yyyy")) ' Year competitor was born
+    Cday = Day(DOB) ' Day competitor was born
+    Cmonth = Month(DOB) ' Month competitor was born
+    Cyear = Year(DOB) ' Year competitor was born
     
-    CurYear = Int(Format(Now, "yyyy")) ' CurYear
+    CurYear = Year(Now)   ' CurYear
     
     If Cmonth > CutMonth Then
       Cage = str(CurYear - Cyear)
@@ -805,7 +802,7 @@ End Function
 
 Function DetermineDOB(Eage)
 
-    Dim CurYear As Variant
+    Dim CurYear As Integer
     
     If IsNull(Eage) Then
         DetermineDOB = Null
@@ -830,8 +827,8 @@ On Error GoTo DetermineEventAge_Err
 
     ' Determines what Event age bracket a competitros age falls into. ie 8 year old in the 09_U age
 
-    Dim Criteria As String, db As Database, Rs As Recordset, Q As Variant, Continue  As Variant
-    Dim i As Variant, Eage  As Variant, AgeFil As Variant, AQ As Variant
+    Dim Criteria As String, db As Database, Rs As Recordset, Q As String, Continue  As Boolean
+    Dim Eage As String, AgeFil As Variant, AQ As String
     
     Q = "SELECT DISTINCT Events.Age FROM Events"
     Set Rs = CurrentDb.OpenRecordset(Q, dbOpenDynaset)   ' Create dynaset.
@@ -840,9 +837,6 @@ On Error GoTo DetermineEventAge_Err
 
     Continue = True
     DetermineEventAge = "UNKNOWN"
-    i = 0
-    
-    'Do Until EventAgeArray(i) = "THATSIT" Or Not Continue
 
     Do Until (Rs.EOF Or Not Continue)    ' Loop until no matching records.
         Eage = Rs!Age
@@ -859,7 +853,6 @@ On Error GoTo DetermineEventAge_Err
             End If
         End If
         Rs.MoveNext
-        'i = i + 1
     Loop
 
     'If DetermineEventAge = "UNKNOWN" Then DetermineEventAge = A
@@ -1051,10 +1044,10 @@ Function GenerateAgeFilterOLD(A)
 
 End Function
 
-Function GenerateAgeFilter(Age, Sex)
+Function GenerateAgeFilter(Age As String, Sex As String) As String
     'Stop
 
-    Dim Q As Variant
+    Dim Q As String
     Age = AgeFilter(Age)
     
     Q = "SELECT UCase(Trim([Surname]))+""" & ", " & """+Trim([Gname]) AS Name, CompetitorsOrdered.H_Code as Team, Sex, CompetitorsOrdered.PIN, [Age], House.Include "
@@ -1069,22 +1062,10 @@ Function GenerateAgeFilter(Age, Sex)
 
 End Function
 
-Function GenerateSexFilterOLD()
 
-    Dim Q As Variant
+Function GenerateSexFilter(Sex As String) As String
 
-    Q = "SELECT UCase(Trim([Surname]))+""" & ", " & """+Trim([Gname]) AS Name, CompetitorsOrdered.H_Code as Team, Sex, CompetitorsOrdered.PIN "
-    Q = Q & "FROM CompetitorsOrdered "
-    Q = Q & "WHERE ((CompetitorsOrdered.Sex= """ & [Forms]![EnterCompetitors]![SexFld] & """))  " 'AND CompetitorsOrdered.Flag = True ORDER by [Order]"
-    Q = Q & "ORDER BY [Surname], [Gname] "
-    
-    'GenerateSexFilter = Q
-
-End Function
-
-Function GenerateSexFilter(Sex)
-
-    Dim Q As Variant
+    Dim Q As String
 
     Q = "SELECT UCase(Trim([Surname]))+""" & ", " & """+Trim([Gname]) AS Name, CompetitorsOrdered.H_Code as Team, Sex, CompetitorsOrdered.PIN, [Age] "
     Q = Q & "FROM CompetitorsOrdered "
@@ -1166,25 +1147,10 @@ End Function
 
 Function InitialiseWaitMessage()
 
-'    If Not IsNull(SysCmd(acSysCmdProfile)) Then
-'      MsgBox ("Profile= " & SysCmd(acSysCmdProfile))
-'    Else
-'      MsgBox ("Profile= NONE")
-'    End If
-    
     PleaseWaitMsg = "Starting the Sports Administrator ..."
 
 End Function
 
-Function oF(n, T)
-    
-    If T = "M" Then ' Modal Form
-        DoCmd.OpenForm n, , , , , acDialog
-    Else
-        DoCmd.OpenForm n
-    End If
-
-End Function
 
 Public Function OpenForm(Fname As String)
 On Error GoTo OpenForm_Err
@@ -1207,9 +1173,9 @@ OpenForm_Err:
 
 End Function
 
-Function Outermost(A)
+Function Outermost(A As String) As Boolean
 
-    Dim AageOnly As Variant, AgeCheck As Variant
+    Dim AageOnly As Integer, AgeCheck As String
     'Stop
 
     ' Checks if an event age is the outermost.  That is 12_O is not the outermost when there exists 13_O
@@ -1241,7 +1207,7 @@ Function Outermost(A)
 End Function
 
 
-Function PromoteEventFinal(E_Code)
+Function PromoteEventFinal(E_Code As Long) As Boolean
 'On Error GoTo PromoteEventFinal_Err
 
     ' Determine Final Level to be Promoted (Promote_FL)
@@ -1287,13 +1253,15 @@ Function PromoteEventFinal(E_Code)
 
     PromoteEventFinal = False
 
-    Dim Criteria As String, Rs As Recordset, Promote_FL As Variant, Pro_Ty As Variant
-    Dim db As Database
-    Dim Time_Pro As Variant, Ev As Variant, New_FL As Variant, Num_Heats As Variant
-    Dim ET_Code As Variant, LaneCount As Variant, Num_Lanes As Variant, Num_Competitors As Variant
-    Dim Q As Variant, uOrder As Variant, Place As Variant, i As Variant, L As Variant, H As Variant
-    Dim Units As Variant, Response As Variant, msg As Variant
+    Dim Criteria As String, Promote_FL As Byte, Pro_Ty As String
+    
+    Dim Time_Pro As Boolean, Ev As String, New_FL As Byte, Num_Heats As Variant
+    Dim ET_Code As Long, LaneCount As Integer, Num_Lanes As Integer, Num_Competitors As Integer
+    Dim Q As String, uOrder As String, Place As Integer, i As Integer, L As Integer, H As Integer
+    Dim Units As String
+    'Dim Response As Variant, msg As Variant
 
+    Dim db As Database, Rs As Recordset
     Dim EventsRS As Recordset, EventTypeRS As Recordset
     
     Set db = CurrentDb()
@@ -1528,31 +1496,32 @@ PromoteEventFinal_Err:
 End Function
 
 
-Function PWM()
+Function PWM() As String
 
     'Stop
     PWM = PleaseWaitMsg
 
 End Function
 
-Sub SetCurrentFinal(E_Code)
+Sub SetCurrentFinal(E_Code As Integer)
 
     On Error GoTo SetCurrentFinal_Error
 
     DoCmd.SetWarnings True
     Dim Criteria As String, db As Database, Rs As Recordset
-    Dim LastFinalCompleted As Variant, Cur_Flevel As Variant
-    
-    Set db = CurrentDb()
-    Set Rs = db.OpenRecordset("SELECT * FROM Heats ORDER BY [F_Lev] Desc", dbOpenDynaset)   ' Create Recordset.
+    Dim LastFinalCompleted As Boolean, Cur_Flevel As Byte
     
     Criteria = "E_Code = " & E_Code & " AND [Completed] = No"
+
     
     LastFinalCompleted = False
     
-    If DCount("[HE_Code]", "Heats", Criteria) > 0 Then ' Only determine current finals if their are heats already entered
+    'If DCount("[HE_Code]", "Heats", Criteria) > 0 Then ' Only determine current finals if their are heats already entered
                                                         ' Used to trap no PointsScales potential error
                                                         
+        Set db = CurrentDb()
+        Set Rs = db.OpenRecordset("SELECT * FROM Heats ORDER BY [F_Lev] Desc", dbOpenDynaset)   ' Create Recordset.
+        
         ' Are there any heats for event not completed?
         Rs.FindFirst Criteria    ' Locate first occurrence.
         
@@ -1588,9 +1557,8 @@ Sub SetCurrentFinal(E_Code)
             Rs.FindNext Criteria ' Locate next record.
         Loop
 
-    
-    End If
     Rs.Close
+    'End If
     
 
 SetCurrentFinal_Exit:
@@ -1613,7 +1581,7 @@ Function SetHeatFormat(Heat)
     
 End Function
 
-Function SetSexFormat(Sex)
+Function SetSexFormat(Sex As String) As String
 
     If SexFormat = "Boys/Girls" Then
         If Sex = "F" Then
@@ -1632,10 +1600,10 @@ Function SetSexFormat(Sex)
 End Function
 
 
-Sub Update_Lane_Assignments(E_Code, F_Lev, Heat)
+Sub Update_Lane_Assignments(E_Code As Long, F_Lev As Byte, Heat As Integer)
 
     Dim Criteria As String, db As Database, Rs As Recordset, LRS As Recordset
-    Dim H_ID As Variant
+    Dim H_ID As Long
 
     Set db = DBEngine.Workspaces(0).Databases(0)
     Set Rs = db.OpenRecordset("CompEvents", dbOpenDynaset)   ' Create Recordset.

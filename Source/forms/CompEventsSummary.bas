@@ -17,10 +17,10 @@ Begin Form
     GridY =20
     Width =9949
     ItemSuffix =78
-    Left =-18870
-    Top =2760
-    Right =-8925
-    Bottom =9360
+    Left =-18420
+    Top =2790
+    Right =-8475
+    Bottom =9390
     HelpContextId =80
     RecSrcDt = Begin
         0x98553b042dc7e140
@@ -1246,6 +1246,7 @@ Private Sub PromotedCB_AfterUpdate()
 End Sub
 
 Private Sub PromoteSelectedBut_Click()
+    Dim E_Code As Long, Ev As String, F_Lev As Byte, E_Sex As String, E_Age As String
 
     Dim db As Database, Rs As Recordset
     Set db = DBEngine.Workspaces(0).Databases(0)
@@ -1360,8 +1361,8 @@ Private Sub Summary_KeyDown(KeyCode As Integer, Shift As Integer)
 End Sub
 
 Private Sub UpdateFinalStat_Click()
-On Error GoTo Err_UpdateFinalStat_Click
-
+    On Error GoTo Err_UpdateFinalStat_Click
+    Dim vE_Code As Integer
 
     If Not IsNull(Me![Summary]) Then
         vE_Code = DLookup("[E_Code]", "Events in Full", "[HE_Code]=" & Me![Summary])

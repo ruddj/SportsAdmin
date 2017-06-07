@@ -559,6 +559,8 @@ On Error GoTo Err_ImportData_Click
   Dim NamesIncomplete  As Integer, H_CodeIncomplete As Integer, msg As Variant
   Dim ShowCompetitorAlreadyEnrolledMessage As Boolean
   
+  Dim E_Code As Long, F_Lev As Byte, Heat As Integer
+  
   Set db = CurrentDb()
   Set ITRS = db.OpenRecordset("SELECT * FROM ImportData ORDER BY [Age]", dbOpenDynaset)   ' Create dynaset.
   Set Crs = db.OpenRecordset("SELECT * FROM Competitors ORDER BY [Age] DESC", dbOpenDynaset)   ' Create dynaset.
