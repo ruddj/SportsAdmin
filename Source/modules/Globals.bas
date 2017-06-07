@@ -18,22 +18,22 @@ Global Const LightBlue = 16777088
 Global Const White = 16777215
 Global Const LightRed = 8421631
 Global Const DarkGrey = 8421504
-Global CalculatePlaces As Variant
-Global SexFormat As Variant
-Global HeatFormat As Variant
+Global CalculatePlaces As Boolean
+Global SexFormat As String
+Global HeatFormat As String
 
 
-Global ChosenFinalHouse As Variant
+Global ChosenFinalHouse As String
 
-Global OpenFormType As Variant
+Global OpenFormType As String
 
-Global ShowDialog As Variant
-Global GlobalCancel As Variant
-Global GlobalNo As Variant
+'Global ShowDialog As Variant
+Global GlobalCancel As Boolean
+Global GlobalNo As Boolean
 Global GlobalVariable As Variant
 Global GlobalChange As Variant
 Global DontEditPromotionFinalsMessage As Variant
-Global PleaseWaitMsg As Variant
+Global PleaseWaitMsg As String
 Global ReturnVar As Variant
 Global Response As Variant
 Global UserQuit As Boolean
@@ -866,7 +866,7 @@ DetermineEventAge_Err:
     
 End Function
 
-Function DetermineFullName(s, g)
+Function DetermineFullName(s As String, g As String) As String
 
     If IsNull(s) And IsNull(g) Then
         DetermineFullName = ""
@@ -876,7 +876,7 @@ Function DetermineFullName(s, g)
 
 End Function
 
-Function DetermineH_ID(H_Code)
+Function DetermineH_ID(H_Code As String) As Long
 
     DetermineH_ID = DLookup("[H_ID]", "House", "[H_Code]=""" & H_Code & """")
 
@@ -892,7 +892,7 @@ Function DetermineHeat(Heat)
 
 End Function
 
-Function DetermineLane(E_Code, Place)
+Function DetermineLane(E_Code As Long, Place) As Integer
 
     Dim ET_Code As Variant, Lane  As Variant
 
@@ -919,7 +919,7 @@ Function DeterminePoints(PL, PtScale)
     
 End Function
 
-Function DetermineSex(Sex)
+Function DetermineSex(Sex As String) As Variant
     
     Dim Fsex As Variant
 
@@ -956,7 +956,7 @@ Function DisplayRecHolder(n, H)
 
 End Function
 
-Function DisplayResult(res)
+Function DisplayResult(res) As String
     
     If IsNull(res) Then
         DisplayResult = ""
@@ -969,13 +969,13 @@ Function DisplayResult(res)
     
 End Function
 
-Function EventAge(E_Code)
+Function EventAge(E_Code As Long) As Variant
 
     EventAge = DLookup("[Age]", "Events", "[E_Code]= " & E_Code)
 
 End Function
 
-Function EventDescription(E_Code)
+Function EventDescription(E_Code As Long) As Variant
 
     Dim ET_Code As Variant
 
@@ -984,13 +984,13 @@ Function EventDescription(E_Code)
     
 End Function
 
-Function EventSex(E_Code)
+Function EventSex(E_Code As Long)
 
     EventSex = DLookup("[Sex]", "Events", "[E_Code]= " & E_Code)
     
 End Function
 
-Function EventTypeID(E_Code)
+Function EventTypeID(E_Code As Long)
 
     EventTypeID = DLookup("[ET_Code]", "Events", "[E_Code] = " & E_Code)
 
@@ -1003,7 +1003,7 @@ Function FinalHouse()
 
 End Function
 
-Function FindLastEntry(uTable, uField As Field)
+Function FindLastEntry(uTable As String, uField As Field)
 
     Dim db As Database, Rs As Recordset
     Set db = DBEngine.Workspaces(0).Databases(0)
@@ -1016,33 +1016,12 @@ Function FindLastEntry(uTable, uField As Field)
 
 End Function
 
-Function FormatGname(n)
+Function FormatGname(n As String) As String
 
-    Dim L As Variant, FirstLetter As Variant
-
-    'L = Len(N)
-    'FirstLetter = Left$(N, 1)
-    'FirstLetter = UCase$(FirstLetter)
-    'N = FirstLetter & LCase$(Mid$(N, 2, L - 1))
     FormatGname = StrConv(n, vbProperCase)
 
 End Function
 
-Function GenerateAgeFilterOLD(A)
-    'Stop
-
-    Dim Age As Variant, Q As Variant
-
-    Age = AgeFilter([Forms]![EnterCompetitors]![AgeFld])
-    
-    Q = "SELECT UCase(Trim([Surname]))+""" & ", " & """+Trim([Gname]) AS fName, CompetitorsOrdered.H_Code, CompetitorsOrdered.PIN, House.Include "
-    Q = Q & "FROM House INNER JOIN CompetitorsOrdered ON House.H_Code = CompetitorsOrdered.H_Code "
-    Q = Q & "WHERE ((CompetitorsOrdered.Sex= """ & [Forms]![EnterCompetitors]![SexFld] & """)) AND (val(CompetitorsOrdered.Age)" & Age & " ) AND (House.Include=Yes) " 'AND CompetitorsOrdered.Flag = True ORDER by [Order]"
-    Q = Q & "ORDER BY [Surname], [Gname] "
-    
-    'GenerateAgeFilter = Q
-
-End Function
 
 Function GenerateAgeFilter(Age As String, Sex As String) As String
     'Stop
@@ -1078,9 +1057,9 @@ Function GenerateSexFilter(Sex As String) As String
 
 End Function
 
-Function GetCarnivalFile(c)
+Function GetCarnivalFile(c As Variant) As String
     
-    Dim CD As Variant
+    Dim CD As String
 
     CD = ExtractDirectory(c)
     GetCarnivalFile = Right$(c, Len(c) - Len(CD))
@@ -1642,7 +1621,7 @@ On Error GoTo UpdateEventCompetitorAge_Err
 
   Dim CArs As Recordset       ' Competitor Age
   Dim EArs As Recordset       ' Event Age
-  Dim CEArs As Recordset      ' CompetiotrEventAge
+  Dim CEArs As Recordset      ' CompetitorEventAge
   
   If SportsViewModule Then Exit Sub
   

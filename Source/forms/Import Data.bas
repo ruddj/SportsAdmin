@@ -480,9 +480,10 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
 Option Compare Database   'Use database order for string comparisons
+Option Explicit
 
 Private Sub Button24_Click()
-
+    Dim Mesg As String, Response As VbMsgBoxResult
     Mesg = "This will remove all the data shown on the previous form.  This will not effect the Carnival Database.  Do you wish to contnue?"
     Response = MsgBox(Mesg, vbYesNo + vbCritical)
     If Response = vbYes Then
@@ -521,7 +522,7 @@ Err_Close_Click:
     
 End Sub
 
-Private Function CompetitorEnrolled(Gname, Sname)
+Private Function CompetitorEnrolled(Gname, Sname) As Boolean
 
     If IsNull(Gname) And IsNull(Sname) Then
         CompetitorEnrolled = False
@@ -533,9 +534,9 @@ End Function
 
 Private Sub FullFileName_AfterUpdate()
 
-  If Right(Me.FullFileName, 3) = "CSV" Then
+  If UCase(Right(Me.FullFileName, 3)) = "CSV" Then
     Me.Format = 2
-  ElseIf Right(Me.FullFileName, 3) = "TXT" Then
+  ElseIf UCase(Right(Me.FullFileName, 3)) = "TXT" Then
     Me.Format = 1
   End If
   
@@ -557,9 +558,12 @@ On Error GoTo Err_ImportData_Click
   Dim Crs As Recordset, ITRS As Recordset, CErs As Recordset, NewAge As Variant
 
   Dim NamesIncomplete  As Integer, H_CodeIncomplete As Integer, msg As Variant
+  Dim ermsg As String
   Dim ShowCompetitorAlreadyEnrolledMessage As Boolean
   
-  Dim E_Code As Long, F_Lev As Byte, Heat As Integer
+  Dim E_Code As Long, F_Lev As Byte, Heat As Integer, Continue As Boolean
+  Dim x As Integer, ActualSex As Variant, CompPIN As Long
+  'Dim ReturnValue As Variant
   
   Set db = CurrentDb()
   Set ITRS = db.OpenRecordset("SELECT * FROM ImportData ORDER BY [Age]", dbOpenDynaset)   ' Create dynaset.
@@ -578,13 +582,14 @@ On Error GoTo Err_ImportData_Click
     
     msg = "Processing competitor ... "
     'ReturnValue = SysCmd(acSysCmdInitMeter, Msg, DCount("[HE_Code]", "ImportData"))   ' Display message in status bar.
-    ReturnValue = SysCmd(acSysCmdSetStatus, msg)
+    Call SysCmd(acSysCmdSetStatus, msg)
     x = 0
 
     While Not ITRS.EOF And Continue
       x = x + 1
       'ReturnValue = SysCmd(acSysCmdUpdateMeter, X)   ' Update meter.
-      ReturnValue = ReturnValue = SysCmd(acSysCmdSetStatus, msg & x)
+      'ReturnValue = ReturnValue = SysCmd(acSysCmdSetStatus, msg & x)
+      Call SysCmd(acSysCmdSetStatus, msg & x)
       ActualSex = DetermineSex(ITRS!Sex)
       
       If IsNull(ITRS!G_name) Or IsNull(ITRS!S_name) Then
@@ -687,7 +692,8 @@ ResumeAddingCompetitorToHeat:
     Call TransferToCompetitorOrdered
     
     'ReturnValue = SysCmd(acSysCmdRemoveMeter)
-    ReturnValue = SysCmd(acSysCmdClearStatus)
+    'ReturnValue = SysCmd(acSysCmdClearStatus)
+    Call SysCmd(acSysCmdClearStatus)
     
     
     DoCmd.Beep
@@ -763,7 +769,8 @@ Private Sub Locate_Click()
 End Sub
 
 Private Sub SortByName_AfterUpdate()
-
+    Dim Q As String
+    
     If Me![SortByName] Then
         Q = "SELECT DISTINCTROW ImportData.S_Name, ImportData.G_Name, ImportData.H_Code, ImportData.Age, ImportData.Sex, ImportData.HE_Code, ImportData.ET_Des, ImportData.Heat, ImportData.Competitor, ImportData.Memo "
         Q = Q & "FROM ImportData ORDER BY ImportData.S_Name, ImportData.G_Name, ImportData.H_Code, ImportData.Age"
@@ -782,6 +789,8 @@ End Sub
 Private Sub View_Click()
 
 On Error GoTo Err_Import_Click
+
+    Dim FileN As String, Mesg As String, Response As VbMsgBoxResult
 
     FileN = Me![FullFileName]
     Mesg = "This will retrieve the data found in the file " & FileN & ".  It will be appended to the temporary table displayed on the previous form for you to view.  If you do not wish to append the data, delete the contents of the temporary table by pushing the 'Clear Temporary Data' button.  Do you wish to continue?"

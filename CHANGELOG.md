@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - Add Results list was not updating after closing an event (Caused by code making forms resizable)
+- Improved strong typing by declaring variables functions as types
 
 ### Added
 - Warning if Web export does not fill in data due to faulty template

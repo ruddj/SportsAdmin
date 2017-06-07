@@ -800,9 +800,9 @@ Err_DBPath:
     Resume Exit_DBPath
 End Function
 
-Function ExtractDirectory(f)
+Function ExtractDirectory(f As Variant) As Variant
 
-    Dim Found As Variant, x As Integer, L As Integer
+    Dim Found As Boolean, x As Integer, L As Integer
     
     Found = False
     If IsNull(f) Then

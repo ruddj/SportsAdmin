@@ -7,5 +7,5 @@ CREATE TABLE [zz~House] (
   [Lane] SHORT ,
   [CompPool] LONG ,
   [Flag] BIT ,
-  [H_ID] AUTOINCREMENT
+  [H_ID] AUTOINCREMENT CONSTRAINT [H_ID] UNIQUE 
 )
