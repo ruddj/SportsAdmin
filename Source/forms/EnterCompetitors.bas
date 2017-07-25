@@ -1129,9 +1129,9 @@ Private Sub EnterResultsInPlaceOrderBut_Click()
 On Error GoTo EnterResultsInPlaceOrderBut_Click_Err
 
     Dim Criteria As String, db As Database, Rs As Recordset
-    Dim MyDb As Database, MySet As Recordset, Q As Variant, x As Variant, i As Variant, Place As Variant, Lane As Variant
+    Dim MyDb As Database, MySet As Recordset, Q As Variant, X As Variant, i As Variant, Place As Variant, Lane As Variant
     Dim NewTitle As String, Criteria1 As Variant, ECrs As Recordset
-    Dim success As Boolean
+    Dim Success As Boolean
     
     Set db = DBEngine.Workspaces(0).Databases(0)
     Set Rs = db.OpenRecordset("Temporary Results-Place Order", dbOpenDynaset)   ' Create dynaset.
@@ -1139,9 +1139,9 @@ On Error GoTo EnterResultsInPlaceOrderBut_Click_Err
     
     'Stop
     
-    x = Me![EC_Subform].Form![Count]
+    X = Me![EC_Subform].Form![Count]
     
-    If x >= 1 Then
+    If X >= 1 Then
     
         Q = "DELETE DISTINCTROW [Temporary Results-Place Order].Place FROM [Temporary Results-Place Order]"
         DoCmd.SetWarnings False
@@ -1196,7 +1196,7 @@ On Error GoTo EnterResultsInPlaceOrderBut_Click_Err
                 Result = Rs!Results
             End If
             Runit = Me![Units]
-            Call Calculate_Results(Result, nValu, Runit, success)
+            Call Calculate_Results(Result, nValu, Runit, Success)
 
             Q = "UPDATE DISTINCTROW CompEvents SET CompEvents.Place = " & Place & ", CompEvents.Result = """ & nValu & """, CompEvents.nResult = " & Result
             Q = Q & " WHERE CompEvents.E_Code=" & Me![E_Code] & " And CompEvents.F_Lev = " & Me![F_Lev] & " And CompEvents.Heat = " & Me![Heat] & " AND CompEvents.Lane= " & Lane
@@ -1236,10 +1236,10 @@ End Sub
 
 Private Sub Button47_Click()
     
-    Dim x As Variant
+    Dim X As Variant
 
-    x = DCount("[ET_Code]", "Ent_Comp_Filter")
-    If x < 1 Then
+    X = DCount("[ET_Code]", "Ent_Comp_Filter")
+    If X < 1 Then
         MsgBox ("No events match the given criteria.")
     Else
         DoCmd.RunMacro "ApplyFilter"
@@ -1515,6 +1515,7 @@ End Sub
 
 Private Sub EC_Subform_Exit(Cancel As Integer)
 On Error Resume Next
+  Dim Q As String, Response As Integer
 
   If Not GlobalChange Then Exit Sub
   

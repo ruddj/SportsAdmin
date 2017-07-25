@@ -1449,15 +1449,15 @@ End Sub
 Private Sub PrintPreviewReports(Ty As String, Optional GenerateHTML)
 On Error GoTo PrintPreviewReports_Err
 
-    Dim Q As Variant, f As Form, T As Date
+    Dim Q As Variant, F As Form, T As Date
     
     If IsMissing(GenerateHTML) Then GenerateHTML = False
     
     DoCmd.RunCommand acCmdSaveRecord
     
     If GenerateHTML Then
-      For Each f In Forms
-        f.visible = False
+      For Each F In Forms
+        F.visible = False
       Next
     End If
     
@@ -1654,8 +1654,8 @@ On Error GoTo PrintPreviewReports_Err
 PrintPreviewReports_Exit:
   
     If GenerateHTML Then
-      For Each f In Forms
-        f.visible = True
+      For Each F In Forms
+        F.visible = True
       Next
     End If
   

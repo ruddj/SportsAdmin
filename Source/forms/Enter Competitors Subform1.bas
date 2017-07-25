@@ -9,10 +9,10 @@ Begin Form
     GridY =20
     Width =8991
     ItemSuffix =71
-    Left =405
-    Top =3015
-    Right =14100
-    Bottom =9705
+    Left =2460
+    Top =5280
+    Right =10110
+    Bottom =10425
     HelpContextId =110
     AfterDelConfirm ="[Event Procedure]"
     OrderBy ="EnterCompetitorsSF.Place"
@@ -586,7 +586,7 @@ Dim ShowAllCompetitors As Variant
 
 Private Sub Fname_BeforeUpdate(Cancel As Integer)
 
-    x = 1
+    X = 1
     
 End Sub
 
@@ -603,10 +603,10 @@ Private Sub Fname_NotInList(NewData As String, Response As Integer)
 ' Prompt to add competitor to database
 ' Check that there is no competitor with similar name
   
-  Dim s As String
+  Dim s As String, MsgResponse As Integer
   
-  Response = MsgBox("The name you have entered does not exist in the list.  Do you want to add this person to the carnival?", vbQuestion + vbYesNo + vbDefaultButton2)
-  If Response = vbNo Then Exit Sub
+  MsgResponse = MsgBox("The name you have entered does not exist in the list.  Do you want to add this person to the carnival?", vbQuestion + vbYesNo + vbDefaultButton2)
+  If MsgResponse = vbNo Then Exit Sub
   
   s = Trim(NewData)
   s = s & "|" & Trim(Me.Parent.Age)
@@ -744,15 +744,15 @@ On ERRROR GoTo Res_AfterUpdate_Err
     Dim Delm As String, nValu As String
     Dim i As Integer
     Dim AddZero As Integer
-    Dim success As Boolean
+    Dim Success As Boolean
     
   If Not (IsNull(Me![res])) Then
     
     res = Me![res]
     Runit = [Forms]![EnterCompetitors]![Units]
-    Call Calculate_Results(res, nValu, Runit, success)
+    Call Calculate_Results(res, nValu, Runit, Success)
     
-    If success Then
+    If Success Then
       Forms![EnterCompetitors]![EC_Subform].Form![nRes] = res
       Forms![EnterCompetitors]![EC_Subform].Form![res] = nValu
     Else
@@ -782,13 +782,13 @@ On Error GoTo Res_BeforeUpdate_Err
     Dim res As String
     Dim Runit As String
     Dim nValu As String
-    Dim success As Boolean
+    Dim Success As Boolean
     
     res = Nz(Me![res])
     Runit = [Forms]![EnterCompetitors]![Units]
-    Call Calculate_Results(res, nValu, Runit, success)
+    Call Calculate_Results(res, nValu, Runit, Success)
     
-    Cancel = Not success
+    Cancel = Not Success
     
 Res_BeforeUpdate_Exit:
   Exit Sub

@@ -701,18 +701,8 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
 Option Compare Database   'Use database order for string comparisons
+Option Explicit
 
-Private Sub Address1_AfterUpdate()
-
-    GlobalChange = True
-
-End Sub
-
-Private Sub Address2_AfterUpdate()
-
-    GlobalChange = True
-
-End Sub
 
 Private Sub Age_AfterUpdate()
 
@@ -730,30 +720,31 @@ Private Sub Age_AfterUpdate()
 End Sub
 
 Private Sub Age_BeforeUpdate(Cancel As Integer)
-
+    Dim OriginalValue As String, X As String, Response As Integer
+    Dim Qry As String
     
     Cancel = False
     Dim MyDb As Database
 
     OriginalValue = Forms![Competitors]![Age].OldValue
-    x = Forms![Competitors]![Age]
+    X = Forms![Competitors]![Age]
 
-    If IsNull(x) Then
-        Response = MsgBox("You must enter a value for the competitors age", vbInformation)
+    If IsNull(X) Then
+        Call MsgBox("You must enter a value for the competitors age", vbInformation)
 
-    ElseIf Trim(str(Val(x))) <> Trim(x) Then
-        Response = MsgBox("The age must be numeric.", vbInformation)
+    ElseIf Trim(str(Val(X))) <> Trim(X) Then
+        Call MsgBox("The age must be numeric.", vbInformation)
     Else
         If Not (IsNull(OriginalValue)) Then '**** ie not the first entry
             
-            Conti = MsgBox("This competitor will be removed from all events if this value is changed.  This action cannot be undone.  Do you want to continue?", vbYesNo + vbDefaultButton2 + vbInformation)
+            Response = MsgBox("This competitor will be removed from all events if this value is changed.  This action cannot be undone.  Do you want to continue?", vbYesNo + vbDefaultButton2 + vbInformation)
             
-            If Conti = vbYes Then
+            If Response = vbYes Then
                 
                 Set MyDb = DBEngine.Workspaces(0).Databases(0)
-                q1 = "Delete * from CompEvents Where PIN="
-                q1 = q1 & Me![PIN]
-                MyDb.Execute (q1)
+                Qry = "Delete * from CompEvents Where PIN="
+                Qry = Qry & Me![PIN]
+                MyDb.Execute (Qry)
     
             Else
                 Cancel = True
@@ -765,70 +756,10 @@ Private Sub Age_BeforeUpdate(Cancel As Integer)
 
 End Sub
 
-Private Sub Button55_Click()
-On Error GoTo Err_Button55_Click
-
-    If Not CheckDataValidity() Then
-        DoCmd.Close
-    End If
-                                       
-Exit_Button55_Click:
-    Exit Sub
-
-Err_Button55_Click:
-    MsgBox Error$
-    Resume Exit_Button55_Click
-    
-End Sub
-
-Private Sub Button56_Click()
-On Error GoTo Err_Button56_Click
-    
-    DoCmd.GoToRecord , , A_NEWREC
-
-Exit_Button56_Click:
-    Exit Sub
-
-Err_Button56_Click:
-    MsgBox Error$
-    Resume Exit_Button56_Click
-    
-End Sub
-
-Private Sub Button57_Click()
-On Error GoTo Err_Button57_Click
-
-
-    DoCmd.RunCommand acCmdSelectRecord
-    DoCmd.RunCommand acCmdDelete
-
-Exit_Button57_Click:
-    Exit Sub
-
-Err_Button57_Click:
-    MsgBox Error$
-    Resume Exit_Button57_Click
-    
-End Sub
-
-Private Sub Button65_Click()
-On Error GoTo Err_Button65_Click
-
-
-    DoCmd.RunCommand acCmdSelectRecord
-    DoCmd.RunCommand acCmdDelete
-
-Exit_Button65_Click:
-    Exit Sub
-
-Err_Button65_Click:
-    MsgBox Error$
-    Resume Exit_Button65_Click
-    
-End Sub
 
 Private Sub CancelBut_Click()
-
+    Dim Response As Integer
+    
     If GlobalChange Then
         Response = MsgBox("Changes have been made to this competitor.  Are you sure you want to cancel and lose these changes?", vbYesNo + vbDefaultButton2 + vbInformation, "Confirm Cancel")
         If Response = vbYes Then
@@ -843,7 +774,8 @@ Private Sub CancelBut_Click()
 End Sub
 
 Private Function CheckDataValidity()
-
+    Dim Cancel As Boolean, Response As Integer
+    
     Cancel = False
     If IsNull(Me![Age]) Then
         Response = MsgBox("You must enter an age.", vbInformation)
@@ -868,6 +800,7 @@ Private Sub Comments_AfterUpdate()
 End Sub
 
 Private Sub DOB_AfterUpdate()
+    Dim Y As Integer, Yn As Integer
 
     GlobalChange = True
 
@@ -887,66 +820,18 @@ Private Sub Field60_AfterUpdate()
 
 End Sub
 
-Private Sub Field66_BeforeUpdate(Cancel As Integer)
-    Cancel = False
-    Dim MyDb As Database
-
-    OriginalValue = Forms![Competitors]![Age].OldValue
-    x = Forms![Competitors]![Age]
-
-    If Not (IsNull(OriginalValue)) Then '**** ie not the first entry
-        
-        Conti = MsgBox("This competitor will be removed from all events if this value is changed.  This action cannot be undone.  Do you want to continue?", vbYesNo + vbDefaultButton2 + vbExclamation)
-        
-        If Conti = vbYes Then
-            
-            Set MyDb = DBEngine.Workspaces(0).Databases(0)
-            q1 = "Delete * from CompEvents Where PIN="
-            q1 = q1 & Forms![Competitors]![PIN]
-            MyDb.Execute (q1)
-
-        Else
-            Cancel = True
-            Forms![Competitors]![Age] = OriginalValue
-        End If
-
-    End If
-
-End Sub
-
-Private Sub FindBut_Click()
-On Error GoTo Err_FindBut_Click
-
-    If Forms![Compet_Search].visible = False Then
-        Forms![Compet_Search].visible = True
-    Else
-        Forms![Compet_Search].visible = False
-    End If
-
-
-
-Exit_FindBut_Click:
-    Exit Sub
-
-Err_FindBut_Click:
-    MsgBox Error$
-    Resume Exit_FindBut_Click
-    
-End Sub
-
-Private Function FindFirstName(fn)
-
-End Function
 
 
 Private Sub Form_BeforeUpdate(Cancel As Integer)
 
     Cancel = CheckDataValidity()
 
-
 End Sub
 
 Private Sub Form_Load()
+    Dim FirstName As String, LastName As String
+    Dim First As Boolean, fn As Variant
+    Dim L As Integer, i As Integer, Ch As String
 
     If Me.OpenArgs = "EDIT" Then
         Me.DefaultEditing = 4
@@ -1023,24 +908,24 @@ Private Sub SaveBut_Click()
 On Error GoTo SaveBut_Click_Err
     ' Check for valid data
     If IsNull(Me![Age]) Then
-        Response = MsgBox("You must enter an age.", vbInformation)
-        Cancel = True
+        Call MsgBox("You must enter an age.", vbInformation)
+        'Cancel = True
     
     ElseIf IsNull(Me![Sex]) Then
-        Response = MsgBox("You must enter a sex.", vbInformation)
-        Cancel = True
+        Call MsgBox("You must enter a sex.", vbInformation)
+        'Cancel = True
         
     ElseIf IsNull(Me![H_Code]) Then
-        Response = MsgBox("You must enter a team.", vbInformation)
-        Cancel = True
+        Call MsgBox("You must enter a team.", vbInformation)
+        'Cancel = True
     
     ElseIf IsNull(Me![Gname]) Then
-        Response = MsgBox("You must enter a first name.", vbInformation)
-        Cancel = True
+        Call MsgBox("You must enter a first name.", vbInformation)
+        'Cancel = True
     
     ElseIf IsNull(Me![Surname]) Then
-        Response = MsgBox("You must enter a surname.", vbInformation)
-        Cancel = True
+        Call MsgBox("You must enter a surname.", vbInformation)
+        'Cancel = True
     Else
         DoCmd.Close
     End If
@@ -1068,11 +953,7 @@ Private Sub State_AfterUpdate()
 
 End Sub
 
-Private Sub Suburb_AfterUpdate()
 
-    GlobalChange = True
-
-End Sub
 
 Private Sub Surname_AfterUpdate()
 

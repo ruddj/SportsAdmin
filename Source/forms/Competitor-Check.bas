@@ -20,6 +20,10 @@ Begin Form
     Caption ="Competitor Check"
     OnOpen ="[Event Procedure]"
     HelpFile ="SportsAdmin.chm"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
     FilterOnLoad =0
     AllowLayoutView =0
     Begin
@@ -200,7 +204,7 @@ Begin Form
                     Left =3744
                     Width =1330
                     TabIndex =5
-                    ColumnInfo ="\"\";\"\";\"10\";\"14\""
+                    ColumnInfo ="\"\";\">\";\"10\";\"14\""
                     Name ="Field22"
                     ControlSource ="H_Code"
                     RowSourceType ="Table/Query"
@@ -225,9 +229,10 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
 Option Compare Database   'Use database order for string comparisons
+Option Explicit
 
 Private Sub Form_Open(Cancel As Integer)
 
-    Response = MsgBox("Information for the following competitors is incomplete.  All fields need to have data in them.  The program may not perform as expected if fields are incomplete.", vbInformation)
+    Call MsgBox("Information for the following competitors is incomplete.  All fields need to have data in them.  The program may not perform as expected if fields are incomplete.", vbInformation)
 
 End Sub

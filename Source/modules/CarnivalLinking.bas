@@ -79,25 +79,26 @@ End Function
 Function AddField(db As Database, tableName As String, _
                   fieldName As String, FieldType As Long, Required As Boolean, _
                   Optional FieldSize, Optional DefaultV)
-
+  On Error Resume Next
+  
   Dim td As TableDef
-  Dim f As Field, Response As Variant
+  Dim F As Field, Response As Variant
+  Dim Q As String
 
   Set td = db.TableDefs(tableName)
-  On Error Resume Next
-  Set f = td.Fields(fieldName)
+  Set F = td.Fields(fieldName)
   
   If Err.Number <> 0 Then 'need to add field
     If IsMissing(FieldSize) Then
-      Set f = td.CreateField(fieldName, FieldType)
+      Set F = td.CreateField(fieldName, FieldType)
     Else
-      Set f = td.CreateField(fieldName, FieldType, FieldSize)
+      Set F = td.CreateField(fieldName, FieldType, FieldSize)
     End If
     
-    f.Required = Required
+    F.Required = Required
     
-    If Not IsMissing(DefaultV) Then f.DefaultValue = DefaultV
-    td.Fields.Append f
+    If Not IsMissing(DefaultV) Then F.DefaultValue = DefaultV
+    td.Fields.Append F
     
     If fieldName = "EffectsRecords" Then
       If False And tableName = "Heats" Then
@@ -124,7 +125,7 @@ Function AddField_nResult(db As Database)
     'Dim CurrentDatabase As Database
     
     Dim td As TableDef
-    Dim f As Field, Response As Variant
+    Dim F As Field, Response As Variant
     Dim Indx As index
     
 
@@ -134,18 +135,18 @@ Function AddField_nResult(db As Database)
     'Set CurrentDatabase = DBEngine.Workspaces(0).Databases(0)
     
     Set td = db.TableDefs("Records")
-    Set f = td.CreateField("nResult", dbSingle)
-    td.Fields.Append f
+    Set F = td.CreateField("nResult", dbSingle)
+    td.Fields.Append F
 
     '*** Change type of Record field ****
 
     Response = MsgBox("To update to the latest version of the Sports Administrator it is necessary to remove all Event Records.  Do you wish to continue?", vbExclamation + vbYesNo + vbDefaultButton2, "Remove records")
     If Response = vbYes Then
         td.Fields.Delete "Result"    ' Delete field from collection.
-        Set f = td.CreateField("Result", dbText)
+        Set F = td.CreateField("Result", dbText)
     End If
-    f.Size = 50
-    td.Fields.Append f
+    F.Size = 50
+    td.Fields.Append F
 
     ' **** Remove old index and add new one ****
     ' I initially limited one record per event per day.  Bad.  Now there is no limitations
@@ -163,8 +164,8 @@ AddNewIndex:
 
     Indx.Primary = False
     Indx.Unique = False
-    Set f = td.CreateField("E_Code", dbLong)
-    Indx.Fields.Append f
+    Set F = td.CreateField("E_Code", dbLong)
+    Indx.Fields.Append F
     'Set F = TD.CreateField("Date", DB_DATE)
     'Indx.fields.Append F
     td.Indexes.Append Indx
@@ -200,7 +201,7 @@ On Error GoTo AddField_ProNum_Err
     'Dim db As Database, CurrentDatabase As Database
     
     Dim td As TableDef
-    Dim f As Field, Response As Variant
+    Dim F As Field, Response As Variant
     Dim Indx As index
     
     ''*** Create nRecord field ****
@@ -209,8 +210,8 @@ On Error GoTo AddField_ProNum_Err
     'Set CurrentDatabase = DBEngine.Workspaces(0).Databases(0)
     
     Set td = db.TableDefs("Final_Lev")
-    Set f = td.CreateField("ProNum", dbInteger)
-    td.Fields.Append f
+    Set F = td.CreateField("ProNum", dbInteger)
+    td.Fields.Append F
     
 AddField_ProNum_Exit:
 
@@ -245,7 +246,7 @@ On Error GoTo ChangeAgeFieldType_Err
   'Stop
   
   Dim td As TableDef, ErrorOccurred As Boolean, Q As String
-  Dim f As Field, oF As Field, Response As Variant, i As index
+  Dim F As Field, oF As Field, Response As Variant, i As index
   
   Set td = db.TableDefs("Competitors")
   Set oF = td.Fields("Age")
@@ -260,11 +261,11 @@ On Error GoTo ChangeAgeFieldType_Err
       oF.Name = "AgeOld"
       oF.Required = False
       
-      Set f = td.CreateField("Age", dbByte)
-      f.DefaultValue = ""
-      f.Required = True
+      Set F = td.CreateField("Age", dbByte)
+      F.DefaultValue = ""
+      F.Required = True
       
-      td.Fields.Append f
+      td.Fields.Append F
       
       Dim Rs As Recordset
       Set Rs = db.OpenRecordset("Competitors", dbOpenDynaset)
@@ -334,7 +335,7 @@ Function AddTable(FileName, NewTable)
     
     Dim db As Database, CurrentDatabase As Database
     Dim td As TableDef, CurrentTD As TableDef
-    Dim f As Field
+    Dim F As Field
     Set db = DBEngine.Workspaces(0).OpenDatabase(FileName)
     Set CurrentDatabase = CurrentDb()
     
@@ -386,7 +387,7 @@ Function AddTable_Competitors(FileName)
     
     Dim db As Database, CurrentDatabase As Database
     Dim td As TableDef, CurrentTD As TableDef
-    Dim f As Field
+    Dim F As Field
     Set db = DBEngine.Workspaces(0).OpenDatabase(FileName)
     Set CurrentDatabase = CurrentDb()
     
@@ -800,25 +801,25 @@ Err_DBPath:
     Resume Exit_DBPath
 End Function
 
-Function ExtractDirectory(f As Variant) As Variant
+Function ExtractDirectory(F As Variant) As Variant
 
-    Dim Found As Boolean, x As Integer, L As Integer
+    Dim Found As Boolean, X As Integer, L As Integer
     
     Found = False
-    If IsNull(f) Then
+    If IsNull(F) Then
         ExtractDirectory = ""
     Else
-        L = Len(f)
-        x = L
+        L = Len(F)
+        X = L
         'ExtractDirectory = F   ' was = Null
         ExtractDirectory = Null
     
-        While Not Found And x > 0
-            If Mid$(f, x, 1) = "\" Then
+        While Not Found And X > 0
+            If Mid$(F, X, 1) = "\" Then
                 Found = True
-                ExtractDirectory = Left$(f, x)
+                ExtractDirectory = Left$(F, X)
             Else
-                x = x - 1
+                X = X - 1
             End If
         Wend
     End If

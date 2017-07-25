@@ -2,8 +2,19 @@ Option Compare Database
 Option Explicit
 
 
-Global Const VersionNumber = "5.1.3"
-Global Const VersionDate = "(5/June/2017)"
+Global Const VersionNumber = "5.1.4"
+Global Const VersionDate = "(25/July/2017)"
+
+' Version 5.1.4 - 2017-07-25
+'
+' Default location that Import Carnivals List views to Database directory.
+' Changed Event Status from constant to enum
+' Changed web ordering of Competitor Results based on result within heat level
+' Changed Q and Response from globals to locally defined
+' Add Results list was not updating after closing an event (Caused by code making forms resizable)
+' Improved strong typing by declaring variables functions as types
+' Warning if Web export does not fill in data due to faulty template
+' Reset extra allocated Team points button with other reset options
 
 ' Version 5.1.3
 '   (5/June/2017)

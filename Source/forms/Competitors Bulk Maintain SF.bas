@@ -249,7 +249,7 @@ Option Explicit
 
 Private Sub All_Click()
 
-    Dim Q As Variant
+    Dim Q As String
 
     Q = "UPDATE DISTINCTROW Competitors SET Competitors.Include = Yes"
     'DoCmd SetWarnings False
@@ -261,7 +261,7 @@ End Sub
 
 Private Sub None_Click()
 
-    Dim Q As Variant
+    Dim Q As String
 
     Q = "UPDATE DISTINCTROW Competitors SET Competitors.Include = No"
     'DoCmd SetWarnings False

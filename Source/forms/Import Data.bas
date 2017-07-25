@@ -544,6 +544,7 @@ End Sub
 
 Private Sub ImportData_Click()
 On Error GoTo Err_ImportData_Click
+  Dim Response As Integer
 
   Response = MsgBox("Push yes to continue with this import.", vbYesNo + vbQuestion)
   If Response = vbNo Then Exit Sub
@@ -562,7 +563,7 @@ On Error GoTo Err_ImportData_Click
   Dim ShowCompetitorAlreadyEnrolledMessage As Boolean
   
   Dim E_Code As Long, F_Lev As Byte, Heat As Integer, Continue As Boolean
-  Dim x As Integer, ActualSex As Variant, CompPIN As Long
+  Dim X As Integer, ActualSex As Variant, CompPIN As Long
   'Dim ReturnValue As Variant
   
   Set db = CurrentDb()
@@ -583,13 +584,13 @@ On Error GoTo Err_ImportData_Click
     msg = "Processing competitor ... "
     'ReturnValue = SysCmd(acSysCmdInitMeter, Msg, DCount("[HE_Code]", "ImportData"))   ' Display message in status bar.
     Call SysCmd(acSysCmdSetStatus, msg)
-    x = 0
+    X = 0
 
     While Not ITRS.EOF And Continue
-      x = x + 1
+      X = X + 1
       'ReturnValue = SysCmd(acSysCmdUpdateMeter, X)   ' Update meter.
       'ReturnValue = ReturnValue = SysCmd(acSysCmdSetStatus, msg & x)
-      Call SysCmd(acSysCmdSetStatus, msg & x)
+      Call SysCmd(acSysCmdSetStatus, msg & X)
       ActualSex = DetermineSex(ITRS!Sex)
       
       If IsNull(ITRS!G_name) Or IsNull(ITRS!S_name) Then

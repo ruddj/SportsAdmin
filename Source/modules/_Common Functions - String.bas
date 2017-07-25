@@ -109,11 +109,11 @@ End Function
 Public Function Clean(InString As String) As String
 '-- Returns only printable characters from InString
 ' From https://access-programmers.co.uk/forums/showthread.php?t=144810
-   Dim x As Integer
-   For x = 1 To Len(InString)
-      If Asc(Mid(InString, x, 1)) > 31 And Asc(Mid(InString, x, 1)) < 127 Then
-         Clean = Clean & Mid(InString, x, 1)
+   Dim X As Integer
+   For X = 1 To Len(InString)
+      If Asc(Mid(InString, X, 1)) > 31 And Asc(Mid(InString, X, 1)) < 127 Then
+         Clean = Clean & Mid(InString, X, 1)
       End If
-   Next x
+   Next X
 
 End Function

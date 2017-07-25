@@ -235,12 +235,13 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
 Option Compare Database   'Use database order for string comparisons
+Option Explicit
 
 Private Sub Button26_Click()
 On Error GoTo Err_Button26_Click
 
 
-    DoCmd.GoToRecord , , A_PREVIOUS
+    DoCmd.GoToRecord , , acPrevious
 
 Exit_Button26_Click:
     Exit Sub
@@ -255,7 +256,7 @@ Private Sub Button27_Click()
 On Error GoTo Err_Button27_Click
 
 
-    DoCmd.GoToRecord , , A_NEXT
+    DoCmd.GoToRecord , , acNext
 
 Exit_Button27_Click:
     Exit Sub
@@ -285,7 +286,7 @@ Private Sub Button29_Click()
 On Error GoTo Err_Button29_Click
 
 
-    DoCmd.GoToRecord , , A_NEWREC
+    DoCmd.GoToRecord , , acNewRec
 
 Exit_Button29_Click:
     Exit Sub
@@ -300,7 +301,7 @@ Private Sub Button30_Click()
 On Error GoTo Err_Button30_Click
 
 
-    DoCmd.GoToRecord , , A_NEXT
+    DoCmd.GoToRecord , , acNext
 
 Exit_Button30_Click:
     Exit Sub
@@ -315,7 +316,7 @@ Private Sub Button31_Click()
 On Error GoTo Err_Button31_Click
 
 
-    DoCmd.GoToRecord , , A_PREVIOUS
+    DoCmd.GoToRecord , , acPrevious
 
 Exit_Button31_Click:
     Exit Sub
@@ -326,10 +327,7 @@ Err_Button31_Click:
     
 End Sub
 
-Private Sub Button39_Click()
 
-    
-End Sub
 
 Private Sub Order_Click()
 
@@ -340,6 +338,7 @@ End Sub
 Private Sub Update_Click()
 
  On Error GoTo Update_Click_Error
+ Dim Q As String, msg As String, Response As Integer, X As Integer
  
  Response = MsgBox("This will update the lanes allocated to all competitors.  All old lane allocations will be removed and updated.  Do you wish to continue?", vbYesNo + vbQuestion, "Update Lane Allocation")
  
@@ -356,8 +355,8 @@ Private Sub Update_Click()
     Set Rs = db.OpenRecordset("Heats", dbOpenDynaset)   ' Create dynaset.
 
     msg = "Updating Lanes ... "
-    ReturnValue = SysCmd(acSysCmdInitMeter, msg, DCount("[E_Code]", "Heats"))   ' Display message in status bar.
-    x = 0
+    Call SysCmd(acSysCmdInitMeter, msg, DCount("[E_Code]", "Heats"))   ' Display message in status bar.
+    X = 0
 
     If Not Rs.BOF Then
     
@@ -365,8 +364,8 @@ Private Sub Update_Click()
         
         Do Until Rs.EOF
            Call Update_Lane_Assignments(Rs!E_Code, Rs!F_Lev, Rs!Heat)
-            x = x + 1
-            ReturnValue = SysCmd(acSysCmdUpdateMeter, x)   ' Update meter.
+            X = X + 1
+            Call SysCmd(acSysCmdUpdateMeter, X)   ' Update meter.
     
             Rs.MoveNext
         Loop
@@ -379,7 +378,7 @@ Private Sub Update_Click()
 
 Update_Click_Exit:
     DoCmd.Hourglass False
-    ReturnValue = SysCmd(acSysCmdRemoveMeter)
+    Call SysCmd(acSysCmdRemoveMeter)
     Exit Sub
     
 Update_Click_Error:

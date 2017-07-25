@@ -37,6 +37,7 @@ Public Sub DisplayErrMsg(CurrentProcedure, Optional Var1, Optional Var2)
   If IsMissing(Var2) Then Var2 = ""
   
   Dim DialogImage As Variant, Title As String
+  Dim Q As String
   
   DialogImage = vbCritical
   

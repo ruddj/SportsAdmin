@@ -1,7 +1,7 @@
 Option Compare Database
 Option Explicit
 
-Global GlobalGenerateHTML As Variant
+Global GlobalGenerateHTML As Boolean
 Global Template As String
 Global TemplateSummary As String
 Global GroupLvl As Integer
@@ -33,11 +33,11 @@ Type HTMarrayType
     row As String
 End Type
 
-Function Alignend(Alignment As String)
+Function Alignend(Alignment As String) As String
     Alignend = "</" & Alignment & ">"
 End Function
 
-Function AlignStart(Alignment As String)
+Function AlignStart(Alignment As String) As String
     AlignStart = "<" & Alignment & ">"
 End Function
 
@@ -124,7 +124,7 @@ Sub CreateHTMLfile(ByVal FileName As String, ByVal TemplateFilename As String, H
     
 End Sub
 
- Function Heading(Level As Integer, T As Variant, Indent As Integer)
+ Function Heading(Level As Integer, T As Variant, Indent As Integer) As String
     Dim i As Integer
     
     s = ""
@@ -137,19 +137,19 @@ End Sub
     
 End Function
 
- Function HeadingEnd(Level As Integer)
+ Function HeadingEnd(Level As Integer) As String
     HeadingEnd = "</h" & Trim(str(Level)) & ">" & vbNewLine
 End Function
 
-Function HeadingStart(Level As Integer)
+Function HeadingStart(Level As Integer) As String
     HeadingStart = "<h" & Trim(str(Level)) & ">"
 End Function
 
-Function HTMLend()
+Function HTMLend() As String
     HTMLend = "</body>" & vbNewLine & "</html>"
 End Function
 
-Function HTMLStart(Title As String, Author As String)
+Function HTMLStart(Title As String, Author As String) As String
 
     s = "<html>" & vbNewLine & "<head>" & vbNewLine
     s = s & "<meta HTTP-EQUIV=""Content-Type"" CONTENT=""text/html; charset=iso-8859-1"">" & vbNewLine
@@ -162,14 +162,14 @@ Function HTMLStart(Title As String, Author As String)
     
 End Function
 
-Function image(Source As String, Alternate As String)
+Function image(Source As String, Alternate As String) As String
     s = "<IMG SRC=""" & Source & """"
     If Alternate <> "" Then s = s & " ALT=""" & Alternate & """"
     image = s
     
 End Function
 
-Function Indent(Count As Integer)
+Function Indent(Count As Integer) As String
     Dim i As Integer
     s = ""
     For i = 1 To Count
@@ -178,19 +178,19 @@ Function Indent(Count As Integer)
     Indent = s
 End Function
 
-Function Link(LinkSource As String, T As String)
+Function Link(LinkSource As String, T As String) As String
     Link = "<a href=""" & LinkSource & """>" & T & "</a>"
 End Function
 
-Function LinkEnd()
+Function LinkEnd() As String
     LinkEnd = "</a>"
 End Function
 
-Function LinkStart(Link As String)
+Function LinkStart(Link As String) As String
     LinkStart = "<a href=""" & Link & """>"
 End Function
 
-Function ParaStart()
+Function ParaStart() As String
     ParaStart = "<P>"
 End Function
 
@@ -343,7 +343,7 @@ Sub Text(HTML As String, Style As String, StyleEnd As String, ByVal T As String)
         
 End Sub
 
-Function UnIndent(Count As Integer)
+Function UnIndent(Count As Integer) As String
     Dim i As Integer
     s = ""
     For i = 1 To Count

@@ -89,20 +89,20 @@ End Function
 
 Public Sub SetPropertiesForAllForms(Optional MenuBar, Optional ToolBar, Optional ShortcutMenuBar, Optional HelpFile, Optional HelpTopic, Optional Override = False)
 
-  Dim dbs As Database, ctr As Container, doc As Document, f As Form
+  Dim dbs As Database, ctr As Container, doc As Document, F As Form
 
   Set dbs = CurrentDb
   Set ctr = dbs.Containers!Forms
   For Each doc In ctr.Documents
     
     DoCmd.OpenForm doc.Name, acDesign
-    Set f = Forms(doc.Name)
+    Set F = Forms(doc.Name)
     
-    If Not IsMissing(MenuBar) And (Override Or f.MenuBar = "") Then f.MenuBar = MenuBar
-    If Not IsMissing(ToolBar) And (Override Or f.ToolBar = "") Then f.ToolBar = ToolBar
-    If Not IsMissing(ShortcutMenuBar) And (Override Or f.ShortcutMenuBar = "") Then f.ShortcutMenuBar = ShortcutMenuBar
-    If Not IsMissing(HelpFile) And (Override Or f.HelpFile = "") Then f.HelpFile = HelpFile
-    If Not IsMissing(HelpTopic) And (Override Or f.HelpContextId = 0) Then f.HelpContextId = HelpTopic
+    If Not IsMissing(MenuBar) And (Override Or F.MenuBar = "") Then F.MenuBar = MenuBar
+    If Not IsMissing(ToolBar) And (Override Or F.ToolBar = "") Then F.ToolBar = ToolBar
+    If Not IsMissing(ShortcutMenuBar) And (Override Or F.ShortcutMenuBar = "") Then F.ShortcutMenuBar = ShortcutMenuBar
+    If Not IsMissing(HelpFile) And (Override Or F.HelpFile = "") Then F.HelpFile = HelpFile
+    If Not IsMissing(HelpTopic) And (Override Or F.HelpContextId = 0) Then F.HelpContextId = HelpTopic
     
     'If F.MenuBar = "" Then F.MenuBar = MenuBar
     'If F.ToolBar = "" Then F.ToolBar = ToolBar
@@ -121,7 +121,7 @@ End Sub
 Public Sub SetFontForAllForms()
   On Error Resume Next
 
-  Dim dbs As Database, ctr As Container, doc As Document, f As Form
+  Dim dbs As Database, ctr As Container, doc As Document, F As Form
   Dim ctl As control
   
   Set dbs = CurrentDb
@@ -129,9 +129,9 @@ Public Sub SetFontForAllForms()
   For Each doc In ctr.Documents
     
     DoCmd.OpenForm doc.Name, acDesign
-    Set f = Forms(doc.Name)
+    Set F = Forms(doc.Name)
     
-    For Each ctl In f
+    For Each ctl In F
         If ctl.FontName Then
             ctl.FontName = "Tahoma"
         End If
@@ -180,17 +180,17 @@ Public Sub SetPropertiesForAllReports(Optional MenuBar, Optional ToolBar, Option
 End Sub
 Public Sub ShowPropertiesForAllForms()
 
-  Dim dbs As Database, ctr As Container, doc As Document, f As Form
+  Dim dbs As Database, ctr As Container, doc As Document, F As Form
 
   Set dbs = CurrentDb
   Set ctr = dbs.Containers!Forms
   For Each doc In ctr.Documents
     
     DoCmd.OpenForm doc.Name, acDesign
-    Set f = Forms(doc.Name)
+    Set F = Forms(doc.Name)
     
-    Debug.Print f.Name & ": Menu: " & f.MenuBar & ": Toolbar: " & f.ToolBar & ": Shortcut: " & f.ShortcutMenuBar
-    Debug.Print "  Help: " & f.HelpFile & ": Context: " & f.HelpContextId
+    Debug.Print F.Name & ": Menu: " & F.MenuBar & ": Toolbar: " & F.ToolBar & ": Shortcut: " & F.ShortcutMenuBar
+    Debug.Print "  Help: " & F.HelpFile & ": Context: " & F.HelpContextId
   
     DoCmd.Close acForm, doc.Name
     
@@ -306,6 +306,7 @@ Public Function AddErrorCheckingCode()
   Dim ProcedureName  As String, ProcType As String
   Dim Mdl As Module
   Dim StartLine As Long, LastLine As Long
+  Dim Q As String, Response As Integer
   
   SendKeys "^c", True
   
@@ -369,7 +370,7 @@ End Function
 Public Sub FixSccStatus()
 
   Dim dbs As Database, ctr As Container, doc As Document
-  Dim i As Integer
+  Dim i As Integer, Response As Integer
   
   Dim intCurrentType As Integer
   Dim strCurrentName As String
@@ -419,6 +420,7 @@ Private Sub FixSccObjectStatus(oType, oName, Quiet As Boolean)
 
   SysCmd acSysCmdSetStatus, "Checking: " & oName
   Dim dbs As Database, ctr As Container, doc As Document
+  Dim Response As Integer
   
   Set dbs = CurrentDb
   'Stop

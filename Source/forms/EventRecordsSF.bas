@@ -242,7 +242,7 @@ Private Sub Record_AfterUpdate()
   Dim res As String
   Dim Runit As String
   Dim nValu As String
-  Dim success As Boolean
+  Dim Success As Boolean
   
   res = Me![Record]
   
@@ -250,7 +250,7 @@ Private Sub Record_AfterUpdate()
     
     nValu = ""
     Runit = Me![Units]
-    Call Calculate_Results(res, nValu, Runit, success)
+    Call Calculate_Results(res, nValu, Runit, Success)
 
     Me![Record] = nValu
     Me![nResult] = res

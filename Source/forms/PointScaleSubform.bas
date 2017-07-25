@@ -170,7 +170,8 @@ Option Explicit
 
 Private Sub DeleteBut_Click()
 On Error GoTo Err_DeleteBut_Click
-
+  Dim Response As Integer
+  
   Response = MsgBox("Are you sure you want to delete this entry?", vbYesNo + vbInformation)
   If Response = vbYes Then
     DoCmd.SetWarnings False

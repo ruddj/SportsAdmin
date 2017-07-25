@@ -5,10 +5,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [5.1.4] - 2017-07-25
 ### Changed
 - Default location that Import Carnivals List views to Database directory. 
 - Changed Event Status from constant to enum
 - Changed web ordering of Competitor Results based on result within heat level
+- Changed Q and Response from globals to locally defined
+- Started enabling Option Explicit for some forms to check variable declarations
 
 ### Fixed
 - Add Results list was not updating after closing an event (Caused by code making forms resizable)
@@ -16,6 +20,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - Warning if Web export does not fill in data due to faulty template
+- Reset extra allocated Team points button with other reset options
 
 ## [5.1.3] - 2017-06-05
 ### Fixed
@@ -199,7 +204,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Ordered Competitors handled differently: Table held locally.  Does not delete old but overwrites them.
 
 
-[Unreleased]: https://github.com/ruddj/SportsAdmin/compare/v5.1.3...HEAD
+[Unreleased]: https://github.com/ruddj/SportsAdmin/compare/v5.1.4...HEAD
+[5.1.4]: https://github.com/ruddj/SportsAdmin/compare/v5.1.3...v5.1.4
 [5.1.3]: https://github.com/ruddj/SportsAdmin/compare/v5.1.2...v5.1.3
 [5.1.2]: https://github.com/ruddj/SportsAdmin/compare/v5.1.1...v5.1.2
 [5.1.1]: https://github.com/ruddj/SportsAdmin/compare/v5.1.0...v5.1.1

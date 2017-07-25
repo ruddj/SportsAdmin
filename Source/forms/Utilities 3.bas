@@ -18,11 +18,11 @@ Begin Form
     BorderStyle =3
     GridY =10
     Width =7961
-    ItemSuffix =56
-    Left =-22995
-    Top =5265
-    Right =-15240
-    Bottom =10365
+    ItemSuffix =57
+    Left =-20160
+    Top =7785
+    Right =-10890
+    Bottom =14730
     RecSrcDt = Begin
         0x6bd443042dc7e140
     End
@@ -151,6 +151,10 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     FontName ="Tahoma"
 
+                    LayoutCachedLeft =295
+                    LayoutCachedTop =3441
+                    LayoutCachedWidth =1765
+                    LayoutCachedHeight =3951
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
@@ -272,7 +276,7 @@ Begin Form
                     Visible = NotDefault
                     SpecialEffect =3
                     BackStyle =0
-                    OverlapFlags =215
+                    OverlapFlags =223
                     Left =165
                     Top =3315
                     Width =7796
@@ -326,6 +330,34 @@ Begin Form
                     Height =799
                     Name ="Box55"
                 End
+                Begin CommandButton
+                    Visible = NotDefault
+                    OverlapFlags =215
+                    TextFontFamily =34
+                    Left =295
+                    Top =4140
+                    Width =1470
+                    Height =510
+                    FontSize =8
+                    FontWeight =400
+                    TabIndex =7
+                    ForeColor =128
+                    Name ="ResetPoints"
+                    Caption ="Reset Points"
+                    OnClick ="[Event Procedure]"
+                    FontName ="Tahoma"
+                    ControlTipText ="Reset Extra Points from Teams"
+
+                    LayoutCachedLeft =295
+                    LayoutCachedTop =4140
+                    LayoutCachedWidth =1765
+                    LayoutCachedHeight =4650
+                    WebImagePaddingLeft =2
+                    WebImagePaddingTop =2
+                    WebImagePaddingRight =1
+                    WebImagePaddingBottom =1
+                    Overlaps =1
+                End
             End
         End
     End
@@ -377,6 +409,7 @@ End Sub
 
 Private Sub Reset_Click()
 On Error GoTo Reset_Click_Err
+    Dim r As Boolean
     
     ' Set the highest final level to active and the rest to future
     ' Set all compeitor points to 0
@@ -444,9 +477,9 @@ On Error GoTo Reset_Click_Err
     
         'q = "DELETE DISTINCTROW CompEvents.* FROM CompEvents"
         
-        'DoCmd SetWarnings False
-        'DoCmd RunSQL q
-        'DoCmd SetWarnings False
+        'DoCmd.SetWarnings False
+        'DoCmd.RunSQL q
+        'DoCmd.SetWarnings False
         DoCmd.RunMacro "ClosePleaseWait"
      End If
 
@@ -458,5 +491,31 @@ Reset_Click_Exit:
 Reset_Click_Err:
     MsgBox (Error$)
     GoTo Reset_Click_Exit
+
+End Sub
+
+Private Sub ResetPoints_Click()
+    On Error GoTo ResetPoints_Click_Err
+    Dim Qry As String, r As Boolean
+        
+    ' Empty linked table House Points-Extra
+    
+    r = MsgBox("Resetting all entered extra Team points.  Are you sure you wish to reset all events?", vbYesNo + vbQuestion, "Reset all events")
+    If r = vbYes Then
+        Qry = "DELETE FROM [House Points-Extra];"
+        'DoCmd.SetWarnings False
+        'DoCmd.RunSQL qry
+        'DoCmd.SetWarnings True
+        CurrentDb.Execute (Qry)
+    End If
+     
+     
+ResetPoints_Click_Exit:
+    Set db = Nothing
+    Exit Sub
+
+ResetPoints_Click_Err:
+    MsgBox (Error$)
+    GoTo ResetPoints_Click_Exit
 
 End Sub

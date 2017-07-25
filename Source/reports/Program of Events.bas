@@ -369,6 +369,8 @@ Private Sub GroupHeader1_Format(Cancel As Integer, FormatCount As Integer)
 End Sub
 
 Private Sub Report_NoData(Cancel As Integer)
+  Dim Response As Integer
+  
   Response = MsgBox("There is no data to display for the report: " & Me.Caption, vbInformation)
   Cancel = True
 

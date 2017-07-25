@@ -279,6 +279,7 @@ Private Sub Button_Click()
     On Error GoTo Err_Button_Click
     'Stop
     Dim RelDir As Variant, FullDir As Variant
+    Dim Response As Integer
 
     'Me.[Caption] = "Add Carnival"
 

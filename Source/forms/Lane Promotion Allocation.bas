@@ -291,9 +291,9 @@ Option Compare Database   'Use database order for string comparisons
 Private Sub Close_But_Click()
 On Error GoTo Err_Close_But_Click
 
-    x = DCount("[ET_Code]", "Lane Promotion Allocation", "[ET_Code]=" & Me![ET_Code])
+    X = DCount("[ET_Code]", "Lane Promotion Allocation", "[ET_Code]=" & Me![ET_Code])
     
-    If x < Forms![EventType]![Lane_Cnt] Then
+    If X < Forms![EventType]![Lane_Cnt] Then
         Response = MsgBox("The number of lanes you have set up is less than the Lane / Competitor count specified on the previous form.  Do you still wish to continue?", vbYesNo + vbQuestion, "Too few lanes?")
         If Response = vbYes Then
             DoCmd.Close
@@ -318,7 +318,7 @@ Private Sub Form_Load()
 
 End Sub
 
-Private Sub Lane_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Lane_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
 
     Q = "SELECT DISTINCTROW [Lane Promotion Allocation].ET_Code, [Lane Promotion Allocation].Place, [Lane Promotion Allocation].Lane "
     Q = Q & "FROM [Lane Promotion Allocation] "
@@ -330,7 +330,7 @@ Private Sub Lane_MouseDown(Button As Integer, Shift As Integer, x As Single, Y A
 
 End Sub
 
-Private Sub Place_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Place_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
 
     Q = "SELECT DISTINCTROW [Lane Promotion Allocation].ET_Code, [Lane Promotion Allocation].Place, [Lane Promotion Allocation].Lane "
     Q = Q & "FROM [Lane Promotion Allocation] "

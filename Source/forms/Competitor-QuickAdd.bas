@@ -421,7 +421,7 @@ On Error GoTo Form_Load_Err
   Const pAge = 3
   Const pSex = 4
   
-  Dim n As String, i As Integer, c As String
+  Dim n As String, i As Integer, c As String, Q As String
   Dim LastName As String, FirstName As String, CurString As String
   Dim Action As Byte
   
@@ -471,7 +471,7 @@ On Error GoTo Form_Load_Err
   End If
   
   Call SetCompetitorListRowSource(False)
-  Dim Q As String
+
   
   Q = "SELECT DISTINCTROW Competitors.PIN, UCase([Surname]) & "", "" & [Gname] AS Expr1, Competitors.Age, House.H_Code, Competitors.Sex "
   Q = Q & "FROM House INNER JOIN Competitors ON House.H_Code = Competitors.H_Code "

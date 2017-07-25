@@ -16,11 +16,11 @@ Begin Form
     BorderStyle =3
     GridY =10
     Width =9924
-    ItemSuffix =75
-    Left =1560
-    Top =1305
-    Right =11490
-    Bottom =7920
+    ItemSuffix =76
+    Left =195
+    Top =360
+    Right =10125
+    Bottom =6975
     RecSrcDt = Begin
         0xe130be95d6e5e140
     End
@@ -332,7 +332,7 @@ Begin Form
                                 Begin Rectangle
                                     SpecialEffect =3
                                     BackStyle =0
-                                    OverlapFlags =215
+                                    OverlapFlags =223
                                     Left =340
                                     Top =2333
                                     Width =7796
@@ -414,6 +414,28 @@ Begin Form
                                     Width =7796
                                     Height =1054
                                     Name ="Box72"
+                                End
+                                Begin CommandButton
+                                    OverlapFlags =215
+                                    Left =453
+                                    Top =3174
+                                    Width =1470
+                                    Height =510
+                                    TabIndex =4
+                                    Name ="ResetPoints"
+                                    Caption ="Reset Points"
+                                    OnClick ="[Event Procedure]"
+                                    FontName ="Tahoma"
+                                    ControlTipText ="Reset Extra Points from Teams"
+
+                                    LayoutCachedLeft =453
+                                    LayoutCachedTop =3174
+                                    LayoutCachedWidth =1923
+                                    LayoutCachedHeight =3684
+                                    WebImagePaddingLeft =2
+                                    WebImagePaddingTop =2
+                                    WebImagePaddingRight =1
+                                    WebImagePaddingBottom =1
                                 End
                             End
                         End
@@ -822,14 +844,14 @@ Private Sub Edit_Lane_Click()
 
 End Sub
 
-Private Sub Edit_Lane_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Edit_Lane_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
 
     Me![Lane Subtitution SF].visible = True
     Me![Final Level SF].visible = False
 
 End Sub
 
-Private Sub Final_Level_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Final_Level_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
 
     Me![Lane Subtitution SF].visible = False
     Me![Final Level SF].visible = True
@@ -1020,6 +1042,33 @@ Reset_Click_Err:
     MsgBox (Error$)
     GoTo Reset_Click_Exit
 
+
+End Sub
+Private Sub ResetPoints_Click()
+    On Error GoTo ResetPoints_Click_Err
+    Dim Qry As String, r As Integer
+    Dim db As DAO.Database
+ 
+    ' Empty linked table House Points-Extra
+    
+    r = MsgBox("Resetting all entered extra Team points.  Are you sure you wish to clear all extra points?", vbYesNo + vbQuestion, "Reset all extra points")
+    If r = vbYes Then
+        'qry = "DELETE DISTINCTROW [House Points-Extra].* FROM [House Points-Extra]"
+        Qry = "DELETE FROM [House Points-Extra]"
+
+        Set db = CurrentDb()
+        db.Execute Qry, dbFailOnError
+        db.Close
+    End If
+     
+     
+ResetPoints_Click_Exit:
+    Set db = Nothing
+    Exit Sub
+
+ResetPoints_Click_Err:
+    MsgBox (Error$)
+    GoTo ResetPoints_Click_Exit
 
 End Sub
 

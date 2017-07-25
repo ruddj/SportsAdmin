@@ -3,7 +3,7 @@ Option Explicit
 
 Public Sub LimitedLanes_NoData()
 
-  Dim msg As String
+  Dim msg As String, Response As Integer
   msg = "No competitors were found in the 'limited lane' events you specified." & vbLf & vbCr & vbLf & vbCr
   msg = msg & "CHECK:" & vbLf & vbCr
   msg = msg & "1. That you have selected (ticked) the correct events." & vbLf & vbCr
@@ -18,7 +18,7 @@ End Sub
 
 Public Sub UnLimitedLanes_NoData()
 
-  Dim msg As String
+  Dim msg As String, Response As Integer
   msg = "No competitors were found in the 'unlimited lane / field' events you specified." & vbLf & vbCr & vbLf & vbCr
   msg = msg & "CHECK:" & vbLf & vbCr
   msg = msg & "1. That you have selected (ticked) the correct events." & vbLf & vbCr
@@ -34,15 +34,15 @@ Function PrintOpenReports()
 
 On Error GoTo PrintOpen_Click_Err
 
-    Dim x As Integer, NumberReports As Variant
+    Dim X As Integer, NumberReports As Variant
 
     NumberReports = Reports.Count   ' Count number of reports.
 
-    For x = 0 To NumberReports - 1
+    For X = 0 To NumberReports - 1
         
-        DoCmd.OpenReport Reports(x).Name, A_NORMAL
+        DoCmd.OpenReport Reports(X).Name, A_NORMAL
 
-    Next x
+    Next X
 
 PrintOpen_Click_Exit:
     Exit Function

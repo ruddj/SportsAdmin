@@ -396,6 +396,7 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Compare Database   'Use database order for string comparisons
+Option Explicit
 
 Private Sub CloseBut_Click()
 On Error GoTo Err_CloseBut_Click
@@ -416,7 +417,9 @@ Private Sub CopyCompetitors_Click()
 On Error GoTo Err_CopyCompetitors_Click
 
   Dim db As Database, Frs As Recordset, Trs As Recordset, Retval As Variant
-  Dim FailedI As Integer, msg As Variant, success As Variant
+  Dim FailedI As Integer, msg As Variant, Success As Variant
+  Dim Fcriteria As String, X As Integer, SuccessI As Integer
+  Dim NewE_Code As Variant, Criteria As String
   
   If MsgBox("Are you sure you want to copy competitors from one event to another?", vbYesNo + vbDefaultButton2 + vbQuestion) = vbNo Then Exit Sub
   
@@ -459,14 +462,14 @@ On Error GoTo Err_CopyCompetitors_Click
   End If
   Frs.FindFirst Fcriteria
 
-  x = 0
+  X = 0
   FailedI = 0
   SuccessI = 0
 
   While Not Frs.NoMatch
 
-    Retval = SysCmd(SYSCMD_SETSTATUS, "Processing competitor " & x)
-    x = x + 1
+    Call SysCmd(SYSCMD_SETSTATUS, "Processing competitor " & X)
+    X = X + 1
 
     NewE_Code = DLookup("[E_Code]", "Events", "[ET_Code]=" & Me!ToET_Code & " AND [Sex]=""" & Frs![Sex] & """ AND [Age]=""" & Frs![Age] & """")
     If IsNull(NewE_Code) Then
@@ -503,9 +506,9 @@ On Error GoTo Err_CopyCompetitors_Click
   Trs.Close
   msg = "Copy complete.  " & SuccessI & " competitors copied."
   If FailedI > 0 Then
-    msg = msg & " However " & FailedI & " of " & x & " heats could not be processed because the TO heat did not exist."
+    msg = msg & " However " & FailedI & " of " & X & " heats could not be processed because the TO heat did not exist."
   End If
-  Response = MsgBox(msg, vbInformation)
+  Call MsgBox(msg, vbInformation)
 
 Exit_CopyCompetitors_Click:
     DoCmd.RunMacro "ClosePleaseWait"

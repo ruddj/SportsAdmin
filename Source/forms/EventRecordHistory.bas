@@ -369,7 +369,7 @@ Private Sub Add_Click()
 
     Dim Criteria As String, Rs As Recordset
     Dim nValu As String, res As String, nUnit As String
-    Dim success As Boolean
+    Dim Success As Boolean
     
     Set Rs = CurrentDb.OpenRecordset("Records", dbOpenDynaset)   ' Create dynaset.
     
@@ -390,7 +390,7 @@ Private Sub Add_Click()
         res = Me![Record]
         nValu = ""
         nUnit = Me![nUnit]
-        Call Calculate_Results(res, nValu, nUnit, success)
+        Call Calculate_Results(res, nValu, nUnit, Success)
         If Not (Better(Val(res), Me![E_Code])) Then
             Response = MsgBox("The event record you are about to add is not better than the existing record.  Do you want to continue?", vbYesNo + vbCritical, "Record Integrity Violation")
             If Response <> vbYes Then Continue = False
@@ -480,7 +480,7 @@ Private Sub Record_AfterUpdate()
   Dim res As String
   Dim Runit As String
   Dim nValu As String
-  Dim success As Boolean
+  Dim Success As Boolean
   
   res = Me![Record]
   
@@ -488,7 +488,7 @@ Private Sub Record_AfterUpdate()
     
     nValu = ""
     Runit = Forms![EventType]![Units]
-    Call Calculate_Results(res, nValu, Runit, success)
+    Call Calculate_Results(res, nValu, Runit, Success)
 
     Me![Record] = nValu
     Me![nRecord] = res

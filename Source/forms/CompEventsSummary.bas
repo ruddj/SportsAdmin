@@ -819,6 +819,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
 Option Compare Database   'Use database order for string comparisons
+Option Explicit
 
 ' Form Dimensions
 Dim lMinHeight As Long
@@ -945,7 +946,9 @@ End Sub
 
 Private Sub DeleteBut_Click()
 On Error GoTo Err_DeleteBut_Click
-
+    Dim NumCompEvent As Integer, Response As Integer
+    Dim WarningMessage As String, Q As String
+    
     ' Generate Warning - # Competitors, Records,
     
     NumCompEvent = DCount("[PIN]", "CompEvents", "[PIN] = " & [Summary])
@@ -970,12 +973,13 @@ Err_DeleteBut_Click:
 End Sub
 
 Private Sub Edit_Click()
-
-  If IsNull(Me!Summary) Then
-    Response = MsgBox("Select an event from the list you wish to manage then click the 'Manage the Selected Event' button.", vbOKOnly + vbInformation)
-  Else
-    Summary_DblClick (Cancel)
-  End If
+    Dim Cancel As Integer
+    
+    If IsNull(Me!Summary) Then
+        Call MsgBox("Select an event from the list you wish to manage then click the 'Manage the Selected Event' button.", vbOKOnly + vbInformation)
+    Else
+        Summary_DblClick (Cancel)
+    End If
 
 End Sub
 
@@ -1128,7 +1132,8 @@ Private Sub MixedCB_AfterUpdate()
 End Sub
 
 Private Sub NoAllocatedLane_AfterUpdate()
-
+    Dim Q As String
+    
     Q = "UPDATE [Misc-EnterCompetitorEvents] SET [ShowNoAllocatedLane]=" & Me!NoAllocatedLane
     
     DoCmd.SetWarnings False
@@ -1145,6 +1150,9 @@ On Error GoTo Err_PromoteBut_Click
     GlobalCancel = False
 
     Dim db As Database, Rs As Recordset, EventsPromoted As Variant
+    Dim Q As String, TotalEvents As Integer, X As Integer
+    Dim E_Code As Long, Ev As String
+    Dim Result As Boolean
     
     EventsPromoted = False
 
@@ -1164,10 +1172,10 @@ On Error GoTo Err_PromoteBut_Click
       'Response = MsgBox("Are you sure you want to promote all finals that have been completed?", 20)
       'If Response = vbYes Then
         
-        ReturnValue = SysCmd(acSysCmdInitMeter, "Promoting Competitors", TotalEvents)    ' Display message in status bar.
+        Call SysCmd(acSysCmdInitMeter, "Promoting Competitors", TotalEvents)    ' Display message in status bar.
             
         Rs.MoveFirst
-        x = 1
+        X = 1
         
         DoCmd.SetWarnings False
         DoCmd.RunSQL "UPDATE DISTINCTROW ShowDialog SET ShowDialog.ShowDialog = Yes"
@@ -1199,27 +1207,26 @@ On Error GoTo Err_PromoteBut_Click
                     If Result = True Then
                         EventsPromoted = True
                     End If
-                    ReturnValue = SysCmd(acSysCmdUpdateMeter, x)   ' Update meter.
-                    x = x + 1
+                    Call SysCmd(acSysCmdUpdateMeter, X)   ' Update meter.
+                    X = X + 1
                 End If
             End If
             Rs.MoveNext
     
         Wend
         
-        ReturnValue = SysCmd(acSysCmdRemoveMeter)
+        Call SysCmd(acSysCmdRemoveMeter)
         
         [Summary].Requery
         If EventsPromoted Then
-            Response = MsgBox("The events you have just promoted are now set as promoted.", vbInformation)
+            Call MsgBox("The events you have just promoted are now set as promoted.", vbInformation)
         Else
-            Response = MsgBox("No events were promoted.", vbInformation)
+            Call MsgBox("No events were promoted.", vbInformation)
         End If
 
     End If
 
     Rs.Close
-
 
 
 
@@ -1247,6 +1254,8 @@ End Sub
 
 Private Sub PromoteSelectedBut_Click()
     Dim E_Code As Long, Ev As String, F_Lev As Byte, E_Sex As String, E_Age As String
+    Dim E_Des As String
+    Dim Criteria As String, Success As Boolean
 
     Dim db As Database, Rs As Recordset
     Set db = DBEngine.Workspaces(0).Databases(0)
@@ -1291,8 +1300,8 @@ Private Sub PromoteSelectedBut_Click()
         
         If Not GlobalNo And Not GlobalCancel Then
 '            Stop
-            success = PromoteEventFinal(E_Code)
-            If success Then
+            Success = PromoteEventFinal(E_Code)
+            If Success Then
                 [Summary].Requery
                 MsgBox "The event you have just promoted is now flagged as promoted.  To view it select the 'Promoted' check box in the 'Show Finals' section of this form.", vbInformation
             End If
@@ -1353,7 +1362,8 @@ err_sdc:
 End Sub
 
 Private Sub Summary_KeyDown(KeyCode As Integer, Shift As Integer)
-
+    Dim Cancel As Integer
+    
     If KeyCode = vbKeyReturn Then
         Summary_DblClick (Cancel)
     End If

@@ -35,11 +35,11 @@ Global GlobalChange As Variant
 Global DontEditPromotionFinalsMessage As Variant
 Global PleaseWaitMsg As String
 Global ReturnVar As Variant
-Global Response As Variant
+'Global Response As Variant
 Global UserQuit As Boolean
 Global GlobalPlaceChange As Boolean
 
-Global Q As String
+'Global Q As String
 
 Global DisplayRecords As Integer
 
@@ -145,11 +145,11 @@ Better_Err:
 End Function
 
 Function CalcResult(Unit As String, Power As Integer, Valu As String, Delm As String, nValu As String, _
-                    i As Integer, AddZero As Integer, ByRef success As Boolean) As Double
+                    i As Integer, AddZero As Integer, ByRef Success As Boolean) As Double
 
     Dim Mult As Variant
     
-    success = True
+    Success = True
     
     Select Case Unit
 
@@ -182,7 +182,7 @@ Function CalcResult(Unit As String, Power As Integer, Valu As String, Delm As St
                 Case 2 ' Secs
                     If Val(Valu) > 60 Then
                       MsgBox "That seconds part cannot be greater than 60.", vbInformation
-                      success = False
+                      Success = False
                     End If
                     CalcResult = Val(Valu)
                     Delm = "."
@@ -305,6 +305,7 @@ Public Function Calculate_Competitor_Lane(E_Code, F_Lev, H_Code, Heat)
     '
 
     Dim Criteria As String, db As Database, Rs As Recordset, LRS As Recordset
+    Dim Response As Integer
     
     Set db = DBEngine.Workspaces(0).Databases(0)
     Set Rs = db.OpenRecordset("SELECT * FROM Heats ORDER BY [F_Lev] Desc", dbOpenDynaset)   ' Create Recordset.
@@ -357,7 +358,7 @@ CC_Err:
     
 End Function
 
-Sub Calculate_Results(res As String, nValu As String, Runit As String, ByRef success As Boolean)
+Sub Calculate_Results(res As String, nValu As String, Runit As String, ByRef Success As Boolean)
 
     ' ---wrong I think ---------------------------------------------------------------------------------------
     ' - Res = is the text value enterd by the user representing the result gained by the competitor
@@ -431,9 +432,9 @@ Sub Calculate_Results(res As String, nValu As String, Runit As String, ByRef suc
       If Not (IsNumeric(Char)) Or Char = "." Then
           Power = Power + 1
           nValu = res
-          nRes = nRes + CalcResult(cUnit, Power, Valu, Delm, nValu, i, AddZero, success)
+          nRes = nRes + CalcResult(cUnit, Power, Valu, Delm, nValu, i, AddZero, Success)
           Valu = ""
-          If Not success Then GoTo ResultFormatError
+          If Not Success Then GoTo ResultFormatError
           Mid$(res, i, 1) = Delm
 
       Else
@@ -444,8 +445,8 @@ Sub Calculate_Results(res As String, nValu As String, Runit As String, ByRef suc
 
     Power = Power + 1
     nValu = res
-    nRes = nRes + CalcResult(cUnit, Power, Valu, Delm, nValu, i, AddZero, success)
-    If Not success Then GoTo ResultFormatError
+    nRes = nRes + CalcResult(cUnit, Power, Valu, Delm, nValu, i, AddZero, Success)
+    If Not Success Then GoTo ResultFormatError
     
     i = 0
     FirstNN = 0
@@ -475,13 +476,13 @@ Sub Calculate_Results(res As String, nValu As String, Runit As String, ByRef suc
   End If
     
   res = str(nRes)
-  success = True
+  Success = True
   
 Calculate_Results_Exit:
   Exit Sub
   
 ResultFormatError:
-  success = False
+  Success = False
   GoTo Calculate_Results_Exit
 
 End Sub
@@ -520,7 +521,7 @@ End Function
 Function CheckFinalIntegrity(code, T)
 
       
-    Dim LargestFinal As Variant, f As Variant
+    Dim LargestFinal As Variant, F As Variant
     CheckFinalIntegrity = True
     If Not IsNull(code) Then
     
@@ -530,19 +531,19 @@ Function CheckFinalIntegrity(code, T)
             LargestFinal = DMax("[F_Lev]", "Final_Lev", "[ET_Code]=" & code)
         End If
         If Not IsNull(LargestFinal) Then
-          For f = 0 To LargestFinal
+          For F = 0 To LargestFinal
             If T = "HEATS" Then
-                If IsNull(DLookup("[F_Lev]", "Heats", "[E_Code]=" & code & " AND [F_Lev]=" & f)) Then
+                If IsNull(DLookup("[F_Lev]", "Heats", "[E_Code]=" & code & " AND [F_Lev]=" & F)) Then
                     CheckFinalIntegrity = False
                     GoTo CheckFinalIntegrityExit
                 End If
             Else
-                If IsNull(DLookup("[F_Lev]", "Final_Lev", "[ET_Code]=" & code & " AND [F_Lev]=" & f)) Then
+                If IsNull(DLookup("[F_Lev]", "Final_Lev", "[ET_Code]=" & code & " AND [F_Lev]=" & F)) Then
                     CheckFinalIntegrity = False
                     GoTo CheckFinalIntegrityExit
                 End If
             End If
-          Next f
+          Next F
         End If
     End If
 
@@ -800,7 +801,7 @@ Function DetermineAge_ImportCompetitors(DOB As Variant, CutDay As Integer, CutMo
 
 End Function
 
-Function DetermineDOB(Eage)
+Function DetermineDOB(Eage) As String
 
     Dim CurYear As Integer
     
@@ -1622,6 +1623,7 @@ On Error GoTo UpdateEventCompetitorAge_Err
   Dim CArs As Recordset       ' Competitor Age
   Dim EArs As Recordset       ' Event Age
   Dim CEArs As Recordset      ' CompetitorEventAge
+  Dim Q As String
   
   If SportsViewModule Then Exit Sub
   
@@ -1780,18 +1782,18 @@ End Sub
 
 Function Work_AutoEventNumber()
 
-    Dim Criteria As String, db As Database, Rs As Recordset, x As Variant
+    Dim Criteria As String, db As Database, Rs As Recordset, X As Variant
     
     Set db = DBEngine.Workspaces(0).Databases(0)
     Set Rs = db.OpenRecordset("Work-Heats in Some Order", dbOpenDynaset)   ' Create Recordset.
     
-    x = 1
+    X = 1
     Rs.MoveFirst
     While Not Rs.EOF
         Rs.Edit
-        Rs!E_Number = x
+        Rs!E_Number = X
         Rs.Update
-        x = x + 1
+        X = X + 1
         Rs.MoveNext
     Wend
 
@@ -1810,9 +1812,9 @@ Public Function ConvertNullToZero(V As Variant)
   
 End Function
 
-Public Sub QuitSportsAdministrator(f As Form)
+Public Sub QuitSportsAdministrator(F As Form)
 
-  DoCmd.Close acForm, f.Name
+  DoCmd.Close acForm, F.Name
   Application.Quit
   
 End Sub
@@ -1849,19 +1851,19 @@ End Function
 Private Function PopUpFormsVisible(Visibility As Boolean)
 On Error GoTo PopUpFormsVisible_Err
 
-  Dim f As Form
-  For Each f In Forms
-    If f.PopUp Then
+  Dim F As Form
+  For Each F In Forms
+    If F.PopUp Then
       If Visibility = False Then 'Hide All Popup forms
-        If f.visible Then
-          f.visible = False
-          f.Tag = "Hidden By PopUpFormsVisible"
+        If F.visible Then
+          F.visible = False
+          F.Tag = "Hidden By PopUpFormsVisible"
         End If
         
       Else ' SHow all popup forms
-        If f.Tag = "Hidden By PopUpFormsVisible" Then
-          f.visible = True
-          f.Tag = ""
+        If F.Tag = "Hidden By PopUpFormsVisible" Then
+          F.visible = True
+          F.Tag = ""
         End If
       End If
     End If

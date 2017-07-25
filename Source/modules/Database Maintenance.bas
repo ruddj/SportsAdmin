@@ -5,7 +5,8 @@ Option Explicit
 Public Sub BackupCurrentCarnival(SameAsCarnival As Boolean, BackupPath As Variant)
 On Error GoTo BackupCurrentCarnival_Err
 
-  Dim db As Database, T As TableDef, OrigFile As Variant, NewFile As Variant, Q As String
+  Dim db As Database, T As TableDef, OrigFile As Variant, NewFile As Variant
+  Dim Q As String, Response As Integer
   
   Call CloseAlwaysOpenRS
   

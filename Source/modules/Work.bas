@@ -6,7 +6,7 @@ Private Function FixCompEvents()
   Dim Ers As Recordset
   Dim Rs As Recordset
   Dim MoveCompetitor  As Boolean
-  Dim A As String
+  Dim A As String, Q As String
   
   Set Ers = CurrentDb.OpenRecordset("Events")
   Q = "SELECT CompEvents.PIN, Events.ET_Code, CompEvents.E_Code, CompEvents.Heat, CompEvents.F_Lev, Competitors.Age AS CompetitorAge, Events.Age AS EventAge, Events.Sex"

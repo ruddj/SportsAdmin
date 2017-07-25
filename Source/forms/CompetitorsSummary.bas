@@ -347,6 +347,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
 Option Compare Database   'Use database order for string comparisons
+Option Explicit
 
 Dim UpdateCompetitorsOrdered
 
@@ -427,7 +428,7 @@ Private Sub CopyBut_Click()
 On Error GoTo Err_CopyBut_Click
 
     If IsNull([Summary]) Then
-        Response = MsgBox("You must select an event to copy.", vbInformation)
+        Call MsgBox("You must select an event to copy.", vbInformation)
     Else
         'DoCmd OpenForm "EventTypeCopy", , , , , acDialog
         [Summary].Requery
@@ -450,7 +451,7 @@ Private Sub CreateTeamNames_Click()
     DoCmd.RunMacro "ShowPleaseWait"
 
     Dim Criteria As String, db As Database, Hrs As Recordset, Ars As Recordset
-    Dim NewTitle As String
+    Dim NewTitle As String, Q As String, DOB As String
 
     Call UpdateEventCompetitorAge
     
@@ -471,9 +472,9 @@ Private Sub CreateTeamNames_Click()
     
     If Hrs.BOF Then
       ' No Teams so do nothing
-      Response = MsgBox("No teams have been set up so no team competitors can be created.", vbInformation)
+      Call MsgBox("No teams have been set up so no team competitors can be created.", vbInformation)
     ElseIf Ars.BOF Then
-      Response = MsgBox("No event ages have been defined yet.  This is probably due to no competitors existing in the database.", vbInformation)
+      Call MsgBox("No event ages have been defined yet.  This is probably due to no competitors existing in the database.", vbInformation)
     Else
       Hrs.MoveFirst
     
@@ -535,7 +536,10 @@ End Sub
 
 Private Sub DeleteBut_Click()
 On Error GoTo Err_DeleteBut_Click
-
+    Dim NumCompEvent As Integer, Response As Integer
+    Dim WarningMessage As String
+    Dim Qry As String
+    
     ' Generate Warning - # Competitors, Records,
     
     NumCompEvent = DCount("[PIN]", "CompEvents", "[PIN] = " & [Summary])
@@ -546,10 +550,10 @@ On Error GoTo Err_DeleteBut_Click
         
     If Response = vbYes Then 'Yes
         DoCmd.SetWarnings False
-        Q = "DELETE DISTINCTROW Competitors.PIN FROM Competitors WHERE Competitors.PIN= " & [Summary]
-        DoCmd.RunSQL Q
+        Qry = "DELETE DISTINCTROW Competitors.PIN FROM Competitors WHERE Competitors.PIN= " & [Summary]
+        DoCmd.RunSQL Qry
 '        Q = "DELETE DISTINCTROW CompetitorsOrdered.PIN FROM CompetitorsOrdered WHERE CompetitorsOrdered.PIN= " & [Summary]
-'        DoCmd.RunSQL Q
+'        DoCmd.RunSQL Qry
         Call TransferToCompetitorOrdered
         DoCmd.SetWarnings True
         [Summary].Requery
@@ -611,6 +615,7 @@ End Sub
 Private Sub Roll_Back_Click()
 
 On Error GoTo Err_Roll_Back_Click
+    Dim Response As Integer
 
   Response = MsgBox("Are you sure you want to roll competitors back?", vbYesNo + vbInformation + vbDefaultButton2, "Roll Back Confirmation.")
   If Response = vbYes Then
@@ -641,7 +646,8 @@ End Sub
 Private Sub Roll_Over_Click()
 
 On Error GoTo Err_Roll_Over_Click
-
+    Dim Response As Integer
+    
   Response = MsgBox("Are you sure you want to roll competitors over?", vbYesNo + vbInformation + vbDefaultButton2, "Roll Over Confirmation.")
   If Response = vbYes Then
     Dim DocName As String
@@ -696,7 +702,7 @@ End Sub
 ' Search based on ideas presented here
 ' http://www.tek-tips.com/viewthread.cfm?qid=585567
 Private Sub Summary_KeyDown(KeyCode As Integer, Shift As Integer)
-    Dim lCurrentTime As Long
+    Dim lCurrentTime As Long, Cancel As Integer
     
     If KeyCode = vbKeyDelete Then
         DeleteBut_Click
@@ -753,6 +759,6 @@ Private Sub ScrollSummary()
 
 End Sub
 
-Private Sub Summary_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Summary_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     strSearch = ""
 End Sub
