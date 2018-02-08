@@ -18,8 +18,8 @@ Begin Form
     ItemSuffix =48
     Left =285
     Top =2970
-    Right =13935
-    Bottom =12045
+    Right =10650
+    Bottom =9765
     HelpContextId =120
     RecSrcDt = Begin
         0xbc1d08fbafdce140
@@ -632,7 +632,7 @@ Private Sub ImportData_Click()
         Response = MsgBox("The SURNAME for competitor " & Cname & " is not complete.  Please fix the entry and import the file again.  Do you wish to continue?", vbYesNo + vbCritical, "Import Competitors")
       ElseIf IsNull(ITRS!Sex) Then
         Response = MsgBox("The SEX FIELD for competitor " & Cname & " is not complete.  Please fix the entry and import the file again.  Do you wish to continue?", vbYesNo + vbCritical, "Import Competitors")
-      ElseIf IsNull(ITRS!Age) And IsNull(ITRS!DOB) Then
+      ElseIf Not IsNumeric(ITRS!Age) And Not IsDate(ITRS!DOB) Then
         Response = MsgBox("Both the AGE and DOB fields are empty for competitor " & Cname & ".  Please fix the entry and import the file again.  Do you wish to continue?", vbYesNo + vbCritical, "Import Competitors")
       ElseIf IsNull(ITRS!H_Code) Then
         Response = MsgBox("The TEAM NAME for competitor " & Cname & " is empty.  Please fix the entry and import the file again.  Do you wish to continue?", vbYesNo + vbCritical, "Import Competitors")
@@ -704,7 +704,7 @@ Private Sub ImportData_Click()
 
        ITRS.MoveNext
       
-       If Response = 7 Then
+       If Response = vbNo Then
          Continue = False
        End If
        
@@ -784,7 +784,9 @@ On Error GoTo Err_Import_Click
       Response = MsgBox(Mesg, vbYesNo + vbInformation)
     End If
     If Response = vbYes Then
+        
         DoCmd.TransferText acImportDelim, "Import Competitors", "Import Competitors", FullFileName
+        
         [I_Data].Requery ' Refresh Subform
     End If
   Else

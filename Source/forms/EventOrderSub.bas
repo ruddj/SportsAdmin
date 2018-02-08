@@ -13,10 +13,10 @@ Begin Form
     Width =6803
     DatasheetFontHeight =10
     ItemSuffix =1
-    Left =7125
-    Top =2175
-    Right =14250
-    Bottom =8325
+    Left =2925
+    Top =1230
+    Right =10065
+    Bottom =7365
     HelpContextId =250
     DatasheetGridlinesColor =12632256
     RecSrcDt = Begin
@@ -385,6 +385,10 @@ Dim T As Long, i As Integer, NewEnum As Variant
     T = DCount("[Heat]", "Heats")
 
     NewEnum = DMax("[E_Number]", "Heats") + 1
+    
+    If IsNull(NewEnum) Then
+        NewEnum = 1
+    End If
     
     If NewEnum > T Then
         For i = 1 To T

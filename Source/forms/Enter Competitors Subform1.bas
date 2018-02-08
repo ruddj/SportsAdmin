@@ -9,10 +9,10 @@ Begin Form
     GridY =20
     Width =8991
     ItemSuffix =71
-    Left =2460
-    Top =5280
-    Right =10110
-    Bottom =10425
+    Left =1650
+    Top =4125
+    Right =9300
+    Bottom =9270
     HelpContextId =110
     AfterDelConfirm ="[Event Procedure]"
     OrderBy ="EnterCompetitorsSF.Place"
@@ -304,6 +304,7 @@ Begin Form
                     BeforeUpdate ="[Event Procedure]"
                     OnDblClick ="[Event Procedure]"
                     FontName ="Tahoma"
+                    OnKeyDown ="[Event Procedure]"
                     OnNotInList ="[Event Procedure]"
                     ControlTipText ="Select the competitors that are to compete in this event."
                     HorizontalAnchor =2
@@ -597,6 +598,14 @@ Private Sub Fname_DblClick(Cancel As Integer)
         Me![PIN].Requery
     End If
 
+End Sub
+
+Private Sub Fname_KeyDown(KeyCode As Integer, Shift As Integer)
+    
+    If KeyCode = vbKeyDown Or KeyCode = vbKeyUp Then
+        Fname.Dropdown
+    End If
+    
 End Sub
 
 Private Sub Fname_NotInList(NewData As String, Response As Integer)

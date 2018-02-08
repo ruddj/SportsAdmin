@@ -5,18 +5,25 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Changed
+- In Results entry pressing up and down arrow in name selection will bring up dropdown list of names, making it easier to select name without using mouse.
+- When Importing students will verify Age is number and DoB is Date. Useful to remove header line.
+
+### Fixed
+- When choosing Sort by Place it would run the script to update Final Status generating an error if setting it to completed.
+- Maintain Event Order can now start from 1 when no events have been numbered
 
 ## [5.1.4] - 2017-07-25
 ### Changed
 - Default location that Import Carnivals List views to Database directory. 
 - Changed Event Status from constant to enum
 - Changed web ordering of Competitor Results based on result within heat level
-- Changed Q and Response from globals to locally defined
-- Started enabling Option Explicit for some forms to check variable declarations
 
 ### Fixed
 - Add Results list was not updating after closing an event (Caused by code making forms resizable)
 - Improved strong typing by declaring variables functions as types
+- Changed Q and Response from globals to locally defined
+- Started enabling Option Explicit for some forms to check variable declarations
 
 ### Added
 - Warning if Web export does not fill in data due to faulty template

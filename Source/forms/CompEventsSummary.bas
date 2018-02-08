@@ -17,10 +17,10 @@ Begin Form
     GridY =20
     Width =9949
     ItemSuffix =78
-    Left =-18420
-    Top =2790
-    Right =-8475
-    Bottom =9390
+    Left =-20115
+    Top =2880
+    Right =-10170
+    Bottom =9480
     HelpContextId =80
     RecSrcDt = Begin
         0x98553b042dc7e140
@@ -882,19 +882,6 @@ Err_AlertToRecord:
 
 End Sub
 
-Private Sub Button70_Click()
-On Error GoTo Err_Button70_Click
-
-    DoCmd.RunCommand acCmdSaveRecord
-
-Exit_Button70_Click:
-    Exit Sub
-
-Err_Button70_Click:
-    MsgBox Error$
-    Resume Exit_Button70_Click
-    
-End Sub
 
 Private Sub CloseBut_Click()
 On Error GoTo Err_CloseBut_Click
@@ -1021,11 +1008,6 @@ Private Sub FemaleCB_AfterUpdate()
 
 End Sub
 
-Private Sub Field63_AfterUpdate()
-
-    [Summary].Requery
-
-End Sub
 
 
 

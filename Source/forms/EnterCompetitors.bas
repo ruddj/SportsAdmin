@@ -9,6 +9,7 @@ Begin Form
     NavigationButtons = NotDefault
     DividingLines = NotDefault
     AllowAdditions = NotDefault
+    FilterOn = NotDefault
     DefaultView =0
     ScrollBars =0
     ViewsAllowed =1
@@ -16,11 +17,12 @@ Begin Form
     GridY =20
     Width =9694
     ItemSuffix =167
-    Left =-19245
-    Top =4650
-    Right =-9555
-    Bottom =11715
+    Left =8295
+    Top =2640
+    Right =17985
+    Bottom =9705
     HelpContextId =110
+    Filter ="[HE_Code] = 1541"
     RecSrcDt = Begin
         0xf2f778be6e4ae240
     End
@@ -126,6 +128,7 @@ Begin Form
                     Top =105
                     Width =3465
                     Height =256
+                    ColumnOrder =1
                     FontSize =10
                     FontWeight =700
                     TabIndex =1
@@ -162,6 +165,7 @@ Begin Form
                     Top =456
                     Width =300
                     Height =256
+                    ColumnOrder =2
                     FontSize =9
                     FontWeight =700
                     TabIndex =2
@@ -196,6 +200,7 @@ Begin Form
                     Top =456
                     Width =825
                     Height =256
+                    ColumnOrder =3
                     FontSize =9
                     FontWeight =700
                     TabIndex =3
@@ -232,6 +237,7 @@ Begin Form
                     Top =757
                     Width =555
                     Height =226
+                    ColumnOrder =4
                     TabIndex =4
                     BackColor =16777215
                     BorderColor =12632256
@@ -267,6 +273,7 @@ Begin Form
                     Top =456
                     Width =1245
                     Height =256
+                    ColumnOrder =5
                     TabIndex =5
                     Name ="RecordUnits"
                     ControlSource ="=nz([Record],\"-\") & \" \" & [units]"
@@ -301,6 +308,7 @@ Begin Form
                     Top =225
                     Width =525
                     Height =256
+                    ColumnOrder =6
                     TabIndex =6
                     BackColor =8421631
                     BorderColor =12632256
@@ -334,6 +342,7 @@ Begin Form
                     Top =750
                     Width =617
                     Height =256
+                    ColumnOrder =7
                     TabIndex =7
                     BackColor =-2147483633
                     Name ="NoHeats"
@@ -362,6 +371,7 @@ Begin Form
                     Top =225
                     Width =332
                     Height =256
+                    ColumnOrder =8
                     TabIndex =8
                     BackColor =-2147483633
                     Name ="NoFinals"
@@ -374,6 +384,7 @@ Begin Form
                     Left =5100
                     Width =471
                     Height =170
+                    ColumnOrder =9
                     TabIndex =9
                     BackColor =16744703
                     Name ="Field112"
@@ -390,6 +401,7 @@ Begin Form
                     Top =225
                     Width =1105
                     Height =256
+                    ColumnOrder =10
                     TabIndex =10
                     BackColor =8421504
                     BorderColor =12632256
@@ -406,6 +418,7 @@ Begin Form
                     OverlapFlags =93
                     Left =7727
                     Top =792
+                    ColumnOrder =11
                     TabIndex =11
                     BorderColor =12632256
                     Name ="HeatComplete"
@@ -455,6 +468,7 @@ Begin Form
                     OverlapFlags =85
                     Left =8841
                     Top =1190
+                    ColumnOrder =0
                     BorderColor =12632256
                     Name ="AllNames"
                     ControlSource ="AllNames"
@@ -487,6 +501,7 @@ Begin Form
                     Top =807
                     Width =1170
                     Height =256
+                    ColumnOrder =13
                     FontWeight =700
                     TabIndex =13
                     Name ="PtScale"
@@ -522,6 +537,7 @@ Begin Form
                     Top =801
                     Width =1200
                     Height =256
+                    ColumnOrder =12
                     FontWeight =700
                     TabIndex =12
                     Name ="Lane_Cnt"
@@ -554,6 +570,7 @@ Begin Form
                     Left =3456
                     Width =1005
                     Height =170
+                    ColumnOrder =14
                     TabIndex =14
                     BackColor =16744703
                     Name ="Record"
@@ -572,6 +589,7 @@ Begin Form
                     Left =4530
                     Width =495
                     Height =170
+                    ColumnOrder =15
                     TabIndex =15
                     BackColor =16744703
                     Name ="nRecord"
@@ -596,6 +614,7 @@ Begin Form
                     Left =850
                     Width =801
                     Height =165
+                    ColumnOrder =17
                     TabIndex =17
                     BackColor =16744703
                     Name ="E_Code"
@@ -623,6 +642,7 @@ Begin Form
                     Left =2607
                     Width =801
                     Height =165
+                    ColumnOrder =18
                     TabIndex =18
                     BackColor =16744703
                     Name ="Field95"
@@ -652,6 +672,7 @@ Begin Form
                     Left =8355
                     Top =313
                     Width =1065
+                    ColumnOrder =16
                     TabIndex =16
                     BackColor =16777215
                     BorderColor =12632256
@@ -685,6 +706,7 @@ Begin Form
                     OverlapFlags =85
                     Left =2616
                     Top =1202
+                    ColumnOrder =19
                     TabIndex =19
                     BorderColor =12632256
                     Name ="PlacesAcrossAllHeats"
@@ -711,6 +733,7 @@ Begin Form
                     OverlapFlags =85
                     Left =7731
                     Top =1202
+                    ColumnOrder =20
                     TabIndex =20
                     BorderColor =12632256
                     Name ="DontOverridePlaces"
@@ -738,6 +761,7 @@ Begin Form
                     OverlapFlags =85
                     Left =5331
                     Top =1202
+                    ColumnOrder =21
                     TabIndex =21
                     BorderColor =12632256
                     Name ="EffectsRecords"
@@ -1264,6 +1288,14 @@ End Sub
 Private Sub Form_Close()
     On Error GoTo Err_Form_Close
 
+    ' Checks if all heats have been been marked Complete, if so set Event level to Completed
+    Call SetCurrentFinal(Me![E_Code])
+    
+    If UpdateFinalStatus Then
+        Call SetAllFinalToSameValue([E_Code], [F_Lev], [FinalStatus])
+    End If
+    
+
     ' Update event list when closing.
     ' Need to catch error in case form not open.
     Forms!CompEventsSummary!Summary.Requery
@@ -1656,11 +1688,13 @@ End Sub
 
 Private Sub Form_AfterUpdate()
 
-    Call SetCurrentFinal(Me![E_Code])
+ '  Moved to Close action to prevent warning about data edited while form open.
+ 
+   ' Call SetCurrentFinal(Me![E_Code])
     
-    If UpdateFinalStatus Then
-        Call SetAllFinalToSameValue([E_Code], [F_Lev], [FinalStatus])
-    End If
+  '  If UpdateFinalStatus Then
+  '      Call SetAllFinalToSameValue([E_Code], [F_Lev], [FinalStatus])
+  '  End If
 
 
 End Sub
@@ -1779,6 +1813,9 @@ On Error GoTo Form_Load_Err
       Me.Help.visible = False
       
     End If
+    
+    ' Set Focus to Name Entry
+    Me.EC_Subform.SetFocus
 
 Form_Load_Exit:
   Exit Sub
