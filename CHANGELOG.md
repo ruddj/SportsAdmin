@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## [5.2.0 - 2018-02-09
+## [5.2.0] - 2018-02-09
 ### Added
 - Access x64 Support. Should now work on Access 2010+ x64. 
 
