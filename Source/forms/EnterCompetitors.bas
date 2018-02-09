@@ -9,7 +9,6 @@ Begin Form
     NavigationButtons = NotDefault
     DividingLines = NotDefault
     AllowAdditions = NotDefault
-    FilterOn = NotDefault
     DefaultView =0
     ScrollBars =0
     ViewsAllowed =1
@@ -22,7 +21,6 @@ Begin Form
     Right =17985
     Bottom =9705
     HelpContextId =110
-    Filter ="[HE_Code] = 1541"
     RecSrcDt = Begin
         0xf2f778be6e4ae240
     End

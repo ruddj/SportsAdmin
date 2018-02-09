@@ -2,36 +2,36 @@ Option Compare Database
 Option Explicit
 
 'Windows API declarations
-Private Declare Function GetActiveWindow Lib "user32" () As Long
+Private Declare PtrSafe Function GetActiveWindow Lib "user32" () As LongPtr
 
-Private Declare Function GetClassName Lib "user32" Alias "GetClassNameA" _
-    (ByVal hWnd As Long, ByVal lpClassName As String, _
-     ByVal nMaxCount As Long) As Long
+Private Declare PtrSafe Function GetClassName Lib "user32" Alias "GetClassNameA" _
+    (ByVal hWnd As LongPtr, ByVal lpClassName As String, _
+     ByVal nMaxCount As LongPtr) As Long
 
-Private Declare Function GetWindow Lib "user32" _
-    (ByVal hWnd As Long, ByVal wCmd As Long) As Long
+Private Declare PtrSafe Function GetWindow Lib "user32" _
+    (ByVal hWnd As LongPtr, ByVal wCmd As Long) As Long
 
-Private Declare Function OpenClipboard Lib "user32" _
-    (ByVal hWnd As Long) As Long
+Private Declare PtrSafe Function OpenClipboard Lib "user32" _
+    (ByVal hWnd As LongPtr) As Long
 
-Private Declare Function GetClipboardData Lib "user32" _
-    (ByVal wFormat As Long) As Long
+Private Declare PtrSafe Function GetClipboardData Lib "user32" _
+    (ByVal wFormat As Long) As LongPtr
 
-Private Declare Function CloseClipboard Lib "user32" () As Long
+Private Declare PtrSafe Function CloseClipboard Lib "user32" () As Long
 
-Private Declare Function GlobalAlloc Lib "kernel32" _
-    (ByVal wFlags As Long, ByVal dwBytes As Long) As Long
+Private Declare PtrSafe Function GlobalAlloc Lib "kernel32" _
+    (ByVal wFlags As Long, ByVal dwBytes As LongPtr) As LongPtr
 
-Private Declare Function GlobalLock Lib "kernel32" _
-    (ByVal hMem As Long) As Long
+Private Declare PtrSafe Function GlobalLock Lib "kernel32" _
+    (ByVal hMem As LongPtr) As LongPtr
 
-Private Declare Function lstrcpy Lib "kernel32" _
+Private Declare PtrSafe Function lstrcpy Lib "kernel32" _
     (ByVal lpString1 As Any, _
-     ByVal lpString2 As Any) As Long
+     ByVal lpString2 As Any) As LongPtr
 
-Private Declare Function GlobalUnlock Lib "kernel32" (ByVal hMem As Long) As Long
+Private Declare PtrSafe Function GlobalUnlock Lib "kernel32" (ByVal hMem As LongPtr) As Long
 
-Private Declare Function GlobalSize Lib "kernel32" (ByVal hMem As Long) As Long
+Private Declare PtrSafe Function GlobalSize Lib "kernel32" (ByVal hMem As LongPtr) As LongPtr
 
 'Constants used by Windows API calls
 Public Const CF_TEXT = 1
@@ -51,10 +51,10 @@ Function GetClipboardText() As String
 'Comments:      If only we had the VB function Clipboard.GetText() !
 '***************************************************************************
  
-Dim lngMemBlockHandle As Long
-Dim lngMemPointer As Long
+Dim lngMemBlockHandle As LongPtr
+Dim lngMemPointer As LongPtr
 Dim strText As String
-Dim lngRetVal As Long
+Dim lngRetVal As LongPtr
 
 
 ' Open the Clipboard

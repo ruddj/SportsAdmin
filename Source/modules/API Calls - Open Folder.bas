@@ -12,27 +12,28 @@ Option Explicit
 'Terry Kreft
 
 Private Type BROWSEINFO
-  hOwner As Long
-  pidlRoot As Long
+  hOwner As LongPtr
+  pidlRoot As LongPtr
   pszDisplayName As String
   lpszTitle As String
   ulFlags As Long
-  lpfn As Long
-  lParam As Long
+  lpfn As LongPtr
+  lParam As LongPtr
   iImage As Long
 End Type
 
-Private Declare Function SHGetPathFromIDList Lib "shell32.dll" Alias _
-            "SHGetPathFromIDListA" (ByVal pidl As Long, _
-            ByVal pszPath As String) As Long
+Private Declare PtrSafe Function SHGetPathFromIDList Lib "shell32.dll" Alias _
+            "SHGetPathFromIDListA" (ByVal pidl As LongPtr, _
+            ByVal pszPath As String) As Boolean
             
-Private Declare Function SHBrowseForFolder Lib "shell32.dll" Alias _
+Private Declare PtrSafe Function SHBrowseForFolder Lib "shell32.dll" Alias _
             "SHBrowseForFolderA" (lpBrowseInfo As BROWSEINFO) _
-            As Long
+            As LongPtr
             
 Private Const BIF_RETURNONLYFSDIRS = &H1
+
 Public Function BrowseFolder(szDialogTitle As String) As String
-  Dim X As Long, bi As BROWSEINFO, dwIList As Long
+  Dim X As Boolean, bi As BROWSEINFO, dwIList As LongPtr
   Dim szPath As String, wPos As Integer
   
     With bi

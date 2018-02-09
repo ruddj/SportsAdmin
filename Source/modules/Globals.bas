@@ -44,9 +44,7 @@ Global GlobalPlaceChange As Boolean
 Global DisplayRecords As Integer
 
 Global Const DEMO = False
-Global Const DEMOcompetitors = 75
-Global Const DEMOmessage = "This is a demonstration version of the Sports Administrator.  The demo version is limited to 75 competitors.  If you wish to purchase the full version of Sports Administrator, please read the About information from the Main Menu."
-Global Const DEMOmessage2 = "This is a demonstration version of the Sports Administrator.  The carnival you are attempting to make active has more than 75 competitors.  The demo version is limited to 75 competitors.  If you wish to purchase the full version of Sports Administrator, please read the About information from the Main Menu."
+
 Global Const aDebug = False
 Global EventAgeArray() As String
 

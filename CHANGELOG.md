@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [5.2.0 - 2018-02-09
+### Added
+- Access x64 Support. Should now work on Access 2010+ x64. 
+
 ### Changed
 - In Results entry pressing up and down arrow in name selection will bring up dropdown list of names, making it easier to select name without using mouse.
 - When Importing students will verify Age is number and DoB is Date. Useful to remove header line.
@@ -211,7 +216,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Ordered Competitors handled differently: Table held locally.  Does not delete old but overwrites them.
 
 
-[Unreleased]: https://github.com/ruddj/SportsAdmin/compare/v5.1.4...HEAD
+[Unreleased]: https://github.com/ruddj/SportsAdmin/compare/v5.2.0...HEAD
+[5.2.0]: https://github.com/ruddj/SportsAdmin/compare/v5.1.4...v5.2.0
 [5.1.4]: https://github.com/ruddj/SportsAdmin/compare/v5.1.3...v5.1.4
 [5.1.3]: https://github.com/ruddj/SportsAdmin/compare/v5.1.2...v5.1.3
 [5.1.2]: https://github.com/ruddj/SportsAdmin/compare/v5.1.1...v5.1.2

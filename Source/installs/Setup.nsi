@@ -12,7 +12,7 @@
 !include "..\NsisMultiUser\Demos\Common\Utils.nsh"
 
 !define PRODUCT_NAME "Sports Administrator" ; name of the application as displayed to the user
-!define VERSION "5.1.4" ; main version of the application (may be 0.1, alpha, beta, etc.)
+!define VERSION "5.2.0" ; main version of the application (may be 0.1, alpha, beta, etc.)
 !define PROGEXE "Sports.accdr" ; main application filename
 !define COMPANY_NAME "Sports Administrator" ; company, used for registry tree hierarchy
 !define PRODUCT_FOLDER "SportsAdmin"

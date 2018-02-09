@@ -2,8 +2,16 @@ Option Compare Database
 Option Explicit
 
 
-Global Const VersionNumber = "5.1.4"
-Global Const VersionDate = "(25/July/2017)"
+Global Const VersionNumber = "5.2.0"
+Global Const VersionDate = "(09/Feb/2018)"
+
+' Version 5.2.0 - 2018-02-09
+
+' Access x64 Support. Should now work on Access 2010+ x64.
+' In Results entry pressing up and down arrow in name selection will bring up dropdown list of names, making it easier to select name without using mouse.
+' When Importing students will verify Age is number and DoB is Date. Useful to remove header line.
+' When choosing Sort by Place it would run the script to update Final Status generating an error if setting it to completed.
+' Maintain Event Order can now start from 1 when no events have been numbered
 
 ' Version 5.1.4 - 2017-07-25
 '

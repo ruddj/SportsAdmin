@@ -15,8 +15,8 @@ Option Explicit
 
 Type tagOPENFILENAME
   lStructSize As Long
-  hwndOwner As Long
-  hInstance As Long
+  hwndOwner As LongPtr
+  hInstance As LongPtr
   strFilter As String
   strCustomFilter As String
   nMaxCustFilter As Long
@@ -32,14 +32,15 @@ Type tagOPENFILENAME
   nFileExtension As Integer
   strDefExt As String
   lCustData As Long
-  lpfnHook As Long
+  lpfnHook As LongPtr
   lpTemplateName As String
 End Type
-Declare Function aht_apiGetOpenFileName Lib "comdlg32.dll" _
+
+Declare PtrSafe Function aht_apiGetOpenFileName Lib "comdlg32.dll" _
     Alias "GetOpenFileNameA" (OFN As tagOPENFILENAME) As Boolean
-Declare Function aht_apiGetSaveFileName Lib "comdlg32.dll" _
+Declare PtrSafe Function aht_apiGetSaveFileName Lib "comdlg32.dll" _
     Alias "GetSaveFileNameA" (OFN As tagOPENFILENAME) As Boolean
-Declare Function CommDlgExtendedError Lib "comdlg32.dll" () As Long
+Declare PtrSafe Function CommDlgExtendedError Lib "comdlg32.dll" () As Long
 
 ' Definition of Flags
 ' https://msdn.microsoft.com/en-us/library/aa238842(v=vs.60).aspx
@@ -119,6 +120,7 @@ Dim varFileName As Variant
     End If
     GetOpenFile = varFileName
 End Function
+
 Function ahtCommonFileOpenSave( _
             Optional ByRef Flags As Variant, _
             Optional ByVal InitialDir As Variant, _
@@ -127,7 +129,6 @@ Function ahtCommonFileOpenSave( _
             Optional ByVal DefaultExt As Variant, _
             Optional ByVal FileName As Variant, _
             Optional ByVal DialogTitle As Variant, _
-            Optional ByVal hWnd As Variant, _
             Optional ByVal OpenFile As Variant) As Variant
 ' This is the entry point you'll use to call the common
 ' file open/save dialog. The parameters are listed
@@ -160,15 +161,14 @@ Dim fResult As Boolean
     If IsMissing(DefaultExt) Then DefaultExt = ""
     If IsMissing(FileName) Then FileName = ""
     If IsMissing(DialogTitle) Then DialogTitle = ""
-    If IsMissing(hWnd) Then hWnd = Application.hWndAccessApp
     If IsMissing(OpenFile) Then OpenFile = True
     ' Allocate string space for the returned strings.
     strFileName = Left(FileName & String(256, 0), 256)
     strFileTitle = String(256, 0)
     ' Set up the data structure before you call the function
     With OFN
-        .lStructSize = Len(OFN)
-        .hwndOwner = hWnd
+        .lStructSize = LenB(OFN)
+        .hwndOwner = Application.hWndAccessApp
         .strFilter = Filter
         .nFilterIndex = FilterIndex
         .strFile = strFileName
@@ -213,6 +213,7 @@ Dim fResult As Boolean
         ahtCommonFileOpenSave = vbNullString
     End If
 End Function
+
 Function ahtAddFilterItem(strFilter As String, _
     strDescription As String, Optional varItem As Variant) As String
 ' Tack a new chunk onto the file filter.
@@ -225,6 +226,7 @@ Function ahtAddFilterItem(strFilter As String, _
                 strDescription & vbNullChar & _
                 varItem & vbNullChar
 End Function
+
 Private Function TrimNull(ByVal strItem As String) As String
 Dim intPos As Integer
     intPos = InStr(strItem, vbNullChar)
