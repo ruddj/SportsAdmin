@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [5.2.1] - 2018-05-24
+### Changed
+- Reordered Ribbon to open on Entry Tab rather than Setup tab
+- Recreated Main Menu screen Graphs in newer MS Graph version
+
 ## [5.2.0] - 2018-02-09
 ### Added
 - Access x64 Support. Should now work on Access 2010+ x64. 
@@ -216,7 +221,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Ordered Competitors handled differently: Table held locally.  Does not delete old but overwrites them.
 
 
-[Unreleased]: https://github.com/ruddj/SportsAdmin/compare/v5.2.0...HEAD
+[Unreleased]: https://github.com/ruddj/SportsAdmin/compare/v5.2.1...HEAD
+[5.2.1]: https://github.com/ruddj/SportsAdmin/compare/v5.2.0...v5.2.1
 [5.2.0]: https://github.com/ruddj/SportsAdmin/compare/v5.1.4...v5.2.0
 [5.1.4]: https://github.com/ruddj/SportsAdmin/compare/v5.1.3...v5.1.4
 [5.1.3]: https://github.com/ruddj/SportsAdmin/compare/v5.1.2...v5.1.3

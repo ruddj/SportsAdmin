@@ -11,6 +11,18 @@
 
   <ribbon startFromScratch="false">
     <tabs>
+      <tab id="tab_results" insertBeforeMso = "TabHomeAccess"  label="Results" getVisible ="GetVisible">
+        <group id="grp_entry" autoScale="false" centerVertically="false" label="Entry" getVisible ="GetVisible" tag = "RibbonName:=;inMenu:=;CustomTagValue1:=;CustomTagValue2:=;CustomTagValue3:=;CustomPicture:=;CustomPicturePath:=" >
+          <button id="btn_entres" size="large" label="Enter Results" supertip="Enter Competitors Times and Distances" imageMso="GroupFields" tag="RibbonName:=;inMenu:=;CustomTagValue1:=;CustomTagValue2:=;CustomTagValue3:=;CustomPicture:=;CustomPicturePath:=" onAction="OnActionButton" getVisible="GetVisible" getEnabled="GetEnabled" />
+        </group>
+        <group id="grp_reports" autoScale="false" centerVertically="false" label="Reports" getVisible ="GetVisible" tag = "RibbonName:=;inMenu:=;CustomTagValue1:=;CustomTagValue2:=;CustomTagValue3:=;CustomPicture:=;CustomPicturePath:=" >
+          <button id="btn_repstat" size="large" label="Reports Statistics" screentip="Reports and Statistics" supertip="Print carnival statistics, and results" imageMso="ViewWorkflowReports" tag="RibbonName:=;inMenu:=;CustomTagValue1:=;CustomTagValue2:=;CustomTagValue3:=;CustomPicture:=;CustomPicturePath:=" onAction="OnActionButton" getVisible="GetVisible" getEnabled="GetEnabled" />
+          <button id="btn_repevntlist" size="large" label="Starting Lists" screentip="Generate Starting Lists" supertip="Create starting lists for finals" imageMso="DataConnectionsSubmitMore" tag="RibbonName:=;inMenu:=;CustomTagValue1:=;CustomTagValue2:=;CustomTagValue3:=;CustomPicture:=;CustomPicturePath:=" onAction="OnActionButton" getVisible="GetVisible" getEnabled="GetEnabled" />
+        </group>
+        <group id="grp_exit" autoScale="false" centerVertically="false" label="Exit" getVisible ="GetVisible" tag = "RibbonName:=;inMenu:=;CustomTagValue1:=;CustomTagValue2:=;CustomTagValue3:=;CustomPicture:=;CustomPicturePath:=" >
+          <button id="btn_20" size="large" label="Quit Sports Admin" screentip="Exit Application" supertip=" " imageMso="ChangeToDeclineInvitation" tag="RibbonName:=;inMenu:=;CustomTagValue1:=;CustomTagValue2:=;CustomTagValue3:=;CustomPicture:=;CustomPicturePath:=" onAction="OnActionButton" getVisible="GetVisible" getEnabled="GetEnabled" />
+        </group>
+      </tab>
       <tab id="tab_setup" insertBeforeMso = "TabHomeAccess"  label="Setup" getVisible ="GetVisible">
         <group id="grp_crn" autoScale="false" centerVertically="false" label="Carnivals" getVisible ="GetVisible" tag = "RibbonName:=;inMenu:=;CustomTagValue1:=;CustomTagValue2:=;CustomTagValue3:=;CustomPicture:=;CustomPicturePath:=" >
           <button id="btn_crnmtn" size="large" label="Maintain Carnivals" screentip="Choose a Carnival" supertip="Select which carnival to use and create new Carnivals" imageMso="ExportSavedExports" tag="RibbonName:=;inMenu:=;CustomTagValue1:=;CustomTagValue2:=;CustomTagValue3:=;CustomPicture:=;CustomPicturePath:=" onAction="OnActionButton" getVisible="GetVisible" getEnabled="GetEnabled" />
@@ -38,18 +50,6 @@
           <button id="btn_evntord" size="large" label="Event Order" screentip="Maintain Event Order" supertip="Assign Event Numbers to Races" imageMso="TabOrder" tag="RibbonName:=;inMenu:=;CustomTagValue1:=;CustomTagValue2:=;CustomTagValue3:=;CustomPicture:=;CustomPicturePath:=" onAction="OnActionButton" getVisible="GetVisible" getEnabled="GetEnabled" />
           <separator id="sep_14" getVisible="GetVisible" />
           <button id="btn_evntlist" size="large" label="Generate Event Lists" supertip="Create starting lane lists for heats and finals" imageMso="DataConnectionsSubmitMore" tag="RibbonName:=;inMenu:=;CustomTagValue1:=;CustomTagValue2:=;CustomTagValue3:=;CustomPicture:=;CustomPicturePath:=" onAction="OnActionButton" getVisible="GetVisible" getEnabled="GetEnabled" />
-        </group>
-      </tab>
-      <tab id="tab_results" insertBeforeMso = "TabHomeAccess"  label="Results" getVisible ="GetVisible">
-        <group id="grp_entry" autoScale="false" centerVertically="false" label="Entry" getVisible ="GetVisible" tag = "RibbonName:=;inMenu:=;CustomTagValue1:=;CustomTagValue2:=;CustomTagValue3:=;CustomPicture:=;CustomPicturePath:=" >
-          <button id="btn_entres" size="large" label="Enter Results" supertip="Enter Competitors Times and Distances" imageMso="GroupFields" tag="RibbonName:=;inMenu:=;CustomTagValue1:=;CustomTagValue2:=;CustomTagValue3:=;CustomPicture:=;CustomPicturePath:=" onAction="OnActionButton" getVisible="GetVisible" getEnabled="GetEnabled" />
-        </group>
-        <group id="grp_reports" autoScale="false" centerVertically="false" label="Reports" getVisible ="GetVisible" tag = "RibbonName:=;inMenu:=;CustomTagValue1:=;CustomTagValue2:=;CustomTagValue3:=;CustomPicture:=;CustomPicturePath:=" >
-          <button id="btn_repstat" size="large" label="Reports Statistics" screentip="Reports and Statistics" supertip="Print carnival statistics, and results" imageMso="ViewWorkflowReports" tag="RibbonName:=;inMenu:=;CustomTagValue1:=;CustomTagValue2:=;CustomTagValue3:=;CustomPicture:=;CustomPicturePath:=" onAction="OnActionButton" getVisible="GetVisible" getEnabled="GetEnabled" />
-          <button id="btn_repevntlist" size="large" label="Starting Lists" screentip="Generate Starting Lists" supertip="Create starting lists for finals" imageMso="DataConnectionsSubmitMore" tag="RibbonName:=;inMenu:=;CustomTagValue1:=;CustomTagValue2:=;CustomTagValue3:=;CustomPicture:=;CustomPicturePath:=" onAction="OnActionButton" getVisible="GetVisible" getEnabled="GetEnabled" />
-        </group>
-        <group id="grp_exit" autoScale="false" centerVertically="false" label="Exit" getVisible ="GetVisible" tag = "RibbonName:=;inMenu:=;CustomTagValue1:=;CustomTagValue2:=;CustomTagValue3:=;CustomPicture:=;CustomPicturePath:=" >
-          <button id="btn_20" size="large" label="Quit Sports Admin" screentip="Exit Application" supertip=" " imageMso="ChangeToDeclineInvitation" tag="RibbonName:=;inMenu:=;CustomTagValue1:=;CustomTagValue2:=;CustomTagValue3:=;CustomPicture:=;CustomPicturePath:=" onAction="OnActionButton" getVisible="GetVisible" getEnabled="GetEnabled" />
         </group>
       </tab>
     </tabs>

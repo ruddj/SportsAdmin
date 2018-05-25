@@ -2,8 +2,12 @@ Option Compare Database
 Option Explicit
 
 
-Global Const VersionNumber = "5.2.0"
-Global Const VersionDate = "(09/Feb/2018)"
+Global Const VersionNumber = "5.2.1"
+Global Const VersionDate = "(24/May/2018)"
+
+' Version 5.2.1 - 2018-05-24
+' Reordered Ribbon to open on Entry Tab rather than Setup tab
+' Recreated Main Menu screen Graphs in newer MS Graph version
 
 ' Version 5.2.0 - 2018-02-09
 
