@@ -1,4 +1,4 @@
-﻿Version =20
+﻿Version =21
 VersionRequired =20
 Begin Form
     PopUp = NotDefault
@@ -14,10 +14,10 @@ Begin Form
     GridY =20
     Width =9648
     ItemSuffix =19
-    Left =-18270
+    Left =5340
     Top =2730
-    Right =-8625
-    Bottom =9510
+    Right =19230
+    Bottom =11880
     HelpContextId =70
     RecSrcDt = Begin
         0xd614db87edc6e140
@@ -30,6 +30,7 @@ Begin Form
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000
     End
+    OnKeyDown ="[Event Procedure]"
     OnResize ="[Event Procedure]"
     OnLoad ="[Event Procedure]"
     FilterOnLoad =0
@@ -578,6 +579,14 @@ Private Sub Form_Close()
 
 End Sub
 
+Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
+    Select Case KeyCode
+        Case vbKeyEscape
+            DoEvents  'This fixes the known bug in Access 2007 that causes error 3059 to occur after ESC is pressed
+            DoCmd.Close ObjectType:=acForm, ObjectName:=Me.Name
+    End Select
+End Sub
+
 Private Sub Form_Load()
 
     UpdateCompetitorsOrdered = False
@@ -704,37 +713,47 @@ End Sub
 Private Sub Summary_KeyDown(KeyCode As Integer, Shift As Integer)
     Dim lCurrentTime As Long, Cancel As Integer
     
-    If KeyCode = vbKeyDelete Then
-        DeleteBut_Click
-        Exit Sub
-    ElseIf KeyCode = vbKeyReturn Then
-        Summary_DblClick (Cancel)
-        Exit Sub
-    ElseIf KeyCode = vbKeyEscape Then
-        strSearch = ""
-        KeyCode = 0
-    ElseIf KeyCode = vbKeyBack Then
-        strSearch = Left(strSearch, Len(strSearch) - 1)
-        KeyCode = 0
-    ElseIf KeyCode = 0 Or KeyCode = vbKeyTab Or _
-        KeyCode < vbKey0 Or KeyCode > vbKeyDivide Then
+    Select Case KeyCode
+        Case vbKeyDelete
+            DeleteBut_Click
+            Exit Sub
+           
+        Case vbKeyReturn
+            Summary_DblClick (Cancel)
+            Exit Sub
+           
+        Case vbKeyEscape
+            strSearch = ""
+            KeyCode = 0
+            
+            ' Using ESC to close form causes errors in form Close method call to update age.
+            DoEvents  'This fixes the known bug in Access 2007 that causes error 3059 to occur after ESC is pressed
+            DoCmd.Close ObjectType:=acForm, ObjectName:=Me.Name ' Close form
+            
+        Case vbKeyBack
+            strSearch = Left(strSearch, Len(strSearch) - 1)
+            KeyCode = 0
+            
+        Case 0, vbKeyTab, Is < vbKey0, Is > vbKeyDivide
+            ' Non text key pressed
+            Exit Sub
         
-        Exit Sub
-    Else
-        ' Check how old query is, if last letter older than x sec clear and start again
-        lCurrentTime = Timer
-        If (lCurrentTime - lLastSearch) <= 2 Then
-            strSearch = strSearch & Chr$(KeyCode)
-        Else
-            strSearch = Chr$(KeyCode)
-        End If
+        Case Else
+             ' Check how old query is, if last letter older than x sec clear and start again
+            lCurrentTime = Timer
+            If (lCurrentTime - lLastSearch) <= 2 Then
+                strSearch = strSearch & Chr$(KeyCode)
+            Else
+                strSearch = Chr$(KeyCode)
+            End If
+            
+            Call ScrollSummary
+            
+            lLastSearch = lCurrentTime
+            KeyCode = 0
         
-        Call ScrollSummary
-        
-        lLastSearch = lCurrentTime
-        KeyCode = 0
-    End If
-       
+    End Select
+           
 
 End Sub
 

@@ -2,8 +2,13 @@ Option Compare Database
 Option Explicit
 
 
-Global Const VersionNumber = "5.2.1"
-Global Const VersionDate = "(24/May/2018)"
+Global Const VersionNumber = "5.2.2"
+Global Const VersionDate = "(27/Feb/2019)"
+
+' Version 5.2.2 - 2019-02-27
+' Catch errors in MeetManager export where no time was entered for event
+' Correctly close Meet Manager export file handle if function crashes
+' Escape now closes Maintain Competitors Form
 
 ' Version 5.2.1 - 2018-05-24
 ' Reordered Ribbon to open on Entry Tab rather than Setup tab

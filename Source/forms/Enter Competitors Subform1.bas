@@ -1,4 +1,4 @@
-﻿Version =20
+﻿Version =21
 VersionRequired =20
 Begin Form
     NavigationButtons = NotDefault
@@ -9,10 +9,10 @@ Begin Form
     GridY =20
     Width =8991
     ItemSuffix =71
-    Left =1650
-    Top =4125
-    Right =9300
-    Bottom =9270
+    Left =3495
+    Top =3195
+    Right =11145
+    Bottom =8340
     HelpContextId =110
     AfterDelConfirm ="[Event Procedure]"
     OrderBy ="EnterCompetitorsSF.Place"

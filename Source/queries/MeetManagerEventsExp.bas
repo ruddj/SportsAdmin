@@ -1,15 +1,15 @@
 ﻿dbMemo "SQL" ="SELECT \"D\" AS RecType, Competitors.Surname, Competitors.Gname, Competitors.Sex"
-    ", Format(Competitors.DOB,\"mm/dd/yy\"), DLookUp(\"[Mcode]\",\"Miscellaneous\"), "
-    "DLookUp(\"[Mteam]\",\"Miscellaneous\"), EventType.Mevent, Replace(CompEvents.Res"
-    "ult , \"'\",\":\") AS Result, CompEvents.nResult, MeetManagerDivisions.Mdiv\015\012"
-    "FROM (EventType RIGHT JOIN (Competitors LEFT JOIN (Events RIGHT JOIN CompEvents "
-    "ON Events.E_Code = CompEvents.E_Code) ON Competitors.PIN = CompEvents.PIN) ON Ev"
-    "entType.ET_Code = Events.ET_Code) LEFT JOIN MeetManagerDivisions ON Events.Age ="
-    " MeetManagerDivisions.Eage\015\012WHERE (((Competitors.Gname)<>\"Team\") AND ((C"
-    "ompEvents.Place)<=DLookUp(\"[Mtop]\",\"Miscellaneous\")) AND ((CompEvents.F_Lev)"
-    "=0) AND ((EventType.Include)=True) AND ((EventType.Flag)=True) AND ((Events.Incl"
-    "ude)=True) AND ((EventType.Mevent)<>\"\"))\015\012ORDER BY Competitors.Age DESC "
-    ", Competitors.Surname, Competitors.Gname;\015\012"
+    ", Format(Competitors.DOB,\"mm/dd/yy\") AS Expr1, DLookUp(\"[Mcode]\",\"Miscellan"
+    "eous\") AS Expr2, DLookUp(\"[Mteam]\",\"Miscellaneous\") AS Expr3, EventType.Mev"
+    "ent, Replace(Nz(CompEvents.Result,\"\"),\"'\",\":\") AS Result, CompEvents.nResu"
+    "lt, MeetManagerDivisions.Mdiv\015\012FROM EventType RIGHT JOIN (Competitors LEFT"
+    " JOIN ((Events RIGHT JOIN CompEvents ON Events.E_Code = CompEvents.E_Code) LEFT "
+    "JOIN MeetManagerDivisions ON Events.Age = MeetManagerDivisions.Eage) ON Competit"
+    "ors.PIN = CompEvents.PIN) ON EventType.ET_Code = Events.ET_Code\015\012WHERE ((("
+    "EventType.Mevent)<>\"\") AND ((Competitors.Gname)<>\"Team\") AND ((CompEvents.Pl"
+    "ace)<=DLookUp(\"[Mtop]\",\"Miscellaneous\")) AND ((CompEvents.F_Lev)=0) AND ((Ev"
+    "entType.Include)=True) AND ((EventType.Flag)=True) AND ((Events.Include)=True))\015"
+    "\012ORDER BY Competitors.Age DESC , Competitors.Surname, Competitors.Gname;\015\012"
 dbMemo "Connect" =""
 dbBoolean "ReturnsRecords" ="-1"
 dbInteger "ODBCTimeout" ="0"
@@ -22,25 +22,7 @@ dbBoolean "OrderByOnLoad" ="-1"
 dbBoolean "TotalsRow" ="0"
 Begin
     Begin
-        dbText "Name" ="EntryRecord"
-        dbInteger "ColumnWidth" ="7035"
-        dbBoolean "ColumnHidden" ="0"
-        dbLong "AggregateType" ="-1"
-    End
-    Begin
-        dbText "Name" ="Expr1006"
-        dbLong "AggregateType" ="-1"
-    End
-    Begin
         dbText "Name" ="Competitors.Surname"
-        dbLong "AggregateType" ="-1"
-    End
-    Begin
-        dbText "Name" ="Expr1005"
-        dbLong "AggregateType" ="-1"
-    End
-    Begin
-        dbText "Name" ="Expr1000"
         dbLong "AggregateType" ="-1"
     End
     Begin
@@ -49,10 +31,6 @@ Begin
     End
     Begin
         dbText "Name" ="Competitors.Sex"
-        dbLong "AggregateType" ="-1"
-    End
-    Begin
-        dbText "Name" ="Expr1004"
         dbLong "AggregateType" ="-1"
     End
     Begin

@@ -19,10 +19,10 @@ Begin Form
     GridY =10
     Width =5546
     ItemSuffix =71
-    Left =-18000
-    Top =3795
-    Right =-12450
-    Bottom =8025
+    Left =-20400
+    Top =4320
+    Right =-11385
+    Bottom =8955
     HelpContextId =565
     RecSrcDt = Begin
         0x6bd443042dc7e140
@@ -597,6 +597,9 @@ Public Function ExportMeetManager(sQuery As String, sFilePath As String)
     Dim ff As Long
     Dim nIndex As Integer
     Dim sStr As String
+    Dim nErrors As Integer
+    
+    nErrors = 0
     
     Set Rs = CurrentDb.OpenRecordset(sQuery)
     
@@ -605,6 +608,13 @@ Public Function ExportMeetManager(sQuery As String, sFilePath As String)
     Open sFilePath For Output As #ff
      
     Do Until Rs.EOF
+        ' Check Data is OK
+        If IsError(Rs(0)) Then
+            ' Need to add some debugging to  let user know about error.
+            nErrors = nErrors + 1
+            Rs.MoveNext
+        End If
+        
         'Queries are single column
         sStr = Trim(Rs(0))
         
@@ -615,9 +625,13 @@ Public Function ExportMeetManager(sQuery As String, sFilePath As String)
         sStr = ""
         Rs.MoveNext
     Loop
-    Close #ff
+    
+    If nErrors > 0 Then
+        MsgBox ("While Export " & nErrors & " Errors were found")
+    End If
     
 ExportMeetManager_Exit:
+    Close #ff
     Rs.Close
     Set Rs = Nothing
     Exit Function

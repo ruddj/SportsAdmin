@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [5.2.2] - 2019-02-27
+### Fixed
+- Catch errors in MeetManager export where no time was entered for event
+- Correctly close Meet Manager export file handle if function crashes
+
+### Changed
+- Escape now closes Maintain Competitors Form
+
 ## [5.2.1] - 2018-05-24
 ### Changed
 - Reordered Ribbon to open on Entry Tab rather than Setup tab
@@ -221,7 +229,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Ordered Competitors handled differently: Table held locally.  Does not delete old but overwrites them.
 
 
-[Unreleased]: https://github.com/ruddj/SportsAdmin/compare/v5.2.1...HEAD
+[Unreleased]: https://github.com/ruddj/SportsAdmin/compare/v5.2.2...HEAD
+[5.2.2]: https://github.com/ruddj/SportsAdmin/compare/v5.2.1...v5.2.2
 [5.2.1]: https://github.com/ruddj/SportsAdmin/compare/v5.2.0...v5.2.1
 [5.2.0]: https://github.com/ruddj/SportsAdmin/compare/v5.1.4...v5.2.0
 [5.1.4]: https://github.com/ruddj/SportsAdmin/compare/v5.1.3...v5.1.4

@@ -1,4 +1,4 @@
-﻿Version =20
+﻿Version =21
 VersionRequired =20
 Begin Form
     AllowFilters = NotDefault
@@ -403,7 +403,8 @@ Begin Form
                                     Height =885
                                     Name ="Label71"
                                     Caption ="This will clear all competitors from all existing events and recreate the heats "
-                                        "and finals as they are setup in the 'Quickly Setup Heats' form."
+                                        "and finals as they are setup in the 'Quickly Setup Heats' form.\015\012This will"
+                                        " also clear all event numbers."
                                 End
                                 Begin Rectangle
                                     SpecialEffect =3
