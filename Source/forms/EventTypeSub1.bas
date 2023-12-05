@@ -1,4 +1,4 @@
-﻿Version =20
+﻿Version =21
 VersionRequired =20
 Begin Form
     NavigationButtons = NotDefault
@@ -9,10 +9,10 @@ Begin Form
     GridY =20
     Width =5782
     ItemSuffix =50
-    Left =1020
-    Top =4695
-    Right =4155
-    Bottom =8655
+    Left =1215
+    Top =4560
+    Right =4350
+    Bottom =8520
     OrderBy ="EventTypeSub1.Age"
     RecSrcDt = Begin
         0xa54ca5b911cde140
@@ -131,7 +131,7 @@ Begin Form
                     ControlSource ="Age"
                     AfterUpdate ="[Event Procedure]"
                     FontName ="Tahoma"
-                    ControlTipText ="Age Division (eg. 13_U, 14, 15, 16, 17_U, OPEN)"
+                    ControlTipText ="Age Division (eg. 13_U, 14, 15, 16, 15-16, 17_U, OPEN)"
 
                 End
                 Begin CheckBox

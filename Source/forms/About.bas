@@ -1,4 +1,4 @@
-﻿Version =20
+﻿Version =21
 VersionRequired =20
 Begin Form
     PopUp = NotDefault
@@ -107,7 +107,7 @@ Begin Form
                         0xffffffff52006f006f007400200045006e007400720079000000000000000000 ,
                         0x0000000000000000000000000000000000000000000000000000000000000000 ,
                         0x0000000016000500ffffffffffffffff020000000a00030000000000c0000000 ,
-                        0x00000046000000000000000000000000d0fb8f490305d3010300000000010000 ,
+                        0x0000004600000000000000000000000000cc61731027da010300000000010000 ,
                         0x0000000001004f006c0065000000000000000000000000000000000000000000 ,
                         0x0000000000000000000000000000000000000000000000000000000000000000 ,
                         0x000000000a000201ffffffffffffffffffffffff000000000000000000000000 ,
@@ -1094,7 +1094,7 @@ Begin Form
                     Height =2475
                     FontSize =9
                     Name ="Text2"
-                    Caption ="Copyright (c) 2017 Andrew Rogers, James Rudd\012\015\012\015\012Permission is he"
+                    Caption ="Copyright (c) 2023 Andrew Rogers, James Rudd\012\015\012\015\012Permission is he"
                         "reby granted, free of charge, to any person obtaining a copy\015\012of this soft"
                         "ware and associated documentation files (the \"Software\"), to deal\015\012in th"
                         "e Software without restriction, including without limitation the rights\015\012t"

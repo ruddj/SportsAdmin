@@ -1,6 +1,7 @@
 # <img src="https://github.com/ruddj/SportsAdmin/raw/sa-pages/images/sports.png?raw=true" height=132 alt="Sports Administrator" />
 
-[![Download Latest Release][download-badge]][DOWNLOAD] [![Current Version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE] 
+[![Download Latest Release][download-badge]][DOWNLOAD] [![Current Version][version-badge]][CHANGELOG] 
+[![license][license-badge]][LICENSE] [![Size Project][size-badge]][DOWNLOAD] 
 
 Sports Carnival Management Software 
 
@@ -78,7 +79,8 @@ For end users you can change the Sports.accdb file extension to .accdr to load i
 [CHANGELOG]: ./CHANGELOG.md
 [LICENSE]: ./License.txt
 [DOWNLOAD]: https://github.com/ruddj/SportsAdmin/releases/latest
-[license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
 
+[license-badge]: https://img.shields.io/github/license/ruddj/SportsAdmin?color=blue
 [download-badge]: https://img.shields.io/badge/download-latest-blue.svg
-[version-badge]: https://img.shields.io/badge/version-5.2.2-blue.svg
+[version-badge]: https://img.shields.io/github/v/release/ruddj/SportsAdmin?color=blue
+[size-badge]: https://img.shields.io/github/languages/code-size/ruddj/SportsAdmin

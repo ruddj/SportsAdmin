@@ -67,18 +67,23 @@ dbBoolean "TotalsRow" ="0"
 Begin
     Begin
         dbText "Name" ="join"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="Competitors.H_Code"
+        dbLong "AggregateType" ="-1"
     End
 End
 Begin
     State =0
     Left =106
     Top =10
-    Right =1002
-    Bottom =315
+    Right =1180
+    Bottom =477
     Left =-1
     Top =-1
-    Right =878
-    Bottom =127
+    Right =1050
+    Bottom =311
     Left =0
     Top =0
     ColumnsShown =539
@@ -86,34 +91,34 @@ Begin
         Left =38
         Top =6
         Right =134
-        Bottom =113
+        Bottom =312
         Top =0
         Name ="Heats"
         Name =""
     End
     Begin
-        Left =172
-        Top =6
-        Right =268
-        Bottom =113
+        Left =396
+        Top =12
+        Right =492
+        Bottom =285
         Top =0
         Name ="Competitors"
         Name =""
     End
     Begin
-        Left =306
-        Top =6
-        Right =402
-        Bottom =113
+        Left =236
+        Top =7
+        Right =332
+        Bottom =286
         Top =0
         Name ="CompEvents"
         Name =""
     End
     Begin
-        Left =440
-        Top =6
-        Right =536
-        Bottom =113
+        Left =574
+        Top =0
+        Right =670
+        Bottom =258
         Top =0
         Name ="House"
         Name =""

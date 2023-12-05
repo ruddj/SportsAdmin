@@ -90,6 +90,15 @@ On Error GoTo AgeFilter_Err
 
     ElseIf HeatAge = "OPEN" Then
         AgeFilter = " Like """ & "*"""
+        
+    ' Logic to Support Ranges
+    ElseIf InStr(2, HeatAge, "-") > 0 Then
+      Dim iRange, iLow, iHigh As Integer
+      iRange = InStr(2, HeatAge, "-")
+      iLow = Int(Left(HeatAge, iRange - 1))
+      iHigh = Int(Right(HeatAge, Len(HeatAge) - iRange))
+      
+      AgeFilter = "Between " & iLow & " And " & iHigh
 
     Else
         AgeFilter = "=" & Val(HeatAge)
@@ -1689,6 +1698,16 @@ On Error GoTo CompAgeSatisfiesEventAge_Err
   
   ElseIf Eage = "OPEN" Then
     CompAgeSatisfiesEventAge = True
+    
+  ' Logic to Support Ranges
+  ElseIf InStr(2, Eage, "-") > 0 Then
+    Dim iRange, iLow, iHigh As Integer
+    iRange = InStr(2, Eage, "-")
+    iLow = Int(Left(Eage, iRange - 1))
+    iHigh = Int(Right(Eage, Len(Eage) - iRange))
+    
+    If Cage >= iLow And Cage <= iHigh Then CompAgeSatisfiesEventAge = True
+     
   Else
     If Cage = Val(Eage) Then CompAgeSatisfiesEventAge = True
   End If

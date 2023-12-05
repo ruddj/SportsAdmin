@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [5.3.0] - 2023-12-05
+### Added
+- Events can now have a range of ages, use - to separate, e.g. 14-16
+
 ## [5.2.2] - 2019-02-27
 ### Fixed
 - Catch errors in MeetManager export where no time was entered for event
@@ -229,7 +233,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Ordered Competitors handled differently: Table held locally.  Does not delete old but overwrites them.
 
 
-[Unreleased]: https://github.com/ruddj/SportsAdmin/compare/v5.2.2...HEAD
+[Unreleased]: https://github.com/ruddj/SportsAdmin/compare/v5.3.0...HEAD
+[5.3.0]: https://github.com/ruddj/SportsAdmin/compare/v5.2.2...v5.3.0
 [5.2.2]: https://github.com/ruddj/SportsAdmin/compare/v5.2.1...v5.2.2
 [5.2.1]: https://github.com/ruddj/SportsAdmin/compare/v5.2.0...v5.2.1
 [5.2.0]: https://github.com/ruddj/SportsAdmin/compare/v5.1.4...v5.2.0

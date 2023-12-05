@@ -2,8 +2,11 @@ Option Compare Database
 Option Explicit
 
 
-Global Const VersionNumber = "5.2.2"
-Global Const VersionDate = "(27/Feb/2019)"
+Global Const VersionNumber = "5.3.0"
+Global Const VersionDate = "(5/Dec/2023)"
+
+' Version 5.3.0 - 2019-02-27
+' Added support for Age Ranges in events
 
 ' Version 5.2.2 - 2019-02-27
 ' Catch errors in MeetManager export where no time was entered for event
