@@ -1,4 +1,4 @@
-﻿Version =20
+﻿Version =21
 VersionRequired =20
 Begin Form
     RecordSelectors = NotDefault
@@ -18,10 +18,10 @@ Begin Form
     GridY =20
     Width =8674
     ItemSuffix =115
-    Left =600
-    Top =90
-    Right =11145
-    Bottom =8280
+    Left =8265
+    Top =2775
+    Right =19215
+    Bottom =11475
     HelpContextId =60
     Filter ="[ET_Code] = 24"
     RecSrcDt = Begin
@@ -536,7 +536,7 @@ Begin Form
                                     Width =3415
                                     Height =265
                                     Name ="Label100"
-                                    Caption ="13_U, 14, 15, 16, 17_O, OPEN"
+                                    Caption ="13_U, 14, 15, 16, 17_O, OPEN, 14-16"
                                     FontName ="Tahoma"
                                 End
                                 Begin Label
@@ -563,18 +563,22 @@ Begin Form
                                     Left =4200
                                     Top =3645
                                     Width =4020
-                                    Height =600
+                                    Height =810
                                     Name ="Label102"
                                     Caption ="_U      : to represent 'and under'\015\012_O      : to represent 'and over'\015\012"
-                                        "OPEN  : for ALL competitors"
+                                        "OPEN  : for ALL competitors\015\012<Age>-<Age> : for a range of ages, e.g 14-16"
                                     FontName ="Tahoma"
+                                    LayoutCachedLeft =4200
+                                    LayoutCachedTop =3645
+                                    LayoutCachedWidth =8220
+                                    LayoutCachedHeight =4455
                                 End
                                 Begin Label
                                     BackStyle =0
                                     OverlapFlags =247
                                     TextAlign =1
-                                    Left =4050
-                                    Top =4365
+                                    Left =4053
+                                    Top =4478
                                     Width =4185
                                     Height =1320
                                     FontWeight =400
@@ -584,6 +588,10 @@ Begin Form
                                         "or by clicking once in the division and pushing the 'Edit Record for Selected Di"
                                         "vision' button.\015\012"
                                     FontName ="Tahoma"
+                                    LayoutCachedLeft =4053
+                                    LayoutCachedTop =4478
+                                    LayoutCachedWidth =8238
+                                    LayoutCachedHeight =5798
                                 End
                             End
                         End

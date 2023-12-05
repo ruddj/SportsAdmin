@@ -2,8 +2,11 @@ Option Compare Database
 Option Explicit
 
 
-Global Const VersionNumber = "5.3.0"
+Global Const VersionNumber = "5.3.1"
 Global Const VersionDate = "(5/Dec/2023)"
+
+' Version 5.3.1 - 2019-02-27
+' Missing instructions on using Age Range in New Event Wizard
 
 ' Version 5.3.0 - 2019-02-27
 ' Added support for Age Ranges in events
