@@ -51,7 +51,7 @@ Global EventAgeArray() As String
 Global AlwaysOpenRS As Recordset
 
 Type HouseComp
-    H As String
+    h As String
     c As String
     Hid As Long
 End Type
@@ -114,14 +114,13 @@ AgeFilter_Err:
 
 End Function
 
-Function Better(Res1 As Single, Ecode As Long) As Boolean
+' Used to check if a time is better than the record for the event
+Function Better(Res1 As Double, Ecode As Long) As Boolean
 
-On Error GoTo Better_Err
+    On Error GoTo Better_Err
     Dim U As String, Order As String, ET_Code As Long
 
-    ' Determines whether a given result is better than
-    
-    
+    ' Determines whether a given result is better than the record
     If Not IsNull(DLookup("[nResult]", "Records", "[E_Code]=" & Ecode)) Then
         ET_Code = DLookup("[ET_Code]", "Events", "[E_Code]=" & Ecode)
         U = DLookup("[Units]", "EventType", "[ET_Code]=" & ET_Code)
@@ -136,7 +135,6 @@ On Error GoTo Better_Err
             If Res1 >= DMax("[nResult]", "Records", "[E_Code]=" & Ecode) Then
                 Better = True
             End If
-    
         End If
     Else
         Better = True
@@ -151,148 +149,152 @@ Better_Err:
   
 End Function
 
-Function CalcResult(Unit As String, Power As Integer, Valu As String, Delm As String, nValu As String, _
-                    i As Integer, AddZero As Integer, ByRef Success As Boolean) As Double
 
-    Dim Mult As Variant
-    
-    Success = True
-    
-    Select Case Unit
 
-        Case "SECS" ' Seconds
-            
-            Select Case Power
-
-                Case 1
-                    CalcResult = Val(Valu)
-                    Delm = "."
-                    nValu = Left$(nValu, i - 1) & ".0"
-                Case 2
-                    CalcResult = Val("." & Valu)
-                    Delm = "?"
-
-                Case Else
-                    MsgBox "The value you entered is not recognised.  Please check that you have entered the value correctly.", 32
-                    Delm = "?"
-                    
-            End Select 'Power
-
-        Case "MINS" ' Minutes
-
-            Select Case Power
-
-                Case 1 ' Mins
-                    CalcResult = Val(Valu) * 60
-                    Delm = "'"
-                    nValu = Left$(nValu, i - 1) & "'0.0"
-                Case 2 ' Secs
-                    If Val(Valu) > 60 Then
-                      MsgBox "That seconds part cannot be greater than 60.", vbInformation
-                      Success = False
-                    End If
-                    CalcResult = Val(Valu)
-                    Delm = "."
-                    nValu = Left$(nValu, i - 1) & ".0"
-                Case 3  ' Hsecs
-                    CalcResult = Val("." & Valu)
-                    Delm = "?"
-                    
-                Case Else
-                    MsgBox "The value you entered is not recognised.  Please check that you have entered the value correctly.", 32
-                    Delm = "?"
-
-            End Select 'Power
-
-        Case "HRS" 'Hours
-
-            Select Case Power
-
-                Case 1
-                    CalcResult = Val(Valu) * 60 * 60
-                    Delm = """"
-                    nValu = Left$(nValu, i - 1) & """00'00.00"
-                Case 2
-                    CalcResult = Val(Valu) * 60
-                    Delm = "'"
-                    nValu = Left$(nValu, i - 1) & "'00.00"
-                
-                Case 3
-                    CalcResult = Val(Valu)
-                    Delm = "."
-                    nValu = Left$(nValu, i - 1) & ".00"
-                Case 4
-                    CalcResult = Val("." & Valu)
-                    Delm = "?"
-                    'AddZero = 2 - Len(Valu)
-                    
-                Case Else
-                    MsgBox "The value you entered is not recognised.  Please check that you have entered the value correctly.", 32
-                    Delm = "?"
-
-            End Select 'Power
-
-        Case "M" 'Meters
-
-            Select Case Power
-
-                Case 1
-                    CalcResult = Val(Valu)
-                    Delm = "."
-                    nValu = Left$(nValu, i - 1) & ".0"
-                Case 2
-                    CalcResult = Val("." & Valu)
-                    Delm = "?"
-                    
-                Case Else
-                    MsgBox "The value you entered is not recognised.  Please check that you have entered the value correctly.", 32
-                    Delm = "?"
-
-            End Select 'Power
-
-        Case "KM" 'Meters
-
-            Select Case Power
-
-                Case 1
-                    CalcResult = Val(Valu) * 1000
-                    Delm = "."
-                    nValu = Left$(nValu, i - 1) & ".0"
-                Case 2
-                    Mult = 10 ^ (3 - Len(Trim(Valu)))
-                    CalcResult = Val(Valu) * Mult
-                    Delm = "?"
-                    
-                Case Else
-                    MsgBox "The value you entered is not recognised.  Please check that you have entered the value correctly.", 32
-                    Delm = "?"
-
-            End Select 'Power
-
-        Case "PTS" 'Points
-
-            Select Case Power
-
-                Case 1
-                    CalcResult = Val(Valu)
-                    Delm = "."
-                    nValu = Left$(nValu, i - 1) & ".0"
-                Case 2
-                    CalcResult = Val("." & Valu)
-                    Delm = "?"
-
-                Case Else
-                    MsgBox "The value you entered is not recognised.  Please check that you have entered the value correctly.", 32
-                    Delm = "?"
-
-            End Select 'Power
-
-        Case Else
-            MsgBox ("The unit is not recognised.  Reselect the unit in the Event Details form for the event that you are currently working on.")
-
-    End Select ' Unit
-
-End Function
+'
+'
+'Function CalcResult(Unit As String, Power As Integer, Valu As String, Delm As String, nValu As String, _
+'                    i As Integer, AddZero As Integer, ByRef Success As Boolean) As Double
+'
+'    Dim Mult As Variant
+'
+'    Success = True
+'
+'    Select Case Unit
+'
+'        Case "SECS" ' Seconds
+'
+'            Select Case Power
+'
+'                Case 1  ' Secs
+'                    CalcResult = Val(Valu)
+'                    Delm = "."
+'                    nValu = Left$(nValu, i - 1) & ".0"
+'                Case 2  ' Hsecs
+'                    CalcResult = Val("." & Valu)
+'                    Delm = "?"
+'
+'                Case Else
+'                    MsgBox "The value you entered is not recognised.  Please check that you have entered the value correctly.", 32
+'                    Delm = "?"
+'
+'            End Select 'Power
+'
+'        Case "MINS" ' Minutes
+'
+'            Select Case Power
+'
+'                Case 1 ' Mins
+'                    CalcResult = Val(Valu) * 60
+'                    Delm = "'"
+'                    nValu = Left$(nValu, i - 1) & "'0.0"
+'                Case 2 ' Secs
+'                    If Val(Valu) > 60 Then
+'                      MsgBox "That seconds part cannot be greater than 60.", vbInformation
+'                      Success = False
+'                    End If
+'                    CalcResult = Val(Valu)
+'                    Delm = "."
+'                    nValu = Left$(nValu, i - 1) & ".0"
+'                Case 3  ' Hsecs
+'                    CalcResult = Val("." & Valu)
+'                    Delm = "?"
+'
+'                Case Else
+'                    MsgBox "The value you entered is not recognised.  Please check that you have entered the value correctly.", 32
+'                    Delm = "?"
+'
+'            End Select 'Power
+'
+'        Case "HRS" 'Hours
+'            ' Format H"M'S.HSec
+'            Select Case Power
+'
+'                Case 1  'Hours
+'                    CalcResult = Val(Valu) * 60 * 60
+'                    Delm = """"
+'                    nValu = Left$(nValu, i - 1) & """00'00.00"
+'                Case 2  ' Mins
+'                    CalcResult = Val(Valu) * 60
+'                    Delm = "'"
+'                    nValu = Left$(nValu, i - 1) & "'00.00"
+'
+'                Case 3  ' Secs
+'                    CalcResult = Val(Valu)
+'                    Delm = "."
+'                    nValu = Left$(nValu, i - 1) & ".00"
+'                Case 4  ' Hsecs
+'                    CalcResult = Val("." & Valu)
+'                    Delm = "?"
+'                    'AddZero = 2 - Len(Valu)
+'
+'                Case Else
+'                    MsgBox "The value you entered is not recognised.  Please check that you have entered the value correctly.", 32
+'                    Delm = "?"
+'
+'            End Select 'Power
+'
+'        Case "M" 'Meters
+'
+'            Select Case Power
+'
+'                Case 1
+'                    CalcResult = Val(Valu)
+'                    Delm = "."
+'                    nValu = Left$(nValu, i - 1) & ".0"
+'                Case 2
+'                    CalcResult = Val("." & Valu)
+'                    Delm = "?"
+'
+'                Case Else
+'                    MsgBox "The value you entered is not recognised.  Please check that you have entered the value correctly.", 32
+'                    Delm = "?"
+'
+'            End Select 'Power
+'
+'        Case "KM" 'Meters
+'
+'            Select Case Power
+'
+'                Case 1 ' Kilometers
+'                    CalcResult = Val(Valu) * 1000
+'                    Delm = "."
+'                    nValu = Left$(nValu, i - 1) & ".0"
+'                Case 2 ' Meters
+'                    Mult = 10 ^ (3 - Len(Trim(Valu)))
+'                    CalcResult = Val(Valu) * Mult
+'                    Delm = "?"
+'
+'                Case Else
+'                    MsgBox "The value you entered is not recognised.  Please check that you have entered the value correctly.", 32
+'                    Delm = "?"
+'
+'            End Select 'Power
+'
+'        Case "PTS" 'Points
+'
+'            Select Case Power
+'
+'                Case 1
+'                    CalcResult = Val(Valu)
+'                    Delm = "."
+'                    nValu = Left$(nValu, i - 1) & ".0"
+'                Case 2
+'                    CalcResult = Val("." & Valu)
+'                    Delm = "?"
+'
+'                Case Else
+'                    MsgBox "The value you entered is not recognised.  Please check that you have entered the value correctly.", 32
+'                    Delm = "?"
+'
+'            End Select 'Power
+'
+'        Case Else
+'            MsgBox ("The unit is not recognised.  Reselect the unit in the Event Details form for the event that you are currently working on.")
+'
+'    End Select ' Unit
+'
+'End Function
 
 Public Function Calculate_Competitor_Lane(E_Code, F_Lev, H_Code, Heat)
 
@@ -339,7 +341,6 @@ Public Function Calculate_Competitor_Lane(E_Code, F_Lev, H_Code, Heat)
                 AllocatedLane = 0
             End If
 
-
         Wend
     
         Calculate_Competitor_Lane = AllocatedLane
@@ -365,139 +366,482 @@ CC_Err:
     
 End Function
 
-Sub Calculate_Results(res As String, nValu As String, Runit As String, ByRef Success As Boolean)
+' ------------------------------------------------------------------------------------------
+' - sResult = is the text value enterd by the user representing the result gained by the competitor
+' -     = It is returned as a String value in the correct unit format
+' - nValue = Comes in as 0 and is returned as the Numeric Result
+' ------------------------------------------------------------------------------------------
+Public Sub Calculate_Results(ByRef sResult As String, ByRef nValue As Double, _
+                              ByRef Runit As String, ByRef Success As Boolean)
 
-    ' ---wrong I think ---------------------------------------------------------------------------------------
-    ' - Res = is the text value enterd by the user representing the result gained by the competitor
-    ' -     = It is returned as a String value in the correct unit format
-    ' - nValu = Comes in as NULL and is returned as the Numeric Result
-    ' ------------------------------------------------------------------------------------------
+    Success = False
+    nValue = 0
 
-    ' ------------------------------------------------------------------------------------------
-    ' - Res = is the text value enterd by the user representing the result gained by the competitor
-    ' -     = It is returned as as the Numeric Result
-    ' - nValu = Comes in as NULL and is returned in the correct unit format
-    ' ------------------------------------------------------------------------------------------
-    'Dim Runit As String
-    Dim cUnit As String
-    Dim Valu As String
-    Dim nRes As Double
-    Dim Power As Integer
-    Dim Delm As String
-    Dim i As Integer
-    Dim AddZero As Integer
-    Dim Order As Variant
-    Dim ResLength As Variant
-    Dim Char As Variant
-    Dim FirstNN As Variant
-    Dim SecNN As Variant
-    Dim LeftRes As Variant
-    Dim RightRes As Variant
-    
-  If UCase(Left(res, 1)) = "F" Then
-    nValu = "FOUL"
-    Order = DLookup("[Order]", "Units", "[DisplayUnit]=""" & Runit & """")
-    If Order = "Asc" Then
-        nRes = 3E+38
-    Else
-        nRes = -1E+38
+    Dim sInput As String
+    sInput = Trim(sResult)
+
+    ' Clear the value if empty
+    If Len(sInput) = 0 Then
+        sResult = ""
+        nValue = 0
+
+        Success = True
+        Exit Sub
     End If
 
-  ElseIf UCase(Left(res, 1)) = "P" Then
-    nValu = "PARTICIPATE"
-    Order = DLookup("[Order]", "Units", "[DisplayUnit]=""" & Runit & """")
-    If Order = "Asc" Then
-        nRes = 3E+38
-    Else
-        nRes = -1E+38
-    End If
-
-  Else
-
-    'Runit = Forms![EnterCompetitors]![EC_Subform].Form![Unit]
-    'Res = Forms![EnterCompetitors]![EC_Subform].Form![Res]
+    Dim sUnitUpper As String
+    sUnitUpper = UCase(Trim(Runit))
     
-    res = Trim(res)
-    ResLength = Len(res)
-    Runit = Trim(Runit)
-
-    nRes = 0   ' New Result is in SECONDS
-
-    cUnit = UCase(Runit)
-
-    Power = 0
-    Valu = ""
-    nValu = ""
-    AddZero = 0
-    i = 0
-
-    For i = 1 To ResLength Step 1
+    ' Deal with Fouls and Participations
+    If UCase(Left(sInput, 1)) = "F" Or UCase(Left(sInput, 1)) = "P" Then
+        If UCase(Left(sInput, 1)) = "F" Then
+            sResult = "FOUL"
+        ElseIf UCase(Left(sInput, 1)) = "P" Then
+            sResult = "PARTICIPATE"
+        End If
         
-      Char = Mid$(res, i, 1)
+        ' Ensure these results come last
+        Dim Order As Variant
+        Order = DLookup("[Order]", "Units", "[DisplayUnit]=""" & Runit & """")
+        If Order = "Asc" Then
+            nValue = 3E+38
+        Else
+            nValue = -1E+38
+        End If
+        
+        Success = True
+        Exit Sub
+    End If
 
-      ' **** The Character is a delimter of some sort ****
-      If Not (IsNumeric(Char)) Or Char = "." Then
-          Power = Power + 1
-          nValu = res
-          nRes = nRes + CalcResult(cUnit, Power, Valu, Delm, nValu, i, AddZero, Success)
-          Valu = ""
-          If Not Success Then GoTo ResultFormatError
-          Mid$(res, i, 1) = Delm
+    ' ----------------------------------------------------------------
+    ' BRANCH 1 — Distance / Points  (M, KM, PTS)
+    ' ----------------------------------------------------------------
+    If sUnitUpper = "M" Or sUnitUpper = "KM" Or sUnitUpper = "PTS" Then
 
-      Else
-          Valu = Valu + Char
-      End If
-      
-    Next i
+        ' Strip any trailing unit letters so bare numbers work too
+        Dim sStripped As String
+        sStripped = sInput
+        Do While Len(sStripped) > 0 And _
+                 Not Mid(sStripped, Len(sStripped), 1) Like "[0-9.]"
+            sStripped = Left(sStripped, Len(sStripped) - 1)
+        Loop
+        sStripped = Trim(sStripped)
 
-    Power = Power + 1
-    nValu = res
-    nRes = nRes + CalcResult(cUnit, Power, Valu, Delm, nValu, i, AddZero, Success)
-    If Not Success Then GoTo ResultFormatError
-    
-    i = 0
-    FirstNN = 0
-    SecNN = 0
-
-    While i < Len(nValu)
-        i = i + 1
-        If Not (IsNumeric(Mid$(nValu, i, 1))) Or Mid$(nValu, i, 1) = "." Then
-            FirstNN = SecNN
-            SecNN = i
+        If Not IsNumeric(sStripped) Then
+            sResult = ""
+            MsgBox "Could not parse """ & sInput & """ as " & sUnitUpper & "." & _
+                   vbCrLf & "Please enter a valid result.", _
+                   vbExclamation, "Calculate Results"
+            Exit Sub
         End If
 
-        While (FirstNN <> 0) And (FirstNN + 3 > SecNN)
-            LeftRes = Left$(nValu, FirstNN)
-            RightRes = Right$(nValu, Len(nValu) - FirstNN)
-            nValu = LeftRes & "0" & RightRes '
-            i = i + 1
-            SecNN = SecNN + 1
-        Wend
-        
-    Wend
+        Dim dRaw As Double
+        dRaw = CDbl(sStripped)
+        If dRaw < 0 Then dRaw = 0
 
-    While SecNN + 2 > Len(nValu)
-        nValu = nValu & "0"
-    Wend
+        Select Case sUnitUpper
 
-  End If
-    
-  res = str(nRes)
-  Success = True
-  
-Calculate_Results_Exit:
-  Exit Sub
-  
-ResultFormatError:
-  Success = False
-  GoTo Calculate_Results_Exit
+            Case "M"
+                nValue = dRaw
+                sResult = Format(nValue, "0.00")
+
+            Case "KM"
+                nValue = dRaw * 1000          ' Store as metres
+                sResult = Format(dRaw, "0.00")
+
+            Case "PTS"
+                nValue = dRaw
+                If InStr(sStripped, ".") > 0 Then
+                    Dim nDec As Integer
+                    nDec = Len(sStripped) - InStr(sStripped, ".")
+                    sResult = Format(nValue, "0." & String(nDec, "0"))
+                Else
+                    sResult = CStr(CLng(nValue))
+                End If
+
+        End Select
+
+        Success = True
+        Exit Sub
+    End If
+
+    ' ----------------------------------------------------------------
+    ' BRANCH 2 — Time values  (SECS, MINS, HRS)
+    ' ----------------------------------------------------------------
+    If sUnitUpper <> "SECS" And sUnitUpper <> "MINS" And sUnitUpper <> "HRS" Then
+        sResult = ""
+        MsgBox "Unknown unit """ & Runit & """." & vbCrLf & _
+               "Valid units are: SECS, MINS, HRS, M, KM, PTS.", _
+               vbExclamation, "Calculate Results"
+        Exit Sub
+    End If
+
+    ' --- Check whether hundredths were explicitly present in input ----
+    Dim bHundredthsInInput As Boolean
+    bHundredthsInInput = False
+
+    Dim j As Integer
+    For j = Len(sInput) To 1 Step -1
+        Dim sChar As String
+        sChar = Mid(sInput, j, 1)
+        If sChar = "." Then
+            bHundredthsInInput = True
+            Exit For
+        End If
+        ' If sChar = ":" Or sChar = "'" Or sChar = "-" Or sChar = Chr(34) Then
+        If Not (IsNumeric(sChar)) Then
+            Exit For
+        End If
+    Next j
+
+    ' --- Normalise delimiters ----------------------------------------
+    Dim sNorm As String
+    sNorm = sInput
+    sNorm = Replace(sNorm, Chr(34), "|")
+    sNorm = Replace(sNorm, "'", "|")
+    sNorm = Replace(sNorm, ":", "|")
+    sNorm = Replace(sNorm, "-", "|")
+
+    Dim aParts() As String
+    aParts = Split(sNorm, "|")
+    Dim nParts As Integer
+    nParts = UBound(aParts) + 1
+
+    Dim i As Integer
+    For i = 0 To nParts - 1
+        If Not IsNumeric(Trim(aParts(i))) Then
+            sResult = ""
+            MsgBox "Could not parse """ & sInput & """ as a time." & vbCrLf & _
+                   "Please check the value and try again.", _
+                   vbExclamation, "Calculate Results"
+            Exit Sub
+        End If
+    Next i
+
+    ' --- Assign H / M / S based on part count AND unit ---------------
+    Dim dHours As Double
+    Dim dMins As Double
+    Dim dSecs As Double
+
+    Select Case nParts
+
+        Case 1
+            Dim dSingle As Double
+            dSingle = CDbl(Trim(aParts(0)))
+            Select Case sUnitUpper
+                Case "SECS": dSecs = dSingle
+                Case "MINS": dMins = dSingle
+                Case "HRS":  dHours = dSingle
+            End Select
+
+        Case 2
+            Dim dPart0 As Double, dPart1 As Double
+            dPart0 = CDbl(Trim(aParts(0)))
+            dPart1 = CDbl(Trim(aParts(1)))
+            Select Case sUnitUpper
+                Case "SECS"
+                    dMins = dPart0
+                    dSecs = dPart1
+                Case "MINS"
+                    dMins = dPart0
+                    dSecs = dPart1
+                Case "HRS"
+                    dHours = dPart0
+                    dMins = dPart1
+            End Select
+
+        Case 3
+            dHours = CDbl(Trim(aParts(0)))
+            dMins = CDbl(Trim(aParts(1)))
+            dSecs = CDbl(Trim(aParts(2)))
+
+        Case Else
+            sResult = ""
+            MsgBox "Too many components in """ & sInput & """." & vbCrLf & _
+                   "A time value can have at most 3 parts (hours, minutes, seconds).", _
+                   vbExclamation, "Calculate Results"
+            Exit Sub
+
+    End Select
+
+    ' --- Clamp negatives to zero -------------------------------------
+    If dHours < 0 Then dHours = 0
+    If dMins < 0 Then dMins = 0
+    If dSecs < 0 Then dSecs = 0
+
+    ' --- Convert to total seconds ------------------------------------
+    Dim dTotalSeconds As Double
+    dTotalSeconds = (dHours * 3600) + (dMins * 60) + dSecs
+    If dTotalSeconds < 0 Then dTotalSeconds = 0
+
+    nValue = dTotalSeconds
+
+    ' --- Decompose into H / M / S / hundredths -----------------------
+    Dim lCS As Long
+    lCS = CLng(dTotalSeconds * 100)
+
+    Dim lH As Long, lM As Long, lS As Long, lHund As Long
+    lHund = lCS Mod 100
+    lCS = lCS \ 100
+    lS = lCS Mod 60
+    lCS = lCS \ 60
+    lM = lCS Mod 60
+    lH = lCS \ 60
+
+    ' --- Centiseconds suffix -----------------------------------------
+    ' SECS and MINS: always show centiseconds
+    ' HRS: only show if present in original input
+    Dim sFrac As String
+    If sUnitUpper = "HRS" Then
+        sFrac = IIf(bHundredthsInInput, "." & Format(lHund, "00"), "")
+    Else
+        sFrac = "." & Format(lHund, "00")
+    End If
+
+    ' --- Check whether seconds were explicitly in input --------------
+    ' For HRS: seconds exist only when 3 parts given, or a single
+    ' value with a decimal. A 2-part HRS input is H:M only.
+    Dim bSecsInInput As Boolean
+    bSecsInInput = (nParts = 3) Or (nParts = 1 And bHundredthsInInput)
+
+    ' --- Format output -----------------------------------------------
+    ' Unit drives zero-padding of the leading component only.
+    ' All values are fully decomposed to H:M'S.cc regardless of unit.
+    '
+    '   SECS  — leading seconds NOT zero-padded; always shows centiseconds
+    '   MINS  — leading minutes NOT zero-padded; always shows centiseconds
+    '   HRS   — leading hours  NOT zero-padded; centiseconds only if in input
+    '           and only shows seconds if they were in the input
+
+    Select Case sUnitUpper
+
+        Case "SECS"
+            ' Full decomposition — seconds leading, not zero-padded
+            If lH > 0 Then
+                sResult = CStr(lH) & ":" & Format(lM, "00") & ":" & _
+                          Format(lS, "00") & sFrac
+            ElseIf lM > 0 Then
+                sResult = CStr(lM) & ":" & Format(lS, "00") & sFrac
+            Else
+                sResult = CStr(lS) & sFrac
+            End If
+
+        Case "MINS"
+            ' Full decomposition — minutes leading, not zero-padded
+            If lH > 0 Then
+                sResult = CStr(lH) & ":" & Format(lM, "00") & ":" & _
+                          Format(lS, "00") & sFrac
+            ElseIf lM > 0 Then
+                sResult = CStr(lM) & ":" & Format(lS, "00") & sFrac
+            Else
+                ' Seconds only — zero-pad as they would normally follow minutes
+                sResult = "0'" & Format(lS, "00") & sFrac
+            End If
+
+        Case "HRS"
+            If lH > 0 Then
+                If bSecsInInput Then
+                    sResult = CStr(lH) & ":" & Format(lM, "00") & ":" & _
+                              Format(lS, "00") & sFrac
+                Else
+                    sResult = CStr(lH) & ":" & Format(lM, "00")
+                End If
+            ElseIf lM > 0 Then
+                If bSecsInInput Then
+                    sResult = CStr(lM) & ":" & Format(lS, "00") & sFrac
+                Else
+                    sResult = CStr(lM)
+                End If
+            Else
+                sResult = CStr(lS) & sFrac
+            End If
+
+    End Select
+
+    Success = True
 
 End Sub
 
-Function CalculatePercTotal(T, H, p)
+'Sub Calculate_Results(ByRef sResult As String, ByRef nValu As Double, Runit As String, ByRef Success As Boolean)
+'
+'    ' ---wrong I think ---------------------------------------------------------------------------------------
+'    ' - sResult = is the text value enterd by the user representing the result gained by the competitor
+'    ' -     = It is returned as a String value in the correct unit format
+'    ' - nValu = Comes in as NULL and is returned as the Numeric Result
+'    ' ------------------------------------------------------------------------------------------
+'
+'    ' ------------------------------------------------------------------------------------------
+'    ' - Res = is the text value enterd by the user representing the result gained by the competitor
+'    ' -     = It is returned as as the Numeric Result
+'    ' - nValu = Comes in as NULL and is returned in the correct unit format
+'    ' ------------------------------------------------------------------------------------------
+'    'Dim Runit As String
+'    Dim cUnit As String ' Holds unit as uppercase
+'    Dim Valu As String
+'    Dim nRes As Double  ' Result as double converted to Seconds or meters
+'    Dim Power As Integer
+'    Dim Delm As String
+'    Dim i As Integer
+'    Dim AddZero As Integer
+'    Dim Order As Variant
+'    Dim ResLength As Variant
+'    Dim Char As Variant
+'    Dim FirstNN As Variant
+'    Dim SecNN As Variant
+'    Dim LeftRes As Variant
+'    Dim RightRes As Variant
+'
+'    ' Regex Number Matching
+'    Dim reResult As Object
+'    Dim mcValues As MatchCollection
+'    'Dim match As match
+'    Dim subValues As SubMatches ' subMatch of Regex
+'
+'    Set reResult = CreateObject("VBScript.RegExp")
+'    Order = DLookup("[Order]", "Units", "[DisplayUnit]=""" & Runit & """")
+'
+'  If UCase(Left(sResult, 1)) = "F" Then
+'    nValu = "FOUL"
+'    'Order = DLookup("[Order]", "Units", "[DisplayUnit]=""" & Runit & """")
+'    If Order = "Asc" Then
+'        nRes = 3E+38
+'    Else
+'        nRes = -1E+38
+'    End If
+'
+'  ElseIf UCase(Left(sResult, 1)) = "P" Then
+'    nValu = "PARTICIPATE"
+'    'Order = DLookup("[Order]", "Units", "[DisplayUnit]=""" & Runit & """")
+'    If Order = "Asc" Then
+'        nRes = 3E+38
+'    Else
+'        nRes = -1E+38
+'    End If
+'
+'  Else
+'
+'    'Runit = Forms![EnterCompetitors]![EC_Subform].Form![Unit]
+'    'Res = Forms![EnterCompetitors]![EC_Subform].Form![Res]
+'
+'    sResult = Trim(sResult)
+'    ResLength = Len(sResult)
+'    Runit = Trim(Runit)
+'
+'    nRes = 0   ' New Result is in SECONDS
+'
+'    cUnit = UCase(Runit)
+'
+'    ' If time based convert to seconds
+'    If Order = "Asc" Then
+'
+'        ' Regex match each of the time groups. Trying to seperate Hours, Minutes, Secs, Hundreths secs
+'       With reResult
+'           .Pattern = "^(?:(\d+)(?:[^.\d]))?(?:(\d+)(?:[^.\d]))?(\d+)(?:.(\d+))?$"  ' Matches one or more digits
+'           '.Global = True    ' Finds all matches, not just the first one
+'       End With
+'
+'        ' Execute the regex search on the result. If pass use new method otherwise fall back
+'        If reResult.Test(sResult) Then
+'            Set mcValues = reResult.Execute(sResult)
+'            Set subValues = mcValues(0).SubMatches
+'
+'            Power = 0
+'            ' Match 0-2 can be hours, minutes or seconds, Match 3 is Hseconds
+'
+'            For i = 2 To 0 Step -1
+'                If Not subValues(i) = vbNullString Then
+'                    nRes = nRes + (Val(subValues(i)) * (60 ^ Power))
+'                    Power = Power + 1
+'                End If
+'                'nRes =
+'            Next i
+'            ' Add Hundreths second
+'            If Not subValues(3) = vbNullString Then
+'                nRes = nRes + (Val(subValues(3)) / 100)
+'            End If
+'
+'            nValu = nRes
+'            sResult = FormatRaceTime(nRes, cUnit)
+'        End If
+'    Else
+'        Power = 0
+'        Valu = ""
+'        'nValu = ""
+'        AddZero = 0
+'        i = 0
+'
+'        For i = 1 To ResLength Step 1
+'
+'          Char = Mid$(sResult, i, 1)
+'
+'          ' **** The Character is a delimter of some sort ****
+'          If Not (IsNumeric(Char)) Or Char = "." Then
+'              Power = Power + 1
+'              nValu = sResult
+'              nRes = nRes + CalcResult(cUnit, Power, Valu, Delm, nValu, i, AddZero, Success)
+'              Valu = ""
+'              If Not Success Then GoTo ResultFormatError
+'              Mid$(sResult, i, 1) = Delm
+'
+'          Else
+'              Valu = Valu + Char
+'          End If
+'
+'        Next i
+'
+'        Power = Power + 1
+'        nValu = sResult
+'        nRes = nRes + CalcResult(cUnit, Power, Valu, Delm, nValu, i, AddZero, Success)
+'        If Not Success Then GoTo ResultFormatError
+'
+'
+'
+'        i = 0
+'        FirstNN = 0
+'        SecNN = 0
+'
+'        While i < Len(nValu)
+'            i = i + 1
+'            If Not (IsNumeric(Mid$(nValu, i, 1))) Or Mid$(nValu, i, 1) = "." Then
+'                FirstNN = SecNN
+'                SecNN = i
+'            End If
+'
+'            While (FirstNN <> 0) And (FirstNN + 3 > SecNN)
+'                LeftRes = Left$(nValu, FirstNN)
+'                RightRes = Right$(nValu, Len(nValu) - FirstNN)
+'                nValu = LeftRes & "0" & RightRes '
+'                i = i + 1
+'                SecNN = SecNN + 1
+'            Wend
+'
+'        Wend
+'
+'        While SecNN + 2 > Len(nValu)
+'            nValu = nValu & "0"
+'        Wend
+'
+'      End If
+'
+'
+'  End If
+'
+'  sResult = str(nRes)
+'  Success = True
+'
+'Calculate_Results_Exit:
+'  Exit Sub
+'
+'ResultFormatError:
+'  Success = False
+'  GoTo Calculate_Results_Exit
+'
+'End Sub
 
-    If H > 0 Then
-        CalculatePercTotal = Format(T / H * 100, "0.0") & " (" & p & ")"
+Function CalculatePercTotal(T, h, p)
+
+    If h > 0 Then
+        CalculatePercTotal = Format(T / h * 100, "0.0") & " (" & p & ")"
     Else
         CalculatePercTotal = 0
     End If
@@ -526,8 +870,6 @@ Function CarnivalDir(RD)
 End Function
 
 Function CheckFinalIntegrity(code, T)
-
-      
     Dim LargestFinal As Variant, F As Variant
     CheckFinalIntegrity = True
     If Not IsNull(code) Then
@@ -711,19 +1053,13 @@ On Error GoTo DetermineAge_Err
     If IsDate(Eage) Then
         'DetermineAge = eAge
         DetermineAge = Year(Now) - Year(Eage)
-            
     ElseIf Eage = "OPEN" Then
-                  
         CurYear = Year(Now)
         'tComp!DOB = "1/1/11"
         DetermineAge = DLookup("[OpenAge]", "Miscellaneous")
-            
     Else
       DetermineAge = Val(Nz(Eage))
-            
     End If
-
-
 
 DetermineAge_Exit:
   On Error Resume Next
@@ -735,42 +1071,7 @@ DetermineAge_Err:
 
 End Function
 
-Function OLDDetermineAge(Eage As String)
-'Converts an EventAge into a numerical age
 
-    Dim TempAge As Variant, CurYear As Variant
-
-    If IsDate(Eage) Then
-        'DetermineAge = eAge
-        TempAge = Year(Now) - Year(Eage)
-        If TempAge >= DLookup("[OpenAge]", "Miscellaneous") Then
-            OLDDetermineAge = "OPEN"
-        Else
-            OLDDetermineAge = Trim(str(TempAge))
-        End If
-            
-    ElseIf Eage = "OPEN" Then
-                  
-        CurYear = Year(Now)
-        'tComp!DOB = "1/1/11"
-        OLDDetermineAge = "OPEN"
-            
-    Else
-        'tComp!DOB = "1/1/" & Year(Now) - eAge
-        If Not (IsNull(Eage)) Then
-            If Val(Eage) >= DLookup("[OpenAge]", "Miscellaneous") Then
-                OLDDetermineAge = "OPEN"
-            
-            Else
-                OLDDetermineAge = Eage
-            End If
-
-        End If
-            
-    End If
-
-
-End Function
 
 Function DetermineAge_ImportCompetitors(DOB As Variant, CutDay As Integer, CutMonth As Integer) As String
 
@@ -895,7 +1196,7 @@ Function DetermineHeat(Heat)
     If IsNumeric(Heat) Then
         DetermineHeat = Heat
     Else
-        DetermineHeat = Asc(UCase(Heat)) - 64
+        DetermineHeat = Asc(UCase(Heat)) - 64 '  If using Alpha heat names converts to numeric
     End If
 
 End Function
@@ -953,17 +1254,18 @@ Function DisplayPoints(Pt)
 
 End Function
 
-Function DisplayRecHolder(n, H)
+Function DisplayRecHolder(n, h)
 
-    If IsNull(H) Then H = -1
+    If IsNull(h) Then h = -1
     If IsNull(n) Then
-        DisplayRecHolder = "Record Holder: " & DLookup("[H_Name]", "House", "[H_ID]=" & H)
+        DisplayRecHolder = "Record Holder: " & DLookup("[H_Name]", "House", "[H_ID]=" & h)
     Else
-        DisplayRecHolder = "Record Holder: " & Trim(n) & " / " & DLookup("[H_Name]", "House", "[H_ID]=" & H)
+        DisplayRecHolder = "Record Holder: " & Trim(n) & " / " & DLookup("[H_Name]", "House", "[H_ID]=" & h)
     End If
 
 End Function
 
+' Used by Queries
 Function DisplayResult(res) As String
     
     If IsNull(res) Then
@@ -1244,7 +1546,7 @@ Function PromoteEventFinal(E_Code As Long) As Boolean
     
     Dim Time_Pro As Boolean, Ev As String, New_FL As Byte, Num_Heats As Variant
     Dim ET_Code As Long, LaneCount As Integer, Num_Lanes As Integer, Num_Competitors As Integer
-    Dim Q As String, uOrder As String, Place As Integer, i As Integer, L As Integer, H As Integer
+    Dim Q As String, uOrder As String, Place As Integer, i As Integer, L As Integer, h As Integer
     Dim Units As String
     'Dim Response As Variant, msg As Variant
 
@@ -1387,7 +1689,7 @@ Function PromoteEventFinal(E_Code As Long) As Boolean
                     Place = 1
                     For i = 1 To Num_Lanes
                         Hrs.MoveFirst
-                        For H = 1 To Num_Heats
+                        For h = 1 To Num_Heats
                              GoSub AddCompetitorToHeat
                              Crs.MoveNext
                              If Crs.EOF Then ' There are no more competitors to process
@@ -1395,7 +1697,7 @@ Function PromoteEventFinal(E_Code As Long) As Boolean
                              End If
     
                              Hrs.MoveNext
-                        Next H
+                        Next h
                         Place = Place + 1
                     Next i
                     GoTo PromtionComplete
@@ -1568,7 +1870,7 @@ Function SetHeatFormat(Heat)
     
 End Function
 
-Function SetSexFormat(Sex As String) As String
+Function SetSexFormat(ByRef Sex As String) As String
 
     If SexFormat = "Boys/Girls" Then
         If Sex = "F" Then
@@ -1819,7 +2121,7 @@ Function Work_AutoEventNumber()
 
 End Function
 
-Public Function ConvertNullToZero(V As Variant)
+Public Function ConvertNullToZero(ByRef V As Variant)
 
   If IsNull(V) Then
     ConvertNullToZero = 0
@@ -1849,7 +2151,7 @@ End Function
 ' *******************************************************
 ' *** Check if variable is Empty
 ' *******************************************************
-Public Function VarEmpty(V As Variant) As Boolean
+Public Function VarEmpty(ByRef V As Variant) As Boolean
   
 '  Stop
   
@@ -1865,7 +2167,7 @@ Public Function VarEmpty(V As Variant) As Boolean
   
 End Function
 
-Private Function PopUpFormsVisible(Visibility As Boolean)
+Private Function PopUpFormsVisible(ByVal Visibility As Boolean)
 On Error GoTo PopUpFormsVisible_Err
 
   Dim F As Form

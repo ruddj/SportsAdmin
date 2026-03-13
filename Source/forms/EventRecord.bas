@@ -1,4 +1,4 @@
-﻿Version =20
+﻿Version =21
 VersionRequired =20
 Begin Form
     PopUp = NotDefault
@@ -15,10 +15,10 @@ Begin Form
     GridY =10
     Width =9240
     ItemSuffix =73
-    Left =7935
-    Top =2640
-    Right =17865
-    Bottom =11760
+    Left =-21420
+    Top =3390
+    Right =-11490
+    Bottom =12510
     HelpContextId =280
     Filter ="[E_Code]=2"
     RecSrcDt = Begin
@@ -30,6 +30,10 @@ Begin Form
         "= Events.ET_Code;"
     Caption ="Event Record"
     HelpFile ="SportsAdmin.chm"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
     FilterOnLoad =255
     AllowLayoutView =0
     Begin
@@ -250,7 +254,7 @@ Begin Form
                     Height =227
                     TabIndex =2
                     BorderColor =12632256
-                    ColumnInfo ="\"\";\">\";\"\";\"\";\"10\";\"100\""
+                    ColumnInfo ="\"\";\"\";\"\";\"\";\"10\";\"100\""
                     Name ="House"
                     RowSourceType ="Table/Query"
                     RowSource ="SELECT House.H_Code, House.H_NAme FROM House ORDER BY House.H_NAme;"
@@ -784,7 +788,7 @@ Private Sub Add_Click()
     Dim Continue As Variant, Response As Variant
 
     Dim Criteria As String, db As Database, Rs As Recordset
-    Dim nValu As String, res As String, nUnit As String
+    Dim nValu As Double, sResult As String, nUnit As String
     Dim Success As Boolean
     
     Set db = DBEngine.Workspaces(0).Databases(0)
@@ -804,11 +808,11 @@ Private Sub Add_Click()
         Response = MsgBox("You must enter a result.", vbInformation)
     Else
         Continue = True
-        res = Me![Record]
-        nValu = ""
+        sResult = Me![Record]
+        nValu = 0
         nUnit = Me![nUnit]
-        Call Calculate_Results(res, nValu, nUnit, Success)
-        If Not (Better(Val(res), Me![E_Code])) Then
+        Call Calculate_Results(sResult, nValu, nUnit, Success)
+        If Not (Better(nValu, Me![E_Code])) Then
             Response = MsgBox("The event record you are about to add is not better than the existing record.  Do you want to continue?", vbYesNo + vbCritical, "Record Integrity Violation")
             If Response <> vbYes Then Continue = False
         End If
@@ -829,8 +833,8 @@ Private Sub Add_Click()
                 Rs!Gname = Me![Gname]
                 Rs!H_Code = Me![House]
                 Rs!Date = Me![Date]
-                Rs!Result = Me![Record]
-                Rs!nResult = Val(res)
+                Rs!Result = sResult
+                Rs!nResult = nValu
                 Rs.Update
                 
             Else
@@ -843,8 +847,8 @@ Private Sub Add_Click()
                     Rs!Gname = Me![Gname]
                     Rs!H_Code = Me![House]
                     Rs!Date = Me![Date]
-                    Rs!Result = Me![Record]
-                    Rs!nResult = Val(res)
+                    Rs!Result = sResult
+                    Rs!nResult = nValu
                     Rs.Update
 
                 End If
@@ -895,16 +899,16 @@ Private Sub Record_AfterUpdate()
 On Error GoTo Record_AfterUpdate_Err
     'Stop
 
-  Dim res As String, ET_Code As Long
+  Dim sResult As String, ET_Code As Long
   Dim Runit As String
-  Dim nValu As String
+  Dim nValu As Double
   Dim Success As Boolean
   
-  res = Me![Record]
+  sResult = Me![Record]
   
-  If Not (IsNull(res)) Then
+  If Not (IsNull(sResult)) Then
     
-    nValu = ""
+    nValu = 0
     
     ET_Code = DLookup("[ET_Code]", "Events", "[E_Code]=" & Me!E_Code)
     If IsNull(ET_Code) Then
@@ -915,9 +919,9 @@ On Error GoTo Record_AfterUpdate_Err
       If IsNull(ET_Code) Then
         MsgBox ("An unexpected error has occured in [Record_AfterUpdate]: Units is null")
       Else
-        Call Calculate_Results(res, nValu, Runit, Success)
-        Me![Record] = nValu
-        Me![nRecord] = res
+        Call Calculate_Results(sResult, nValu, Runit, Success)
+        Me![Record] = sResult
+        Me![nRecord] = nValu
       End If
     End If
   Else

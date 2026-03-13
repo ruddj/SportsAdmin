@@ -9,10 +9,10 @@ Begin Form
     GridY =20
     Width =8991
     ItemSuffix =71
-    Left =3495
-    Top =3195
-    Right =11145
-    Bottom =8340
+    Left =3285
+    Top =3630
+    Right =10935
+    Bottom =8775
     HelpContextId =110
     AfterDelConfirm ="[Event Procedure]"
     OrderBy ="EnterCompetitorsSF.Place"
@@ -214,6 +214,22 @@ Begin Form
             Name ="Detail0"
             Begin
                 Begin TextBox
+                    TabStop = NotDefault
+                    OverlapFlags =85
+                    TextAlign =2
+                    Left =72
+                    Width =405
+                    Height =285
+                    BackColor =16777215
+                    Name ="Lane"
+                    ControlSource ="Lane"
+                    StatusBarText ="Lane: Lane 0 defaults to the lane allocated to the competitors House"
+                    FontName ="Tahoma"
+                    ControlTipText ="The lane will be added automatically if you have allocated lanes to teams.  Othe"
+                        "rwise enter the lane manually."
+
+                End
+                Begin TextBox
                     Enabled = NotDefault
                     Locked = NotDefault
                     TabStop = NotDefault
@@ -232,54 +248,21 @@ Begin Form
 
                 End
                 Begin TextBox
-                    Enabled = NotDefault
-                    Locked = NotDefault
                     TabStop = NotDefault
                     OverlapFlags =85
-                    Left =6041
-                    Width =527
+                    TextAlign =2
+                    Left =1445
+                    Width =420
                     Height =285
-                    FontSize =7
-                    TabIndex =6
+                    TabIndex =2
                     BackColor =-2147483633
-                    Name ="Unit"
-                    ControlSource ="=[Forms]![EnterCompetitors]![Units]"
+                    Name ="Points"
+                    ControlSource ="Points"
+                    StatusBarText ="Points gained by the competitor.  This can be edited manuallu but is normally up"
+                        "dated automatically depending upon the place gained."
                     FontName ="Tahoma"
-                    HorizontalAnchor =1
-
-                End
-                Begin TextBox
-                    DecimalPlaces =0
-                    OverlapFlags =85
-                    TextAlign =2
-                    Left =4290
-                    Width =645
-                    Height =285
-                    TabIndex =4
-                    BackColor =16777215
-                    Name ="Place"
-                    ControlSource ="Place"
-                    StatusBarText ="Place gained by competitor"
-                    AfterUpdate ="[Event Procedure]"
-                    FontName ="Tahoma"
-                    ControlTipText ="Enter the place gained by the competitor."
-                    HorizontalAnchor =1
-
-                End
-                Begin TextBox
-                    TabStop = NotDefault
-                    OverlapFlags =85
-                    TextAlign =2
-                    Left =72
-                    Width =405
-                    Height =285
-                    BackColor =16777215
-                    Name ="Lane"
-                    ControlSource ="Lane"
-                    StatusBarText ="Lane: Lane 0 defaults to the lane allocated to the competitors House"
-                    FontName ="Tahoma"
-                    ControlTipText ="The lane will be added automatically if you have allocated lanes to teams.  Othe"
-                        "rwise enter the lane manually."
+                    ControlTipText ="Points gained by the competitor.  This can be edited manuallu but is normally up"
+                        "dated automatically depending upon the place gained."
 
                 End
                 Begin ComboBox
@@ -311,6 +294,24 @@ Begin Form
 
                 End
                 Begin TextBox
+                    DecimalPlaces =0
+                    OverlapFlags =85
+                    TextAlign =2
+                    Left =4290
+                    Width =645
+                    Height =285
+                    TabIndex =4
+                    BackColor =16777215
+                    Name ="Place"
+                    ControlSource ="Place"
+                    StatusBarText ="Place gained by competitor"
+                    AfterUpdate ="[Event Procedure]"
+                    FontName ="Tahoma"
+                    ControlTipText ="Enter the place gained by the competitor."
+                    HorizontalAnchor =1
+
+                End
+                Begin TextBox
                     OverlapFlags =85
                     TextAlign =3
                     Left =4968
@@ -328,28 +329,47 @@ Begin Form
 
                 End
                 Begin TextBox
-                    Visible = NotDefault
-                    OldBorderStyle =1
+                    Enabled = NotDefault
+                    Locked = NotDefault
+                    TabStop = NotDefault
                     OverlapFlags =85
-                    TextAlign =3
-                    Left =8844
-                    Width =147
-                    Height =286
-                    TabIndex =13
-                    BackColor =16777215
-                    Name ="nResult"
-                    ControlSource ="nResult"
+                    Left =6041
+                    Width =527
+                    Height =285
+                    FontSize =7
+                    TabIndex =6
+                    BackColor =-2147483633
+                    Name ="Unit"
+                    ControlSource ="=[Forms]![EnterCompetitors]![Units]"
                     FontName ="Tahoma"
                     HorizontalAnchor =1
 
-                    LayoutCachedLeft =8844
-                    LayoutCachedWidth =8991
-                    LayoutCachedHeight =286
+                End
+                Begin TextBox
+                    Visible = NotDefault
+                    Enabled = NotDefault
+                    Locked = NotDefault
+                    TabStop = NotDefault
+                    OverlapFlags =93
+                    TextAlign =2
+                    Left =7256
+                    Width =765
+                    Height =285
+                    TabIndex =14
+                    Name ="PIN"
+                    ControlSource ="PIN"
+                    StatusBarText ="Personal ID Number"
+                    FontName ="Tahoma"
+                    HorizontalAnchor =1
+
+                    LayoutCachedLeft =7256
+                    LayoutCachedWidth =8021
+                    LayoutCachedHeight =285
                 End
                 Begin TextBox
                     Visible = NotDefault
                     OldBorderStyle =1
-                    OverlapFlags =93
+                    OverlapFlags =247
                     TextAlign =3
                     Left =7676
                     Width =327
@@ -440,24 +460,41 @@ Begin Form
                 End
                 Begin TextBox
                     Visible = NotDefault
-                    Enabled = NotDefault
-                    Locked = NotDefault
-                    TabStop = NotDefault
-                    OverlapFlags =247
-                    TextAlign =2
-                    Left =7256
-                    Width =765
-                    Height =285
-                    TabIndex =14
-                    Name ="PIN"
-                    ControlSource ="PIN"
-                    StatusBarText ="Personal ID Number"
+                    OldBorderStyle =1
+                    OverlapFlags =87
+                    TextAlign =1
+                    Left =8702
+                    Width =117
+                    Height =286
+                    TabIndex =12
+                    BackColor =16777215
+                    Name ="MemoFld"
+                    ControlSource ="Memo"
                     FontName ="Tahoma"
                     HorizontalAnchor =1
 
-                    LayoutCachedLeft =7256
-                    LayoutCachedWidth =8021
-                    LayoutCachedHeight =285
+                    LayoutCachedLeft =8702
+                    LayoutCachedWidth =8819
+                    LayoutCachedHeight =286
+                End
+                Begin TextBox
+                    Visible = NotDefault
+                    OldBorderStyle =1
+                    OverlapFlags =85
+                    TextAlign =3
+                    Left =8844
+                    Width =147
+                    Height =286
+                    TabIndex =13
+                    BackColor =16777215
+                    Name ="nResult"
+                    ControlSource ="nResult"
+                    FontName ="Tahoma"
+                    HorizontalAnchor =1
+
+                    LayoutCachedLeft =8844
+                    LayoutCachedWidth =8991
+                    LayoutCachedHeight =286
                 End
                 Begin CommandButton
                     TabStop = NotDefault
@@ -484,43 +521,6 @@ Begin Form
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
                     WebImagePaddingBottom =1
-                End
-                Begin TextBox
-                    Visible = NotDefault
-                    OldBorderStyle =1
-                    OverlapFlags =87
-                    TextAlign =1
-                    Left =8702
-                    Width =117
-                    Height =286
-                    TabIndex =12
-                    BackColor =16777215
-                    Name ="MemoFld"
-                    ControlSource ="Memo"
-                    FontName ="Tahoma"
-                    HorizontalAnchor =1
-
-                    LayoutCachedLeft =8702
-                    LayoutCachedWidth =8819
-                    LayoutCachedHeight =286
-                End
-                Begin TextBox
-                    TabStop = NotDefault
-                    OverlapFlags =85
-                    TextAlign =2
-                    Left =1445
-                    Width =420
-                    Height =285
-                    TabIndex =2
-                    BackColor =-2147483633
-                    Name ="Points"
-                    ControlSource ="Points"
-                    StatusBarText ="Points gained by the competitor.  This can be edited manuallu but is normally up"
-                        "dated automatically depending upon the place gained."
-                    FontName ="Tahoma"
-                    ControlTipText ="Points gained by the competitor.  This can be edited manuallu but is normally up"
-                        "dated automatically depending upon the place gained."
-
                 End
                 Begin CommandButton
                     TabStop = NotDefault
@@ -676,6 +676,33 @@ End Sub
 Private Sub Form_Open(Cancel As Integer)
 
     ShowAllCompetitors = False
+    
+    ' Update tool Tip based on unit
+    Dim sUnitUpper As String
+    sUnitUpper = UCase([Forms]![EnterCompetitors]![Units])
+    Select Case sUnitUpper
+        Case "SECS"
+            res.StatusBarText = "Enter the time as SS.cc or M:SS.cc"
+
+        Case "MINS"
+            res.StatusBarText = "Enter the time as M:SS.cc, M'SS.cc, H'MM'SS, H'MM'SS.cc or H:MM:SS"
+
+        Case "HRS"
+            res.StatusBarText = "Enter the time as H:MM:SS.cc, H'MM'SS, H:MM or H'MM"
+               
+        Case "M"
+            res.StatusBarText = "Enter the distance as mm.cc"
+
+        Case "KM"
+            res.StatusBarText = "Enter the time as kk.mm"
+
+        Case "PTS"
+            res.StatusBarText = "Enter the Points as either 12 or 12.34"
+            
+        Case Else
+            res.StatusBarText = "Enter the result gained by the competitor."
+    End Select
+
 
 End Sub
 
@@ -744,26 +771,19 @@ On ERRROR GoTo Res_AfterUpdate_Err
 
   GlobalChange = True
 
-    Dim res As String
-    Dim Runit As String
-    Dim cUnit As String
-    Dim Valu As String
-    Dim nRes As Double
-    Dim Power As Integer
-    Dim Delm As String, nValu As String
-    Dim i As Integer
-    Dim AddZero As Integer
+    Dim sResult As String ' Result entered by user
+    Dim Runit As String ' Unit of event
+    Dim nValu As Double
     Dim Success As Boolean
     
   If Not (IsNull(Me![res])) Then
-    
-    res = Me![res]
+    sResult = Me![res]
     Runit = [Forms]![EnterCompetitors]![Units]
-    Call Calculate_Results(res, nValu, Runit, Success)
+    Call Calculate_Results(sResult, nValu, Runit, Success)
     
     If Success Then
-      Forms![EnterCompetitors]![EC_Subform].Form![nRes] = res
-      Forms![EnterCompetitors]![EC_Subform].Form![res] = nValu
+      Forms![EnterCompetitors]![EC_Subform].Form![nRes] = nValu
+      Forms![EnterCompetitors]![EC_Subform].Form![res] = sResult
     Else
       Me.res.SetFocus
     End If
@@ -788,14 +808,14 @@ End Sub
 Private Sub Res_BeforeUpdate(Cancel As Integer)
 On Error GoTo Res_BeforeUpdate_Err
 
-    Dim res As String
+    Dim sResult As String
     Dim Runit As String
-    Dim nValu As String
+    Dim nValu As Double
     Dim Success As Boolean
     
-    res = Nz(Me![res])
+    sResult = Nz(Me![res])
     Runit = [Forms]![EnterCompetitors]![Units]
-    Call Calculate_Results(res, nValu, Runit, Success)
+    Call Calculate_Results(sResult, nValu, Runit, Success)
     
     Cancel = Not Success
     
@@ -803,6 +823,6 @@ Res_BeforeUpdate_Exit:
   Exit Sub
   
 Res_BeforeUpdate_Err:
-  MsgBox "Are error has occurred in 'Res_BeforeUpdate': " & Err.Description, vbCritical
+  MsgBox "An error has occurred in 'Res_BeforeUpdate': " & Err.Description, vbCritical
   GoTo Res_BeforeUpdate_Exit
 End Sub

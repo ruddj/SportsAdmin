@@ -2,8 +2,12 @@ Option Compare Database
 Option Explicit
 
 
-Global Const VersionNumber = "5.3.1"
-Global Const VersionDate = "(5/Dec/2023)"
+Global Const VersionNumber = "5.3.2"
+Global Const VersionDate = "(13/Mar/2026)"
+
+' Version 5.3.2 - 2026-03-13
+' Calculate Places button sometimes stays disabled
+' Rewrote the result interpreter and formatter. Will now accept different time periods and convert to current format. Accepts time seperators :,",',-,|
 
 ' Version 5.3.1 - 2019-02-27
 ' Missing instructions on using Age Range in New Event Wizard

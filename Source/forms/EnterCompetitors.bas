@@ -1,4 +1,4 @@
-﻿Version =20
+﻿Version =21
 VersionRequired =20
 Begin Form
     PopUp = NotDefault
@@ -16,11 +16,12 @@ Begin Form
     GridY =20
     Width =9694
     ItemSuffix =167
-    Left =8295
-    Top =2640
-    Right =17985
-    Bottom =9705
+    Left =-19860
+    Top =3390
+    Right =-10170
+    Bottom =10455
     HelpContextId =110
+    Filter ="[HE_Code] = 361"
     RecSrcDt = Begin
         0xf2f778be6e4ae240
     End
@@ -1205,7 +1206,7 @@ On Error GoTo EnterResultsInPlaceOrderBut_Click_Err
         
         Set Rs = db.OpenRecordset("Temporary Results-Place Order", dbOpenDynaset)   ' Create dynaset.
     
-        Dim nValu As String, Result As String, Runit As String
+        Dim nValu As Double, Result As String, Runit As String
     
         Rs.MoveFirst
         Do Until Rs.EOF  ' Loop until no matching records.
@@ -1220,7 +1221,7 @@ On Error GoTo EnterResultsInPlaceOrderBut_Click_Err
             Runit = Me![Units]
             Call Calculate_Results(Result, nValu, Runit, Success)
 
-            Q = "UPDATE DISTINCTROW CompEvents SET CompEvents.Place = " & Place & ", CompEvents.Result = """ & nValu & """, CompEvents.nResult = " & Result
+            Q = "UPDATE DISTINCTROW CompEvents SET CompEvents.Place = " & Place & ", CompEvents.Result = """ & Result & """, CompEvents.nResult = " & nValu
             Q = Q & " WHERE CompEvents.E_Code=" & Me![E_Code] & " And CompEvents.F_Lev = " & Me![F_Lev] & " And CompEvents.Heat = " & Me![Heat] & " AND CompEvents.Lane= " & Lane
             
             DoCmd.SetWarnings False
@@ -1547,6 +1548,7 @@ Private Sub EC_Subform_Exit(Cancel As Integer)
 On Error Resume Next
   Dim Q As String, Response As Integer
 
+  Me![CalculatePlacesBut].enabled = True  ' Enable Calculate Places button even if no changes.
   If Not GlobalChange Then Exit Sub
   
   If GlobalPlaceChange And Not Me.DontOverridePlaces Then
@@ -1555,7 +1557,7 @@ On Error Resume Next
     Q = Q & "Do you wish to stop this from happening by ticking the "
     Q = Q & "'Dont override place' check box? " & LFCR
     Q = Q & "(Ticking this box means places will no longer be calculated for this heat automatically)"
-    Response = MsgBox(Q, vbYesNo + vbDefaultButton1 + vbQuestion)
+    Response = MsgBox(Q, vbYesNo + vbDefaultButton2 + vbQuestion)
     If Response = vbYes Then Me.DontOverridePlaces = True
   End If
     
@@ -1606,8 +1608,6 @@ On Error Resume Next
     End If
   
   End If
-
-  Me![CalculatePlacesBut].enabled = True
 
   Me.EC_Subform.Form.RecordsetClone.MoveFirst
   Me.EC_Subform.Form.Bookmark = Me.EC_Subform.Form.RecordsetClone.Bookmark

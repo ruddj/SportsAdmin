@@ -1,4 +1,4 @@
-﻿Version =20
+﻿Version =21
 VersionRequired =20
 Begin Form
     RecordSelectors = NotDefault
@@ -10,10 +10,10 @@ Begin Form
     GridY =10
     Width =13429
     ItemSuffix =11
-    Left =1530
-    Top =4410
-    Right =11520
-    Bottom =7590
+    Left =31275
+    Top =4770
+    Right =-27421
+    Bottom =4860
     HelpContextId =280
     RecSrcDt = Begin
         0x7e678ecfd0dae140
@@ -239,21 +239,21 @@ End Sub
 
 Private Sub Record_AfterUpdate()
     
-  Dim res As String
+  Dim sResult As String
   Dim Runit As String
-  Dim nValu As String
+  Dim nValu As Double
   Dim Success As Boolean
   
-  res = Me![Record]
+  sResult = Me![Record]
   
-  If Not (IsNull(res)) Then
+  If Not (IsNull(sResult)) Then
     
-    nValu = ""
+    nValu = 0
     Runit = Me![Units]
-    Call Calculate_Results(res, nValu, Runit, Success)
+    Call Calculate_Results(sResult, nValu, Runit, Success)
 
-    Me![Record] = nValu
-    Me![nResult] = res
+    Me![Record] = sResult
+    Me![nResult] = nValu
 
   Else
     ' When the Result (time or distance or points) is set to NULL then

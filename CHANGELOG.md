@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [5.3.2] - 2026-03-13
+### Fixed
+- Calculate Places button sometimes stays disabled
+
+### Changed
+- Rewrote the result interpreter and formatter. Will now accept different time periods and convert to current format. Accepts time separators :,",',-,| e.g. Can enter minutes in a sec race and it will convert to seconds.
+- Results Formatter will now use standard time formats of H:MM:SS.cc. Previously would show 90.2 seconds instead of 1:30.2
+
 ## [5.3.1] - 2023-12-05
 ### Fixed
 - Missing instructions on using Age Range in New Event Wizard
@@ -237,7 +245,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Ordered Competitors handled differently: Table held locally.  Does not delete old but overwrites them.
 
 
-[Unreleased]: https://github.com/ruddj/SportsAdmin/compare/v5.3.1...HEAD
+[Unreleased]: https://github.com/ruddj/SportsAdmin/compare/v5.3.2...HEAD
+[5.3.2]: https://github.com/ruddj/SportsAdmin/compare/v5.3.1...v5.3.2
 [5.3.1]: https://github.com/ruddj/SportsAdmin/compare/v5.3.0...v5.3.1
 [5.3.0]: https://github.com/ruddj/SportsAdmin/compare/v5.2.2...v5.3.0
 [5.2.2]: https://github.com/ruddj/SportsAdmin/compare/v5.2.1...v5.2.2

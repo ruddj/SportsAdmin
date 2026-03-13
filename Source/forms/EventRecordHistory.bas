@@ -1,4 +1,4 @@
-﻿Version =20
+﻿Version =21
 VersionRequired =20
 Begin Form
     PopUp = NotDefault
@@ -16,9 +16,9 @@ Begin Form
     Width =9411
     ItemSuffix =71
     Left =3255
-    Top =2325
+    Top =2700
     Right =12660
-    Bottom =7455
+    Bottom =7830
     HelpContextId =280
     RecSrcDt = Begin
         0xff4a5ef6abcde140
@@ -368,7 +368,7 @@ Private Sub Add_Click()
     Dim Continue As Variant, Response As Variant
 
     Dim Criteria As String, Rs As Recordset
-    Dim nValu As String, res As String, nUnit As String
+    Dim nValu As Double, sResult As String, nUnit As String
     Dim Success As Boolean
     
     Set Rs = CurrentDb.OpenRecordset("Records", dbOpenDynaset)   ' Create dynaset.
@@ -387,11 +387,11 @@ Private Sub Add_Click()
         MsgBox ("You must enter a result.")
     Else
         Continue = True
-        res = Me![Record]
-        nValu = ""
+        sResult = Me![Record]
+        nValu = 0
         nUnit = Me![nUnit]
-        Call Calculate_Results(res, nValu, nUnit, Success)
-        If Not (Better(Val(res), Me![E_Code])) Then
+        Call Calculate_Results(sResult, nValu, nUnit, Success)
+        If Not (Better(nValu, Me![E_Code])) Then
             Response = MsgBox("The event record you are about to add is not better than the existing record.  Do you want to continue?", vbYesNo + vbCritical, "Record Integrity Violation")
             If Response <> vbYes Then Continue = False
         End If
@@ -412,8 +412,8 @@ Private Sub Add_Click()
                 Rs!Gname = Me![Gname]
                 Rs!H_Code = Me![House]
                 Rs!Date = Me![Date]
-                Rs!Result = Me![Record]
-                Rs!nResult = Val(res)
+                Rs!Result = sResult
+                Rs!nResult = nValu
                 Rs.Update
                 
             Else
@@ -426,8 +426,8 @@ Private Sub Add_Click()
                     Rs!Gname = Me![Gname]
                     Rs!H_Code = Me![House]
                     Rs!Date = Me![Date]
-                    Rs!Result = Me![Record]
-                    Rs!nResult = Val(res)
+                    Rs!Result = sResult
+                    Rs!nResult = nValu
                     Rs.Update
 
                 End If
@@ -477,21 +477,21 @@ Private Sub Record_AfterUpdate()
 
     'Stop
 
-  Dim res As String
+  Dim sResult As String
   Dim Runit As String
-  Dim nValu As String
+  Dim nValu As Double
   Dim Success As Boolean
   
-  res = Me![Record]
+  sResult = Me![Record]
   
-  If Not (IsNull(res)) Then
+  If Not (IsNull(sResult)) Then
     
-    nValu = ""
+    nValu = 0
     Runit = Forms![EventType]![Units]
-    Call Calculate_Results(res, nValu, Runit, Success)
+    Call Calculate_Results(sResult, nValu, Runit, Success)
 
-    Me![Record] = nValu
-    Me![nRecord] = res
+    Me![Record] = sResult
+    Me![nRecord] = nValu
 
   Else
     ' When the Result (time or distance or points) is set to NULL then

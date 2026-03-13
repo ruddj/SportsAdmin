@@ -465,7 +465,7 @@ Private Sub AddCompet_Click()
     While Not Hrs.EOF
         TotalHouses = TotalHouses + 1
         ReDim Preserve HC(TotalHouses) As HouseComp
-        HC(TotalHouses).H = Hrs!H_Code
+        HC(TotalHouses).h = Hrs!H_Code
         HC(TotalHouses).Hid = Hrs!H_ID
         HC(TotalHouses).c = ""
         Hrs.MoveNext
@@ -511,7 +511,7 @@ Private Sub AddCompet_Click()
                         HouseIndex = 1
                         While (HouseIndex <= TotalHouses) And (i <= NumOfLanes Or NumOfLanes = 0)
                             Criteria = "val([Age]) " & AgeFilter(Ers!Age) & " AND [Sex]=""" & Ers![Sex] & """"
-                            Criteria = Criteria & " AND [FullName]>""" & HC(HouseIndex).c & """ AND [H_Code]=""" & HC(HouseIndex).H & """"
+                            Criteria = Criteria & " AND [FullName]>""" & HC(HouseIndex).c & """ AND [H_Code]=""" & HC(HouseIndex).h & """"
                             Crs.FindFirst Criteria
                             If Not Crs.NoMatch Then
                                 MoreCompetitors = True

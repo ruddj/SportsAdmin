@@ -1,9 +1,10 @@
 ﻿Operation =1
 Option =0
-Where ="((([ReportBase-Events].Flag)=Yes) And (([ReportBase-Events].Include)=Yes) And (("
-    "[ReportBase-Events].Age) Like Forms!Reports_Event!Age_EB) And (([ReportBase-Even"
-    "ts].Sex) Like Forms!Reports_Event!Sex_DD) And ((Heats.F_Lev) Like Forms!Reports_"
-    "Event!Flev_DD) And ((Heats.Heat) Like Forms!Reports_Event!Heat_EB))"
+Where ="((([ReportBase-Events].Flag)=Yes) AND (([ReportBase-Events].Include)=Yes) AND (("
+    "[ReportBase-Events].Age) Like [Forms]![Reports_Event]![Age_EB]) AND (([ReportBas"
+    "e-Events].Sex) Like [Forms]![Reports_Event]![Sex_DD]) AND ((Heats.F_Lev) Like [F"
+    "orms]![Reports_Event]![Flev_DD]) AND ((Heats.Heat) Like [Forms]![Reports_Event]!"
+    "[Heat_EB]))"
 Begin InputTables
     Name ="House"
     Name ="Final Level Sub"
@@ -51,17 +52,17 @@ Begin Joins
     RightTable ="ReportBase-Events"
     Expression ="Heats.E_Code = [ReportBase-Events].E_Code"
     Flag =3
-    LeftTable ="Final Level Sub"
-    RightTable ="Heats"
-    Expression ="[Final Level Sub].F_Lev = Heats.F_Lev"
-    Flag =3
     LeftTable ="Competitors"
     RightTable ="CompEvents"
     Expression ="Competitors.PIN = CompEvents.PIN"
     Flag =3
+    LeftTable ="Final Level Sub"
+    RightTable ="Heats"
+    Expression ="[Final Level Sub].F_Lev = Heats.F_Lev"
+    Flag =3
     LeftTable ="Heats"
     RightTable ="CompEvents"
-    Expression ="Heats.Heat = CompEvents.Heat"
+    Expression ="Heats.E_Code = CompEvents.E_Code"
     Flag =2
     LeftTable ="Heats"
     RightTable ="CompEvents"
@@ -69,7 +70,7 @@ Begin Joins
     Flag =2
     LeftTable ="Heats"
     RightTable ="CompEvents"
-    Expression ="Heats.E_Code = CompEvents.E_Code"
+    Expression ="Heats.Heat = CompEvents.Heat"
     Flag =2
     LeftTable ="House"
     RightTable ="Competitors"
@@ -88,88 +89,98 @@ dbBoolean "TotalsRow" ="0"
 Begin
     Begin
         dbText "Name" ="FullName"
+        dbLong "AggregateType" ="-1"
     End
     Begin
         dbText "Name" ="FLevSub"
+        dbLong "AggregateType" ="-1"
     End
     Begin
         dbText "Name" ="F_Place"
+        dbLong "AggregateType" ="-1"
     End
     Begin
         dbText "Name" ="RecHolder"
+        dbLong "AggregateType" ="-1"
     End
     Begin
         dbText "Name" ="cResult"
+        dbLong "AggregateType" ="-1"
     End
     Begin
         dbText "Name" ="cPoints"
+        dbLong "AggregateType" ="-1"
+    End
+    Begin
+        dbText "Name" ="[ReportBase-Events].Flag"
+        dbLong "AggregateType" ="-1"
     End
 End
 Begin
     State =0
     Left =78
     Top =96
-    Right =798
-    Bottom =472
+    Right =1022
+    Bottom =859
     Left =-1
     Top =-1
-    Right =702
-    Bottom =194
+    Right =920
+    Bottom =343
     Left =0
     Top =0
     ColumnsShown =539
     Begin
-        Left =227
-        Top =6
-        Right =323
-        Bottom =113
+        Left =-3
+        Top =74
+        Right =93
+        Bottom =306
         Top =0
-        Name ="CompEvents"
+        Name ="House"
         Name =""
     End
     Begin
-        Left =24
-        Top =16
-        Right =120
-        Bottom =123
-        Top =0
-        Name ="Competitors"
-        Name =""
-    End
-    Begin
-        Left =374
-        Top =13
-        Right =470
-        Bottom =120
-        Top =0
-        Name ="Heats"
-        Name =""
-    End
-    Begin
-        Left =488
-        Top =107
-        Right =584
-        Bottom =184
+        Left =559
+        Top =231
+        Right =695
+        Bottom =326
         Top =0
         Name ="Final Level Sub"
         Name =""
     End
     Begin
-        Left =593
-        Top =9
-        Right =689
-        Bottom =191
+        Left =429
+        Top =3
+        Right =525
+        Bottom =322
+        Top =0
+        Name ="Heats"
+        Name =""
+    End
+    Begin
+        Left =591
+        Top =10
+        Right =687
+        Bottom =192
         Top =0
         Name ="ReportBase-Events"
         Name =""
     End
     Begin
-        Left =144
-        Top =119
-        Right =240
-        Bottom =226
+        Left =129
+        Top =9
+        Right =225
+        Bottom =310
         Top =0
-        Name ="House"
+        Name ="Competitors"
+        Name =""
+    End
+    Begin
+        Left =265
+        Top =10
+        Right =361
+        Bottom =272
+        Top =0
+        Name ="CompEvents"
         Name =""
     End
 End

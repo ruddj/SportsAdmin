@@ -23,6 +23,10 @@ Begin Form
     OnCurrent ="[Event Procedure]"
     BeforeUpdate ="[Event Procedure]"
     HelpFile ="SportsAdmin.chm"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
     FilterOnLoad =255
     AllowLayoutView =0
     Begin
@@ -357,32 +361,7 @@ Err_Button17_Click:
     
 End Sub
 
-Private Sub Button36_Click()
 
-End Sub
-
-Private Sub Button43_Click()
-
-End Sub
-
-Private Sub Button45_Click()
-
-End Sub
-
-Private Sub Button47_Click()
-On Error GoTo Err_Button47_Click
-
-
-    
-
-Exit_Button47_Click:
-    Exit Sub
-
-Err_Button47_Click:
-    MsgBox Error$
-    Resume Exit_Button47_Click
-    
-End Sub
 
 Private Sub EditRec_Click()
 
